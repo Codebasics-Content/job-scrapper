@@ -35,8 +35,8 @@ Enterprise-grade web scraping platform that extracts LinkedIn job listings, anal
 
 ```bash
 # Clone and setup
-git clone https://github.com/yourusername/job-scraper.git
-cd job-scraper
+git clone https://github.com/Codebasics-Content/job-scrapper.git
+cd job-scrapper
 
 # Create virtual environment
 python -m venv .venv
@@ -176,7 +176,7 @@ logging.basicConfig(level=logging.DEBUG)
 ## 📄 License & Support
 
 **License:** MIT  
-**Issues:** [GitHub Issues](https://github.com/yourusername/job-scraper/issues)  
+**Issues:** [GitHub Issues](https://github.com/Codebasics-Content/job-scrapper/issues)  
 **Docs:** `.windsurf/memory-bank/` for detailed context
 
 **Built with:** Selenium | Pydantic | Streamlit | SQLite3 | **Architecture:** EMD (≤80 lines) | ZUV (Zero Unused Variables)

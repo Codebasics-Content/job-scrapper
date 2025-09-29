@@ -1,83 +1,75 @@
-# EMD Module Structure Validation Test
-# Validates that all EMD components import correctly without running operations
+#!/usr/bin/env python3
+"""
+EMD Architecture Validation - Actual Module Testing
+Validates existing scraper modules and database components
+EMD Compliance: ≤80 lines
+"""
+import pytest
 
-def test_model_imports():
-    """Test that JobModel imports correctly"""
-    try:
+
+class TestEMDArchitecture:
+    """Test suite for validating actual EMD module structure"""
+    
+    def test_job_model_import(self):
+        """Test JobModel imports correctly"""
         from models.job import JobModel
-        print("✅ JobModel import: SUCCESS")
-        return True
-    except Exception as error:
-        print(f"❌ JobModel import: FAILED - {error}")
-        return False
-
-def test_coordinator_imports():
-    """Test that ParallelCoordinator imports correctly"""
-    try:
-        from scrapers.coordinator import ParallelCoordinator
-        print("✅ ParallelCoordinator import: SUCCESS")
-        return True
-    except Exception as error:
-        print(f"❌ ParallelCoordinator import: FAILED - {error}")
-        return False
-
-def test_worker_pool_imports():
-    """Test that WorkerPoolManager imports correctly"""
-    try:
-        from scrapers.worker_pool import WorkerPoolManager
-        print("✅ WorkerPoolManager import: SUCCESS")
-        return True
-    except Exception as error:
-        print(f"❌ WorkerPoolManager import: FAILED - {error}")
-        return False
-
-def test_application_imports():
-    """Test that JobScrapperApplication imports correctly"""
-    try:
-        from scrapers.application import JobScrapperApplication
-        print("✅ JobScrapperApplication import: SUCCESS")
-        return True
-    except Exception as error:
-        print(f"❌ JobScrapperApplication import: FAILED - {error}")
-        return False
-
-def test_main_wrapper_imports():
-    """Test that main function imports correctly"""
-    try:
-        from scrapers.main_wrapper import main
-        print("✅ main function import: SUCCESS")
-        return True
-    except Exception as error:
-        print(f"❌ main function import: FAILED - {error}")
-        return False
-
-def validate_emd_architecture():
-    """Validate complete EMD architecture without running operations"""
-    print("🔍 EMD ARCHITECTURE VALIDATION")
-    print("=" * 50)
+        assert JobModel is not None
     
-    success_count = 0
-    total_tests = 5
+    def test_base_scraper_import(self):
+        """Test base scraper infrastructure imports"""
+        from scrapers.base.base_scraper import BaseJobScraper
+        assert BaseJobScraper is not None
     
-    # Test all module imports
-    if test_model_imports(): success_count += 1
-    if test_coordinator_imports(): success_count += 1  
-    if test_worker_pool_imports(): success_count += 1
-    if test_application_imports(): success_count += 1
-    if test_main_wrapper_imports(): success_count += 1
+    def test_linkedin_scraper_import(self):
+        """Test LinkedIn scraper imports correctly"""
+        from scrapers.linkedin.scraper import LinkedInScraper
+        assert LinkedInScraper is not None
     
-    print("=" * 50)
-    print(f"📊 RESULTS: {success_count}/{total_tests} components validated")
+    def test_indeed_scraper_import(self):
+        """Test Indeed scraper imports correctly"""
+        from scrapers.indeed.scraper import IndeedScraper
+        assert IndeedScraper is not None
     
-    if success_count == total_tests:
-        print("🎉 EMD REFACTORING: COMPLETE SUCCESS!")
-        print("✅ All modules import correctly")
-        print("✅ EMD architecture properly implemented")
-        return True
-    else:
-        print("⚠️ EMD REFACTORING: PARTIAL SUCCESS")
-        print(f"❌ {total_tests - success_count} components need fixes")
-        return False
-
-if __name__ == "__main__":
-    validate_emd_architecture()
+    def test_naukri_scraper_import(self):
+        """Test Naukri scraper imports correctly"""
+        from scrapers.naukri.scraper import NaukriScraper
+        assert NaukriScraper is not None
+    
+    def test_database_connection_import(self):
+        """Test database connection module imports"""
+        from database.connection.db_connection import DatabaseConnection
+        assert DatabaseConnection is not None
+    
+    def test_database_operations_import(self):
+        """Test database operations module imports"""
+        from database.operations.job_storage import JobStorageOperations
+        assert JobStorageOperations is not None
+    
+    def test_schema_manager_import(self):
+        """Test schema manager imports correctly"""
+        from database.schema.schema_manager import SchemaManager
+        assert SchemaManager is not None
+    
+    def test_emd_structure_compliance(self):
+        """Verify all major components exist and follow EMD"""
+        components = [
+            "models.job",
+            "scrapers.base.base_scraper",
+            "scrapers.linkedin.scraper",
+            "scrapers.indeed.scraper",
+            "scrapers.naukri.scraper",
+            "database.connection.db_connection",
+            "database.operations.job_storage",
+            "database.schema.schema_manager"
+        ]
+        
+        for component in components:
+            try:
+                __import__(component)
+            except ImportError as error:
+                pytest.fail(f"EMD component {component} failed to import: {error}")
+    
+    def test_anti_detection_imports(self):
+        """Test anti-detection infrastructure exists"""
+        from scrapers.base.anti_detection import AntiDetectionDriverFactory
+        assert AntiDetectionDriverFactory is not None

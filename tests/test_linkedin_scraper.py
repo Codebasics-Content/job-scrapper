@@ -1,52 +1,68 @@
-# LinkedIn Scraper Test Script
-# EMD Compliance: ≤80 lines for testing LinkedIn scraper functionality
-
+#!/usr/bin/env python3
+"""
+LinkedIn Scraper Tests - API-based Implementation
+Tests async LinkedIn scraper with proper fixtures and mocking
+EMD Compliance: ≤80 lines
+"""
+import pytest
 import asyncio
-import logging
-from scrapers.linkedin import LinkedInScraper
+from unittest.mock import Mock, patch, MagicMock
+from models.job import JobModel
+from scrapers.linkedin.scraper import LinkedInScraper
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
 
-async def test_linkedin_scraper():
-    """Test the LinkedIn scraper with a small dataset"""
-    print("Testing LinkedIn Scraper Implementation...")
+class TestLinkedInScraper:
+    """Test suite for LinkedIn API-based scraper"""
     
-    # Initialize the LinkedIn scraper
-    linkedin_scraper = LinkedInScraper()
+    @pytest.fixture
+    def scraper(self):
+        """Initialize LinkedIn scraper for testing"""
+        return LinkedInScraper()
     
-    try:
-        # Test with context manager to ensure proper cleanup
-        with linkedin_scraper:
-            print(f"Pool status: {linkedin_scraper.pool_status}")
-            
-            # Test scraping with a small number of jobs
-            test_role = "Python Developer"
-            target_count = 5
-            
-            print(f"Scraping {target_count} jobs for '{test_role}'...")
-            jobs = await linkedin_scraper.scrape_jobs(test_role, target_count)
-            
-            print(f"\n=== SCRAPING RESULTS ===")
-            print(f"Jobs found: {len(jobs)}")
-            
-            # Display sample job data
-            for i, job in enumerate(jobs[:3]):  # Show first 3 jobs
-                print(f"\nJob {i+1}:")
-                print(f"  ID: {job.job_id}")
-                print(f"  Title: {job.job_role}")
-                print(f"  Company: {job.company}")
-                print(f"  Platform: {job.platform}")
-                print(f"  Location: {job.location}")
-                
-    except Exception as error:
-        print(f"Error during testing: {error}")
-        
-    print("\nLinkedIn Scraper test completed!")
-
-if __name__ == "__main__":
-    # Run the test
-    asyncio.run(test_linkedin_scraper())
+    @pytest.fixture
+    def mock_driver(self):
+        """Create mock WebDriver for testing"""
+        driver = MagicMock()
+        driver.get = Mock()
+        driver.execute_script = Mock(return_value=None)
+        return driver
+    
+    @pytest.fixture
+    def sample_jobs(self):
+        """Create sample JobModel instances for testing"""
+        return [
+            JobModel(
+                job_id=f"test-{i}",
+                job_role="Python Developer",
+                company=f"Company{i}",
+                experience="2-5 years",
+                skills="Python, Django, REST APIs",
+                jd=f"Job description {i}",
+                platform="LinkedIn"
+            )
+            for i in range(3)
+        ]
+    
+    def test_scraper_initialization(self, scraper):
+        """Test LinkedIn scraper initializes correctly"""
+        assert scraper.platform_name == "LinkedIn"
+        assert scraper.base_url == "https://www.linkedin.com/jobs/search"
+    
+    @pytest.mark.asyncio
+    async def test_scrape_jobs_basic(self, scraper, mock_driver, sample_jobs):
+        """Test basic job scraping with mocked driver"""
+        with patch.object(scraper, 'get_driver', return_value=mock_driver):
+            with patch.object(scraper, 'return_driver'):
+                with patch('scrapers.linkedin.extractors.job_id_extractor.extract_job_ids_from_page', 
+                          return_value=['job1', 'job2', 'job3']):
+                    with patch('scrapers.linkedin.extractors.api_job_fetcher.fetch_job_via_api',
+                              side_effect=sample_jobs):
+                        jobs = await scraper.scrape_jobs("Python Developer", 3)
+                        
+                        assert len(jobs) == 3
+                        assert all(job.platform == "LinkedIn" for job in jobs)
+    
+    def test_context_manager_protocol(self, scraper):
+        """Test scraper supports context manager protocol"""
+        assert hasattr(scraper, '__enter__')
+        assert hasattr(scraper, '__exit__')
