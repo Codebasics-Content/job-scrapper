@@ -1,0 +1,29 @@
+# Core Selenium & WebDriver
+selenium==4.15.2
+webdriver-manager==4.0.1
+undetected-chromedriver==3.5.4
+
+# Data Models & Validation
+pydantic>=2.8.2
+pydantic-settings>=2.8.0
+
+# HTTP & Web Scraping
+requests==2.31.0
+beautifulsoup4==4.12.2
+lxml>=5.2.1
+
+# Database & Storage
+pandas>=2.2.2
+pandas-stubs>=2.2.0
+
+# Optional: Anti-Detection Enhancement
+fake-useragent==1.4.0
+python-dotenv==1.0.0
+
+# UI Framework
+streamlit>=1.28.0
+
+# Development & Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.11.0
