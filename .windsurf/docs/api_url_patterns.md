@@ -1,154 +1,201 @@
-# API URL Patterns - Job Platforms
+# Platform Scraper Implementation Status & URL Patterns
 
-## 1. LinkedIn Jobs
+## 1. LinkedIn Jobs ✅ PRODUCTION READY
 
-### Base URL Pattern
-```
-https://www.linkedin.com/jobs/search/
-```
+### Implementation Status
+**Status**: PRODUCTION READY (Tested with 1000+ jobs)
+**Approach**: API-based extraction with infinite scroll
+**Files**:
+- `scrapers/linkedin/scraper.py` (77 lines)
+- `scrapers/linkedin/extractors/scroll_handler.py` (78 lines)
+- `scrapers/linkedin/extractors/api_job_fetcher.py` (71 lines)
+- `scrapers/linkedin/extractors/job_id_extractor.py` (74 lines)
 
-### Key Parameters
-- `keywords`: Job title or skills (e.g., "software engineer", "AI engineer")
-- `location`: Geographic location (e.g., "San Francisco, California", "Mumbai, India")
-- `f_E`: Experience level
-  - `1`: Internship
-  - `2`: Entry level (1-3 years)
-  - `3`: Associate (3-5 years)
-  - `4`: Mid-Senior level (5-10 years)
-  - `5`: Director (10+ years)
-- `f_TP`: Job type
-  - `F`: Full-time
-  - `P`: Part-time
-  - `C`: Contract
-  - `T`: Temporary
-  - `I`: Internship
-- `start`: Pagination offset (0, 25, 50, etc.)
-
-### Example URLs
-```
-# AI Engineer jobs in Mumbai
-https://www.linkedin.com/jobs/search/?keywords=AI%20Engineer&location=Mumbai%2C%20India&f_E=2
-
-# AI Engineer jobs with pagination
-https://www.linkedin.com/jobs/search/?keywords=software%20engineer&location=San%20Francisco%2C%20California&start=25
+### Actual Base URL Pattern
+```python
+base_url = "https://www.linkedin.com/jobs/search"
 ```
 
-### Important Notes
-- Results are paginated with 25 listings per page
-- LinkedIn limits accessible results to ~1,000 jobs
-- Requires proper User-Agent headers to avoid blocking
-- May need Selenium for JavaScript-heavy content
-
-## 2. Indeed Jobs
-
-### Base URL Pattern
-```
-https://www.indeed.com/jobs
+### Parameters Used in Production
+```python
+params = {
+    'keywords': job_role,          # Job role from user input
+    'f_TPR': 'r86400',            # Posted in last 24 hours
+    'start': 0,                    # Pagination start (not used with scroll)
+    'location': location           # Optional location filter
+}
 ```
 
-### Key Parameters
-- `q`: Query/job title (e.g., "python developer", "data scientist")
-- `l`: Location (e.g., "Texas", "New York, NY", "Mumbai")
-- `start`: Pagination offset (0, 10, 20, etc.)
-- `sort`: Sort order
-  - `date`: Most recent
-  - `relevance`: Most relevant (default)
-- `radius`: Search radius in miles/km
-- `fromage`: Days since posted
-  - `1`: Last 24 hours
-  - `3`: Last 3 days
-  - `7`: Last week
-  - `14`: Last 2 weeks
-
-### Example URLs
+### Production URL Example
 ```
-# Python jobs in Texas
-https://www.indeed.com/jobs?q=python&l=Texas
-
-# AI Engineer jobs with pagination
-https://www.indeed.com/jobs?q=AI%20Engineer&l=Mumbai&start=10
-
-# Recent data scientist jobs
-https://www.indeed.com/jobs?q=data%20scientist&l=New%20York%2C%20NY&fromage=7&sort=date
+https://www.linkedin.com/jobs/search?keywords=AI%20Engineer&f_TPR=r86400&start=0
+https://www.linkedin.com/jobs/search?keywords=Data%20Scientist&location=Mumbai&f_TPR=r86400&start=0
 ```
 
-### Important Notes
-- Results show 15 job listings per page
-- Hidden JSON data available in page source (window.mosaic.providerData)
-- Requires proper headers to avoid 403 blocking
-- Use `start` parameter for pagination (0, 10, 20, 30...)
-
-## 3. Naukri.com
-
-### Base URL Pattern
+### API Endpoint for Job Details
 ```
-https://www.naukri.com/[job-title]-jobs-in-[location]
+https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_id}
 ```
 
-### Alternative Search Pattern
+### Implementation Details
+- **Method**: Selenium with undetected-chromedriver (GUI mode)
+- **Pagination**: Infinite scroll using JavaScript scroll injection
+- **Job Extraction**: Extract job IDs from page → Fetch details via API
+- **Duplicate Handling**: `processed_ids` set tracks all extracted IDs
+- **Rate Limiting**: 0.5s between API calls, 2s between scroll operations
+- **Selectors**: 
+  - Job cards: `li.jobs-search__results-list > li`
+  - Job ID attribute: `data-entity-urn` or `data-job-id`
+  - See More button: `button.infinite-scroller__show-more-button`
+
+## 2. Indeed Jobs ⚠️ STUB - INCOMPLETE
+
+### Implementation Status
+**Status**: INCOMPLETE (93 lines - EMD violation)
+**Approach**: Selenium-based scraping (stub implementation)
+**Files**:
+- `scrapers/indeed/scraper.py` (93 lines - needs splitting)
+- `scrapers/indeed/extractor.py` (incomplete)
+- `scrapers/indeed/extractors/` (directory exists but incomplete)
+
+### Current Base URL Pattern
+```python
+base_url = "https://www.indeed.com"
+search_url = f"{base_url}/jobs"
 ```
-https://www.naukri.com/jobapi/v3/search
+
+### Parameters Planned
+```python
+search_query = f"{search_url}?q={job_role.replace(' ', '+')}"
+# Location parameter not yet implemented
 ```
 
-### Key Parameters
-- `k`: Keywords/job title (e.g., "financial analyst", "software engineer")
-- `l`: Location (e.g., "mumbai", "bangalore", "delhi")
-- `noOfResults`: Number of results per page (default: 20)
-- `pageNo`: Page number for pagination (1, 2, 3...)
-- `searchType`: Search type (`adv` for advanced)
-- `urlType`: URL type (`search_by_keyword`)
-
-### Example URLs
+### Current URL Example (Stub)
 ```
-# Financial Analyst jobs in Mumbai (SEO URL)
-https://www.naukri.com/financial-analyst-jobs-in-mumbai?k=financial%20analyst&l=mumbai
-
-# API-style search
-https://www.naukri.com/jobapi/v3/search?noOfResults=20&urlType=search_by_keyword&searchType=adv&keyword=data%20science&pageNo=1&k=data%20science&l=mumbai
+https://www.indeed.com/jobs?q=AI+Engineer
 ```
 
-### Important Notes
-- Uses SEO-friendly URLs for job searches
-- Requires Selenium due to heavy JavaScript content
-- API endpoint available for JSON responses
-- Location parameter uses lowercase city names
-- Pagination through `pageNo` parameter
+### Implementation Gaps
+1. **No pagination handler** - Cannot scrape beyond first page
+2. **Incomplete extractors** - Job data extraction not functional
+3. **No location filter** - Location parameter not implemented
+4. **No rate limiting** - Basic structure only
+5. **No error recovery** - Minimal error handling
 
-## 4. Y Combinator (Work at a Startup)
+### Required Implementation
+- Complete `extractor.py` with proper job card parsing
+- Implement pagination/scroll handler for multiple pages
+- Add location parameter support
+- Create extractors for description, company, salary
+- Add proper CSS selectors for Indeed's current markup
+- Implement rate limiting (1-2s between requests)
+- Split scraper.py to comply with EMD (≤80 lines)
 
-### Base URL Pattern
+## 3. Naukri.com ⚠️ STUB - INCOMPLETE
+
+### Implementation Status
+**Status**: INCOMPLETE (78 lines)
+**Approach**: Selenium-based scraping (stub implementation)
+**Files**:
+- `scrapers/naukri/scraper.py` (78 lines)
+- `scrapers/naukri/extractor.py` (incomplete)
+
+### Current Base URL Pattern
+```python
+base_url = "https://www.naukri.com"
+```
+
+### Current Search URL Construction
+```python
+search_url = f"{base_url}/{job_role.replace(' ', '-')}-jobs"
+# Example: https://www.naukri.com/AI-Engineer-jobs
+```
+
+### Current URL Example (Stub)
+```
+https://www.naukri.com/AI-Engineer-jobs
+https://www.naukri.com/Data-Scientist-jobs
+```
+
+### Current Selectors (May Need Update)
+```python
+job_cards = driver.find_elements(
+    By.CSS_SELECTOR, 
+    ".srp-jobtuple-wrapper, .jobTuple"
+)
+```
+
+### Implementation Gaps
+1. **Incomplete extractor** - `extract_job_from_card()` not functional
+2. **No pagination** - Only scrapes first page
+3. **No location support** - Location parameter not implemented
+4. **Basic rate limiting** - Simple sleep(2) every 5 jobs
+5. **Minimal error handling** - Only TimeoutException caught
+6. **No scroll handler** - May miss dynamically loaded jobs
+
+### Required Implementation
+- Complete `extractor.py` with proper job card parsing
+- Implement pagination handler (pageNo parameter or scroll)
+- Add location filter support
+- Add proper CSS selectors for current Naukri markup
+- Implement comprehensive error handling
+- Add retry mechanisms for failed requests
+- Test with actual Naukri.com job searches
+
+## 4. Y Combinator (Work at a Startup) ❌ NOT STARTED
+
+### Implementation Status
+**Status**: NOT IMPLEMENTED
+**Approach**: Not defined
+**Files**: No directory or files exist
+
+### Planned Base URL Pattern
 ```
 https://www.workatastartup.com/companies
 ```
 
-### Alternative Job Board
+### Alternative URL Option
 ```
 https://www.ycombinator.com/jobs
 ```
 
-### Key Parameters (workatastartup.com)
-- Search appears to be handled via frontend JavaScript
-- No direct URL parameters for job filtering
-- Uses GraphQL/API calls for data loading
+### Required Implementation
+1. **Create directory structure**:
+   ```
+   scrapers/ycombinator/
+   ├── __init__.py
+   ├── scraper.py (≤80 lines)
+   ├── extractor.py (≤80 lines)
+   └── extractors/
+       ├── __init__.py
+       ├── job_card_parser.py
+       └── api_handler.py
+   ```
 
-### Example URLs
-```
-# Main job board
-https://www.workatastartup.com/
+2. **Determine scraping approach**:
+   - Investigate if API endpoints exist
+   - Test Selenium requirements for SPA
+   - Identify job card selectors
+   - Test pagination method (scroll vs URL params)
 
-# YC job board
-https://www.ycombinator.com/jobs
+3. **Implement core functionality**:
+   - Follow LinkedIn pattern for consistency
+   - Implement proper error handling
+   - Add rate limiting (3-5s between requests)
+   - Create job extraction logic
+   - Add pagination support
 
-# Specific role filtering (frontend-handled)
-https://www.workatastartup.com/companies?role=Software%20Engineer
-```
+4. **Integration**:
+   - Integrate with streamlit_app.py
+   - Add to platform dropdown
+   - Test end-to-end flow
 
-### Important Notes
-- Heavily JavaScript-dependent (requires Selenium)
-- Uses modern SPA architecture
-- API calls likely needed for data extraction
-- Limited direct URL parameter support
-- Focus on YC-backed startup jobs only
+### Technical Challenges
+- **SPA Architecture**: Requires Selenium or Playwright
+- **GraphQL API**: May need to intercept API calls
+- **Dynamic Loading**: Infinite scroll likely required
+- **Limited Documentation**: Need reverse engineering
+- **YC-Specific**: Only YC-backed startups (niche market)
 
 ## Headers and Anti-Bot Measures
 
