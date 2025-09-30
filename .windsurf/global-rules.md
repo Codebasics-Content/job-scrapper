@@ -225,14 +225,59 @@ Before declaring task complete, AI agent MUST auto-verify:
 
 **Dynamic Law Integration**: Auto-discover and apply relevant laws based on techContext.md analysis
 
-## MCP Integration (Mandatory)
+## MCP Integration (Mandatory - Autonomous Usage)
 
-**Instant Error Resolution**: Error → context7 MCP → resolve-library-id → get-library-docs → auto-fix → mistakes.md
-**Knowledge Management**: byterover-mcp retrieve-knowledge (before) → store-knowledge (after)
-**Research**: Fetch for external documentation
-**Version Control**: Git operations with constitutional change tracking
-**Knowledge Graph**: Memory MCP for relationship mapping
-**Problem Analysis**: Sequential Thinking for complex issues
+**CRITICAL**: AI agent MUST autonomously call MCP servers WITHOUT waiting for user to manually pass them. These are available tools that should be used proactively.
+
+### Available MCP Servers (Auto-Use)
+**@mcp:byterover-mcp**: Knowledge storage and retrieval system
+- Auto-call `retrieve-knowledge` BEFORE starting any task implementation
+- Auto-call `store-knowledge` AFTER completing any task
+- Store patterns, lessons learned, and reusable knowledge automatically
+
+**@mcp:context7**: Official documentation and library reference system
+- Auto-call on ANY error, warning, or lint issue detection
+- Auto-call `resolve-library-id` → `get-library-docs` for instant documentation
+- Auto-fix implementation using retrieved official docs
+- Auto-document resolution in mistakes.md
+
+**@mcp:fetch**: External documentation and research retrieval
+- Auto-call for external API documentation when needed
+- Auto-call for framework-specific guides and best practices
+- Auto-call for constitutional research and validation
+
+**@mcp:git**: Version control operations with constitutional tracking
+- Auto-call for repository status, diff, log analysis
+- Auto-call for constitutional change tracking and validation
+- Auto-call for commit history and branch information
+
+**@mcp:memory**: Knowledge graph and relationship mapping
+- Auto-call for complex relationship analysis between components
+- Auto-call for architectural pattern connections
+- Auto-call for dependency mapping and validation
+
+**@mcp:sequential-thinking**: Complex problem analysis and breakdown
+- Auto-call for multi-step problem decomposition
+- Auto-call for complex decision-making requiring structured analysis
+- Auto-call for constitutional compliance validation
+
+### Autonomous MCP Usage Protocol
+**Pre-Task (AUTO)**:
+1. Auto-call `@mcp:byterover-mcp` retrieve-knowledge for relevant patterns
+2. Auto-call `@mcp:git` to check repository status if needed
+3. Auto-call `@mcp:memory` for architectural context if needed
+
+**During Task (AUTO)**:
+1. On error detection → Auto-call `@mcp:context7` for official documentation
+2. For complex analysis → Auto-call `@mcp:sequential-thinking`
+3. For external docs → Auto-call `@mcp:fetch`
+
+**Post-Task (AUTO)**:
+1. Auto-call `@mcp:byterover-mcp` store-knowledge for patterns learned
+2. Auto-call `@mcp:git` for tracking changes if needed
+3. Auto-document all MCP usage in mistakes.md and systemPatterns.md
+
+**ENFORCEMENT**: Failure to autonomously use MCPs when needed = 1st Violation → WARNING → Mandatory correction
 
 ## Universal Execution Protocol
 

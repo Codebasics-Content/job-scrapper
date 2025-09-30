@@ -18,22 +18,34 @@ class SchemaManager:
     def create_jobs_table(self) -> None:
         """Create jobs table with optimized schema"""
         with self.connection.get_connection_context() as conn:
-            conn.execute("""
-                CREATE TABLE IF NOT EXISTS jobs (
-                    job_id TEXT PRIMARY KEY,
-                    job_role TEXT NOT NULL,
-                    company TEXT NOT NULL,
-                    experience TEXT,
-                    skills TEXT,  -- JSON array of normalized skills
-                    jd TEXT,      -- Job description  
-                    platform TEXT NOT NULL,
-                    scraped_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(job_role, company, platform)
-                )
-            """)
-            conn.commit()
+            # Check if table exists
+            cursor = conn.execute(
+                "SELECT name FROM sqlite_master WHERE type='table' AND name='jobs'"
+            )
+            table_exists = cursor.fetchone() is not None
             
-        logger.info("Jobs table created successfully")
+            if not table_exists:
+                conn.execute("""
+                    CREATE TABLE jobs (
+                        job_id TEXT PRIMARY KEY,
+                        job_role TEXT NOT NULL,
+                        company TEXT NOT NULL,
+                        experience TEXT,
+                        skills TEXT,
+                        jd TEXT,
+                        platform TEXT NOT NULL,
+                        url TEXT,
+                        location TEXT,
+                        salary TEXT,
+                        posted_date TEXT,
+                        scraped_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        UNIQUE(job_role, company, platform)
+                    )
+                """)
+                conn.commit()
+                logger.info("Jobs table created successfully")
+            else:
+                logger.info("Jobs table already exists, skipping creation")
     
     def create_indexes(self) -> None:
         """Create optimized indexes for job queries"""
@@ -50,7 +62,7 @@ class SchemaManager:
                 conn.execute(index_sql)
             conn.commit()
             
-        logger.info(f"Created {len(indexes)} database indexes")
+        logger.info(f"Verified {len(indexes)} database indexes")
     
     def initialize_schema(self) -> None:
         """Initialize complete database schema"""

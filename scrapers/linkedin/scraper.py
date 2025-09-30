@@ -1,121 +1,170 @@
 #!/usr/bin/env python3
-# LinkedIn job scraper using API-based approach
+# LinkedIn job scraper using multi-country approach
 # EMD Compliance: ≤80 lines
 
 import asyncio
 import logging
-import urllib.parse
 try:
     from typing import override
 except ImportError:
     from typing_extensions import override
 
 from ..base.base_scraper import BaseJobScraper
-from .extractors.job_id_extractor import extract_job_ids_from_page
-from .extractors.api_job_fetcher import fetch_job_via_api
-from .extractors.scroll_handler import scroll_to_load_jobs
+from ..base.window_manager import WindowManager
+from ..base.anti_detection import AntiDetectionDriverFactory
+from .config.countries import LINKEDIN_COUNTRIES
 from models.job import JobModel
+import undetected_chromedriver as uc
 
 logger = logging.getLogger(__name__)
 
 class LinkedInScraper(BaseJobScraper):
-    """LinkedIn job scraper using API endpoint for job details"""
+    """LinkedIn job scraper with multi-window parallel approach"""
     
     def __init__(self):
         super().__init__(platform_name="LinkedIn")
         self.base_url: str = "https://www.linkedin.com/jobs/search"
-        self.setup_driver_pool()  # Initialize driver pool on creation
+        self.driver_factory: AntiDetectionDriverFactory = AntiDetectionDriverFactory()
+        self.window_manager: WindowManager = WindowManager(self.driver_factory.create_driver)
+        self.setup_driver_pool()  # Initialize main driver pool
 
+    async def initialize_country_windows_async(
+        self, 
+        country_codes: list[str],
+        job_role: str
+    ) -> None:
+        """Pre-initialize windows with URL parameters and humanized delays"""
+        import urllib.parse
+        from .config.concurrency import (
+            MAX_CONCURRENT_WINDOWS,
+            get_window_creation_delay
+        )
+        
+        logger.info(f"[WINDOW INIT] Creating {len(country_codes)} windows (max {MAX_CONCURRENT_WINDOWS} concurrent)...")
+        semaphore = asyncio.Semaphore(MAX_CONCURRENT_WINDOWS)
+        
+        async def create_window_with_delay(country_code: str, country_data: dict[str, str]) -> None:
+            async with semaphore:
+                # Humanized delay before window creation
+                delay = get_window_creation_delay()
+                await asyncio.sleep(delay)
+                
+                window_id = f"LinkedIn-{country_code}"
+                driver = self.window_manager.create_window(window_id)
+                
+                if driver:
+                    try:
+                        # Build URL with parameters: job role, country, 1-month filter
+                        params = {
+                            'keywords': job_role,
+                            'f_TPR': 'r2592000',  # 1 month (30 days)
+                            'location': country_data['name'],
+                            'start': 0
+                        }
+                        # Only add geoId if not empty (Worldwide has empty geoId)
+                        if country_data['geoId']:
+                            params['geoId'] = country_data['geoId']
+                        url = f"{self.base_url}?{urllib.parse.urlencode(params)}"
+                        driver.get(url)
+                        logger.info(f"[WINDOW CREATED] {window_id} (delay: {delay:.1f}s)")
+                    except Exception as e:
+                        logger.error(f"[WINDOW NAV FAILED] {window_id}: {e}")
+                else:
+                    logger.error(f"[WINDOW FAILED] {window_id}")
+        
+        # Create country lookup dictionary
+        country_lookup = {c['name']: c for c in LINKEDIN_COUNTRIES}
+        
+        tasks = [
+            create_window_with_delay(code, country_lookup[code]) 
+            for code in country_codes
+        ]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        
+        # Log any creation failures
+        failures = [r for r in results if isinstance(r, Exception)]
+        if failures:
+            logger.warning(f"[WINDOW INIT] {len(failures)} windows failed to create")
+        
+        logger.info(f"[WINDOW INIT COMPLETE] {self.window_manager.window_count()} windows ready")
+    
+    def get_driver_for_country(self, country_code: str) -> uc.Chrome | None:
+        """Get dedicated window for country"""
+        window_id = f"LinkedIn-{country_code}"
+        driver = self.window_manager.get_window(window_id)
+        
+        if not driver:
+            logger.warning(f"[WINDOW MISSING] {window_id}, creating new window")
+            driver = self.window_manager.create_window(window_id)
+        
+        return driver
+    
     @override
     async def scrape_jobs(
         self, 
         job_role: str, 
         target_count: int,
-        location: str = ""
+        location: str = "",
+        countries: list[dict[str, str]] | None = None
     ) -> list[JobModel]:
-        """Scrape jobs using API-based approach
+        """Scrape jobs using parallel multi-country approach
+        
+        Scrapes all countries in parallel to avoid bias.
+        Stops immediately when target count is reached.
         
         Args:
             job_role: Job role to search for
             target_count: Number of jobs to scrape
-            location: Location filter (empty for worldwide search)
+            location: Ignored for LinkedIn (kept for base class compatibility)
+            countries: List of countries to scrape (optional, defaults to all)
         """
-        logger.info(f"Starting API-based LinkedIn scrape for {target_count} {job_role} jobs")
-        if location:
-            logger.info(f"Location filter: {location}")
+        from .extractors.parallel_coordinator import ParallelCoordinator
+        from .config.concurrency import MAX_CONCURRENT_SCRAPERS
         
-        jobs: list[JobModel] = []
-        processed_ids: set[str] = set()  # Track all extracted IDs
-        
-        params = {
-            'keywords': job_role,
-            'f_TPR': 'r86400',
-            'start': 0
-        }
-        
-        # Only add location if provided
-        if location:
-            params['location'] = location
-        
-        # Build initial URL
-        url = f"{self.base_url}?{urllib.parse.urlencode(params)}"
+        # Use provided countries or default to all
+        countries_to_scrape = countries if countries is not None else LINKEDIN_COUNTRIES
+    
+        logger.info(f"[SCRAPE START] Parallel scrape for {target_count} {job_role} jobs")
+        logger.info(f"[SCRAPE START] Scraping {len(countries_to_scrape)} countries in parallel")
+        logger.info(f"[SCRAPE START] Current windows: {self.window_manager.window_count()}")
         
         try:
-            # Get driver and load initial page
-            driver = self.get_driver()
-            if not driver:
-                logger.error("Failed to get driver")
-                return []
+            # Pre-initialize all country tabs before parallel execution
+            logger.info("[INIT START] Starting country pool initialization...")
+            country_codes = [country['name'] for country in countries_to_scrape]
+            logger.info(f"[INIT START] Country codes to initialize: {country_codes[:5]}... (showing first 5)")
+            logger.info(f"[INIT START] Total codes: {len(country_codes)}")
             
-            try:
-                driver.get(url)
-                
-                # Main scraping loop with scroll
-                while len(jobs) < target_count:
-                    # Extract job IDs from current page state
-                    job_ids = extract_job_ids_from_page(driver)
-                    
-                    # Fetch details for new jobs
-                    for job_id in job_ids:
-                        if len(jobs) >= target_count:
-                            break
-                        
-                        # Skip if already processed
-                        if job_id in processed_ids:
-                            continue
-                        
-                        processed_ids.add(job_id)
-                        
-                        job = await asyncio.get_event_loop().run_in_executor(
-                            None, fetch_job_via_api, job_id, job_role
-                        )
-                        
-                        if job:
-                            jobs.append(job)
-                            logger.info(f"Fetched job {len(jobs)}/{target_count}: {job.job_role}")
-                        
-                        await asyncio.sleep(0.5)
-                    
-                    # Break if target reached
-                    if len(jobs) >= target_count:
-                        break
-                    
-                    # Scroll to load more jobs
-                    has_more = await asyncio.get_event_loop().run_in_executor(
-                        None, scroll_to_load_jobs, driver, target_count, len(jobs)
-                    )
-                    
-                    if not has_more:
-                        logger.info("No more jobs available")
-                        break
-                    
-                    await asyncio.sleep(2)
-            finally:
-                self.return_driver(driver)
-                
-        except Exception as error:
-            logger.error(f"LinkedIn API scraping failed: {error}")
-            
-        logger.info(f"Completed: {len(jobs)} jobs with NLP-extracted skills")
-        return jobs[:target_count]
+            await self.initialize_country_windows_async(country_codes, job_role)
+            logger.info(f"[INIT COMPLETE] Successfully initialized {self.window_manager.window_count()} windows")
+        except Exception as e:
+            logger.error(f"[INIT FAILED] Failed to initialize country pools: {e}", exc_info=True)
+            return []
+        
+        coordinator = ParallelCoordinator(target_count)
+        semaphore = asyncio.Semaphore(MAX_CONCURRENT_SCRAPERS)
+        
+        # Create parallel tasks for selected countries with semaphore control
+        tasks = [
+            coordinator.scrape_country_parallel(
+                get_driver=self.get_driver_for_country,
+                close_window=self.window_manager.close_window,
+                base_url=self.base_url,
+                job_role=job_role,
+                country=country,
+                semaphore=semaphore
+            )
+            for country in countries_to_scrape
+        ]
+        
+        # Execute all countries in parallel
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        logger.debug(f"Parallel execution completed: {len(results)} tasks")
+        
+        logger.info(
+            f"Completed: {len(coordinator.jobs)} jobs " +
+            f"from {len(coordinator.processed_ids)} unique listings"
+        )
+        return coordinator.jobs[:target_count]
+    
     

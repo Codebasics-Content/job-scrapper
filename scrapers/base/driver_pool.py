@@ -3,7 +3,9 @@
 
 import logging
 import threading
+import time
 import undetected_chromedriver as uc
+from selenium.webdriver.remote.webdriver import WebDriver
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -40,27 +42,33 @@ class WebDriverPool:
                 if WebDriverPool._shared_browser is None:
                     raise RuntimeError("Failed to create shared browser")
             
-            # Create new tab for this platform
+            # Create new tab for this platform with anti-bot delay
             browser = WebDriverPool._shared_browser
+            time.sleep(0.5)  # Anti-bot delay before tab creation
             browser.execute_script("window.open('about:blank', '_blank');")
-            browser.switch_to.window(browser.window_handles[-1])
+            time.sleep(0.3)  # Anti-bot delay after tab creation
+            
+            # Switch to the newly created tab
+            all_handles = browser.window_handles
+            browser.switch_to.window(all_handles[-1])
             
             self.tab_handle = browser.current_window_handle
             WebDriverPool._platform_tabs[self.platform_name] = self.tab_handle
             WebDriverPool._initialized = True
             
-            logger.info(f"Tab created for {self.platform_name} (Total tabs: {len(browser.window_handles)})")
+            logger.info(f"Tab created for {self.platform_name} (Handle: {self.tab_handle[:8]}..., Total tabs: {len(all_handles)})")
     
     def get_driver(self) -> uc.Chrome | None:
-        """Get shared browser and switch to platform's tab"""
+        """Get shared browser and switch to platform's tab with anti-bot delay"""
         if WebDriverPool._shared_browser is None or self.tab_handle is None:
             return None
         
+        time.sleep(0.5)  # Anti-bot delay before tab switch
         WebDriverPool._shared_browser.switch_to.window(self.tab_handle)
         return WebDriverPool._shared_browser
     
-    def return_driver(self, driver: uc.Chrome | None) -> None:
-        """No-op for tab-based system (driver stays alive)"""
+    def return_driver(self, driver: WebDriver | None) -> None:
+        """No-op for tab-based system (driver stays alive, accepts any WebDriver)"""
         if driver:
             logger.debug(f"Driver returned for {self.platform_name} (tab remains active)")
     

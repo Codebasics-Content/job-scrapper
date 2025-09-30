@@ -3,13 +3,23 @@ import streamlit as st
 import logging
 import asyncio
 from scrapers.linkedin.scraper import LinkedInScraper
+from scrapers.linkedin.config.countries import LINKEDIN_COUNTRIES
 from database.core.connection_manager import ConnectionManager
 from database.core.batch_operations import BatchOperations
 from database.core.job_retrieval import JobRetrieval
+from database.schema.schema_manager import SchemaManager
+from database.connection.db_connection import DatabaseConnection
 from utils.analysis.visualization import generate_skill_leaderboard
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Initialize database schema on app startup (idempotent)
+DB_PATH = "jobs.db"
+db_conn = DatabaseConnection(db_path=DB_PATH)
+schema_mgr = SchemaManager(db_conn)
+schema_mgr.initialize_schema()
+logger.info("Database schema initialized")
 
 st.set_page_config(page_title="Job Scraper", page_icon="🔍", layout="wide")
 st.title("🔍 Job Scraper with Skill Analysis")
@@ -30,17 +40,33 @@ with st.form("job_scraper_form"):
         )
     
     with col2:
-        country = st.text_input(
-            "Country/Location",
-            value="India",
-            placeholder="e.g., India, United States"
-        )
         num_jobs = st.slider(
             "Number of Jobs",
             min_value=5,
             max_value=1000,
             value=10,
             step=5
+        )
+    
+    # Country selection
+    st.subheader("🌍 Country Selection")
+    country_names = [c['name'] for c in LINKEDIN_COUNTRIES]
+    
+    select_all = st.checkbox("Select All Countries", value=True)
+    
+    if select_all:
+        selected_countries = st.multiselect(
+            "Countries to scrape",
+            options=country_names,
+            default=country_names,
+            help="Scraping from multiple countries in parallel for diverse global data"
+        )
+    else:
+        selected_countries = st.multiselect(
+            "Countries to scrape",
+            options=country_names,
+            default=["United States", "India", "United Kingdom"],
+            help="Select specific countries to scrape from"
         )
     
     submit = st.form_submit_button("🔍 Start Scraping", type="primary", use_container_width=True)
@@ -65,11 +91,22 @@ if submit and job_role:
     scraped_metric.metric("Jobs Scraped", "0", f"Target: {num_jobs}")
     stored_metric.metric("Jobs Stored", "0")
     
-    # Scrape jobs
+    # Filter selected countries
+    countries_to_scrape = [
+        country for country in LINKEDIN_COUNTRIES 
+        if country['name'] in selected_countries
+    ]
+    
+    if not countries_to_scrape:
+        st.error("⚠️ Please select at least one country to scrape")
+        st.stop()
+    
+    # Scrape jobs from selected countries in parallel
+    st.info(f"🌍 Scraping from {len(countries_to_scrape)} selected countries in parallel")
     scraped_jobs = asyncio.run(scraper.scrape_jobs(
         job_role=job_role,
         target_count=num_jobs,
-        location=country
+        countries=countries_to_scrape
     ))
     
     # Update after scraping
@@ -171,5 +208,34 @@ if 'last_scraped_jobs' in st.session_state or st.button("📊 Load from Database
             
             role_df = pd.DataFrame(list(role_counts.items()), columns=["Role", "Count"])  # type: ignore[call-overload]
             st.bar_chart(role_df.set_index("Role")["Count"])
+            
+            st.divider()
+            
+            # CSV Export
+            st.subheader("📥 Export Analytics Data")
+            
+            # Prepare comprehensive analytics data
+            analytics_data = []
+            for job in db_jobs:
+                analytics_data.append({
+                    "Job Role": job.job_role,
+                    "Company": job.company,
+                    "Location": job.location,
+                    "Skills Count": len(job.skills_list) if job.skills_list else 0,
+                    "Skills": ", ".join(job.skills_list) if job.skills_list else "",
+                    "Posted Date": job.posted_date,
+                    "Job URL": job.url
+                })
+            
+            analytics_df = pd.DataFrame(analytics_data)
+            csv_data = analytics_df.to_csv(index=False)
+            
+            st.download_button(
+                label="📥 Download Complete Analytics CSV",
+                data=csv_data,
+                file_name="job_analytics_complete.csv",
+                mime="text/csv",
+                width="stretch"
+            )
         else:
             st.info("No data available. Scrape jobs first!")

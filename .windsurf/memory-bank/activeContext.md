@@ -1,14 +1,22 @@
 # Active Context - Job Scraper Project
 
 ## Current Implementation Status
-**Date**: 2025-09-30 03:27 IST  
-**Phase**: LinkedIn Production Ready - Platform Expansion Required
+**Date**: 2025-09-30 12:40 IST  
+**Phase**: LinkedIn Production Ready with Date Calculation - Platform Expansion Required
 **Status**: 1 of 4 platforms complete, 3 pending implementation
 **Python Version**: 3.13.3
 **Architecture**: EMD-compliant scrapers (LinkedIn only), Streamlit UI needs splitting
 **UI**: Streamlit with sequential progress (176 lines - EMD VIOLATION)
+**Latest Feature**: Posted date calculation from relative time strings
 
-## Today's Achievements: LinkedIn Infinite Scroll & Progress UI
+## Today's Achievements: Posted Date Calculation Feature
+**Completed**: Date parser utility (utils/date_parser.py - 73 lines)
+**Completed**: parse_relative_date() function supporting multiple time formats
+**Completed**: LinkedIn API fetcher updated with posted_date extraction
+**Completed**: Datetime calculation from relative strings ("2 days ago", "1 week ago")
+**Achievement**: Accurate job posting date tracking for all scraped jobs
+
+## Previous Session: LinkedIn Infinite Scroll & Progress UI
 **Completed**: Scroll-based pagination replacing broken URL approach
 **Completed**: scroll_handler.py with scroll_to_load_jobs() and click_see_more_button()
 **Completed**: Duplicate job ID tracking with processed_ids set

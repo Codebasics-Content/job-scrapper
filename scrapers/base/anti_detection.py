@@ -30,25 +30,26 @@ class AntiDetectionDriverFactory:
             return None
     
     def _configure_chrome_options(self) -> uc.ChromeOptions:
-        """Configure Chrome options for visible GUI mode with anti-detection"""
+        """Configure Chrome options for visible GUI mode with enhanced anti-detection"""
         options = uc.ChromeOptions()
         
-        # Basic Chrome arguments for visible mode
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        options.add_argument(f"--user-agent={self.user_agent.random}")
+        # Enhanced anti-detection options compatible with undetected_chromedriver
+        options.add_argument('--disable-blink-features=AutomationControlled')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-gpu')
         
-        # GUI mode configuration - browser stays visible
+        # Set preferences to disable automation detection
+        prefs = {
+            "credentials_enable_service": False,
+            "profile.password_manager_enabled": False
+        }
+        options.add_experimental_option("prefs", prefs)
+        
+        # GUI mode configuration
         options.add_argument("--start-maximized")
         options.add_argument("--disable-infobars")
         options.add_argument("--disable-notifications")
-        
-        # Chrome preferences for popup handling
-        options.add_experimental_option('prefs', {
-            'profile.default_content_setting_values.notifications': 2,
-            'profile.default_content_settings.popups': 0
-        })
         
         return options
     

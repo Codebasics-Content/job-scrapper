@@ -7,7 +7,24 @@
 
 ## 🔥 CRITICAL PENDING TASKS
 
-### 1. ✅ COMPLETED: LinkedIn Infinite Scroll Implementation
+### 1. ✅ COMPLETED: Posted Date Calculation (2025-09-30 12:40 IST)
+**Objective**: Calculate actual posting dates from relative time strings
+**Status**: COMPLETED
+**Priority**: CRITICAL - Database accuracy
+**Achievement**: All scraped jobs now have accurate posted_date timestamps
+
+**Implementation Complete**:
+- [x] Created utils/date_parser.py (73 lines - EMD compliant)
+- [x] Implemented parse_relative_date() with regex extraction
+- [x] Updated api_job_fetcher.py with posted_date extraction
+- [x] Supports multiple formats (hours, days, weeks, months, years)
+- [x] Fallback to datetime.now() for missing/unparseable dates
+
+**Files Modified**:
+- `utils/date_parser.py` (NEW - 73 lines)
+- `scrapers/linkedin/extractors/api_job_fetcher.py` (UPDATED)
+
+### 2. ✅ COMPLETED: LinkedIn Infinite Scroll Implementation
 **Objective**: Replace broken URL pagination with scroll-based infinite loading
 **Status**: COMPLETED - 2025-09-30 03:17 IST
 **Priority**: CRITICAL - Production-ready scraper

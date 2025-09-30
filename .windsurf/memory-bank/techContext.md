@@ -24,6 +24,11 @@
 - **requests 2.31+** - HTTP client for simple scraping (Indeed)
 - **beautifulsoup4 4.12+** - HTML parsing for static content (Indeed) (✅ WORKING)
 
+### Data Processing Stack
+- **datetime + timedelta** - Date/time calculations for relative date parsing
+- **re (regex)** - Pattern matching for extracting numbers from text
+- **Date Parser Utility** - Custom utils/date_parser.py (73 lines)
+
 ### Development Tools
 - **pytest + pytest-asyncio** - Async testing framework
 - **black** - Code formatting (PEP 8 compliance)

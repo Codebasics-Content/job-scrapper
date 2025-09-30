@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from models.job import JobModel
 from utils.analysis.nlp.skill_extractor import extract_skills_from_text
+from utils.date_parser import parse_relative_date
 
 logger = logging.getLogger(__name__)
 
@@ -24,8 +25,10 @@ def fetch_job_via_api(job_id: str, job_role: str) -> JobModel | None:
     api_url = f"https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_id}"
     
     try:
+        logger.info(f"[API FETCH] Fetching job {job_id}...")
         response = requests.get(api_url, timeout=10)
         response.raise_for_status()
+        logger.debug(f"[API FETCH] Job {job_id} - HTTP {response.status_code}")
         
         soup = BeautifulSoup(response.text, 'html.parser')
         
@@ -44,6 +47,11 @@ def fetch_job_via_api(job_id: str, job_role: str) -> JobModel | None:
         # Extract job description
         jd_elem = soup.select_one('div.show-more-less-html__markup')
         job_description = jd_elem.get_text(strip=True) if jd_elem else ""
+        
+        # Extract posted date
+        posted_date_elem = soup.select_one('span.posted-time-ago__text')
+        posted_date_text = posted_date_elem.get_text(strip=True) if posted_date_elem else ""
+        posted_date = parse_relative_date(posted_date_text) if posted_date_text else datetime.now()
         
         # Extract criteria items (seniority, employment type)
         criteria_items = soup.select('li.description__job-criteria-item')
@@ -65,6 +73,8 @@ def fetch_job_via_api(job_id: str, job_role: str) -> JobModel | None:
         extracted_skills = extract_skills_from_text(job_description) if job_description else []
         skills_str = ", ".join(extracted_skills) if extracted_skills else "Not specified"
         
+        logger.info(f"[API SUCCESS] Job {job_id}: {title} at {company}")
+        
         return JobModel(
             job_id=f"linkedin_{job_id}",
             Job_Role=title,
@@ -76,7 +86,7 @@ def fetch_job_via_api(job_id: str, job_role: str) -> JobModel | None:
             location=location,
             salary=employment_type,
             url=f"https://www.linkedin.com/jobs/view/{job_id}",
-            posted_date=None,
+            posted_date=posted_date,
             skills_list=extracted_skills,
             normalized_skills=[s.lower() for s in extracted_skills],
             scraped_at=datetime.now()

@@ -10,3 +10,8 @@ headless = true
 port = 8501
 enableCORS = false
 enableXsrfProtection = true
+runOnSave = true
+
+[runner]
+fastReruns = true
+

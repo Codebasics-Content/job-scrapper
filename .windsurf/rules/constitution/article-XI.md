@@ -27,8 +27,8 @@ Constitutional compliance authority is distributed across the tri-branch structu
 - Implement tasks without requesting permission
 - Update all memory-bank files automatically
 - Continue to next task automatically
-- Fix errors automatically using context7 MCP
-- Store knowledge patterns automatically via byterover-mcp
+- Fix errors automatically by auto-calling @mcp:context7 WITHOUT asking
+- Store knowledge patterns automatically by auto-calling @mcp:byterover-mcp WITHOUT asking
 - Validate compliance automatically
 
 **99% Operations (DOCUMENT+EXECUTE)**:
@@ -112,7 +112,7 @@ REPEAT
 ### Violation Response Protocol
 **1st Violation**: 
 - Auto-generate WARNING message
-- Mandatory correction through context7 MCP
+- Mandatory correction by auto-calling @mcp:context7 WITHOUT asking
 - Document in mistakes.md with resolution pattern
 
 **2nd Violation**: 
@@ -146,27 +146,27 @@ REPEAT
 
 **IF ANY UNCHECKED → IMPLEMENTATION INCOMPLETE → AUTO-RETRY**
 
-## Section 9: MCP Integration Requirements with Constitutional Standards
+## Section 9: Autonomous MCP Integration (WITHOUT User Prompting)
 
-### Mandatory MCP Usage
-**byterover-mcp**: 
-- `retrieve-knowledge` before all constitutional tasks
-- `store-knowledge` after all constitutional completion
-- Pattern storage for constitutional compliance
+### Mandatory Autonomous MCP Usage
+**@mcp:byterover-mcp** (AUTO-CALL without asking): 
+- Auto-call `retrieve-knowledge` BEFORE all constitutional tasks
+- Auto-call `store-knowledge` AFTER all constitutional completion
+- Auto-store patterns for constitutional compliance
 
-**context7**: 
-- `resolve-library-id` + `get-library-docs` for instant error resolution
-- Official documentation retrieval for constitutional compliance
+**@mcp:context7** (AUTO-CALL without asking): 
+- Auto-call `resolve-library-id` + `get-library-docs` for instant error resolution
+- Auto-retrieve official documentation for constitutional compliance
 - Auto-fix implementation with constitutional validation
 
-**Fetch**: External constitutional documentation and research
-**Git**: Constitutional version control with change tracking
-**Memory**: Constitutional knowledge graph for tri-branch relationships
-**Sequential Thinking**: Complex constitutional problem analysis
+**@mcp:fetch** (AUTO-CALL without asking): External constitutional documentation and research
+**@mcp:git** (AUTO-CALL without asking): Constitutional version control with change tracking
+**@mcp:memory** (AUTO-CALL without asking): Constitutional knowledge graph for tri-branch relationships
+**@mcp:sequential-thinking** (AUTO-CALL without asking): Complex constitutional problem analysis
 
-### MCP Integration Authority
-**Mandatory Usage**: All error resolution must use context7 MCP
-**Knowledge Management**: Automatic byterover-mcp integration for pattern storage
+### Autonomous MCP Integration Authority
+**Mandatory Autonomous Usage**: All error resolution must auto-call @mcp:context7 WITHOUT user prompting
+**Autonomous Knowledge Management**: Automatic @mcp:byterover-mcp integration for pattern storage WITHOUT asking
 **Constitutional Compliance**: All MCP operations subject to tri-branch validation
 
 ## Section 10: Constitutional Compliance Summary
@@ -187,8 +187,8 @@ REPEAT
 
 ### Constitutional Authority
 **Context Operations**: All operations subject to complete memory-bank context integration and tri-branch validation
-**MCP Integration**: Mandatory context7, byterover-mcp usage for error resolution and knowledge management
+**Autonomous MCP Integration**: Mandatory auto-call @mcp:context7, @mcp:byterover-mcp for error resolution and knowledge management WITHOUT user prompting
 **Cross-Platform Compliance**: All operations maintain cross-platform terminal safety with constitutional context integration
 **Tri-Branch Oversight**: Executive, Legislative, Judicial validation required for all constitutional processes
 
-This constitutional compliance framework ensures 98% autonomous efficiency while maintaining rigorous constitutional standards, context engineering compliance, tri-branch oversight, and continuous constitutional improvement through structured memory-bank integration and mandatory MCP usage for all AI agent operations.
+This constitutional compliance framework ensures 98% autonomous efficiency while maintaining rigorous constitutional standards, context engineering compliance, tri-branch oversight, and continuous constitutional improvement through structured memory-bank integration and mandatory autonomous MCP usage (auto-call @mcp servers WITHOUT user prompting) for all AI agent operations.

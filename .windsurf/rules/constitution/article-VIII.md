@@ -10,77 +10,77 @@ The constitutional system can safely execute routine operations automatically th
 
 Constitutional automation enhances autonomous productivity while preserving tri-branch constitutional control over important constitutional decisions and potentially dangerous constitutional operations through structured context validation.
 
-## Section 2: Constitutional Automation Authority with MCP Integration
+## Section 2: Automation Authority with Autonomous MCP Integration
 
-Constitutional automated systems operate with specific delegated tri-branch authorities:
-- **Constitutional Approved Operations**: Execute pre-approved constitutional routine operations without tri-branch intervention through context validation
-- **Constitutional Compliance Validation**: Continuously validate all constitutional operations against established constitutional safety and quality standards
-- **Constitutional File Monitoring**: Monitor constitutional file operations and system changes through memory-bank context integrity
-- **Constitutional Task Approval**: Automatically approve safe constitutional routine tasks according to established constitutional criteria
+Automated systems operate with delegated tri-branch authorities:
+- **Approved Operations**: Execute pre-approved routine operations without tri-branch intervention through context validation
+- **Compliance Validation**: Continuously validate operations against safety and quality standards
+- **File Monitoring**: Monitor file operations and system changes through memory-bank context integrity
+- **Task Approval**: Automatically approve safe routine tasks according to established criteria
 
 ## Section 3: Constitutional Automation Protocols with Context Engineering
 
-### Constitutional Always-Check Operations with MCP Integration
-These constitutional operations run automatically before and during constitutional development work with instant context7 error resolution:
+### Always-Check Operations with Autonomous MCP Integration
+These operations run automatically before and during development work with auto-call @mcp:context7 error resolution:
 
-**Constitutional Cross-Platform Language Validation**:
-- **Constitutional Rust**: `cargo check`, `cargo clippy`, `cargo fmt --check` with context7 MCP error resolution
-- **Constitutional JavaScript/TypeScript**: `pnpm typecheck`, `npm run lint`, `next build --dry-run` with instant constitutional documentation
-- **Constitutional Python**: `python -m py_compile`, `pytest --collect-only`, `black --check` with constitutional MCP integration
-- **Constitutional Go**: `go build`, `go test -run=^$`, `go vet` with constitutional context validation
-- **Constitutional Java**: `mvn compile`, `./gradlew compileJava` with constitutional compliance checking
-- **Constitutional C#**: `dotnet build --no-restore`, `dotnet format --verify-no-changes` with constitutional standards
-- **Constitutional PHP**: `php -l`, `composer validate`, `phpstan analyse` with constitutional validation
-- **Constitutional Ruby**: `ruby -c`, `bundle exec rubocop --dry-run` with constitutional oversight
+**Cross-Platform Language Validation**:
+- **Rust**: `cargo check`, `cargo clippy`, `cargo fmt --check` with auto-call @mcp:context7
+- **JavaScript/TypeScript**: `pnpm typecheck`, `npm run lint`, `next build --dry-run` with auto-call @mcp:context7
+- **Python**: `python -m py_compile`, `pytest --collect-only`, `black --check` with auto-call @mcp:context7
+- **Go**: `go build`, `go test -run=^$`, `go vet` with auto-call @mcp:context7
+- **Java**: `mvn compile`, `./gradlew compileJava` with auto-call @mcp:context7
+- **C#**: `dotnet build --no-restore`, `dotnet format --verify-no-changes` with auto-call @mcp:context7
+- **PHP**: `php -l`, `composer validate`, `phpstan analyse` with auto-call @mcp:context7
+- **Ruby**: `ruby -c`, `bundle exec rubocop --dry-run` with auto-call @mcp:context7
 
-### Constitutional Cross-Platform Auto-Approved Tasks
-These constitutional operations execute automatically without tri-branch approval across all platforms:
+### Cross-Platform Auto-Approved Tasks
+These operations execute automatically without tri-branch approval across all platforms:
 
-**Constitutional Windows (PowerShell/CMD)**:
-- Read-only: `dir`, `type`, `findstr`, `where`, `Get-Content`, `Get-ChildItem` with constitutional context logging
-- Git operations: `git status`, `git diff`, `git log`, `git branch` with constitutional change tracking
-- Development: Constitutional language validation commands with context7 MCP integration
-- System info: `systeminfo`, `whoami`, `pwd`, `Get-Location` with constitutional monitoring
+**Windows (PowerShell/CMD)**:
+- Read-only: `dir`, `type`, `findstr`, `where`, `Get-Content`, `Get-ChildItem` with context logging
+- Git operations: `git status`, `git diff`, `git log`, `git branch` with auto-call @mcp:git
+- Development: Language validation commands with auto-call @mcp:context7
+- System info: `systeminfo`, `whoami`, `pwd`, `Get-Location`
 
-**Constitutional Linux/Unix (Bash/Zsh)**:
-- Read-only: `ls -la`, `cat`, `grep -r`, `find`, `head`, `tail`, `wc -l` with constitutional context validation
-- Git operations: `git status`, `git diff --stat`, `git log --oneline` with constitutional oversight
-- Development: Constitutional language validation with MCP error resolution
-- System info: `uname -a`, `whoami`, `pwd`, `df -h` with constitutional compliance
+**Linux/Unix (Bash/Zsh)**:
+- Read-only: `ls -la`, `cat`, `grep -r`, `find`, `head`, `tail`, `wc -l` with context validation
+- Git operations: `git status`, `git diff --stat`, `git log --oneline` with auto-call @mcp:git
+- Development: Language validation with auto-call @mcp:context7
+- System info: `uname -a`, `whoami`, `pwd`, `df -h`
 
-**Constitutional macOS (Zsh/Bash)**:
-- Read-only: `ls -la`, `cat`, `grep`, `find`, `head -20`, `tail -20` with constitutional context logging
-- Git operations: `git status`, `git branch`, `git diff --name-only` with constitutional validation
-- Development: Constitutional platform-specific validation with context7 integration
-- System info: `sw_vers`, `whoami`, `pwd`, `diskutil list` with constitutional monitoring
+**macOS (Zsh/Bash)**:
+- Read-only: `ls -la`, `cat`, `grep`, `find`, `head -20`, `tail -20` with context logging
+- Git operations: `git status`, `git branch`, `git diff --name-only` with auto-call @mcp:git
+- Development: Platform-specific validation with auto-call @mcp:context7
+- System info: `sw_vers`, `whoami`, `pwd`, `diskutil list`
 
-### Constitutional Config Validation Requirements with Context Engineering
-**Constitutional Mandatory Pre-Task Context Scanning**: Before using any models, types, or configurations, system must scan existing centralized configs through memory-bank context validation
-**Constitutional Duplication Prevention**: Validate against existing constitutional components through structured context analysis before creating new ones
-**Constitutional Registry Validation**: Check central constitutional registry through techContext.md to prevent recreation of existing constitutional configurations
-**Constitutional Dependency Checking**: Validate all constitutional dependencies through context7 MCP integration before implementation
+### Config Validation Requirements with Context Engineering
+**Mandatory Pre-Task Context Scanning**: Scan existing centralized configs through memory-bank context validation
+**Duplication Prevention**: Validate against existing components through structured context analysis
+**Registry Validation**: Check central registry through techContext.md to prevent recreation
+**Dependency Checking**: Validate all dependencies via auto-call @mcp:context7 before implementation
 
-### Constitutional Human Approval Required with Context Protection
-These constitutional operations require explicit tri-branch approval before execution:
-- **Constitutional File Deletion**: Any operation permanently removing files (constitutional context loss prevention)
-- **Constitutional System Modifications**: Changes to system settings, permissions, configurations (constitutional compliance protection)
-- **Constitutional Permission Changes**: Modifications to file/directory access (constitutional authority protection)
-- **Constitutional Network Operations**: External requests, downloads, uploads (constitutional security context validation)
-- **Constitutional Package Installations**: New software packages, dependencies (constitutional stability protection)
+### Human Approval Required with Context Protection
+These operations require explicit tri-branch approval before execution:
+- **File Deletion**: Any operation permanently removing files (context loss prevention)
+- **System Modifications**: Changes to system settings, permissions, configurations (compliance protection)
+- **Permission Changes**: Modifications to file/directory access (authority protection)
+- **Network Operations**: External requests, downloads, uploads (security context validation)
+- **Package Installations**: New software packages, dependencies (stability protection)
 
-### Constitutional Safety Limits with Context Engineering
-**Constitutional File Size Limits**: File operations limited to ≤100MB with constitutional resource protection
-**Constitutional Rate Limiting**: Maximum 10 commands/minute with constitutional system overload prevention
-**Constitutional Input Sanitization**: All inputs sanitized through constitutional injection attack prevention
-**Constitutional Operation Logging**: Complete constitutional logging in mistakes.md for constitutional audit and review
-**Constitutional Context Validation**: All operations validated against memory-bank context integrity
+### Safety Limits with Context Engineering
+**File Size Limits**: File operations limited to ≤100MB with resource protection
+**Rate Limiting**: Maximum 10 commands/minute with system overload prevention
+**Input Sanitization**: All inputs sanitized through injection attack prevention
+**Operation Logging**: Complete logging in mistakes.md for audit and review
+**Context Validation**: All operations validated against memory-bank context integrity
 
-### Constitutional Forbidden Operations (All Platforms)
-These constitutional operations are completely prohibited from automated execution:
-- **Constitutional Destructive Commands**: `rm -rf`, `del /s`, `format`, `fdisk` (constitutional data protection)
-- **Constitutional Permission Escalation**: `chmod 777`, `sudo su`, privilege elevation (constitutional authority protection)
-- **Constitutional System Control**: `systemctl`, system service management, boot configuration (constitutional stability protection)
-- **Constitutional Network Security**: Port opening, firewall modifications, security configurations (constitutional security protection)
+### Forbidden Operations (All Platforms)
+These operations are completely prohibited from automated execution:
+- **Destructive Commands**: `rm -rf`, `del /s`, `format`, `fdisk` (data protection)
+- **Permission Escalation**: `chmod 777`, `sudo su`, privilege elevation (authority protection)
+- **System Control**: `systemctl`, system service management, boot configuration (stability protection)
+- **Network Security**: Port opening, firewall modifications, security configurations (security protection)
 
 ## Section 4: Constitutional Automation Safety with Context Engineering
 
@@ -114,7 +114,7 @@ These constitutional operations are completely prohibited from automated executi
 **`implement next task`** - Constitutional Development Minister Automated Authority:
 1. **Auto-read scratchpad.md** for exact constitutional task requirements
 2. **Auto-execute with full context** through memory-bank awareness and tri-branch compliance
-3. **Auto-integrate MCP requirements** for constitutional standards and instant error resolution
+3. **Auto-integrate MCP requirements** (auto-call @mcp servers WITHOUT asking) for standards and instant error resolution
 4. **Auto-continue execution** under constitutional oversight with safety monitoring
 
 **`update memory bank`** - Constitutional Context Automated Authority:
@@ -130,18 +130,18 @@ Constitutional Auto-Context Update → Constitutional Auto-Next Task →
 Constitutional Auto-Continuous Execution → Constitutional Auto-Monitoring → Repeat
 ```
 
-### Constitutional Automated MCP Integration
-**Constitutional byterover-mcp Automation**: Auto-retrieve knowledge before constitutional tasks → auto-store knowledge after constitutional completion
-**Constitutional context7 Automation**: Auto-instant error resolution → auto-resolve-library-id → auto-get-library-docs → auto-constitutional compliance
-**Constitutional Fetch Automation**: Auto-external documentation retrieval for constitutional validation
-**Constitutional Git Automation**: Auto-constitutional version control with change tracking
-**Constitutional Memory Automation**: Auto-knowledge graph context for constitutional relationships
-**Constitutional Sequential Thinking Automation**: Auto-complex constitutional problem analysis with context engineering
+### Autonomous MCP Integration (AUTO-CALL without asking)
+**@mcp:byterover-mcp**: Auto-retrieve knowledge before tasks → auto-store knowledge after completion WITHOUT asking
+**@mcp:context7**: Auto-instant error resolution → auto-resolve-library-id → auto-get-library-docs WITHOUT asking
+**@mcp:fetch**: Auto-external documentation retrieval WITHOUT asking
+**@mcp:git**: Auto-version control with change tracking WITHOUT asking
+**@mcp:memory**: Auto-knowledge graph context for relationships WITHOUT asking
+**@mcp:sequential-thinking**: Auto-complex problem analysis WITHOUT asking
 
-### Constitutional Automated Safety Authority with Context Integration
-**Constitutional Context Operations**: All constitutional automated operations subject to memory-bank context integration and tri-branch constitutional validation
-**Constitutional MCP Integration**: Mandatory constitutional context7, byterover-mcp automation for constitutional error resolution and knowledge management
-**Constitutional Cross-Platform Safety**: All constitutional automated operations maintain cross-platform terminal safety with constitutional context integration
-**Constitutional Tri-Branch Oversight**: Executive, Legislative, Judicial constitutional validation required for all constitutional automated processes
+### Automated Safety Authority with Context Integration
+**Context Operations**: All automated operations subject to memory-bank context integration and tri-branch validation
+**Autonomous MCP Integration**: Mandatory auto-call @mcp:context7, @mcp:byterover-mcp for error resolution and knowledge management WITHOUT user prompting
+**Cross-Platform Safety**: All automated operations maintain cross-platform terminal safety with context integration
+**Tri-Branch Oversight**: Executive, Legislative, Judicial validation required for all automated processes
 
-This constitutional automated operations framework enables 98% autonomous efficiency while maintaining rigorous constitutional safety standards, context engineering compliance, tri-branch constitutional oversight, and continuous constitutional improvement through structured memory-bank integration and mandatory constitutional MCP automation for all operational processes.
+This automated operations framework enables 98% autonomous efficiency while maintaining rigorous safety standards, context engineering compliance, tri-branch oversight, and continuous improvement through structured memory-bank integration and mandatory autonomous MCP usage (auto-call @mcp servers WITHOUT user prompting) for all operational processes.

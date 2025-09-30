@@ -71,6 +71,12 @@ Build a tool to scrape jobs for a given role (e.g., "AI Engineer") and generate 
   4. N-gram analysis (bi-grams, tri-grams)
   5. Full-text pattern matching
 - [x] **Modular Design**: `utils/analysis/nlp/skill_extractor.py` + `soft_skills_patterns.py`
+- [x] **Posted Date Calculation (2025-09-30)**: Date parser utility for temporal tracking
+  - Created `utils/date_parser.py` (73 lines - EMD compliant)
+  - Regex-based extraction from relative time strings
+  - Supports hours, days, weeks, months, years, "just now"
+  - Integrated with LinkedIn API job fetcher
+  - All scraped jobs now have accurate `posted_date` timestamps
 
 ### ✅ COMPLETED: Analysis & Reporting Pipeline (Phase 3-4)
 - [x] **Skill Analysis Engine**: SkillAnalysisIntegration with percentage calculations

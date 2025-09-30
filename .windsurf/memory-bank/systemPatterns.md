@@ -1,5 +1,38 @@
 # System Patterns - Job Scrapper
 
+## Date Parsing Pattern (Relative Time to DateTime)
+
+### Relative Date Calculation Pattern
+```python
+from datetime import datetime, timedelta
+import re
+
+def parse_relative_date(date_text: str) -> datetime:
+    """Parse relative date strings to datetime objects"""
+    # Extract number: "2 days ago" -> 2
+    number_match = re.search(r'(\d+)', date_text)
+    number = int(number_match.group(1)) if number_match else 1
+    
+    # Map time units to timedelta
+    now = datetime.now()
+    if 'hour' in date_text or 'hr' in date_text:
+        return now - timedelta(hours=number)
+    elif 'day' in date_text:
+        return now - timedelta(days=number)
+    elif 'week' in date_text:
+        return now - timedelta(weeks=number)
+    elif 'month' in date_text:
+        return now - timedelta(days=number * 30)
+    return now
+```
+
+### Key Lessons
+1. **Regex Extraction**: Use `re.search(r'(\d+)', text)` to extract numbers
+2. **Unit Mapping**: Map keywords (hour, day, week, month) to timedelta
+3. **Fallback**: Always return `datetime.now()` for unparseable strings
+4. **Integration**: Extract from HTML → Parse → Store in database
+5. **EMD Compliance**: Keep utility file ≤80 lines
+
 ## Database Integration Pattern (ConnectionManager + JobRetrieval)
 
 ### Correct Pattern for Database Operations

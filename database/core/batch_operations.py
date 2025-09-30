@@ -20,13 +20,16 @@ class BatchOperations:
     def batch_store_jobs(self, conn: sqlite3.Connection, jobs: list[JobModel]) -> int:
         """Store multiple jobs efficiently using batch operations"""
         if not jobs:
+            logger.warning("[DB STORAGE] No jobs to store")
             return 0
-            
+        
+        logger.info(f"[DB STORAGE] Preparing to store {len(jobs)} jobs...")
         batch_data = []
         for job in jobs:
             job_data = self._prepare_job_data(job)
             batch_data.append(job_data)
         
+        logger.info(f"[DB STORAGE] Batch data prepared, inserting into database...")
         try:
             cursor = conn.cursor()
             cursor.executemany("""
@@ -40,11 +43,13 @@ class BatchOperations:
             cursor.close()
             conn.commit()
             
-            logger.info(f"Successfully stored {rows_affected} new jobs (duplicates ignored)")
+            logger.info(f"[DB STORAGE] ✅ Successfully stored {rows_affected} new jobs")
+            logger.info(f"[DB STORAGE] Duplicates skipped: {len(jobs) - rows_affected}")
             return rows_affected
             
         except Exception as error:
-            logger.error(f"Batch store failed: {error}")
+            logger.error(f"[DB STORAGE] ❌ Batch store failed: {error}")
+            logger.exception("Full error traceback:")
             conn.rollback()
             return 0
     

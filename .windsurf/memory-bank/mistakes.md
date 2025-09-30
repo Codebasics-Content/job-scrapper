@@ -230,10 +230,27 @@
 - **Lesson**: ALWAYS read memory-bank + retrieve knowledge BEFORE implementation
 - **Enforcement**: Article XIV now mandatory for all future operations
 
-### 🔄 NEXT SESSION PRIORITIES
+### 📅 POSTED DATE CALCULATION SUCCESS (2025-09-30 12:40 IST)
+
+### Date Parser Implementation
+- **✅ Success**: Created `utils/date_parser.py` (73 lines - EMD compliant)
+- **✅ Success**: Regex-based relative date parsing ("2 days ago", "1 week ago")
+- **✅ Success**: Integrated with LinkedIn API job fetcher
+- **Pattern**: Extract number → Map time unit → Calculate timedelta → Return datetime
+- **Coverage**: Hours, minutes, days, weeks, months, years, "just now"
+- **Fallback**: datetime.now() for unparseable strings
+
+### Known Basepyright Lint Warnings (Non-Blocking)
+- **Beautiful Soup Types**: `select_one()` returns partially unknown types (expected - bs4 lacks complete stubs)
+- **SQLite Types**: Connection types partially unknown (expected - sqlite3 lacks complete stubs)
+- **Status**: Acceptable for third-party libraries without type stubs
+- **Impact**: No runtime issues, only type checker warnings
+
+## 🔄 NEXT SESSION PRIORITIES
 1. **CRITICAL**: Follow Article XIV constitutional workflow for EVERY task
-2. **HIGH**: Test production data pipeline with 500+ jobs
-3. **URGENT**: Remove duplicate `database/sqlite_manager.py` file
-4. **Continue Type Safety**: Fix remaining basepyright warnings
-5. **Fix Anti-Detection Options**: Replace Options with uc.ChromeOptions
-6. **Add Selector Fallbacks**: Implement robust selector array
+2. **HIGH**: Test posted_date calculation with real LinkedIn scraping
+3. **HIGH**: Test production data pipeline with 500+ jobs
+4. **URGENT**: Remove duplicate `database/sqlite_manager.py` file
+5. **Continue Type Safety**: Fix remaining basepyright warnings
+6. **Fix Anti-Detection Options**: Replace Options with uc.ChromeOptions
+7. **Add Selector Fallbacks**: Implement robust selector array

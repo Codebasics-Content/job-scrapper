@@ -4,6 +4,7 @@ import logging
 from abc import ABC, abstractmethod
 from types import TracebackType
 import undetected_chromedriver as uc
+from selenium.webdriver.remote.webdriver import WebDriver
 from models.job import JobModel
 from .driver_pool import WebDriverPool
 from .anti_detection import AntiDetectionDriverFactory
@@ -31,8 +32,8 @@ class BaseJobScraper(ABC):
         """Get WebDriver from pool (thread-safe)"""
         return self.driver_pool.get_driver()
     
-    def return_driver(self, driver: uc.Chrome) -> None:
-        """Return WebDriver to pool"""
+    def return_driver(self, driver: WebDriver) -> None:
+        """Return WebDriver to pool (accepts any WebDriver subclass)"""
         self.driver_pool.return_driver(driver)
     
     def cleanup_pool(self) -> None:

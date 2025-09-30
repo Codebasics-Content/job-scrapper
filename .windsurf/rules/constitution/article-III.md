@@ -15,7 +15,7 @@ The workflow balances continuous autonomous execution with rigorous constitution
 We maintain several key context-engineered operational capabilities:
 - **Autonomous Context Management**: Intelligent assembly from memory-bank files with continuous context updates
 - **Constitutional Quality Checkpoints**: Tri-branch validation gates at every development stage
-- **MCP Integration**: Seamless integration of byterover-mcp, context7, Fetch, Git, Memory, Sequential Thinking
+- **Autonomous MCP Integration**: Auto-call @mcp:byterover-mcp, @mcp:context7, @mcp:fetch, @mcp:git, @mcp:memory, @mcp:sequential-thinking WITHOUT user prompting
 - **Context Performance Monitoring**: Continuous monitoring through structured memory-bank updates
 - **Constitutional Security Validation**: Ongoing compliance with constitutional framework and cross-platform safety
 - **EMD Structural Standards**: Enforcement of ≤80 lines code organization and ≤100 lines memory-bank files
@@ -40,9 +40,9 @@ We maintain several key context-engineered operational capabilities:
 **Context Optimization**: Dynamic context assembly, multi-source integration, constitutional format optimization
 **Anti-Constitutional-Violation**: Mandatory existing component scan using structured context
 
-### Constitutional Quality Assurance with MCP Integration
-**Instant Error Resolution Protocol**: Any error/warning → **INSTANT context7 MCP activation**
-- Error detection → `context7` resolve-library-id → get-library-docs → Official documentation
+### Constitutional Quality Assurance with Autonomous MCP Integration
+**Instant Error Resolution Protocol**: Any error/warning → **AUTO-CALL @mcp:context7 WITHOUT asking**
+- Error detection → Auto-call `@mcp:context7` resolve-library-id → get-library-docs → Official documentation
 - Auto-resolution → Implementation using retrieved context → mistakes.md update
 - Validation → Re-run checks → systemPatterns.md success pattern documentation
 
@@ -53,14 +53,14 @@ We maintain several key context-engineered operational capabilities:
 - **Context Performance**: Memory-bank file size validation and context freshness
 - **Documentation Constitutional Currency**: All context files reflect current constitutional state
 
-### Development Tools with Constitutional MCP Integration
-**Constitutional Knowledge Management**: 
-- **byterover-mcp**: `retrieve-knowledge` (before tasks) → `store-knowledge` (after completion)
-- **context7**: `resolve-library-id` + `get-library-docs` (instant error resolution)
-- **Fetch**: External documentation and constitutional research
-- **Git**: Version control with constitutional change tracking
-- **Memory**: Knowledge graph context for constitutional relationships
-- **Sequential Thinking**: Complex constitutional problem analysis
+### Development Tools with Autonomous MCP Integration
+**Constitutional Knowledge Management (AUTO-CALL without asking)**: 
+- **@mcp:byterover-mcp**: Auto-call `retrieve-knowledge` (before tasks) → `store-knowledge` (after completion)
+- **@mcp:context7**: Auto-call `resolve-library-id` + `get-library-docs` (instant error resolution)
+- **@mcp:fetch**: Auto-call for external documentation and constitutional research
+- **@mcp:git**: Auto-call for version control with constitutional change tracking
+- **@mcp:memory**: Auto-call for knowledge graph context for constitutional relationships
+- **@mcp:sequential-thinking**: Auto-call for complex constitutional problem analysis
 
 ### Constitutional File Organization Requirements
 **Memory-Bank Files**: ≤100 lines each for optimal constitutional context organization
@@ -78,7 +78,7 @@ We maintain several key context-engineered operational capabilities:
 **`implement next task`** - Development Minister Constitutional Execution:
 1. Read scratchpad.md for exact constitutional task requirements
 2. Execute with full memory-bank context awareness and tri-branch compliance
-3. Integrate mandatory MCP requirements for constitutional standards
+3. Auto-integrate mandatory MCP requirements (auto-call @mcp servers) for constitutional standards
 4. Maintain continuous execution under constitutional oversight
 
 **`update memory bank`** - Constitutional Context Refresh:
@@ -94,7 +94,7 @@ We maintain several key context-engineered operational capabilities:
 ### Constitutional Language Rules Protocol
 Always read constitutional language-specific rules from `.windsurf/rules/laws/` before any implementation:
 - Rust constitutional compliance: `cargo check`, `cargo clippy` with context7 error resolution
-- JavaScript/TypeScript constitutional standards: `pnpm typecheck`, `npm run lint` with MCP integration
+- JavaScript/TypeScript constitutional standards: `pnpm typecheck`, `npm run lint` with auto-call @mcp:context7 integration
 - Python constitutional patterns: `pytest`, `black --check`, `mypy` with instant resolution
 - Cross-platform constitutional validation: Platform-specific command safety with context logging
 
@@ -109,8 +109,8 @@ When constitutional quality standards are not met, implement systematic context-
 
 ### Autonomous Constitutional Recovery Protocol
 1. **Constitutional Context Capture**: Immediate mistakes.md update with violation details
-2. **MCP Constitutional Resolution**: Instant context7 activation for official documentation and compliance patterns
-3. **Constitutional Knowledge Storage**: Store recovery patterns in byterover-mcp for future constitutional compliance
+2. **Autonomous MCP Resolution**: Auto-call @mcp:context7 for official documentation and compliance patterns
+3. **Constitutional Knowledge Storage**: Auto-call @mcp:byterover-mcp to store recovery patterns for future compliance
 4. **Constitutional Pattern Update**: Update systemPatterns.md with new constitutional compliance approaches
 5. **Constitutional Rollback**: Revert to previous constitutional state when violations detected
 
@@ -134,7 +134,7 @@ Mistakes Update → Scratchpad Replace → Next Constitutional Task → Repeat
 ### Constitutional Workflow Best Practices
 - **Complete Context Assembly**: Read entire memory-bank before every constitutional task
 - **Constitutional Task Execution**: Implement with full constitutional context awareness
-- **Instant Constitutional Error Resolution**: Any error → context7 MCP → official docs → constitutional compliance
+- **Instant Constitutional Error Resolution**: Any error → Auto-call @mcp:context7 → official docs → constitutional compliance
 - **Constitutional Context Update**: Refresh all 8 memory-bank files + roadmap after every constitutional iteration
 - **Constitutional Template Alignment**: Ensure scratchpad/roadmap consistency via constitutional templates
 - **Continuous Constitutional Execution**: Never stop after one task - maintain constitutional automation
@@ -142,8 +142,8 @@ Mistakes Update → Scratchpad Replace → Next Constitutional Task → Repeat
 
 ### Constitutional Development Authority
 - **Constitutional Context Operations**: All development subject to constitutional framework compliance
-- **Constitutional MCP Integration**: Mandatory usage for constitutional error resolution and knowledge management
+- **Autonomous MCP Integration**: Mandatory auto-call @mcp servers for error resolution and knowledge management WITHOUT user prompting
 - **Constitutional Cross-Platform Safety**: All terminal operations comply with constitutional safety measures
 - **Constitutional Tri-Branch Oversight**: Executive, Legislative, Judicial validation for all constitutional development decisions
 
-This constitutional development workflow ensures autonomous efficiency while maintaining rigorous context engineering standards, tri-branch constitutional oversight, and continuous constitutional compliance through structured memory-bank integration and mandatory MCP usage.
+This constitutional development workflow ensures autonomous efficiency while maintaining rigorous context engineering standards, tri-branch constitutional oversight, and continuous constitutional compliance through structured memory-bank integration and mandatory autonomous MCP usage (auto-call @mcp servers WITHOUT user prompting).
