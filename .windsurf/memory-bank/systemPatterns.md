@@ -1,260 +1,163 @@
 # System Patterns - Job Scrapper
 
-## Date Parsing Pattern (Relative Time to DateTime)
+## Anti-Bot Detection Patterns (Naukri.com)
 
-### Relative Date Calculation Pattern
-```python
-from datetime import datetime, timedelta
-import re
+**Naukri Anti-Bot System** (2025-10-02T12:38):
+- **Akamai Bot Manager**: Active with reCAPTCHA enforcement
+- **API Protection**: Returns `{"message":"recaptcha required","statusCode":406}`
+- **Detection Method**: Advanced fingerprinting beyond headers
+- **Required for API**: Valid browser session cookies + reCAPTCHA tokens
+- **Direct API Calls**: BLOCKED - Cannot bypass reCAPTCHA programmatically
+- **Working Solution**: Browser automation with Selenium + undetected-chromedriver
+- **Alternative**: Use browser_scraper.py instead of api_fetcher.py
+- **Pattern**: Sites with reCAPTCHA require full browser automation, not API calls
+- **Lesson**: Test API endpoints first before building scraper architecture
 
-def parse_relative_date(date_text: str) -> datetime:
-    """Parse relative date strings to datetime objects"""
-    # Extract number: "2 days ago" -> 2
-    number_match = re.search(r'(\d+)', date_text)
-    number = int(number_match.group(1)) if number_match else 1
-    
-    # Map time units to timedelta
-    now = datetime.now()
-    if 'hour' in date_text or 'hr' in date_text:
-        return now - timedelta(hours=number)
-    elif 'day' in date_text:
-        return now - timedelta(days=number)
-    elif 'week' in date_text:
-        return now - timedelta(weeks=number)
-    elif 'month' in date_text:
-        return now - timedelta(days=number * 30)
-    return now
-```
+## Documentation Patterns
 
-### Key Lessons
-1. **Regex Extraction**: Use `re.search(r'(\d+)', text)` to extract numbers
-2. **Unit Mapping**: Map keywords (hour, day, week, month) to timedelta
-3. **Fallback**: Always return `datetime.now()` for unparseable strings
-4. **Integration**: Extract from HTML → Parse → Store in database
-5. **EMD Compliance**: Keep utility file ≤80 lines
+**Multi-Platform README Structure** (2025-10-02T12:11):
+- **Title Update**: Reflect all supported platforms in main heading
+- **Platform Comparison**: Use separate sections for different approaches (browser vs API)
+- **Step Numbering**: Adjust UI instructions when adding platform selection
+- **Performance Metrics**: Provide platform-specific benchmarks for user expectations
+- **Resource Usage**: Clarify differences (browser overhead vs API efficiency)
+- **Pattern**: Clear visual separation between platform-specific features
 
-## Database Integration Pattern (ConnectionManager + JobRetrieval)
+## Multi-Language Validation Patterns (NEW)
 
-### Correct Pattern for Database Operations
-```python
-from database.core.connection_manager import ConnectionManager
-from database.core.job_retrieval import JobRetrieval
+**Validation Framework**: Article XIII enforcement
+**Detection**: Auto-scan for `requirements.txt`, `Cargo.toml`, `pnpm-lock.yaml`, etc.
+**Enforcement**: HALT on errors → @mcp:context7 → Fix → Re-validate → Continue
 
-class SkillAnalysisIntegration:
-    def __init__(self, db_path: str = "jobs.db"):
-        self.db_path: str = db_path
-        self.conn_manager: ConnectionManager = ConnectionManager(db_path)
-        # JobRetrieval takes NO parameters in constructor
-        self.job_retrieval: JobRetrieval = JobRetrieval()
-    
-    def analyze_all_jobs(self) -> dict[str, float]:
-        # Use context manager to get connection
-        with self.conn_manager.get_connection() as conn:
-            # Pass connection explicitly to retrieval methods
-            jobs = self.job_retrieval.retrieve_all_jobs(conn)
-            return self._calculate_percentages(jobs)
-```
+**Python Validation**:
+- Primary: `basedpyright .` (stricter than mypy)
+- Zero tolerance: Type errors, unused variables, import failures
+- Auto-fix: Add type hints, fix imports, resolve modules
 
-### Key Lessons
-1. **JobRetrieval constructor**: Takes NO parameters (no db_path)
-2. **ConnectionManager**: Manages connections via context manager
-3. **Connection passing**: Always pass `conn` explicitly to retrieval methods
-4. **Type annotations**: All class attributes must have explicit types
-5. **Integration classes**: Use ConnectionManager + JobRetrieval pattern
+**Validation Checkpoints**:
+- Pre-implementation: Detect language → Run validation
+- During implementation: Validate after each file change  
+- Post-implementation: Full validation before memory-bank updates
+- Pre-commit: Final validation gate
 
-## Constitutional Compliance Pattern (Article XIV)
+**Success Pattern**: Error → mistakes.md → @mcp:context7 → Fix → Clean → Store pattern
 
-### Mandatory Pre-Implementation Checklist
-```python
-# BEFORE ANY IMPLEMENTATION:
-# 1. Read memory-bank (8 files)
-files = ['activeContext.md', 'scratchpad.md', 'mistakes.md', 
-         'progress.md', 'systemPatterns.md', 'techContext.md',
-         'productContext.md', 'projectbrief.md']
+**Last Updated**: 2025-10-01T18:03:00+05:30
 
-# 2. Read strategic context
-roadmap = 'roadmap/roadmap.md'
+## EMD (Elegant Modular Design) Standard
 
-# 3. Retrieve knowledge via MCP
-byterover-retrieve-knowledge()
+**Code Files**: ≤10,000 characters (updated from 80 lines on 2025-10-01)
+**Memory Bank Files**: ≤100 lines
+**Roadmap**: ≤12,000 characters
 
-# 4. Validate constitutional compliance
-verify_emd_compliance()  # ≤80 lines
-check_constitutional_laws()
-```
+**Current Compliance**:
+- All src/ files: ✅ Compliant (0 files over 10K)
+- streamlit_app.py: ⚠️ Minor violation (10,897 chars, 8.9% over)
+- All memory-bank: ✅ Under 100 lines
 
-### Mandatory Post-Implementation Checklist
-```python
-# AFTER EVERY IMPLEMENTATION:
-# 1. Update ALL 8 memory-bank files + roadmap
-update_all_memory_bank_files()
+## Architecture Pattern: Minimalist Structure (2025-09-30)
+**Problem**: 25+ dirs with 4-level nesting  
+**Solution**: Flatten to 8 dirs, 2-level max  
+**Target**: src/{models.py, db/, scraper/, analysis/}  
+**Benefits**: 70% reduction, EMD compliant (≤80 lines), easier navigation
 
-# 2. Store knowledge
-byterover-store-knowledge()
+## Date Parsing Pattern
+**Pattern**: Regex extract number → Map unit (hour/day/week/month) → timedelta → datetime  
+**Location**: `utils/date_parser.py` (73 lines)  
+**Fallback**: Return `datetime.now()` for unparseable strings
 
-# 3. Document lessons
-update_mistakes_md()
+## Database Pattern: ConnectionManager + JobRetrieval
+**Pattern**: `ConnectionManager(db_path)` → `with get_connection() as conn:` → `JobRetrieval().method(conn)`  
+**Key**: JobRetrieval() takes NO constructor params, pass connection to methods
 
-# 4. Verify constitutional compliance (≥80%)
-confirm_constitutional_adherence()
-```
+## 30-Hour Continuous Operation Pattern
+**Loop**: Read context → Execute task → Update 9 files → Auto-recover errors → Checkpoint (every 10) → Continue  
+**Key**: 0-98% autonomy = EXECUTE IMMEDIATELY, NEVER STOP until scratchpad empty  
+**Recovery**: Error → @mcp:context7 → Fix → Continue (no human escalation)
 
-### Enforcement
-- **1st Violation**: WARNING + mandatory correction
-- **2nd Violation**: ROLLBACK + restart workflow  
-- **3rd Violation**: ESCALATE to human (Level 100)
+## Real-Time Research Pattern (2024 - 8 MCPs)
+**Before Implementation**: @mcp:context7 + @mcp:fetch + @mcp:time for latest timestamped docs
+**On Error**: Instant @mcp:context7 activation for official documentation
+**Temporal Awareness**: @mcp:time for deadlines, schedules, time-sensitive operations
+**Knowledge Storage**: @mcp:byterover-mcp stores successful patterns with timestamps
+**Continuous Learning**: Every task enriches knowledge base for future autonomy
 
-## 🏗️ SYSTEM ARCHITECTURE PATTERNS
+## Context Engineering Pattern (Article III)
+**Attention Budget**: Load files in priority order to prevent context rot
+**Load Order**: 1) scratchpad+roadmap (CRITICAL) 2) activeContext+mistakes+tech (HIGH) 3) progress+systemPatterns (SUPPORT) 4) product+brief (REFERENCE)
+**Cleanup Trigger**: Auto-archive when >90 lines
 
-### Scraper Architecture (Multi-Platform Web Scraping)
-**Base Infrastructure** (`scrapers/base/`):
-- `base_scraper.py` - Abstract base class with driver pool and context manager
-- `anti_detection.py` - AntiDetectionDriverFactory using undetected-chromedriver
-- `driver_pool.py` - WebDriver connection pooling for resource management
-- `common_scraper.py` - Shared scraping utilities and helper functions
-- `retry_handler.py` + `retry_logic.py` - Exponential backoff error handling
-- `skill_extractor.py` + `dynamic_skill_extractor.py` - Skill parsing from job descriptions
-- `role_checker.py` - Job role validation and normalization
+## Compliance Pattern
+**Pre-Implementation**: Read 8 memory-bank files + roadmap + retrieve knowledge + validate EMD/laws  
+**Post-Implementation**: Update all 9 files + store knowledge + document lessons + verify ≥80% adherence  
+**Enforcement**: 1st=WARNING, 2nd=ROLLBACK, 3rd=ESCALATE
 
-**Platform Scrapers** (4 platforms implemented):
-- **LinkedIn** (`scrapers/linkedin/`) - 59 lines, async Selenium, EMD compliant
-- **Indeed** (`scrapers/indeed/`) - Scraper + extractor modules
-- **Naukri** (`scrapers/naukri/`) - India-focused scraper with detailed docs
-- **YCombinator** (`scrapers/ycombinator/`) - Startup-focused with company profiles
+## Skill Validation Pattern (Triple-Layer - 2025-10-01)
+**Guarantee**: Zero fake skills - all skills validated against actual JD text
+**Layer 1 (NLP)**: SkillNER extracts from job description (`dynamic_skill_extractor.py:32-54`)
+**Layer 2 (Text Verify)**: Regex `\bskill\b` confirms existence (`skill_validator.py:28-36`)
+**Layer 3 (Filter)**: Removes boilerplate ("work", "team", "experience") (`skill_validator.py:48-61`)
+**Result**: Only skills physically present in JD reach database
+**Code**: `validate_skill_in_text()` returns `False` if skill NOT in original text
 
-**Orchestration**:
-- `streamlit_app.py` (82 lines) - Single-platform UI with form input and database storage
-- `test_single_platform.py` - Test script for single platform scraping
-- Removed: `main_wrapper.py` (multi-platform batch orchestration)
-- Removed: `test_multi_platform_scraper.py` (concurrent platform testing)
+## Conditional UI Rendering Pattern (2025-10-02T12:08)
+**Problem**: Different platforms have different capabilities (LinkedIn=multi-country, Naukri=India-only)  
+**Solution**: Conditional form rendering based on platform selection  
+**Implementation**: `if platform == "LinkedIn":` show country multiselect, else hide  
+**Validation Logic**: `platform == "Naukri" or selected_countries` allows Naukri without countries  
+**Error Messages**: Platform-specific ("Please select at least one country for LinkedIn scraping")  
+**Pattern**: Always match UI form fields to actual scraper method signatures  
+**Example**: Naukri `scrape_jobs(keyword, num_jobs)` vs LinkedIn `scrape_jobs(job_role, target_count, countries)`
 
-### EMD-Compliant Module Structure
-- **Maximum 80 lines per file** - strict enforcement (results_manager.py violates at 97)
-- **Deep nested folders** - scrapers organized by platform and functionality
-- **Single responsibility** - each file handles one specific concern
+## Dead Code Detection Pattern (2025-10-02T12:08)
+**Detection**: File exists but no imports/usage found via grep search  
+**Example**: `naukri/config/countries.py` imported in `__init__.py` but never used in scrapers  
+**Validation**: Search codebase for variable/constant references  
+**Cleanup**: Delete file + remove imports + run validation suite  
+**Prevention**: Regular codebase scans for unused imports/files  
+**Rule**: If mirroring structure (LinkedIn→Naukri), validate actual usage not just existence
 
-### Single Platform Flow
-```
-Streamlit UI → Platform Selection → Single Scraper → Jobs List → Database → Analysis
-     ↓              ↓                    ↓                ↓           ↓
-  Job Role     LinkedIn/Indeed      100-500 jobs    BatchOperations  Reports
-               Naukri/YCombinator                      SQLite
-```
+## Naukri API Pattern (2025-10-01T20:26)
+**Architecture**: Pure API-based (no Selenium), async pagination, EMD compliant  
+**Search API**: `GET /jobapi/v3/search?keyword={role}&start={page}` → Returns list with 20 jobs  
+**Job Detail API**: `GET /jobapi/v4/job/{jobId}?microsite=y&brandedConsultantJd=true` → Full job object  
+**Response Path**: `data.jobDetails[]` → Extract `jobId`, `title`, `company`, `location`, `skills`, `jd`  
+**Skills Extraction**: `jobDetails.keySkills.other[]` array with `{label, clickable}` objects  
+**HTML Description**: `jobDetails.description` contains HTML tags - needs text extraction  
+**Pagination**: Pages 1-50, async with 0.5s delay between requests  
+**Implementation**: `NaukriAPIFetcher` (requests) → `NaukriJobParser` → `JobModel` (Pydantic v2)  
+**No Country Support**: Naukri is India-only, no location filtering in scraper signature
 
-### Core Scraping Patterns
-**Base Scraper Interface**:
-- All platform scrapers inherit from `BaseJobScraper` in `scrapers/base/base_scraper.py`
-- Abstract `scrape_jobs(job_role, target_count) -> list[JobModel]` method
-- Context manager pattern: `with LinkedInScraper():` for WebDriver lifecycle
-- Built-in rate limiting (asyncio.sleep) and anti-detection (undetected-chromedriver)
-- Python 3.9+ type hints: `list[JobModel]` instead of `List[JobModel]`
+## Naukri Pagination Pattern (2025-10-02T12:48)
+**Discovery**: Naukri uses server-side pagination, not infinite scroll
+**URL Structure**:
+- Page 1: `/{keyword-slug}-jobs?k={keyword+param}`
+- Page 2+: `/{keyword-slug}-jobs-{page_num}?k={keyword+param}`
+**Example**: "AI Engineer" → `/ai-engineer-jobs?k=ai+engineer` (page 1)
+**Jobs Per Page**: 20 (constant)
+**Total Available**: 38,945 jobs for AI Engineer (verified on site)
+**Dynamic Calculation**: `total_pages = (target_count // 20) + 1`
+**Implementation**: Loop through pages, extract all job cards per page
+**Anti-Pattern**: Scroll-based approach only loaded ~100 jobs (5 scrolls hardcoded)
+**Lesson**: Always verify site behavior (pagination vs scroll) before implementation
 
-**Platform-Specific Implementation**:
-- Each platform has `scraper.py` (orchestration) and `extractor.py` (data parsing)
-- Scraper handles pagination, URL construction, rate limiting
-- Extractor parses HTML elements into JobModel using CSS selectors/XPath
-- All scrapers are async-compatible using `asyncio.run_in_executor` or native async
+## Scraper Architecture
+**Base**: BaseJobScraper (abstract), AntiDetectionDriverFactory (uc.ChromeOptions), retry logic  
+**LinkedIn**: Selenium-based (59 lines), infinite scroll, 1000+ jobs tested  
+**Naukri**: API-based (70 lines), REST endpoints, type-safe parsing  
+**UI**: Streamlit (251 lines - EMD violation, functional), 2 platform selector  
+**Flow**: UI → {LinkedIn|Naukri} → JobModel list → SQLite (BatchOperations) → Skill validation → Analysis
 
-**Data Flow**:
-1. `main_wrapper.py` → JobScrapperRunner.run_scraping(job_role, count)
-2. Parallel async tasks for each platform (LinkedIn, Indeed, Naukri, YCombinator)
-3. Each scraper returns `list[JobModel]` with normalized data
-4. ResultsManager aggregates and calculates skill statistics
-5. Export to database via `database/core/` modules
+## Core Patterns
+**EMD**: ≤80 lines/file, deep nesting, single responsibility  
+**Anti-Detection**: `uc.ChromeOptions()` not `selenium.Options`  
+**Parallel**: ThreadPoolExecutor (4 workers) for I/O concurrency  
+**Skill Stats**: (jobs_with_skill / total_jobs) * 100, lowercase normalization  
+**Workflow**: Read scratchpad+mistakes → Implement → Update 9 files → Continue
 
-### EMD (Elegant Modular Design) Pattern 
-**File Limit**: Maximum 80 lines per file (ENFORCED)
-**Structure**: Deep nested folders for logical separation
-```
-scrapers/
-├── coordinator/           # Parallel execution coordination (77 lines)
-├── worker_pool/          # Thread pool management (77 lines)
-├── platforms/            # Platform-specific scrapers (BLOCKED - lint errors)
-├── base/                 # Base classes and utilities (79 lines)
-└── application/          # Main application entry (80 lines)
-```
-
-### Workflow Loop Pattern (MANDATORY)
-**BEFORE Implementation**: Read scratchpad.md + mistakes.md for context + errors
-**DURING Implementation**: INSTANT mistakes.md update when errors/lints detected
-**AFTER Every Task**: Update ALL 8 memory bank files + roadmap (9 FILES TOTAL)
-**ERROR WORKFLOW**: Lint/Error → mistakes.md → scratchpad.md fix task
-
-### Anti-Detection Pattern (Working)
-```python
-# : CORRECT: Undetected-chromedriver pattern
-import undetected_chromedriver as uc
-
-class AntiDetection:
-    @staticmethod
-    def create_driver():
-        chrome_options = uc.ChromeOptions()  # NOT selenium Options!
-        chrome_options.add_argument('--headless')
-        return uc.Chrome(options=chrome_options)
-```
-
-### Parallel Coordination Pattern (Ready - Blocked)
-```python
-# : IMPLEMENTED: 77-line ParallelCoordinator
-class ParallelCoordinator:
-    def __init__(self, max_workers: int = 4):
-        self.platforms = self._initialize_platforms()
-        
-    def execute_parallel_scraping(self, job_role: str) -> List[Job]:
-        # BLOCKED: LinkedIn scraper compilation failures
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            futures = [executor.submit(platform.scrape_jobs, job_role) 
-                      for platform in self.platforms]
-            return self._aggregate_results(futures)
-```
-
-### Statistical Processing Pattern (Design Ready)
-**Formula**: (jobs_with_skill / total_jobs) * 100
-**Normalization**: Convert "SQL", "sql", "Sql" to lowercase consistency
-**Deduplication**: Count each skill once per job
-
-```python
-# PENDING: Statistical calculation pattern
-def calculate_skill_percentage(jobs: List[Job], skill: str) -> float:
-    skill_lower = skill.lower()
-    jobs_with_skill = sum(1 for job in jobs 
-                         if skill_lower in [s.lower() for s in job.skills])
-    return (jobs_with_skill / len(jobs)) * 100 if jobs else 0.0
-```
-
-### Data Validation Pattern (Working)
-```python
-# : IMPLEMENTED: Pydantic v2 model (79 lines)
-class Job(BaseModel):
-    job_id: str
-    job_role: str
-    company: str
-    experience: str
-    skills: List[str]
-    jd: str
-    platform: str
-    
-    class Config:
-        validate_assignment = True
-        use_enum_values = True
-```
-
-## Design Principles
-
-### Processing Principles
-- **Compilation First**: Fix lint errors before any development (CRITICAL)
-- **Parallel Ready**: Concurrent execution design complete (BLOCKED)
-- **Fail Safe**: Graceful handling patterns designed (PENDING)
-- **Anti-Detection**: Working patterns implemented (READY)
-
-### Validation Principles
-- **Schema First**: Pydantic models implemented (COMPLETE)
-- **Type Safe**: Strong typing required (BROKEN - lint errors)
-- **EMD Compliance**: 80-line limit enforced (MAINTAINED)
-- **Memory Loop**: 8-file + roadmap updates mandatory (ENFORCED)
-
-### Error Recovery Principles
-- **Instant Tracking**: mistakes.md updated immediately on errors (ENFORCED)
-- **Fix Task Creation**: scratchpad.md updated with error fixes (ENFORCED)
-- **Compilation Priority**: Fix lint errors before feature development (CRITICAL)
-- **Workflow Validation**: All 9 files reflect true project state (MANDATORY)
+## Working Patterns
+- Pydantic v2 thread-safe models
+- Context manager for WebDriver lifecycle
+- Python 3.9+ type hints (`list[T]`, `str | None`)
+- Exponential backoff retry logic
+- SQLite WAL mode for concurrent writes

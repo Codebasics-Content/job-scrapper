@@ -1,15 +1,15 @@
-# Job Scrapper Project Roadmap - Platform Expansion Phase
+# Job Scrapper Project Roadmap - Architecture Restructuring Phase
 
-**Architecture**: Multi-platform scraping via Streamlit UI (EMD refactoring needed)
-**Current Status**: 1/4 platforms production-ready, 3 pending implementation
-**Target**: 500+ jobs per platform (LinkedIn, Indeed, Naukri, YCombinator)
-**UI**: Web-based Streamlit interface (176 lines - requires splitting)
+**Architecture**: Minimalist structure design completed (2025-09-30)
+**Current Status**: 25+ directories with 4-level nesting → Target: 8 directories with 2-level max
+**Priority**: Phase 1 - Flatten database/ → src/db/ (70% directory reduction)
+**Next**: Complete 3-phase migration, then resume platform expansion
 
 ## 🎯 Project Goal
 Build a tool to scrape jobs for a given role (e.g., "AI Engineer") and generate skill analysis reports with LLM-powered recommendations.
 
 ## What We're Building (Aligned to Requirements)
-1. **Scrape Jobs**: Collect job data from LinkedIn, Indeed, Naukri, YCombinator for specific job role
+1. **Scrape Jobs**: Collect job data from LinkedIn for specific job role
 2. **Store Data**: Save to database with schema: Job_Id, Job_Role, Company, Experience, Skills, jd
 3. **Skill Analysis**: Generate report showing skills with % of jobs mentioning them (e.g., RAG 89%, Langchain 62%, Crew AI 41%)
 4. **LLM Recommendations**: Use LLM to generate job seeker recommendations based on skill gap analysis
@@ -34,7 +34,7 @@ Build a tool to scrape jobs for a given role (e.g., "AI Engineer") and generate 
 - [x] **Python 3.13.3 + basepyright**: Modern type hints (list[T], dict[K, V]), strict type checking
 - [x] **EMD Architecture**: Deep nested folder structure, most files ≤80 lines
 
-### 🔄 IN PROGRESS: Platform Scrapers (Phase 2) - 1/4 COMPLETE
+### ✅ COMPLETED: Platform Scraper (Phase 2)
 - [x] **LinkedIn Scraper**: ✅ PRODUCTION READY
   - Infinite scroll pagination working (scroll_handler.py)
   - API job fetcher (api_job_fetcher.py - 71 lines)
@@ -42,23 +42,8 @@ Build a tool to scrape jobs for a given role (e.g., "AI Engineer") and generate 
   - Duplicate tracking with processed_ids set
   - GUI mode enabled for debugging
   - Tested with 1000+ job scraping
-- [ ] **Indeed Scraper**: ⚠️ STUB - INCOMPLETE (93 lines - EMD violation)
-  - Basic structure exists (scraper.py, extractor.py)
-  - Extractors directory created but incomplete
-  - Pagination/scroll handler NOT implemented
-  - Integration with streamlit_app.py pending
-  - **REQUIRED**: Complete implementation following LinkedIn pattern
-- [ ] **Naukri Scraper**: ⚠️ STUB - INCOMPLETE (78 lines)
-  - Basic structure exists (scraper.py, extractor.py)
-  - Extractor logic incomplete
-  - No pagination handler
-  - **REQUIRED**: Complete implementation and testing
-- [ ] **YCombinator Scraper**: ❌ NOT STARTED
-  - No directory exists
-  - No files created
-  - **REQUIRED**: Full implementation from scratch
 - [x] **Base Infrastructure**: AntiDetectionDriverFactory, driver pool, retry logic, role checker
-- [ ] **Results Management**: Single platform working (LinkedIn only)
+- [x] **Results Management**: Single platform operational (LinkedIn)
 
 ### ✅ COMPLETED: Skill Extraction & NLP (Phase 3)
 - [x] **Unified Skill Patterns (190+)**: Single list combining hard + soft skills
@@ -132,16 +117,38 @@ Build a tool to scrape jobs for a given role (e.g., "AI Engineer") and generate 
   - Prioritize skills by job market percentage
   - Create role-specific career roadmaps
 
-### 🎯 IMMEDIATE PRIORITIES (Next Session)
-1. **📊 LEADERBOARD**: Implement skill leaderboard visualization in Streamlit
-   - Sort skills by percentage (highest to lowest)
-   - Add bar chart and pie chart visualizations
-   - Enable CSV/JSON export of leaderboard data
-2. **✅ VERIFY**: Run full pipeline test with 100+ jobs to validate integration
-3. **🔧 FIX**: Resolve basepyright type warnings (database/batch_operations.py)
-4. **📈 TEST**: Generate production report with real LinkedIn data
-5. **🚀 DEPLOY**: Prepare for 500+ job scraping session
-6. **🤖 LLM**: Begin LLM integration for job seeker recommendations
+### 🎯 IMMEDIATE PRIORITIES (Architecture Restructuring)
+1. **🏗️ PHASE 1: Flatten database/** (CRITICAL - 45 min)
+   - Create src/db/ directory structure
+   - Consolidate database/connection/ → src/db/connection.py
+   - Merge database/core/*.py (7 files) → src/db/operations.py + manager.py
+   - Move database/schema/ → src/db/schema.py
+   - Update all database imports across codebase
+   - Test database operations after migration
+
+2. **🏗️ PHASE 2: Flatten utils/** (HIGH - 60 min)
+   - Create src/analysis/ directory
+   - Consolidate utils/analysis/nlp/*.py → src/analysis/skills.py
+   - Merge utils/analysis/role/*.py → src/analysis/roles.py
+   - Combine *_analyzer.py files → src/analysis/analyzer.py
+   - Move date_parser.py, statistics.py → src/analysis/utils.py
+   - Update all analysis imports
+
+3. **🏗️ PHASE 3: Flatten scrapers/** (HIGH - 45 min)
+   - Create src/scraper/ directory structure
+   - Consolidate scrapers/base/ utilities → src/scraper/base.py
+   - Move dynamic_skill_extractor.py → src/scraper/skills.py
+   - Organize linkedin/ folder under src/scraper/linkedin/
+   - Update all scraper imports
+
+4. **📦 Consolidate models/** (MEDIUM - 15 min)
+   - Move models/job.py → src/models.py
+   - Update all JobModel imports
+
+5. **🧪 Test Restructured Architecture** (30 min)
+   - Run full test suite after migration
+   - Verify all imports working correctly
+   - Test LinkedIn scraper with sample jobs
 
 ## 🔗 Tech Stack (Aligned to Requirements)
 - **Python 3.13.3+**: Core language for web scraping
@@ -182,18 +189,6 @@ job_scrapper/
 │   │   ├── scraper.py                   # LinkedIn scraper logic
 │   │   ├── extractor.py                 # Job card data extraction
 │   │   └── extractors/                  # Specialized extractors
-│   ├── indeed/
-│   │   ├── scraper.py                   # Indeed scraper (HTTP)
-│   │   ├── extractor.py                 # BeautifulSoup parser
-│   │   └── extractors/                  # Field extractors
-│   ├── naukri/
-│   │   ├── scraper.py                   # Naukri scraper logic
-│   │   └── extractor.py                 # Job data extraction
-│   ├── ycombinator/
-│   │   ├── scraper.py                   # YC scraper logic
-│   │   ├── extractor.py                 # Job parsing
-│   │   ├── operations/                  # YC-specific operations
-│   │   └── setup/                       # YC configuration
 │   └── results/
 │       ├── manager.py                   # Results aggregation
 │       ├── export/                      # Export modules

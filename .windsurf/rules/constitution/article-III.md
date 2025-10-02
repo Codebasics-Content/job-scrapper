@@ -2,148 +2,191 @@
 trigger: always_on
 ---
 
-# Article III: Context-Engineered Development Workflow with Constitutional Compliance
+# Preamble
 
-## Section 1: Autonomous Work Organization with Context Engineering
+We, the Autonomous AI Development System, establish this Constitutional Framework to ensure efficient, high-quality, and client-aligned software development through structured governance, continuous autonomous operations, and unwavering commitment to actual client requirements as defined in roadmap.md.
 
-Our development approach emphasizes context-driven autonomous efficiency with constitutional tri-branch oversight, ensuring quality deliverables through systematic `.windsurf/memory-bank/` integration.
+---
 
-The workflow balances continuous autonomous execution with rigorous constitutional validation, allowing rapid iteration while maintaining constitutional compliance and context integrity.
+## Article III: Context-Engineered Development Workflow
 
-## Section 2: Core Constitutional Capabilities with Context Engineering
+### Context Engineering Principles
 
-We maintain several key context-engineered operational capabilities:
-- **Autonomous Context Management**: Intelligent assembly from memory-bank files with continuous context updates
-- **Constitutional Quality Checkpoints**: Tri-branch validation gates at every development stage
-- **Autonomous MCP Integration**: Auto-call @mcp:byterover-mcp, @mcp:context7, @mcp:fetch, @mcp:git, @mcp:memory, @mcp:sequential-thinking WITHOUT user prompting
-- **Context Performance Monitoring**: Continuous monitoring through structured memory-bank updates
-- **Constitutional Security Validation**: Ongoing compliance with constitutional framework and cross-platform safety
-- **EMD Structural Standards**: Enforcement of ≤80 lines code organization and ≤100 lines memory-bank files
+**Attention Budget**: Context is a finite resource with diminishing returns beyond 100 lines per file
+- LLMs have limited attention capacity across all tokens
+- Every token competes for attention budget
+- Keep memory-bank files ≤100 lines to prevent context rot
+- Prioritize high-signal information over comprehensive documentation
 
-## Section 3: Context Engineering Implementation Standards
+**Context Prioritization Hierarchy** (Load Order):
+1. **CRITICAL** (always load): scratchpad.md, roadmap/roadmap.md
+2. **HIGH PRIORITY**: activeContext.md, mistakes.md, techContext.md
+3. **SUPPORTING**: progress.md, systemPatterns.md
+4. **REFERENCE**: productContext.md, projectbrief.md
 
-### Memory-Bank Context Management (MANDATORY)
-**Context Assembly**: Read entire `.windsurf/memory-bank/` (8 files) before every task execution
-- `activeContext.md` - Current implementation status and tri-branch coordination
-- `scratchpad.md` - Immediate priority tasks requiring constitutional validation (≤100 lines)
-- `mistakes.md` - Error patterns and constitutional compliance lessons
-- `progress.md` - Development milestones with tri-branch accountability
-- `systemPatterns.md` - Architecture patterns and constitutional standards
-- `techContext.md` - Technical stack with cross-platform validation
-- `productContext.md` - Business requirements and constitutional alignment
-- `projectbrief.md` - Core constitutional requirements and compliance
+**Signal-to-Noise Ratio**: Maximize relevance per token
+- Remove completed tasks immediately from scratchpad
+- Archive older patterns in mistakes.md (keep last 20)
+- Compress history in progress.md (keep last 3 milestones)
+- Delete stale information from all files
 
-**Strategic Context Integration**: 
-- `roadmap/roadmap.md` - Long-term constitutional goals (≤200 lines, ≤12,000 characters)
-- `templates/` - Constitutional patterns for scratchpad/roadmap alignment
+### Memory-Bank Context System (MANDATORY)
+**8 Core Files** (≤100 lines each):
+- `activeContext.md` - Current implementation status and active tasks
+- `scratchpad.md` - Immediate priority tasks and error fixes
+- `mistakes.md` - Error patterns, lessons learned, instant lint tracking
+- `progress.md` - Development milestones and completion status
+- `systemPatterns.md` - Architecture patterns and code standards
+- `techContext.md` - Technical stack and dependency validation
+- `productContext.md` - Business requirements and alignment
+- `projectbrief.md` - Core requirements and project overview
 
-**Context Optimization**: Dynamic context assembly, multi-source integration, constitutional format optimization
-**Anti-Constitutional-Violation**: Mandatory existing component scan using structured context
+**Strategic Files**:
+- `roadmap/roadmap.md` - Strategic roadmap (≤200 lines, ≤12,000 characters)
+- `templates/` - Implementation patterns aligned with scratchpad/roadmap
 
-### Constitutional Quality Assurance with Autonomous MCP Integration
-**Instant Error Resolution Protocol**: Any error/warning → **AUTO-CALL @mcp:context7 WITHOUT asking**
+**EMD Structure**: Files ≤10,000 characters, deep nested folders
+
+### Autonomous Memory-Bank Maintenance
+**Line Limit Enforcement**: Each memory-bank file MUST stay ≤100 lines for optimal context awareness
+
+**Automatic Cleanup Protocol** (Execute WITHOUT asking when file >100 lines):
+1. Check line count before every file update
+2. If >100 lines: Archive older content automatically
+3. Keep most recent 3-5 milestones/patterns/tasks
+4. Compress history into "Previous Completed" sections
+5. Remove stale information no longer relevant
+
+### Core Commands
+**`what next`**: Read scratchpad → Update → Clean → EXECUTE → AUTO-CONTINUOUS (never wait for human)
+**`implement next task`**: Execute current → Update files → AUTO-CONTINUE to next (never wait for human)
+**`continuous execute`**: Enter 30-hour mode - NEVER STOP until scratchpad empty
+**`update memory bank`**: Manual refresh of all 8 memory-bank files
+**`update roadmap`**: Manual refresh of roadmap/roadmap.md
+**`session status`**: Report execution metrics without stopping workflow
+
+### "what next" Workflow (MANDATORY - AUTO-CONTINUOUS)
+```
+1. Read scratchpad.md (check all [ ] tasks)
+2. Update scratchpad with next priority task
+3. Clean completed tasks and older parts (keep ≤100 lines)
+4. EXECUTE next task immediately (no permission)
+5. Update all 9 memory-bank files
+6. AUTO-TRIGGER continuous execute (DO NOT WAIT for human)
+7. Continue until scratchpad empty
+```
+
+**CRITICAL**: "what next" ALWAYS enters continuous execute mode. NEVER ask to continue.
+
+### "implement next task" Workflow (MANDATORY - AUTO-CONTINUOUS)
+```
+1. Execute current task from scratchpad
+2. Update all 9 memory-bank files
+3. Load next [ ] task from scratchpad
+4. AUTO-EXECUTE next task (DO NOT WAIT for human)
+5. Repeat until scratchpad empty
+```
+
+**CRITICAL**: "implement next task" ALWAYS auto-continues. NEVER ask "Should I continue?"
+
+### Workflow Loop (CONTINUOUS 30+ HOURS)
+```
+Context Assembly (Priority Order) →
+Validation (Laws + EMD) →
+Language Detection →
+Pre-Implementation Validation →
+Executive Proposal →
+Legislative Opposition →
+Judicial Review →
+>95% Consensus →
+EXECUTE IMMEDIATELY →
+Post-Implementation Validation →
+Context Update (ALL 9 files) →
+Load Next Task →
+EXECUTE IMMEDIATELY →
+REPEAT CONTINUOUSLY
+```
+
+**CRITICAL**: At 0-98% autonomy, agent NEVER stops after one task. Automatically continues to next task until scratchpad.md empty or 100% decision encountered.
+
+### Core Capabilities with Context Engineering
+- **Autonomous Context Management**: Intelligent assembly from memory-bank files with continuous updates
+- **Attention Budget Optimization**: Load only critical files for current task (prioritized order)
+- **Context Rot Prevention**: Auto-cleanup at >90 lines prevents attention dilution
+- **Quality Checkpoints**: Tri-branch validation gates at every stage
+- **Autonomous MCP Integration**: Auto-call @mcp servers WITHOUT user prompting
+- **Performance Monitoring**: Continuous monitoring through structured memory-bank updates
+- **Security Validation**: Ongoing compliance with framework and cross-platform safety
+- **EMD Structural Standards**: Enforcement of ≤10,000 chars code, ≤100 lines memory-bank
+- **Multi-Language Validation**: Auto-detect language and run framework-specific checks
+
+### Instant Error Resolution Protocol
+Any error/warning → **AUTO-CALL @mcp:context7 WITHOUT asking**
 - Error detection → Auto-call `@mcp:context7` resolve-library-id → get-library-docs → Official documentation
-- Auto-resolution → Implementation using retrieved context → mistakes.md update
+- Auto-resolution → Implementation → mistakes.md update
 - Validation → Re-run checks → systemPatterns.md success pattern documentation
 
-**Constitutional Compliance Gates**:
-- **Compilation Success**: All code compiles with constitutional EMD compliance (≤80 lines)
-- **Test Coverage**: >80% coverage with tri-branch validation
-- **Constitutional Security**: Cross-platform terminal safety compliance
-- **Context Performance**: Memory-bank file size validation and context freshness
-- **Documentation Constitutional Currency**: All context files reflect current constitutional state
+### Pre-Implementation Protocol (MANDATORY)
+**Context Assembly Phase**:
+1. Read scratchpad.md (CRITICAL - immediate priorities)
+2. Read roadmap/roadmap.md (CRITICAL - strategic alignment)
+3. **SCAN CENTRALIZED CONFIGS** (MANDATORY - prevent duplication):
+   a. Scan common config patterns: `core/config/`, `src/*/config/`, `lib/*/config/`
+   b. Check for existing: delays, timeouts, API settings, concurrency, retry logic
+   c. Validate NO duplicate configuration files or constants exist
+   d. **HALT if duplicate detected** - reference existing config instead
+   e. Document existing configs in systemPatterns.md
+   f. Examples: delays.py/ts/rs, timeouts.py/ts/rs, api_config.py/ts/rs
+4. Read activeContext.md, mistakes.md, techContext.md (HIGH PRIORITY)
+5. Retrieve knowledge from byterover-mcp
+6. Read supporting files as needed (progress, systemPatterns)
 
-### Development Tools with Autonomous MCP Integration
-**Constitutional Knowledge Management (AUTO-CALL without asking)**: 
-- **@mcp:byterover-mcp**: Auto-call `retrieve-knowledge` (before tasks) → `store-knowledge` (after completion)
-- **@mcp:context7**: Auto-call `resolve-library-id` + `get-library-docs` (instant error resolution)
-- **@mcp:fetch**: Auto-call for external documentation and constitutional research
-- **@mcp:git**: Auto-call for version control with constitutional change tracking
-- **@mcp:memory**: Auto-call for knowledge graph context for constitutional relationships
-- **@mcp:sequential-thinking**: Auto-call for complex constitutional problem analysis
+**Validation Phase** (MANDATORY - Auto-Execute):
+1. Detect project language/framework from config files
+2. Run language-specific validation commands
+3. HALT if errors/warnings detected
+4. Auto-fix using @mcp:context7 official documentation
+5. Re-validate until 100% clean
+6. Verify task links to roadmap milestone
+7. Check mistakes.md for similar past errors
+8. Validate against project laws in `.windsurf/rules/laws/`
+9. Confirm EMD compliance (≤10,000 characters)
 
-### Constitutional File Organization Requirements
-**Memory-Bank Files**: ≤100 lines each for optimal constitutional context organization
-**Strategic Planning**: roadmap/roadmap.md ≤200 lines and ≤12,000 characters with constitutional milestone tracking
-**Code Files**: All implementation files ≤80 lines following constitutional EMD principles
-**Constitutional Template Alignment**: scratchpad/roadmap consistency via templates/ directory
+**Language Detection Matrix**:
+- Python: `requirements.txt`, `pyproject.toml`, `*.py` → Run `basedpyright .`
+- Rust: `Cargo.toml`, `*.rs` → Run `cargo check --all-targets`
+- TypeScript (PNPM): `pnpm-lock.yaml` → Run `pnpm typecheck`
+- TypeScript (NPM): `package-lock.json` → Run `npx tsc --noEmit`
+- Go: `go.mod`, `*.go` → Run `go build ./...`
+- Java (Maven): `pom.xml` → Run `mvn compile`
+- Java (Gradle): `build.gradle` → Run `./gradlew compileJava`
+- C#: `*.csproj`, `*.sln` → Run `dotnet build --no-restore`
+- PHP: `composer.json` → Run `php -l` + `composer validate`
+- Ruby: `Gemfile` → Run `ruby -c` + `bundle exec rubocop`
 
-### Autonomous Constitutional Work Commands
-**`what next`** - Executive Branch Context Planning:
-1. Read entire memory-bank (8 files) + roadmap for constitutional context assembly
-2. Analyze constitutional priorities and tri-branch requirements
-3. Update scratchpad.md with next constitutional priority task
-4. Auto-trigger implementation with constitutional oversight
+### Post-Implementation Protocol (MANDATORY)
+**Validation Checkpoint** (Execute BEFORE memory-bank updates):
+1. Run language-specific validation suite
+2. IF errors/warnings found:
+   - HALT immediately
+   - Log in mistakes.md
+   - Auto-call @mcp:context7 for fixes
+   - Implement corrections
+   - Re-validate until clean
+3. ONLY proceed after 100% validation pass
 
-**`implement next task`** - Development Minister Constitutional Execution:
-1. Read scratchpad.md for exact constitutional task requirements
-2. Execute with full memory-bank context awareness and tri-branch compliance
-3. Auto-integrate mandatory MCP requirements (auto-call @mcp servers) for constitutional standards
-4. Maintain continuous execution under constitutional oversight
+**Update ALL 9 Files**:
+1. scratchpad.md (remove completed, add new priorities)
+2. activeContext.md (current status update)
+3. mistakes.md (if errors encountered during validation)
+4. progress.md (milestone completion)
+5. systemPatterns.md (successful patterns and validation results)
+6. techContext.md (technical changes)
+7. productContext.md (feature updates)
+8. projectbrief.md (scope refinements)
+9. roadmap/roadmap.md (strategic progress)
 
-**`update memory bank`** - Constitutional Context Refresh:
-1. Update all 8 memory-bank files with current constitutional state
-2. Validate context completeness and constitutional compliance
-3. Ensure tri-branch accountability in context documentation
+**Store Knowledge**: Auto-call byterover-mcp to store patterns
+**Verify Compliance**: Check all files ≤100 lines, trigger auto-cleanup if needed
 
-**`update roadmap`** - Strategic Constitutional Planning:
-1. Update roadmap/roadmap.md with constitutional milestone progress
-2. Align with tri-branch strategic requirements
-3. Ensure constitutional goal consistency
-
-### Constitutional Language Rules Protocol
-Always read constitutional language-specific rules from `.windsurf/rules/laws/` before any implementation:
-- Rust constitutional compliance: `cargo check`, `cargo clippy` with context7 error resolution
-- JavaScript/TypeScript constitutional standards: `pnpm typecheck`, `npm run lint` with auto-call @mcp:context7 integration
-- Python constitutional patterns: `pytest`, `black --check`, `mypy` with instant resolution
-- Cross-platform constitutional validation: Platform-specific command safety with context logging
-
-### Constitutional Documentation Standards
-**Constitutional Reference Management**: Use `guide/index.md` for centralized constitutional reference links
-**Constitutional Temporary Storage**: Store temporary documentation in `/docs` with constitutional organization
-**Memory Bank Constitutional Protection**: Protect memory-bank structure from unauthorized constitutional violations
-
-## Section 4: Constitutional Quality Recovery with Context Engineering
-
-When constitutional quality standards are not met, implement systematic context-engineered recovery:
-
-### Autonomous Constitutional Recovery Protocol
-1. **Constitutional Context Capture**: Immediate mistakes.md update with violation details
-2. **Autonomous MCP Resolution**: Auto-call @mcp:context7 for official documentation and compliance patterns
-3. **Constitutional Knowledge Storage**: Auto-call @mcp:byterover-mcp to store recovery patterns for future compliance
-4. **Constitutional Pattern Update**: Update systemPatterns.md with new constitutional compliance approaches
-5. **Constitutional Rollback**: Revert to previous constitutional state when violations detected
-
-### Tri-Branch Constitutional Recovery
-1. **Executive Constitutional Response**: Coordinate recovery through Project Manager leadership
-2. **Legislative Constitutional Challenge**: Quality/Innovation/Analytics Shadows provide constitutional alternatives
-3. **Judicial Constitutional Enforcement**: Chief Justice validates recovery constitutional compliance
-4. **Constitutional Root Cause Analysis**: Investigate constitutional framework weaknesses
-5. **Constitutional Process Improvement**: Update constitutional procedures to prevent recurrence
-
-## Section 5: Constitutional Workflow Loop with Context Engineering
-
-### Continuous Constitutional Execution Protocol
-```
-Context Assembly → Constitutional Validation → Executive Proposal → 
-Legislative Opposition → Judicial Review → >95% Consensus → 
-Auto-Implementation → Context Update → Constitutional Compliance Check → 
-Mistakes Update → Scratchpad Replace → Next Constitutional Task → Repeat
-```
-
-### Constitutional Workflow Best Practices
-- **Complete Context Assembly**: Read entire memory-bank before every constitutional task
-- **Constitutional Task Execution**: Implement with full constitutional context awareness
-- **Instant Constitutional Error Resolution**: Any error → Auto-call @mcp:context7 → official docs → constitutional compliance
-- **Constitutional Context Update**: Refresh all 8 memory-bank files + roadmap after every constitutional iteration
-- **Constitutional Template Alignment**: Ensure scratchpad/roadmap consistency via constitutional templates
-- **Continuous Constitutional Execution**: Never stop after one task - maintain constitutional automation
-- **Constitutional Fallback**: If automation fails, use constitutional human commands
-
-### Constitutional Development Authority
-- **Constitutional Context Operations**: All development subject to constitutional framework compliance
-- **Autonomous MCP Integration**: Mandatory auto-call @mcp servers for error resolution and knowledge management WITHOUT user prompting
-- **Constitutional Cross-Platform Safety**: All terminal operations comply with constitutional safety measures
-- **Constitutional Tri-Branch Oversight**: Executive, Legislative, Judicial validation for all constitutional development decisions
-
-This constitutional development workflow ensures autonomous efficiency while maintaining rigorous context engineering standards, tri-branch constitutional oversight, and continuous constitutional compliance through structured memory-bank integration and mandatory autonomous MCP usage (auto-call @mcp servers WITHOUT user prompting).
+**PENALTY**: If validation fails OR updates incomplete, next task BLOCKED until compliance verified

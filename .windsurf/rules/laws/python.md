@@ -234,3 +234,14 @@ src/
 - Use **type hints** consistently throughout the codebase
 - Implement **defensive programming** practices
 - Write **clean, readable code** with meaningful names and comments
+## Autonomous Research Protocol (Real-Time)
+**Before ANY implementation**: Auto-call @mcp:context7 + @mcp:fetch for latest documentation
+**Error Detection**: Instant @mcp:context7 activation for official docs
+**Best Practices**: Auto-fetch latest Python patterns from web (PEP updates, security advisories)
+**Continuous Learning**: Store successful patterns in @mcp:byterover-mcp for project reuse
+
+## 30-Hour Continuous Operation
+**No Stopping**: 0-98% autonomy = continuous execution until scratchpad empty
+**Auto-Recovery**: Any error → @mcp:context7 → fix → continue (no human escalation)
+**Context Refresh**: Load priority files every task (scratchpad+roadmap FIRST)
+**Knowledge Storage**: Auto-store all successful patterns for future retrieval

@@ -1,0 +1,12 @@
+{
+  "include": ["src"],
+  "exclude": ["**/__pycache__", "**/.pytest_cache", "**/node_modules"],
+  "stubPath": "stubs",
+  "typeCheckingMode": "strict",
+  "reportMissingTypeStubs": "none",
+  "reportUnknownMemberType": "warning",
+  "reportUnknownVariableType": "warning",
+  "reportUnknownArgumentType": "warning",
+  "pythonVersion": "3.13",
+  "pythonPlatform": "Linux"
+}

@@ -5,22 +5,21 @@ Tests async LinkedIn scraper with proper fixtures and mocking
 EMD Compliance: ≤80 lines
 """
 import pytest
-import asyncio
 from unittest.mock import Mock, patch, MagicMock
-from models.job import JobModel
-from scrapers.linkedin.scraper import LinkedInScraper
+from src.models import JobModel
+from src.scraper.linkedin.scraper import LinkedInScraper
 
 
 class TestLinkedInScraper:
     """Test suite for LinkedIn API-based scraper"""
     
     @pytest.fixture
-    def scraper(self):
+    def scraper(self) -> LinkedInScraper:
         """Initialize LinkedIn scraper for testing"""
         return LinkedInScraper()
     
     @pytest.fixture
-    def mock_driver(self):
+    def mock_driver(self) -> MagicMock:
         """Create mock WebDriver for testing"""
         driver = MagicMock()
         driver.get = Mock()
@@ -28,28 +27,34 @@ class TestLinkedInScraper:
         return driver
     
     @pytest.fixture
-    def sample_jobs(self):
+    def sample_jobs(self) -> list[JobModel]:
         """Create sample JobModel instances for testing"""
         return [
             JobModel(
                 job_id=f"test-{i}",
-                job_role="Python Developer",
-                company=f"Company{i}",
-                experience="2-5 years",
-                skills="Python, Django, REST APIs",
+                Job_Role="Python Developer",
+                Company=f"Company{i}",
+                Experience="2-5 years",
+                Skills="Python, Django, REST APIs",
                 jd=f"Job description {i}",
-                platform="LinkedIn"
+                platform="LinkedIn",
+                url=None,
+                location=None,
+                salary=None,
+                posted_date=None,
+                skills_list=None,
+                normalized_skills=None
             )
             for i in range(3)
         ]
     
-    def test_scraper_initialization(self, scraper):
+    def test_scraper_initialization(self, scraper: LinkedInScraper) -> None:
         """Test LinkedIn scraper initializes correctly"""
         assert scraper.platform_name == "LinkedIn"
         assert scraper.base_url == "https://www.linkedin.com/jobs/search"
     
     @pytest.mark.asyncio
-    async def test_scrape_jobs_basic(self, scraper, mock_driver, sample_jobs):
+    async def test_scrape_jobs_basic(self, scraper: LinkedInScraper, mock_driver: MagicMock, sample_jobs: list[JobModel]) -> None:
         """Test basic job scraping with mocked driver"""
         with patch.object(scraper, 'get_driver', return_value=mock_driver):
             with patch.object(scraper, 'return_driver'):
@@ -62,7 +67,7 @@ class TestLinkedInScraper:
                         assert len(jobs) == 3
                         assert all(job.platform == "LinkedIn" for job in jobs)
     
-    def test_context_manager_protocol(self, scraper):
+    def test_context_manager_protocol(self, scraper: LinkedInScraper) -> None:
         """Test scraper supports context manager protocol"""
         assert hasattr(scraper, '__enter__')
         assert hasattr(scraper, '__exit__')

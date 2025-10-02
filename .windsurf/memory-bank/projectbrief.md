@@ -1,9 +1,10 @@
 # Job Scrapper Project Brief
 
 ## Project Overview
-**CURRENT STATUS**: Multi-platform job scraping tool with skill analysis - Core pipeline operational
+**CURRENT STATUS**: Architecture restructuring phase - Minimalist design completed
+**CURRENT FOCUS**: Flatten scattered file structure (25+ dirs → 8 dirs, 4-level → 2-level nesting)
 **CONSTITUTIONAL FRAMEWORK**: Article XIV ratified (2025-09-30) - Mandatory AI compliance active
-**NEXT PHASE**: Production testing with 500+ jobs across all platforms
+**NEXT PHASE**: Phase 1 implementation (database/ → src/db/), then complete scrapers
 
 ## Core Requirements
 1. ✅ **Database Integration**: ConnectionManager + JobRetrieval pattern working
@@ -18,10 +19,7 @@
 5. **Generate Reports**: Export results in CSV/JSON format matching requirements ("RAG 89%, Langchain 62%")
 
 ## Target Platforms
-- **LinkedIn Jobs** (CRITICAL - 16+ lint errors blocking execution)
-- Indeed (implementation pending)
-- Naukri.com (implementation pending)
-- YCombinator (implementation pending)
+- **LinkedIn Jobs** (Production ready)
 
 ## Success Metrics
 - **Priority 1**: Fix compilation errors to enable basic execution
@@ -45,9 +43,15 @@
 - ✅ **Type Safety**: Basepyright compliant with Python 3.13.3
 
 ## Remaining Tasks
+- 🎯 **PRIORITY: Architecture Restructuring** (2025-09-30)
+  - Phase 1: Flatten database/ → src/db/ (10 files → 4-5 files)
+  - Phase 2: Flatten utils/ → src/analysis/ (20+ files → 5-6 files)
+  - Phase 3: Flatten scrapers/ → src/scraper/ (simplified structure)
+  - Update all import statements across codebase
+  - Test after each phase
 - **Production Testing**: Test with 500+ real jobs across all platforms
-- **Basepyright Lints**: Fix remaining type warnings in main_wrapper.py and report_generator.py
-- **EMD Compliance**: Address files exceeding 80-line limit
+- **Basepyright Lints**: Fix remaining type warnings
+- **EMD Compliance**: Maintain ≤80 lines per file during restructuring
 
 ## Future LLM Integration
 - Career recommendations based on skill analysis
