@@ -5,7 +5,7 @@ from typing import cast
 
 import streamlit as st
 from src.scraper.linkedin.scraper import LinkedInScraper
-from src.scraper.naukri.browser_scraper import NaukriBrowserScraper, NaukriBrowserManager
+from src.scraper.naukri import NaukriScraper
 from src.db import DatabaseConnection, SchemaManager, JobStorageOperations
 from src.ui.components import (render_scraper_form, ProgressTracker, render_job_listings,
                               render_analytics_dashboard)
