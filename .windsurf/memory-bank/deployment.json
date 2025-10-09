@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-06T01:07:45+05:30",
+  "deployment_strategy": {
+    "approach": "free_tier_first",
+    "primary_platform": "local_development",
+    "scaling_path": ["local", "railway", "heroku"],
+    "cost_optimization": true
+  },
+  "environments": [
+    {
+      "environment_id": "local",
+      "name": "Local Development",
+      "status": "active",
+      "description": "Primary development environment",
+      "configuration": {
+        "python_version": "3.13.3",
+        "virtual_env": "venv",
+        "database": "SQLite (jobs.db)",
+        "port": 8501,
+        "host": "localhost"
+      },
+      "deployment_method": "streamlit_run",
+      "command": "streamlit run streamlit_app.py",
+      "health_check": "http://localhost:8501",
+      "setup_steps": [
+        "python -m venv venv",
+        "source venv/bin/activate",
+        "pip install -r requirements.txt",
+        "streamlit run streamlit_app.py"
+      ]
+    },
+    {
+      "environment_id": "railway_staging",
+      "name": "Railway Staging",
+      "status": "planned",
+      "description": "Free tier staging environment",
+      "configuration": {
+        "platform": "Railway",
+        "monthly_credit": "$5",
+        "database": "PostgreSQL",
+        "auto_scaling": true,
+        "build_command": "pip install -r requirements.txt",
+        "start_command": "streamlit run streamlit_app.py --server.port=$PORT"
+      },
+      "deployment_method": "git_push",
+      "requirements": [
+        "railway.json config file",
+        "Environment variables setup",
+        "PostgreSQL migration scripts"
+      ]
+    },
+    {
+      "environment_id": "production",
+      "name": "Production (Future)",
+      "status": "future",
+      "description": "Production deployment when scaling needed",
+      "configuration": {
+        "platform": "Heroku",
+        "dyno_type": "hobby",
+        "cost_per_month": "$7",
+        "database": "Heroku Postgres",
+        "addon_services": ["logging", "monitoring"]
+      }
+    }
+  ],
+  "containerization": {
+    "docker_support": "planned",
+    "dockerfile_created": false,
+    "container_registry": "ghcr.io",
+    "base_image": "python:3.13-slim"
+  },
+  "ci_cd_pipeline": {
+    "platform": "GitHub Actions",
+    "status": "not_implemented",
+    "workflows": [
+      {
+        "name": "test_and_validate",
+        "trigger": "push_to_main",
+        "steps": ["install_deps", "run_tests", "validate_scrapers", "check_database"]
+      },
+      {
+        "name": "deploy_staging",
+        "trigger": "push_to_main",
+        "steps": ["build", "test", "deploy_railway"]
+      }
+    ],
+    "secrets_required": ["RAILWAY_TOKEN", "DATABASE_URL"]
+  },
+  "database_migration": {
+    "from": "SQLite",
+    "to": "PostgreSQL",
+    "migration_scripts": [],
+    "data_preservation": "full_export_import",
+    "downtime_strategy": "maintenance_window"
+  },
+  "scaling_strategy": {
+    "current_capacity": "single_instance",
+    "bottlenecks": ["browser_automation", "database_writes"],
+    "optimization_opportunities": [
+      "Async scraping implementation",
+      "Connection pooling",
+      "Result caching",
+      "Background job processing"
+    ],
+    "scaling_triggers": [
+      "Response time > 30s",
+      "Memory usage > 512MB",
+      "Concurrent users > 10"
+    ]
+  },
+  "monitoring_integration": {
+    "health_checks": ["app_responsive", "database_accessible", "scrapers_functional"],
+    "logging_level": "INFO",
+    "error_tracking": "planned",
+    "performance_monitoring": "basic"
+  }
+}

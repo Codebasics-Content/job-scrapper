@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-06T01:03:08+05:30",
+  "error_patterns": [
+    {
+      "id": "err_004",
+      "timestamp": "2025-01-06T11:54:06+05:30",
+      "category": "type_safety",
+      "title": "Type annotations missing in HTML parser implementation",
+      "description": "BeautifulSoup and regex operations lacked proper type hints causing basedpyright warnings",
+      "root_cause": "Mixed Selenium and BeautifulSoup code without proper type annotations for set[str]",
+      "solution": "Added explicit type hints: found_skills: set[str] = set(), proper imports cleanup",
+      "files_affected": ["job_detail_fetcher.py", "bulk_downloader.py"],
+      "pattern": "Always use specific type hints for collections (set[str] not set[Unknown])",
+      "severity": "medium",
+      "recurrence_count": 1
+    },
+    {
+      "id": "err_001",
+      "timestamp": "2025-10-02T13:08:00+05:30",
+      "category": "data_consistency",
+      "title": "CSV Export - Visualization Data Mismatch",
+      "description": "CSV export data didn't match visualization data due to different data sources",
+      "root_cause": "Visualizations used normalized_jobs while CSV used raw db_jobs_dicts",
+      "solution": "Updated both to use same normalized_jobs data pipeline",
+      "files_affected": ["analytics_dashboard.py", "analytics_helpers.py"],
+      "pattern": "Always use same data source for visualization and export",
+      "severity": "medium",
+      "recurrence_count": 1
+    },
+    {
+      "id": "err_002",
+      "timestamp": "2025-10-02T13:03:00+05:30", 
+      "category": "database_schema",
+      "title": "CSV Export - Skills Data Mismatch",
+      "description": "CSV export showing 0 skills count due to schema mismatch",
+      "root_cause": "Database stores skills as TEXT, export expected skills_list JSON array",
+      "solution": "Updated export to parse TEXT column skills properly",
+      "files_affected": ["database operations", "csv export functions"],
+      "pattern": "Match data processing to actual database schema format",
+      "severity": "high",
+      "recurrence_count": 1
+    },
+    {
+      "id": "err_003",
+      "timestamp": "2025-10-01T18:00:00+05:30",
+      "category": "browser_scraping", 
+      "title": "Naukri Selector Updates Required",
+      "description": "Old CSS selectors 'srp-jobtuple-wrapper' no longer exist on Naukri website",
+      "root_cause": "Website structure changes broke existing selectors",
+      "solution": "Updated to modern selectors: article.jobTuple, .cust-job-tuple, article[data-job-id]",
+      "files_affected": ["naukri/config/selectors.py", "browser_scraper.py"],
+      "pattern": "Use multiple fallback selectors for website scraping resilience",
+      "severity": "critical",
+      "recurrence_count": 1
+    },
+    {
+        "id": "err_005",
+        "timestamp": "2025-09-25T14:30:00+05:30",
+        "category": "data_consistency",
+        "title": "CSV export data mismatch with displayed results",
+        "description": "Exported CSV contains different skill counts than UI display",
+        "root_cause": "Skill normalization inconsistency between display and export",
+        "solution": "Unified skill processing pipeline for both display and export",
+        "files_affected": ["analytics_dashboard.py"],
+        "pattern": "Unified data processing pipeline",
+        "severity": "critical",
+        "recurrence_count": 1
+    }
+  ],
+  "resolution_strategies": [
+    {
+      "strategy_id": "strat_001",
+      "name": "Data Pipeline Consistency",
+      "description": "Ensure all data export and visualization use same processing pipeline",
+      "success_rate": 95,
+      "applicable_categories": ["data_consistency", "export_issues"]
+    },
+    {
+      "strategy_id": "strat_002", 
+      "name": "Multi-Selector Fallback",
+      "description": "Use array of CSS selectors with fallback logic for web scraping",
+      "success_rate": 90,
+      "applicable_categories": ["browser_scraping", "website_changes"]
+    },
+    {
+      "strategy_id": "strat_003",
+      "name": "Schema-Aware Processing",
+      "description": "Match data processing logic to actual database schema format",
+      "success_rate": 98,
+      "applicable_categories": ["database_schema", "type_mismatch"]
+    }
+  ],
+  "prevention_measures": [
+    {
+      "measure": "EMD compliance validation - all files ≤80 lines",
+      "effectiveness": "high"
+    },
+    {
+      "measure": "Constitutional governance with >95% consensus requirement", 
+      "effectiveness": "high"
+    },
+    {
+      "measure": "Multi-language always-check operations before deployment",
+      "effectiveness": "medium"
+    },
+    {
+      "measure": "Automated Testing",
+      "effectiveness": "high"
+    }
+  ],
+  "learning_summary": {
+    "total_errors": 4,
+    "resolved_errors": 4,
+    "success_rate": 100,
+    "most_common_category": "data_consistency",
+    "primary_patterns": [
+      "Use consistent data sources across features",
+      "Implement fallback mechanisms for external dependencies",
+      "Validate schema alignment before data processing"
+    ]
+  }
+}

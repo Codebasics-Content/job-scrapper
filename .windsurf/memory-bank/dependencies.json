@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-06T01:09:55+05:30",
+  "dependency_management": {
+    "package_manager": "pip",
+    "python_version": "3.13.3",
+    "virtual_environment": "venv",
+    "requirements_file": "requirements.txt"
+  },
+  "production_dependencies": {
+    "core_framework": {
+      "streamlit": "1.39.0",
+      "purpose": "Web application framework for UI",
+      "critical": true
+    },
+    "web_scraping": {
+      "selenium": "4.26.0",
+      "undetected-chromedriver": "3.5.5",
+      "requests": "2.32.3",
+      "purpose": "Browser automation and HTTP requests",
+      "critical": true
+    },
+    "data_processing": {
+      "pandas": "2.2.3",
+      "skillNer": "1.0.4",
+      "spacy": "3.8.2",
+      "jellyfish": "1.1.0",
+      "purpose": "Data manipulation and skill extraction",
+      "critical": true
+    },
+    "validation": {
+      "pydantic": "2.9.2",
+      "purpose": "Type validation and runtime checking",
+      "critical": true
+    },
+    "utilities": {
+      "fake-useragent": "1.5.1",
+      "purpose": "Anti-bot detection evasion",
+      "critical": false
+    }
+  },
+  "development_dependencies": {
+    "type_checking": {
+      "basedpyright": "1.21.0",
+      "purpose": "Strict type checking (stricter than mypy)",
+      "critical": true
+    },
+    "testing": {
+      "pytest": "8.3.3",
+      "purpose": "Testing framework",
+      "critical": false
+    }
+  },
+  "vulnerability_analysis": {
+    "last_scan": "2025-10-06T01:09:55+05:30",
+    "high_vulnerabilities": 0,
+    "medium_vulnerabilities": 0,
+    "low_vulnerabilities": 0,
+    "scan_tool": "pip-audit",
+    "status": "clean"
+  },
+  "license_compatibility": {
+    "project_license": "MIT",
+    "incompatible_licenses": [],
+    "all_compatible": true,
+    "license_check_status": "passed"
+  },
+  "version_constraints": {
+    "python_minimum": "3.11",
+    "python_tested": "3.13.3",
+    "pin_strategy": "exact_versions",
+    "update_frequency": "monthly"
+  },
+  "dependency_graph": {
+    "direct_dependencies": 8,
+    "transitive_dependencies": 45,
+    "total_size_mb": 180,
+    "conflicts_detected": 0
+  }
+}

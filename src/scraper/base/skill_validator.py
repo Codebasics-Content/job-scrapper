@@ -92,3 +92,10 @@ def validate_extracted_skills(
     )
     
     return validated_skills
+
+class SkillValidator:
+    """Skill validation service for extracting and validating job skills"""
+    
+    def validate_skills(self, skills: list[str], job_description: str) -> list[str]:
+        """Validate skills against job description text"""
+        return validate_extracted_skills(skills, job_description)

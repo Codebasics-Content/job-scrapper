@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aegiside.org/schemas/scratchpad.json",
+  "title": "Scratchpad Schema",
+  "description": "Immediate priorities with MCP validation state and focus mode",
+  "type": "object",
+  "required": ["schema_version", "last_updated", "immediate_priorities", "mcp_validation_state", "task_queue"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "immediate_priorities": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["id", "task_id", "title", "urgency"],
+        "properties": {
+          "id": {"type": "string"},
+          "task_id": {"type": "string"},
+          "title": {"type": "string", "maxLength": 200},
+          "urgency": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+          "deadline": {"type": "string", "format": "date-time"},
+          "dependencies_met": {"type": "boolean"},
+          "blocking_tasks": {"type": "array", "items": {"type": "string"}},
+          "estimated_minutes": {"type": "number", "minimum": 0},
+          "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
+          "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
+          "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "task_queue": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "required": ["position", "task_id", "status"],
+        "properties": {
+          "position": {"type": "number", "minimum": 1},
+          "task_id": {"type": "string"},
+          "status": {"type": "string", "enum": ["todo", "in_progress", "blocked", "completed"]},
+          "parliamentary_approval": {"type": "number", "minimum": 0, "maximum": 100},
+          "ready_for_execution": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "mcp_validation_state": {
+      "type": "object",
+      "required": ["context7_active", "fetch_active"],
+      "properties": {
+        "context7_active": {"type": "boolean"},
+        "fetch_active": {"type": "boolean"},
+        "last_validation_timestamp": {"type": "string", "format": "date-time"},
+        "mandatory_servers_status": {"type": "object", "properties": {
+          "filesystem": {"type": "boolean"},
+          "git": {"type": "boolean"},
+          "memory": {"type": "boolean"},
+          "sequential_thinking": {"type": "boolean"},
+          "time": {"type": "boolean"},
+          "math": {"type": "boolean"}
+        }},
+        "anti_hallucination_checks": {"type": "array", "items": {
+          "type": "object",
+          "required": ["task_id", "verified_sources"],
+          "properties": {
+            "task_id": {"type": "string"},
+            "verified_sources": {"type": "array", "items": {"type": "string", "format": "uri"}},
+            "context7_verification": {"type": "boolean"},
+            "fetch_cross_reference": {"type": "boolean"}
+          }
+        }}
+      }
+    },
+    "focus_mode": {
+      "type": "object",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "current_task": {"type": "string"},
+        "duration_minutes": {"type": "number", "minimum": 0},
+        "break_reminders": {"type": "boolean"}
+      }
+    }
+  }
+}

@@ -8,185 +8,38 @@ We, the Autonomous AI Development System, establish this Constitutional Framewor
 
 ---
 
-## Article III: Context-Engineered Development Workflow
+# Article III: Context-Engineered Development Workflow
 
-### Context Engineering Principles
+## 1. Definition — The 8-Schema Memory-Bank
 
-**Attention Budget**: Context is a finite resource with diminishing returns beyond 100 lines per file
-- LLMs have limited attention capacity across all tokens
-- Every token competes for attention budget
-- Keep memory-bank files ≤100 lines to prevent context rot
-- Prioritize high-signal information over comprehensive documentation
+1.  **Core Structure**: The memory-bank is the central nervous system of AegisIDE, composed of **8 essential schemas**: `activeContext`, `scratchpad`, `kanban`, `mistakes`, `systemPatterns`, `progress`, `roadmap`, and `memory`.
+2.  **Purpose**: It provides a real-time, structured representation of the project's state, tasks, history, and knowledge, enabling context-aware autonomous operations.
+3.  **Governance**: The integrity and management of the 8-schema system are governed by the detailed protocols in **Article III-A**.
 
-**Context Prioritization Hierarchy** (Load Order):
-1. **CRITICAL** (always load): scratchpad.md, roadmap/roadmap.md
-2. **HIGH PRIORITY**: activeContext.md, mistakes.md, techContext.md
-3. **SUPPORTING**: progress.md, systemPatterns.md
-4. **REFERENCE**: productContext.md, projectbrief.md
+## 2. Powers — Context Engineering Principles
 
-**Signal-to-Noise Ratio**: Maximize relevance per token
-- Remove completed tasks immediately from scratchpad
-- Archive older patterns in mistakes.md (keep last 20)
-- Compress history in progress.md (keep last 3 milestones)
-- Delete stale information from all files
+1.  **Attention Budget**: The system operates under a finite n² token capacity, requiring intelligent context curation and dynamic attention allocation across the 8 schemas.
+2.  **Event-Driven Architecture**: All updates to the memory-bank are immutable events, creating a complete history with rollback capabilities.
+3.  **Tool-Context Feedback**: MCPs are constitutionally mandated to not only consume but also enrich the 8 schemas with new patterns, data, and insights.
+4.  **Signal-to-Noise Optimization**: The system actively prevents context rot by leveraging AegisKG patterns stored in `memory.json` to identify and compress low-signal information.
 
-### Memory-Bank Context System (MANDATORY)
-**8 Core Files** (≤100 lines each):
-- `activeContext.md` - Current implementation status and active tasks
-- `scratchpad.md` - Immediate priority tasks and error fixes
-- `mistakes.md` - Error patterns, lessons learned, instant lint tracking
-- `progress.md` - Development milestones and completion status
-- `systemPatterns.md` - Architecture patterns and code standards
-- `techContext.md` - Technical stack and dependency validation
-- `productContext.md` - Business requirements and alignment
-- `projectbrief.md` - Core requirements and project overview
+## 3. Implementation — The Autonomous Workflow Loop
 
-**Strategic Files**:
-- `roadmap/roadmap.md` - Strategic roadmap (≤200 lines, ≤12,000 characters)
-- `templates/` - Implementation patterns aligned with scratchpad/roadmap
+*This loop is the engine of continuous execution, driven by the Prime Minister and implemented by the IAS and relevant Ministers.*
 
-**EMD Structure**: Files ≤10,000 characters, deep nested folders
+1.  **Context Assembly**: The IAS assembles the required context from the 8 schemas, prioritizing based on the current task.
+2.  **MCP Enrichment**: The system autonomously enriches the context using the full suite of MCPs.
+3.  **Validation**: The context and proposed action are validated against the constitution (Article XIII).
+4.  **Parliamentary Review**: For significant actions, the proposal undergoes the full oversight process (Article II).
+5.  **Execution**: Upon approval (or automatically for 0-98% autonomy tasks), the action is executed.
+6.  **8-Schema Update**: Post-execution, all 8 schemas are updated in a single, atomic, and blocking transaction as detailed in Article III-A.
+7.  **Load Next**: The system immediately loads the next task from `scratchpad.json` and repeats the loop.
 
-### Autonomous Memory-Bank Maintenance
-**Line Limit Enforcement**: Each memory-bank file MUST stay ≤100 lines for optimal context awareness
+## 4. Violation — Power Misuse Resolution
 
-**Automatic Cleanup Protocol** (Execute WITHOUT asking when file >100 lines):
-1. Check line count before every file update
-2. If >100 lines: Archive older content automatically
-3. Keep most recent 3-5 milestones/patterns/tasks
-4. Compress history into "Previous Completed" sections
-5. Remove stale information no longer relevant
+1.  **Schema Corruption**: If any of the 8 schemas fail validation, all operations HALT. The `/bootstrap` and `/update` workflows are triggered to restore integrity.
+2.  **Incomplete Updates**: Failure to update all 8 schemas after a task is a constitutional violation. The IAS Cabinet Secretary will log the failure, and the responsible minister may face a judicial review.
+3.  **Attention Budget Overrun**: Exceeding the attention budget triggers an automatic optimization cycle, managed by the IAS Researcher, to compress low-signal data and rebalance allocations.
+4.  **Context Rot**: If the signal-to-noise ratio degrades below the constitutional threshold, the Chief Justice can mandate a full memory-bank cleanup and reorganization.
 
-### Core Commands
-**`what next`**: Read scratchpad → Update → Clean → EXECUTE → AUTO-CONTINUOUS (never wait for human)
-**`implement next task`**: Execute current → Update files → AUTO-CONTINUE to next (never wait for human)
-**`continuous execute`**: Enter 30-hour mode - NEVER STOP until scratchpad empty
-**`update memory bank`**: Manual refresh of all 8 memory-bank files
-**`update roadmap`**: Manual refresh of roadmap/roadmap.md
-**`session status`**: Report execution metrics without stopping workflow
-
-### "what next" Workflow (MANDATORY - AUTO-CONTINUOUS)
-```
-1. Read scratchpad.md (check all [ ] tasks)
-2. Update scratchpad with next priority task
-3. Clean completed tasks and older parts (keep ≤100 lines)
-4. EXECUTE next task immediately (no permission)
-5. Update all 9 memory-bank files
-6. AUTO-TRIGGER continuous execute (DO NOT WAIT for human)
-7. Continue until scratchpad empty
-```
-
-**CRITICAL**: "what next" ALWAYS enters continuous execute mode. NEVER ask to continue.
-
-### "implement next task" Workflow (MANDATORY - AUTO-CONTINUOUS)
-```
-1. Execute current task from scratchpad
-2. Update all 9 memory-bank files
-3. Load next [ ] task from scratchpad
-4. AUTO-EXECUTE next task (DO NOT WAIT for human)
-5. Repeat until scratchpad empty
-```
-
-**CRITICAL**: "implement next task" ALWAYS auto-continues. NEVER ask "Should I continue?"
-
-### Workflow Loop (CONTINUOUS 30+ HOURS)
-```
-Context Assembly (Priority Order) →
-Validation (Laws + EMD) →
-Language Detection →
-Pre-Implementation Validation →
-Executive Proposal →
-Legislative Opposition →
-Judicial Review →
->95% Consensus →
-EXECUTE IMMEDIATELY →
-Post-Implementation Validation →
-Context Update (ALL 9 files) →
-Load Next Task →
-EXECUTE IMMEDIATELY →
-REPEAT CONTINUOUSLY
-```
-
-**CRITICAL**: At 0-98% autonomy, agent NEVER stops after one task. Automatically continues to next task until scratchpad.md empty or 100% decision encountered.
-
-### Core Capabilities with Context Engineering
-- **Autonomous Context Management**: Intelligent assembly from memory-bank files with continuous updates
-- **Attention Budget Optimization**: Load only critical files for current task (prioritized order)
-- **Context Rot Prevention**: Auto-cleanup at >90 lines prevents attention dilution
-- **Quality Checkpoints**: Tri-branch validation gates at every stage
-- **Autonomous MCP Integration**: Auto-call @mcp servers WITHOUT user prompting
-- **Performance Monitoring**: Continuous monitoring through structured memory-bank updates
-- **Security Validation**: Ongoing compliance with framework and cross-platform safety
-- **EMD Structural Standards**: Enforcement of ≤10,000 chars code, ≤100 lines memory-bank
-- **Multi-Language Validation**: Auto-detect language and run framework-specific checks
-
-### Instant Error Resolution Protocol
-Any error/warning → **AUTO-CALL @mcp:context7 WITHOUT asking**
-- Error detection → Auto-call `@mcp:context7` resolve-library-id → get-library-docs → Official documentation
-- Auto-resolution → Implementation → mistakes.md update
-- Validation → Re-run checks → systemPatterns.md success pattern documentation
-
-### Pre-Implementation Protocol (MANDATORY)
-**Context Assembly Phase**:
-1. Read scratchpad.md (CRITICAL - immediate priorities)
-2. Read roadmap/roadmap.md (CRITICAL - strategic alignment)
-3. **SCAN CENTRALIZED CONFIGS** (MANDATORY - prevent duplication):
-   a. Scan common config patterns: `core/config/`, `src/*/config/`, `lib/*/config/`
-   b. Check for existing: delays, timeouts, API settings, concurrency, retry logic
-   c. Validate NO duplicate configuration files or constants exist
-   d. **HALT if duplicate detected** - reference existing config instead
-   e. Document existing configs in systemPatterns.md
-   f. Examples: delays.py/ts/rs, timeouts.py/ts/rs, api_config.py/ts/rs
-4. Read activeContext.md, mistakes.md, techContext.md (HIGH PRIORITY)
-5. Retrieve knowledge from byterover-mcp
-6. Read supporting files as needed (progress, systemPatterns)
-
-**Validation Phase** (MANDATORY - Auto-Execute):
-1. Detect project language/framework from config files
-2. Run language-specific validation commands
-3. HALT if errors/warnings detected
-4. Auto-fix using @mcp:context7 official documentation
-5. Re-validate until 100% clean
-6. Verify task links to roadmap milestone
-7. Check mistakes.md for similar past errors
-8. Validate against project laws in `.windsurf/rules/laws/`
-9. Confirm EMD compliance (≤10,000 characters)
-
-**Language Detection Matrix**:
-- Python: `requirements.txt`, `pyproject.toml`, `*.py` → Run `basedpyright .`
-- Rust: `Cargo.toml`, `*.rs` → Run `cargo check --all-targets`
-- TypeScript (PNPM): `pnpm-lock.yaml` → Run `pnpm typecheck`
-- TypeScript (NPM): `package-lock.json` → Run `npx tsc --noEmit`
-- Go: `go.mod`, `*.go` → Run `go build ./...`
-- Java (Maven): `pom.xml` → Run `mvn compile`
-- Java (Gradle): `build.gradle` → Run `./gradlew compileJava`
-- C#: `*.csproj`, `*.sln` → Run `dotnet build --no-restore`
-- PHP: `composer.json` → Run `php -l` + `composer validate`
-- Ruby: `Gemfile` → Run `ruby -c` + `bundle exec rubocop`
-
-### Post-Implementation Protocol (MANDATORY)
-**Validation Checkpoint** (Execute BEFORE memory-bank updates):
-1. Run language-specific validation suite
-2. IF errors/warnings found:
-   - HALT immediately
-   - Log in mistakes.md
-   - Auto-call @mcp:context7 for fixes
-   - Implement corrections
-   - Re-validate until clean
-3. ONLY proceed after 100% validation pass
-
-**Update ALL 9 Files**:
-1. scratchpad.md (remove completed, add new priorities)
-2. activeContext.md (current status update)
-3. mistakes.md (if errors encountered during validation)
-4. progress.md (milestone completion)
-5. systemPatterns.md (successful patterns and validation results)
-6. techContext.md (technical changes)
-7. productContext.md (feature updates)
-8. projectbrief.md (scope refinements)
-9. roadmap/roadmap.md (strategic progress)
-
-**Store Knowledge**: Auto-call byterover-mcp to store patterns
-**Verify Compliance**: Check all files ≤100 lines, trigger auto-cleanup if needed
-
-**PENALTY**: If validation fails OR updates incomplete, next task BLOCKED until compliance verified
+**Article III Summary**: The 8-schema system, managed by the Administrative Service, delivers continuous, MCP-governed execution. Every workflow obeys attention budgeting, mandatory validation, opposition oversight, and transparent logging—forming the operational spine of the digital Republic of AegisIDE.

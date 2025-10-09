@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-08T11:44:00+05:30",
+  "description": "Common LLM mistakes when calling tools - learned from real failures",
+  
+  "critical_mistakes": {
+    "stringified_arrays": {
+      "severity": "HIGH",
+      "description": "Passing JSON string instead of actual array object",
+      "examples": [
+        {
+          "tool": "replace_file_content",
+          "wrong": "{\"ReplacementChunks\": \"[{\\\"TargetContent\\\"...}]\"}",
+          "correct": "{\"ReplacementChunks\": [{\"TargetContent\": ...}]}",
+          "detection": "@mcp:sequential-thinking type validation before call",
+          "storage": "@mcp:memory stores pattern to prevent repetition"
+        },
+        {
+          "tool": "mcp3_edit_file",
+          "wrong": "{\"edits\": \"[{\\\"oldText\\\"...}]\"}",
+          "correct": "{\"edits\": [{\"oldText\": ...}]}",
+          "prevention": "Tool schema expects array, not string"
+        }
+      ],
+      "mcp_prevention": {
+        "pre_call": "@mcp:memory check if similar mistake logged",
+        "validation": "@mcp:sequential-thinking verify parameter types",
+        "logging": "@mcp:filesystem update mistakes.json on occurrence"
+      }
+    },
+
+    "silent_edit_failures": {
+      "severity": "CRITICAL",
+      "description": "Tool claims success but changes not applied",
+      "detection_protocol": [
+        "@mcp:git diff immediately after edit",
+        "@mcp:filesystem read file to verify content",
+        "@mcp:time timestamp comparison before/after",
+        "@mcp:memory log discrepancy for pattern analysis"
+      ],
+      "common_causes": [
+        "TargetContent whitespace mismatch",
+        "File encoding issues (UTF-8 vs UTF-16)",
+        "Concurrent file access conflicts",
+        "Insufficient file permissions"
+      ],
+      "mandatory_verification": {
+        "step_1": "@mcp:git status after ANY file modification",
+        "step_2": "@mcp:filesystem get_file_info check mtime",
+        "step_3": "@mcp:context7 if mismatch, research failure cause"
+      }
+    },
+
+    "incorrect_edits_without_error": {
+      "severity": "CRITICAL",
+      "description": "Wrong edit applied silently without error message",
+      "examples": [
+        {
+          "intended": "Replace function name in one location",
+          "actual": "Replaced in wrong file or wrong function",
+          "cause": "Ambiguous TargetContent match",
+          "prevention": "@mcp:filesystem read exact context before edit"
+        }
+      ],
+      "recovery": {
+        "immediate": "@mcp:git revert HEAD~1",
+        "analysis": "@mcp:context7 why wrong match occurred",
+        "learning": "@mcp:memory store ambiguous pattern to avoid",
+        "retry": "@mcp:sequential-thinking break into precise smaller edits"
+      }
+    },
+
+    "malformed_edit_errors": {
+      "severity": "HIGH",
+      "description": "Cascade error: Model produced a malformed edit",
+      "root_causes": [
+        "Complex TargetContent with special characters",
+        "Multi-line strings with inconsistent whitespace",
+        "Escaped quotes or backslashes in content",
+        "Unicode characters causing encoding issues"
+      ],
+      "solutions": {
+        "simplify": "@mcp:sequential-thinking break into smaller atomic edits",
+        "escape": "@mcp:context7 check proper escaping for language",
+        "alternative": "Switch to mcp3_write_file for complete rewrites",
+        "validation": "@mcp:memory retrieve successful similar edits"
+      }
+    },
+
+    "tool_not_called": {
+      "severity": "MEDIUM",
+      "description": "LLM plans to use tool but never calls it",
+      "causes": [
+        "Tool blacklisted from previous failures",
+        "Incorrect tool name in plan vs actual",
+        "Conditional logic preventing execution",
+        "Context window exhaustion before call"
+      ],
+      "detection": {
+        "monitor": "@mcp:time track time between plan and execution",
+        "verify": "@mcp:memory check if tool call logged",
+        "alert": "If plan mentions tool but not called within 30 seconds"
+      },
+      "resolution": {
+        "explicit": "State tool call explicitly instead of implicitly",
+        "immediate": "Call tool immediately after planning",
+        "fallback": "@mcp:sequential-thinking evaluate alternative tools"
+      }
+    },
+
+    "path_errors": {
+      "severity": "MEDIUM",
+      "description": "Relative paths instead of absolute, or wrong directory",
+      "prevention": {
+        "validation": "@mcp:filesystem always verify path exists before use",
+        "normalization": "Convert relative to absolute with @mcp:filesystem",
+        "verification": "@mcp:git check working directory before operations"
+      },
+      "common_patterns": [
+        {
+          "wrong": "./src/file.ts (relative)",
+          "correct": "/absolute/path/to/src/file.ts",
+          "tool": "@mcp:filesystem list_directory to get absolute paths"
+        }
+      ]
+    }
+  },
+
+  "tool_specific_pitfalls": {
+    "replace_file_content": [
+      "TargetContent must match EXACTLY including all whitespace",
+      "AllowMultiple=false fails if TargetContent appears twice",
+      "Large files (>10KB) may cause timeout",
+      "Non-ASCII characters require UTF-8 encoding verification"
+    ],
+    
+    "mcp3_write_file": [
+      "Overwrites existing files WITHOUT warning",
+      "Must create parent directories first",
+      "No undo capability - use git before write",
+      "Binary files not supported - text only"
+    ],
+
+    "run_command": [
+      "SafeToAutoRun=true only for read-only commands",
+      "Cwd must be absolute path, not relative",
+      "Environment variables not inherited automatically",
+      "Blocking=false may miss error messages"
+    ],
+
+    "grep_search": [
+      "IsRegex=true requires escaped special chars",
+      "Large repos timeout - use Includes to filter",
+      "Case sensitivity can miss matches",
+      "Empty results may indicate wrong SearchPath"
+    ]
+  },
+
+  "learning_integration": {
+    "on_mistake": {
+      "immediate": "@mcp:filesystem append to mistakes.json",
+      "analysis": "@mcp:context7 research root cause",
+      "storage": "@mcp:memory store pattern with metadata",
+      "prevention": "@mcp:sequential-thinking add validation step"
+    },
+    "pattern_recognition": {
+      "frequency": "@mcp:math calculate mistake occurrence rate",
+      "clustering": "@mcp:memory group similar mistakes",
+      "trends": "@mcp:time track if mistakes increasing/decreasing",
+      "reporting": "Generate monthly mistake summary for improvement"
+    }
+  },
+
+  "constitutional_compliance": {
+    "article_reference": "Article XV: Tool Usage & Error Prevention",
+    "mistake_tolerance": "ZERO - All mistakes must be logged and learned from",
+    "enforcement": "@mcp:filesystem blocks next task until mistake documented"
+  }
+}

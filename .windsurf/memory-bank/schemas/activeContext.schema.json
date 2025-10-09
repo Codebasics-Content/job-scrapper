@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aegiside.org/schemas/activeContext.json",
+  "title": "Active Context Schema",
+  "$defs": {
+    "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
+    "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
+    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
+    "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
+  },
+  "description": "Real-time execution state with event tracking",
+  "type": "object",
+  "required": ["schema_version", "last_updated", "current_implementation", "ai_state", "session_management", "mcp_integration"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of schema"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last update"
+    },
+    "current_implementation": {
+      "type": "object",
+      "required": ["active_task_id", "current_phase", "progress_percentage"],
+      "properties": {
+        "active_task_id": {"type": "string"},
+        "current_phase": {"type": "string", "enum": ["planning", "implementation", "testing", "review", "deployment"]},
+        "progress_percentage": {"type": "number", "minimum": 0, "maximum": 100},
+        "started_at": {"type": "string", "format": "date-time"},
+        "estimated_completion": {"type": "string", "format": "date-time"}
+      }
+    },
+    "event_tracking": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "required": ["id", "timestamp", "type", "task_id", "mcp_integration"],
+        "properties": {
+          "id": {"type": "string"},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "type": {"type": "string"},
+          "task_id": {"type": "string"},
+          "description": {"type": "string"},
+          "context": {"type": "object"},
+          "mcp_integration": {
+            "type": "object",
+            "required": ["context7_active", "fetch_active", "memory_active"],
+            "properties": {
+              "context7_active": {"type": "boolean"},
+              "fetch_active": {"type": "boolean"},
+              "memory_active": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    },
+    "current_context": {
+      "type": "object",
+      "properties": {
+        "working_files": {"type": "array", "items": {"type": "string"}},
+        "open_connections": {"type": "array", "items": {"type": "string"}},
+        "active_processes": {"type": "array", "items": {"type": "string"}},
+        "memory_references": {
+          "type": "object",
+          "properties": {
+            "related_patterns": {"type": "array", "items": {"type": "string"}},
+            "similar_tasks": {"type": "array", "items": {"type": "string"}},
+            "blocking_issues": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "ai_state": {
+      "type": "object",
+      "required": ["current_minister", "checkpoint_status"],
+      "properties": {
+        "current_minister": {"type": "string", "enum": ["project_manager", "dev_minister", "tech_minister", "quality_shadow", "innovation_shadow", "analytics_shadow", "chief_justice"]},
+        "active_shadows": {"type": "array", "items": {"type": "string"}},
+        "checkpoint_status": {"type": "string"},
+        "next_validation": {"type": "string", "format": "date-time"}
+      }
+    },
+    "session_management": {
+      "type": "object",
+      "required": ["session_id", "ide_type"],
+      "properties": {
+        "session_id": {"type": "string"},
+        "ide_type": {"type": "string", "enum": ["claude_desktop", "windsurf", "vscode", "cursor", "jetbrains"]},
+        "workspace_path": {"type": "string"},
+        "connected_at": {"type": "string", "format": "date-time"},
+        "last_sync": {"type": "string", "format": "date-time"}
+      }
+    },
+    "linkage": {
+      "type": "object",
+      "description": "Cross-file identifiers linking active context to other memory-bank entities",
+      "properties": {
+        "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
+        "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
+        "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
+        "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
+      },
+      "additionalProperties": false
+    },
+    "mcp_integration": {
+      "type": "object",
+      "required": ["mandatory_mcps_active"],
+      "properties": {
+        "mandatory_mcps_active": {"type": "array", "minItems": 8, "items": {"type": "string", "enum": ["context7", "fetch", "filesystem", "git", "memory", "sequential-thinking", "time", "math"]}},
+        "last_context7_call": {"type": "string", "format": "date-time"},
+        "anti_hallucination_active": {"type": "boolean"},
+        "verified_sources_count": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

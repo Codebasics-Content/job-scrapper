@@ -51,6 +51,29 @@ ELEMENT_SELECTORS = {
         ".job-post-day",
         ".postedDate",
         ".posted-date"
+    ],
+    "job_description": [
+        "/html/body/div/div/main/div[1]/div[1]/section[2]/div[2]/div[1]"
+    ],
+    "company_details": [
+        "/html/body/div/div/main/div[1]/div[1]/section[3]/div[1]"
+    ],
+    "salary_range": [
+        ".sal-wrap",
+        ".salary",
+        ".sal",
+        ".salary-info",
+        ".package",
+        "[data-qa='salary']",
+        "li.exp-salary .sal"
+    ],
+    "posted_date_element": [
+        ".job-post-day",
+        ".postedDate", 
+        ".posted-date",
+        ".job-posted",
+        ".date-posted",
+        "[data-qa='posted-date']"
     ]
 }
 

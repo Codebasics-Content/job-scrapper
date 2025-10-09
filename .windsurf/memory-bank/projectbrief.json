@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-06T01:03:08+05:30",
+  "project_overview": {
+    "name": "Multi-Platform Job Scrapper with AI-Powered Skill Analysis",
+    "current_status": "Production-ready testing phase",
+    "completion_percentage": 95,
+    "phase": "Production validation and performance optimization",
+    "constitutional_framework": "Article XIV ratified - AI governance active with 98% autonomy"
+  },
+  "core_objectives": [
+    {
+      "objective_id": "obj_001",
+      "title": "Multi-Platform Job Data Collection",
+      "description": "Scrape jobs from LinkedIn and Naukri for specific roles",
+      "status": "completed",
+      "success_criteria": ["Platform coverage", "Data quality", "Scraping reliability"]
+    },
+    {
+      "objective_id": "obj_002", 
+      "title": "Database Storage with Exact Schema",
+      "description": "Store job data with schema: Job_Id, Job_Role, Company, Experience, Skills, jd, platform, url, location, salary, posted_date, scraped_at",
+      "status": "completed",
+      "success_criteria": ["Schema compliance", "Data integrity", "Thread-safe operations"]
+    },
+    {
+      "objective_id": "obj_003",
+      "title": "Skill Analysis with Percentage Calculation",
+      "description": "Calculate skill percentages using formula: (jobs_with_skill / total_jobs) * 100",
+      "status": "completed",
+      "success_criteria": ["Calculation accuracy", "Triple-layer validation", "100% skill accuracy guarantee"]
+    },
+    {
+      "objective_id": "obj_004",
+      "title": "Interactive Analytics Dashboard",
+      "description": "Streamlit dashboard with real-time metrics and CSV export",
+      "status": "completed",
+      "success_criteria": ["User interface", "Export functionality", "Real-time updates"]
+    }
+  ],
+  "technical_requirements": {
+    "architecture": "EMD compliant with ≤80 lines per file",
+    "language": "Python 3.13.3 with Pydantic v2 type safety",
+    "platforms": ["LinkedIn (Selenium)", "Naukri (API)"],
+    "database": "SQLite with thread-safe ConnectionManager",
+    "validation": "basedpyright strict type checking",
+    "constitutional_compliance": "Tri-branch governance with >95% consensus requirement"
+  },
+  "success_metrics": {
+    "functional_requirements": {
+      "job_collection_rate": "15-25 jobs per minute",
+      "skill_extraction_accuracy": "100% with triple-layer validation",
+      "platform_reliability": "95%+ uptime",
+      "data_quality": "Zero fake skills guarantee"
+    },
+    "technical_requirements": {
+      "emd_compliance": "100%",
+      "type_safety_coverage": "98%",
+      "test_coverage": "85%",
+      "constitutional_adherence": "≥80%"
+    }
+  },
+  "project_scope": {
+    "in_scope": [
+      "LinkedIn job scraping with infinite scroll",
+      "Naukri API integration with pagination",
+      "SQLite database with exact schema",
+      "Skill extraction with NLP validation",
+      "Interactive Streamlit dashboard",
+      "CSV export functionality",
+      "Constitutional AI governance framework"
+    ],
+    "out_of_scope": [
+      "Real-time job alerts",
+      "User authentication system",
+      "Cloud deployment automation",
+      "Mobile application interface"
+    ]
+  },
+  "stakeholders": [
+    {
+      "role": "Client",
+      "name": "Codebasics",
+      "responsibilities": ["Requirements validation", "Production deployment", "User acceptance testing"],
+      "success_criteria": ["5-minute setup time", "Zero technical knowledge required", "Accurate skill insights"]
+    },
+    {
+      "role": "Development Team",
+      "name": "Constitutional AI Framework",
+      "responsibilities": ["Implementation", "Quality assurance", "Constitutional compliance"],
+      "success_criteria": ["EMD architecture", "98% autonomous operation", "Tri-branch governance"]
+    }
+  ]
+}

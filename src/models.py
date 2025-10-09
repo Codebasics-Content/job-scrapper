@@ -35,6 +35,7 @@ class JobModel(BaseModel):
     experience: str = Field(..., alias="Experience", description="Experience requirement")
     skills: str = Field(..., alias="Skills", description="Comma-separated skills")
     jd: str = Field(..., description="Job description text")
+    company_detail: str = Field(default="", description="Company detail from companyDetail.details")
     
     # Additional Fields for Processing
     platform: str = Field(..., description="Source platform (LinkedIn)")
@@ -82,6 +83,7 @@ class JobModel(BaseModel):
             'Experience': self.experience,
             'Skills': self.skills,
             'jd': self.jd,
+            'company_detail': self.company_detail,
             'platform': self.platform,
             'location': self.location or '',
             'salary': self.salary or '',

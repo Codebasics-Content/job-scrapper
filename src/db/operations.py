@@ -43,12 +43,12 @@ class JobStorageOperations:
                     cursor = conn.execute("""
                         INSERT OR REPLACE INTO jobs 
                         (job_id, job_role, company, experience, skills, 
-                         jd, platform, url, location, salary, posted_date)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                         jd, company_detail, platform, url, location, salary, posted_date)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """, (
                         job.job_id, job.job_role, job.company,
                         job.experience, job.skills, job.jd,
-                        job.platform, job.url, job.location,
+                        job.company_detail, job.platform, job.url, job.location,
                         job.salary, job.posted_date
                     ))
                     if cursor:

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServeUPSC Memory Bank Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-gray-100">
+    <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50 backdrop-blur-sm bg-opacity-95">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">🧠 Memory Bank Dashboard</h1>
+                    <p class="text-sm text-gray-500 mt-1">Real-time visualization of ServeUPSC memory-bank system</p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="loadAll()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors">
+                        🔄 Force Update
+                    </button>
+                    <button id="autoBtn" onclick="toggleAuto()" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg font-medium transition-colors">
+                        ⚡ Real-time: OFF
+                    </button>
+                </div>
+            </div>
+            <div class="mt-2 text-xs text-gray-600" id="status">🚀 Loading dashboard...</div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8 space-y-8" id="dashboard">
+        <div class="text-center text-gray-400">⏳ Initializing components...</div>
+    </div>
+
+    <script>
+        let data = {};
+        let lastModified = {};
+        let autoRefresh = null;
+        let updatePending = false;
+
+        async function loadData() {
+            const jsonFiles = [
+                '/activeContext.json',
+                '/scratchpad.json', 
+                '/mistakes.json',
+                '/progress.json',
+                '/systemPatterns.json',
+                '/roadmap.json',
+                '/kanban.json'
+            ];
+
+            console.log('📡 Loading JSON files...');
+            const results = {};
+            const changedFiles = [];
+            
+            for (const file of jsonFiles) {
+                const fileName = file.substring(1);
+                try {
+                    const response = await fetch(`..${file}`, {
+                        cache: 'no-cache',
+                        headers: {
+                            'Cache-Control': 'no-cache'
+                        }
+                    });
+                    if (!response.ok) {
+                        console.warn(`⚠️ Failed to load ${fileName}: ${response.status}`);
+                        results[fileName] = null;
+                        continue;
+                    }
+                    
+                    const lastMod = response.headers.get('Last-Modified') || new Date().toISOString();
+                    const json = await response.json();
+                    
+                    // Check if file actually changed
+                    if (lastModified[fileName] !== lastMod || JSON.stringify(data[fileName]) !== JSON.stringify(json)) {
+                        results[fileName] = json;
+                        lastModified[fileName] = lastMod;
+                        changedFiles.push(fileName);
+                        console.log(`🔄 ${fileName} changed`);
+                    } else {
+                        results[fileName] = data[fileName]; // Keep existing
+                    }
+                } catch (error) {
+                    console.error(`❌ Error loading ${fileName}:`, error);
+                    results[fileName] = null;
+                }
+            }
+            
+            const successCount = Object.values(results).filter(v => v !== null).length;
+            console.log(`📊 Data loading complete: ${successCount}/${jsonFiles.length} files loaded`);
+            return { results, changedFiles };
+        }
+
+        function generateOverviewStats() {
+            const progress = data['progress.json'] || {};
+            const milestones = progress.milestone_tracking || [];
+            const totalCompleted = milestones.filter(m => m.status === 'completed').length;
+            const totalInProgress = milestones.filter(m => m.status === 'in_progress').length;
+            const complianceScore = progress.constitutional_metrics?.compliance_score || 0;
+            
+            const kanban = data['kanban.json'] || {};
+            const columns = kanban.columns || {};
+            const tasksCompleted = (columns.approved?.task_ids || []).length;
+            const tasksInProgress = (columns.in_progress?.task_ids || []).length;
+            const tasksPending = (columns.todo?.task_ids || []).length;
+            
+            const currentSprint = progress.current_sprint || {};
+            const sprintProgress = currentSprint.planned_points > 0 
+                ? Math.round((currentSprint.completed_points / currentSprint.planned_points) * 100) 
+                : 0;
+            
+            return [
+                { 
+                    title: 'Milestones', 
+                    value: `${totalCompleted}/${milestones.length}`, 
+                    subtitle: `${totalInProgress} in progress`,
+                    color: 'blue' 
+                },
+                { 
+                    title: 'Tasks Approved', 
+                    value: tasksCompleted, 
+                    subtitle: `${tasksPending} pending`,
+                    color: 'green' 
+                },
+                { 
+                    title: 'Sprint Progress', 
+                    value: `${sprintProgress}%`, 
+                    subtitle: currentSprint.on_track ? '✅ On Track' : '⚠️ Behind',
+                    color: 'cyan' 
+                },
+                { 
+                    title: 'Compliance Score', 
+                    value: `${complianceScore}%`, 
+                    subtitle: 'Constitutional',
+                    color: 'purple' 
+                }
+            ];
+        }
+
+        function renderActiveContext() {
+            const ctx = data['activeContext.json'];
+            if (!ctx) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No active context data</div>';
+            
+            const impl = ctx.current_implementation || {};
+            const progress = impl.progress_percentage || 0;
+            const statusColor = progress >= 80 ? 'green' : progress >= 50 ? 'yellow' : 'red';
+            
+            return `
+                <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-xl">
+                    <h3 class="text-lg font-bold text-cyan-400 mb-4 flex items-center">
+                        <span class="mr-2">🔄</span> Active Context
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Current Task:</span>
+                            <span class="text-white font-medium text-sm">${impl.active_task_id || 'None'}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Phase:</span>
+                            <span class="text-${statusColor}-400 font-medium capitalize">${(impl.current_phase || 'Unknown').replace(/_/g, ' ')}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Progress:</span>
+                            <span class="text-${statusColor}-400 font-bold">${progress}%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-3">
+                            <div class="bg-${statusColor}-500 h-3 rounded-full transition-all duration-300" style="width: ${progress}%"></div>
+                        </div>
+                        ${impl.completed_at ? `
+                            <div class="text-center text-green-400 text-sm font-medium">
+                                ✅ Completed: ${new Date(impl.completed_at).toLocaleDateString()}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderScratchpad() {
+            const scratch = data['scratchpad.json'];
+            if (!scratch) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No scratchpad data</div>';
+            
+            const tasks = scratch.priority_tasks || [];
+            const sprint = scratch.current_sprint || {};
+            
+            return `
+                <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-xl">
+                    <h3 class="text-lg font-bold text-blue-400 mb-4 flex items-center">
+                        <span class="mr-2">📋</span> Current Sprint
+                    </h3>
+                    <div class="mb-4 p-4 bg-gray-800 rounded-lg border border-gray-700">
+                        <div class="text-white font-semibold">${sprint.name || 'No Active Sprint'}</div>
+                        <div class="text-gray-400 text-sm mt-1">${sprint.completion_percentage || 0}% Complete</div>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+                            <div class="bg-blue-500 h-2 rounded-full" style="width: ${sprint.completion_percentage || 0}%"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        ${tasks.slice(0, 4).map(task => `
+                            <div class="flex items-center justify-between p-3 bg-gray-800 rounded border border-gray-700 hover:border-gray-600 transition-colors">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full ${
+                                        task.priority === 'high' ? 'bg-red-500' :
+                                        task.priority === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
+                                    } mr-3 animate-pulse"></div>
+                                    <span class="text-white text-sm font-medium">${(task.title || 'Untitled Task').substring(0, 40)}${task.title?.length > 40 ? '...' : ''}</span>
+                                </div>
+                                <span class="px-2 py-1 text-xs rounded ${
+                                    task.status === 'completed' ? 'bg-green-600 text-white' :
+                                    task.status === 'in_progress' ? 'bg-yellow-600 text-white' :
+                                    'bg-gray-700 text-gray-300'
+                                }">${task.status || 'pending'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderKanban() {
+            const kanban = data['kanban.json'];
+            if (!kanban) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No kanban data available</div>';
+            
+            const columns = kanban.columns || {};
+            const tasks = kanban.tasks || [];
+            const totalTasks = tasks.length;
+            
+            return `
+                <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-xl">
+                    <h3 class="text-lg font-bold text-yellow-400 mb-4 flex items-center justify-between">
+                        <span class="flex items-center">
+                            <span class="mr-2">📊</span> Kanban Board
+                        </span>
+                        <span class="text-sm text-gray-400">${totalTasks} total tasks</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        ${Object.keys(columns).map(colName => {
+                            const column = columns[colName] || {};
+                            const taskIds = column.task_ids || [];
+                            const wipLimit = column.wip_limit || 'None';
+                            const colTasks = tasks.filter(t => taskIds.includes(t.id));
+                            return `
+                            <div class="bg-gray-800 rounded-lg p-4 border border-gray-700">
+                                <h4 class="text-white font-semibold mb-2 flex items-center justify-between">
+                                    ${colName.replace(/_/g, ' ').toUpperCase()}
+                                    <span class="text-xs text-gray-500">${taskIds.length}</span>
+                                </h4>
+                                <div class="text-gray-400 text-sm mb-2">
+                                    ${wipLimit !== 'None' ? `WIP Limit: ${wipLimit}` : 'No WIP limit'}
+                                </div>
+                                <div class="space-y-1">
+                                    ${colTasks.slice(0, 2).map(task => `
+                                        <div class="bg-gray-700 rounded p-2 text-xs text-white border border-gray-600">
+                                            ${(task.title || 'Untitled').substring(0, 30)}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCurrentSprint() {
+            const progress = data['progress.json'];
+            if (!progress?.current_sprint) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No sprint data</div>';
+            
+            const sprint = progress.current_sprint;
+            const percentage = sprint.planned_points > 0 ? Math.round((sprint.completed_points / sprint.planned_points) * 100) : 0;
+            const onTrack = sprint.on_track ? '✅ On Track' : '⚠️ Behind';
+            const onTrackColor = sprint.on_track ? 'text-green-400' : 'text-yellow-400';
+            
+            return `
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 border border-cyan-700 shadow-xl">
+                    <h3 class="text-lg font-bold text-cyan-400 mb-4 flex items-center">
+                        <span class="mr-2">🏃</span> Current Sprint
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="text-sm text-gray-400">${sprint.sprint_id}</div>
+                        <div class="text-3xl font-bold ${onTrackColor} mb-2">
+                            ${percentage}%
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-4 mb-3">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-4 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                                <div class="text-gray-400">Completed</div>
+                                <div class="text-xl font-bold text-white">${sprint.completed_points}</div>
+                            </div>
+                            <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                                <div class="text-gray-400">Planned</div>
+                                <div class="text-xl font-bold text-white">${sprint.planned_points}</div>
+                            </div>
+                        </div>
+                        <div class="text-center pt-2">
+                            <span class="${onTrackColor} font-semibold">${onTrack}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPerformanceTrends() {
+            const progress = data['progress.json'];
+            if (!progress?.performance_analytics) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No analytics</div>';
+            
+            const analytics = progress.performance_analytics;
+            const trends = analytics.velocity_trends || [];
+            const latestVelocity = trends[trends.length - 1] || 0;
+            const avgVelocity = trends.length > 0 ? (trends.reduce((a,b) => a+b, 0) / trends.length).toFixed(1) : 0;
+            
+            return `
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 border border-purple-700 shadow-xl">
+                    <h3 class="text-lg font-bold text-purple-400 mb-4 flex items-center">
+                        <span class="mr-2">📈</span> Performance Trends
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-purple-400">${latestVelocity}</div>
+                                <div class="text-xs text-gray-400">Current Velocity</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-blue-400">${avgVelocity}</div>
+                                <div class="text-xs text-gray-400">Avg Velocity</div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                            <div class="flex justify-between items-center mb-2">
+                                ${trends.map((v, i) => `
+                                    <div class="flex flex-col items-center">
+                                        <div class="bg-purple-600 rounded" style="width: 8px; height: ${Math.min(v * 6, 48)}px"></div>
+                                        <div class="text-xs text-gray-500 mt-1">${v}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                            <div class="text-xs text-gray-400 mb-1">Bottleneck</div>
+                            <div class="text-sm text-yellow-400">${(analytics.bottleneck_analysis || 'None detected').substring(0, 60)}</div>
+                        </div>
+                        <div class="text-xs text-gray-500">
+                            🎯 ${analytics.quality_improvements || 0}% quality improvement
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTriBranchEfficiency() {
+            const progress = data['progress.json'];
+            if (!progress?.constitutional_metrics?.tri_branch_efficiency) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No metrics</div>';
+            
+            const metrics = progress.constitutional_metrics.tri_branch_efficiency;
+            const consensusRate = Math.round(metrics.consensus_achievement_rate * 100);
+            const approvalRate = Math.round(metrics.executive_approval_rate * 100);
+            const challengeRate = Math.round(metrics.legislative_challenge_rate * 100);
+            
+            return `
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 border border-green-700 shadow-xl">
+                    <h3 class="text-lg font-bold text-green-400 mb-4 flex items-center">
+                        <span class="mr-2">⚖️</span> Tri-Branch Efficiency
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-xs text-gray-400">Consensus Rate</span>
+                                <span class="text-sm font-bold text-green-400">${consensusRate}%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: ${consensusRate}%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-xs text-gray-400">Executive Approval</span>
+                                <span class="text-sm font-bold text-blue-400">${approvalRate}%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: ${approvalRate}%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-xs text-gray-400">Challenge Rate</span>
+                                <span class="text-sm font-bold text-yellow-400">${challengeRate}%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-yellow-500 h-2 rounded-full" style="width: ${challengeRate}%"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-center pt-2">
+                            <div>
+                                <div class="text-lg font-bold text-cyan-400">${metrics.average_decision_time_minutes}m</div>
+                                <div class="text-xs text-gray-400">Avg Decision</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-purple-400">${metrics.judicial_override_count}</div>
+                                <div class="text-xs text-gray-400">Overrides</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProgress() {
+            const progress = data['progress.json'];
+            if (!progress) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No progress data</div>';
+            
+            const milestones = progress.milestone_tracking || [];
+            const completed = milestones.filter(m => m.status === 'completed').length;
+            const total = milestones.length;
+            const completionRate = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            return `
+                <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-xl">
+                    <h3 class="text-lg font-bold text-green-400 mb-4 flex items-center">
+                        <span class="mr-2">📈</span> Progress Tracking
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-green-400">${completionRate}%</div>
+                            <div class="text-gray-400 text-sm">Overall Completion</div>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-400">Milestones:</span>
+                            <span class="text-white font-bold">${completed}/${total}</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-3">
+                            <div class="bg-green-500 h-3 rounded-full transition-all duration-500" style="width: ${completionRate}%"></div>
+                        </div>
+                        <div class="space-y-2">
+                            ${milestones.slice(0, 3).map(milestone => `
+                                <div class="bg-gray-800 rounded-lg p-4 border border-gray-700">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h3 class="text-lg font-bold ${milestone.status === 'completed' ? 'text-green-400' : 'text-yellow-400'}">
+                                            ${milestone.name}
+                                        </h3>
+                                        <span class="text-xs text-gray-500">${milestone.tasks_completed || 0}/${milestone.tasks_total || 0}</span>
+                                    </div>
+                                    <div class="mt-4 text-sm text-gray-400">
+                                        <div>✅ Tasks: ${milestone.tasks_completed || 0}/${milestone.tasks_total || 0}</div>
+                                        <div>📊 Test Coverage: ${milestone.quality_metrics?.test_coverage || 0}%</div>
+                                        <div>⚡ Code Quality: ${milestone.quality_metrics?.code_quality_score || 0}/10</div>
+                                        <div>🚀 Performance: ${milestone.quality_metrics?.performance_score || 0}/10</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderRoadmap() {
+            const roadmap = data['roadmap.json'];
+            if (!roadmap) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No roadmap data</div>';
+            
+            const phases = roadmap.strategic_roadmap || [];
+            const activePhase = phases.find(p => p.status === 'in_progress') || phases[0];
+            
+            return `
+                <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-xl">
+                    <h3 class="text-lg font-bold text-blue-400 mb-4 flex items-center">
+                        <span class="mr-2">🗺️</span> Strategic Roadmap
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="text-white font-semibold text-lg">ServeUPSC Backend</div>
+                        <div class="text-gray-400 text-sm leading-relaxed">${roadmap.long_term_vision?.['6_months'] || 'Building AI-powered UPSC platform'}</div>
+                        <div class="text-xs text-gray-500">
+                            Active Phases: ${phases.length}
+                        </div>
+                        <div class="space-y-2">
+                            ${phases.slice(0, 3).map((phase, index) => `
+                                <div class="bg-gray-800 rounded-lg p-3 border ${phase.status === 'in_progress' ? 'border-blue-500' : phase.status === 'completed' ? 'border-green-500' : 'border-gray-700'}">
+                                    <div class="flex items-center justify-between">
+                                        <div class="text-white font-medium">${phase.name || 'Development'}</div>
+                                        <div class="text-xs px-2 py-1 rounded ${phase.status === 'completed' ? 'bg-green-600' : phase.status === 'in_progress' ? 'bg-blue-600' : 'bg-gray-700'}">${phase.completion_percentage || 0}%</div>
+                                    </div>
+                                    <div class="text-gray-400 text-xs mt-1">${(phase.milestones || []).length} milestones</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderMistakes() {
+            const mistakes = data['mistakes.json'];
+            if (!mistakes) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No mistakes data</div>';
+            
+            const recentFixes = mistakes.recent_fixes || [];
+            const violations = mistakes.constitutional_violations || [];
+            const errorPatterns = mistakes.error_patterns || [];
+            
+            return `
+                <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-xl">
+                    <h3 class="text-lg font-bold text-red-400 mb-4 flex items-center">
+                        <span class="mr-2">🐛</span> Error Tracking
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-green-400">${recentFixes.length}</div>
+                                <div class="text-xs text-gray-400">Fixes</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-red-400">${violations.length}</div>
+                                <div class="text-xs text-gray-400">Violations</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-yellow-400">${errorPatterns.length}</div>
+                                <div class="text-xs text-gray-400">Patterns</div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            ${recentFixes.slice(0, 2).map(fix => `
+                                <div class="bg-gray-800 rounded-lg p-3 border border-green-700">
+                                    <div class="text-green-400 text-sm font-medium">${(fix.issue || 'Fixed Issue').substring(0, 40)}</div>
+                                    <div class="text-gray-400 text-xs mt-1">${(fix.solution || 'Solution applied').substring(0, 60)}</div>
+                                    <div class="text-gray-500 text-xs mt-1">${fix.timestamp ? new Date(fix.timestamp).toLocaleDateString() : 'Recently'}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderSystemPatterns() {
+            const patterns = data['systemPatterns.json'];
+            if (!patterns) return '<div class="text-gray-500 bg-gray-900 rounded-xl p-6 border border-gray-800">No system patterns data</div>';
+            
+            const archPatterns = patterns.architecture_patterns || [];
+            const mcpLinks = patterns.mcp_enriched_links || [];
+            const avgSuccessRate = archPatterns.length > 0 
+                ? (archPatterns.reduce((sum, p) => sum + (p.success_rate || 0), 0) / archPatterns.length).toFixed(1)
+                : 0;
+            
+            return `
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 border border-purple-700 shadow-xl">
+                    <h3 class="text-lg font-bold text-purple-400 mb-4 flex items-center">
+                        <span class="mr-2">✨</span> System Patterns
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                                <div class="text-2xl font-bold text-purple-400">${archPatterns.length}</div>
+                                <div class="text-xs text-gray-400">Architecture Patterns</div>
+                            </div>
+                            <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                                <div class="text-2xl font-bold text-blue-400">${avgSuccessRate}%</div>
+                                <div class="text-xs text-gray-400">Avg Success Rate</div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-800 rounded p-3 border border-gray-700">
+                            <div class="text-xs text-gray-400 mb-2">Top Patterns</div>
+                            <div class="space-y-2">
+                                ${archPatterns.slice(0, 3).map(p => `
+                                    <div class="bg-gray-700 rounded p-2">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-purple-400 text-sm font-medium">${(p.name || '').substring(0, 25)}</span>
+                                            <span class="text-green-400 text-xs">${p.success_rate || 0}%</span>
+                                        </div>
+                                        <div class="text-gray-400 text-xs mt-1">${p.category || 'General'}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-500">
+                            🔗 ${mcpLinks.length} MCP-enriched docs
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function render() {
+            const dashboardContainer = document.getElementById('dashboard');
+            if (!dashboardContainer) {
+                console.error('❌ Dashboard container not found');
+                return;
+            }
+
+            try {
+                const overviewData = generateOverviewStats();
+                
+                dashboardContainer.innerHTML = `
+                    <!-- System Overview -->
+                    <section>
+                        <h2 class="text-2xl font-bold mb-6 text-blue-400 flex items-center">
+                            <span class="mr-3">📊</span> System Overview
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            ${generateOverviewStats().map(stat => `
+                                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 border border-${stat.color}-700 shadow-xl hover:border-${stat.color}-500 transition-all">
+                                    <h3 class="text-sm font-semibold text-${stat.color}-400 mb-2">${stat.title}</h3>
+                                    <div class="text-4xl font-bold text-white mb-1">${stat.value}</div>
+                                    <div class="text-xs text-gray-400">${stat.subtitle || ''}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+
+                    <!-- Sprint Analytics -->
+                    <section>
+                        <h2 class="text-2xl font-bold mb-6 text-cyan-400 flex items-center">
+                            <span class="mr-3">🎯</span> Sprint Analytics
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            ${renderCurrentSprint()}
+                            ${renderPerformanceTrends()}
+                            ${renderTriBranchEfficiency()}
+                        </div>
+                    </section>
+
+                    <!-- Current Activity -->
+                    <section>
+                        <h2 class="text-2xl font-bold mb-6 text-green-400 flex items-center">
+                            <span class="mr-3">⚡</span> Current Activity
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${renderActiveContext()}
+                            ${renderKanban()}
+                        </div>
+                    </section>
+
+                    <!-- Progress & Strategy -->
+                    <section>
+                        <h2 class="text-2xl font-bold mb-6 text-green-400 flex items-center">
+                            <span class="mr-3">📈</span> Progress & Strategy
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${renderProgress()}
+                            ${renderRoadmap()}
+                        </div>
+                    </section>
+
+                    <!-- Quality & Patterns -->
+                    <section>
+                        <h2 class="text-2xl font-bold mb-6 text-red-400 flex items-center">
+                            <span class="mr-3">🐛</span> Quality & Patterns
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${renderMistakes()}
+                            ${renderSystemPatterns()}
+                        </div>
+                    </section>
+                `;
+                
+                console.log('✅ Dashboard rendered successfully');
+            } catch (error) {
+                console.error('❌ Render failed:', error);
+                dashboardContainer.innerHTML = `<div class="text-red-400 text-center p-8">❌ Render error: ${error.message}</div>`;
+            }
+        }
+
+        async function loadAll() {
+            if (updatePending) return; // Prevent concurrent updates
+            updatePending = true;
+            
+            try {
+                const { results, changedFiles } = await loadData();
+                
+                // Only update and re-render if files actually changed
+                if (changedFiles.length > 0) {
+                    data = results;
+                    
+                    // Use requestAnimationFrame for smooth rendering
+                    requestAnimationFrame(() => {
+                        render();
+                        const loadedCount = Object.keys(data).filter(key => data[key] !== null).length;
+                        document.getElementById('status').innerHTML = 
+                            `<span class="inline-flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                                Real-time Active • ${new Date().toLocaleTimeString()} • ${loadedCount}/7 files • 
+                                <span class="text-yellow-400 ml-1">Port 7777 🏏</span>
+                            </span>`;
+                        console.log(`🔥 Updated ${changedFiles.length} files: ${changedFiles.join(', ')}`);
+                    });
+                }
+            } catch (error) {
+                console.error('❌ Dashboard update failed:', error);
+                document.getElementById('status').textContent = `❌ Update failed: ${error.message}`;
+            } finally {
+                updatePending = false;
+            }
+        }
+
+        function toggleAuto() {
+            const btn = document.getElementById('autoBtn');
+            if (autoRefresh) {
+                clearInterval(autoRefresh);
+                autoRefresh = null;
+                btn.textContent = '⚡ Real-time: OFF';
+                btn.classList.remove('bg-green-600', 'animate-pulse');
+                btn.classList.add('bg-gray-600');
+                console.log('❌ Real-time updates disabled');
+            } else {
+                autoRefresh = setInterval(loadAll, 500); // 500ms = 0.5 seconds!
+                btn.textContent = '⚡ Real-time: ON (500ms)';
+                btn.classList.remove('bg-gray-600');
+                btn.classList.add('bg-green-600', 'animate-pulse');
+                console.log('🔥 Real-time updates enabled: 500ms polling with smart change detection');
+            }
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Initializing Real-time Dashboard on Port 7777 - Thala for a Reason! 🏏');
+            loadAll();
+            
+            // Start real-time polling by default (500ms)
+            autoRefresh = setInterval(loadAll, 500);
+            console.log('⚡ Real-time updates active: 500ms fast polling with smart change detection');
+            console.log('🔥 Dashboard will instantly reflect JSON changes without reload!');
+        });
+    </script>
+</body>
+</html>

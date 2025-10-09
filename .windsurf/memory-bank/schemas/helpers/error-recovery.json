@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-08T11:44:00+05:30",
+  "description": "MCP-enhanced error recovery strategies for tool failures",
+
+  "recovery_protocols": {
+    "edit_failure": {
+      "symptoms": [
+        "File not modified after edit call",
+        "Wrong content replaced",
+        "Partial edit applied",
+        "Cascade reload after tool error"
+      ],
+      "immediate_response": {
+        "step_1": {
+          "mcp": "@mcp:git",
+          "action": "git status to check actual changes",
+          "verify": "Compare working tree with expected state"
+        },
+        "step_2": {
+          "mcp": "@mcp:filesystem",
+          "action": "read_text_file to verify current content",
+          "compare": "Against intended final state"
+        },
+        "step_3": {
+          "mcp": "@mcp:memory",
+          "action": "Retrieve last known good state",
+          "purpose": "Determine rollback point if needed"
+        }
+      },
+      "recovery_strategies": [
+        {
+          "strategy": "Simplify Edit",
+          "mcp": "@mcp:sequential-thinking",
+          "action": "Break complex edit into 3-5 atomic operations",
+          "validation": "@mcp:git diff after each atomic edit"
+        },
+        {
+          "strategy": "Alternative Tool",
+          "mcp": "@mcp:context7",
+          "action": "Research alternative tool for same task",
+          "options": ["mcp3_edit_file", "mcp3_write_file", "replace_file_content"]
+        },
+        {
+          "strategy": "Manual Verification",
+          "mcp": "@mcp:filesystem",
+          "action": "Read exact TargetContent location before retry",
+          "ensure": "Whitespace and encoding match perfectly"
+        }
+      ],
+      "prevention_next_time": {
+        "pre_edit": "@mcp:filesystem read file to verify TargetContent exists",
+        "during_edit": "@mcp:time track execution duration for timeout detection",
+        "post_edit": "@mcp:git diff to verify changes immediately",
+        "learning": "@mcp:memory store successful pattern for reuse"
+      }
+    },
+
+    "tool_timeout": {
+      "symptoms": [
+        "Tool call hangs indefinitely",
+        "Cascade becomes unresponsive",
+        "No response after 30+ seconds"
+      ],
+      "detection": {
+        "monitor": "@mcp:time timestamp before tool call",
+        "threshold": "If no response in 30 seconds, assume timeout",
+        "action": "Cancel and switch to alternative approach"
+      },
+      "recovery": [
+        {
+          "immediate": "Cancel current operation",
+          "analysis": "@mcp:context7 research if tool known for timeouts",
+          "alternative": "@mcp:sequential-thinking decompose into smaller operations",
+          "retry": "With stricter filters or smaller scope"
+        }
+      ],
+      "prevention": {
+        "file_size": "@mcp:filesystem check file size before edit (>10KB risky)",
+        "search_scope": "Use Includes filter in grep_search to reduce load",
+        "command_timeout": "Set explicit timeout in run_command tool"
+      }
+    },
+
+    "cascade_internal_error": {
+      "symptoms": [
+        "Internal: stream error: stream ID XXX; INTERNAL_ERROR",
+        "Cascade reloads unexpectedly",
+        "Failed to fetch document content",
+        "Failed to construct 'URL': Invalid URL"
+      ],
+      "immediate_recovery": {
+        "step_1": "@mcp:memory emergency save current context",
+        "step_2": "@mcp:git commit work in progress immediately",
+        "step_3": "@mcp:filesystem save activeContext.json with error details",
+        "step_4": "Wait for Cascade reload, resume from saved state"
+      },
+      "root_cause_analysis": {
+        "network": "@mcp:fetch test external connectivity",
+        "file_system": "@mcp:filesystem verify all paths valid",
+        "context_size": "@mcp:math calculate total context token usage",
+        "mcp_health": "Check if any MCP server crashed"
+      },
+      "prevention": {
+        "frequent_saves": "@mcp:git commit after every successful task",
+        "context_management": "@mcp:memory periodic cleanup of old data",
+        "path_validation": "@mcp:filesystem validate before ANY file operation",
+        "graceful_degradation": "Continue with reduced functionality if MCP fails"
+      }
+    },
+
+    "wrong_file_modified": {
+      "symptoms": [
+        "Changes applied to unexpected file",
+        "Correct content but wrong location",
+        "Multiple files changed unintentionally"
+      ],
+      "immediate_rollback": {
+        "step_1": "@mcp:git reset --hard HEAD",
+        "step_2": "@mcp:filesystem verify rollback successful",
+        "step_3": "@mcp:memory log what went wrong",
+        "step_4": "@mcp:context7 research why wrong target selected"
+      },
+      "root_cause": {
+        "ambiguous_path": "Relative path resolved to wrong directory",
+        "search_mismatch": "grep_search returned wrong file",
+        "cached_state": "Tool using stale file path from earlier operation"
+      },
+      "prevention": {
+        "absolute_paths": "@mcp:filesystem list_directory for absolute paths only",
+        "verification": "@mcp:git diff --name-only before commit",
+        "explicit_targeting": "Always include full file path in tool calls"
+      }
+    },
+
+    "linting_errors_unfixed": {
+      "symptoms": [
+        "LLM claims fix applied but linter still errors",
+        "Syntax errors persist after correction",
+        "Import errors not resolved"
+      ],
+      "recovery_flow": {
+        "step_1": {
+          "mcp": "@mcp:context7",
+          "action": "resolve-library-id for linter documentation",
+          "purpose": "Get official fix for error type"
+        },
+        "step_2": {
+          "mcp": "@mcp:filesystem",
+          "action": "Read surrounding context (±10 lines) of error",
+          "purpose": "Understand full scope of issue"
+        },
+        "step_3": {
+          "mcp": "@mcp:sequential-thinking",
+          "action": "Break fix into: import fix → syntax fix → type fix",
+          "purpose": "Address root cause before symptoms"
+        },
+        "step_4": {
+          "mcp": "@mcp:git",
+          "action": "Commit after each fix stage",
+          "purpose": "Enable incremental rollback if needed"
+        }
+      },
+      "validation": {
+        "immediate": "Run linter after EVERY edit",
+        "comprehensive": "Full type check before marking task complete",
+        "storage": "@mcp:memory store successful fix patterns"
+      }
+    }
+  },
+
+  "mcp_failure_handling": {
+    "filesystem_unavailable": {
+      "impact": "Cannot read/write files - CRITICAL",
+      "fallback": "Use native Cascade tools (replace_file_content)",
+      "recovery": "@mcp:time wait 60 seconds and retry MCP connection",
+      "logging": "Log to console, cannot update JSON files"
+    },
+    
+    "context7_unavailable": {
+      "impact": "Cannot research official docs - HIGH",
+      "fallback": "@mcp:fetch search web for documentation",
+      "alternative": "@mcp:memory retrieve cached documentation",
+      "recovery": "Continue with reduced accuracy, flag for review"
+    },
+
+    "memory_unavailable": {
+      "impact": "Cannot store patterns - MEDIUM",
+      "fallback": "@mcp:filesystem write to temporary JSON file",
+      "recovery": "Migrate temp storage to @mcp:memory when available",
+      "temporary_location": ".windsurf/memory-bank/temp-knowledge.json"
+    },
+
+    "git_unavailable": {
+      "impact": "Cannot verify changes - HIGH",
+      "fallback": "@mcp:filesystem manual file comparison",
+      "recovery": "@mcp:time retry git operations with backoff",
+      "manual_verify": "Read file before/after edit to compare"
+    }
+  },
+
+  "escalation_matrix": {
+    "severity_low": {
+      "examples": ["Single edit failed", "Search returned no results"],
+      "response": "Retry with adjusted parameters",
+      "logging": "@mcp:memory low priority storage",
+      "continuation": "Continue with task"
+    },
+    
+    "severity_medium": {
+      "examples": ["Multiple edits failed", "Tool timeout occurred"],
+      "response": "Switch to alternative approach",
+      "logging": "@mcp:filesystem update mistakes.json",
+      "review": "@mcp:context7 research better method"
+    },
+
+    "severity_high": {
+      "examples": ["Wrong file modified", "Data loss risk"],
+      "response": "Immediate rollback and pause",
+      "logging": "@mcp:git commit error state for analysis",
+      "escalation": "@mcp:memory flag for human review"
+    },
+
+    "severity_critical": {
+      "examples": ["Cascade crash", "Multiple tool failures"],
+      "response": "Emergency save and graceful shutdown",
+      "logging": "@mcp:filesystem emergency context dump",
+      "recovery": "Full system restart required"
+    }
+  },
+
+  "learning_from_recovery": {
+    "successful_recovery": {
+      "capture": "@mcp:memory store recovery strategy with context",
+      "template": "Create reusable recovery pattern",
+      "sharing": "Add to error-recovery.json for future reference",
+      "metrics": "@mcp:math calculate recovery time and success rate"
+    },
+    
+    "failed_recovery": {
+      "documentation": "@mcp:filesystem detailed failure report in mistakes.json",
+      "research": "@mcp:context7 investigate if known issue",
+      "escalation": "Flag for human intervention",
+      "prevention": "@mcp:sequential-thinking design better validation"
+    }
+  },
+
+  "constitutional_compliance": {
+    "article_reference": "Article XV: Tool Usage & Error Prevention",
+    "recovery_requirement": "MANDATORY for all tool failures",
+    "zero_tolerance": "Failures must be recovered or escalated, never ignored"
+  }
+}

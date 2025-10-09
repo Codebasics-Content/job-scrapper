@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-06T01:05:22+05:30",
+  "user_personas": [
+    {
+      "persona_id": "hr_professional",
+      "name": "HR Professional",
+      "description": "Experienced recruiter looking for specific skill sets",
+      "goals": ["Find candidates with specific skills", "Analyze job market trends", "Generate reports for management"],
+      "pain_points": ["Manual job board searches", "Inconsistent data quality", "Time-consuming analysis"],
+      "tech_proficiency": "intermediate"
+    },
+    {
+      "persona_id": "data_analyst",
+      "name": "Data Analyst",
+      "description": "Technical user analyzing job market data and trends",
+      "goals": ["Extract structured data", "Perform statistical analysis", "Create visualizations"],
+      "pain_points": ["Need clean, structured data", "Multiple data sources", "Export limitations"],
+      "tech_proficiency": "advanced"
+    }
+  ],
+  "user_journeys": [
+    {
+      "journey_id": "job_scraping_flow",
+      "persona": "hr_professional",
+      "title": "Complete Job Scraping Workflow",
+      "steps": [
+        {
+          "step_id": "step_1",
+          "title": "Launch Application",
+          "description": "User opens Streamlit app in browser",
+          "user_action": "Navigate to localhost:8501",
+          "system_response": "Display main interface with scraper form",
+          "duration_seconds": 5,
+          "success_criteria": "App loads without errors"
+        },
+        {
+          "step_id": "step_2", 
+          "title": "Configure Scraping Parameters",
+          "description": "Set job role, platform, and quantity",
+          "user_action": "Fill scraper form (job role, platform selection, number of jobs)",
+          "system_response": "Validate inputs and enable scrape button",
+          "duration_seconds": 30,
+          "success_criteria": "Form validation passes, all required fields filled"
+        },
+        {
+          "step_id": "step_3",
+          "title": "Execute Scraping",
+          "description": "Start scraping process with real-time progress",
+          "user_action": "Click 'Start Scraping' button",
+          "system_response": "Display progress tracker, scrape jobs, show real-time counts",
+          "duration_seconds": 120,
+          "success_criteria": "Jobs scraped successfully, stored in database"
+        },
+        {
+          "step_id": "step_4",
+          "title": "Review Results",
+          "description": "View scraped jobs with skill analysis",
+          "user_action": "Browse job listings in expandable cards",
+          "system_response": "Show job details, extracted skills, platform source",
+          "duration_seconds": 180,
+          "success_criteria": "All jobs display correctly with skill extraction"
+        },
+        {
+          "step_id": "step_5",
+          "title": "Export Data",
+          "description": "Download results as CSV for analysis",
+          "user_action": "Click export/download button", 
+          "system_response": "Generate and download CSV file",
+          "duration_seconds": 10,
+          "success_criteria": "CSV file downloads with all job data"
+        }
+      ],
+      "total_duration_minutes": 6,
+      "completion_rate": 92
+    },
+    {
+      "journey_id": "analytics_flow",
+      "persona": "data_analyst",
+      "title": "Data Analysis Workflow",
+      "steps": [
+        {
+          "step_id": "analytics_1",
+          "title": "Access Analytics Dashboard",
+          "description": "Navigate to analytics section",
+          "user_action": "Click analytics tab/button",
+          "system_response": "Load comprehensive analytics dashboard",
+          "duration_seconds": 8,
+          "success_criteria": "Dashboard loads with current database statistics"
+        },
+        {
+          "step_id": "analytics_2",
+          "title": "Explore Data Insights",
+          "description": "Review charts, trends, and statistics",
+          "user_action": "Interact with charts and filters",
+          "system_response": "Update visualizations based on user selections",
+          "duration_seconds": 300,
+          "success_criteria": "Interactive charts respond correctly"
+        },
+        {
+          "step_id": "analytics_3",
+          "title": "Export Analysis",
+          "description": "Download processed analytics data",
+          "user_action": "Export analytics or filtered datasets",
+          "system_response": "Generate specialized export files",
+          "duration_seconds": 15,
+          "success_criteria": "Analytics data exported successfully"
+        }
+      ],
+      "total_duration_minutes": 5.5,
+      "completion_rate": 88
+    }
+  ],
+  "critical_paths": [
+    {
+      "path_id": "core_scraping",
+      "description": "Essential scraping functionality that must work",
+      "steps": ["step_1", "step_2", "step_3"],
+      "dependency_chain": ["app_launch", "form_validation", "scraper_execution"],
+      "failure_impact": "critical"
+    }
+  ],
+  "conversion_metrics": {
+    "user_activation_rate": 85,
+    "feature_adoption_rate": 78,
+    "task_completion_rate": 90,
+    "user_satisfaction_score": 4.2
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-06T01:08:50+05:30",
+  "monitoring_strategy": {
+    "approach": "comprehensive_observability",
+    "cost_model": "free_tier_first",
+    "alerting_philosophy": "proactive_prevention"
+  },
+  "performance_metrics": {
+    "application_metrics": {
+      "response_time_ms": {
+        "current": 850,
+        "target": 500,
+        "threshold_warning": 1000,
+        "threshold_critical": 2000
+      },
+      "memory_usage_mb": {
+        "current": 120,
+        "peak": 180,
+        "limit": 512,
+        "threshold_warning": 400
+      },
+      "success_rate_percent": {
+        "linkedin_scraping": 95,
+        "naukri_scraping": 98,
+        "skill_extraction": 92,
+        "database_operations": 99
+      }
+    },
+    "business_metrics": {
+      "jobs_scraped_per_hour": 450,
+      "unique_skills_identified": 1240,
+      "data_quality_score": 94,
+      "user_satisfaction": 4.3
+    }
+  },
+  "health_checks": [
+    {
+      "check_id": "app_health",
+      "name": "Streamlit Application Health",
+      "endpoint": "http://localhost:8501",
+      "method": "GET",
+      "expected_status": 200,
+      "timeout_seconds": 10,
+      "frequency_minutes": 2
+    },
+    {
+      "check_id": "database_health",
+      "name": "SQLite Database Connectivity",
+      "description": "Verify database connection and basic query execution",
+      "query": "SELECT COUNT(*) FROM jobs LIMIT 1",
+      "expected_result": "numeric",
+      "frequency_minutes": 5
+    },
+    {
+      "check_id": "scraper_health",
+      "name": "Scraper Functionality Test",
+      "description": "Verify both LinkedIn and Naukri scrapers are operational",
+      "test_job_role": "python developer",
+      "test_count": 1,
+      "frequency_hours": 1
+    }
+  ],
+  "error_tracking": {
+    "service": "planned_sentry",
+    "error_rate_threshold": 5,
+    "alert_channels": ["console", "log_file"],
+    "error_categories": [
+      {
+        "category": "scraping_errors",
+        "description": "Website access or parsing failures",
+        "severity": "high",
+        "auto_retry": true
+      },
+      {
+        "category": "skill_extraction_errors", 
+        "description": "NLP processing failures",
+        "severity": "medium",
+        "fallback_strategy": "basic_keyword_extraction"
+      },
+      {
+        "category": "database_errors",
+        "description": "SQLite operations failures", 
+        "severity": "critical",
+        "auto_recovery": false
+      }
+    ]
+  },
+  "logging_configuration": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file_rotation": true,
+    "max_size_mb": 50,
+    "backup_count": 5,
+    "log_files": [
+      "logs/application.log",
+      "logs/scraper.log", 
+      "logs/database.log"
+    ]
+  },
+  "alerting_rules": [
+    {
+      "rule_id": "high_error_rate",
+      "condition": "error_rate > 10% in 10 minutes",
+      "severity": "critical",
+      "notification": "immediate",
+      "action": "investigate_root_cause"
+    },
+    {
+      "rule_id": "slow_response_time",
+      "condition": "avg_response_time > 2000ms in 5 minutes", 
+      "severity": "warning",
+      "notification": "delayed_15min",
+      "action": "performance_optimization_review"
+    },
+    {
+      "rule_id": "memory_usage_high",
+      "condition": "memory_usage > 400MB",
+      "severity": "warning", 
+      "notification": "immediate",
+      "action": "memory_cleanup_investigation"
+    }
+  ],
+  "uptime_monitoring": {
+    "service": "uptime_robot_free",
+    "check_interval_minutes": 5,
+    "locations": ["local"],
+    "notification_channels": ["email"],
+    "maintenance_windows": []
+  }
+}

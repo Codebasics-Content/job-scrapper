@@ -35,6 +35,7 @@ class SchemaManager:
                         experience TEXT,
                         skills TEXT,
                         jd TEXT,
+                        company_detail TEXT,
                         platform TEXT NOT NULL,
                         url TEXT,
                         location TEXT,
