@@ -15,7 +15,11 @@ def render_scraper_form() -> dict[str, object] | None:
                 value="Data Scientist",
                 placeholder="e.g., Data Scientist, AI Engineer"
             )
-            platform = st.selectbox("Platform", options=["LinkedIn", "Naukri"])
+            platform = st.selectbox(
+                "Platform",
+                options=["LinkedIn", "Indeed", "Naukri"],
+                help="LinkedIn & Indeed via BrightData API, Naukri via custom scraper"
+            )
         
         with col2:
             num_jobs = st.slider(
@@ -26,9 +30,9 @@ def render_scraper_form() -> dict[str, object] | None:
                 step=5
             )
         
-        # Country selection ONLY for LinkedIn (Naukri is India-only)
+        # Country selection for LinkedIn/Indeed (Naukri is India-only)
         selected_countries = []
-        if platform == "LinkedIn":
+        if platform in ["LinkedIn", "Indeed"]:
             st.subheader("🌍 Country Selection")
             country_names = [c['name'] for c in LINKEDIN_COUNTRIES]
             
@@ -49,9 +53,9 @@ def render_scraper_form() -> dict[str, object] | None:
                     help="Select specific countries to scrape from"
                 )
         
-        submit = st.form_submit_button("🔍 Start Scraping", type="primary", width="stretch")
+        submit = st.form_submit_button("🔍 Start Scraping", type="primary", use_container_width=True)
         
-        # LinkedIn requires countries, Naukri doesn't
+        # LinkedIn/Indeed require countries, Naukri doesn't
         if submit and job_role and (platform == "Naukri" or selected_countries):
             countries_to_scrape = [
                 country for country in LINKEDIN_COUNTRIES 
@@ -64,7 +68,7 @@ def render_scraper_form() -> dict[str, object] | None:
                 "num_jobs": num_jobs,
                 "countries": countries_to_scrape
             }
-        elif submit and platform == "LinkedIn" and not selected_countries:
-            st.error("⚠️ Please select at least one country for LinkedIn scraping")
+        elif submit and platform in ["LinkedIn", "Indeed"] and not selected_countries:
+            st.error(f"⚠️ Please select at least one country for {platform} scraping")
     
     return None

@@ -1,9 +1,43 @@
 {
   "version": "1.0",
-  "timestamp": "2025-10-10T08:48:03Z",
-  "vision": "Comprehensive job market intelligence platform with guaranteed data accuracy and AI-powered insights",
+  "timestamp": "2025-10-10T09:27:53Z",
+  "vision": "Scalable job skills trend analyzer supporting 50K jobs across LinkedIn, Indeed, and Naukri with real-time market insights",
+  "clientFormula": "Skill Trend % = (count of jobs with skill / total jobs) * 100",
   "shortTerm": {
     "q4_2025": [
+      {
+        "id": "st-000",
+        "feature": "Add Indeed platform scraper via BrightData",
+        "priority": "CRITICAL",
+        "status": "next",
+        "dependencies": [],
+        "expectedImpact": "Enable Indeed job scraping alongside LinkedIn"
+      },
+      {
+        "id": "st-001-new",
+        "feature": "Scale slider to support 50,000 jobs",
+        "priority": "CRITICAL",
+        "status": "next",
+        "dependencies": [],
+        "expectedImpact": "Enable large-scale trend analysis"
+      },
+      {
+        "id": "st-002-new",
+        "feature": "Implement Naukri optimization strategy",
+        "priority": "HIGH",
+        "status": "next",
+        "dependencies": [],
+        "expectedImpact": "Naukri scraping without BrightData support",
+        "strategy": "Use existing hybrid API/browser approach from archive"
+      },
+      {
+        "id": "st-003-new",
+        "feature": "Optimize skill trend calculation for 50K jobs",
+        "priority": "HIGH",
+        "status": "next",
+        "dependencies": ["st-000", "st-001-new"],
+        "expectedImpact": "Fast trend analysis: (distinct skill / total) * 100"
+      },
       {
         "id": "st-001",
         "feature": "Complete AegisIDE Constitutional Framework",

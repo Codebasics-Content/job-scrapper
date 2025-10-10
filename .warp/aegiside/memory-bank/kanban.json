@@ -1,8 +1,56 @@
 {
   "version": "1.0",
-  "timestamp": "2025-10-10T09:03:30Z",
+  "timestamp": "2025-10-10T09:27:53Z",
   "boards": {
     "todo": [
+      {
+        "id": "task-100",
+        "title": "[P0] Add Indeed scraper using BrightData client pattern",
+        "priority": "critical",
+        "estimatedEffort": "medium",
+        "dependencies": [],
+        "details": "Clone LinkedInClient pattern, create IndeedClient in src/scraper/brightdata/clients/"
+      },
+      {
+        "id": "task-101",
+        "title": "[P0] Update Streamlit slider: 5-50000 jobs range",
+        "priority": "critical",
+        "estimatedEffort": "small",
+        "dependencies": [],
+        "details": "Modify src/ui/components/scraper_form.py slider max value to 50000"
+      },
+      {
+        "id": "task-102",
+        "title": "[P1] Restore Naukri scraper from archive",
+        "priority": "high",
+        "estimatedEffort": "medium",
+        "dependencies": [],
+        "details": "Move archive/naukri_old_20251009/ back to src/scraper/naukri/ with optimizations"
+      },
+      {
+        "id": "task-103",
+        "title": "[P1] Implement skill trend calculation with correct formula",
+        "priority": "high",
+        "estimatedEffort": "small",
+        "dependencies": ["task-100"],
+        "details": "Verify leaderboard uses: (skill_count / total_jobs) * 100"
+      },
+      {
+        "id": "task-104",
+        "title": "[P1] Add platform selector for LinkedIn/Indeed/Naukri",
+        "priority": "high",
+        "estimatedEffort": "small",
+        "dependencies": ["task-100", "task-102"],
+        "details": "Update Streamlit form to show all 3 platform options"
+      },
+      {
+        "id": "task-105",
+        "title": "[P2] Optimize database for 50K jobs scale",
+        "priority": "medium",
+        "estimatedEffort": "medium",
+        "dependencies": ["task-101"],
+        "details": "Add batch inserts, connection pooling, progress tracking"
+      },
       {
         "id": "task-001",
         "title": "Complete remaining constitutional articles (V-XVI)",

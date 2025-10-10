@@ -9,6 +9,7 @@ from src.db import DatabaseConnection, SchemaManager, JobStorageOperations
 from src.ui.components import (render_scraper_form, ProgressTracker, render_job_listings,
                               render_analytics_dashboard)
 from src.scraper.brightdata.clients.linkedin import LinkedInClient
+from src.scraper.brightdata.clients.indeed import IndeedClient
 from src.scraper.brightdata.parsers.skills_parser import SkillsParser
 
 logging.basicConfig(level=logging.INFO)
@@ -33,7 +34,13 @@ if form_data:
         num_countries=len(countries) if countries else 1
     )
 
-    client = LinkedInClient() if platform == "LinkedIn" else None
+    # Initialize appropriate client based on platform
+    client = None
+    if platform == "LinkedIn":
+        client = LinkedInClient()
+    elif platform == "Indeed":
+        client = IndeedClient()
+    
     parser = SkillsParser()
 
     def _mk_job_model(raw: Dict[str, Any]) -> SimpleNamespace:
@@ -67,8 +74,8 @@ if form_data:
     async def scrape_jobs():
         try:
             progress_tracker.update_loading(platform)
-            if platform != "LinkedIn" or client is None:
-                raise RuntimeError("Only LinkedIn via BrightData is supported in this phase")
+            if platform == "Naukri" or client is None:
+                raise RuntimeError("Naukri scraping not yet integrated. Use LinkedIn or Indeed via BrightData.")
 
             results: List[Dict[str, Any]] = []
             if countries:

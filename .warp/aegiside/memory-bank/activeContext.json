@@ -1,22 +1,23 @@
 {
   "version": "1.0",
-  "timestamp": "2025-10-10T09:10:54Z",
+  "timestamp": "2025-10-10T09:27:53Z",
   "currentTask": {
-    "id": "verify-scraper-functionality",
-    "title": "Verify and Test Core Job Scraper Functionality",
+    "id": "scale-multi-platform-scraper",
+    "title": "Build Scalable Multi-Platform Job Skills Analyzer (50K jobs)",
     "status": "in_progress",
     "priority": "CRITICAL",
-    "description": "Test BrightData integration, fix skills visualization bug, ensure end-to-end scraping works"
+    "description": "Scrape LinkedIn, Indeed, Naukri + calculate skill trends using (distinct skill per job / total jobs * 100) formula"
   },
   "activeContext": {
     "workingDirectory": "/mnt/windows_d/Gauravs-Files-and-Folders/Freelance/Codebasics/Job_Scrapper",
     "currentBranch": "main",
     "lastModified": "2025-10-10T09:03:30Z",
     "focusAreas": [
-      "Test BrightData API scraping functionality",
-      "Fix skills visualization JSON parsing bug",
-      "Verify Streamlit dashboard displays data correctly",
-      "Ensure complete workflow: Scrape → Store → Display → Export"
+      "Scale to 50,000 jobs (LinkedIn + Indeed via BrightData)",
+      "Implement Naukri scraper optimization strategy",
+      "Skill trend formula: (distinct skill count / total jobs) * 100",
+      "Terminal input for job role keyword (e.g., 'AI Engineer')",
+      "Slider for job limit control (5-50000)"
     ]
   },
   "technicalContext": {
@@ -41,11 +42,24 @@
       "Database schema with indexes",
       "Constitutional framework Articles I-IV"
     ],
-    "currentFocus": "BUSINESS VALUE: Deliver working job scraper with accurate skill extraction and analytics"
+    "currentFocus": "CLIENT REQUIREMENT: Multi-platform job skills trend analyzer supporting 50K jobs scale"
   },
   "environmentNotes": {
     "ideSupport": "Both .windsurf/ and .warp/ directories maintained for multi-IDE compatibility",
     "primaryIDE": "Windsurf (for development)",
     "terminalAI": "Warp (for terminal operations)"
+  },
+  "clientRequirements": {
+    "objective": "Job Skills Trend Analysis Platform",
+    "trendFormula": "(distinct_skill_count / total_jobs) * 100 = skill_percentage",
+    "inputMethod": "Terminal text input for job role keyword",
+    "jobLimit": "Slider control: 5 to 50,000 jobs",
+    "platforms": [
+      "LinkedIn (BrightData supported)",
+      "Indeed (BrightData supported)",
+      "Naukri (Custom strategy - not in BrightData)"
+    ],
+    "scaleTarget": 50000,
+    "coreFiles": ["src/", "streamlit_app.py"]
   }
 }
