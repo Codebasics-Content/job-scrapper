@@ -2,7 +2,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import Dict, Iterable, List, Set
+from typing import Dict, List, Set
 
 
 DEFAULT_SKILLS_PATH = Path(__file__).resolve().parents[3] / "skills_reference_2025.json"
@@ -38,7 +38,7 @@ class SkillsParser:
                 found.add(name)
         return sorted(found)
 
-    def extract_from_job(self, job: Dict) -> List[str]:
+    def extract_from_job(self, job: dict) -> List[str]:
         parts: List[str] = []
         for key in ("description", "job_description", "title", "job_title"):
             val = job.get(key)

@@ -7,10 +7,11 @@
       {
         "id": "st-001",
         "feature": "Complete AegisIDE Constitutional Framework",
-        "priority": "critical",
-        "status": "in_progress",
+        "priority": "low",
+        "status": "completed",
         "dependencies": [],
-        "expectedImpact": "Improved governance and autonomous operation"
+        "expectedImpact": "Governance infrastructure complete - now focus on core scraper",
+        "note": "Governance setup done. Refocusing on business value delivery."
       },
       {
         "id": "st-002",
@@ -23,10 +24,26 @@
       {
         "id": "st-003",
         "feature": "Fix skills visualization JSON parsing",
-        "priority": "medium",
-        "status": "planned",
+        "priority": "HIGH",
+        "status": "next",
         "dependencies": [],
-        "expectedImpact": "Correct skill leaderboard display"
+        "expectedImpact": "Correct skill leaderboard display - CORE FEATURE"
+      },
+      {
+        "id": "st-004",
+        "feature": "Verify BrightData integration is fully operational",
+        "priority": "CRITICAL",
+        "status": "next",
+        "dependencies": [],
+        "expectedImpact": "Ensure scraper actually works end-to-end"
+      },
+      {
+        "id": "st-005",
+        "feature": "Test complete workflow: Scrape → Validate → Display",
+        "priority": "CRITICAL",
+        "status": "next",
+        "dependencies": ["st-004"],
+        "expectedImpact": "Confirm project delivers on promise"
       }
     ]
   },

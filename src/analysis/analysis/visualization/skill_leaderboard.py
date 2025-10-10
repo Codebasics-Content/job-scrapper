@@ -34,10 +34,15 @@ def generate_skill_leaderboard(
         # Handle both JobModel objects and dict formats
         skills: list[str] | None = None
         if isinstance(job, dict):
+            # Try pre-parsed fields first
             raw_skills = job.get('normalized_skills') or job.get('skills_list')
             if isinstance(raw_skills, list):
-                # Convert to strings and filter valid entries
                 skills = [str(item) for item in raw_skills if item]
+            # Fallback: parse comma-separated skills string from database
+            elif 'skills' in job and isinstance(job['skills'], str):
+                skills_str = job['skills']
+                if skills_str:
+                    skills = [s.strip().lower() for s in skills_str.split(',') if s.strip()]
         elif hasattr(job, 'normalized_skills'):
             raw_attr = getattr(job, 'normalized_skills')
             if isinstance(raw_attr, list):
