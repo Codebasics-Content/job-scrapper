@@ -22,7 +22,7 @@
 |----------|-------------|--------|-------|
 | **LinkedIn** | BrightData API | ✅ Operational | 50,000 jobs |
 | **Indeed** | BrightData API | ✅ Operational | 50,000 jobs |
-| **Naukri** | Custom Scraper | ⏳ Ready to restore | 50,000 jobs |
+| **Naukri** | Custom Hybrid API+Browser | ✅ Operational | 50,000 jobs |
 
 ### 2. Core Features Implemented
 
@@ -191,30 +191,37 @@ For 50K jobs, use **parallel execution**:
 
 ---
 
-## 🔐 Naukri Strategy (Not in BrightData)
+## ✅ Naukri Implementation (Not in BrightData)
 
 ### Current State
 
-Naukri scraper exists in `archive/naukri_old_20251009/` with:
-- Hybrid API + Browser automation
-- Rate limiting protection
-- Anti-captcha detection
-- Tested and functional
+**Naukri scraper is now OPERATIONAL** in `src/scraper/naukri/` with:
+- ✅ Hybrid API + Browser automation
+- ✅ Keyword-based search: `scraper.scrape_jobs(keyword="AI Engineer")`
+- ✅ Rate limiting protection (CONSERVATIVE/MODERATE/AGGRESSIVE tiers)
+- ✅ Anti-captcha detection built-in
+- ✅ Integrated with Streamlit dashboard
+- ✅ All 31 files restored and working
 
-### Restoration Plan
+### Architecture
 
-```bash
-# Move from archive back to src/
-mv archive/naukri_old_20251009/ src/scraper/naukri/
-
-# Update imports in streamlit_app.py
+```python
+# Naukri uses async scraping with rate limiting
 from src.scraper.naukri.scraper import NaukriScraper
 
-# Test integration
-python3 -m pytest tests/test_naukri_scraper.py
+scraper = NaukriScraper()  # CONSERVATIVE tier by default
+jobs = await scraper.scrape_jobs(
+    keyword="AI Engineer",
+    num_jobs=50
+)
 ```
 
-**Status**: Ready to restore when needed (15 minutes work)
+**Features:**
+- API-first approach for speed
+- Browser fallback for captcha bypass
+- Progress tracking with visual indicators
+- Returns Pydantic JobModel objects
+- Same skills extraction (20K+ database)
 
 ---
 
@@ -222,7 +229,7 @@ python3 -m pytest tests/test_naukri_scraper.py
 
 - [x] LinkedIn scraping via BrightData
 - [x] Indeed scraping via BrightData
-- [x] Naukri scraper available (needs restoration)
+- [x] Naukri scraper operational (restored from archive)
 - [x] Job role keyword input
 - [x] Slider supporting 5-50,000 jobs
 - [x] Skills extraction (20,000+ database)
