@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-10T08:48:03Z",
+  "vision": "Comprehensive job market intelligence platform with guaranteed data accuracy and AI-powered insights",
+  "shortTerm": {
+    "q4_2025": [
+      {
+        "id": "st-001",
+        "feature": "Complete AegisIDE Constitutional Framework",
+        "priority": "critical",
+        "status": "in_progress",
+        "dependencies": [],
+        "expectedImpact": "Improved governance and autonomous operation"
+      },
+      {
+        "id": "st-002",
+        "feature": "Implement automated validation workflows",
+        "priority": "high",
+        "status": "planned",
+        "dependencies": ["st-001"],
+        "expectedImpact": "Zero-error enforcement and continuous quality"
+      },
+      {
+        "id": "st-003",
+        "feature": "Fix skills visualization JSON parsing",
+        "priority": "medium",
+        "status": "planned",
+        "dependencies": [],
+        "expectedImpact": "Correct skill leaderboard display"
+      }
+    ]
+  },
+  "midTerm": {
+    "q1_2026": [
+      {
+        "id": "mt-001",
+        "feature": "Add Indeed platform scraping via BrightData",
+        "priority": "high",
+        "rationale": "Expand data coverage to US market",
+        "technicalApproach": "Reuse BrightDataBaseClient pattern"
+      },
+      {
+        "id": "mt-002",
+        "feature": "Implement skills trending analysis",
+        "priority": "medium",
+        "rationale": "Time-series analysis of skill demand",
+        "technicalApproach": "Add temporal dimensions to database schema"
+      },
+      {
+        "id": "mt-003",
+        "feature": "Enhanced analytics dashboard",
+        "priority": "medium",
+        "rationale": "Geographic heatmaps and salary insights",
+        "technicalApproach": "Expand Streamlit components"
+      }
+    ]
+  },
+  "longTerm": {
+    "2026_beyond": [
+      {
+        "id": "lt-001",
+        "feature": "AI-powered job matching engine",
+        "priority": "high",
+        "rationale": "Match candidates to opportunities based on skills",
+        "technicalApproach": "ML models trained on validated skills data"
+      },
+      {
+        "id": "lt-002",
+        "feature": "Real-time job alerts",
+        "priority": "medium",
+        "rationale": "Notify users of matching opportunities",
+        "technicalApproach": "Webhook-based notification system"
+      },
+      {
+        "id": "lt-003",
+        "feature": "Multi-tenant SaaS platform",
+        "priority": "low",
+        "rationale": "Scale to serve multiple organizations",
+        "technicalApproach": "Database per tenant isolation"
+      }
+    ]
+  },
+  "architecturalDecisions": [
+    {
+      "id": "ad-001",
+      "decision": "Migrate from Selenium to BrightData API",
+      "rationale": "Better compliance, reliability, and performance",
+      "date": "2024-12-01",
+      "status": "implemented"
+    },
+    {
+      "id": "ad-002",
+      "decision": "Use pre-compiled JSON skills database",
+      "rationale": "O(1) lookup performance vs NLP processing overhead",
+      "date": "2025-01-01",
+      "status": "implemented"
+    },
+    {
+      "id": "ad-003",
+      "decision": "Implement AegisIDE governance framework",
+      "rationale": "Autonomous execution with constitutional standards",
+      "date": "2025-10-10",
+      "status": "in_progress"
+    }
+  ],
+  "technicalDebtItems": [
+    {
+      "id": "td-001",
+      "description": "Naukri job IDs lack platform prefix",
+      "priority": "low",
+      "estimatedEffort": "small",
+      "impact": "Cannot distinguish platform from ID alone"
+    },
+    {
+      "id": "td-002",
+      "description": "Legacy browser-based code in archive/",
+      "priority": "low",
+      "estimatedEffort": "zero",
+      "impact": "No impact - preserved for reference"
+    }
+  ]
+}

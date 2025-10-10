@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-10T08:48:03Z",
+  "errors": [
+    {
+      "id": "error-001",
+      "timestamp": "2025-10-09T00:00:00Z",
+      "category": "database_consistency",
+      "description": "Platform naming inconsistency",
+      "details": {
+        "issue": "LinkedIn used 'linkedin' (lowercase) while Naukri used 'Naukri' (capitalized)",
+        "impact": "Inconsistent querying, filtering, and analytics",
+        "rootCause": "No standardization enforced in scraper modules"
+      },
+      "resolution": {
+        "action": "Standardized all platform names to lowercase",
+        "filesModified": [
+          "src/scraper/naukri/browser_scraper.py",
+          "src/scraper/naukri/extractors/job_parser.py",
+          "src/scraper/naukri/extractors/api_parser.py",
+          "src/scraper/naukri/extractors/card_extractor.py"
+        ],
+        "preventionMeasure": "Add platform name validation in database schema"
+      },
+      "lessonsLearned": [
+        "Enforce naming conventions in data models",
+        "Add validation at data entry points",
+        "Document standards in constitutional articles"
+      ],
+      "status": "resolved"
+    },
+    {
+      "id": "error-002",
+      "timestamp": "2025-10-09T00:00:00Z",
+      "category": "data_visualization",
+      "description": "Skills visualization warning - No skills found",
+      "details": {
+        "issue": "WARNING: No skills found in jobs during visualization",
+        "rootCause": "Skills stored as JSON strings not properly parsed in viz layer",
+        "affectedComponent": "src/analysis/analysis/visualization/skill_leaderboard.py"
+      },
+      "resolution": {
+        "action": "Pending - requires JSON parsing before visualization",
+        "proposedFix": "Add JSON.parse step in visualization preprocessing"
+      },
+      "status": "identified"
+    }
+  ],
+  "patterns": {
+    "commonMistakes": [
+      "Not validating data formats at boundaries",
+      "Inconsistent naming conventions across modules",
+      "Insufficient data type validation"
+    ],
+    "preventionStrategies": [
+      "Use Pydantic models for all data structures",
+      "Implement validation at all data entry points",
+      "Maintain constitutional standards document",
+      "Run automated validation in CI/CD"
+    ]
+  },
+  "metrics": {
+    "totalErrors": 3,
+    "resolvedErrors": 2,
+    "pendingErrors": 1,
+    "resolutionRate": 66.7
+  },
+  "recentIncidents": [
+    {
+      "id": "incident-003",
+      "timestamp": "2025-10-10T09:03:30Z",
+      "issue": "Misunderstanding about .windsurf folder deletion",
+      "resolution": "Restored .windsurf folder from git. Clarified dual IDE support: .windsurf for Windsurf IDE, .warp for Warp terminal",
+      "lesson": "Always verify file operations before assuming user intent. Both IDE structures coexist",
+      "status": "resolved"
+    }
+  ]
+}

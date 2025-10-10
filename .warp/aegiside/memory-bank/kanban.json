@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-10T08:48:03Z",
+  "boards": {
+    "todo": [
+      {
+        "id": "task-001",
+        "title": "Complete remaining constitutional articles (V-XVI)",
+        "priority": "high",
+        "estimatedEffort": "medium",
+        "dependencies": []
+      },
+      {
+        "id": "task-002",
+        "title": "Create JSON schema definitions for all 8 memory bank files",
+        "priority": "high",
+        "estimatedEffort": "medium",
+        "dependencies": []
+      },
+      {
+        "id": "task-003",
+        "title": "Implement automated validation workflow",
+        "priority": "medium",
+        "estimatedEffort": "high",
+        "dependencies": ["task-002"]
+      }
+    ],
+    "inProgress": [
+      {
+        "id": "task-000",
+        "title": "Establish AegisIDE constitutional framework",
+        "priority": "critical",
+        "startedAt": "2025-10-10T08:48:03Z",
+        "assignedTo": "system",
+        "blockers": []
+      }
+    ],
+    "completed": [
+      {
+        "id": "task-initial",
+        "title": "Create WARP.md with basic project structure",
+        "completedAt": "2025-10-10T08:40:00Z",
+        "outcome": "success"
+      },
+      {
+        "id": "task-setup",
+        "title": "Establish .warp directory structure",
+        "completedAt": "2025-10-10T08:48:03Z",
+        "outcome": "success"
+      }
+    ]
+  },
+  "metadata": {
+    "totalTasks": 6,
+    "completedTasks": 2,
+    "inProgressTasks": 1,
+    "todoTasks": 3,
+    "completionRate": 33.3
+  }
+}

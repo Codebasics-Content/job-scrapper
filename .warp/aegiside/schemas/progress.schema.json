@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aegiside.org/schemas/progress.json",
+  "title": "Progress Schema",
+  "$defs": {
+    "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
+    "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
+    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
+    "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
+  },
+  "description": "Development milestones with constitutional compliance metrics and anti-hallucination tracking",
+  "type": "object",
+  "required": ["schema_version", "last_updated", "milestone_tracking", "constitutional_metrics"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "milestone_tracking": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "status", "completion_percentage"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "status": {"type": "string", "enum": ["not_started", "in_progress", "completed", "blocked"]},
+          "completion_percentage": {"type": "number", "minimum": 0, "maximum": 100},
+          "started_at": {"type": "string", "format": "date-time"},
+          "target_completion": {"type": "string", "format": "date-time"},
+          "actual_completion": {"type": ["string", "null"], "format": "date-time"},
+          "tasks_completed": {"type": "number", "minimum": 0},
+          "tasks_total": {"type": "number", "minimum": 0},
+          "parliamentary_approval": {"type": "number", "minimum": 0, "maximum": 100},
+          "kanban_task_ids": {"type": "array", "items": {"$ref": "#/$defs/kanban_task_id"}},
+          "proposal_id": {"$ref": "#/$defs/proposal_id"},
+          "governance_decision_id": {"$ref": "#/$defs/governance_decision_id"},
+          "quality_metrics": {
+            "type": "object",
+            "properties": {
+              "test_coverage": {"type": "number", "minimum": 0, "maximum": 100},
+              "code_quality_score": {"type": "number", "minimum": 0, "maximum": 10},
+              "performance_score": {"type": "number", "minimum": 0, "maximum": 10}
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "compressed_history": {
+      "type": "object",
+      "properties": {
+        "total_tasks_completed": {"type": "number", "minimum": 0},
+        "total_bugs_fixed": {"type": "number", "minimum": 0},
+        "total_deployments": {"type": "number", "minimum": 0},
+        "avg_task_completion_hours": {"type": "number", "minimum": 0},
+        "sprint_velocity": {"type": "number", "minimum": 0},
+        "quality_trend": {"type": "string", "enum": ["improving", "stable", "declining"]}
+      }
+    },
+    "current_sprint": {
+      "type": "object",
+      "properties": {
+        "sprint_id": {"type": "string"},
+        "started": {"type": "string", "format": "date-time"},
+        "ends": {"type": "string", "format": "date-time"},
+        "planned_points": {"type": "number", "minimum": 0},
+        "completed_points": {"type": "number", "minimum": 0},
+        "on_track": {"type": "boolean"}
+      }
+    },
+    "performance_analytics": {
+      "type": "object",
+      "properties": {
+        "velocity_trends": {"type": "array", "items": {"type": "number"}},
+        "quality_improvements": {"type": "number"},
+        "bottleneck_analysis": {"type": "string"},
+        "predictive_timeline": {"type": "string", "format": "date-time"}
+      }
+    },
+    "constitutional_metrics": {
+      "type": "object",
+      "required": ["compliance_score", "tri_branch_efficiency"],
+      "properties": {
+        "compliance_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "tri_branch_efficiency": {"type": "object", "properties": {
+          "consensus_achievement_rate": {"type": "number", "minimum": 0, "maximum": 1},
+          "average_decision_time_minutes": {"type": "number", "minimum": 0},
+          "executive_approval_rate": {"type": "number", "minimum": 0, "maximum": 1},
+          "legislative_challenge_rate": {"type": "number", "minimum": 0, "maximum": 1},
+          "judicial_override_count": {"type": "number", "minimum": 0}
+        }},
+        "zero_tolerance_adherence": {"type": "number", "minimum": 0, "maximum": 100},
+        "anti_hallucination_effectiveness": {"type": "object", "properties": {
+          "context7_success_rate": {"type": "number", "minimum": 0, "maximum": 1},
+          "fetch_verification_accuracy": {"type": "number", "minimum": 0, "maximum": 1},
+          "false_information_blocked": {"type": "number", "minimum": 0}
+        }}
+      }
+    },
+    "achievements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "earned_date"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "earned_date": {"type": "string", "format": "date-time"},
+          "description": {"type": "string"},
+          "impact": {"type": "string"}
+        }
+      }
+    }
+  }
+}

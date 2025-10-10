@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-10T09:03:30Z",
+  "currentTask": {
+    "id": "constitutional-framework-setup",
+    "title": "Implement AegisIDE Constitutional Framework for Job Scraper",
+    "status": "in_progress",
+    "priority": "high",
+    "description": "Establishing .warp/aegiside structure with constitutional articles and memory bank schemas"
+  },
+  "activeContext": {
+    "workingDirectory": "/mnt/windows_d/Gauravs-Files-and-Folders/Freelance/Codebasics/Job_Scrapper",
+    "currentBranch": "main",
+    "lastModified": "2025-10-10T09:03:30Z",
+    "focusAreas": [
+      "Constitutional articles in .warp/rules/constitution/",
+      "Memory bank schemas in .warp/aegiside/memory-bank/",
+      "Command safety protocol implementation",
+      "Quality validation workflows"
+    ]
+  },
+  "technicalContext": {
+    "platform": "Linux Ubuntu",
+    "pythonVersion": "3.13+",
+    "environment": "development",
+    "keyTechnologies": [
+      "Python",
+      "Streamlit",
+      "BrightData API",
+      "SQLite",
+      "Pydantic v2",
+      "Pytest"
+    ]
+  },
+  "projectState": {
+    "phase": "enhancement",
+    "completedFeatures": [
+      "BrightData API integration",
+      "Skills validation system (20,000+ skills)",
+      "Streamlit dashboard",
+      "Database schema with indexes",
+      "Constitutional framework Articles I-IV"
+    ],
+    "currentFocus": "Dual IDE support - .windsurf for Windsurf IDE, .warp for Warp terminal"
+  },
+  "environmentNotes": {
+    "ideSupport": "Both .windsurf/ and .warp/ directories maintained for multi-IDE compatibility",
+    "primaryIDE": "Windsurf (for development)",
+    "terminalAI": "Warp (for terminal operations)"
+  }
+}

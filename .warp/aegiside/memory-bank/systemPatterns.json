@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-10T08:48:03Z",
+  "architecturalPatterns": {
+    "layeredArchitecture": {
+      "pattern": "Separation of Concerns",
+      "description": "5-layer architecture with clear boundaries",
+      "layers": [
+        "Scraper Layer (data collection)",
+        "Skills Processing (validation)",
+        "Data Layer (persistence)",
+        "Analysis Layer (insights)",
+        "UI Layer (presentation)"
+      ],
+      "benefits": ["Modularity", "Testability", "Maintainability"]
+    },
+    "apiFirst": {
+      "pattern": "API-over-Browser Automation",
+      "description": "Prefer BrightData API over Selenium for reliability",
+      "rationale": "Better compliance, performance, and maintainability",
+      "migration": "Legacy browser-based code archived, not deleted"
+    }
+  },
+  "dataPatterns": {
+    "skillValidation": {
+      "pattern": "Pre-compiled Pattern Database",
+      "description": "20,000+ technical skills in JSON with regex patterns",
+      "steps": [
+        "Load skills database once at initialization",
+        "Compile regex patterns with word boundaries",
+        "Match against job description text",
+        "Verify skill existence in original text",
+        "Filter boilerplate terms"
+      ],
+      "performance": "O(1) lookup, pre-compiled patterns"
+    },
+    "databaseSchema": {
+      "pattern": "Indexed SQLite with Pydantic Models",
+      "description": "Thread-safe operations with validation",
+      "keyFeatures": [
+        "Indexes on frequently queried columns",
+        "Context managers for connections",
+        "Pydantic v2 for data validation",
+        "Alias support for legacy field names"
+      ]
+    }
+  },
+  "codingPatterns": {
+    "errorHandling": {
+      "pattern": "Context Managers for Resources",
+      "description": "Use context managers for database, API, and file operations",
+      "examples": [
+        "DatabaseConnection.get_connection_context()",
+        "BrightData API polling with automatic cleanup"
+      ]
+    },
+    "validation": {
+      "pattern": "Pydantic Models at Boundaries",
+      "description": "Validate data at entry/exit points",
+      "locations": [
+        "API responses → JobModel",
+        "Database reads → JobModel",
+        "Skills extraction → validated lists"
+      ]
+    }
+  },
+  "performancePatterns": {
+    "precompilation": {
+      "pattern": "Compile Once, Use Many",
+      "examples": [
+        "Regex patterns compiled at initialization",
+        "Skills database loaded once per instance",
+        "Database indexes created at schema init"
+      ]
+    },
+    "asyncOperations": {
+      "pattern": "Async for I/O-bound operations",
+      "usage": "Data processing pipeline uses async operations"
+    }
+  },
+  "antiPatterns": {
+    "avoid": [
+      "Browser automation for production scraping",
+      "Inline string manipulation without validation",
+      "Direct SQL without parameterization",
+      "Storing personal information in skills data"
+    ]
+  }
+}
