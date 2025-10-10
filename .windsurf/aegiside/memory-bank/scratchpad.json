@@ -1,56 +1,46 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-06T11:54:06+05:30",
+  "last_updated": "2025-10-10T12:05:46+05:30",
   "immediate_priorities": [
     {
-      "id": "priority_1",
-      "task_id": "bulk_integration_main",
-      "title": "Complete bulk workflow integration into browser_scraper_main.py",
-      "urgency": "high",
-      "deadline": "2025-10-06T13:00:00+05:30",
+      "id": "priority_2", 
+      "task_id": "brightdata_api_integration",
+      "title": "Implement BrightData API clients for LinkedIn, Indeed, and Naukri strategy",
+      "urgency": "critical",
+      "deadline": "2025-10-10T18:00:00+05:30",
       "dependencies_met": true,
       "blocking_tasks": [],
-      "estimated_minutes": 30
-    },
-    {
-      "id": "priority_2", 
-      "task_id": "end_to_end_testing",
-      "title": "Test complete bulk HTML download workflow end-to-end",
-      "urgency": "high",
-      "deadline": "2025-10-06T14:00:00+05:30",
-      "dependencies_met": false,
-      "blocking_tasks": ["bulk_integration_main"],
-      "estimated_minutes": 45
+      "estimated_minutes": 180
     },
     {
       "id": "priority_3",
-      "task_id": "performance_validation",
-      "title": "Validate performance improvement vs individual page fetching",
-      "urgency": "medium",
-      "deadline": "2025-10-06T15:00:00+05:30",
+      "task_id": "skills_extraction_engine",
+      "title": "Build regex-based skills extraction engine with comprehensive pattern matching",
+      "urgency": "high",
+      "deadline": "2025-10-11T10:00:00+05:30",
       "dependencies_met": false,
-      "blocking_tasks": ["end_to_end_testing"],
-      "estimated_minutes": 25
+      "blocking_tasks": ["brightdata_api_integration"],
+      "estimated_minutes": 90
     }
   ],
   "task_queue": [
     {
       "position": 1,
-      "task_id": "streamlit_fixes",
+      "task_id": "database_schema_update",
       "status": "todo",
       "parliamentary_approval": 98,
       "ready_for_execution": true
     },
     {
       "position": 2,
-      "task_id": "naukri_final_stage",
+      "task_id": "streamlit_analytics_dashboard",
       "status": "todo",
       "parliamentary_approval": 96,
       "ready_for_execution": true
     },
     {
       "position": 3,
-      "task_id": "skill_normalization",
+      "task_id": "requirements_update",
       "status": "todo", 
       "parliamentary_approval": 94,
       "ready_for_execution": true
@@ -77,29 +67,36 @@
       "action": "completed_naukri_integration",
       "task_id": "naukri_scraper",
       "reason": "Full API-based Naukri scraper with Pydantic v2 validation"
+    },
+    {
+      "event_id": "evt_004",
+      "timestamp": "2025-10-10T12:10:00+05:30",
+      "action": "completed_skills_dataset",
+      "task_id": "brightdata_skills_dataset",
+      "reason": "Created comprehensive skills_reference_2025.json using MIND-TechAI ontology"
     }
   ],
   "quick_notes": [
     {
       "id": "note_1",
-      "timestamp": "2025-10-06T01:03:08+05:30",
-      "content": "Project status: PRODUCTION READY with LinkedIn + Naukri platforms",
-      "priority": "high",
-      "related_task": "status_update"
+      "timestamp": "2025-10-10T12:05:46+05:30",
+      "content": "STRATEGIC PIVOT: Complete switch from Selenium to BrightData API integration",
+      "priority": "critical",
+      "related_task": "brightdata_integration"
     },
     {
       "id": "note_2",
-      "timestamp": "2025-10-06T01:03:08+05:30", 
-      "content": "Streamlit app running at http://localhost:8501 for testing",
-      "priority": "medium",
-      "related_task": "naukri_testing"
+      "timestamp": "2025-10-10T12:05:46+05:30", 
+      "content": "MIND-TechAI ontology: 3333 skills + 974 concepts + 10897 relations for comprehensive coverage",
+      "priority": "high",
+      "related_task": "skills_dataset"
     },
     {
       "id": "note_3",
-      "timestamp": "2025-10-06T01:03:08+05:30",
-      "content": "EMD compliant: All files ≤80 lines with type-safe validation",
-      "priority": "low",
-      "related_task": "code_quality"
+      "timestamp": "2025-10-10T12:05:46+05:30",
+      "content": "Target analytics: (distinct skill per job / total jobs) * 100 for skill percentage trends",
+      "priority": "medium",
+      "related_task": "analytics_formula"
     }
   ],
   "mcp_validation_state": {
@@ -116,8 +113,8 @@
     },
     "anti_hallucination_checks": [
       {
-        "task_id": "bulk_integration_main",
-        "verified_sources": ["https://docs.python.org/3/", "https://selenium-python.readthedocs.io/"],
+        "task_id": "brightdata_integration",
+        "verified_sources": ["https://docs.brightdata.com/api-reference/web-scraper-api/", "https://github.com/MIND-TechAI/MIND-tech-ontology"],
         "context7_verification": true,
         "fetch_cross_reference": true
       }
@@ -125,8 +122,8 @@
   },
   "focus_mode": {
     "enabled": true,
-    "current_focus": "Testing and validation of production-ready scraper system",
-    "distractions_blocked": ["refactoring", "new_features", "documentation_enhancement"],
-    "focus_end_time": "2025-10-09T15:00:00+05:30"
+    "current_focus": "Complete architecture restructure to BrightData API with skills-only analytics",
+    "distractions_blocked": ["selenium_fixes", "browser_automation", "old_scraping_methods"],
+    "focus_end_time": "2025-10-12T18:00:00+05:30"
   }
 }

@@ -1,7 +1,7 @@
-# Core Selenium & WebDriver
-selenium==4.15.2
-webdriver-manager==4.0.1
-undetected-chromedriver==3.5.4
+# BrightData API (no Selenium)
+# selenium removed
+# webdriver-manager removed
+# undetected-chromedriver removed
 
 # Data Models & Validation
 pydantic>=2.8.2

@@ -1,60 +1,150 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-06T01:03:08+05:30",
+  "last_updated": "2025-10-10T12:22:41+05:30",
   "current_implementation": {
-    "active_task_id": "naukri_testing",
-    "current_phase": "testing",
-    "progress_percentage": 95,
-    "started_at": "2025-10-02T12:24:00+05:30",
-    "estimated_completion": "2025-10-06T02:00:08+05:30"
+    "project_name": "Job Scrapper - BrightData Skills Analytics",
+    "current_phase": "Phase 1: Complete Architecture Restructure - BrightData Integration",
+    "last_updated": "2025-10-10T12:01:15+05:30",
+    "active_tasks": [
+      {
+        "task_id": "T1.1",
+        "description": "Replace Selenium with BrightData API integration for LinkedIn, Indeed, Naukri",
+        "status": "in_progress",
+        "priority": "critical",
+        "assigned_to": "Lead Developer",
+        "estimated_hours": 12,
+        "dependencies": []
+      },
+      {
+        "task_id": "T1.2",
+        "description": "Implement comprehensive 2025 skills dataset (MIND-TechAI ontology + custom extensions)",
+        "status": "pending",
+        "priority": "critical",
+        "assigned_to": "Data Engineer",
+        "estimated_hours": 8,
+        "dependencies": ["T1.1"]
+      },
+      {
+        "task_id": "T1.3",
+        "description": "Update database schema for skills-focused analytics",
+        "status": "pending",
+        "priority": "high",
+        "assigned_to": "Database Developer",
+        "estimated_hours": 6,
+        "dependencies": ["T1.2"]
+      }
+    ],
+    "current_focus": "Complete strategy pivot from browser scraping to BrightData API with skills-only analytics",
+    "blockers": [],
+    "recent_decisions": [
+      {
+        "decision_id": "D1.1",
+        "description": "Complete strategy change: BrightData API instead of Selenium scraping",
+        "rationale": "Better reliability, no anti-detection issues, professional data source",
+        "impact": "Major architecture change but significantly improved data quality",
+        "date": "2025-10-10"
+      },
+      {
+        "decision_id": "D1.2",
+        "description": "Focus exclusively on skills extraction and analytics",
+        "rationale": "Core business value is skill trend analysis, not job listing details",
+        "impact": "Simplified scope, faster development, clearer value proposition",
+        "date": "2025-10-10"
+      },
+      {
+        "decision_id": "D1.3",
+        "description": "Use MIND-TechAI ontology (3333 skills) + custom AI/ML extensions",
+        "rationale": "Most comprehensive 2025 skills dataset with proper hierarchies and synonyms",
+        "impact": "Zero missed skills, proper skill mapping, future-proof dataset",
+        "date": "2025-10-10"
+      }
+    ],
+    "next_milestones": [
+      {
+        "milestone_id": "M1",
+        "title": "BrightData Integration Complete",
+        "target_date": "2025-10-12",
+        "completion_criteria": "Successfully scraping LinkedIn, Indeed, Naukri via BrightData API"
+      },
+      {
+        "milestone_id": "M2",
+        "title": "Skills Analytics Dashboard",
+        "target_date": "2025-10-15",
+        "completion_criteria": "Streamlit dashboard showing skill trends with percentage formula"
+      }
+    ],
+    "technical_context": {
+      "architecture": "BrightData API + Python backend + SQLite + Streamlit analytics",
+      "key_technologies": ["BrightData API", "MIND-TechAI Ontology", "Regex Skills Extraction", "Streamlit", "SQLite"],
+      "deployment_target": "Local development with cloud API integration",
+      "performance_requirements": "Extract skills from 100+ jobs within 2 minutes via API"
+    },
+    "business_context": {
+      "primary_goal": "Skills trend analysis for job market insights",
+      "target_analytics": "Skill percentage = (distinct skill per job / total jobs) * 100",
+      "supported_platforms": ["LinkedIn", "Indeed", "Naukri"],
+      "core_value_proposition": "Comprehensive skills gap analysis and trend forecasting"
+    }
   },
   "event_tracking": [
     {
       "id": "evt_001",
-      "timestamp": "2025-10-02T12:48:00+05:30",
-      "type": "implementation_complete",
-      "task_id": "pagination_system",
-      "description": "Naukri pagination system implemented (20 jobs/page)",
+      "timestamp": "2025-10-10T11:47:53+05:30",
+      "type": "strategic_pivot",
+      "task_id": "brightdata_integration",
+      "description": "Complete strategy change from Selenium to BrightData API integration",
       "context": {
-        "total_available": 38945,
-        "url_pattern": "/{keyword}-jobs-{page_num}?k={keyword}",
-        "status": "production_ready"
+        "previous_approach": "selenium_browser_automation",
+        "new_approach": "brightdata_api_integration",
+        "target_platforms": ["linkedin", "indeed", "naukri_tbd"],
+        "status": "planning_phase"
       }
     },
     {
       "id": "evt_002", 
-      "timestamp": "2025-10-02T12:24:00+05:30",
-      "type": "anti_bot_complete",
-      "task_id": "dynamic_headers",
-      "description": "Dynamic header generation with endpoint-specific appid",
+      "timestamp": "2025-10-10T11:47:53+05:30",
+      "type": "architecture_research",
+      "task_id": "brightdata_documentation",
+      "description": "BrightData API documentation research for LinkedIn and Indeed integration",
       "context": {
-        "search_appid": "109",
-        "detail_appid": "121", 
-        "function": "get_headers()",
-        "status": "anti_bot_evasion_active"
+        "linkedin_api": "brightdata.linkedin.jobs",
+        "indeed_api": "brightdata_web_scraper_api", 
+        "documentation_source": "docs.brightdata.com",
+        "status": "research_complete"
       }
     },
     {
       "id": "evt_003",
-      "timestamp": "2025-10-01T20:38:00+05:30", 
-      "type": "platform_integration",
-      "task_id": "naukri_scraper",
-      "description": "Full API-based Naukri scraper integration complete",
+      "timestamp": "2025-10-10T12:22:41+05:30",
+      "type": "memory_bank_sync",
+      "task_id": "manual_update",
+      "description": "Manual memory bank sync executed after BrightData pivot",
       "context": {
-        "approach": "REST_API",
-        "validation": "pydantic_v2",
-        "compliance": "EMD_compliant",
-        "performance": "20-30_jobs_per_minute"
+        "files_validated": [
+          "activeContext.json",
+          "scratchpad.json",
+          "kanban.json",
+          "mistakes.json",
+          "systemPatterns.json",
+          "progress.json",
+          "roadmap.json",
+          "memory.json"
+        ],
+        "discrepancies_fixed": [
+          "memory.json_missing"
+        ],
+        "status": "validation_passed"
       }
     }
   ],
   "current_context": {
     "working_files": [
-      "/src/scraper/naukri/api_config.py",
-      "/src/scraper/naukri/api_fetcher.py", 
-      "/src/scraper/naukri/job_parser.py",
+      "/src/scraper/brightdata/linkedin_client.py",
+      "/src/scraper/brightdata/indeed_client.py", 
+      "/src/scraper/brightdata/api_config.py",
+      "/src/scraper/brightdata/job_parser.py",
       "/streamlit_app.py",
-      "/src/ui/components/scraper_form.py"
+      "/requirements.txt"
     ],
     "open_connections": [
       "streamlit_server:8501",
@@ -66,24 +156,28 @@
     ],
     "memory_references": {
       "related_patterns": [
-        "api_based_scraping",
-        "anti_bot_evasion", 
-        "pagination_handling",
-        "multi_platform_architecture"
+        "brightdata_api_integration",
+        "multi_platform_job_scraping", 
+        "api_key_management",
+        "rate_limiting_handling",
+        "async_data_collection"
       ],
       "similar_tasks": [
-        "linkedin_scraper_optimization",
-        "skill_extraction_validation",
-        "ui_component_modularization"
+        "linkedin_brightdata_integration",
+        "indeed_api_implementation",
+        "naukri_strategy_research"
       ],
-      "blocking_issues": []
+      "blocking_issues": [
+        "brightdata_api_key_setup",
+        "naukri_strategy_decision"
+      ]
     }
   },
   "ai_state": {
     "current_minister": "dev_minister",
     "active_shadows": ["quality_shadow", "innovation_shadow"],
-    "checkpoint_status": "production_ready_testing_phase",
-    "next_validation": "2025-10-09T13:00:00+05:30"
+    "checkpoint_status": "strategic_planning_phase",
+    "next_validation": "2025-10-11T12:00:00+05:30"
   },
   "session_management": {
     "session_id": "job_scrapper_session_20251009",

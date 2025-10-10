@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-10T12:18:29+05:30",
+  "default_user": "default_user",
+  "entities": [],
+  "relations": [],
+  "metadata": {
+    "total_entities": 0,
+    "total_relations": 0,
+    "total_observations": 0,
+    "graph_depth": 0,
+    "last_query": "2025-10-10T12:18:29+05:30"
+  },
+  "user_context": {
+    "identity": {},
+    "behaviors": [],
+    "preferences": {},
+    "goals": []
+  }
+}
