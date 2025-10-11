@@ -1,11 +1,17 @@
 #!/bin/bash
 
-echo "🛑 Stopping BrightData Proxy Manager Docker container..."
+echo "🛑 Stopping HeadlessX Rendering Service..."
+echo ""
 
-# Stop docker-compose
-docker-compose down
+# Stop HeadlessX container
+if docker ps --format '{{.Names}}' | grep -q '^headlessx$'; then
+    docker stop headlessx
+    echo "✅ HeadlessX container stopped"
+else
+    echo "ℹ️  HeadlessX container is not running"
+fi
 
-# Alternative: Stop docker run container
-# docker stop brightdata-proxy-manager
-
-echo "✅ Proxy manager stopped"
+echo ""
+echo "💡 To remove the container completely:"
+echo "   docker rm headlessx"
+echo ""
