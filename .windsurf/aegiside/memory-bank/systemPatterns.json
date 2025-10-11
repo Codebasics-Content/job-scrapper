@@ -1,7 +1,118 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-11T23:49:19+05:30",
+  "last_updated": "2025-10-12T02:08:10+05:30",
   "architecture_patterns": [
+    {
+      "pattern_id": "PATTERN_010",
+      "name": "Real-World Platform Constraints (2025 Research)",
+      "category": "scraping_limits",
+      "description": "Actual rate limits, pagination, and jobs-per-page data from Indeed, LinkedIn, and Naukri based on official documentation and industry research",
+      "implementation": {
+        "indeed": {
+          "jobs_per_page": 10,
+          "pagination_method": "start parameter (0, 10, 20, 30...)",
+          "official_api_limit": "25 results per query",
+          "pagination_url_format": "https://www.indeed.com/jobs?q={query}&l={location}&start={offset}",
+          "rate_limiting": "No official rate limit, but aggressive anti-bot detection",
+          "anti_bot_measures": ["CAPTCHA on suspicious activity", "IP tracking", "Request pattern analysis"],
+          "recommended_concurrency": "5-10 concurrent requests maximum",
+          "source": "Scrapfly 2025, ScrapeOps, Official Indeed API docs"
+        },
+        "linkedin": {
+          "jobs_per_page": 25,
+          "pagination_method": "start parameter in URL",
+          "official_api_rate_limits": {
+            "application_level": "Rate limited per day, resets midnight UTC",
+            "user_level": "Per-user rate limits apply",
+            "note": "Requires LinkedIn Partnership and authorization"
+          },
+          "scraping_challenges": ["Extremely aggressive anti-bot", "Login walls", "JavaScript-heavy rendering"],
+          "recommended_approach": "Official LinkedIn Jobs API (paid) or very conservative scraping (1-2 req/min)",
+          "recommended_concurrency": "1-3 concurrent requests maximum (high risk)",
+          "source": "Microsoft Learn LinkedIn API docs, Dev.to job scraping guides"
+        },
+        "naukri": {
+          "jobs_per_page": "20-25 (estimated from scrapers)",
+          "pagination_method": "URL suffix pagination (jobs-1, jobs-2, jobs-3)",
+          "pagination_url_format": "https://www.naukri.com/{keyword}-jobs-{page_num}",
+          "bulk_api_available": true,
+          "bulk_api_method": "fetch_jobs_bulk with comprehensive raw response",
+          "rate_limiting": "Moderate anti-bot, allows reasonable scraping",
+          "recommended_concurrency": "10-20 concurrent requests",
+          "source": "Apify Naukri scrapers, StackOverflow pagination examples"
+        }
+      },
+      "realistic_performance_projections": {
+        "10k_jobs_scenario": {
+          "indeed": {
+            "total_pages": 1000,
+            "detail_pages": 10000,
+            "estimated_time_sequential": "16.7 hours (6s per job)",
+            "estimated_time_5_concurrent": "3.3 hours",
+            "estimated_time_10_concurrent": "1.7 hours"
+          },
+          "linkedin": {
+            "total_pages": 400,
+            "detail_pages": 10000,
+            "estimated_time_sequential": "19.4 hours (7s per job)",
+            "estimated_time_3_concurrent": "6.5 hours (RISKY - high ban risk)",
+            "recommended_approach": "Use official API or scrape < 1000 jobs"
+          },
+          "naukri": {
+            "total_pages": 500,
+            "detail_pages": 10000,
+            "estimated_time_sequential": "16.7 hours (6s per job)",
+            "estimated_time_10_concurrent": "1.7 hours",
+            "estimated_time_20_concurrent": "0.8 hours (with bulk API)"
+          }
+        },
+        "100k_jobs_scenario": {
+          "indeed": {
+            "total_pages": 10000,
+            "detail_pages": 100000,
+            "estimated_time_10_concurrent": "16.7 hours",
+            "ban_risk": "VERY HIGH - Indeed will definitely block at this scale",
+            "recommendation": "DO NOT attempt without official API or distributed proxies"
+          },
+          "linkedin": {
+            "recommendation": "IMPOSSIBLE via scraping - Use official API only",
+            "official_api_required": true
+          },
+          "naukri": {
+            "total_pages": 5000,
+            "detail_pages": 100000,
+            "estimated_time_20_concurrent": "8.3 hours",
+            "ban_risk": "MODERATE - Requires proxy rotation",
+            "recommendation": "Use bulk API + residential proxies"
+          }
+        }
+      },
+      "critical_findings": {
+        "assumption_corrections": [
+          "❌ WRONG: 50 concurrent requests is safe → ✅ REALITY: 5-20 max depending on platform",
+          "❌ WRONG: All platforms allow same scraping speed → ✅ REALITY: LinkedIn is 10x stricter",
+          "❌ WRONG: 100K jobs in 33 hours is feasible → ✅ REALITY: Ban risk makes this unrealistic without proxies",
+          "❌ WRONG: Jobs per page is consistent → ✅ REALITY: Indeed=10, LinkedIn=25, Naukri=20-25"
+        ],
+        "revised_strategy": {
+          "small_scale_10k": "Feasible with 5-20 concurrent, 2-4 hours total",
+          "medium_scale_50k": "Requires proxy rotation, 8-20 hours",
+          "large_scale_100k": "Requires official APIs + distributed proxies OR accept 3-7 day timeline",
+          "recommended_batch_size": 1000,
+          "recommended_concurrency": {
+            "indeed": 5,
+            "linkedin": 2,
+            "naukri": 15
+          }
+        }
+      },
+      "mcp_documentation_links": [
+        "https://scrapfly.io/blog/posts/how-to-scrape-indeedcom",
+        "https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits",
+        "https://apify.com/louisdeconinck/naukri-job-scraper"
+      ],
+      "adoption_date": "2025-10-12T02:08:10+05:30"
+    },
     {
       "pattern_id": "PATTERN_009",
       "name": "Docker Compose Multi-Service Deployment",
@@ -24,35 +135,6 @@
         "https://docs.docker.com/compose/",
         "https://www.browserless.io/docs/docker"
       ]
-    },
-    {
-      "pattern_id": "PATTERN_008",
-      "name": "Mock HTML Parser Testing",
-      "category": "testing",
-      "description": "Validate parser selectors with static HTML when browser rendering unavailable",
-      "implementation": {
-        "approach": "BeautifulSoup with hardcoded HTML samples",
-        "benefits": ["No browser dependency", "Fast execution", "Selector logic validation"],
-        "trade_offs": ["Not testing dynamic content", "Manual HTML maintenance"]
-      },
-      "code_example": "src/tests/test_linkedin_parser_mock.py",
-      "success_criteria": "Description extraction >50 chars, contains expected keywords",
-      "adoption_date": "2025-10-11T22:52:30+05:30",
-      "mcp_documentation_links": []
-    },
-    {
-      "pattern_id": "PATTERN_007",
-      "name": "Adapter Pattern for API Incompatibility",
-      "category": "architecture",
-      "description": "Create adapter classes when third-party APIs don't match internal interfaces",
-      "implementation": {
-        "approach": "Inherit from base class, implement required methods with API-specific logic",
-        "issue_encountered": "Browserless container API incompatible with BaseHeadlessXClient",
-        "resolution": "Documented blocker, pivoted to alternative testing strategy"
-      },
-      "lessons_learned": "Verify API compatibility before integration. Method signature mismatches require full adapter implementation or interface redesign.",
-      "adoption_date": "2025-10-11T22:50:50+05:30",
-      "mcp_documentation_links": []
     }
   ],
   "compliance_templates": {
@@ -70,11 +152,11 @@
     ]
   },
   "mcp_enriched_documentation": {
+    "indeed_scraping_2025": "https://scrapfly.io/blog/posts/how-to-scrape-indeedcom",
+    "linkedin_api_rate_limits": "https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits",
+    "naukri_scraper_apify": "https://apify.com/louisdeconinck/naukri-job-scraper",
+    "web_scraping_best_practices": "https://scrapy.org",
     "docker_compose": "https://docs.docker.com/compose/",
-    "browserless_chrome": "https://www.browserless.io/docs/docker",
-    "luminati_proxy": "https://docs.brightdata.com/general/account/proxy-management",
-    "beautifulsoup_selectors": "https://www.crummy.com/software/BeautifulSoup/bs4/doc/",
-    "pydantic_v2_models": "https://docs.pydantic.dev/2.0/",
-    "httpx_async_clients": "https://www.python-httpx.org/async/"
+    "browserless_chrome": "https://www.browserless.io/docs/docker"
   }
 }

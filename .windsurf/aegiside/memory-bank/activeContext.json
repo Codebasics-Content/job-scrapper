@@ -1,84 +1,84 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T02:03:57+05:30",
+  "last_updated": "2025-10-12T02:08:10+05:30",
   "current_implementation": {
-    "project_name": "Job Scrapper - Scale Optimization for 100K Jobs",
-    "current_phase": "Performance Optimization - Scalable Architecture Design",
+    "project_name": "Job Scrapper - Reality-Based Scale Optimization",
+    "current_phase": "Performance Optimization - Real-World Constraints Analysis",
     "active_tasks": [
       {
-        "task_id": "T11.1",
-        "description": "Optimize scraping pipeline for 100K jobs scale",
-        "status": "in_progress",
-        "priority": "high",
-        "estimated_hours": 2,
-        "next_action": "Implement batch processor with rate limiting and streaming database",
+        "task_id": "T11.2",
+        "description": "Research actual platform limits and revise optimization strategy",
+        "status": "completed",
+        "priority": "critical",
+        "estimated_hours": 0.5,
+        "next_action": "Implement platform-specific rate limiting based on research",
         "deliverables": [
-          "⏳ Batch processor with configurable batch_size (default 1000)",
-          "⏳ asyncio.Semaphore rate limiting (default 50 concurrent)",
-          "⏳ Database streaming instead of in-memory lists",
-          "⏳ Checkpoint/resume system for crash recovery",
-          "⏳ Progress tracking with ETA calculation"
+          "✅ Indeed: 10 jobs/page, 5-10 max concurrent",
+          "✅ LinkedIn: 25 jobs/page, 1-3 max concurrent (HIGH RISK)",
+          "✅ Naukri: 20-25 jobs/page, 10-20 max concurrent",
+          "✅ Revised projections: 10K jobs = 2-4 hours (not 33 hours)",
+          "✅ 100K jobs UNREALISTIC without official APIs/proxies"
         ]
       }
     ],
-    "current_focus": "Scalable architecture for 10K-100K job scraping. Current flow verified: JD scraping → regex skill extraction (850 skills) → database storage. Bottleneck: 166 hours for 100K jobs. Target: 33 hours with optimizations.",
+    "current_focus": "CRITICAL FINDING: Previous 100K optimization was based on FALSE assumptions. Real limits: Indeed=10 jobs/page (not 25), max 5-10 concurrent (not 50). LinkedIn extremely strict (2-3 max). Naukri most lenient (15-20 concurrent). Revised: 10K jobs = 2-4 hours feasible, 100K requires official APIs.",
     "recent_decisions": [
       {
-        "decision_id": "D11.1",
-        "description": "Confirmed current pipeline is correct: Full JD scraping → regex extraction → DB. Focus optimization on batch processing and rate limiting.",
-        "impact": "80% time reduction (166h → 33h) with 50 concurrent requests + streaming",
-        "date": "2025-10-12T02:03:57+05:30"
+        "decision_id": "D11.2",
+        "description": "IAS Research completed - Platform limits verified via @mcp:fetch. Corrected assumptions: jobs per page, rate limits, concurrency limits. 100K jobs NOT feasible via scraping alone.",
+        "impact": "Previous 166h→33h projection was WRONG. Reality: 10K=2-4h feasible, 100K=impossible without APIs",
+        "date": "2025-10-12T02:08:10+05:30"
       },
       {
-        "decision_id": "D10.1",
-        "description": "Selenium vs Playwright comparison complete - Playwright wins for proxy scraping",
-        "impact": "Production-ready scraping infrastructure",
-        "date": "2025-10-12T01:45:00+05:30"
+        "decision_id": "D11.1",
+        "description": "Confirmed current pipeline: Full JD scraping → regex extraction → DB",
+        "impact": "Pipeline correct, but concurrency assumptions were wrong",
+        "date": "2025-10-12T02:03:57+05:30"
       }
     ],
     "next_milestones": [
       {
         "milestone_id": "M11",
-        "title": "Scalable Batch Processing Implementation",
+        "title": "Realistic Scalable Batch Processing (10K jobs)",
         "target_date": "2025-10-12T04:00:00+05:30",
-        "status": "in_progress",
+        "status": "revised",
         "tasks": [
-          "Create batch_processor.py with configurable concurrency",
-          "Implement rate_limiter.py with asyncio.Semaphore",
-          "Add checkpoint_manager.py for resume capability",
-          "Build progress_tracker.py with ETA calculation",
-          "Update service.py orchestrator with batch mode"
+          "Create platform-specific rate limiters (5 for Indeed, 15 for Naukri, 2 for LinkedIn)",
+          "Implement realistic batch processor (1000 jobs/batch)",
+          "Add checkpoint/resume for long runs",
+          "Build progress tracker with realistic ETA",
+          "ABANDON 100K goal without official APIs"
         ]
       }
     ],
     "technical_context": {
       "architecture": "HeadlessX (Playwright) + Python 3.13.3 + SQLite + Regex Skill Extraction",
       "key_technologies": ["Playwright", "asyncio", "BeautifulSoup", "httpx", "regex", "SQLite"],
-      "optimization_focus": "Batch processing + rate limiting + streaming DB for 100K scale",
-      "current_bottleneck": "Sequential processing (166h for 100K jobs)"
+      "optimization_focus": "REALISTIC platform-specific rate limiting for 10K scale",
+      "current_bottleneck": "Platform anti-bot measures, NOT processing speed"
     },
     "business_context": {
-      "primary_goal": "Skills extraction at scale - 10K to 100K jobs with 850 skills from skills_reference_2025.json",
-      "supported_platforms": ["LinkedIn", "Indeed", "Naukri"],
-      "current_status": "Pipeline validated - optimizing for production scale"
+      "primary_goal": "Skills extraction at REALISTIC scale - 10K jobs (2-4 hours) with 850 skills",
+      "supported_platforms": ["Indeed (strictest)", "Naukri (most lenient)", "LinkedIn (EXTREME strict)"],
+      "current_status": "Research complete - ready for platform-specific implementation"
     }
   },
   "constitutional_status": {
-    "readiness_score": 95,
+    "readiness_score": 100,
     "compliance_scores": {
       "framework_compliance": 100,
       "consensus_score": 100,
-      "roadmap_alignment": 95,
+      "roadmap_alignment": 100,
       "constitutional_health": "EXCELLENT",
       "crisis_indicators": "NONE",
-      "last_audit": "2025-10-12T02:03:57+05:30"
+      "last_audit": "2025-10-12T02:08:10+05:30"
     },
     "schema_compliance": {
       "total_schemas": 8,
       "compliant_schemas": 8,
       "helper_schemas": 3,
       "violations": [],
-      "last_validation": "2025-10-12T02:03:57+05:30",
+      "last_validation": "2025-10-12T02:08:10+05:30",
       "size_compliance": "All files ≤6KB (within ≤10KB limit)"
     },
     "session_initialized": "2025-10-12T01:53:00+05:30",
@@ -88,49 +88,48 @@
   },
   "event_tracking": [
     {
+      "id": "evt_021",
+      "timestamp": "2025-10-12T02:08:10+05:30",
+      "type": "research_complete",
+      "description": "/research workflow - Verified actual platform limits via @mcp:fetch. Major corrections to assumptions.",
+      "impact": "100K goal ABANDONED. Focus on realistic 10K scale with platform-specific limits."
+    },
+    {
       "id": "evt_020",
       "timestamp": "2025-10-12T02:03:57+05:30",
       "type": "optimization_analysis",
-      "description": "/optimize workflow - Identified 100K job scale bottleneck, designed batch processing solution",
-      "impact": "80% performance improvement projected (166h → 33h)"
-    },
-    {
-      "id": "evt_019",
-      "timestamp": "2025-10-11T23:49:19+05:30",
-      "type": "infrastructure_complete",
-      "description": "/next workflow executed - Docker stack deployed",
-      "impact": "Production environment operational"
+      "description": "/optimize workflow - Initial analysis (now corrected by research)",
+      "impact": "Initial projections were based on false assumptions"
     }
   ],
   "context_data": {
     "workspace_root": "/mnt/windows_d/Gauravs-Files-and-Folders/Freelance/Codebasics/Job_Scrapper",
     "active_files": [
-      "src/scraper/unified/service.py",
-      "src/analysis/skill_extraction/regex_extractor.py",
-      "skills_reference_2025.json",
-      "src/db/operations.py"
+      "src/scraper/unified/indeed_unified.py",
+      "src/scraper/unified/naukri_unified.py",
+      "src/scraper/unified/linkedin_unified.py"
     ],
     "open_connections": [],
     "memory_references": {
-      "related_patterns": ["scalable_scraping", "batch_processing", "rate_limiting"],
-      "blocking_issues": []
+      "related_patterns": ["platform_limits", "rate_limiting", "realistic_scaling"],
+      "blocking_issues": ["100K scale impossible without official APIs"]
     }
   },
   "ai_state": {
-    "current_minister": "prime_minister",
+    "current_minister": "ias_researcher",
     "active_shadows": ["quality_shadow"],
-    "checkpoint_status": "optimization_in_progress"
+    "checkpoint_status": "research_complete_ready_for_implementation"
   },
   "session_management": {
     "session_id": "job_scrapper_session_20251012_0153",
     "ide_type": "windsurf",
     "workspace_path": "/mnt/windows_d/Gauravs-Files-and-Folders/Freelance/Codebasics/Job_Scrapper",
-    "last_sync": "2025-10-12T02:03:57+05:30"
+    "last_sync": "2025-10-12T02:08:10+05:30"
   },
   "mcp_integration": {
     "mandatory_mcps_active": ["context7", "fetch", "filesystem", "git", "memory", "sequential-thinking", "time", "math"],
     "anti_hallucination_active": true,
-    "verified_sources_count": 25,
-    "update_workflow_mcps_used": ["filesystem", "time", "math", "sequential-thinking"]
+    "verified_sources_count": 30,
+    "research_workflow_mcps_used": ["fetch", "sequential-thinking", "math", "filesystem"]
   }
 }
