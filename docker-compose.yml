@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # HeadlessX - Chrome rendering service
+  headlessx:
+    image: browserless/chrome:latest
+    container_name: headlessx
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - CHROME_ARGS=--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage
+      - PROXY_URL=http://luminati-proxy:24000
+    depends_on:
+      - luminati-proxy
+    networks:
+      - scraper-network
+
+  # Luminati Proxy Manager - Local proxy with BrightData network
+  luminati-proxy:
+    image: luminati/luminati-proxy:latest
+    container_name: luminati-proxy
+    restart: unless-stopped
+    ports:
+      - "22999:22999"  # Web UI
+      - "24000:24000"  # US residential proxy
+      - "24001:24001"  # India residential proxy
+    environment:
+      - CUSTOMER=${BRIGHTDATA_CUSTOMER_ID}
+      - ZONE=${BRIGHTDATA_ZONE}
+      - PASSWORD=${BRIGHTDATA_PASSWORD}
+    command: >
+      --customer ${BRIGHTDATA_CUSTOMER_ID}
+      --password ${BRIGHTDATA_PASSWORD}
+      --port 24000
+      --zone residential
+      --country us
+      --port 24001
+      --zone residential  
+      --country in
+      --www 22999
+      --www_whitelist_ips 0.0.0.0/0
+      --ssl false
+      --session_random true
+      --keep_alive true
+      --pool_size 10
+    networks:
+      - scraper-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:22999"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  scraper-network:
+    driver: bridge

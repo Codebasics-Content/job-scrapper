@@ -1,8 +1,7 @@
 #!/bin/bash
-# HeadlessX Service Manager
-# Check status and provide configuration guidance
+# Job Scraper Infrastructure Status Checker
 
-echo "🔍 Checking HeadlessX Service Status..."
+echo "🔍 Checking Job Scraper Infrastructure Status..."
 echo ""
 
 # Check if Docker is running
@@ -12,31 +11,45 @@ if ! docker info > /dev/null 2>&1; then
     exit 1
 fi
 
-# Check HeadlessX container status
-if docker ps --format '{{.Names}}' | grep -q '^headlessx$'; then
-    echo "✅ HeadlessX is RUNNING"
-    echo ""
-    echo "📊 Container Info:"
-    docker ps --filter "name=headlessx" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
-    echo ""
-    echo "🔗 API Endpoint: http://localhost:3000"
-    echo ""
-    echo "📋 Test Connection:"
-    echo "   curl http://localhost:3000/json/version"
-elif docker ps -a --format '{{.Names}}' | grep -q '^headlessx$'; then
-    echo "⏸️  HeadlessX container exists but is STOPPED"
-    echo ""
-    echo "▶️  Start it with: ./start_proxy_docker.sh"
+echo "📊 Service Status:"
+echo ""
+
+# Check docker compose services (V2)
+if docker compose version &> /dev/null; then
+    docker compose ps
 else
-    echo "❌ HeadlessX container not found"
+    # Fallback to individual container checks
+    echo "Luminati Proxy Manager:"
+    if docker ps --format '{{.Names}}' | grep -q '^luminati-proxy$'; then
+        docker ps --filter "name=luminati-proxy" --format "  ✅ {{.Names}} ({{.Status}})"
+    else
+        echo "  ❌ Not running"
+    fi
+    
     echo ""
-    echo "🚀 Create and start with: ./start_proxy_docker.sh"
+    echo "HeadlessX:"
+    if docker ps --format '{{.Names}}' | grep -q '^headlessx$'; then
+        docker ps --filter "name=headlessx" --format "  ✅ {{.Names}} ({{.Status}})"
+    else
+        echo "  ❌ Not running"
+    fi
 fi
 
 echo ""
-echo "📝 Required .env Configuration:"
-echo "   HEADLESSX_BASE_URL=http://localhost:3000"
-echo "   HEADLESSX_TOKEN=  # Leave empty for local"
-echo "   HEADLESSX_PROFILE=desktop-chrome"
-echo "   HEADLESSX_STEALTH=maximum"
+echo "🔗 Service Endpoints:"
+echo "   Luminati Web UI: http://localhost:22999"
+echo "   Luminati US Proxy: http://localhost:24000"
+echo "   Luminati India Proxy: http://localhost:24001"
+echo "   HeadlessX API: http://localhost:3000"
+echo ""
+echo "📋 Quick Tests:"
+echo "   curl http://localhost:22999  # Luminati UI"
+echo "   curl http://localhost:3000/json/version  # HeadlessX"
+echo ""
+
+if ! docker ps | grep -q "luminati-proxy\|headlessx"; then
+    echo "⚠️  Services not running. Start with:"
+    echo "   ./start_proxy_docker.sh"
+fi
+
 echo ""

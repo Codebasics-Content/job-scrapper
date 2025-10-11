@@ -1,17 +1,17 @@
 #!/bin/bash
 
-echo "🛑 Stopping HeadlessX Rendering Service..."
+echo "🛑 Stopping Job Scraper Infrastructure..."
 echo ""
 
-# Stop HeadlessX container
-if docker ps --format '{{.Names}}' | grep -q '^headlessx$'; then
-    docker stop headlessx
-    echo "✅ HeadlessX container stopped"
-else
-    echo "ℹ️  HeadlessX container is not running"
-fi
+# Stop all services (Docker Compose V2)
+docker compose down
 
 echo ""
-echo "💡 To remove the container completely:"
-echo "   docker rm headlessx"
+echo "✅ All services stopped"
+echo ""
+echo "💡 To remove containers and volumes:"
+echo "   docker compose down -v"
+echo ""
+echo "💡 To remove everything including images:"
+echo "   docker compose down -v --rmi all"
 echo ""

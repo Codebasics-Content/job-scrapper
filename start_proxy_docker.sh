@@ -1,9 +1,15 @@
 #!/bin/bash
 
-echo "🐳 Starting HeadlessX Rendering Service with Docker..."
+echo "🐳 Starting Job Scraper Infrastructure with Docker..."
 echo ""
-echo "   HeadlessX: Chrome-based rendering for job scrapers"
-echo "   API will be available at: http://localhost:3000"
+echo "   Services:"
+echo "   1. Luminati Proxy Manager (Local BrightData Proxy)"
+echo "      - Web UI: http://localhost:22999"
+echo "      - US Proxy: http://localhost:24000"
+echo "      - India Proxy: http://localhost:24001"
+echo ""
+echo "   2. HeadlessX (Chrome Rendering Service)"
+echo "      - API: http://localhost:3000"
 echo ""
 echo "   Press Ctrl+C to stop"
 echo ""
@@ -15,30 +21,45 @@ if ! docker info > /dev/null 2>&1; then
     exit 1
 fi
 
-# Check if HeadlessX container already exists
-if docker ps -a --format '{{.Names}}' | grep -q '^headlessx$'; then
-    echo "♻️  HeadlessX container exists, restarting..."
-    docker start headlessx
-else
-    echo "📦 Creating new HeadlessX container..."
-    echo ""
-    
-    # Start HeadlessX with Docker
-    docker run -d \
-      --name headlessx \
-      --restart unless-stopped \
-      -p 3000:3000 \
-      -e CHROME_ARGS="--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage" \
-      browserless/chrome:latest
+# Check if .env file exists
+if [ ! -f .env ]; then
+    echo "❌ .env file not found!"
+    echo "   Copy .env.example to .env and configure:"
+    echo "   - BRIGHTDATA_CUSTOMER_ID"
+    echo "   - BRIGHTDATA_ZONE"
+    echo "   - BRIGHTDATA_PASSWORD"
+    exit 1
 fi
 
+# Load environment variables
+source .env
+
+# Validate BrightData credentials
+if [ -z "$BRIGHTDATA_CUSTOMER_ID" ] || [ -z "$BRIGHTDATA_PASSWORD" ]; then
+    echo "❌ Missing BrightData credentials in .env!"
+    echo "   Required: BRIGHTDATA_CUSTOMER_ID, BRIGHTDATA_PASSWORD"
+    exit 1
+fi
+
+echo "📦 Starting services with docker compose..."
 echo ""
-echo "✅ HeadlessX started successfully!"
+
+# Start all services (Docker Compose V2)
+docker compose up -d
+
 echo ""
-echo "📋 Quick Test:"
+echo "✅ Services started successfully!"
+echo ""
+echo "🔍 Check status:"
+echo "   docker compose ps"
+echo ""
+echo "📋 Quick Tests:"
+echo "   # Luminati Proxy"
+echo "   curl http://localhost:22999"
+echo ""
+echo "   # HeadlessX"
 echo "   curl http://localhost:3000/json/version"
 echo ""
-echo "🔧 Update your .env file:"
-echo "   HEADLESSX_BASE_URL=http://localhost:3000"
-echo "   HEADLESSX_TOKEN=  # Leave empty for local development"
+echo "📊 View logs:"
+echo "   docker compose logs -f"
 echo ""
