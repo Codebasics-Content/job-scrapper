@@ -1,8 +1,8 @@
 """LinkedIn URL construction utilities"""
 
 
-def build_search_url(keyword: str, location: str) -> str:
-    """Build LinkedIn job search URL with encoded parameters"""
+def build_search_url(keyword: str, location: str = "") -> str:
+    """Build LinkedIn global job search URL - searches worldwide by default"""
     k = keyword.replace(" ", "%20")
-    loc = location.replace(" ", "%20")
-    return f"https://www.linkedin.com/jobs/search/?keywords={k}&location={loc}"
+    # Global search - no location filter for worldwide results
+    return f"https://www.linkedin.com/jobs/search/?keywords={k}"

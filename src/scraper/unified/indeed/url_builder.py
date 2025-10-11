@@ -1,11 +1,11 @@
 """Indeed URL construction utilities"""
 
 
-def build_search_url(keyword: str, location: str) -> str:
-    """Build Indeed job search URL with encoded parameters"""
+def build_search_url(keyword: str, location: str = "") -> str:
+    """Build Indeed global job search URL - searches worldwide by default"""
     k = keyword.replace(" ", "+")
-    loc = location.replace(" ", "+")
-    return f"https://www.indeed.com/jobs?q={k}&l={loc}"
+    # Global search - no location filter for worldwide results
+    return f"https://www.indeed.com/jobs?q={k}"
 
 
 def normalize_job_url(href: str | list[str] | None) -> str | None:

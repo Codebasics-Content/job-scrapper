@@ -1,16 +1,11 @@
 """Naukri URL construction utilities"""
 
 
-def build_search_url(keyword: str, location: str) -> str:
-    """Build Naukri job search URL with keyword and location"""
+def build_search_url(keyword: str, location: str = "") -> str:
+    """Build Naukri global job search URL - searches all India by default"""
     k = keyword.replace(" ", "-")
-    path = f"/{k}-jobs"
-    
-    if location and location.lower() != "india":
-        loc = location.replace(" ", "-")
-        path += f"-in-{loc}"
-    
-    return f"https://www.naukri.com{path}"
+    # Global search across all of India - no location restriction
+    return f"https://www.naukri.com/{k}-jobs"
 
 
 def normalize_job_url(href: str | list[str] | None) -> str | None:
