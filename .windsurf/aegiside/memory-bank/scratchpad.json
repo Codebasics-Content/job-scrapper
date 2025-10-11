@@ -1,26 +1,35 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-10T12:05:46+05:30",
+  "last_updated": "2025-10-11T16:21:25+05:30",
+  "constitutional_remediation": {
+    "priority": "CRITICAL",
+    "detected_at": "2025-10-11T16:55:21+05:30",
+    "violation_type": "EMD_SIZE_LIMIT_EXCEEDED",
+    "required_action": "Schema compression and cleanup",
+    "remediation_workflow": "/fix",
+    "target_completion": "immediate"
+  },
   "immediate_priorities": [
     {
       "id": "priority_2", 
-      "task_id": "brightdata_api_integration",
-      "title": "Implement BrightData API clients for LinkedIn, Indeed, and Naukri strategy",
-      "urgency": "critical",
-      "deadline": "2025-10-10T18:00:00+05:30",
+      "task_id": "headlessx_luminati_integration",
+      "title": "Implement HeadlessX + Local Luminati Proxy unified scrapers for LinkedIn, Indeed, and Naukri",
+      "urgency": "completed",
+      "deadline": "2025-10-11T15:57:01+05:30",
       "dependencies_met": true,
       "blocking_tasks": [],
       "estimated_minutes": 180
     },
     {
       "id": "priority_3",
-      "task_id": "skills_extraction_engine",
-      "title": "Build regex-based skills extraction engine with comprehensive pattern matching",
-      "urgency": "high",
-      "deadline": "2025-10-11T10:00:00+05:30",
-      "dependencies_met": false,
-      "blocking_tasks": ["brightdata_api_integration"],
-      "estimated_minutes": 90
+      "task_id": "lightweight_skill_extractor",
+      "title": "Build LIGHTWEIGHT regex-based skill extractor (NO heavy packages, pure regex + JSON)",
+      "urgency": "critical",
+      "deadline": "2025-10-11T17:00:00+05:30",
+      "dependencies_met": true,
+      "blocking_tasks": [],
+      "estimated_minutes": 30,
+      "approach": "Use skills_reference_2025.json (850 skills) with compiled regex patterns for speed"
     }
   ],
   "task_queue": [
@@ -79,10 +88,10 @@
   "quick_notes": [
     {
       "id": "note_1",
-      "timestamp": "2025-10-10T12:05:46+05:30",
-      "content": "STRATEGIC PIVOT: Complete switch from Selenium to BrightData API integration",
+      "timestamp": "2025-10-11T15:57:01+05:30",
+      "content": "STRATEGIC PIVOT: Complete switch from Selenium to HeadlessX + LOCAL Luminati Proxy Manager (no cloud dependencies)",
       "priority": "critical",
-      "related_task": "brightdata_integration"
+      "related_task": "headlessx_luminati_integration"
     },
     {
       "id": "note_2",
@@ -113,8 +122,12 @@
     },
     "anti_hallucination_checks": [
       {
-        "task_id": "brightdata_integration",
-        "verified_sources": ["https://docs.brightdata.com/api-reference/web-scraper-api/", "https://github.com/MIND-TechAI/MIND-tech-ontology"],
+        "task_id": "headlessx_luminati_integration",
+        "verified_sources": [
+          "https://github.com/saifyxpro/HeadlessX",
+          "https://github.com/luminati-io/luminati-proxy",
+          "https://github.com/MIND-TechAI/MIND-tech-ontology"
+        ],
         "context7_verification": true,
         "fetch_cross_reference": true
       }
@@ -122,8 +135,8 @@
   },
   "focus_mode": {
     "enabled": true,
-    "current_focus": "Complete architecture restructure to BrightData API with skills-only analytics",
-    "distractions_blocked": ["selenium_fixes", "browser_automation", "old_scraping_methods"],
+    "current_focus": "Complete architecture restructure to HeadlessX + Local Luminati Proxy with skills-only analytics",
+    "distractions_blocked": ["selenium_fixes", "browser_automation", "old_scraping_methods", "cloud_brightdata_api"],
     "focus_end_time": "2025-10-12T18:00:00+05:30"
   }
 }

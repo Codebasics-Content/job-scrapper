@@ -1,47 +1,94 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-10T12:22:41+05:30",
+  "last_updated": "2025-10-11T16:04:34+05:30",
   "current_implementation": {
-    "project_name": "Job Scrapper - BrightData Skills Analytics",
-    "current_phase": "Phase 1: Complete Architecture Restructure - BrightData Integration",
-    "last_updated": "2025-10-10T12:01:15+05:30",
+    "project_name": "Job Scrapper - Local Luminati + HeadlessX Skills Analytics",
+    "current_phase": "Phase 1: Unified HeadlessX + Local Luminati Proxy Rendering",
+    "last_updated": "2025-10-11T16:21:25+05:30",
     "active_tasks": [
       {
         "task_id": "T1.1",
-        "description": "Replace Selenium with BrightData API integration for LinkedIn, Indeed, Naukri",
-        "status": "in_progress",
+        "description": "Replace Selenium with HeadlessX + Local Luminati Proxy for LinkedIn, Indeed, Naukri",
+        "status": "completed",
         "priority": "critical",
         "assigned_to": "Lead Developer",
         "estimated_hours": 12,
         "dependencies": []
       },
       {
-        "task_id": "T1.2",
-        "description": "Implement comprehensive 2025 skills dataset (MIND-TechAI ontology + custom extensions)",
+        "task_id": "T2.1",
+        "description": "Implement retry/backoff and timeouts in HeadlessX renderer client",
         "status": "pending",
         "priority": "critical",
-        "assigned_to": "Data Engineer",
-        "estimated_hours": 8,
-        "dependencies": ["T1.1"]
+        "assigned_to": "Tech Minister",
+        "estimated_hours": 3,
+        "dependencies": []
       },
       {
-        "task_id": "T1.3",
-        "description": "Update database schema for skills-focused analytics",
+        "task_id": "T2.2",
+        "description": "Add concurrency with asyncio.gather + semaphore in unified scrapers",
+        "status": "pending",
+        "priority": "high",
+        "assigned_to": "Dev Minister",
+        "estimated_hours": 4,
+        "dependencies": ["T2.1"]
+      },
+      {
+        "task_id": "T2.3",
+        "description": "Add minimal DB insert path (url, jd, skills, platform, scraped_at)",
         "status": "pending",
         "priority": "high",
         "assigned_to": "Database Developer",
-        "estimated_hours": 6,
-        "dependencies": ["T1.2"]
+        "estimated_hours": 2,
+        "dependencies": [],
+        "completion_date": "2025-10-11T16:04:34+05:30"
+      },
+      {
+        "task_id": "T2.5",
+        "description": "Implement lightweight regex-based skill extractor using skills_reference_2025.json (850 skills, NO heavy packages)",
+        "status": "in_progress",
+        "priority": "critical",
+        "assigned_to": "Dev Minister",
+        "estimated_hours": 1,
+        "dependencies": [],
+        "approach": "Pure regex + JSON pattern matching, no SkillNER/spaCy"
+      },
+      {
+        "task_id": "T2.4",
+        "description": "Quarantine legacy scrapers and exclude from Pyright",
+        "status": "completed",
+        "priority": "medium",
+        "assigned_to": "Dev Minister",
+        "estimated_hours": 1,
+        "dependencies": []
+      },
+      {
+        "task_id": "T2.5",
+        "description": "Add nightly canary tests (limit=2) for selector drift per platform",
+        "status": "pending",
+        "priority": "medium",
+        "assigned_to": "Quality Shadow",
+        "estimated_hours": 2,
+        "dependencies": ["T2.1"]
+      },
+      {
+        "task_id": "T2.6",
+        "description": "Streamlit wired to unified scrape_jobs service",
+        "status": "completed",
+        "priority": "high",
+        "assigned_to": "Lead Developer",
+        "estimated_hours": 2,
+        "dependencies": []
       }
     ],
-    "current_focus": "Complete strategy pivot from browser scraping to BrightData API with skills-only analytics",
+    "current_focus": "Stabilize unified HeadlessX + Local Luminati Proxy path and improve throughput via concurrency",
     "blockers": [],
     "recent_decisions": [
       {
         "decision_id": "D1.1",
-        "description": "Complete strategy change: BrightData API instead of Selenium scraping",
-        "rationale": "Better reliability, no anti-detection issues, professional data source",
-        "impact": "Major architecture change but significantly improved data quality",
+        "description": "Complete strategy change: HeadlessX renderer + Local Luminati Proxy instead of Selenium scraping",
+        "rationale": "Better reliability, anti-detection via HeadlessX, residential IPs via local Luminati Proxy Manager",
+        "impact": "Major architecture change with significantly improved reliability and stealth",
         "date": "2025-10-10"
       },
       {
@@ -57,27 +104,46 @@
         "rationale": "Most comprehensive 2025 skills dataset with proper hierarchies and synonyms",
         "impact": "Zero missed skills, proper skill mapping, future-proof dataset",
         "date": "2025-10-10"
+      },
+      {
+        "decision_id": "D1.4",
+        "description": "Adopt HeadlessX rendering + Local Luminati Proxy Manager as unified approach",
+        "rationale": "Combines anti-detection rendering (HeadlessX) with residential IP rotation (Luminati local proxy on port 24000)",
+        "impact": "Higher reliability at scale, full local control, no cloud dependencies",
+        "date": "2025-10-11",
+        "references": [
+          "https://github.com/saifyxpro/HeadlessX",
+          "https://github.com/luminati-io/luminati-proxy"
+        ]
       }
     ],
     "next_milestones": [
       {
         "milestone_id": "M1",
-        "title": "BrightData Integration Complete",
-        "target_date": "2025-10-12",
-        "completion_criteria": "Successfully scraping LinkedIn, Indeed, Naukri via BrightData API"
+        "title": "Unified HeadlessX path wired in Streamlit",
+        "target_date": "2025-10-11",
+        "completion_criteria": "Streamlit uses scrape_jobs() for all platforms",
+        "status": "completed"
       },
       {
         "milestone_id": "M2",
-        "title": "Skills Analytics Dashboard",
-        "target_date": "2025-10-15",
-        "completion_criteria": "Streamlit dashboard showing skill trends with percentage formula"
+        "title": "Resilience & Throughput Enhancements",
+        "target_date": "2025-10-12",
+        "completion_criteria": "Retries + timeouts + concurrency enabled across platforms",
+        "status": "in_progress"
       }
     ],
     "technical_context": {
-      "architecture": "BrightData API + Python backend + SQLite + Streamlit analytics",
-      "key_technologies": ["BrightData API", "MIND-TechAI Ontology", "Regex Skills Extraction", "Streamlit", "SQLite"],
-      "deployment_target": "Local development with cloud API integration",
-      "performance_requirements": "Extract skills from 100+ jobs within 2 minutes via API"
+      "architecture": "HeadlessX renderer + Local Luminati Proxy Manager (port 24000) + Python backend + SQLite + Streamlit",
+      "key_technologies": ["HeadlessX (saifyxpro)", "Luminati Proxy Manager (local)", "BeautifulSoup", "Pydantic", "Streamlit", "SQLite"],
+      "deployment_target": "Fully local: HeadlessX + Luminati Proxy Manager + Streamlit app",
+      "performance_requirements": "Extract skills from 100+ jobs within 2 minutes with concurrency",
+      "proxy_configuration": {
+        "type": "local_luminati_proxy_manager",
+        "port": 24000,
+        "ip_type": "residential",
+        "country": "configurable"
+      }
     },
     "business_context": {
       "primary_goal": "Skills trend analysis for job market insights",
@@ -85,6 +151,39 @@
       "supported_platforms": ["LinkedIn", "Indeed", "Naukri"],
       "core_value_proposition": "Comprehensive skills gap analysis and trend forecasting"
     }
+  },
+  "constitutional_status": {
+    "readiness_score": 62.5,
+    "schema_compliance": {
+      "total_schemas": 8,
+      "compliant_schemas": 5,
+      "violations": [
+        {
+          "file": "activeContext.json",
+          "size_kb": 12.16,
+          "violation": "EMD_SIZE_LIMIT_EXCEEDED",
+          "limit_kb": 10.0,
+          "excess_percent": 21.6
+        },
+        {
+          "file": "systemPatterns.json",
+          "size_kb": 10.85,
+          "violation": "EMD_SIZE_LIMIT_EXCEEDED",
+          "limit_kb": 10.0,
+          "excess_percent": 8.5
+        },
+        {
+          "file": "kanban.json",
+          "size_kb": 10.38,
+          "violation": "EMD_SIZE_LIMIT_EXCEEDED",
+          "limit_kb": 10.0,
+          "excess_percent": 3.8
+        }
+      ]
+    },
+    "session_initialized": "2025-10-11T16:55:21+05:30",
+    "constitutional_articles_loaded": "I-XVI",
+    "immediate_remediation_required": true
   },
   "event_tracking": [
     {
@@ -101,14 +200,14 @@
       }
     },
     {
-      "id": "evt_002", 
+      "id": "evt_002",
       "timestamp": "2025-10-10T11:47:53+05:30",
       "type": "architecture_research",
       "task_id": "brightdata_documentation",
       "description": "BrightData API documentation research for LinkedIn and Indeed integration",
       "context": {
         "linkedin_api": "brightdata.linkedin.jobs",
-        "indeed_api": "brightdata_web_scraper_api", 
+        "indeed_api": "brightdata_web_scraper_api",
         "documentation_source": "docs.brightdata.com",
         "status": "research_complete"
       }
@@ -135,16 +234,89 @@
         ],
         "status": "validation_passed"
       }
+    },
+    {
+      "id": "evt_004",
+      "timestamp": "2025-10-11T15:33:40+05:30",
+      "type": "architecture_update",
+      "task_id": "unified_headlessx_proxy",
+      "description": "Pivot to HeadlessX renderer + Local Luminati Proxy Manager with Streamlit wired to scrape_jobs()",
+      "context": {
+        "renderer": "headlessx_saifyxpro",
+        "proxy": "luminati_proxy_manager_local",
+        "proxy_port": 24000,
+        "unified_services": ["linkedin_unified", "indeed_unified", "naukri_unified"],
+        "status": "initial_wiring_complete",
+        "references": [
+          "https://github.com/saifyxpro/HeadlessX",
+          "https://github.com/luminati-io/luminati-proxy"
+        ]
+      }
+    },
+    {
+      "id": "evt_005",
+      "timestamp": "2025-10-11T15:57:01+05:30",
+      "type": "architecture_clarification",
+      "task_id": "local_luminati_confirmation",
+      "description": "Confirmed use of LOCAL Luminati Proxy Manager (not cloud BrightData) + HeadlessX",
+      "context": {
+        "proxy_type": "local_luminati_proxy_manager",
+        "deployment": "docker_local_port_24000",
+        "renderer": "headlessx_separate_deployment",
+        "no_cloud_dependencies": true,
+        "github_repos": [
+          "https://github.com/saifyxpro/HeadlessX",
+          "https://github.com/luminati-io/luminati-proxy"
+        ]
+      }
+    },
+    {
+      "id": "evt_006",
+      "timestamp": "2025-10-11T16:04:34+05:30",
+      "type": "code_cleanup",
+      "task_id": "legacy_code_deprecation",
+      "description": "Moved legacy scrapers and UI components to _deprecated folders to prevent hallucination",
+      "context": {
+        "deprecated_scrapers": [
+          "src/scraper/_deprecated/brightdata/*_browser_scraper.py",
+          "src/scraper/_deprecated/brightdata/*_dataset_scraper.py",
+          "src/scraper/_deprecated/local_proxy/",
+          "src/scraper/_deprecated/proxy/"
+        ],
+        "deprecated_ui": [
+          "src/_deprecated_ui/ui/components/",
+          "src/_deprecated_ui/ui/utils/"
+        ],
+        "active_components": [
+          "src/scraper/unified/ (linkedin, indeed, naukri)",
+          "src/scraper/services/headlessx_client.py",
+          "src/db/ (connection, operations, schema)",
+          "src/analysis/ (skill analysis, statistics)",
+          "streamlit_app.py (main UI)"
+        ],
+        "pyrightconfig_exclusions": [
+          "src/scraper/_deprecated",
+          "src/_deprecated_ui"
+        ]
+      }
     }
   ],
   "current_context": {
     "working_files": [
-      "/src/scraper/brightdata/linkedin_client.py",
-      "/src/scraper/brightdata/indeed_client.py", 
-      "/src/scraper/brightdata/api_config.py",
-      "/src/scraper/brightdata/job_parser.py",
+      "/src/scraper/services/headlessx_client.py",
+      "/src/scraper/unified/service.py",
+      "/src/scraper/unified/linkedin_unified.py",
+      "/src/scraper/unified/indeed_unified.py",
+      "/src/scraper/unified/naukri_unified.py",
+      "/src/db/connection.py",
+      "/src/db/operations.py",
+      "/src/analysis/analysis/ (skill analysis modules)",
       "/streamlit_app.py",
       "/requirements.txt"
+    ],
+    "deprecated_files": [
+      "/src/scraper/_deprecated/ (legacy scrapers - DO NOT USE)",
+      "/src/_deprecated_ui/ (legacy UI components - DO NOT USE)"
     ],
     "open_connections": [
       "streamlit_server:8501",
@@ -156,35 +328,32 @@
     ],
     "memory_references": {
       "related_patterns": [
-        "brightdata_api_integration",
-        "multi_platform_job_scraping", 
+        "unified_headless_rendering",
+        "multi_platform_job_scraping",
         "api_key_management",
         "rate_limiting_handling",
         "async_data_collection"
       ],
       "similar_tasks": [
-        "linkedin_brightdata_integration",
-        "indeed_api_implementation",
-        "naukri_strategy_research"
+        "linkedin_unified_integration",
+        "indeed_unified_integration",
+        "naukri_unified_integration"
       ],
-      "blocking_issues": [
-        "brightdata_api_key_setup",
-        "naukri_strategy_decision"
-      ]
+      "blocking_issues": []
     }
   },
   "ai_state": {
     "current_minister": "dev_minister",
     "active_shadows": ["quality_shadow", "innovation_shadow"],
-    "checkpoint_status": "strategic_planning_phase",
-    "next_validation": "2025-10-11T12:00:00+05:30"
+    "checkpoint_status": "execution_phase",
+    "next_validation": "2025-10-12T12:00:00+05:30"
   },
   "session_management": {
     "session_id": "job_scrapper_session_20251009",
     "ide_type": "windsurf",
     "workspace_path": "/mnt/windows_d/Gauravs-Files-and-Folders/Freelance/Codebasics/Job_Scrapper",
     "connected_at": "2025-10-09T12:16:00+05:30",
-    "last_sync": "2025-10-09T12:16:00+05:30"
+    "last_sync": "2025-10-11T15:33:40+05:30"
   },
   "mcp_integration": {
     "mandatory_mcps_active": ["context7", "fetch", "filesystem", "git", "memory", "sequential-thinking", "time", "math"],
