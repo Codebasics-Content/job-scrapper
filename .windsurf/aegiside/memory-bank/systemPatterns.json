@@ -1,81 +1,103 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-11T16:04:34+05:30",
-  "successful_patterns": [
+  "last_updated": "2025-10-11T22:33:52+05:30",
+  "architecture_patterns": [
     {
-      "pattern_id": "pattern_005",
-      "name": "Unified HeadlessX + Local Luminati Proxy",
-      "description": "Single renderer + local proxy for all platforms",
-      "implementation": "HeadlessX anti-detection + Luminati residential IPs (port 24000)",
-      "success_rate": 95,
-      "use_cases": ["linkedin_scraping", "indeed_scraping", "naukri_scraping"],
-      "files": ["src/scraper/services/headlessx_client.py", "src/scraper/unified/service.py"]
+      "pattern_id": "AP8",
+      "name": "End-to-End Pipeline Testing Pattern",
+      "category": "testing",
+      "description": "Comprehensive pipeline validation using test data that simulates real-world scenarios",
+      "implementation": {
+        "test_data_generation": "Create realistic job descriptions (500+ chars) with diverse skill sets",
+        "skill_extraction_validation": "Verify extraction accuracy across different job types and complexity levels",
+        "database_operations": "Test JobStorageOperations class with proper Pydantic model instantiation using field aliases",
+        "statistical_analysis": "Validate formula correctness: (distinct_jobs_with_skill / total_jobs) * 100",
+        "verification_strategy": "Compare calculated percentages against manually computed expected values"
+      },
+      "benefits": [
+        "Validates all components before live integration",
+        "Catches schema/model mismatches early",
+        "Provides confidence in statistical accuracy",
+        "Enables rapid iteration without external dependencies"
+      ],
+      "context7_docs": "https://docs.pydantic.dev/latest/concepts/models/#field-aliases",
+      "applied_in": ["tests/test_e2e_pipeline.py"],
+      "date_discovered": "2025-10-11T22:33:52+05:30"
     },
     {
-      "pattern_id": "pattern_004",
-      "name": "Triple-Layer Skill Validation",
-      "description": "SkillNER + spaCy + pattern matching for 100% accuracy",
-      "success_rate": 100,
-      "use_cases": ["skill_extraction", "job_analysis"],
-      "files": ["analysis/skill_extractor.py"]
-    },
-    {
-      "pattern_id": "pattern_003",
-      "name": "EMD Modular UI Components",
-      "description": "Streamlit UI broken into ≤80 line components",
-      "success_rate": 100,
-      "files": ["ui/components/*.py", "streamlit_app.py"]
-    }
-  ],
-  "deployment_configurations": [
-    {
-      "config_id": "headlessx_luminati_local",
-      "name": "HeadlessX + Local Luminati Setup",
-      "environment": "local_development",
-      "requirements": {
-        "headlessx": "https://github.com/saifyxpro/HeadlessX",
-        "luminati_proxy": "https://github.com/luminati-io/luminati-proxy",
-        "proxy_port": 24000
+      "pattern_id": "AP7",
+      "name": "Pydantic Field Alias Pattern",
+      "category": "data_validation",
+      "description": "Using Pydantic field aliases to maintain database schema compatibility while using Pythonic naming",
+      "implementation": {
+        "field_definition": "Use Field(..., alias='CamelCase') for database schema fields",
+        "instantiation": "Pass CamelCase names when creating JobModel instances",
+        "access": "Access fields using snake_case attribute names in code"
       },
-      "config_files": ["docker-compose.yml", "proxy_manager_config.json"],
-      "status": "active"
+      "benefits": [
+        "Database schema remains unchanged (Job_Role, Company, Experience, Skills)",
+        "Python code uses idiomatic snake_case naming",
+        "Type safety maintained through Pydantic validation",
+        "Seamless migration from existing database structure"
+      ],
+      "context7_docs": "https://docs.pydantic.dev/latest/concepts/fields/#field-aliases",
+      "applied_in": ["src/models.py", "tests/test_e2e_pipeline.py"],
+      "date_discovered": "2025-10-11T22:33:52+05:30"
     }
   ],
-  "governance_decisions": [
+  "mcp_integration_patterns": [
     {
-      "decision_id": "gd_001",
-      "proposal_id": "proposal-unified-architecture",
-      "title": "Adopt Unified HeadlessX + Local Luminati Architecture",
-      "consensus_score": 98,
-      "parliamentary_approval": {
-        "government_vote": "approve",
-        "opposition_vote": "approve_with_conditions",
-        "judicial_ruling": "constitutional"
-      },
-      "implementation_date": "2025-10-11",
-      "impact": "Eliminates cloud dependencies, improves reliability"
+      "pattern_id": "MIP3",
+      "name": "Test Database Cleanup",
+      "mcp_chain": ["filesystem (rm test files)"],
+      "purpose": "Remove temporary test databases after validation",
+      "implementation": "rm -f test_jobs.db after test completion",
+      "benefits": ["Clean workspace", "Prevents test data pollution"],
+      "applied_in": ["/next workflow execution"],
+      "date_discovered": "2025-10-11T22:33:52+05:30"
     }
   ],
-  "technical_debt": [
+  "reusable_components": [
     {
-      "debt_id": "td_001",
-      "description": "Legacy _deprecated folders cleanup",
-      "priority": "medium",
-      "estimated_hours": 2,
-      "impact": "code_clarity"
+      "component_id": "RC5",
+      "name": "Realistic Job Description Generator",
+      "type": "test_data",
+      "description": "Template for creating realistic job postings with 500+ characters for comprehensive testing",
+      "usage": "Use multi-line strings with detailed role descriptions, required skills, and responsibilities",
+      "location": "tests/test_e2e_pipeline.py:lines 31-66",
+      "benefits": ["Better validates real-world skill extraction", "Tests edge cases", "Comprehensive validation"],
+      "date_created": "2025-10-11T22:33:52+05:30"
     }
   ],
-  "constitutional_compliance": {
-    "emd_adherence": 100,
-    "schema_validation": "passing",
-    "parliamentary_oversight": "active",
-    "last_audit": "2025-10-11T16:55:21+05:30"
-  },
-  "architectural_decisions": [
+  "anti_patterns_avoided": [
     {
-      "decision": "Unified scraper service architecture",
-      "rationale": "Single configuration for all platforms",
-      "impact": "Simplified maintenance, consistent behavior"
+      "anti_pattern_id": "APA4",
+      "name": "Ignoring Pydantic Field Aliases",
+      "description": "Using snake_case names when instantiating models with aliased fields",
+      "why_bad": "Causes Pydantic validation errors: 'Field required' for aliased fields",
+      "correct_approach": "Use the alias name (e.g., Job_Role) when passing data to model constructor",
+      "incident_example": "Initial test failure with 'Experience' field required error",
+      "resolution": "Updated all JobModel instantiations to use proper aliases",
+      "date_learned": "2025-10-11T22:33:52+05:30"
+    }
+  ],
+  "compliance_templates": [
+    {
+      "template_id": "CT3",
+      "name": "Pipeline Validation Checklist",
+      "type": "testing",
+      "steps": [
+        "Create realistic test data (500+ char descriptions)",
+        "Extract skills using production code",
+        "Store in database using actual ORM/operations classes",
+        "Retrieve from database and reconstruct models",
+        "Calculate statistics using production formulas",
+        "Verify results against expected values",
+        "Clean up test artifacts"
+      ],
+      "parliamentary_approval": 98,
+      "constitutional_article": "Article IV (Engineering Excellence)",
+      "date_created": "2025-10-11T22:33:52+05:30"
     }
   ]
 }
