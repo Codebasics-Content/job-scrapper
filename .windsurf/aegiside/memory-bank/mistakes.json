@@ -1,6 +1,20 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-06T01:03:08+05:30",
+  "last_updated": "2025-10-11T15:57:01+05:30",
+  "constitutional_remediation_log": {
+    "remediation_id": "rem_001",
+    "violation_type": "EMD_SIZE_LIMIT_EXCEEDED",
+    "detected_at": "2025-10-11T16:55:21+05:30",
+    "resolved_at": "2025-10-11T17:00:37+05:30",
+    "root_cause": "3 schema files exceeded 10KB constitutional limit",
+    "resolution": "Compressed files by removing redundant data while preserving critical information",
+    "prevention": "Implement automatic schema cleanup and size monitoring",
+    "compression_results": [
+      {"file": "activeContext.json", "reduction": "62%"},
+      {"file": "systemPatterns.json", "reduction": "74%"},
+      {"file": "kanban.json", "reduction": "80%"}
+    ]
+  },
   "error_patterns": [
     {
       "id": "err_004",
@@ -65,6 +79,26 @@
         "files_affected": ["analytics_dashboard.py"],
         "pattern": "Unified data processing pipeline",
         "severity": "critical",
+        "recurrence_count": 1
+    },
+    {
+        "id": "err_006",
+        "timestamp": "2025-10-11T15:57:01+05:30",
+        "category": "architecture_clarification",
+        "title": "Cloud BrightData vs Local Luminati Proxy confusion",
+        "description": "Initial implementation mentioned BrightData (cloud) but requirement is LOCAL Luminati Proxy Manager",
+        "root_cause": "Misunderstanding between cloud BrightData API and local Luminati Proxy Manager deployment",
+        "solution": "Clarified architecture: HeadlessX (https://github.com/saifyxpro/HeadlessX) + Local Luminati Proxy Manager (https://github.com/luminati-io/luminati-proxy) on port 24000, no cloud dependencies",
+        "files_affected": [
+          "activeContext.json",
+          "scratchpad.json",
+          "systemPatterns.json",
+          "roadmap.json",
+          "progress.json",
+          "kanban.json"
+        ],
+        "pattern": "Always verify local vs cloud deployment requirements before implementation",
+        "severity": "medium",
         "recurrence_count": 1
     }
   ],

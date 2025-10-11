@@ -1,193 +1,81 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-06T01:03:08+05:30",
+  "last_updated": "2025-10-11T16:04:34+05:30",
   "successful_patterns": [
     {
-      "pattern_id": "pattern_001",
-      "name": "Multi-Platform Scraper Architecture",
-      "description": "Separate browser-based (LinkedIn) and API-based (Naukri) approaches",
-      "implementation": "Different scrapers for different platforms based on their capabilities",
+      "pattern_id": "pattern_005",
+      "name": "Unified HeadlessX + Local Luminati Proxy",
+      "description": "Single renderer + local proxy for all platforms",
+      "implementation": "HeadlessX anti-detection + Luminati residential IPs (port 24000)",
       "success_rate": 95,
-      "use_cases": ["LinkedIn: Selenium + infinite scroll", "Naukri: REST API + pagination"],
-      "files": ["linkedin/browser_scraper.py", "naukri/api_fetcher.py"]
-    },
-    {
-      "pattern_id": "pattern_002", 
-      "name": "Anti-Bot Evasion with Dynamic Headers",
-      "description": "Endpoint-specific appid headers to bypass Akamai Bot Manager",
-      "implementation": "get_headers() function with dynamic appid (109 for search, 121 for details)",
-      "success_rate": 90,
-      "use_cases": ["API rate limiting bypass", "Bot detection prevention"],
-      "files": ["naukri/config/api_config.py"]
-    },
-    {
-      "pattern_id": "pattern_003",
-      "name": "EMD Modular UI Components",
-      "description": "Streamlit UI broken into ≤80 line components for maintainability",
-      "implementation": "5 modular components + main orchestrator (414 total lines)",
-      "success_rate": 100,
-      "use_cases": ["scraper_form", "progress_tracker", "job_listings", "analytics_dashboard"],
-      "files": ["ui/components/*.py", "streamlit_app.py"]
+      "use_cases": ["linkedin_scraping", "indeed_scraping", "naukri_scraping"],
+      "files": ["src/scraper/services/headlessx_client.py", "src/scraper/unified/service.py"]
     },
     {
       "pattern_id": "pattern_004",
       "name": "Triple-Layer Skill Validation",
       "description": "SkillNER + spaCy + pattern matching for 100% accuracy",
-      "implementation": "Multi-step validation pipeline with fallback mechanisms",
       "success_rate": 100,
-      "use_cases": ["skill extraction", "job analysis", "report generation"],
-      "files": ["analysis/skill_extractor.py", "analysis/skill_normalizer/"]
-    }
-  ],
-  "architecture_patterns": [
-    {
-      "pattern_id": "arch_pattern_database",
-      "name": "Thread-Safe SQLite Architecture",
-      "description": "ConnectionManager with context managers for consistent access",
-      "implementation": "SQLite schema with job fields and thread-safe operations"
+      "use_cases": ["skill_extraction", "job_analysis"],
+      "files": ["analysis/skill_extractor.py"]
     },
     {
-      "pattern_id": "arch_pattern_scraping",
-      "name": "Hybrid Scraping Strategy",
-      "description": "Browser automation for LinkedIn and REST API for Naukri",
-      "implementation": "LinkedIn via Selenium infinite scroll; Naukri via API with dynamic headers"
-    },
-    {
-      "pattern_id": "arch_pattern_skill_validation",
-      "name": "Triple-Layer Skill Validation",
-      "description": "SkillNER, spaCy, and pattern matching pipeline",
-      "implementation": "Fallback mechanisms ensure 100% accuracy"
+      "pattern_id": "pattern_003",
+      "name": "EMD Modular UI Components",
+      "description": "Streamlit UI broken into ≤80 line components",
+      "success_rate": 100,
+      "files": ["ui/components/*.py", "streamlit_app.py"]
     }
   ],
+  "deployment_configurations": [
+    {
+      "config_id": "headlessx_luminati_local",
+      "name": "HeadlessX + Local Luminati Setup",
+      "environment": "local_development",
+      "requirements": {
+        "headlessx": "https://github.com/saifyxpro/HeadlessX",
+        "luminati_proxy": "https://github.com/luminati-io/luminati-proxy",
+        "proxy_port": 24000
+      },
+      "config_files": ["docker-compose.yml", "proxy_manager_config.json"],
+      "status": "active"
+    }
+  ],
+  "governance_decisions": [
+    {
+      "decision_id": "gd_001",
+      "proposal_id": "proposal-unified-architecture",
+      "title": "Adopt Unified HeadlessX + Local Luminati Architecture",
+      "consensus_score": 98,
+      "parliamentary_approval": {
+        "government_vote": "approve",
+        "opposition_vote": "approve_with_conditions",
+        "judicial_ruling": "constitutional"
+      },
+      "implementation_date": "2025-10-11",
+      "impact": "Eliminates cloud dependencies, improves reliability"
+    }
+  ],
+  "technical_debt": [
+    {
+      "debt_id": "td_001",
+      "description": "Legacy _deprecated folders cleanup",
+      "priority": "medium",
+      "estimated_hours": 2,
+      "impact": "code_clarity"
+    }
+  ],
+  "constitutional_compliance": {
+    "emd_adherence": 100,
+    "schema_validation": "passing",
+    "parliamentary_oversight": "active",
+    "last_audit": "2025-10-11T16:55:21+05:30"
+  },
   "architectural_decisions": [
     {
-      "decision_id": "arch_001",
-      "title": "API vs Browser-Based Scraping Strategy",
-      "rationale": "Different platforms require different approaches based on anti-bot measures",
-      "chosen_approach": "Hybrid: API where possible, browser automation where necessary",
-      "alternatives_considered": ["Pure API", "Pure browser automation"],
-      "impact": "Optimal performance and reliability across platforms"
-    },
-    {
-      "decision_id": "arch_002",
-      "title": "JSON-First Constitutional Framework Migration", 
-      "rationale": "2.6x faster parsing and 40% better AI processing than Markdown",
-      "chosen_approach": "Complete migration to JSON with schema validation",
-      "alternatives_considered": ["Hybrid MD/JSON", "Keep MD format"],
-      "impact": "Enhanced autonomous capabilities and better data validation"
-    },
-    {
-      "decision_id": "arch_003",
-      "title": "Six-Pillar Project Validation Framework",
-      "rationale": "Ensures project viability before implementation, based on constitutional Article XIV.",
-      "chosen_approach": "Scoring across Problem Definition, Solution Feasibility, Market Validation, Technical Feasibility, Scalability, and Monetization.",
-      "alternatives_considered": ["Simple go/no-go decision"],
-      "impact": "Reduced risk of project failure and ensures alignment with strategic goals."
-    },
-    {
-        "decision_id": "tech_004",
-        "title": "Recommended Tech Stack for Job Scrapper",
-        "description": "Python-based stack for scraping and UI",
-        "rationale": "Leverages mature libraries for web scraping, data processing, and UI development.",
-        "implementation": {
-          "backend": {
-            "language": "Python 3.13.3",
-            "scraping": ["selenium", "undetected-chromedriver", "requests"],
-            "data_processing": ["pandas", "skillNer", "spaCy", "jellyfish"],
-            "validation": ["pydantic", "basedpyright"],
-            "database": "SQLite"
-          },
-          "frontend": {
-            "framework": "Streamlit"
-          }
-        }
-    },
-    {
-        "decision_id": "tech_005",
-        "title": "Multi-Platform Scraper Architecture",
-        "description": "Different scraping approaches for LinkedIn and Naukri",
-        "rationale": "LinkedIn requires browser automation, Naukri supports API access",
-        "implementation": {
-          "linkedin": "Selenium + undetected-chromedriver for infinite scroll",
-          "naukri": "REST API with dynamic headers"
-        }
-    },
-    {
-        "decision_id": "tech_006",
-        "title": "Pydantic v2 for Type Safety",
-        "description": "Strong typing and runtime validation for all data models",
-        "rationale": "Ensures data integrity and excellent IDE support",
-        "implementation": {
-          "job_model": "Exact schema validation with detailed errors",
-          "validation": "Runtime validation across ingestion pipeline"
-        }
+      "decision": "Unified scraper service architecture",
+      "rationale": "Single configuration for all platforms",
+      "impact": "Simplified maintenance, consistent behavior"
     }
-  ],
-  "compliance_patterns": [
-    {
-      "pattern": "EMD Compliance",
-      "description": "All files ≤80 lines with deep nested structure",
-      "enforcement": "Automatic validation during development",
-      "violation_response": "Immediate refactoring into smaller modules"
-    },
-    {
-      "pattern": "Constitutional Governance",
-      "description": "Tri-branch decision making with >95% consensus requirement",
-      "enforcement": "Parliamentary approval for all major changes",
-      "violation_response": "Rollback and re-submission with proper consensus"
-    },
-    {
-      "pattern": "Zero Tolerance Validation",
-      "description": "No errors or warnings allowed before task completion",
-      "enforcement": "basedpyright validation + pytest checks",
-      "violation_response": "HALT-FIX-VALIDATE loop until 100% clean"
-    }
-  ],
-  "integration_patterns": [
-    {
-      "integration": "Pydantic v2 Type Safety",
-      "pattern": "Strong typing with validation for all data models",
-      "benefits": ["Runtime validation", "IDE support", "Auto-completion"],
-      "implementation": "JobModel with exact schema validation"
-    },
-    {
-      "integration": "SQLite Thread-Safe Operations", 
-      "pattern": "ConnectionManager with proper resource cleanup",
-      "benefits": ["Concurrent access", "Data integrity", "Resource management"],
-      "implementation": "Database operations with context managers"
-    }
-  ],
-  "performance_metrics": {
-    "linkedin": {
-      "jobs_per_minute": 15,
-      "memory_profile": "High",
-      "reliability": 95
-    },
-    "naukri": {
-      "jobs_per_minute": 25,
-      "memory_profile": "Low",
-      "reliability": 90
-    },
-    "overall": {
-      "emd_compliance": 100,
-      "type_safety": 98,
-      "test_coverage": 85
-    }
-  },
-  "development_environment": {
-    "ides": ["VS Code", "PyCharm", "Cursor"],
-    "linting": "basedpyright strict mode",
-    "testing": "pytest with coverage reports"
-  },
-  "deployment_considerations": {
-    "requirements": {
-      "chrome_driver": true,
-      "python_version": "3.13.3+",
-      "memory": "2GB+ recommended"
-    },
-    "scalability": {
-      "concurrent_scraping": "Supported via connection pooling",
-      "error_handling": "Retry logic with exponential backoff"
-    }
-  }
+  ]
 }

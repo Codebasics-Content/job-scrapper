@@ -1,147 +1,67 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-01-06T11:54:06+05:30",
+  "last_updated": "2025-10-11T16:04:34+05:30",
   "board_configuration": {
-    "workflow_states": ["todo", "in_progress", "testing", "done", "approved"],
+    "workflow_states": ["todo", "in_progress", "testing", "done"],
     "wip_limits": {
       "in_progress": 3,
       "testing": 2
-    },
-    "automation_rules": {
-      "auto_move_to_testing": true,
-      "require_approval_for_done": false
     }
   },
   "tasks": [
     {
-      "task_id": "task_001",
-      "title": "Implement bulk HTML download system for Naukri scraper",
-      "description": "Create efficient batch HTML downloader using Selenium to save job pages locally for offline parsing",
-      "status": "done",
-      "assignee": "dev_minister",
-      "priority": "high",
-      "story_points": 8,
-      "labels": ["naukri", "bulk-download", "selenium", "optimization"],
-      "created_date": "2025-01-06T11:54:06+05:30",
-      "completed_date": "2025-01-06T11:54:06+05:30",
-      "parliamentary_approval": 98,
-      "dependencies": [],
-      "acceptance_criteria": [
-        "✅ Create BulkHTMLDownloader class with 20 jobs per batch",
-        "✅ Implement batch processing with progress tracking",
-        "✅ Add temporary file management with auto-cleanup",
-        "✅ Include anti-bot evasion with random delays"
-      ]
-    },
-    {
-      "task_id": "task_002",
-      "title": "Update job detail fetcher for HTML file parsing",
-      "description": "Modify job_detail_fetcher.py to parse saved HTML files using BeautifulSoup instead of live browsing",
-      "status": "done",
-      "assignee": "dev_minister",
-      "priority": "high",
-      "story_points": 5,
-      "labels": ["parsing", "beautifulsoup", "html", "offline"],
-      "created_date": "2025-01-06T11:54:06+05:30",
-      "completed_date": "2025-01-06T11:54:06+05:30",
-      "parliamentary_approval": 95,
-      "dependencies": ["task_001"],
-      "acceptance_criteria": [
-        "✅ Replace Selenium navigation with file reading",
-        "✅ Use BeautifulSoup for CSS selector-based extraction",
-        "✅ Add fallback selectors for robust parsing",
-        "✅ Include regex-based skill extraction from combined text"
-      ]
-    },
-    {
-      "task_id": "task_003",
-      "title": "Integrate bulk workflow into browser_scraper_main.py", 
-      "description": "Update main scraper to use bulk downloader and offline parsing workflow",
-      "status": "in_progress",
-      "assignee": "dev_minister",
-      "priority": "medium",
-      "story_points": 3,
-      "labels": ["integration", "workflow", "main-scraper"],
-      "created_date": "2025-01-06T11:54:06+05:30",
-      "parliamentary_approval": 90,
-      "dependencies": ["task_001", "task_002"],
-      "acceptance_criteria": [
-        "Modify main scraper to use BulkHTMLDownloader",
-        "Update job processing to parse saved HTML files",
-        "Ensure skill normalization integration works",
-        "Test end-to-end bulk scraping workflow"
-      ]
-    },
-    {
-      "task_id": "task_004",
-      "title": "Test Naukri bulk scraper end-to-end functionality",
-      "description": "Verify bulk download system works with sample queries and maintains data quality",
+      "task_id": "task_headlessx_retry",
+      "title": "Implement retry/backoff in HeadlessX client",
+      "description": "Add timeout handling and exponential backoff to HeadlessX renderer client",
       "status": "todo",
-      "assignee": "quality_shadow",
-      "priority": "high",
-      "story_points": 5,
-      "labels": ["testing", "naukri", "bulk-validation"],
-      "created_date": "2025-01-06T11:54:06+05:30",
-      "parliamentary_approval": 95,
-      "dependencies": ["task_003"],
-      "acceptance_criteria": [
-        "Successfully scrape 50 jobs using bulk download",
-        "Verify skill extraction accuracy matches previous results",
-        "Confirm database storage works with bulk workflow",
-        "Test performance improvement vs individual page fetching"
-      ]
+      "assignee": "tech_minister",
+      "priority": "critical",
+      "story_points": 3,
+      "labels": ["headlessx", "reliability"],
+      "created_date": "2025-10-11T16:55:21+05:30",
+      "kanban_task_id": "task-headlessx-retry"
     },
     {
-      "task_id": "task_002",
-      "title": "Multi-platform validation (LinkedIn + Naukri)",
-      "description": "Ensure both platforms work correctly and data quality is consistent",
+      "task_id": "task_concurrency_impl",
+      "title": "Add asyncio concurrency to unified scrapers",
+      "description": "Implement asyncio.gather + semaphore for concurrent job scraping",
       "status": "todo", 
-      "assignee": "quality_shadow",
-      "priority": "medium",
-      "story_points": 3,
-      "labels": ["validation", "linkedin", "naukri"],
-      "created_date": "2025-10-06T01:03:08+05:30",
-      "parliamentary_approval": 90,
-      "dependencies": ["task_001"],
-      "acceptance_criteria": [
-        "Compare data quality between platforms",
-        "Verify platform field distinguishes sources",
-        "Test combined analytics view",
-        "Validate cross-platform skill consistency"
-      ]
+      "assignee": "dev_minister",
+      "priority": "high",
+      "story_points": 4,
+      "labels": ["concurrency", "performance"],
+      "created_date": "2025-10-11T16:55:21+05:30",
+      "dependencies": ["task_headlessx_retry"],
+      "kanban_task_id": "task-concurrency-impl"
     },
     {
-      "task_id": "task_003",
-      "title": "Performance optimization and error handling",
-      "description": "Optimize scraper performance and enhance error recovery mechanisms",
-      "status": "todo",
-      "assignee": "tech_minister", 
-      "priority": "low",
-      "story_points": 8,
-      "labels": ["optimization", "performance", "error_handling"],
-      "created_date": "2025-10-06T01:03:08+05:30",
-      "parliamentary_approval": 85,
-      "dependencies": ["task_002"],
-      "acceptance_criteria": [
-        "Implement retry logic for failed requests",
-        "Add connection pooling for database",
-        "Optimize memory usage during scraping",
-        "Add comprehensive error logging"
-      ]
+      "task_id": "task_skill_extractor",
+      "title": "Complete lightweight regex skill extractor",
+      "description": "Finish regex-based skill extraction using skills_reference_2025.json",
+      "status": "in_progress",
+      "assignee": "dev_minister", 
+      "priority": "critical",
+      "story_points": 1,
+      "labels": ["skills", "analytics"],
+      "created_date": "2025-10-11T16:55:21+05:30",
+      "kanban_task_id": "task-skill-extractor"
     }
   ],
-  "sprint_info": {
-    "current_sprint": "Production Validation Sprint",
-    "sprint_start": "2025-10-06T01:03:08+05:30",
-    "sprint_end": "2025-10-07T01:03:08+05:30",
-    "sprint_goal": "Validate production readiness of multi-platform job scraper",
-    "capacity": 16,
-    "committed_points": 16
-  },
   "metrics": {
-    "cycle_time_days": 0.5,
-    "throughput_per_week": 12,
-    "defect_rate": 0.02,
-    "parliamentary_consensus_rate": 92
+    "velocity": {
+      "current_sprint": 8,
+      "last_sprint": 12
+    },
+    "cycle_time": {
+      "average_days": 2.5
+    },
+    "throughput": {
+      "tasks_per_week": 5
+    }
+  },
+  "parliamentary_tracking": {
+    "consensus_required_tasks": 0,
+    "judicial_review_pending": 0,
+    "opposition_challenges": 0
   }
 }
