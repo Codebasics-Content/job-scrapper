@@ -1,103 +1,80 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-11T22:33:52+05:30",
+  "last_updated": "2025-10-11T23:49:19+05:30",
   "architecture_patterns": [
     {
-      "pattern_id": "AP8",
-      "name": "End-to-End Pipeline Testing Pattern",
-      "category": "testing",
-      "description": "Comprehensive pipeline validation using test data that simulates real-world scenarios",
+      "pattern_id": "PATTERN_009",
+      "name": "Docker Compose Multi-Service Deployment",
+      "category": "infrastructure",
+      "description": "Orchestrate HeadlessX browser automation + BrightData proxy services with Docker Compose",
       "implementation": {
-        "test_data_generation": "Create realistic job descriptions (500+ chars) with diverse skill sets",
-        "skill_extraction_validation": "Verify extraction accuracy across different job types and complexity levels",
-        "database_operations": "Test JobStorageOperations class with proper Pydantic model instantiation using field aliases",
-        "statistical_analysis": "Validate formula correctness: (distinct_jobs_with_skill / total_jobs) * 100",
-        "verification_strategy": "Compare calculated percentages against manually computed expected values"
+        "approach": "Single docker-compose.yml with health checks, volume management, and network isolation",
+        "benefits": [
+          "Reproducible environment across machines",
+          "Eliminates manual proxy manager setup",
+          "Automatic service restart on failure",
+          "Isolated network for secure communication"
+        ],
+        "trade_offs": ["Requires Docker installed", "Initial learning curve for Docker commands"]
       },
-      "benefits": [
-        "Validates all components before live integration",
-        "Catches schema/model mismatches early",
-        "Provides confidence in statistical accuracy",
-        "Enables rapid iteration without external dependencies"
-      ],
-      "context7_docs": "https://docs.pydantic.dev/latest/concepts/models/#field-aliases",
-      "applied_in": ["tests/test_e2e_pipeline.py"],
-      "date_discovered": "2025-10-11T22:33:52+05:30"
+      "code_example": "docker-compose.yml with headlessx + luminati-proxy services",
+      "success_criteria": "All services running with passing health checks within 30 seconds",
+      "adoption_date": "2025-10-11T23:49:00+05:30",
+      "mcp_documentation_links": [
+        "https://docs.docker.com/compose/",
+        "https://www.browserless.io/docs/docker"
+      ]
     },
     {
-      "pattern_id": "AP7",
-      "name": "Pydantic Field Alias Pattern",
-      "category": "data_validation",
-      "description": "Using Pydantic field aliases to maintain database schema compatibility while using Pythonic naming",
+      "pattern_id": "PATTERN_008",
+      "name": "Mock HTML Parser Testing",
+      "category": "testing",
+      "description": "Validate parser selectors with static HTML when browser rendering unavailable",
       "implementation": {
-        "field_definition": "Use Field(..., alias='CamelCase') for database schema fields",
-        "instantiation": "Pass CamelCase names when creating JobModel instances",
-        "access": "Access fields using snake_case attribute names in code"
+        "approach": "BeautifulSoup with hardcoded HTML samples",
+        "benefits": ["No browser dependency", "Fast execution", "Selector logic validation"],
+        "trade_offs": ["Not testing dynamic content", "Manual HTML maintenance"]
       },
-      "benefits": [
-        "Database schema remains unchanged (Job_Role, Company, Experience, Skills)",
-        "Python code uses idiomatic snake_case naming",
-        "Type safety maintained through Pydantic validation",
-        "Seamless migration from existing database structure"
-      ],
-      "context7_docs": "https://docs.pydantic.dev/latest/concepts/fields/#field-aliases",
-      "applied_in": ["src/models.py", "tests/test_e2e_pipeline.py"],
-      "date_discovered": "2025-10-11T22:33:52+05:30"
+      "code_example": "src/tests/test_linkedin_parser_mock.py",
+      "success_criteria": "Description extraction >50 chars, contains expected keywords",
+      "adoption_date": "2025-10-11T22:52:30+05:30",
+      "mcp_documentation_links": []
+    },
+    {
+      "pattern_id": "PATTERN_007",
+      "name": "Adapter Pattern for API Incompatibility",
+      "category": "architecture",
+      "description": "Create adapter classes when third-party APIs don't match internal interfaces",
+      "implementation": {
+        "approach": "Inherit from base class, implement required methods with API-specific logic",
+        "issue_encountered": "Browserless container API incompatible with BaseHeadlessXClient",
+        "resolution": "Documented blocker, pivoted to alternative testing strategy"
+      },
+      "lessons_learned": "Verify API compatibility before integration. Method signature mismatches require full adapter implementation or interface redesign.",
+      "adoption_date": "2025-10-11T22:50:50+05:30",
+      "mcp_documentation_links": []
     }
   ],
-  "mcp_integration_patterns": [
-    {
-      "pattern_id": "MIP3",
-      "name": "Test Database Cleanup",
-      "mcp_chain": ["filesystem (rm test files)"],
-      "purpose": "Remove temporary test databases after validation",
-      "implementation": "rm -f test_jobs.db after test completion",
-      "benefits": ["Clean workspace", "Prevents test data pollution"],
-      "applied_in": ["/next workflow execution"],
-      "date_discovered": "2025-10-11T22:33:52+05:30"
-    }
-  ],
-  "reusable_components": [
-    {
-      "component_id": "RC5",
-      "name": "Realistic Job Description Generator",
-      "type": "test_data",
-      "description": "Template for creating realistic job postings with 500+ characters for comprehensive testing",
-      "usage": "Use multi-line strings with detailed role descriptions, required skills, and responsibilities",
-      "location": "tests/test_e2e_pipeline.py:lines 31-66",
-      "benefits": ["Better validates real-world skill extraction", "Tests edge cases", "Comprehensive validation"],
-      "date_created": "2025-10-11T22:33:52+05:30"
-    }
-  ],
-  "anti_patterns_avoided": [
-    {
-      "anti_pattern_id": "APA4",
-      "name": "Ignoring Pydantic Field Aliases",
-      "description": "Using snake_case names when instantiating models with aliased fields",
-      "why_bad": "Causes Pydantic validation errors: 'Field required' for aliased fields",
-      "correct_approach": "Use the alias name (e.g., Job_Role) when passing data to model constructor",
-      "incident_example": "Initial test failure with 'Experience' field required error",
-      "resolution": "Updated all JobModel instantiations to use proper aliases",
-      "date_learned": "2025-10-11T22:33:52+05:30"
-    }
-  ],
-  "compliance_templates": [
-    {
-      "template_id": "CT3",
-      "name": "Pipeline Validation Checklist",
-      "type": "testing",
-      "steps": [
-        "Create realistic test data (500+ char descriptions)",
-        "Extract skills using production code",
-        "Store in database using actual ORM/operations classes",
-        "Retrieve from database and reconstruct models",
-        "Calculate statistics using production formulas",
-        "Verify results against expected values",
-        "Clean up test artifacts"
-      ],
-      "parliamentary_approval": 98,
-      "constitutional_article": "Article IV (Engineering Excellence)",
-      "date_created": "2025-10-11T22:33:52+05:30"
-    }
-  ]
+  "compliance_templates": {
+    "pre_task_checklist": [
+      "Read scratchpad.json for priority",
+      "Validate MCP servers active",
+      "Check file size ≤80 lines (EMD)",
+      "Verify no duplicate code"
+    ],
+    "post_task_checklist": [
+      "Update all 8 memory-bank schemas",
+      "Run type checking (basepyright)",
+      "Validate against schema files",
+      "Commit with git"
+    ]
+  },
+  "mcp_enriched_documentation": {
+    "docker_compose": "https://docs.docker.com/compose/",
+    "browserless_chrome": "https://www.browserless.io/docs/docker",
+    "luminati_proxy": "https://docs.brightdata.com/general/account/proxy-management",
+    "beautifulsoup_selectors": "https://www.crummy.com/software/BeautifulSoup/bs4/doc/",
+    "pydantic_v2_models": "https://docs.pydantic.dev/2.0/",
+    "httpx_async_clients": "https://www.python-httpx.org/async/"
+  }
 }
