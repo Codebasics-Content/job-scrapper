@@ -1,5 +1,6 @@
 {
-  "include": ["src"],
+  "include": ["src", "tests"],
+  "extraPaths": ["."],
   "exclude": [
     "**/__pycache__",
     "**/.pytest_cache",

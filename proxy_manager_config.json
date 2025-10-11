@@ -1,37 +1,36 @@
 {
   "_defaults": {
+    "ask_sync_config": true,
     "customer": "hl_864cf5cf",
-    "zone": "residential",
-    "password": "bdx2gk7k5euj"
+    "debug": "none",
+    "lpm_auth": "none",
+    "password": "bdx2gk7k5euj",
+    "version": "1.570.247",
+    "zone": "residential"
   },
   "proxies": [
     {
-      "port": 24000,
-      "zone": "residential",
-      "multiply": 1,
-      "ssl": false,
       "country": "us",
-      "session": true,
-      "keep_alive": true,
-      "pool_size": 1,
-      "proxy_count": 10,
-      "dns": "local",
       "debug": "none",
-      "iface": "0.0.0.0"
+      "iface": "0.0.0.0",
+      "keep_alive": true,
+      "multiply": 1,
+      "pool_size": 1,
+      "port": 24000,
+      "proxy_resolve": true,
+      "zone": "residential"
     },
     {
-      "port": 24001,
-      "zone": "residential",
-      "multiply": 1,
-      "ssl": false,
       "country": "in",
-      "session": true,
-      "keep_alive": true,
-      "pool_size": 1,
-      "proxy_count": 10,
-      "dns": "local",
       "debug": "none",
-      "iface": "0.0.0.0"
+      "iface": "0.0.0.0",
+      "keep_alive": true,
+      "multiply": 1,
+      "pool_size": 1,
+      "port": 24001,
+      "proxy_resolve": true,
+      "zone": "residential"
     }
-  ]
+  ],
+  "ts": "2025-10-11T15:44:13.491Z"
 }

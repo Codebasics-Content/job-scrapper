@@ -1,59 +1,59 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-11T21:02:30+05:30",
-  "constitutional_remediation": {
-    "priority": "COMPLETED",
-    "detected_at": "2025-10-11T16:55:21+05:30",
-    "completed_at": "2025-10-11T17:00:37+05:30",
-    "violation_type": "EMD_SIZE_LIMIT_EXCEEDED",
-    "action_taken": "Schema compression - 3 files compressed successfully",
-    "status": "constitutional_compliance_achieved"
-  },
+  "last_updated": "2025-10-11T21:14:45+05:30",
   "immediate_priorities": [
     {
-      "id": "priority_9",
-      "task_id": "skills_validation_complete",
-      "title": "Skills validation test suite completed and passing",
-      "urgency": "completed",
-      "deadline": "2025-10-11T21:02:30+05:30",
-      "completed_at": "2025-10-11T21:02:30+05:30",
-      "result": "✅ COMPLETE: Skills extraction validated with real job samples. 3/3 tests passing (basic extraction, false positives, case insensitivity)",
-      "files_completed": [
-        "tests/test_skills_validation.py",
-        "src/analysis/skill_extraction/regex/extract_skills.py"
+      "id": "priority_10",
+      "task_id": "luminati_authentication_required",
+      "title": "Configure Luminati credentials for proxy access",
+      "urgency": "critical",
+      "deadline": "2025-10-11T21:30:00+05:30",
+      "status": "action_required",
+      "details": "Luminati running but returning 407 Auth failed. Need to add credentials via web UI (http://127.0.0.1:22999) or config file",
+      "options": [
+        "Option 1: Open http://127.0.0.1:22999 and login with Bright Data account",
+        "Option 2: Add 'customer' and 'zone' to proxy_manager_config.json",
+        "Option 3: Create free Bright Data account if none exists"
       ],
-      "test_results": "All tests passing: basic extraction, false positive detection, case insensitivity"
+      "estimated_minutes": 10
+    }
+  ],
+  "completed_tasks": [
+    {
+      "id": "task_skills_validation",
+      "title": "Skills validation test suite",
+      "completed_at": "2025-10-11T21:02:30+05:30",
+      "result": "✅ 3/3 tests passing - all skills extraction validated"
     },
     {
-      "id": "priority_7",
-      "task_id": "luminati_native_installation",
-      "title": "Install native Luminati Proxy Manager for free local proxies",
-      "urgency": "blocked",
-      "deadline": "2025-10-11T21:30:00+05:30",
-      "status": "blocked_awaiting_sudo_password",
-      "blocked_reason": "sudo npm install -g @luminati-io/luminati-proxy requires password input",
-      "manual_action_required": "User must provide sudo password to complete installation",
-      "estimated_minutes": 5
+      "id": "task_pyrightconfig_fix",
+      "title": "Fix basepyright import resolution",
+      "completed_at": "2025-10-11T21:14:00+05:30",
+      "result": "✅ Added extraPaths and tests to pyrightconfig.json"
+    },
+    {
+      "id": "task_luminati_install",
+      "title": "Install and start Luminati Proxy Manager",
+      "completed_at": "2025-10-11T21:14:30+05:30",
+      "result": "✅ v1.570.247 running on ports 24000, 24001, 22225, 22999 (daemon)"
     }
   ],
   "task_queue": [
     {
       "position": 1,
-      "task_id": "luminati_proxy_setup",
-      "title": "Complete Luminati Proxy Manager setup after installation",
+      "task_id": "configure_luminati_auth",
+      "title": "Add Luminati authentication credentials",
       "status": "blocked",
-      "blocking_task": "luminati_native_installation",
-      "parliamentary_approval": 98,
-      "ready_for_execution": false,
-      "estimated_minutes": 10,
-      "next_steps": ["Start Luminati with config", "Test US/India proxy endpoints", "Verify HeadlessX integration"]
+      "blocking_reason": "Requires user Bright Data account credentials",
+      "manual_action_required": "User must provide credentials or create account",
+      "estimated_minutes": 5
     },
     {
       "position": 2,
       "task_id": "integration_tests",
       "title": "Run full integration tests with HeadlessX + Luminati",
       "status": "blocked",
-      "blocking_task": "luminati_proxy_setup",
+      "blocking_task": "configure_luminati_auth",
       "parliamentary_approval": 96,
       "ready_for_execution": false,
       "estimated_minutes": 30
@@ -61,40 +61,41 @@
   ],
   "immutable_event_history": [
     {
-      "event_id": "evt_011",
-      "timestamp": "2025-10-11T21:02:30+05:30",
-      "action": "completed_skills_validation",
-      "task_id": "skills_validation",
-      "reason": "Skills extraction validated with 3 comprehensive tests - all passing"
+      "event_id": "evt_013",
+      "timestamp": "2025-10-11T21:14:45+05:30",
+      "action": "luminati_proxy_started",
+      "task_id": "luminati_installation",
+      "details": "Luminati v1.570.247 running but needs authentication (407 error)",
+      "reason": "Proxy manager operational but credentials not configured"
     },
     {
-      "event_id": "evt_010",
-      "timestamp": "2025-10-11T20:56:45+05:30",
-      "action": "verified_emd_compliance",
-      "task_id": "unified_scraper_validation",
-      "reason": "All unified scrapers already under 80 lines, no decomposition needed"
+      "event_id": "evt_012",
+      "timestamp": "2025-10-11T21:14:00+05:30",
+      "action": "pyrightconfig_updated",
+      "task_id": "import_resolution_fix",
+      "reason": "Added extraPaths to resolve src imports in tests"
     }
   ],
   "quick_notes": [
+    {
+      "id": "note_8",
+      "timestamp": "2025-10-11T21:14:45+05:30",
+      "content": "Luminati running but returning 407 Auth failed. Need credentials: customer ID + zone name from Bright Data account. Admin UI: http://127.0.0.1:22999",
+      "priority": "critical",
+      "related_task": "luminati_authentication"
+    },
     {
       "id": "note_7",
       "timestamp": "2025-10-11T21:02:30+05:30",
       "content": "Skills validation complete: extract_skills() working correctly with real job descriptions. Tests cover basic extraction, false positive prevention, case insensitivity.",
       "priority": "high",
       "related_task": "skills_validation"
-    },
-    {
-      "id": "note_5",
-      "timestamp": "2025-10-11T20:56:45+05:30",
-      "content": "Luminati installation blocked: requires sudo password. User must input password to proceed with npm global installation.",
-      "priority": "critical",
-      "related_task": "luminati_native_installation"
     }
   ],
   "mcp_validation_state": {
     "context7_active": true,
     "fetch_active": true,
-    "last_validation_timestamp": "2025-10-11T21:02:30+05:30",
+    "last_validation_timestamp": "2025-10-11T21:14:45+05:30",
     "mandatory_servers_status": {
       "filesystem": true,
       "git": true,
@@ -106,7 +107,7 @@
   },
   "focus_mode": {
     "enabled": true,
-    "current_focus": "Awaiting Luminati installation (blocked) - All autonomous tasks complete until user provides sudo password",
+    "current_focus": "Luminati running, awaiting authentication credentials from user",
     "distractions_blocked": ["unnecessary_refactoring", "premature_optimization"],
     "focus_end_time": "2025-10-11T21:30:00+05:30"
   }
