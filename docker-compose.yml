@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  brightdata-proxy:
+    image: luminati/luminati-proxy:latest
+    container_name: brightdata-proxy-manager
+    command: >
+      proxy-manager
+      --www_whitelist_ips "0.0.0.0/0"
+      --ssl true
+      --customer "${BRIGHTDATA_CUSTOMER_ID}"
+      --zone "${BRIGHTDATA_ZONE}"
+      --password "${BRIGHTDATA_PASSWORD}"
+      --port 24000
+      --country "${BRIGHTDATA_COUNTRY:-us}"
+      --session true
+    ports:
+      - "22999:22999"  # Web UI & API
+      - "24000:24000"  # US residential proxy
+      - "24001:24001"  # India residential proxy (if needed)
+    restart: unless-stopped
+    networks:
+      - scraper-network
+
+networks:
+  scraper-network:
+    driver: bridge

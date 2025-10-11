@@ -1,1 +1,0 @@
-# Naukri utilities package

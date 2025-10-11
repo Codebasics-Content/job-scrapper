@@ -1,0 +1,62 @@
+version: '3.8'
+
+# Advanced setup with multiple proxy configurations
+# Use this if you need separate containers for US and India proxies
+
+services:
+  # US Proxy (for LinkedIn, Indeed)
+  brightdata-proxy-us:
+    image: luminati/luminati-proxy:latest
+    container_name: brightdata-proxy-us
+    command: >
+      proxy-manager
+      --www_whitelist_ips "0.0.0.0/0"
+      --ssl true
+      --customer "hl_864cf5cf"
+      --zone "residential"
+      --password "bdx2gk7k5euj"
+      --port 24000
+      --country "us"
+      --session true
+    ports:
+      - "22999:22999"  # Web UI & API
+      - "24000:24000"  # US proxy port
+    restart: unless-stopped
+    networks:
+      - scraper-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:22999"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # India Proxy (for Naukri)
+  brightdata-proxy-in:
+    image: luminati/luminati-proxy:latest
+    container_name: brightdata-proxy-in
+    command: >
+      proxy-manager
+      --www_whitelist_ips "0.0.0.0/0"
+      --ssl true
+      --customer "hl_864cf5cf"
+      --zone "residential"
+      --password "bdx2gk7k5euj"
+      --port 24001
+      --country "in"
+      --session true
+    ports:
+      - "24001:24001"  # India proxy port
+    restart: unless-stopped
+    networks:
+      - scraper-network
+    depends_on:
+      - brightdata-proxy-us
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:24001"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  scraper-network:
+    driver: bridge

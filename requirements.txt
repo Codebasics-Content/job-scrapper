@@ -1,33 +1,25 @@
-# BrightData API (no Selenium)
-# selenium removed
-# webdriver-manager removed
-# undetected-chromedriver removed
+# Core Dependencies
+python-dotenv>=1.0.0
 
 # Data Models & Validation
 pydantic>=2.8.2
 pydantic-settings>=2.8.0
 
-# HTTP & Web Scraping
-requests==2.31.0
-beautifulsoup4==4.12.2
-lxml>=5.2.1
+# Web Scraping - HeadlessX + Local Proxy Architecture
+playwright>=1.40.0
+aiohttp>=3.12.0
+httpx>=0.25.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
 
-# Database & Storage
+# Data Processing & Analysis
 pandas>=2.2.2
-pandas-stubs>=2.2.0
-
-# Optional: Anti-Detection Enhancement
-fake-useragent==1.4.0
-python-dotenv==1.0.0
+numpy>=1.24.0
 
 # UI Framework
 streamlit>=1.28.0
 
-# PDF Generation
-reportlab>=4.0.0
-
 # Development & Testing
-pytest==7.4.3
-pytest-asyncio==0.21.1
-black==23.11.0
-setuptools>=80.0.0
+pytest>=7.4.3
+pytest-asyncio>=0.21.1
+basedpyright>=1.31.0

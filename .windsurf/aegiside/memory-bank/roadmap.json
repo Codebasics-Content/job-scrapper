@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-06T01:03:08+05:30",
+  "last_updated": "2025-10-11T15:57:01+05:30",
   "strategic_roadmap": [
     {
       "phase_id": "phase_1",
@@ -103,9 +103,9 @@
     }
   ],
   "long_term_vision": {
-    "6_months": "Expand to 5+ job platforms with AI-powered skill trend analysis",
-    "1_year": "Enterprise-grade job market intelligence platform with predictive analytics",
-    "2_years": "Market leader in job scraping and career guidance automation"
+    "6_months": "Expand to 5+ job platforms with AI-powered skill trend analysis using proven HeadlessX + Local Luminati stack",
+    "1_year": "Enterprise-grade job market intelligence platform with predictive analytics and multi-region proxy support",
+    "2_years": "Market leader in job scraping and career guidance automation with fully autonomous anti-detection systems"
   },
   "resource_allocation": {
     "current_sprint": {
@@ -144,12 +144,13 @@
   ],
   "market_context": {
     "competitive_landscape": {
-        "primary_competitors": ["Manual job board searches", "Generic scraping tools"],
+        "primary_competitors": ["Manual job board searches", "Generic scraping tools", "Cloud-based scraping services"],
         "competitive_advantages": [
             "Guaranteed skill accuracy vs generic scrapers",
             "Multi-platform coverage vs single-site tools", 
-            "Zero technical setup vs complex solutions",
-            "Real-time analytics vs static reports"
+            "Full local control (no cloud lock-in) vs SaaS dependencies",
+            "Real-time analytics vs static reports",
+            "HeadlessX anti-detection + Luminati residential IPs vs basic proxies"
         ]
     },
     "market_opportunity": {

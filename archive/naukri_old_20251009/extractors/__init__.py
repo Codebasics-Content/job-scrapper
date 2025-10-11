@@ -1,1 +1,0 @@
-# Naukri extractors package

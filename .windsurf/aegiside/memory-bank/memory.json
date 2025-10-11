@@ -1,15 +1,99 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-10T12:18:29+05:30",
+  "last_updated": "2025-10-11T16:04:34+05:30",
   "default_user": "default_user",
-  "entities": [],
-  "relations": [],
+  "entities": [
+    {
+      "name": "HeadlessX",
+      "entityType": "rendering_service",
+      "observations": [
+        "Anti-detection headless browser renderer",
+        "Source: https://github.com/saifyxpro/HeadlessX",
+        "Handles fingerprinting, behavior simulation, WAF bypass",
+        "Deployed separately from main application",
+        "Configured via HEADLESSX_BASE_URL, HEADLESSX_TOKEN env vars"
+      ]
+    },
+    {
+      "name": "Local Luminati Proxy Manager",
+      "entityType": "proxy_service",
+      "observations": [
+        "Local proxy manager for residential IP rotation",
+        "Source: https://github.com/luminati-io/luminati-proxy",
+        "Runs on port 24000 via Docker",
+        "NO cloud dependencies - fully local deployment",
+        "Configured via BRIGHTDATA_CUSTOMER_ID, BRIGHTDATA_ZONE, BRIGHTDATA_PASSWORD env vars"
+      ]
+    },
+    {
+      "name": "Unified Scraper Architecture",
+      "entityType": "architecture_pattern",
+      "observations": [
+        "Single configuration: HeadlessX + Local Luminati Proxy for all platforms",
+        "Replaces hybrid Selenium + API approach",
+        "Services: linkedin_unified.py, indeed_unified.py, naukri_unified.py",
+        "Orchestrated via src/scraper/unified/service.py",
+        "Returns minimal fields: URL, description, skills only"
+      ]
+    },
+    {
+      "name": "Job Scrapper Project",
+      "entityType": "project",
+      "observations": [
+        "Skills analytics platform for LinkedIn, Indeed, Naukri",
+        "Tech stack: Python 3.13.3, HeadlessX, Local Luminati Proxy, Streamlit, SQLite",
+        "Focus: skill trend analysis with MIND-TechAI ontology (3333 skills)",
+        "Constitutional governance via AegisIDE framework",
+        "Legacy code moved to _deprecated folders (2025-10-11) to prevent hallucination"
+      ]
+    },
+    {
+      "name": "Active Codebase Structure",
+      "entityType": "architecture",
+      "observations": [
+        "src/scraper/unified/ - Platform-specific scrapers (linkedin, indeed, naukri)",
+        "src/scraper/services/headlessx_client.py - Renderer integration",
+        "src/db/ - Database connection, operations, schema",
+        "src/analysis/ - Skill analysis and visualization modules",
+        "streamlit_app.py - Main UI application",
+        "src/scraper/_deprecated/ - Legacy scrapers (DO NOT USE)",
+        "src/_deprecated_ui/ - Legacy UI components (DO NOT USE)"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "Unified Scraper Architecture",
+      "to": "HeadlessX",
+      "relationType": "uses_for_rendering"
+    },
+    {
+      "from": "Unified Scraper Architecture",
+      "to": "Local Luminati Proxy Manager",
+      "relationType": "uses_for_ip_rotation"
+    },
+    {
+      "from": "Job Scrapper Project",
+      "to": "Unified Scraper Architecture",
+      "relationType": "implements"
+    },
+    {
+      "from": "HeadlessX",
+      "to": "Local Luminati Proxy Manager",
+      "relationType": "routes_traffic_through"
+    },
+    {
+      "from": "Job Scrapper Project",
+      "to": "Active Codebase Structure",
+      "relationType": "consists_of"
+    }
+  ],
   "metadata": {
-    "total_entities": 0,
-    "total_relations": 0,
-    "total_observations": 0,
-    "graph_depth": 0,
-    "last_query": "2025-10-10T12:18:29+05:30"
+    "total_entities": 5,
+    "total_relations": 5,
+    "total_observations": 25,
+    "graph_depth": 2,
+    "last_query": "2025-10-11T16:04:34+05:30"
   },
   "user_context": {
     "identity": {},

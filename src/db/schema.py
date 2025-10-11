@@ -33,15 +33,16 @@ class SchemaManager:
                         job_role TEXT NOT NULL,
                         company TEXT NOT NULL,
                         experience TEXT,
-                        skills TEXT,
-                        jd TEXT,
+                        skills TEXT NOT NULL,
+                        jd TEXT NOT NULL,
                         company_detail TEXT,
-                        platform TEXT NOT NULL,
-                        url TEXT,
+                        platform TEXT NOT NULL CHECK (platform IN ('linkedin', 'indeed', 'naukri')),
+                        url TEXT UNIQUE,
                         location TEXT,
                         salary TEXT,
                         posted_date TEXT,
                         scraped_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        skill_count INTEGER GENERATED ALWAYS AS (LENGTH(skills) - LENGTH(REPLACE(skills, ',', '')) + 1) STORED,
                         UNIQUE(job_role, company, platform)
                     )
                 """)
@@ -60,7 +61,10 @@ class SchemaManager:
             ("idx_platform", "platform"),
             ("idx_job_role", "job_role"),
             ("idx_company", "company"),
-            ("idx_scraped_at", "scraped_at")
+            ("idx_scraped_at", "scraped_at"),
+            ("idx_skill_count", "skill_count"),
+            ("idx_location", "location"),
+            ("idx_platform_scraped", "platform, scraped_at")
         ]
         
         with self.connection.get_connection_context() as conn:

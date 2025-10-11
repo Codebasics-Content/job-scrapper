@@ -39,9 +39,25 @@ dist/
 # Jupyter
 .ipynb_checkpoints/
 
-# Environment variables
+# Environment variables - CRITICAL: NEVER COMMIT CREDENTIALS!
 .env
 .env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+*.env
+
+# BrightData credentials - NEVER COMMIT!
+*brightdata*credentials*
+*api*key*
+*api*token*
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+jobs.db
 
 # Temporary files
 *.tmp

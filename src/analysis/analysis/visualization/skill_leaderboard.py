@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Skill Leaderboard Data Generator - EMD Compliant
-Calculates and sorts skill percentages for visualization
+"""Skill Leaderboard & Advanced Visualization - EMD Compliant
+Calculates skill percentages and generates chart data for Streamlit
 """
 import logging
 from collections import Counter
 from collections.abc import Sequence
 from src.models import JobModel
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -84,3 +85,35 @@ def format_leaderboard_text(leaderboard: list[dict[str, str | float]]) -> str:
     ]
     
     return ", ".join(skill_strings)
+
+def prepare_skill_chart_data(leaderboard: list[dict[str, str | float | int]]) -> pd.DataFrame:
+    """Prepare skill data for Streamlit charts
+    
+    Returns:
+        DataFrame optimized for st.bar_chart, st.line_chart
+    """
+    if not leaderboard:
+        return pd.DataFrame()
+    
+    df = pd.DataFrame(leaderboard)
+    df = df.set_index('skill')
+    return df
+
+def prepare_skill_pie_data(leaderboard: list[dict[str, str | float | int]], top_n: int = 10) -> dict:
+    """Prepare top skills for pie chart visualization
+    
+    Args:
+        leaderboard: Full skill leaderboard
+        top_n: Number of skills for pie chart
+        
+    Returns:
+        Dict with 'labels' and 'values' for plotting
+    """
+    if not leaderboard:
+        return {'labels': [], 'values': []}
+    
+    top_skills = leaderboard[:top_n]
+    return {
+        'labels': [item['skill'] for item in top_skills],
+        'values': [item['percentage'] for item in top_skills]
+    }

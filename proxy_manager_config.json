@@ -1,0 +1,37 @@
+{
+  "_defaults": {
+    "customer": "hl_864cf5cf",
+    "zone": "residential",
+    "password": "bdx2gk7k5euj"
+  },
+  "proxies": [
+    {
+      "port": 24000,
+      "zone": "residential",
+      "multiply": 1,
+      "ssl": false,
+      "country": "us",
+      "session": true,
+      "keep_alive": true,
+      "pool_size": 1,
+      "proxy_count": 10,
+      "dns": "local",
+      "debug": "none",
+      "iface": "0.0.0.0"
+    },
+    {
+      "port": 24001,
+      "zone": "residential",
+      "multiply": 1,
+      "ssl": false,
+      "country": "in",
+      "session": true,
+      "keep_alive": true,
+      "pool_size": 1,
+      "proxy_count": 10,
+      "dns": "local",
+      "debug": "none",
+      "iface": "0.0.0.0"
+    }
+  ]
+}

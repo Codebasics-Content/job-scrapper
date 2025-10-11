@@ -1,0 +1,25 @@
+# Docker-related files to ignore
+
+# Environment files with credentials
+.env
+.env.local
+.env.*.local
+
+# Docker Compose override files
+docker-compose.override.yml
+
+# Proxy configuration
+proxy_config/
+.luminati-proxy/
+
+# Docker logs
+*.log
+docker_logs/
+
+# Backup files
+*.backup
+proxy_backup.*
+
+# Temporary files
+.tmp/
+temp/

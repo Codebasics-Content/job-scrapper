@@ -1,14 +1,22 @@
-# UI Components Package
-from .scraper_form import render_scraper_form
-from .progress_tracker import ProgressTracker
-from .job_listings import render_job_listings
-from .skill_leaderboard import render_skill_leaderboard
-from .analytics_dashboard import render_analytics_dashboard
+# UI Components Module - EMD Architecture
+# Exports for modular Streamlit dashboard components
+
+"""Streamlit UI components for job scraper dashboard"""
+
+from .analytics_dashboard import (
+    render_analytics_overview,
+    render_platform_distribution, 
+    render_skills_analysis
+)
+from .scraper_form import (
+    execute_scraping_workflow,
+    render_scraper_form
+)
 
 __all__ = [
-    'render_scraper_form',
-    'ProgressTracker',
-    'render_job_listings',
-    'render_skill_leaderboard',
-    'render_analytics_dashboard'
+    "render_analytics_overview",
+    "render_platform_distribution", 
+    "render_skills_analysis",
+    "execute_scraping_workflow",
+    "render_scraper_form"
 ]

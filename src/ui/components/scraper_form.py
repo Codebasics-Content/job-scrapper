@@ -1,74 +1,33 @@
-# Scraper Form Component - Job scraping configuration UI
-# EMD Compliance: ≤80 lines
+# Scraper Form Component - EMD Orchestrator
+# Uses modular form components for clean separation of concerns
 
+import asyncio
 import streamlit as st
-from src.scraper.linkedin.config.countries import LINKEDIN_COUNTRIES
 
-def render_scraper_form() -> dict[str, object] | None:
-    """Render job scraper form and return form data if submitted"""
-    with st.form("job_scraper_form"):
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            job_role = st.text_input(
-                "Job Role",
-                value="Data Scientist",
-                placeholder="e.g., Data Scientist, AI Engineer"
-            )
-            platform = st.selectbox(
-                "Platform",
-                options=["LinkedIn", "Indeed", "Naukri"],
-                help="LinkedIn & Indeed via BrightData API, Naukri via custom scraper"
-            )
-        
-        with col2:
-            num_jobs = st.slider(
-                "Number of Jobs",
-                min_value=5,
-                max_value=50000,
-                value=10,
-                step=5
-            )
-        
-        # Country selection for LinkedIn/Indeed (Naukri is India-only)
-        selected_countries = []
-        if platform in ["LinkedIn", "Indeed"]:
-            st.subheader("🌍 Country Selection")
-            country_names = [c['name'] for c in LINKEDIN_COUNTRIES]
-            
-            select_all = st.checkbox("Select All Countries", value=True)
-            
-            if select_all:
-                selected_countries = st.multiselect(
-                    "Countries to scrape",
-                    options=country_names,
-                    default=country_names,
-                    help="Scraping from multiple countries in parallel for diverse global data"
-                )
-            else:
-                selected_countries = st.multiselect(
-                    "Countries to scrape",
-                    options=country_names,
-                    default=["United States", "India", "United Kingdom"],
-                    help="Select specific countries to scrape from"
-                )
-        
-        submit = st.form_submit_button("🔍 Start Scraping", type="primary", use_container_width=True)
-        
-        # LinkedIn/Indeed require countries, Naukri doesn't
-        if submit and job_role and (platform == "Naukri" or selected_countries):
-            countries_to_scrape = [
-                country for country in LINKEDIN_COUNTRIES 
-                if country['name'] in selected_countries
-            ]
-            
-            return {
-                "job_role": job_role,
-                "platform": platform,
-                "num_jobs": num_jobs,
-                "countries": countries_to_scrape
-            }
-        elif submit and platform in ["LinkedIn", "Indeed"] and not selected_countries:
-            st.error(f"⚠️ Please select at least one country for {platform} scraping")
+from .form import render_config_panel, execute_scraping_workflow
+
+def render_scraper_form(db_path: str) -> None:
+    """Render the complete scraper form interface"""
+    st.header("Job Scraper")
+    st.markdown("Configure and run job scraping across multiple platforms")
     
-    return None
+    with st.form("scraper_form"):
+        # Render configuration panel
+        job_role, platform, selected_countries, num_jobs = render_config_panel()
+        
+        # Submit button
+        submitted = st.form_submit_button(
+            "🚀 Start Scraping",
+            type="primary",
+            help="Begin unified HeadlessX scraping workflow"
+        )
+    
+    # Execute workflow if form submitted
+    if submitted:
+        asyncio.run(execute_scraping_workflow(
+            platform=platform,
+            job_role=job_role,
+            selected_countries=selected_countries,
+            num_jobs=num_jobs,
+            db_path=db_path
+        ))
