@@ -1,157 +1,83 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-11T15:57:01+05:30",
-  "constitutional_remediation_log": {
-    "remediation_id": "rem_001",
-    "violation_type": "EMD_SIZE_LIMIT_EXCEEDED",
-    "detected_at": "2025-10-11T16:55:21+05:30",
-    "resolved_at": "2025-10-11T17:00:37+05:30",
-    "root_cause": "3 schema files exceeded 10KB constitutional limit",
-    "resolution": "Compressed files by removing redundant data while preserving critical information",
-    "prevention": "Implement automatic schema cleanup and size monitoring",
-    "compression_results": [
-      {"file": "activeContext.json", "reduction": "62%"},
-      {"file": "systemPatterns.json", "reduction": "74%"},
-      {"file": "kanban.json", "reduction": "80%"}
-    ]
-  },
+  "last_updated": "2025-10-11T23:54:00+05:30",
   "error_patterns": [
     {
-      "id": "err_004",
-      "timestamp": "2025-01-06T11:54:06+05:30",
-      "category": "type_safety",
-      "title": "Type annotations missing in HTML parser implementation",
-      "description": "BeautifulSoup and regex operations lacked proper type hints causing basedpyright warnings",
-      "root_cause": "Mixed Selenium and BeautifulSoup code without proper type annotations for set[str]",
-      "solution": "Added explicit type hints: found_skills: set[str] = set(), proper imports cleanup",
-      "files_affected": ["job_detail_fetcher.py", "bulk_downloader.py"],
-      "pattern": "Always use specific type hints for collections (set[str] not set[Unknown])",
-      "severity": "medium",
-      "recurrence_count": 1
-    },
-    {
-      "id": "err_001",
-      "timestamp": "2025-10-02T13:08:00+05:30",
-      "category": "data_consistency",
-      "title": "CSV Export - Visualization Data Mismatch",
-      "description": "CSV export data didn't match visualization data due to different data sources",
-      "root_cause": "Visualizations used normalized_jobs while CSV used raw db_jobs_dicts",
-      "solution": "Updated both to use same normalized_jobs data pipeline",
-      "files_affected": ["analytics_dashboard.py", "analytics_helpers.py"],
-      "pattern": "Always use same data source for visualization and export",
-      "severity": "medium",
-      "recurrence_count": 1
-    },
-    {
-      "id": "err_002",
-      "timestamp": "2025-10-02T13:03:00+05:30", 
-      "category": "database_schema",
-      "title": "CSV Export - Skills Data Mismatch",
-      "description": "CSV export showing 0 skills count due to schema mismatch",
-      "root_cause": "Database stores skills as TEXT, export expected skills_list JSON array",
-      "solution": "Updated export to parse TEXT column skills properly",
-      "files_affected": ["database operations", "csv export functions"],
-      "pattern": "Match data processing to actual database schema format",
-      "severity": "high",
-      "recurrence_count": 1
-    },
-    {
-      "id": "err_003",
-      "timestamp": "2025-10-01T18:00:00+05:30",
-      "category": "browser_scraping", 
-      "title": "Naukri Selector Updates Required",
-      "description": "Old CSS selectors 'srp-jobtuple-wrapper' no longer exist on Naukri website",
-      "root_cause": "Website structure changes broke existing selectors",
-      "solution": "Updated to modern selectors: article.jobTuple, .cust-job-tuple, article[data-job-id]",
-      "files_affected": ["naukri/config/selectors.py", "browser_scraper.py"],
-      "pattern": "Use multiple fallback selectors for website scraping resilience",
+      "error_id": "ERR_019",
+      "title": "Browserless/Chrome API Mismatch - JSON Parsing Error",
+      "category": "integration",
       "severity": "critical",
-      "recurrence_count": 1
+      "first_occurrence": "2025-10-11T23:54:00+05:30",
+      "error_message": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+      "root_cause": "HeadlessX client calling /render endpoint which doesn't exist in browserless/chrome Docker image. Browserless uses /content endpoint and returns raw HTML text, not JSON.",
+      "resolution": "Updated base_client.py render_url() method to use /content endpoint and response.text instead of response.json()",
+      "context7_source": "/docs.browserless.io/llmstxt - POST /content endpoint documentation",
+      "status": "resolved",
+      "related_files": ["src/scraper/services/base/base_client.py"],
+      "fix_details": {
+        "changed_endpoint": "/render → /content",
+        "changed_response_parsing": "response.json() → response.text",
+        "added_timeout_conversion": "timeout (seconds) → waitForTimeout (milliseconds)"
+      }
     },
     {
-        "id": "err_005",
-        "timestamp": "2025-09-25T14:30:00+05:30",
-        "category": "data_consistency",
-        "title": "CSV export data mismatch with displayed results",
-        "description": "Exported CSV contains different skill counts than UI display",
-        "root_cause": "Skill normalization inconsistency between display and export",
-        "solution": "Unified skill processing pipeline for both display and export",
-        "files_affected": ["analytics_dashboard.py"],
-        "pattern": "Unified data processing pipeline",
-        "severity": "critical",
-        "recurrence_count": 1
+      "error_id": "ERR_018",
+      "title": "Luminati Proxy Connection Timeout",
+      "category": "network",
+      "severity": "high",
+      "first_occurrence": "2025-10-11T23:04:00+05:30",
+      "error_message": "httpx.ConnectTimeout when connecting to zproxy.lum-superproxy.io:24000",
+      "root_cause": "Proxy server unreachable or incorrect configuration",
+      "resolution_attempts": [
+        "Attempted direct httpx.AsyncClient with proxy parameter",
+        "Connection timeout after 30 seconds"
+      ],
+      "context7_source": "none",
+      "status": "investigating",
+      "related_files": ["tests/test_actual_luminati_scraping.py"],
+      "next_steps": [
+        "Verify proxy credentials and endpoint",
+        "Test with Luminati Proxy Manager instead of direct connection",
+        "Check if proxy requires different authentication"
+      ]
     },
     {
-        "id": "err_006",
-        "timestamp": "2025-10-11T15:57:01+05:30",
-        "category": "architecture_clarification",
-        "title": "Cloud BrightData vs Local Luminati Proxy confusion",
-        "description": "Initial implementation mentioned BrightData (cloud) but requirement is LOCAL Luminati Proxy Manager",
-        "root_cause": "Misunderstanding between cloud BrightData API and local Luminati Proxy Manager deployment",
-        "solution": "Clarified architecture: HeadlessX (https://github.com/saifyxpro/HeadlessX) + Local Luminati Proxy Manager (https://github.com/luminati-io/luminati-proxy) on port 24000, no cloud dependencies",
-        "files_affected": [
-          "activeContext.json",
-          "scratchpad.json",
-          "systemPatterns.json",
-          "roadmap.json",
-          "progress.json",
-          "kanban.json"
-        ],
-        "pattern": "Always verify local vs cloud deployment requirements before implementation",
-        "severity": "medium",
-        "recurrence_count": 1
+      "error_id": "ERR_017",
+      "title": "HeadlessX Environment Variables Missing",
+      "category": "configuration",
+      "severity": "medium",
+      "first_occurrence": "2025-10-11T23:02:00+05:30",
+      "error_message": "HEADLESSX_BASE_URL and HEADLESSX_TOKEN are required",
+      "root_cause": "HeadlessXClient requires env vars but browser rendering blocked due to API incompatibility",
+      "resolution": "Documented as blocked - using alternative parser testing with mock HTML. Now resolved with browserless/chrome Docker integration.",
+      "context7_source": "none",
+      "status": "resolved",
+      "workaround": "Docker Compose deployment with browserless/chrome image provides compatible API",
+      "related_files": ["tests/test_actual_scraping_100.py", "src/scraper/services/headlessx_client.py", "docker-compose.yml"]
     }
   ],
-  "resolution_strategies": [
+  "bug_tracking": [],
+  "lessons_learned": [
     {
-      "strategy_id": "strat_001",
-      "name": "Data Pipeline Consistency",
-      "description": "Ensure all data export and visualization use same processing pipeline",
-      "success_rate": 95,
-      "applicable_categories": ["data_consistency", "export_issues"]
+      "lesson_id": "LESSON_009",
+      "title": "Browserless Docker API Differs from HeadlessX Service",
+      "description": "The browserless/chrome Docker image uses different API endpoints than proprietary HeadlessX services. Always verify API compatibility with official documentation before integration.",
+      "category": "infrastructure",
+      "date_learned": "2025-10-11T23:54:00+05:30",
+      "applies_to": ["web_scraping", "docker_integration", "api_compatibility"],
+      "key_differences": {
+        "endpoint": "/content instead of /render",
+        "response_format": "raw HTML text instead of JSON with html field",
+        "timeout_parameter": "waitForTimeout (ms) instead of timeout (s)"
+      }
     },
     {
-      "strategy_id": "strat_002", 
-      "name": "Multi-Selector Fallback",
-      "description": "Use array of CSS selectors with fallback logic for web scraping",
-      "success_rate": 90,
-      "applicable_categories": ["browser_scraping", "website_changes"]
-    },
-    {
-      "strategy_id": "strat_003",
-      "name": "Schema-Aware Processing",
-      "description": "Match data processing logic to actual database schema format",
-      "success_rate": 98,
-      "applicable_categories": ["database_schema", "type_mismatch"]
+      "lesson_id": "LESSON_008",
+      "title": "Proxy Connection Requires Local Proxy Manager",
+      "description": "Direct HTTP proxy connections to Luminati may timeout. Native Proxy Manager (npm package) provides more reliable connection.",
+      "category": "infrastructure",
+      "date_learned": "2025-10-11T23:05:00+05:30",
+      "applies_to": ["web_scraping", "proxy_configuration"]
     }
-  ],
-  "prevention_measures": [
-    {
-      "measure": "EMD compliance validation - all files ≤80 lines",
-      "effectiveness": "high"
-    },
-    {
-      "measure": "Constitutional governance with >95% consensus requirement", 
-      "effectiveness": "high"
-    },
-    {
-      "measure": "Multi-language always-check operations before deployment",
-      "effectiveness": "medium"
-    },
-    {
-      "measure": "Automated Testing",
-      "effectiveness": "high"
-    }
-  ],
-  "learning_summary": {
-    "total_errors": 4,
-    "resolved_errors": 4,
-    "success_rate": 100,
-    "most_common_category": "data_consistency",
-    "primary_patterns": [
-      "Use consistent data sources across features",
-      "Implement fallback mechanisms for external dependencies",
-      "Validate schema alignment before data processing"
-    ]
-  }
+  ]
 }

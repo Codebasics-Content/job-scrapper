@@ -55,7 +55,7 @@ class BaseHeadlessXClient:
         async with self.semaphore:
             self.circuit_breaker.check_state()
             
-            for attempt in range(self.retry_handler.config.max_retries + 1):
+            for attempt in range(self.retry_handler.config.max_attempts):
                 try:
                     response = await self.client.request(
                         method, url, json=json, headers=headers
@@ -66,7 +66,7 @@ class BaseHeadlessXClient:
                 except Exception as e:
                     self.circuit_breaker.record_failure()
                     
-                    if attempt == self.retry_handler.config.max_retries:
+                    if attempt == self.retry_handler.config.max_attempts - 1:
                         raise HeadlessXError(f"Request failed after retries: {e}") from e
                     
                     await self.retry_handler.sleep_with_backoff(attempt)
@@ -97,14 +97,15 @@ class BaseHeadlessXClient:
         timeout: float = 30.0
     ) -> str:
         """Render single URL with retry and circuit breaker"""
+        # Browserless/chrome uses /content endpoint, returns raw HTML
         response = await self.make_request_with_retry(
             "POST",
-            f"{self.base_url}/render",
-            json={"url": url, "timeout": timeout},
+            f"{self.base_url}/content",
+            json={"url": url, "waitForTimeout": int(timeout * 1000)},
             headers=self.get_auth_headers()
         )
-        data = response.json()
-        return data.get("html", "")
+        # Browserless returns HTML directly as text, not JSON
+        return response.text
     
     async def render_urls_concurrent(
         self,
