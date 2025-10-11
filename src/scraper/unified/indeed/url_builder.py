@@ -8,9 +8,9 @@ def build_search_url(keyword: str, location: str) -> str:
     return f"https://www.indeed.com/jobs?q={k}&l={loc}"
 
 
-def normalize_job_url(href: str) -> str | None:
+def normalize_job_url(href: str | list[str] | None) -> str | None:
     """Normalize Indeed job URL to absolute format"""
-    if not isinstance(href, str):
+    if not href or not isinstance(href, str):
         return None
     
     if href.startswith("/"):
