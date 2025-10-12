@@ -69,10 +69,15 @@
     "max_file_size": "80 lines"
   },
   "skill_extraction_enhancement": {
-    "skills_added": ["Express.js", "Ember.js", "GCP abbreviation", "DeFi"],
+    "skills_added": ["Express.js", "Ember.js", "GCP abbreviation", "DeFi", "ChatGPT", "GitHub Copilot", "Cursor"],
     "duplicates_removed": 10,
+    "false_positives_removed": ["Insurance", "Legal", "Supply Chain", "Agriculture"],
+    "patterns_improved": ["Anthropic Claude (claude code, claude 3.5 sonnet, claude 3 opus)"],
+    "comprehensive_gap_analysis": "completed",
+    "phase1_coverage_improvement": "7.1% (11/156 jobs)",
+    "unseen_skills_research": "completed",
     "total_skills_before": 559,
-    "total_skills_after": 549,
+    "total_skills_after": 550,
     "research_dossier": "docs/SKILL_EXTRACTION_RESEARCH.md",
     "false_positives_identified": ["Legal", "Insurance", "Supply Chain", "Education"],
     "extractor_quality": "95%+",
