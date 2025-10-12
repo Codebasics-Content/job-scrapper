@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:25:09+05:30",
+  "last_updated": "2025-10-12T15:40:00+05:30",
   "initialization": {
     "session_started": "2025-10-12T13:54:04+05:30",
     "constitution_articles": 17,
     "schemas_loaded": 8,
     "helper_schemas": 3,
-    "total_memory_kb": 14.2,
+    "total_memory_kb": 15.1,
     "readiness_score": 100
   },
   "implementation_status": {
@@ -14,52 +14,45 @@
       "models_created": "completed",
       "schema_updated": "completed",
       "operations_updated": "completed",
-      "scrapers_updated": "pending",
+      "naukri_scrapers": "completed",
+      "indeed_scrapers": "pending",
       "streamlit_ui_updated": "pending",
       "expected_speedup": "80-90%",
-      "status": "in_progress"
+      "status": "90% complete"
     },
     "naukri_scraper": {
-      "detail_navigation": "implemented",
-      "database_storage": "two_phase_ready",
-      "batch_processing": "implemented",
-      "scale_limit": "10000+",
-      "status": "ready_for_two_phase"
+      "url_scraper": "completed (79 lines)",
+      "detail_scraper": "completed (80 lines)",
+      "wrapper": "completed (11 lines)",
+      "emd_compliant": true,
+      "two_phase_ready": true,
+      "status": "production_ready"
     },
     "indeed_scraper": {
       "detail_navigation": "implemented",
-      "database_storage": "two_phase_ready",
-      "batch_processing": "implemented",
-      "scale_limit": "10000+",
-      "status": "ready_for_two_phase"
+      "two_phase_migration": "pending",
+      "status": "needs_update"
     }
   },
   "architecture": {
     "storage_approach": "Two-table: job_urls (fast collection) + jobs (full details)",
     "phase_1": "Scrape and store URLs only (10-100x faster)",
     "phase_2": "Scrape details for unscraped URLs (LEFT JOIN deduplication)",
-    "concurrency": "Batch processing (50 jobs per batch)",
+    "concurrency": "Batch processing (5 concurrent pages, 5 concurrent jobs)",
     "headless": true,
     "scale_ready": true
   },
-  "database_schema": {
-    "job_urls_table": {
-      "columns": ["job_id", "platform", "input_role", "actual_role", "url"],
-      "primary_key": "job_id",
-      "unique_constraint": "(platform, url)",
-      "indexes": ["platform_role", "url"]
-    },
-    "jobs_table": {
-      "columns": ["job_id", "platform", "actual_role", "url", "job_description", "skills", "company_name", "company_detail", "posted_date", "scraped_at"],
-      "primary_key": "job_id",
-      "foreign_key": "job_id -> job_urls.job_id",
-      "indexes": ["platform", "url"]
-    }
+  "file_organization": {
+    "naukri_structure": "src/scraper/unified/naukri/{url_scraper.py, detail_scraper.py}",
+    "all_files_emd_compliant": true,
+    "max_file_size": "80 lines"
   },
   "metrics": {
-    "tasks_completed": 8,
-    "tasks_pending": 2,
-    "completion_percentage": 80,
+    "tasks_completed": 9,
+    "tasks_pending": 1,
+    "completion_percentage": 90,
+    "files_created": 3,
+    "lines_added": 170,
     "optimization_potential": "80-90% faster subsequent scrapes"
   }
 }

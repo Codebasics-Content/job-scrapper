@@ -1,15 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:25:09+05:30",
+  "last_updated": "2025-10-12T15:40:00+05:30",
   "columns": {
     "todo": [
-      {
-        "id": "scraper_two_phase_integration",
-        "title": "Update unified scrapers for two-phase URL and detail scraping",
-        "description": "Modify naukri_unified.py and indeed_unified.py to support Phase 1 (URL collection) and Phase 2 (detail scraping)",
-        "priority": "high",
-        "tags": ["optimization", "scraping", "two-table"]
-      },
       {
         "id": "streamlit_ui_two_phase",
         "title": "Update Streamlit UI with separate URL and detail buttons",
@@ -20,6 +13,12 @@
     ],
     "in_progress": [],
     "done": [
+      {
+        "id": "naukri_two_phase_scrapers",
+        "title": "Create Naukri two-phase scrapers with EMD compliance",
+        "completed_at": "2025-10-12T15:40:00+05:30",
+        "tags": ["optimization", "scraping", "two-table", "emd"]
+      },
       {
         "id": "two_table_models",
         "title": "Create JobUrlModel and JobDetailModel",

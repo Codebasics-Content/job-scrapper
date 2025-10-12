@@ -1,10 +1,17 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:25:09+05:30",
+  "last_updated": "2025-10-12T15:40:00+05:30",
   "architecture_patterns": {
     "two_table_optimization": {
       "approach": "Separate URL collection from detail scraping for 80-90% speedup",
       "rationale": "URL scraping is 10-100x faster than full detail scraping. Storing URLs first enables resume capability and deduplication.",
+      "implementation": {
+        "naukri": {
+          "url_scraper": "src/scraper/unified/naukri/url_scraper.py (79 lines)",
+          "detail_scraper": "src/scraper/unified/naukri/detail_scraper.py (80 lines)",
+          "wrapper": "src/scraper/unified/naukri_unified.py (11 lines)"
+        }
+      },
       "components": [
         "JobUrlModel (lightweight URL storage)",
         "JobDetailModel (full job details)",
@@ -16,13 +23,21 @@
     "scraping_architecture": {
       "approach": "Playwright renders list → Extract URLs → Navigate INSIDE each job → Parse full description",
       "rationale": "Direct detail page navigation provides complete job descriptions vs partial search card data",
+      "phase_1": "5 concurrent search pages, parse cards, extract titles + URLs",
+      "phase_2": "5 concurrent detail pages, extract full descriptions, skills, company",
       "components": [
         "PlaywrightBrowser (headless=True)",
-        "Unified scrapers (naukri_unified.py, indeed_unified.py)",
+        "Two-phase scrapers (url_scraper.py, detail_scraper.py)",
         "Detail page parsers with CSS selectors",
         "Batch processing (50 jobs per batch)",
         "Two-phase automatic database storage"
       ]
+    },
+    "emd_compliance": {
+      "url_scraper": "79 lines (async URL collection, Playwright, BeautifulSoup)",
+      "detail_scraper": "80 lines (async detail scraping with LEFT JOIN query)",
+      "wrapper": "11 lines (thin re-export layer)",
+      "benefit": "Maximum 80 lines per file, easy maintenance, clear separation of concerns"
     },
     "selector_patterns": {
       "naukri_list": "article.jobTuple, .cust-job-tuple",
@@ -53,22 +68,13 @@
     "skill_extraction": "Regex-based from full descriptions",
     "concurrency": "asyncio with batch processing"
   },
-  "deployment_config": {
-    "scale_limit": "10000+ jobs",
-    "batch_size": 50,
-    "rate_limiting": "1 second between batches",
-    "headless_mode": true,
-    "wait_times": {
-      "list_page": "5.0 seconds",
-      "detail_page": "3.0 seconds"
-    }
-  },
   "mcp_integration": {
     "filesystem": "Read/write memory bank schemas and code files",
     "context7": "Validate database patterns and Pydantic models",
     "memory": "Store two-table optimization patterns",
     "time": "Timestamp all operations",
     "git": "Version control checkpoints",
-    "math": "Compute schema compliance scores"
+    "math": "Compute schema compliance scores",
+    "sequential_thinking": "Plan multi-step refactoring"
   }
 }

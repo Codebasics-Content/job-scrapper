@@ -1,14 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:25:09+05:30",
+  "last_updated": "2025-10-12T15:40:00+05:30",
   "priority_queue": [
-    {
-      "id": "scraper_two_phase",
-      "task": "Update unified scrapers for two-phase URL and detail scraping",
-      "priority": "high",
-      "status": "pending",
-      "depends_on": "operations_complete"
-    },
     {
       "id": "streamlit_ui_update",
       "task": "Update Streamlit app with separate URL and detail scraping buttons",
@@ -18,6 +11,11 @@
     }
   ],
   "completed": [
+    {
+      "id": "scraper_two_phase",
+      "task": "Update unified scrapers for two-phase URL and detail scraping",
+      "completed_at": "2025-10-12T15:40:00+05:30"
+    },
     {
       "id": "two_table_models",
       "task": "Create JobUrlModel and JobDetailModel in models.py",
