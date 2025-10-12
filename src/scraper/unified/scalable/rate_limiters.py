@@ -8,6 +8,7 @@ Research findings (verified via @mcp:fetch):
 from __future__ import annotations
 
 import asyncio
+from types import TracebackType
 from typing import Literal
 
 PlatformType = Literal["indeed", "linkedin", "naukri"]
@@ -34,7 +35,12 @@ class IndeedRateLimiter:
         await self.acquire()
         return self
 
-    async def __aexit__(self, exc_type, exc_val, exc_tb) -> None:
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> None:
         self.release()
 
 
@@ -59,7 +65,12 @@ class LinkedInRateLimiter:
         await self.acquire()
         return self
 
-    async def __aexit__(self, exc_type, exc_val, exc_tb) -> None:
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> None:
         self.release()
 
 
@@ -84,7 +95,12 @@ class NaukriRateLimiter:
         await self.acquire()
         return self
 
-    async def __aexit__(self, exc_type, exc_val, exc_tb) -> None:
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> None:
         self.release()
 
 
