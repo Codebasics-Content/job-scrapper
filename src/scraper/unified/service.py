@@ -36,6 +36,15 @@ from .scalable import (
     get_rate_limiter,
 )
 
+# Public API: Main function + scalable components for 10K+ operations
+__all__ = [
+    "scrape_jobs",
+    "BatchProcessor",
+    "CheckpointManager",
+    "ProgressTracker",
+    "get_rate_limiter",
+]
+
 
 async def scrape_jobs(
     platform: str,
