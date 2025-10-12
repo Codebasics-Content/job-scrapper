@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:31:45+05:30",
+  "last_updated": "2025-10-12T12:40:33+05:30",
   "board_configuration": {
     "workflow_states": ["todo", "in_progress", "testing", "done"],
     "wip_limits": {
@@ -10,15 +10,28 @@
   },
   "tasks": [
     {
+      "task_id": "task_progress_tracker",
+      "title": "Create progress tracker with realistic ETA",
+      "description": "Build progress_tracker.py for real-time ETA calculations",
+      "status": "todo",
+      "assignee": "dev_minister",
+      "priority": "medium",
+      "story_points": 2,
+      "labels": ["monitoring", "ux"],
+      "created_date": "2025-10-12T12:40:33+05:30",
+      "kanban_task_id": "task-progress-tracker"
+    },
+    {
       "task_id": "task_checkpoint_system",
       "title": "Add checkpoint/resume capability",
       "description": "Enable crash recovery for long-running scraping jobs",
-      "status": "in_progress",
+      "status": "done",
       "assignee": "dev_minister",
       "priority": "high",
       "story_points": 3,
       "labels": ["reliability", "crash_recovery"],
       "created_date": "2025-10-12T12:27:24+05:30",
+      "completed_date": "2025-10-12T12:40:33+05:30",
       "kanban_task_id": "task-checkpoint-system"
     },
     {
@@ -50,14 +63,14 @@
   ],
   "metrics": {
     "velocity": {
-      "current_sprint": 18,
-      "last_sprint": 15
+      "current_sprint": 21,
+      "last_sprint": 18
     },
     "cycle_time": {
-      "average_days": 0.08
+      "average_days": 0.07
     },
     "throughput": {
-      "tasks_per_week": 18
+      "tasks_per_week": 21
     }
   }
 }
