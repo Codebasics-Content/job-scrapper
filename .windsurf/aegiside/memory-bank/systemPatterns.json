@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T13:06:07+05:30",
+  "last_updated": "2025-10-12T13:13:45+05:30",
   "architecture_patterns": [
     {
       "pattern_id": "pat_playwright_001",
@@ -21,6 +21,79 @@
       "mcp_integrations": ["context7"],
       "documentation_links": [
         "https://github.com/microsoft/playwright-python"
+      ]
+    },
+    {
+      "pattern_id": "pat_linkedin_research_001",
+      "name": "LinkedIn Job Scraping - Authentication Required Approach",
+      "category": "research",
+      "description": "Comprehensive analysis of LinkedIn job scraping methods and constraints",
+      "key_findings": {
+        "api_availability": "BLOCKED - LinkedIn Job Posting API restricted to approved partners only. Not accepting new partnerships as of 2025.",
+        "scraping_only_option": true,
+        "authentication_requirement": "MANDATORY - Login wall prevents all job listing access without authentication",
+        "rate_limits": {
+          "new_accounts": "10-15 daily actions, ~50-75 weekly",
+          "established_accounts": "20-25 daily, ~100 weekly",
+          "trusted_accounts": "30-40 daily, up to 200 weekly"
+        },
+        "technical_challenges": [
+          "Dynamic JavaScript content loading (requires 15s+ wait)",
+          "Cookie-based session management required",
+          "Bot detection systems (user-agent, fingerprinting)",
+          "CAPTCHA challenges on suspicious activity",
+          "Account reputation impacts limits"
+        ]
+      },
+      "implementation_strategy": {
+        "phase_1_current": "Focus on Naukri (20 jobs) + Indeed (16 jobs) - both working without authentication",
+        "phase_2_future": "Implement LinkedIn with persistent browser context and session management",
+        "recommended_approach": {
+          "method": "Persistent Browser Context with Manual Login",
+          "steps": [
+            "1. User performs manual login via headless=False browser (one-time)",
+            "2. Save cookies and localStorage to disk after successful login",
+            "3. Subsequent scraping runs load saved session (no re-login)",
+            "4. Session typically valid for 30 days, trigger re-auth on expiration",
+            "5. Implement 5-10s delays between requests",
+            "6. Use realistic user-agent and viewport configuration"
+          ]
+        }
+      },
+      "selectors_to_test": [
+        "li.jobs-search-results__list-item",
+        "div.job-card-container",
+        "div[data-job-id]"
+      ],
+      "free_tier_alignment": {
+        "cost": "$0 - Playwright is open-source",
+        "alternatives_rejected": "BrightData ($500+/month) - violates free-tier mandate"
+      },
+      "legal_considerations": {
+        "terms_of_service": "LinkedIn ToS prohibits automated scraping",
+        "legal_precedent": "hiQ Labs v. LinkedIn - public data scraping legal in US",
+        "compliance_requirements": [
+          "Scrape only public job listings",
+          "Respect rate limits to avoid service abuse",
+          "No storage of EU citizen PII (GDPR)",
+          "Implement clear legal disclaimers"
+        ]
+      },
+      "risk_assessment": {
+        "level": "HIGH",
+        "mitigation": [
+          "Build account reputation before scraping",
+          "Implement conservative rate limits",
+          "Monitor for CAPTCHA/block signals",
+          "Use established LinkedIn account (not new)",
+          "Limit to 10-20 searches per session initially"
+        ]
+      },
+      "mcp_integrations": ["context7", "fetch", "sequential-thinking"],
+      "documentation_links": [
+        "https://scrapfly.io/blog/posts/how-to-scrape-linkedin-person-profile-company-job-data",
+        "https://brightdata.com/blog/how-tos/linkedin-scraping-guide",
+        "https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits"
       ]
     }
   ],
