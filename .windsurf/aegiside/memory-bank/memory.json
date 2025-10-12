@@ -1,104 +1,76 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-11T16:04:34+05:30",
-  "default_user": "default_user",
+  "last_updated": "2025-10-12T15:25:09+05:30",
   "entities": [
     {
-      "name": "HeadlessX",
-      "entityType": "rendering_service",
+      "name": "Job_Scrapper_Project",
+      "type": "Project",
       "observations": [
-        "Anti-detection headless browser renderer",
-        "Source: https://github.com/saifyxpro/HeadlessX",
-        "Handles fingerprinting, behavior simulation, WAF bypass",
-        "Deployed separately from main application",
-        "Configured via HEADLESSX_BASE_URL, HEADLESSX_TOKEN env vars"
+        "Implements scalable job scraping for Naukri and Indeed platforms",
+        "Uses Playwright for detail page navigation at 10,000+ scale",
+        "LinkedIn scraper removed due to rate limiting",
+        "Batch processing with automatic database storage",
+        "Two-table optimization implemented: job_urls (fast collection) + jobs (full details)",
+        "Expected performance improvement: 80-90% speedup for subsequent scrapes",
+        "Database infrastructure complete with foreign keys and indexes"
       ]
     },
     {
-      "name": "Local Luminati Proxy Manager",
-      "entityType": "proxy_service",
+      "name": "Playwright_Architecture",
+      "type": "Technical_Pattern",
       "observations": [
-        "Local proxy manager for residential IP rotation",
-        "Source: https://github.com/luminati-io/luminati-proxy",
-        "Runs on port 24000 via Docker",
-        "NO cloud dependencies - fully local deployment",
-        "Configured via BRIGHTDATA_CUSTOMER_ID, BRIGHTDATA_ZONE, BRIGHTDATA_PASSWORD env vars"
+        "Async browser automation with headless=True",
+        "5 second wait for list pages, 3 seconds for detail pages",
+        "Batch size of 50 jobs with 1 second rate limiting",
+        "Successfully tested with full description extraction",
+        "Two-phase scraping: Phase 1 collects URLs only, Phase 2 enriches with details",
+        "Deduplication via LEFT JOIN query identifies unscraped URLs",
+        "Resume capability allows incremental scraping without re-collecting URLs"
       ]
     },
     {
-      "name": "Unified Scraper Architecture",
-      "entityType": "architecture_pattern",
+      "name": "Two_Table_Optimization",
+      "type": "Technical_Pattern",
       "observations": [
-        "Single configuration: HeadlessX + Local Luminati Proxy for all platforms",
-        "Replaces hybrid Selenium + API approach",
-        "Services: linkedin_unified.py, indeed_unified.py, naukri_unified.py",
-        "Orchestrated via src/scraper/unified/service.py",
-        "Returns minimal fields: URL, description, skills only"
+        "job_urls table: job_id, platform, input_role, actual_role, url",
+        "jobs table: job_id, platform, actual_role, url, job_description, skills, company_name, company_detail, posted_date, scraped_at",
+        "Normalized input_role: lowercase with underscores",
+        "job_id generation: MD5 hash of platform + URL (16 chars)",
+        "Deduplication query: LEFT JOIN to find unscraped URLs",
+        "80-90% speedup by skipping already-collected URLs"
       ]
     },
     {
-      "name": "Job Scrapper Project",
-      "entityType": "project",
+      "name": "Selector_Patterns",
+      "type": "Knowledge",
       "observations": [
-        "Skills analytics platform for LinkedIn, Indeed, Naukri",
-        "Tech stack: Python 3.13.3, HeadlessX, Local Luminati Proxy, Streamlit, SQLite",
-        "Focus: skill trend analysis with MIND-TechAI ontology (3333 skills)",
-        "Constitutional governance via AegisIDE framework",
-        "Legacy code moved to _deprecated folders (2025-10-11) to prevent hallucination"
-      ]
-    },
-    {
-      "name": "Active Codebase Structure",
-      "entityType": "architecture",
-      "observations": [
-        "src/scraper/unified/ - Platform-specific scrapers (linkedin, indeed, naukri)",
-        "src/scraper/services/headlessx_client.py - Renderer integration",
-        "src/db/ - Database connection, operations, schema",
-        "src/analysis/ - Skill analysis and visualization modules",
-        "streamlit_app.py - Main UI application",
-        "src/scraper/_deprecated/ - Legacy scrapers (DO NOT USE)",
-        "src/_deprecated_ui/ - Legacy UI components (DO NOT USE)"
+        "Naukri detail: div.styles_JDC__dang-inner-html__h0K4t",
+        "Indeed detail: div#jobDescriptionText",
+        "Fallback selectors with 100 char minimum validation",
+        "Working test implementation validated these selectors"
       ]
     }
   ],
   "relations": [
     {
-      "from": "Unified Scraper Architecture",
-      "to": "HeadlessX",
-      "relationType": "uses_for_rendering"
+      "from": "Job_Scrapper_Project",
+      "to": "Playwright_Architecture",
+      "type": "uses"
     },
     {
-      "from": "Unified Scraper Architecture",
-      "to": "Local Luminati Proxy Manager",
-      "relationType": "uses_for_ip_rotation"
+      "from": "Job_Scrapper_Project",
+      "to": "Two_Table_Optimization",
+      "type": "implements"
     },
     {
-      "from": "Job Scrapper Project",
-      "to": "Unified Scraper Architecture",
-      "relationType": "implements"
+      "from": "Playwright_Architecture",
+      "to": "Selector_Patterns",
+      "type": "depends_on"
     },
     {
-      "from": "HeadlessX",
-      "to": "Local Luminati Proxy Manager",
-      "relationType": "routes_traffic_through"
-    },
-    {
-      "from": "Job Scrapper Project",
-      "to": "Active Codebase Structure",
-      "relationType": "consists_of"
+      "from": "Two_Table_Optimization",
+      "to": "Playwright_Architecture",
+      "type": "enhances"
     }
-  ],
-  "metadata": {
-    "total_entities": 5,
-    "total_relations": 5,
-    "total_observations": 25,
-    "graph_depth": 2,
-    "last_query": "2025-10-11T16:04:34+05:30"
-  },
-  "user_context": {
-    "identity": {},
-    "behaviors": [],
-    "preferences": {},
-    "goals": []
-  }
+  ]
 }

@@ -1,103 +1,61 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:52:41+05:30",
-  "board_configuration": {
-    "workflow_states": ["todo", "in_progress", "testing", "done"],
-    "wip_limits": {
-      "in_progress": 3,
-      "testing": 2
-    }
-  },
-  "tasks": [
-    {
-      "task_id": "task_documentation",
-      "title": "Document 100K limitations in README",
-      "description": "Add realistic constraints and performance expectations for large-scale scraping",
-      "status": "done",
-      "assignee": "dev_minister",
-      "priority": "low",
-      "story_points": 1,
-      "labels": ["documentation", "user_guidance"],
-      "created_date": "2025-10-12T12:47:28+05:30",
-      "completed_date": "2025-10-12T12:52:41+05:30",
-      "kanban_task_id": "task-documentation"
-    },
-    {
-      "task_id": "task_service_orchestrator",
-      "title": "Update service.py orchestrator with scalable components",
-      "description": "Integrate rate limiters, batch processor, checkpoint manager, and progress tracker",
-      "status": "done",
-      "assignee": "dev_minister",
-      "priority": "medium",
-      "story_points": 2,
-      "labels": ["integration", "orchestration"],
-      "created_date": "2025-10-12T12:43:12+05:30",
-      "completed_date": "2025-10-12T12:47:28+05:30",
-      "kanban_task_id": "task-service-orchestrator"
-    },
-    {
-      "task_id": "task_progress_tracker",
-      "title": "Create progress tracker with realistic ETA",
-      "description": "Build progress_tracker.py for real-time ETA calculations",
-      "status": "done",
-      "assignee": "dev_minister",
-      "priority": "medium",
-      "story_points": 2,
-      "labels": ["monitoring", "ux"],
-      "created_date": "2025-10-12T12:40:33+05:30",
-      "completed_date": "2025-10-12T12:43:12+05:30",
-      "kanban_task_id": "task-progress-tracker"
-    },
-    {
-      "task_id": "task_checkpoint_system",
-      "title": "Add checkpoint/resume capability",
-      "description": "Enable crash recovery for long-running scraping jobs",
-      "status": "done",
-      "assignee": "dev_minister",
-      "priority": "high",
-      "story_points": 3,
-      "labels": ["reliability", "crash_recovery"],
-      "created_date": "2025-10-12T12:27:24+05:30",
-      "completed_date": "2025-10-12T12:40:33+05:30",
-      "kanban_task_id": "task-checkpoint-system"
-    },
-    {
-      "task_id": "task_batch_processor",
-      "title": "Implement realistic batch processor",
-      "description": "Process 1000 jobs/batch with platform detection and streaming DB",
-      "status": "done",
-      "assignee": "dev_minister",
-      "priority": "critical",
-      "story_points": 3,
-      "labels": ["batch_processing", "scalability"],
-      "created_date": "2025-10-12T12:27:24+05:30",
-      "completed_date": "2025-10-12T12:31:45+05:30",
-      "kanban_task_id": "task-batch-processor"
-    },
-    {
-      "task_id": "task_platform_rate_limiters",
-      "title": "Implement platform-specific rate limiters",
-      "description": "Create IndeedRateLimiter(5), LinkedInRateLimiter(2), NaukriRateLimiter(15)",
-      "status": "done",
-      "assignee": "dev_minister",
-      "priority": "critical",
-      "story_points": 5,
-      "labels": ["rate_limiting", "scalability", "platform_specific"],
-      "created_date": "2025-10-12T12:27:24+05:30",
-      "completed_date": "2025-10-12T12:29:57+05:30",
-      "kanban_task_id": "task-platform-rate-limiters"
-    }
-  ],
-  "metrics": {
-    "velocity": {
-      "current_sprint": 26,
-      "last_sprint": 25
-    },
-    "cycle_time": {
-      "average_days": 0.04
-    },
-    "throughput": {
-      "tasks_per_week": 30
-    }
+  "last_updated": "2025-10-12T15:25:09+05:30",
+  "columns": {
+    "todo": [
+      {
+        "id": "scraper_two_phase_integration",
+        "title": "Update unified scrapers for two-phase URL and detail scraping",
+        "description": "Modify naukri_unified.py and indeed_unified.py to support Phase 1 (URL collection) and Phase 2 (detail scraping)",
+        "priority": "high",
+        "tags": ["optimization", "scraping", "two-table"]
+      },
+      {
+        "id": "streamlit_ui_two_phase",
+        "title": "Update Streamlit UI with separate URL and detail buttons",
+        "description": "Add two buttons: 'Scrape Job URLs' and 'Scrape Job Details' with separate workflows",
+        "priority": "medium",
+        "tags": ["ui", "streamlit", "two-table"]
+      }
+    ],
+    "in_progress": [],
+    "done": [
+      {
+        "id": "two_table_models",
+        "title": "Create JobUrlModel and JobDetailModel",
+        "completed_at": "2025-10-12T15:10:00+05:30",
+        "tags": ["models", "optimization", "two-table"]
+      },
+      {
+        "id": "two_table_schema",
+        "title": "Update database schema for job_urls and jobs tables",
+        "completed_at": "2025-10-12T15:15:00+05:30",
+        "tags": ["database", "schema", "two-table"]
+      },
+      {
+        "id": "two_phase_operations",
+        "title": "Implement two-phase storage operations",
+        "completed_at": "2025-10-12T15:20:00+05:30",
+        "tags": ["database", "operations", "two-table"]
+      },
+      {
+        "id": "playwright_integration",
+        "title": "Playwright detail page navigation",
+        "completed_at": "2025-10-12T13:50:00+05:30",
+        "tags": ["architecture", "scraping"]
+      },
+      {
+        "id": "linkedin_removal",
+        "title": "Remove LinkedIn scraper",
+        "completed_at": "2025-10-12T13:50:00+05:30",
+        "tags": ["cleanup"]
+      },
+      {
+        "id": "db_storage",
+        "title": "Database batch storage integration",
+        "completed_at": "2025-10-12T13:50:00+05:30",
+        "tags": ["database", "storage"]
+      }
+    ]
   }
 }

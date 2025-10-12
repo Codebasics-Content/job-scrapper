@@ -1,48 +1,52 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T13:00:23+05:30",
-  "immediate_priorities": [
+  "last_updated": "2025-10-12T15:25:09+05:30",
+  "priority_queue": [
     {
-      "id": "priority_1",
-      "title": "Configure visual browser mode (headless=False)",
-      "description": "User wants real browser popup with visual scraping verification",
-      "priority": "P0",
-      "estimated_minutes": 15,
-      "dependencies": [],
-      "mcp_requirements": ["context7", "filesystem", "git"]
+      "id": "scraper_two_phase",
+      "task": "Update unified scrapers for two-phase URL and detail scraping",
+      "priority": "high",
+      "status": "pending",
+      "depends_on": "operations_complete"
     },
     {
-      "id": "priority_2",
-      "title": "Debug 0 jobs extraction issue",
-      "description": "All platforms returning 0 jobs - selectors may be outdated",
-      "priority": "P0",
-      "estimated_minutes": 20,
-      "dependencies": ["priority_1"],
-      "mcp_requirements": ["context7", "fetch"]
+      "id": "streamlit_ui_update",
+      "task": "Update Streamlit app with separate URL and detail scraping buttons",
+      "priority": "medium",
+      "status": "pending",
+      "depends_on": "scraper_two_phase"
     }
   ],
-  "task_queue": [],
-  "blocked_tasks": [],
-  "completed_tasks": [],
-  "quick_notes": [
+  "completed": [
     {
-      "id": "note_24",
-      "timestamp": "2025-10-12T13:00:23+05:30",
-      "content": "E2E test ran but extracted 0 jobs. HeadlessX API-based approach doesn't show browser window. Need Playwright/Selenium with headless=False for visual verification.",
-      "priority": "high",
-      "related_task": "priority_1"
+      "id": "two_table_models",
+      "task": "Create JobUrlModel and JobDetailModel in models.py",
+      "completed_at": "2025-10-12T15:10:00+05:30"
+    },
+    {
+      "id": "two_table_schema",
+      "task": "Update database schema for job_urls and jobs tables",
+      "completed_at": "2025-10-12T15:15:00+05:30"
+    },
+    {
+      "id": "two_phase_operations",
+      "task": "Update operations.py for two-phase storage",
+      "completed_at": "2025-10-12T15:20:00+05:30"
+    },
+    {
+      "id": "playwright_integration",
+      "task": "Replace HeadlessX with Playwright detail page navigation",
+      "completed_at": "2025-10-12T13:50:00+05:30"
+    },
+    {
+      "id": "linkedin_removal",
+      "task": "Remove all LinkedIn scraper files",
+      "completed_at": "2025-10-12T13:50:00+05:30"
+    },
+    {
+      "id": "db_integration",
+      "task": "Add automatic database storage with batch processing",
+      "completed_at": "2025-10-12T13:50:00+05:30"
     }
-  ],
-  "mcp_validation_state": {
-    "context7_active": true,
-    "fetch_active": true,
-    "last_validation_timestamp": "2025-10-12T13:00:23+05:30",
-    "mandatory_servers_status": {
-      "filesystem": true,
-      "git": true,
-      "memory": true,
-      "time": true,
-      "math": true
-    }
-  }
+  ]
 }

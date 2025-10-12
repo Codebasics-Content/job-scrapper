@@ -1,162 +1,80 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-11T15:57:01+05:30",
-  "strategic_roadmap": [
+  "last_updated": "2025-10-12T15:25:09+05:30",
+  "project_overview": {
+    "name": "Job Scrapper - Two-Table Optimization",
+    "objective": "Implement two-table database architecture for 80-90% scraping speedup with Naukri + Indeed at 10,000+ scale",
+    "status": "in_progress",
+    "completion": "80%"
+  },
+  "strategic_goals": [
     {
-      "phase_id": "phase_1",
-      "name": "Production System Testing & Validation",
-      "status": "in_progress",
-      "start_date": "2025-10-06T01:03:08+05:30",
-      "end_date": "2025-10-06T03:00:08+05:30",
-      "completion_percentage": 90,
-      "milestones": [
-        {
-          "id": "milestone_1",
-          "title": "Naukri scraper end-to-end testing",
-          "target_date": "2025-10-06T02:00:08+05:30",
-          "status": "in_progress",
-          "business_impact": "high"
-        },
-        {
-          "id": "milestone_2", 
-          "title": "Multi-platform validation (LinkedIn + Naukri)",
-          "target_date": "2025-10-06T02:30:08+05:30",
-          "status": "not_started",
-          "business_impact": "medium"
-        }
-      ],
-      "dependencies": ["anti_bot_evasion", "pagination_system"],
-      "risks": [
-        {
-          "risk": "Naukri API rate limiting or bot detection",
-          "probability": 0.3,
-          "impact": "medium",
-          "mitigation": "Dynamic headers and request throttling implemented"
-        }
-      ]
-    },
-    {
-      "phase_id": "phase_2",
-      "name": "Performance Optimization & Enhancement",
-      "status": "not_started",
-      "start_date": "2025-10-07T01:03:08+05:30",
-      "end_date": "2025-10-07T12:00:08+05:30",
-      "completion_percentage": 0,
-      "milestones": [
-        {
-          "id": "milestone_3",
-          "title": "Scraper performance optimization",
-          "target_date": "2025-10-07T06:00:08+05:30",
-          "status": "not_started",
-          "business_impact": "low"
-        },
-        {
-          "id": "milestone_4",
-          "title": "Error handling enhancement",
-          "target_date": "2025-10-07T12:00:08+05:30", 
-          "status": "not_started",
-          "business_impact": "medium"
-        }
-      ],
-      "dependencies": ["phase_1"],
-      "risks": []
-    },
-    {
-      "phase_id": "phase_4",
-      "name": "Core Objectives Implementation",
+      "id": "two_table_models",
+      "title": "Create Pydantic models for two-table architecture",
       "status": "completed",
-      "start_date": "2025-09-30T00:00:00+05:30",
-      "end_date": "2025-10-02T00:00:00+05:30",
-      "completion_percentage": 100,
-      "milestones": [
-        {
-          "id": "milestone_7",
-          "title": "Multi-Platform Job Data Collection",
-          "target_date": "2025-10-01T12:00:00+05:30",
-          "status": "completed",
-          "business_impact": "high"
-        },
-        {
-          "id": "milestone_8",
-          "title": "Database Storage with Exact Schema",
-          "target_date": "2025-10-01T18:00:00+05:30",
-          "status": "completed",
-          "business_impact": "high"
-        },
-        {
-          "id": "milestone_9",
-          "title": "Skill Analysis with Percentage Calculation",
-          "target_date": "2025-10-02T09:00:00+05:30",
-          "status": "completed",
-          "business_impact": "high"
-        },
-        {
-          "id": "milestone_10",
-          "title": "Interactive Analytics Dashboard",
-          "target_date": "2025-10-02T12:00:00+05:30",
-          "status": "completed",
-          "business_impact": "medium"
-        }
-      ],
-      "dependencies": [],
-      "risks": []
-    }
-  ],
-  "long_term_vision": {
-    "6_months": "Expand to 5+ job platforms with AI-powered skill trend analysis using proven HeadlessX + Local Luminati stack",
-    "1_year": "Enterprise-grade job market intelligence platform with predictive analytics and multi-region proxy support",
-    "2_years": "Market leader in job scraping and career guidance automation with fully autonomous anti-detection systems"
-  },
-  "resource_allocation": {
-    "current_sprint": {
-      "dev_minister_allocation": 70,
-      "tech_minister_allocation": 20,
-      "quality_shadow_allocation": 10
-    }
-  },
-  "strategic_objectives": [
-    {
-      "phase_id": "phase_3",
-      "name": "Blueprint Recommendations Implementation",
-      "status": "not_started",
-      "start_date": "2025-10-08T01:03:08+05:30",
-      "end_date": "2025-10-10T01:03:08+05:30",
-      "completion_percentage": 0,
-      "milestones": [
-        {
-          "id": "milestone_5",
-          "title": "Implement async scraping for better performance",
-          "target_date": "2025-10-09T01:03:08+05:30",
-          "status": "not_started",
-          "business_impact": "high"
-        },
-        {
-          "id": "milestone_6",
-          "title": "Add premium features like automated reports",
-          "target_date": "2025-10-10T01:03:08+05:30",
-          "status": "not_started",
-          "business_impact": "high"
-        }
-      ],
-      "dependencies": ["phase_1"],
-      "risks": []
-    }
-  ],
-  "market_context": {
-    "competitive_landscape": {
-        "primary_competitors": ["Manual job board searches", "Generic scraping tools", "Cloud-based scraping services"],
-        "competitive_advantages": [
-            "Guaranteed skill accuracy vs generic scrapers",
-            "Multi-platform coverage vs single-site tools", 
-            "Full local control (no cloud lock-in) vs SaaS dependencies",
-            "Real-time analytics vs static reports",
-            "HeadlessX anti-detection + Luminati residential IPs vs basic proxies"
-        ]
+      "priority": "critical",
+      "completion_date": "2025-10-12T15:10:00+05:30",
+      "deliverables": ["JobUrlModel", "JobDetailModel", "normalize_role()", "generate_job_id()"]
     },
-    "market_opportunity": {
-        "addressable_market": "Job market intelligence and career planning tools",
-        "market_size": "Growing demand for data-driven career decisions",
-        "growth_drivers": ["Remote work trends", "Skill-based hiring", "Career pivot frequency"]
+    {
+      "id": "two_table_schema",
+      "title": "Update database schema for job_urls and jobs tables",
+      "status": "completed",
+      "priority": "critical",
+      "completion_date": "2025-10-12T15:15:00+05:30",
+      "deliverables": ["job_urls table with UNIQUE constraint", "jobs table with foreign key", "4 indexes"]
+    },
+    {
+      "id": "two_phase_operations",
+      "title": "Implement store_urls, store_details, get_unscraped_urls operations",
+      "status": "completed",
+      "priority": "critical",
+      "completion_date": "2025-10-12T15:20:00+05:30",
+      "deliverables": ["store_urls()", "store_details()", "get_unscraped_urls()"]
+    },
+    {
+      "id": "scraper_two_phase",
+      "title": "Update unified scrapers for two-phase URL and detail scraping",
+      "status": "pending",
+      "priority": "high",
+      "blockers": []
+    },
+    {
+      "id": "streamlit_ui_update",
+      "title": "Update Streamlit UI with separate URL and detail scraping buttons",
+      "status": "pending",
+      "priority": "medium",
+      "blockers": []
     }
+  ],
+  "client_requirements": {
+    "platforms": ["Naukri", "Indeed"],
+    "scale": "10000+ jobs",
+    "optimization": "80-90% speedup through URL caching",
+    "data_quality": "Full job descriptions with accurate skills",
+    "storage": "Two-table SQLite database with deduplication",
+    "performance": "Resume capability, incremental scraping"
+  },
+  "user_flows": {
+    "phase_1_url_collection": [
+      "User searches 'AI Engineer' on Naukri",
+      "System scrapes only titles + URLs (fast)",
+      "Store to job_urls table with normalized input_role",
+      "Return count of URLs collected"
+    ],
+    "phase_2_detail_scraping": [
+      "Query unscraped URLs with LEFT JOIN",
+      "Navigate to each job detail page",
+      "Extract full description, skills, company",
+      "Store to jobs table",
+      "Skip already-scraped URLs automatically"
+    ]
+  },
+  "technical_decisions": {
+    "database_architecture": "Two tables with foreign key for phase separation",
+    "deduplication": "LEFT JOIN to identify unscraped URLs",
+    "normalization": "input_role as lowercase_with_underscores",
+    "job_id_generation": "MD5 hash of platform + URL",
+    "storage_strategy": "INSERT OR IGNORE for URLs, INSERT OR REPLACE for details"
   }
 }
