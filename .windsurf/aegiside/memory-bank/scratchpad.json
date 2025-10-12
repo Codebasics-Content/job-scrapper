@@ -1,16 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:40:00+05:30",
-  "priority_queue": [
+  "last_updated": "2025-10-12T15:50:00+05:30",
+  "priority_queue": [],
+  "completed": [
     {
       "id": "streamlit_ui_update",
       "task": "Update Streamlit app with separate URL and detail scraping buttons",
-      "priority": "medium",
-      "status": "pending",
-      "depends_on": "scraper_two_phase"
-    }
-  ],
-  "completed": [
+      "completed_at": "2025-10-12T15:50:00+05:30"
+    },
     {
       "id": "scraper_two_phase",
       "task": "Update unified scrapers for two-phase URL and detail scraping",

@@ -1,15 +1,20 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:40:00+05:30",
+  "last_updated": "2025-10-12T15:50:00+05:30",
   "architecture_patterns": {
     "two_table_optimization": {
       "approach": "Separate URL collection from detail scraping for 80-90% speedup",
       "rationale": "URL scraping is 10-100x faster than full detail scraping. Storing URLs first enables resume capability and deduplication.",
       "implementation": {
-        "naukri": {
+        "naukri_scraper": {
           "url_scraper": "src/scraper/unified/naukri/url_scraper.py (79 lines)",
           "detail_scraper": "src/scraper/unified/naukri/detail_scraper.py (80 lines)",
           "wrapper": "src/scraper/unified/naukri_unified.py (11 lines)"
+        },
+        "streamlit_ui": {
+          "two_phase_panel": "src/ui/components/form/two_phase_panel.py (69 lines)",
+          "two_phase_executor": "src/ui/components/form/two_phase_executor.py (77 lines)",
+          "scraper_form": "src/ui/components/scraper_form.py (33 lines)"
         }
       },
       "components": [
@@ -17,14 +22,26 @@
         "JobDetailModel (full job details)",
         "job_urls table (fast collection)",
         "jobs table (detail enrichment)",
-        "LEFT JOIN query (identify unscraped URLs)"
+        "LEFT JOIN query (identify unscraped URLs)",
+        "Two separate UI buttons (Phase 1 URLs, Phase 2 Details)"
       ]
+    },
+    "streamlit_ui_patterns": {
+      "approach": "Modular two-phase UI with separate buttons and real-time database status",
+      "features": [
+        "Two buttons: '🔗 Phase 1: Scrape URLs' and '📄 Phase 2: Scrape Details'",
+        "Real-time unscraped URL count from database",
+        "Phase 2 button disabled when no unscraped URLs exist",
+        "Progress bars and metrics for both phases",
+        "Async execution with asyncio.run()"
+      ],
+      "rationale": "Clear separation of URL and detail workflows, user sees database status before scraping"
     },
     "scraping_architecture": {
       "approach": "Playwright renders list → Extract URLs → Navigate INSIDE each job → Parse full description",
       "rationale": "Direct detail page navigation provides complete job descriptions vs partial search card data",
-      "phase_1": "5 concurrent search pages, parse cards, extract titles + URLs",
-      "phase_2": "5 concurrent detail pages, extract full descriptions, skills, company",
+      "phase_1": "5 concurrent search pages, parse cards, extract titles + URLs → store to job_urls",
+      "phase_2": "Query unscraped URLs → 5 concurrent detail pages, extract full descriptions, skills, company → store to jobs",
       "components": [
         "PlaywrightBrowser (headless=True)",
         "Two-phase scrapers (url_scraper.py, detail_scraper.py)",
@@ -36,6 +53,8 @@
     "emd_compliance": {
       "url_scraper": "79 lines (async URL collection, Playwright, BeautifulSoup)",
       "detail_scraper": "80 lines (async detail scraping with LEFT JOIN query)",
+      "two_phase_panel": "69 lines (UI config with real-time DB status)",
+      "two_phase_executor": "77 lines (Phase 1 and Phase 2 execution logic)",
       "wrapper": "11 lines (thin re-export layer)",
       "benefit": "Maximum 80 lines per file, easy maintenance, clear separation of concerns"
     },
@@ -65,6 +84,7 @@
     "html_parsing": "BeautifulSoup4",
     "database": "SQLite with two-table schema",
     "models": "Pydantic v2 with validation",
+    "ui_framework": "Streamlit with async execution",
     "skill_extraction": "Regex-based from full descriptions",
     "concurrency": "asyncio with batch processing"
   },

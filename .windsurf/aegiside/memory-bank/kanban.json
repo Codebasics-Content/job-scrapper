@@ -1,18 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:40:00+05:30",
+  "last_updated": "2025-10-12T15:50:00+05:30",
   "columns": {
-    "todo": [
-      {
-        "id": "streamlit_ui_two_phase",
-        "title": "Update Streamlit UI with separate URL and detail buttons",
-        "description": "Add two buttons: 'Scrape Job URLs' and 'Scrape Job Details' with separate workflows",
-        "priority": "medium",
-        "tags": ["ui", "streamlit", "two-table"]
-      }
-    ],
+    "todo": [],
     "in_progress": [],
     "done": [
+      {
+        "id": "streamlit_two_phase_ui",
+        "title": "Two-phase Streamlit UI with separate buttons",
+        "completed_at": "2025-10-12T15:50:00+05:30",
+        "tags": ["ui", "streamlit", "two-table", "emd"]
+      },
       {
         "id": "naukri_two_phase_scrapers",
         "title": "Create Naukri two-phase scrapers with EMD compliance",
