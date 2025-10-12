@@ -1,60 +1,42 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:52:41+05:30",
-  "immediate_priorities": [],
-  "completed_tasks": [
+  "last_updated": "2025-10-12T13:00:23+05:30",
+  "immediate_priorities": [
     {
-      "id": "task_documentation",
-      "title": "Document 100K limitations in project README",
-      "completed_at": "2025-10-12T12:52:41+05:30",
-      "result": "✅ Added comprehensive scalability section: 10K+ capabilities, 100K limitations, rate limits, realistic timelines, cost implications"
+      "id": "priority_1",
+      "title": "Configure visual browser mode (headless=False)",
+      "description": "User wants real browser popup with visual scraping verification",
+      "priority": "P0",
+      "estimated_minutes": 15,
+      "dependencies": [],
+      "mcp_requirements": ["context7", "filesystem", "git"]
     },
     {
-      "id": "task_service_orchestrator",
-      "title": "Update service.py orchestrator with scalable components",
-      "completed_at": "2025-10-12T12:47:28+05:30",
-      "result": "✅ Integrated scalable components into service.py (64 lines): imports + documentation for 10K+ operations"
-    },
-    {
-      "id": "task_progress_tracker",
-      "title": "Create progress_tracker.py with realistic ETA (≤80 lines)",
-      "completed_at": "2025-10-12T12:43:12+05:30",
-      "result": "✅ Created ProgressTracker (79 lines) with moving average throughput, realistic ETA, and logging"
-    },
-    {
-      "id": "task_checkpoint_system",
-      "title": "Add checkpoint/resume system (≤80 lines)",
-      "completed_at": "2025-10-12T12:40:33+05:30",
-      "result": "✅ Created CheckpointManager (79 lines) with JSON persistence, auto-resume, and cleanup"
-    },
-    {
-      "id": "task_batch_processor",
-      "title": "Implement realistic batch processor for 10K jobs",
-      "completed_at": "2025-10-12T12:31:45+05:30",
-      "result": "✅ Created BatchProcessor (79 lines) with streaming, 500-char validation, and stats tracking"
-    },
-    {
-      "id": "task_platform_rate_limiters",
-      "title": "Create platform-specific rate limiters (≤80 lines each)",
-      "completed_at": "2025-10-12T12:29:57+05:30",
-      "result": "✅ Created IndeedRateLimiter(5), LinkedInRateLimiter(2), NaukriRateLimiter(15)"
+      "id": "priority_2",
+      "title": "Debug 0 jobs extraction issue",
+      "description": "All platforms returning 0 jobs - selectors may be outdated",
+      "priority": "P0",
+      "estimated_minutes": 20,
+      "dependencies": ["priority_1"],
+      "mcp_requirements": ["context7", "fetch"]
     }
   ],
   "task_queue": [],
   "blocked_tasks": [],
+  "completed_tasks": [],
   "quick_notes": [
     {
-      "id": "note_23",
-      "timestamp": "2025-10-12T12:52:41+05:30",
-      "content": "Documentation complete. Added scalability section with 10K+ capabilities, 100K limitations, realistic timelines (8-12h for 10K, 80-120h for 100K), and recommended alternatives.",
-      "priority": "low",
-      "related_task": "documentation"
+      "id": "note_24",
+      "timestamp": "2025-10-12T13:00:23+05:30",
+      "content": "E2E test ran but extracted 0 jobs. HeadlessX API-based approach doesn't show browser window. Need Playwright/Selenium with headless=False for visual verification.",
+      "priority": "high",
+      "related_task": "priority_1"
     }
   ],
   "mcp_validation_state": {
     "context7_active": true,
     "fetch_active": true,
-    "last_validation_timestamp": "2025-10-12T12:52:41+05:30",
+    "last_validation_timestamp": "2025-10-12T13:00:23+05:30",
     "mandatory_servers_status": {
       "filesystem": true,
       "git": true,

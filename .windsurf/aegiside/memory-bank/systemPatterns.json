@@ -1,42 +1,33 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:29:57+05:30",
+  "last_updated": "2025-10-12T13:06:07+05:30",
   "architecture_patterns": [
     {
-      "pattern_id": "PATTERN_011",
-      "name": "Platform-Specific Rate Limiters with Async Context Managers",
-      "category": "concurrency_control",
-      "description": "Semaphore-based rate limiters for Indeed, LinkedIn, and Naukri with platform-optimized concurrency",
+      "pattern_id": "pat_playwright_001",
+      "name": "Playwright Browser Automation with Error Handling",
+      "category": "scraping",
+      "description": "Direct Playwright integration with real browser mode for visual verification",
       "implementation": {
-        "approach": "asyncio.Semaphore + async context managers for clean resource management",
-        "platform_limits": {
-          "indeed": {"max_concurrent": 5, "delay_seconds": 2.0, "reasoning": "High anti-bot detection"},
-          "linkedin": {"max_concurrent": 2, "delay_seconds": 5.0, "reasoning": "EXTREME anti-bot protection"},
-          "naukri": {"max_concurrent": 15, "delay_seconds": 1.0, "reasoning": "Most lenient, allows bulk API"}
-        },
-        "benefits": [
-          "Prevents IP bans through platform-specific concurrency",
-          "Async context manager ensures proper resource cleanup",
-          "Configurable delays mimic human browsing patterns",
-          "Factory function for easy platform selection"
+        "file": "src/scraper/services/playwright_browser.py",
+        "key_features": [
+          "Async context manager for resource cleanup",
+          "Configurable headless mode for debugging",
+          "domcontentloaded wait strategy for bot-heavy sites",
+          "Graceful error handling with empty string fallback",
+          "60s timeout for challenging platforms"
         ]
       },
-      "code_example": "async with IndeedRateLimiter() as limiter: await scrape_jobs()",
-      "success_criteria": "No rate limit violations across 10K jobs",
-      "adoption_date": "2025-10-12T12:29:57+05:30",
-      "file_location": "src/scraper/unified/scalable/rate_limiters.py"
-    },
-    {
-      "pattern_id": "PATTERN_010",
-      "name": "Real-World Platform Constraints (2025 Research)",
-      "category": "scraping_limits",
-      "description": "Actual rate limits, pagination, and jobs-per-page data from Indeed, LinkedIn, and Naukri",
-      "adoption_date": "2025-10-12T02:08:10+05:30"
+      "when_to_use": "Job boards with anti-bot detection, visual verification needs",
+      "mcp_integrations": ["context7"],
+      "documentation_links": [
+        "https://github.com/microsoft/playwright-python"
+      ]
     }
   ],
-  "mcp_enriched_documentation": {
-    "asyncio_semaphore": "https://docs.python.org/3/library/asyncio-sync.html#asyncio.Semaphore",
-    "async_context_managers": "https://docs.python.org/3/reference/datamodel.html#async-context-managers",
-    "indeed_scraping_2025": "https://scrapfly.io/blog/posts/how-to-scrape-indeedcom"
-  }
+  "deployment_config": {},
+  "technical_dependencies": {
+    "playwright": ">=1.40.0",
+    "beautifulsoup4": ">=4.12.0"
+  },
+  "compliance_templates": []
 }
