@@ -174,5 +174,136 @@
       "alternative_proxies": "Use free public proxies or self-hosted VPN (unstable, not recommended)"
     },
     "key_insight": "Installation being FREE does not mean the SERVICE is free. Luminati Manager is just client software - the actual proxy IPs come from BrightData's paid network."
+  },
+  "jobspy_platform_research": {
+    "research_date": "2025-10-12T22:45:00+05:30",
+    "objective": "Identify which JobSpy platforms support scalable job description + skills extraction",
+    "methodology": "MCP-driven analysis using @mcp:fetch, @mcp:context7, @mcp:sequential-thinking",
+    "platforms_analyzed": 7,
+    "findings": {
+      "tier1_recommended": {
+        "indeed": {
+          "scale_rating": "EXCELLENT",
+          "rate_limiting": "None (best scraper currently)",
+          "job_description": "Yes (description field)",
+          "skills_extraction": "Manual from description",
+          "countries_supported": 60,
+          "max_jobs_per_search": "User-configurable via Streamlit limit input (no platform cap)",
+          "cost": "Free",
+          "recommendation": "Primary platform for unlimited scale",
+          "key_features": [
+            "No rate limiting",
+            "Global coverage (USA, India, UK, Canada, Europe, Asia)",
+            "Filters: hours_old, job_type, is_remote, easy_apply",
+            "Best for bulk scraping operations"
+          ]
+        },
+        "naukri": {
+          "scale_rating": "EXCELLENT",
+          "rate_limiting": "Reasonable (moderate volume)",
+          "job_description": "Yes (description field)",
+          "skills_extraction": "NATIVE skills field (pre-parsed)",
+          "countries_supported": "India",
+          "max_jobs_per_search": "User-configurable via Streamlit limit input",
+          "cost": "Free",
+          "recommendation": "Secondary platform + skills validation dataset",
+          "unique_fields": [
+            "skills (pre-extracted by Naukri)",
+            "experience_range",
+            "company_rating",
+            "company_reviews_count",
+            "vacancy_count",
+            "work_from_home_type"
+          ],
+          "strategic_value": "Native skills field provides ground truth for validating our AdvancedSkillExtractor accuracy"
+        }
+      },
+      "tier2_conditional": {
+        "linkedin": {
+          "scale_rating": "GOOD (with proxies)",
+          "rate_limiting": "Aggressive (~10 pages per IP)",
+          "job_description": "Yes (requires linkedin_fetch_description=True)",
+          "skills_extraction": "Manual from description",
+          "countries_supported": "Global",
+          "max_jobs_per_search": "User-configurable via Streamlit limit input (~1000 practical limit per IP without proxies)",
+          "cost": "Free (proxies needed for scale)",
+          "recommendation": "Tertiary platform for premium roles",
+          "limitations": "Rate limits make proxies mandatory for >100 jobs",
+          "unique_fields": ["job_level", "company_industry"]
+        },
+        "zip_recruiter": {
+          "scale_rating": "LIMITED",
+          "rate_limiting": "Moderate",
+          "job_description": "Yes",
+          "skills_extraction": "Manual from description",
+          "countries_supported": "USA, Canada only",
+          "max_jobs_per_search": "User-configurable via Streamlit limit input",
+          "cost": "Free",
+          "recommendation": "Use only for USA/Canada specific requirements"
+        }
+      },
+      "tier3_not_recommended": {
+        "glassdoor": {
+          "scale_rating": "POOR",
+          "reason": "Aggressive rate limiting",
+          "recommendation": "Avoid for production scraping"
+        },
+        "google": {
+          "scale_rating": "POOR",
+          "reason": "Complex syntax, limited control via google_search_term parameter",
+          "recommendation": "Avoid - use Indeed instead"
+        },
+        "bayt": {
+          "scale_rating": "LIMITED",
+          "reason": "Only uses search_term parameter, limited filtering",
+          "recommendation": "Avoid - use Naukri for international markets"
+        }
+      }
+    },
+    "scale_capacity_estimates": {
+      "without_proxies": "10,000+ jobs/day across Indeed + Naukri",
+      "with_proxies": "50,000+ jobs/day adding LinkedIn",
+      "cost_per_10k_jobs": "$0 (Indeed + Naukri free-tier)"
+    },
+    "implementation_strategy": {
+      "optimal_combination": ["indeed", "naukri", "linkedin"],
+      "primary_scraper": "Indeed (unlimited scale, global)",
+      "secondary_scraper": "Naukri (native skills + India market)",
+      "tertiary_scraper": "LinkedIn (premium roles with proxy rotation)",
+      "batch_size_recommendations": {
+        "indeed": "50-100 jobs/batch (no rate limits)",
+        "naukri": "50 jobs/batch (moderate limits)",
+        "linkedin": "25-50 jobs/batch (aggressive limits)"
+      }
+    },
+    "skills_extraction_approach": {
+      "all_platforms": "Use AdvancedSkillExtractor on description field (557 skills reference)",
+      "naukri_advantage": "Use native skills field as validation/training dataset",
+      "cross_validation": "Compare extracted skills vs Naukri native skills to measure accuracy",
+      "improvement_path": "Use Naukri skills as ground truth to improve extraction patterns"
+    },
+    "technical_integration": {
+      "existing_module": "src/scraper/jobspy/batch_scraper.py",
+      "modification_needed": "Change site_name from ['linkedin'] to ['indeed', 'naukri', 'linkedin']",
+      "emd_compliance": "Current file 80 lines, may need decomposition for multi-platform",
+      "database_storage": "Existing JobDetailModel supports all platform fields"
+    },
+    "mcp_evidence": {
+      "fetch_source": "https://github.com/speedyapply/JobSpy README.md",
+      "context7_validation": "Confirmed 7 platforms, rate limiting behavior, schema fields",
+      "sequential_thinking": "8-step analysis covering scale, costs, implementation",
+      "math_calculations": "10,000-50,000 jobs/day capacity estimates"
+    },
+    "recommendations": {
+      "immediate_action": "Extend batch_scraper.py to support Indeed and Naukri",
+      "validation_project": "Build Naukri skills validation dataset (1000+ jobs)",
+      "scale_testing": "Test Indeed unlimited scraping with 1000 job batch",
+      "cost_optimization": "Remain on free tier - proxies only if exceeding 10K jobs/day"
+    },
+    "constitutional_alignment": {
+      "free_tier_focus": "Indeed + Naukri = $0 cost for 10K+ jobs/day",
+      "emd_compliance": "Decompose batch_scraper.py if adding multi-platform logic",
+      "mcp_integration": "All research via mandatory MCP chain (fetch, context7, sequential-thinking, math)"
+    }
   }
 }

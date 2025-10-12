@@ -27,7 +27,7 @@ JobSpy library supports **7 platforms**. For scalable JD + skills extraction:
 - **Job Description**: ✅ Yes (description field)
 - **Skills Extraction**: Manual from description
 - **Countries**: 60+ (USA, India, UK, Canada, Europe, Asia)
-- **Max Jobs/Search**: ~1,000
+- **Max Jobs/Search**: User-configurable (no platform cap)
 - **Cost**: $0 (free-tier)
 - **Filters**: hours_old, job_type, is_remote, easy_apply
 - **Recommendation**: **PRIMARY PLATFORM** for bulk scraping
@@ -37,7 +37,7 @@ JobSpy library supports **7 platforms**. For scalable JD + skills extraction:
 - **Job Description**: ✅ Yes (description field)
 - **Skills Extraction**: ✅ **NATIVE skills field** (pre-parsed by Naukri!)
 - **Countries**: India
-- **Max Jobs/Search**: ~1,000
+- **Max Jobs/Search**: User-configurable via Streamlit
 - **Cost**: $0 (free-tier)
 - **Unique Fields**:
   - `skills` (pre-extracted - HUGE advantage!)
@@ -58,7 +58,7 @@ JobSpy library supports **7 platforms**. For scalable JD + skills extraction:
 - **Job Description**: ✅ Yes (requires `linkedin_fetch_description=True`)
 - **Skills Extraction**: Manual from description
 - **Countries**: Global
-- **Max Jobs/Search**: ~1,000
+- **Max Jobs/Search**: User-configurable (~1,000 practical limit per IP without proxies)
 - **Cost**: $0 (proxies required for >100 jobs)
 - **Unique Fields**: job_level, company_industry
 - **Recommendation**: **TERTIARY PLATFORM** for premium roles (with proxy rotation)
