@@ -29,6 +29,30 @@
 - **Real-time scraping** with progress tracking
 - **Bypasses reCAPTCHA** and bot protections automatically
 
+### 📈 **Scalability & Limitations**
+
+#### **10K+ Job Scraping (Supported)**
+- **Platform-Specific Rate Limiting**: Indeed (5 concurrent), LinkedIn (2 concurrent), Naukri (15 concurrent)
+- **Batch Processing**: 1000 jobs/batch with streaming database writes
+- **Checkpoint/Resume**: Automatic crash recovery with JSON persistence
+- **Progress Tracking**: Real-time ETA with moving average throughput
+- **Realistic Timeline**: 10K jobs ≈ 8-12 hours depending on platform mix
+
+#### **100K Job Scraping (Not Recommended)**
+⚠️ **100K+ jobs face significant constraints:**
+- **Time Requirements**: 80-120+ hours of continuous execution
+- **API Rate Limits**: Platform detection risk increases exponentially
+- **Resource Constraints**: Memory pressure, network stability requirements
+- **Cost Implications**: BrightData usage costs scale linearly with volume
+- **Recommended Alternative**: Use official APIs (LinkedIn Talent Solutions, Indeed Publisher API) for enterprise-scale needs
+
+**For 10K+ operations, use scalable components:**
+```python
+from src.scraper.unified.service import (
+    BatchProcessor, CheckpointManager, ProgressTracker, get_rate_limiter
+)
+```
+
 ---
 
 ## 🚀 Quick Start
