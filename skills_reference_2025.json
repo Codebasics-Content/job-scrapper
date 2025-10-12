@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0.0",
-  "last_updated": "2025-10-12T21:48:30+05:30",
+  "last_updated": "2025-10-12T21:57:10+05:30",
   "source": "O*NET Skills Framework + GitHub Linguist + Roadmap.sh + Industry Standards + 2025 GenAI/LLM Research",
-  "total_skills": 550,
+  "total_skills": 557,
   "skills": {
     "programming_languages": [
       {
@@ -1819,6 +1819,62 @@
           "cursor ide",
           "cursor ai",
           "cursor editor"
+        ]
+      },
+      {
+        "name": "Devin",
+        "patterns": [
+          "devin",
+          "devin ai",
+          "cognition ai devin"
+        ]
+      },
+      {
+        "name": "Cline",
+        "patterns": [
+          "cline",
+          "cline ai"
+        ]
+      },
+      {
+        "name": "Tabnine",
+        "patterns": [
+          "tabnine",
+          "tab nine"
+        ]
+      },
+      {
+        "name": "Amazon Q Developer",
+        "patterns": [
+          "amazon q",
+          "q developer",
+          "amazon q developer",
+          "codewhisperer",
+          "amazon codewhisperer"
+        ]
+      },
+      {
+        "name": "LangChain",
+        "patterns": [
+          "langchain",
+          "lang chain",
+          "lang-chain"
+        ]
+      },
+      {
+        "name": "LangGraph",
+        "patterns": [
+          "langgraph",
+          "lang graph",
+          "lang-graph"
+        ]
+      },
+      {
+        "name": "LlamaIndex",
+        "patterns": [
+          "llamaindex",
+          "llama index",
+          "llama-index"
         ]
       },
       {
