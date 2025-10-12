@@ -1,6 +1,8 @@
 # BrightData Selective Proxy Usage Guide
 
-## Strategy: Proxy Only for LinkedIn
+## Strategy: 3 Platforms - Proxy Only for LinkedIn
+
+**Supported Platforms**: LinkedIn (proxy), Indeed (direct), Naukri (direct)
 
 **Cost Optimization**: Use BrightData proxy **only for LinkedIn** (rate-limited platform), keep Indeed + Naukri proxy-free (unlimited).
 
@@ -96,9 +98,8 @@ print(status)
 # Output:
 # {
 #     "linkedin": True,         # Proxy configured
-#     "indeed": False,          # No proxy needed
-#     "naukri": False,          # No proxy needed
-#     "zip_recruiter": False,   # No proxy needed
+#     "indeed": False,          # Direct scraping (unlimited)
+#     "naukri": False,          # Direct scraping (unlimited + native skills)
 #     "brightdata_configured": True
 # }
 ```
@@ -110,9 +111,8 @@ print(status)
 | Platform | Proxy Required? | Reason | Cost |
 |----------|----------------|--------|------|
 | **LinkedIn** | ✅ Yes (for >100 jobs) | Aggressive rate limiting (~10 pages per IP) | BrightData |
-| **Indeed** | ❌ No | No rate limiting | $0 |
-| **Naukri** | ❌ No | Moderate limits, free-tier friendly | $0 |
-| **ZipRecruiter** | ❌ No | Moderate limits | $0 |
+| **Indeed** | ❌ No | No rate limiting, unlimited scraping | $0 |
+| **Naukri** | ❌ No | Direct scraping, native skills field | $0 |
 
 ---
 

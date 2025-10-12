@@ -16,13 +16,15 @@ def scrape_multi_platform(
     linkedin_fetch_description: bool = True,
 ) -> pd.DataFrame:
     """
-    Scrape jobs from multiple platforms with selective proxy usage
+    Scrape jobs from 3 supported platforms with selective proxy usage
     
-    LinkedIn: Uses BrightData proxy (if configured)
-    Indeed/Naukri: No proxy (unlimited free scraping)
+    Supported platforms:
+    - LinkedIn: BrightData proxy (for >100 jobs)
+    - Indeed: Direct scraping (no proxy, unlimited)
+    - Naukri: Direct scraping (no proxy, unlimited + native skills)
     
     Args:
-        platforms: List of platforms ["linkedin", "indeed", "naukri"]
+        platforms: List of platforms - only "linkedin", "indeed", "naukri" supported
         search_term: Job search keyword
         location: Location filter
         results_wanted: Jobs to scrape per platform

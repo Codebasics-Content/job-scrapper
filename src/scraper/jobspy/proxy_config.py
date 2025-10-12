@@ -41,13 +41,12 @@ def get_proxy_for_platform(platform: str) -> Optional[list[str]]:
 
 
 def proxy_status() -> dict[str, bool]:
-    """Check proxy availability for each platform"""
+    """Check proxy availability for supported platforms (linkedin, indeed, naukri)"""
     brightdata = get_brightdata_proxy()
     
     return {
-        "linkedin": brightdata is not None,
-        "indeed": False,  # No proxy needed
-        "naukri": False,  # No proxy needed
-        "zip_recruiter": False,  # No proxy needed
+        "linkedin": brightdata is not None,  # Proxy for rate limits
+        "indeed": False,  # Direct scraping (unlimited)
+        "naukri": False,  # Direct scraping (unlimited + native skills)
         "brightdata_configured": brightdata is not None,
     }
