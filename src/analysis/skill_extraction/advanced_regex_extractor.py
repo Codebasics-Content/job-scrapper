@@ -37,15 +37,6 @@ SKILL_CONTEXT_PATTERNS = {
     'requirement': r'(?:requires?|must\s+have)\s+(?:experience\s+with\s+)?([A-Z][\w\s]{2,30})',
 }
 
-# Synonym normalization
-SKILL_SYNONYMS = {
-    "Machine Learning": ["machine learning", "ml", "ml engineering"],
-    "Natural Language Processing": ["natural language processing", "nlp"],
-    "MLOps": ["mlops", "ml ops", "machine learning operations"],
-    "CI/CD": ["ci/cd", "ci-cd", "cicd", "continuous integration"],
-    "Deep Learning": ["deep learning", "dl"],
-    "RAG": ["rag", "retrieval augmented generation"],
-}
 
 
 def layer1_extract_phrases(text: str) -> tuple[list[dict[str, Any]], list[tuple[int, int]]]:

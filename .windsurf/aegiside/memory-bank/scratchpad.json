@@ -1,53 +1,31 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T18:13:58+05:30",
+  "last_updated": "2025-10-12T19:36:00+05:30",
   "priority_queue": [],
   "completed": [
+    {
+      "id": "skills_enhancement",
+      "task": "Add 93 new AI/ML/GenAI/Data Science skills to reference",
+      "completed_at": "2025-10-12T19:25:00+05:30",
+      "outcome": "Added 40 LLM frameworks, 18 vector DBs, 22 MLOps tools, 11 ML enhancements. Total: 850→943 skills. Validated JSON, committed b3c8537"
+    },
+    {
+      "id": "file_cleanup",
+      "task": "Archive outdated files to clean repository structure",
+      "completed_at": "2025-10-12T19:36:00+05:30",
+      "outcome": "Archived 70 files to docs/archive/: old docs (15), debug files (13), duplicate READMEs (5), test scripts (4), old DBs (3), misc (30). Committed 20d61c6"
+    },
+    {
+      "id": "linkedin_skill_reextraction",
+      "task": "Re-extract skills from 100 LinkedIn jobs with comprehensive reference",
+      "completed_at": "2025-10-12T19:12:00+05:30",
+      "outcome": "77% improvement (6.3→11.2 avg skills/job), 83 jobs improved, stored to SQLite with 427 active patterns"
+    },
     {
       "id": "jobspy_linkedin_integration",
       "task": "Integrate JobSpy library for free LinkedIn scraping",
       "completed_at": "2025-10-12T18:13:58+05:30",
-      "outcome": "Successfully installed python-jobspy v1.1.82, created EMD-compliant scraper module (78 lines), tested with 10 jobs, documented in README_JOBSPY.md"
-    },
-    {
-      "id": "streamlit_ui_update",
-      "task": "Update Streamlit app with separate URL and detail scraping buttons",
-      "completed_at": "2025-10-12T15:50:00+05:30"
-    },
-    {
-      "id": "scraper_two_phase",
-      "task": "Update unified scrapers for two-phase URL and detail scraping",
-      "completed_at": "2025-10-12T15:40:00+05:30"
-    },
-    {
-      "id": "two_table_models",
-      "task": "Create JobUrlModel and JobDetailModel in models.py",
-      "completed_at": "2025-10-12T15:10:00+05:30"
-    },
-    {
-      "id": "two_table_schema",
-      "task": "Update database schema for job_urls and jobs tables",
-      "completed_at": "2025-10-12T15:15:00+05:30"
-    },
-    {
-      "id": "two_phase_operations",
-      "task": "Update operations.py for two-phase storage",
-      "completed_at": "2025-10-12T15:20:00+05:30"
-    },
-    {
-      "id": "playwright_integration",
-      "task": "Replace HeadlessX with Playwright detail page navigation",
-      "completed_at": "2025-10-12T13:50:00+05:30"
-    },
-    {
-      "id": "linkedin_removal",
-      "task": "Remove all LinkedIn scraper files",
-      "completed_at": "2025-10-12T13:50:00+05:30"
-    },
-    {
-      "id": "db_integration",
-      "task": "Add automatic database storage with batch processing",
-      "completed_at": "2025-10-12T13:50:00+05:30"
+      "outcome": "Successfully installed python-jobspy v1.1.82, created EMD-compliant scraper module (78 lines), tested with 10 jobs"
     }
   ]
 }
