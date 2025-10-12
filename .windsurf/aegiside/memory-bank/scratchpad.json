@@ -1,21 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:27:24+05:30",
+  "last_updated": "2025-10-12T12:29:57+05:30",
   "immediate_priorities": [
-    {
-      "id": "priority_1",
-      "title": "Create platform-specific rate limiters (≤80 lines each)",
-      "urgency": "high",
-      "estimated_minutes": 40,
-      "dependencies": [],
-      "details": "Indeed=5 concurrent, LinkedIn=2 concurrent, Naukri=15 concurrent"
-    },
     {
       "id": "priority_2",
       "title": "Implement realistic batch processor for 10K jobs (≤80 lines)",
       "urgency": "high",
       "estimated_minutes": 30,
-      "dependencies": ["priority_1"]
+      "dependencies": []
     },
     {
       "id": "priority_3",
@@ -27,22 +19,16 @@
   ],
   "completed_tasks": [
     {
+      "id": "task_platform_rate_limiters",
+      "title": "Create platform-specific rate limiters (≤80 lines each)",
+      "completed_at": "2025-10-12T12:29:57+05:30",
+      "result": "✅ Created IndeedRateLimiter(5), LinkedInRateLimiter(2), NaukriRateLimiter(15) with async context managers"
+    },
+    {
       "id": "task_research_platform_limits",
       "title": "Research actual rate limits and jobs per page for all platforms",
       "completed_at": "2025-10-12T02:08:10+05:30",
-      "result": "✅ Verified via @mcp:fetch: Indeed=10/page, LinkedIn=25/page, Naukri=20-25/page. Max concurrent: 5, 2, 15 respectively."
-    },
-    {
-      "id": "task_optimization_analysis",
-      "title": "Analyze 100K job scraping bottleneck",
-      "completed_at": "2025-10-12T02:03:57+05:30",
-      "result": "✅ Initial analysis (corrected by research). Reality: 10K feasible, 100K requires APIs."
-    },
-    {
-      "id": "task_verify_pipeline",
-      "title": "Verify current JD → regex → DB pipeline",
-      "completed_at": "2025-10-12T02:03:57+05:30",
-      "result": "✅ Pipeline validated: Full JD scraping, 850 skills regex extraction, SQLite storage"
+      "result": "✅ Verified via @mcp:fetch: Indeed=10/page, LinkedIn=25/page, Naukri=20-25/page"
     }
   ],
   "task_queue": [
@@ -71,17 +57,17 @@
   "blocked_tasks": [],
   "quick_notes": [
     {
-      "id": "note_17",
-      "timestamp": "2025-10-12T12:27:24+05:30",
-      "content": "Research complete: Platform limits verified. Focus on realistic 10K scale with platform-specific rate limiting. 100K goal abandoned without official APIs.",
-      "priority": "critical",
-      "related_task": "realistic_scalable_architecture"
+      "id": "note_18",
+      "timestamp": "2025-10-12T12:29:57+05:30",
+      "content": "Rate limiters complete. All 3 classes (77 lines total) use asyncio.Semaphore + async context managers for clean resource management.",
+      "priority": "high",
+      "related_task": "platform_rate_limiters"
     }
   ],
   "mcp_validation_state": {
     "context7_active": true,
     "fetch_active": true,
-    "last_validation_timestamp": "2025-10-12T12:27:24+05:30",
+    "last_validation_timestamp": "2025-10-12T12:29:57+05:30",
     "mandatory_servers_status": {
       "filesystem": true,
       "git": true,

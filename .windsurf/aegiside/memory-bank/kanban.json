@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:27:24+05:30",
+  "last_updated": "2025-10-12T12:29:57+05:30",
   "board_configuration": {
     "workflow_states": ["todo", "in_progress", "testing", "done"],
     "wip_limits": {
@@ -10,22 +10,10 @@
   },
   "tasks": [
     {
-      "task_id": "task_platform_rate_limiters",
-      "title": "Implement platform-specific rate limiters",
-      "description": "Create IndeedRateLimiter(5), LinkedInRateLimiter(2), NaukriRateLimiter(15)",
-      "status": "todo",
-      "assignee": "dev_minister",
-      "priority": "critical",
-      "story_points": 5,
-      "labels": ["rate_limiting", "scalability", "platform_specific"],
-      "created_date": "2025-10-12T12:27:24+05:30",
-      "kanban_task_id": "task-platform-rate-limiters"
-    },
-    {
       "task_id": "task_batch_processor",
       "title": "Implement realistic batch processor",
       "description": "Process 1000 jobs/batch with platform detection and streaming DB",
-      "status": "todo",
+      "status": "in_progress",
       "assignee": "dev_minister",
       "priority": "critical",
       "story_points": 3,
@@ -46,34 +34,29 @@
       "kanban_task_id": "task-checkpoint-system"
     },
     {
-      "task_id": "task_platform_research",
-      "title": "Research actual platform limits",
-      "description": "Verify jobs per page, rate limits, pagination methods",
+      "task_id": "task_platform_rate_limiters",
+      "title": "Implement platform-specific rate limiters",
+      "description": "Create IndeedRateLimiter(5), LinkedInRateLimiter(2), NaukriRateLimiter(15)",
       "status": "done",
-      "assignee": "ias_researcher",
+      "assignee": "dev_minister",
       "priority": "critical",
-      "story_points": 2,
-      "labels": ["research", "validation"],
-      "created_date": "2025-10-12T02:00:00+05:30",
-      "completed_date": "2025-10-12T02:08:10+05:30",
-      "kanban_task_id": "task-platform-research"
+      "story_points": 5,
+      "labels": ["rate_limiting", "scalability", "platform_specific"],
+      "created_date": "2025-10-12T12:27:24+05:30",
+      "completed_date": "2025-10-12T12:29:57+05:30",
+      "kanban_task_id": "task-platform-rate-limiters"
     }
   ],
   "metrics": {
     "velocity": {
-      "current_sprint": 12,
-      "last_sprint": 15
+      "current_sprint": 15,
+      "last_sprint": 12
     },
     "cycle_time": {
-      "average_days": 0.6
+      "average_days": 0.1
     },
     "throughput": {
-      "tasks_per_week": 10
+      "tasks_per_week": 15
     }
-  },
-  "parliamentary_tracking": {
-    "consensus_required_tasks": 0,
-    "judicial_review_pending": 0,
-    "opposition_challenges": 0
   }
 }
