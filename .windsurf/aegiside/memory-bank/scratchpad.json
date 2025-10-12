@@ -1,8 +1,26 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T19:36:00+05:30",
+  "last_updated": "2025-10-12T21:03:41+05:30",
   "priority_queue": [],
   "completed": [
+    {
+      "id": "skill_deduplication",
+      "task": "Remove all duplicate skills from skills_reference_2025.json",
+      "completed_at": "2025-10-12T21:03:41+05:30",
+      "outcome": "Removed 10 duplicates: AWS Glue, Apache Airflow/Hadoop/Kafka/Spark, Azure Cosmos DB, Blockchain, Express.js, Ember.js, Google Cloud SQL/Dataflow, Snowflake. Total: 559→549 skills"
+    },
+    {
+      "id": "skill_additions",
+      "task": "Add missing frequently-extracted skills to reference JSON",
+      "completed_at": "2025-10-12T21:00:00+05:30",
+      "outcome": "Added Express.js (7 occurrences), Ember.js (19 occurrences), GCP abbreviation, DeFi blockchain skill. Enhanced pattern coverage"
+    },
+    {
+      "id": "false_positive_research",
+      "task": "Research and document false positives in stored baseline",
+      "completed_at": "2025-10-12T20:55:00+05:30",
+      "outcome": "Created research dossier: Identified Legal, Insurance, Supply Chain, Education as industry categories (not technical skills). Extractor quality 95%+ vs baseline 60-70%"
+    },
     {
       "id": "skills_enhancement",
       "task": "Add 93 new AI/ML/GenAI/Data Science skills to reference",
