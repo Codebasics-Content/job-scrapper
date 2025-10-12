@@ -2,6 +2,7 @@
 
 Platform-specific rate limiters based on real-world constraints (2025 research).
 """
+from .batch_processor import BatchProcessor
 from .rate_limiters import (
     IndeedRateLimiter,
     LinkedInRateLimiter,
@@ -10,6 +11,7 @@ from .rate_limiters import (
 )
 
 __all__ = [
+    "BatchProcessor",
     "IndeedRateLimiter",
     "LinkedInRateLimiter",
     "NaukriRateLimiter",
