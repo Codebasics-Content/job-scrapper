@@ -3,6 +3,10 @@
 Test: Scrape 1000 AI Engineer jobs with rate limiting analysis
 Purpose: Monitor LinkedIn rate limits, optimize scraping speed, extract skills
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from typing import Any
 from tests.ai_engineer import scrape_with_monitoring, extract_and_store_skills
 
