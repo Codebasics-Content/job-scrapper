@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-11T23:49:19+05:30",
+  "last_updated": "2025-10-12T12:27:24+05:30",
   "board_configuration": {
     "workflow_states": ["todo", "in_progress", "testing", "done"],
     "wip_limits": {
@@ -10,54 +10,65 @@
   },
   "tasks": [
     {
-      "task_id": "task_docker_deployment",
-      "title": "Docker Compose HeadlessX + Luminati deployment",
-      "description": "Deploy complete scraping infrastructure via Docker Compose",
-      "status": "done",
-      "assignee": "tech_minister",
+      "task_id": "task_platform_rate_limiters",
+      "title": "Implement platform-specific rate limiters",
+      "description": "Create IndeedRateLimiter(5), LinkedInRateLimiter(2), NaukriRateLimiter(15)",
+      "status": "todo",
+      "assignee": "dev_minister",
       "priority": "critical",
       "story_points": 5,
-      "labels": ["infrastructure", "docker", "deployment"],
-      "created_date": "2025-10-11T23:30:00+05:30",
-      "completed_date": "2025-10-11T23:49:00+05:30",
-      "kanban_task_id": "task-docker-deployment"
+      "labels": ["rate_limiting", "scalability", "platform_specific"],
+      "created_date": "2025-10-12T12:27:24+05:30",
+      "kanban_task_id": "task-platform-rate-limiters"
     },
     {
-      "task_id": "task_e2e_pipeline",
-      "title": "End-to-end pipeline validation",
-      "description": "Test complete data flow: jobs → database → skills → analysis",
-      "status": "done",
+      "task_id": "task_batch_processor",
+      "title": "Implement realistic batch processor",
+      "description": "Process 1000 jobs/batch with platform detection and streaming DB",
+      "status": "todo",
       "assignee": "dev_minister",
       "priority": "critical",
       "story_points": 3,
-      "labels": ["testing", "validation", "pipeline"],
-      "created_date": "2025-10-11T21:20:00+05:30",
-      "completed_date": "2025-10-11T22:33:52+05:30",
-      "kanban_task_id": "task-e2e-pipeline"
+      "labels": ["batch_processing", "scalability"],
+      "created_date": "2025-10-12T12:27:24+05:30",
+      "kanban_task_id": "task-batch-processor"
     },
     {
-      "task_id": "task_production_test",
-      "title": "Production scraping test with Docker stack",
-      "description": "Test 10 Naukri jobs via Streamlit UI with HeadlessX + Luminati",
-      "status": "in_progress",
-      "assignee": "user",
+      "task_id": "task_checkpoint_system",
+      "title": "Add checkpoint/resume capability",
+      "description": "Enable crash recovery for long-running scraping jobs",
+      "status": "todo",
+      "assignee": "dev_minister",
+      "priority": "high",
+      "story_points": 3,
+      "labels": ["reliability", "crash_recovery"],
+      "created_date": "2025-10-12T12:27:24+05:30",
+      "kanban_task_id": "task-checkpoint-system"
+    },
+    {
+      "task_id": "task_platform_research",
+      "title": "Research actual platform limits",
+      "description": "Verify jobs per page, rate limits, pagination methods",
+      "status": "done",
+      "assignee": "ias_researcher",
       "priority": "critical",
       "story_points": 2,
-      "labels": ["testing", "production", "validation"],
-      "created_date": "2025-10-11T23:49:19+05:30",
-      "kanban_task_id": "task-production-test"
+      "labels": ["research", "validation"],
+      "created_date": "2025-10-12T02:00:00+05:30",
+      "completed_date": "2025-10-12T02:08:10+05:30",
+      "kanban_task_id": "task-platform-research"
     }
   ],
   "metrics": {
     "velocity": {
-      "current_sprint": 15,
-      "last_sprint": 12
+      "current_sprint": 12,
+      "last_sprint": 15
     },
     "cycle_time": {
-      "average_days": 0.8
+      "average_days": 0.6
     },
     "throughput": {
-      "tasks_per_week": 12
+      "tasks_per_week": 10
     }
   },
   "parliamentary_tracking": {

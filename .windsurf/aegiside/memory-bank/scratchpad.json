@@ -1,24 +1,25 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T02:03:57+05:30",
+  "last_updated": "2025-10-12T12:27:24+05:30",
   "immediate_priorities": [
     {
       "id": "priority_1",
-      "title": "Create scalable batch processor (≤80 lines)",
+      "title": "Create platform-specific rate limiters (≤80 lines each)",
       "urgency": "high",
-      "estimated_minutes": 30,
-      "dependencies": []
+      "estimated_minutes": 40,
+      "dependencies": [],
+      "details": "Indeed=5 concurrent, LinkedIn=2 concurrent, Naukri=15 concurrent"
     },
     {
       "id": "priority_2",
-      "title": "Implement rate limiter with asyncio.Semaphore (≤80 lines)",
+      "title": "Implement realistic batch processor for 10K jobs (≤80 lines)",
       "urgency": "high",
-      "estimated_minutes": 20,
-      "dependencies": []
+      "estimated_minutes": 30,
+      "dependencies": ["priority_1"]
     },
     {
       "id": "priority_3",
-      "title": "Add checkpoint manager for resume capability (≤80 lines)",
+      "title": "Add checkpoint/resume system (≤80 lines)",
       "urgency": "high",
       "estimated_minutes": 25,
       "dependencies": []
@@ -26,61 +27,61 @@
   ],
   "completed_tasks": [
     {
+      "id": "task_research_platform_limits",
+      "title": "Research actual rate limits and jobs per page for all platforms",
+      "completed_at": "2025-10-12T02:08:10+05:30",
+      "result": "✅ Verified via @mcp:fetch: Indeed=10/page, LinkedIn=25/page, Naukri=20-25/page. Max concurrent: 5, 2, 15 respectively."
+    },
+    {
       "id": "task_optimization_analysis",
-      "title": "Analyze 100K job scraping bottleneck and design solution",
+      "title": "Analyze 100K job scraping bottleneck",
       "completed_at": "2025-10-12T02:03:57+05:30",
-      "result": "✅ Identified 166h bottleneck. Solution: 50 concurrent + batch processing + streaming DB = 33h (80% faster)"
+      "result": "✅ Initial analysis (corrected by research). Reality: 10K feasible, 100K requires APIs."
     },
     {
       "id": "task_verify_pipeline",
       "title": "Verify current JD → regex → DB pipeline",
       "completed_at": "2025-10-12T02:03:57+05:30",
-      "result": "✅ Pipeline correct: Full JD scraping, 850 skills regex extraction, SQLite storage via JobStorageOperations"
-    },
-    {
-      "id": "task_selenium_playwright_full_comparison",
-      "title": "Complete Selenium vs Playwright comparison (All 3 platforms)",
-      "completed_at": "2025-10-12T01:45:00+05:30",
-      "result": "✅ Hybrid approach documented - Playwright winner for proxy scraping"
+      "result": "✅ Pipeline validated: Full JD scraping, 850 skills regex extraction, SQLite storage"
     }
   ],
   "task_queue": [
     {
       "id": "next_task_4",
-      "title": "Create progress_tracker.py with ETA calculation (≤80 lines)",
+      "title": "Create progress_tracker.py with realistic ETA (≤80 lines)",
       "priority": "medium",
       "estimated_minutes": 20,
       "dependencies": ["batch_processor"]
     },
     {
       "id": "next_task_5",
-      "title": "Update service.py orchestrator with batch mode support",
+      "title": "Update service.py orchestrator with platform-specific limits",
       "priority": "medium",
       "estimated_minutes": 15,
-      "dependencies": ["batch_processor", "rate_limiter"]
+      "dependencies": ["rate_limiter"]
     },
     {
       "id": "next_task_6",
-      "title": "Add 500-character JD minimum validation to parsers",
+      "title": "Document 100K limitations in project README",
       "priority": "low",
-      "estimated_minutes": 15,
+      "estimated_minutes": 10,
       "dependencies": []
     }
   ],
   "blocked_tasks": [],
   "quick_notes": [
     {
-      "id": "note_16",
-      "timestamp": "2025-10-12T02:03:57+05:30",
-      "content": "Current regex skill extraction already optimal (pre-compiled patterns). Focus optimization on concurrency and database streaming for 100K scale.",
-      "priority": "high",
-      "related_task": "scalable_architecture"
+      "id": "note_17",
+      "timestamp": "2025-10-12T12:27:24+05:30",
+      "content": "Research complete: Platform limits verified. Focus on realistic 10K scale with platform-specific rate limiting. 100K goal abandoned without official APIs.",
+      "priority": "critical",
+      "related_task": "realistic_scalable_architecture"
     }
   ],
   "mcp_validation_state": {
     "context7_active": true,
     "fetch_active": true,
-    "last_validation_timestamp": "2025-10-12T02:03:57+05:30",
+    "last_validation_timestamp": "2025-10-12T12:27:24+05:30",
     "mandatory_servers_status": {
       "filesystem": true,
       "git": true,
