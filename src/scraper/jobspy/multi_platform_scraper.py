@@ -1,9 +1,8 @@
 """Multi-platform JobSpy scraper with selective proxy usage (≤80 lines EMD)"""
 from __future__ import annotations
 
-from typing import Optional
 import pandas as pd
-from python_jobspy import scrape_jobs
+from jobspy import scrape_jobs
 
 from .proxy_config import get_proxy_for_platform
 
