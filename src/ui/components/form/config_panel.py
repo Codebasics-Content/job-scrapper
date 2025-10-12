@@ -2,15 +2,8 @@
 # Handles job role and platform configuration inputs
 
 import streamlit as st
-from typing import List
 
-# LinkedIn country options for unified HeadlessX architecture
-LINKEDIN_COUNTRIES = [
-    "United States", "United Kingdom", "Canada", "Australia", 
-    "Germany", "France", "Netherlands", "Singapore", "India"
-]
-
-def render_config_panel() -> tuple[str, str, List[str], int]:
+def render_config_panel() -> tuple[str, str, int]:
     """Render configuration panel and return form values"""
     col1, col2 = st.columns(2)
     
@@ -22,8 +15,8 @@ def render_config_panel() -> tuple[str, str, List[str], int]:
         )
         platform = st.selectbox(
             "🌐 Platform",
-            options=["Naukri", "LinkedIn", "Indeed"],
-            help="⚠️ HeadlessX + Local Luminati Proxy for all platforms"
+            options=["Naukri", "Indeed"],
+            help="Two-phase scraping: URLs first, details later"
         )
         
     with col2:
@@ -34,14 +27,5 @@ def render_config_panel() -> tuple[str, str, List[str], int]:
             value=10,
             help="Recommended: 10-50 jobs for optimal performance"
         )
-        
-        selected_countries = []
-        if platform == "LinkedIn":
-            selected_countries = st.multiselect(
-                "🌍 Countries",
-                options=LINKEDIN_COUNTRIES,
-                default=["United States"],
-                help="LinkedIn supports multiple countries"
-            )
     
-    return job_role, platform, selected_countries, num_jobs
+    return job_role, platform, num_jobs

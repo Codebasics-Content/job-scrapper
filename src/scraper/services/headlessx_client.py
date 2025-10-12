@@ -28,10 +28,10 @@ class HeadlessXClient(BaseHeadlessXClient):
         max_concurrent: int = 5,
         rate_limit_per_second: float = 2.0
     ):
-        base_url = os.getenv("HEADLESSX_BASE_URL", "").rstrip("/")
-        token = os.getenv("HEADLESSX_TOKEN", "")
-        if not base_url or not token:
-            raise HeadlessXError("HEADLESSX_BASE_URL and HEADLESSX_TOKEN are required")
+        base_url = os.getenv("HEADLESSX_BASE_URL", "http://localhost:3000").rstrip("/")
+        token = os.getenv("HEADLESSX_TOKEN", "test-token")
+        if not base_url:
+            raise HeadlessXError("HEADLESSX_BASE_URL is required")
         
         super().__init__(base_url, token, max_concurrent, retry_config, circuit_config)
     

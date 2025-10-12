@@ -3,14 +3,18 @@
 
 from typing import List, Dict, Any
 
-from .analytics import (
-    render_overview_metrics,
-    render_platform_distribution,
-    render_skills_analysis
-)
+from .analytics.overview_metrics import render_analytics_overview as _render_overview
+from .analytics.platform_charts import render_platform_distribution as _render_platform
+from .analytics.skills_charts import render_skills_analysis as _render_skills
 
-def render_analytics_dashboard(all_jobs: List[Dict[str, Any]]) -> None:
-    """Main analytics dashboard orchestrator"""
-    render_overview_metrics(all_jobs)
-    render_platform_distribution(all_jobs)
-    render_skills_analysis(all_jobs)
+def render_analytics_overview(all_jobs: List[Dict[str, Any]]) -> None:
+    """Render analytics overview section"""
+    _render_overview(all_jobs)
+
+def render_platform_distribution(all_jobs: List[Dict[str, Any]]) -> None:
+    """Render platform distribution charts"""
+    _render_platform(all_jobs)
+
+def render_skills_analysis(all_jobs: List[Dict[str, Any]]) -> None:
+    """Render skills analysis charts"""
+    _render_skills(all_jobs)

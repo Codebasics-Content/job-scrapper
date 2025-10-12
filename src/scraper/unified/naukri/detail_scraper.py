@@ -9,7 +9,7 @@ from datetime import datetime
 from src.models import JobDetailModel, JobUrlModel
 from src.scraper.services.playwright_browser import PlaywrightBrowser
 from src.db.operations import JobStorageOperations
-from .parser import create_job_model
+from .parser import create_job_detail_model
 
 logger = logging.getLogger(__name__)
 
@@ -29,10 +29,13 @@ async def scrape_naukri_details(
         logger.error("Database operations required for Phase 2")
         return detail_models
 
+    # Normalize input_role to match database format
+    normalized_role = JobUrlModel.normalize_role(input_role)
+    
     # Query unscraped URLs (LEFT JOIN deduplication)
-    unscraped = db_ops.get_unscraped_urls(platform, input_role, limit)
+    unscraped = db_ops.get_unscraped_urls(platform, normalized_role, limit)
     if not unscraped:
-        logger.info(f"No unscraped URLs for {platform}/{input_role}")
+        logger.info(f"No unscraped URLs for {platform}/{normalized_role}")
         return detail_models
 
     logger.info(f"Found {len(unscraped)} unscraped URLs, processing...")
@@ -46,18 +49,23 @@ async def scrape_naukri_details(
             async def scrape_detail(job_id: str, job_url: str) -> JobDetailModel | None:
                 try:
                     detail_html = await browser.render_url(job_url, wait_seconds=3.0)
-                    job_model = create_job_model(job_url, detail_html)
+                    job_detail = create_job_detail_model(
+                        job_url=job_url,
+                        html=detail_html,
+                        title="",
+                        company=""
+                    )
 
                     detail = JobDetailModel(
                         job_id=job_id,
                         platform=platform,
-                        actual_role=job_model.job_role,
+                        actual_role=job_detail.actual_role,
                         url=job_url,
-                        job_description=job_model.jd[:2000],
-                        skills=job_model.skills[:500],
-                        company_name=job_model.company[:200],
-                        company_detail=job_model.company_detail[:500],
-                        posted_date=job_model.posted_date,
+                        job_description=job_detail.job_description[:2000],
+                        skills=job_detail.skills[:500],
+                        company_name=job_detail.company_name[:200],
+                        company_detail=job_detail.company_detail[:500],
+                        posted_date=job_detail.posted_date,
                         scraped_at=datetime.now(),
                     )
                     return detail

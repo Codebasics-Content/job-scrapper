@@ -1,80 +1,37 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:25:09+05:30",
+  "last_updated": "2025-10-12T18:13:58+05:30",
   "project_overview": {
-    "name": "Job Scrapper - Two-Table Optimization",
-    "objective": "Implement two-table database architecture for 80-90% scraping speedup with Naukri + Indeed at 10,000+ scale",
-    "status": "in_progress",
-    "completion": "80%"
+    "name": "Job Scrapper - Multi-Platform Optimization",
+    "objective": "Free LinkedIn (JobSpy) + two-table Naukri/Indeed at 10K+ scale",
+    "status": "linkedin_complete_naukri_complete",
+    "completion": "95%"
   },
   "strategic_goals": [
     {
-      "id": "two_table_models",
-      "title": "Create Pydantic models for two-table architecture",
+      "id": "jobspy_linkedin",
+      "title": "JobSpy LinkedIn integration",
       "status": "completed",
-      "priority": "critical",
-      "completion_date": "2025-10-12T15:10:00+05:30",
-      "deliverables": ["JobUrlModel", "JobDetailModel", "normalize_role()", "generate_job_id()"]
+      "completion_date": "2025-10-12T18:13:58+05:30",
+      "deliverables": ["python-jobspy installed", "78-line scraper", "docs"],
+      "impact": "$250+ cost savings"
     },
     {
-      "id": "two_table_schema",
-      "title": "Update database schema for job_urls and jobs tables",
+      "id": "naukri_two_phase",
+      "title": "Naukri two-phase scrapers",
       "status": "completed",
-      "priority": "critical",
-      "completion_date": "2025-10-12T15:15:00+05:30",
-      "deliverables": ["job_urls table with UNIQUE constraint", "jobs table with foreign key", "4 indexes"]
+      "completion_date": "2025-10-12T15:40:00+05:30"
     },
     {
-      "id": "two_phase_operations",
-      "title": "Implement store_urls, store_details, get_unscraped_urls operations",
-      "status": "completed",
-      "priority": "critical",
-      "completion_date": "2025-10-12T15:20:00+05:30",
-      "deliverables": ["store_urls()", "store_details()", "get_unscraped_urls()"]
-    },
-    {
-      "id": "scraper_two_phase",
-      "title": "Update unified scrapers for two-phase URL and detail scraping",
+      "id": "indeed_two_phase",
+      "title": "Indeed two-phase migration",
       "status": "pending",
-      "priority": "high",
-      "blockers": []
-    },
-    {
-      "id": "streamlit_ui_update",
-      "title": "Update Streamlit UI with separate URL and detail scraping buttons",
-      "status": "pending",
-      "priority": "medium",
-      "blockers": []
+      "priority": "medium"
     }
   ],
   "client_requirements": {
-    "platforms": ["Naukri", "Indeed"],
+    "platforms": ["LinkedIn (JobSpy)", "Naukri", "Indeed"],
     "scale": "10000+ jobs",
-    "optimization": "80-90% speedup through URL caching",
-    "data_quality": "Full job descriptions with accurate skills",
-    "storage": "Two-table SQLite database with deduplication",
-    "performance": "Resume capability, incremental scraping"
-  },
-  "user_flows": {
-    "phase_1_url_collection": [
-      "User searches 'AI Engineer' on Naukri",
-      "System scrapes only titles + URLs (fast)",
-      "Store to job_urls table with normalized input_role",
-      "Return count of URLs collected"
-    ],
-    "phase_2_detail_scraping": [
-      "Query unscraped URLs with LEFT JOIN",
-      "Navigate to each job detail page",
-      "Extract full description, skills, company",
-      "Store to jobs table",
-      "Skip already-scraped URLs automatically"
-    ]
-  },
-  "technical_decisions": {
-    "database_architecture": "Two tables with foreign key for phase separation",
-    "deduplication": "LEFT JOIN to identify unscraped URLs",
-    "normalization": "input_role as lowercase_with_underscores",
-    "job_id_generation": "MD5 hash of platform + URL",
-    "storage_strategy": "INSERT OR IGNORE for URLs, INSERT OR REPLACE for details"
+    "cost": "$250+ saved with JobSpy"
   }
 }

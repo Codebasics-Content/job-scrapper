@@ -8,6 +8,10 @@ from collections import Counter
 
 def render_skills_analysis(all_jobs: List[Dict[str, Any]]) -> None:
     """Render skills analysis charts and metrics"""
+    if not all_jobs:
+        st.info("📭 No data available yet. Please scrape some jobs first!")
+        return
+    
     # Flatten all skills from jobs
     all_skills = []
     for job in all_jobs:

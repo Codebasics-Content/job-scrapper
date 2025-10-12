@@ -54,9 +54,9 @@ class BatchProcessor:
 
     def _validate_job(self, job: JobModel) -> bool:
         """Validate job has minimum required data"""
-        if not job.description or len(job.description) < 500:
+        if not job.jd or len(job.jd) < 500:
             return False
-        if not job.title or not job.company:
+        if not job.Job_Role or not job.Company:
             return False
         return True
 

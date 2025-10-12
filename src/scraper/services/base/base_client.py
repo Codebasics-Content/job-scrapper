@@ -34,12 +34,9 @@ class BaseHeadlessXClient:
         # HTTP client will be initialized in derived classes
         self.client: Optional[httpx.AsyncClient] = None
     
-    def get_auth_headers(self) -> dict[str, str]:
-        """Get authorization headers for HeadlessX API"""
-        return {
-            "Authorization": f"Bearer {self.token}",
-            "Content-Type": "application/json"
-        }
+    def get_token(self) -> str:
+        """Get authentication token for HeadlessX API"""
+        return self.token
     
     async def make_request_with_retry(
         self,
@@ -97,12 +94,13 @@ class BaseHeadlessXClient:
         timeout: float = 30.0
     ) -> str:
         """Render single URL with retry and circuit breaker"""
-        # Browserless/chrome uses /content endpoint, returns raw HTML
+        # Browserless/chrome uses token as query parameter
+        endpoint = f"{self.base_url}/content?token={self.get_token()}"
         response = await self.make_request_with_retry(
             "POST",
-            f"{self.base_url}/content",
-            json={"url": url, "waitForTimeout": int(timeout * 1000)},
-            headers=self.get_auth_headers()
+            endpoint,
+            json={"url": url},
+            headers={"Content-Type": "application/json"}
         )
         # Browserless returns HTML directly as text, not JSON
         return response.text
@@ -118,7 +116,7 @@ class BaseHeadlessXClient:
         return await render_multiple_urls(
             self.client,
             self.base_url,
-            self.get_auth_headers(),
+            self.get_token(),
             urls,
             timeout,
             self.semaphore

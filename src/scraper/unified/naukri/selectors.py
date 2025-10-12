@@ -2,8 +2,9 @@
 
 # Job card selectors (CSS primary, XPath fallback)
 CARD_SELECTORS_CSS = [
-    "article.jobTuple",
+    ".srp-jobtuple-wrapper",
     ".cust-job-tuple",
+    "article.jobTuple",
     "article[data-job-id]",
 ]
 CARD_SELECTORS_XPATH = [

@@ -69,11 +69,11 @@ class JobStorageOperations:
             logger.info(f"Stored {stored}/{len(details)} job details")
             return stored
     
-    def get_unscraped_urls(self, platform: str, input_role: str, limit: int = 100) -> list[tuple[str, str]]:
-        """Get URLs that need detail scraping: (job_id, url)"""
+    def get_unscraped_urls(self, platform: str, input_role: str, limit: int = 100) -> list[tuple[str, str, str, str]]:
+        """Get URLs that need detail scraping: (url, job_id, platform, actual_role)"""
         with self.connection.get_connection_context() as conn:
             cursor = conn.execute("""
-                SELECT u.job_id, u.url FROM job_urls u
+                SELECT u.url, u.job_id, u.platform, u.actual_role FROM job_urls u
                 LEFT JOIN jobs j ON u.job_id = j.job_id
                 WHERE u.platform = ? AND u.input_role = ? AND j.job_id IS NULL
                 LIMIT ?

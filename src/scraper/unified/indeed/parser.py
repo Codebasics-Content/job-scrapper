@@ -4,9 +4,9 @@ import re
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-from src.models import JobModel
+from src.models import JobDetailModel
 from src.analysis.skill_extraction.regex_extractor import extract_skills_from_text
-from .selectors import DESC_SELECTORS
+from .selectors import DESC_SELECTORS_CSS
 
 
 def extract_job_id(url: str) -> str:
@@ -16,41 +16,48 @@ def extract_job_id(url: str) -> str:
 
 
 def extract_description(soup: BeautifulSoup) -> str:
-    """Extract job description from page HTML"""
-    for sel in DESC_SELECTORS:
+    """Extract job description from detail page HTML"""
+    # Primary selector for Indeed detail pages
+    desc_div = soup.select_one("div#jobDescriptionText")
+    if desc_div:
+        return desc_div.get_text(" ", strip=True)
+    
+    # Fallback selectors
+    for sel in DESC_SELECTORS_CSS:
         node = soup.select_one(sel)
         if node:
-            desc = node.get_text(" ", strip=True)
-            if desc:
-                return desc
+            text = node.get_text(" ", strip=True)
+            if text and len(text) > 100:
+                return text
+    
     return ""
 
 
-def create_job_model(job_url: str, html: str) -> JobModel | None:
-    """Parse HTML and create JobModel"""
+def create_job_detail_model(
+    job_id: str,
+    platform: str,
+    actual_role: str,
+    url: str,
+    html: str
+) -> JobDetailModel | None:
+    """Parse HTML and create JobDetailModel for two-table architecture"""
     soup = BeautifulSoup(html, "html.parser")
     desc = extract_description(soup)
     
     if not desc:
         return None
     
-    job_id = extract_job_id(job_url)
     skills_list = extract_skills_from_text(desc)
     skills_str = ", ".join(skills_list) if skills_list else ""
     
-    return JobModel(
+    return JobDetailModel(
         job_id=job_id,
-        Job_Role="",
-        Company="",
-        Experience="",
-        Skills=skills_str,
-        jd=desc,
+        platform=platform,
+        actual_role=actual_role,
+        url=url,
+        job_description=desc,
+        skills=skills_str,
+        company_name="",
         company_detail="",
-        platform="indeed",
-        url=job_url,
-        location="",
-        salary=None,
-        posted_date=datetime.now(),
-        skills_list=skills_list,
-        normalized_skills=[s.lower() for s in skills_list],
+        posted_date=datetime.now()
     )

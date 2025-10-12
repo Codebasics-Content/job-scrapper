@@ -33,7 +33,7 @@ async def scrape_naukri_urls(
         job_urls: list[tuple[str, str]] = []  # (title, url)
         page = 1
         max_pages = 50
-        concurrent_pages = 5
+        concurrent_pages = 1  # Reduced to avoid bot detection
 
         while len(job_urls) < limit and page <= max_pages:
             page_batch = list(range(page, min(page + concurrent_pages, max_pages + 1)))
@@ -66,7 +66,7 @@ async def scrape_naukri_urls(
 
             logger.info(f"📊 Pages {page_batch[0]}-{page_batch[-1]}: {len(job_urls)} URLs")
             page += concurrent_pages
-            await asyncio.sleep(1.0)
+            await asyncio.sleep(3.0)  # Longer delay to avoid detection
 
         for title, url in job_urls:
             job_id = JobUrlModel.generate_job_id(platform, url)

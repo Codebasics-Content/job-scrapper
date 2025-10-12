@@ -1,0 +1,39 @@
+{
+  "_defaults": {
+    "account_id": "c_864cf5cf",
+    "customer": "codebasics",
+    "customer_id": "hl_864cf5cf",
+    "debug": "none",
+    "lpm_auth": "none",
+    "lpm_token": "JhU3KJMyjgVmbtaMM8NQrtWbCGNkt7vn|codebasics",
+    "password": "gkl7gk6qk7s0",
+    "sync_config": true,
+    "version": "1.570.247",
+    "zone": "residential"
+  },
+  "proxies": [
+    {
+      "country": "us",
+      "debug": "none",
+      "iface": "0.0.0.0",
+      "keep_alive": true,
+      "multiply": 1,
+      "pool_size": 1,
+      "port": 24000,
+      "proxy_resolve": true,
+      "zone": "residential"
+    },
+    {
+      "country": "in",
+      "debug": "none",
+      "iface": "0.0.0.0",
+      "keep_alive": true,
+      "multiply": 1,
+      "pool_size": 1,
+      "port": 24001,
+      "proxy_resolve": true,
+      "zone": "residential"
+    }
+  ],
+  "ts": "2025-10-11T15:47:17.207Z"
+}

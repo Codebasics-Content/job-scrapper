@@ -2,7 +2,7 @@
 EMD Compliance: ≤80 lines, visual browser automation
 """
 import asyncio
-from typing import Optional
+from typing import Optional, Literal
 from types import TracebackType
 from playwright.async_api import async_playwright, Browser, BrowserContext, Page
 
@@ -17,14 +17,15 @@ class PlaywrightBrowser:
     browser: Optional[Browser]
     context: Optional[BrowserContext]
     
-    def __init__(self, headless: bool = False):
+    def __init__(self, headless: bool = False, use_stealth: bool = False):
         self.headless = headless
+        self.use_stealth = use_stealth
         self.browser = None
         self.context = None
         self.playwright = None
     
     async def __aenter__(self):
-        """Launch browser with visual mode"""
+        """Launch browser with visual mode and optional stealth"""
         self.playwright = await async_playwright().start()
         self.browser = await self.playwright.chromium.launch(
             headless=self.headless,
@@ -38,7 +39,15 @@ class PlaywrightBrowser:
             viewport={'width': 1920, 'height': 1080},
             user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         )
-        logger.info(f"Browser launched (headless={self.headless})")
+        
+        # Apply stealth if requested (Cloudflare bypass)
+        if self.use_stealth:
+            from playwright_stealth import stealth_async
+            page = await self.context.new_page()
+            await stealth_async(page)
+            await page.close()
+        
+        logger.info(f"Browser launched (headless={self.headless}, stealth={self.use_stealth})")
         return self
     
     async def __aexit__(self, exc_type: type[BaseException] | None, exc_val: BaseException | None, exc_tb: TracebackType | None) -> None:
@@ -58,11 +67,11 @@ class PlaywrightBrowser:
         page = await self.context.new_page()
         return page
     
-    async def render_url(self, url: str, wait_seconds: float = 3.0, timeout_ms: int = 60000) -> str:
+    async def render_url(self, url: str, wait_seconds: float = 3.0, timeout_ms: int = 60000, wait_until: Literal['commit', 'domcontentloaded', 'load', 'networkidle'] = 'networkidle') -> str:
         """Render URL with error handling and configurable timeout"""
         page = await self.new_page()
         try:
-            await page.goto(url, wait_until='domcontentloaded', timeout=timeout_ms)
+            await page.goto(url, wait_until=wait_until, timeout=timeout_ms)
             await asyncio.sleep(wait_seconds)
             html = await page.content()
             logger.info(f"✅ Rendered {url}: {len(html)} chars")

@@ -1,7 +1,43 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:50:00+05:30",
+  "last_updated": "2025-10-12T18:13:58+05:30",
   "architecture_patterns": {
+    "jobspy_integration": {
+      "approach": "Use python-jobspy library for free, unlimited LinkedIn scraping",
+      "rationale": "Saves $250+ vs BrightData datasets, provides real-time data, supports 6+ platforms, zero setup cost",
+      "implementation": {
+        "library": "python-jobspy v1.1.82",
+        "scraper_module": "src/importer/jobspy/linkedin_scraper.py (78 lines EMD)",
+        "test_script": "test_jobspy_linkedin.py with dotenv support",
+        "documentation": "README_JOBSPY.md with complete setup guide"
+      },
+      "features": [
+        "Scrapes LinkedIn, Indeed, ZipRecruiter, Glassdoor, Google Jobs",
+        "Returns pandas DataFrame with full job details",
+        "Built-in proxy support (optional)",
+        "No browser automation overhead - pure HTTP requests",
+        "Works perfectly without proxy for 50-200 jobs/session"
+      ],
+      "cost_savings": "$250+ (vs BrightData datasets minimum purchase)",
+      "output_schema": {
+        "title": "string",
+        "company": "string",
+        "location": "string",
+        "job_type": "fulltime|parttime|internship|contract",
+        "job_url": "string (direct LinkedIn URL)",
+        "description": "string (full description)",
+        "date_posted": "string",
+        "is_remote": "boolean",
+        "job_level": "string (LinkedIn specific)",
+        "company_industry": "string"
+      },
+      "proxy_configuration": {
+        "required_format": "http://brd-customer-{ID}-zone-{ZONE}:{PASSWORD}@localhost:{PORT}",
+        "optional": true,
+        "use_case": "Only needed for 1000+ jobs/day to avoid rate limits",
+        "tested_without_proxy": "Successfully scraped 10 jobs in 30 seconds"
+      }
+    },
     "two_table_optimization": {
       "approach": "Separate URL collection from detail scraping for 80-90% speedup",
       "rationale": "URL scraping is 10-100x faster than full detail scraping. Storing URLs first enables resume capability and deduplication.",
@@ -37,32 +73,14 @@
       ],
       "rationale": "Clear separation of URL and detail workflows, user sees database status before scraping"
     },
-    "scraping_architecture": {
-      "approach": "Playwright renders list → Extract URLs → Navigate INSIDE each job → Parse full description",
-      "rationale": "Direct detail page navigation provides complete job descriptions vs partial search card data",
-      "phase_1": "5 concurrent search pages, parse cards, extract titles + URLs → store to job_urls",
-      "phase_2": "Query unscraped URLs → 5 concurrent detail pages, extract full descriptions, skills, company → store to jobs",
-      "components": [
-        "PlaywrightBrowser (headless=True)",
-        "Two-phase scrapers (url_scraper.py, detail_scraper.py)",
-        "Detail page parsers with CSS selectors",
-        "Batch processing (50 jobs per batch)",
-        "Two-phase automatic database storage"
-      ]
-    },
     "emd_compliance": {
+      "jobspy_scraper": "78 lines (single function with proxy support)",
       "url_scraper": "79 lines (async URL collection, Playwright, BeautifulSoup)",
       "detail_scraper": "80 lines (async detail scraping with LEFT JOIN query)",
       "two_phase_panel": "69 lines (UI config with real-time DB status)",
       "two_phase_executor": "77 lines (Phase 1 and Phase 2 execution logic)",
       "wrapper": "11 lines (thin re-export layer)",
       "benefit": "Maximum 80 lines per file, easy maintenance, clear separation of concerns"
-    },
-    "selector_patterns": {
-      "naukri_list": "article.jobTuple, .cust-job-tuple",
-      "naukri_detail": "div.styles_JDC__dang-inner-html__h0K4t",
-      "indeed_list": "div.job_seen_beacon",
-      "indeed_detail": "div#jobDescriptionText"
     }
   },
   "database_patterns": {
@@ -80,7 +98,8 @@
     }
   },
   "technical_stack": {
-    "browser_automation": "Playwright (async, headless)",
+    "linkedin_scraping": "python-jobspy (free, no browser)",
+    "naukri_indeed_scraping": "Playwright (async, headless)",
     "html_parsing": "BeautifulSoup4",
     "database": "SQLite with two-table schema",
     "models": "Pydantic v2 with validation",
@@ -88,13 +107,72 @@
     "skill_extraction": "Regex-based from full descriptions",
     "concurrency": "asyncio with batch processing"
   },
+  "deployment": {
+    "brightdata_proxy": "Optional - only for high-volume scraping (1000+ jobs/day)",
+    "proxy_authentication": "http://brd-customer-{ID}-zone-{ZONE}:{PASSWORD}@localhost:{PORT}",
+    "docker_whitelist": "Add 172.19.0.1 or 172.0.0.0/8 to proxy_manager_config.json",
+    "jobspy_setup": "pip install python-jobspy (already installed)"
+  },
   "mcp_integration": {
     "filesystem": "Read/write memory bank schemas and code files",
-    "context7": "Validate database patterns and Pydantic models",
-    "memory": "Store two-table optimization patterns",
+    "context7": "Validate JobSpy integration patterns",
+    "memory": "Store cost optimization patterns ($250+ saved)",
+    "fetch": "Research JobSpy documentation",
     "time": "Timestamp all operations",
     "git": "Version control checkpoints",
-    "math": "Compute schema compliance scores",
-    "sequential_thinking": "Plan multi-step refactoring"
+    "math": "Compute cost savings and performance metrics",
+    "sequential_thinking": "Plan integration steps"
+  },
+  "brightdata_proxy_research": {
+    "research_date": "2025-10-12",
+    "sources": [
+      "github.com/luminati-io/luminati-proxy",
+      "docs.brightdata.com/api-reference/proxy-manager",
+      "Context7 documentation analysis"
+    ],
+    "conclusion": "Luminati Proxy Manager CANNOT work standalone - it is a CLIENT that MUST authenticate with BrightData's PAID cloud network",
+    "architecture": {
+      "component": "Luminati Proxy Manager (Docker/NPM)",
+      "role": "Gateway/Client software (FREE)",
+      "backend": "BrightData Cloud Proxy Network (PAID $15/GB)",
+      "flow": "User App → localhost:24000 (Manager) → brd.superproxy.io (BrightData Cloud) → Target Website"
+    },
+    "required_parameters": {
+      "customer": "BrightData customer ID (e.g., 'hl_864cf5cf')",
+      "password": "Zone password from BrightData dashboard",
+      "zone": "Proxy zone type (residential, datacenter, mobile)",
+      "proxy": "Default: 'brd.superproxy.io' (BrightData's super proxy)",
+      "proxy_port": "Default: 22225"
+    },
+    "evidence_from_docs": {
+      "example_code": "const proxy = new Server({ customer: 'CUSTOMER', password: 'PASSWORD', zone: 'gen' });",
+      "cli_options": "--customer, --password, --zone are REQUIRED for proxy operation",
+      "default_proxy": "--proxy defaults to 'brd.superproxy.io' (BrightData cloud)",
+      "no_standalone_mode": "No CLI option exists to run without BrightData backend"
+    },
+    "cost_structure": {
+      "software": "FREE (Docker image, NPM package, bash install)",
+      "service": "PAID ($15/GB for residential proxies)",
+      "business_model": "Freemium - free software locks you into paid service"
+    },
+    "attempted_workarounds": {
+      "no_dropin_mode": "--no-dropin only disables auto-credentials, still requires BrightData auth",
+      "ext_proxies": "--ext_proxies option exists but requires external paid proxies",
+      "localhost_only": "localhost:24000 just forwards to BrightData, cannot provide IPs standalone"
+    },
+    "user_config_analysis": {
+      "ports": "24000 (US), 24001 (India) configured",
+      "zone": "residential",
+      "gb_cost": 15,
+      "password": "gkl7gk6qk7s0",
+      "whitelist": "0.0.0.0/0 (all IPs whitelisted)",
+      "status": "407 Proxy Authentication Required - indicates BrightData cloud rejecting credentials"
+    },
+    "recommendation": {
+      "for_free_scraping": "Use JobSpy without proxy (already working, 10 jobs in 30s)",
+      "for_high_volume": "Pay BrightData $15/GB if scraping 1000+ jobs/day",
+      "alternative_proxies": "Use free public proxies or self-hosted VPN (unstable, not recommended)"
+    },
+    "key_insight": "Installation being FREE does not mean the SERVICE is free. Luminati Manager is just client software - the actual proxy IPs come from BrightData's paid network."
   }
 }

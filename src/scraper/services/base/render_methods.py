@@ -13,7 +13,7 @@ from .circuit_breaker import HeadlessXError
 async def render_single_url(
     client: httpx.AsyncClient,
     base_url: str,
-    auth_headers: dict[str, str],
+    token: str,
     url: str,
     timeout: float,
     proxy_url: str | None = None,
@@ -30,13 +30,14 @@ async def render_single_url(
     if stealth_mode:
         payload["stealth_mode"] = stealth_mode
     
-    endpoint = f"{base_url}/render"
+    # Browserless/chrome uses token as query parameter
+    endpoint = f"{base_url}/content?token={token}"
     
     try:
         response = await client.post(
             endpoint,
             json=payload,
-            headers=auth_headers
+            headers={"Content-Type": "application/json"}
         )
         response.raise_for_status()
         data = response.json()
@@ -48,7 +49,7 @@ async def render_single_url(
 async def render_multiple_urls(
     client: httpx.AsyncClient,
     base_url: str,
-    auth_headers: dict[str, str],
+    token: str,
     urls: list[str],
     timeout: float,
     semaphore: asyncio.Semaphore
@@ -60,7 +61,7 @@ async def render_multiple_urls(
         async with semaphore:
             try:
                 html = await render_single_url(
-                    client, base_url, auth_headers, url, timeout
+                    client, base_url, token, url, timeout
                 )
                 return (url, {"success": True, "html": html})
             except Exception as e:

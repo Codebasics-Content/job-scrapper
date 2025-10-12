@@ -10,6 +10,7 @@ from src.ui.components import (
     render_skills_analysis,
     render_scraper_form
 )
+from src.ui.components.form.brightdata_import import render_brightdata_import
 
 logging.basicConfig(level=logging.INFO)
 DB_PATH = "jobs.db"
@@ -27,18 +28,22 @@ st.set_page_config(
 
 # Title
 st.title("🔍 Job Scraper & Analytics Dashboard")
-st.markdown("**Scrape jobs from LinkedIn, Indeed & Naukri | Analyze skills & trends from database**")
+st.markdown("**Scrape jobs from Indeed & Naukri | Analyze skills & trends from database**")
 st.divider()
 
 # Main Tabs
-tab1, tab2 = st.tabs(["🤖 Scraper", "📊 Analytics Dashboard"])
+tab1, tab2, tab3 = st.tabs(["🤖 Scraper", "📥 LinkedIn Import", "📊 Analytics Dashboard"])
 
 # ==================== TAB 1: SCRAPER ====================
 with tab1:
     render_scraper_form(DB_PATH)
 
-# ==================== TAB 2: ANALYTICS ====================
+# ==================== TAB 2: LINKEDIN IMPORT ====================
 with tab2:
+    render_brightdata_import(DB_PATH)
+
+# ==================== TAB 3: ANALYTICS ====================
+with tab3:
     st.header("📊 Analytics Dashboard")
     st.markdown("**Real-time insights from HeadlessX + Local Luminati Proxy architecture**")
     

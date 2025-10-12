@@ -1,10 +1,17 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T15:50:00+05:30",
+  "last_updated": "2025-10-12T18:13:58+05:30",
   "columns": {
     "todo": [],
     "in_progress": [],
     "done": [
+      {
+        "id": "jobspy_linkedin_integration",
+        "title": "JobSpy LinkedIn scraper integration",
+        "completed_at": "2025-10-12T18:13:58+05:30",
+        "tags": ["integration", "linkedin", "free-tier", "emd"],
+        "cost_savings": "$250+"
+      },
       {
         "id": "streamlit_two_phase_ui",
         "title": "Two-phase Streamlit UI with separate buttons",

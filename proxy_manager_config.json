@@ -1,12 +1,24 @@
 {
   "_defaults": {
-    "ask_sync_config": true,
-    "customer": "hl_864cf5cf",
+    "account_id": "c_864cf5cf",
+    "customer": "codebasics",
+    "customer_id": "hl_864cf5cf",
     "debug": "none",
     "lpm_auth": "none",
-    "password": "bdx2gk7k5euj",
+    "lpm_token": "JhU3KJMyjgVmbtaMM8NQrtWbCGNkt7vn|codebasics",
+    "password": "gkl7gk6qk7s0",
+    "sync_config": true,
     "version": "1.570.247",
-    "zone": "residential"
+    "zone": "residential",
+    "whitelist_ips": [
+      "127.0.0.1",
+      "172.19.0.1",
+      "172.19.0.0/16",
+      "host.docker.internal"
+    ],
+    "www_whitelist_ips": [
+      "0.0.0.0/0"
+    ]
   },
   "proxies": [
     {
@@ -18,7 +30,11 @@
       "pool_size": 1,
       "port": 24000,
       "proxy_resolve": true,
-      "zone": "residential"
+      "zone": "residential",
+      "whitelist_ips": [
+        "0.0.0.0/0"
+      ],
+      "null_response": false
     },
     {
       "country": "in",
@@ -29,8 +45,12 @@
       "pool_size": 1,
       "port": 24001,
       "proxy_resolve": true,
-      "zone": "residential"
+      "zone": "residential",
+      "whitelist_ips": [
+        "0.0.0.0/0"
+      ],
+      "null_response": false
     }
   ],
-  "ts": "2025-10-11T15:44:13.491Z"
+  "ts": "2025-10-11T15:47:17.207Z"
 }
