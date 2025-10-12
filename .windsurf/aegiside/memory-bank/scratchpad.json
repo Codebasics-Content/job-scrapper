@@ -1,14 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:29:57+05:30",
+  "last_updated": "2025-10-12T12:31:45+05:30",
   "immediate_priorities": [
-    {
-      "id": "priority_2",
-      "title": "Implement realistic batch processor for 10K jobs (≤80 lines)",
-      "urgency": "high",
-      "estimated_minutes": 30,
-      "dependencies": []
-    },
     {
       "id": "priority_3",
       "title": "Add checkpoint/resume system (≤80 lines)",
@@ -19,16 +12,16 @@
   ],
   "completed_tasks": [
     {
+      "id": "task_batch_processor",
+      "title": "Implement realistic batch processor for 10K jobs",
+      "completed_at": "2025-10-12T12:31:45+05:30",
+      "result": "✅ Created BatchProcessor (79 lines) with streaming, 500-char validation, and stats tracking"
+    },
+    {
       "id": "task_platform_rate_limiters",
       "title": "Create platform-specific rate limiters (≤80 lines each)",
       "completed_at": "2025-10-12T12:29:57+05:30",
-      "result": "✅ Created IndeedRateLimiter(5), LinkedInRateLimiter(2), NaukriRateLimiter(15) with async context managers"
-    },
-    {
-      "id": "task_research_platform_limits",
-      "title": "Research actual rate limits and jobs per page for all platforms",
-      "completed_at": "2025-10-12T02:08:10+05:30",
-      "result": "✅ Verified via @mcp:fetch: Indeed=10/page, LinkedIn=25/page, Naukri=20-25/page"
+      "result": "✅ Created IndeedRateLimiter(5), LinkedInRateLimiter(2), NaukriRateLimiter(15)"
     }
   ],
   "task_queue": [
@@ -37,14 +30,14 @@
       "title": "Create progress_tracker.py with realistic ETA (≤80 lines)",
       "priority": "medium",
       "estimated_minutes": 20,
-      "dependencies": ["batch_processor"]
+      "dependencies": []
     },
     {
       "id": "next_task_5",
-      "title": "Update service.py orchestrator with platform-specific limits",
+      "title": "Update service.py orchestrator with scalable components",
       "priority": "medium",
       "estimated_minutes": 15,
-      "dependencies": ["rate_limiter"]
+      "dependencies": []
     },
     {
       "id": "next_task_6",
@@ -57,22 +50,21 @@
   "blocked_tasks": [],
   "quick_notes": [
     {
-      "id": "note_18",
-      "timestamp": "2025-10-12T12:29:57+05:30",
-      "content": "Rate limiters complete. All 3 classes (77 lines total) use asyncio.Semaphore + async context managers for clean resource management.",
+      "id": "note_19",
+      "timestamp": "2025-10-12T12:31:45+05:30",
+      "content": "Batch processor complete (79 lines). Includes async generator for streaming, 500-char JD validation, and stats tracking. Next: checkpoint system.",
       "priority": "high",
-      "related_task": "platform_rate_limiters"
+      "related_task": "batch_processor"
     }
   ],
   "mcp_validation_state": {
     "context7_active": true,
     "fetch_active": true,
-    "last_validation_timestamp": "2025-10-12T12:29:57+05:30",
+    "last_validation_timestamp": "2025-10-12T12:31:45+05:30",
     "mandatory_servers_status": {
       "filesystem": true,
       "git": true,
       "memory": true,
-      "sequential_thinking": true,
       "time": true,
       "math": true
     }

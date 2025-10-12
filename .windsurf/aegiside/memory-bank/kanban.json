@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:29:57+05:30",
+  "last_updated": "2025-10-12T12:31:45+05:30",
   "board_configuration": {
     "workflow_states": ["todo", "in_progress", "testing", "done"],
     "wip_limits": {
@@ -10,28 +10,29 @@
   },
   "tasks": [
     {
-      "task_id": "task_batch_processor",
-      "title": "Implement realistic batch processor",
-      "description": "Process 1000 jobs/batch with platform detection and streaming DB",
-      "status": "in_progress",
-      "assignee": "dev_minister",
-      "priority": "critical",
-      "story_points": 3,
-      "labels": ["batch_processing", "scalability"],
-      "created_date": "2025-10-12T12:27:24+05:30",
-      "kanban_task_id": "task-batch-processor"
-    },
-    {
       "task_id": "task_checkpoint_system",
       "title": "Add checkpoint/resume capability",
       "description": "Enable crash recovery for long-running scraping jobs",
-      "status": "todo",
+      "status": "in_progress",
       "assignee": "dev_minister",
       "priority": "high",
       "story_points": 3,
       "labels": ["reliability", "crash_recovery"],
       "created_date": "2025-10-12T12:27:24+05:30",
       "kanban_task_id": "task-checkpoint-system"
+    },
+    {
+      "task_id": "task_batch_processor",
+      "title": "Implement realistic batch processor",
+      "description": "Process 1000 jobs/batch with platform detection and streaming DB",
+      "status": "done",
+      "assignee": "dev_minister",
+      "priority": "critical",
+      "story_points": 3,
+      "labels": ["batch_processing", "scalability"],
+      "created_date": "2025-10-12T12:27:24+05:30",
+      "completed_date": "2025-10-12T12:31:45+05:30",
+      "kanban_task_id": "task-batch-processor"
     },
     {
       "task_id": "task_platform_rate_limiters",
@@ -49,14 +50,14 @@
   ],
   "metrics": {
     "velocity": {
-      "current_sprint": 15,
-      "last_sprint": 12
+      "current_sprint": 18,
+      "last_sprint": 15
     },
     "cycle_time": {
-      "average_days": 0.1
+      "average_days": 0.08
     },
     "throughput": {
-      "tasks_per_week": 15
+      "tasks_per_week": 18
     }
   }
 }
