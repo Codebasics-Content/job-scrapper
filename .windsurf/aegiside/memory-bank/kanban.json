@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T12:43:12+05:30",
+  "last_updated": "2025-10-12T12:47:28+05:30",
   "board_configuration": {
     "workflow_states": ["todo", "in_progress", "testing", "done"],
     "wip_limits": {
@@ -10,15 +10,28 @@
   },
   "tasks": [
     {
+      "task_id": "task_documentation",
+      "title": "Document 100K limitations in README",
+      "description": "Add realistic constraints and performance expectations for large-scale scraping",
+      "status": "todo",
+      "assignee": "dev_minister",
+      "priority": "low",
+      "story_points": 1,
+      "labels": ["documentation", "user_guidance"],
+      "created_date": "2025-10-12T12:47:28+05:30",
+      "kanban_task_id": "task-documentation"
+    },
+    {
       "task_id": "task_service_orchestrator",
       "title": "Update service.py orchestrator with scalable components",
       "description": "Integrate rate limiters, batch processor, checkpoint manager, and progress tracker",
-      "status": "todo",
+      "status": "done",
       "assignee": "dev_minister",
       "priority": "medium",
       "story_points": 2,
       "labels": ["integration", "orchestration"],
       "created_date": "2025-10-12T12:43:12+05:30",
+      "completed_date": "2025-10-12T12:47:28+05:30",
       "kanban_task_id": "task-service-orchestrator"
     },
     {
@@ -76,14 +89,14 @@
   ],
   "metrics": {
     "velocity": {
-      "current_sprint": 23,
-      "last_sprint": 21
+      "current_sprint": 25,
+      "last_sprint": 23
     },
     "cycle_time": {
-      "average_days": 0.06
+      "average_days": 0.05
     },
     "throughput": {
-      "tasks_per_week": 24
+      "tasks_per_week": 28
     }
   }
 }
