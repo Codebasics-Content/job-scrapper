@@ -1,7 +1,20 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T22:38:00+05:30",
+  "last_updated": "2025-10-13T12:24:00+05:30",
   "error_patterns": [
+    {
+      "id": "file_creation_violation_naukri_test",
+      "category": "constitutional_violation",
+      "error": "Attempted to create test_naukri_unified_20.py when test_naukri_20_validation.py already exists",
+      "root_cause": "Failed to execute mandatory pre-creation check: did not search for existing test files before attempting creation",
+      "solution": "UPDATE existing test_naukri_20_validation.py to use unified scraper with headless=False parameter",
+      "prevention": "ALWAYS run find_by_name or grep_search for similar files BEFORE write_to_file. Pattern: test_*_validation.py already existed.",
+      "occurred_at": "2025-10-13T12:23:00+05:30",
+      "resolved": false,
+      "constitutional_article": "global_rules.md Section 2: File Modification Protocol",
+      "penalty": "Reinforcement learning: -10 reward for violating File Modification Protocol",
+      "learning": "Before ANY file creation: 1) Search existing, 2) Update if found, 3) Create only if justified"
+    },
     {
       "id": "naukri_unified_missing_function",
       "category": "architecture",
