@@ -7,7 +7,7 @@ import asyncio
 from datetime import datetime
 
 from src.models import JobDetailModel, JobUrlModel
-from src.scraper.services.playwright_browser import PlaywrightBrowser
+from src.scraper.services.headlessx_client import HeadlessXClient
 from src.db.operations import JobStorageOperations
 from .parser import create_job_detail_model
 
@@ -40,7 +40,7 @@ async def scrape_naukri_details(
 
     logger.info(f"Found {len(unscraped)} unscraped URLs, processing...")
 
-    async with PlaywrightBrowser(headless=headless) as browser:
+    async with HeadlessXClient() as browser:
         concurrent_jobs = 5
 
         for batch_start in range(0, len(unscraped), concurrent_jobs):
@@ -48,7 +48,7 @@ async def scrape_naukri_details(
 
             async def scrape_detail(job_id: str, job_url: str) -> JobDetailModel | None:
                 try:
-                    detail_html = await browser.render_url(job_url, wait_seconds=3.0)
+                    detail_html = await browser.render_url(job_url, timeout=60.0)
                     job_detail = create_job_detail_model(
                         job_url=job_url,
                         html=detail_html,

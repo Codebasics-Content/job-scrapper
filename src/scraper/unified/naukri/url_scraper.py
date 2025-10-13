@@ -7,7 +7,7 @@ import asyncio
 from bs4 import BeautifulSoup
 
 from src.models import JobUrlModel
-from src.scraper.services.playwright_browser import PlaywrightBrowser
+from src.scraper.services.headlessx_client import HeadlessXClient
 from src.db.operations import JobStorageOperations
 from .selectors import CARD_SELECTORS_CSS
 from .url_builder import build_search_url, normalize_job_url
@@ -29,7 +29,7 @@ async def scrape_naukri_urls(
     input_role = JobUrlModel.normalize_role(keyword)
     db_ops = JobStorageOperations() if store_to_db else None
 
-    async with PlaywrightBrowser(headless=headless) as browser:
+    async with HeadlessXClient() as browser:
         job_urls: list[tuple[str, str]] = []  # (title, url)
         page = 1
         max_pages = 50
@@ -38,9 +38,9 @@ async def scrape_naukri_urls(
         while len(job_urls) < limit and page <= max_pages:
             page_batch = list(range(page, min(page + concurrent_pages, max_pages + 1)))
 
-            async def _scrape_page_urls(browser: PlaywrightBrowser, page_num: int, headless: bool = False, save_debug: bool = False) -> list[tuple[str, str]]:
+            async def _scrape_page_urls(browser: HeadlessXClient, page_num: int, save_debug: bool = False) -> list[tuple[str, str]]:
                 search_url = build_search_url(keyword, location, page=page_num)
-                html = await browser.render_url(search_url, wait_seconds=5.0)
+                html = await browser.render_url(search_url, timeout=60.0)
                 if not html:
                     logger.error(f"❌ No HTML returned for page {page_num}")
                     return []
@@ -71,7 +71,7 @@ async def scrape_naukri_urls(
                 logger.info(f"✅ Page {page_num}: extracted {len(urls)} URLs")
                 return urls
 
-            batch_results = await asyncio.gather(*[_scrape_page_urls(browser, page_num, headless, save_debug=(page_num == 1)) for page_num in page_batch])
+            batch_results = await asyncio.gather(*[_scrape_page_urls(browser, page_num, save_debug=(page_num == 1)) for page_num in page_batch])
 
             for urls_list in batch_results:
                 for title, url in urls_list:
