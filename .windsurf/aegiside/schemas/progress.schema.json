@@ -2,215 +2,46 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://aegiside.org/schemas/progress.json",
   "title": "Progress Schema",
-  "$defs": {
-    "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
-    "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
-    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
-    "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
-  },
-  "description": "Development milestones with constitutional compliance metrics, anti-hallucination tracking, and RL scoring ledger",
+  "description": "RL ledger - SOURCE OF TRUTH for metrics synced to activeContext",
   "type": "object",
-  "required": ["schema_version", "last_updated", "milestone_tracking", "constitutional_metrics", "reinforcement_learning_ledger"],
+  "required": ["schema_version", "reinforcement_learning"],
   "properties": {
-    "schema_version": {
-      "type": "string",
-      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    "schema_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "last_updated": {"type": "string", "format": "date-time"},
+    "metrics": {
+      "type": "object",
+      "description": "SOURCE OF TRUTH - activeContext.metrics syncs total_rl_score from here",
+      "required": ["total_rl_score", "tasks_completed", "commits"],
+      "properties": {
+        "total_rl_score": {"type": "number"},
+        "tasks_completed": {"type": "integer", "minimum": 0},
+        "tasks_failed": {"type": "integer", "minimum": 0},
+        "commits": {"type": "integer", "minimum": 0}
+      }
     },
-    "last_updated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "milestone_tracking": {
+    "reinforcement_learning": {
       "type": "array",
+      "description": "Transaction log - prepend entries at [0]",
+      "maxItems": 100,
       "items": {
         "type": "object",
-        "required": ["id", "name", "status", "completion_percentage"],
+        "required": ["workflow", "timestamp", "reason"],
         "properties": {
-          "id": {"type": "string"},
-          "name": {"type": "string"},
-          "status": {"type": "string", "enum": ["not_started", "in_progress", "completed", "blocked"]},
-          "completion_percentage": {"type": "number", "minimum": 0, "maximum": 100},
-          "started_at": {"type": "string", "format": "date-time"},
-          "target_completion": {"type": "string", "format": "date-time"},
-          "actual_completion": {"type": ["string", "null"], "format": "date-time"},
-          "tasks_completed": {"type": "number", "minimum": 0},
-          "tasks_total": {"type": "number", "minimum": 0},
-          "parliamentary_approval": {"type": "number", "minimum": 0, "maximum": 100},
-          "kanban_task_ids": {"type": "array", "items": {"$ref": "#/$defs/kanban_task_id"}},
-          "proposal_id": {"$ref": "#/$defs/proposal_id"},
-          "governance_decision_id": {"$ref": "#/$defs/governance_decision_id"},
-          "quality_metrics": {
-            "type": "object",
-            "properties": {
-              "test_coverage": {"type": "number", "minimum": 0, "maximum": 100},
-              "code_quality_score": {"type": "number", "minimum": 0, "maximum": 10},
-              "performance_score": {"type": "number", "minimum": 0, "maximum": 10}
-            }
-          }
-        },
-        "additionalProperties": false
-      }
-    },
-    "compressed_history": {
-      "type": "object",
-      "properties": {
-        "total_tasks_completed": {"type": "number", "minimum": 0},
-        "total_bugs_fixed": {"type": "number", "minimum": 0},
-        "total_deployments": {"type": "number", "minimum": 0},
-        "avg_task_completion_hours": {"type": "number", "minimum": 0},
-        "sprint_velocity": {"type": "number", "minimum": 0},
-        "quality_trend": {"type": "string", "enum": ["improving", "stable", "declining"]}
-      }
-    },
-    "current_sprint": {
-      "type": "object",
-      "properties": {
-        "sprint_id": {"type": "string"},
-        "started": {"type": "string", "format": "date-time"},
-        "ends": {"type": "string", "format": "date-time"},
-        "planned_points": {"type": "number", "minimum": 0},
-        "completed_points": {"type": "number", "minimum": 0},
-        "on_track": {"type": "boolean"}
-      }
-    },
-    "performance_analytics": {
-      "type": "object",
-      "properties": {
-        "velocity_trends": {"type": "array", "items": {"type": "number"}},
-        "quality_improvements": {"type": "number"},
-        "bottleneck_analysis": {"type": "string"},
-        "predictive_timeline": {"type": "string", "format": "date-time"}
-      }
-    },
-    "constitutional_metrics": {
-      "type": "object",
-      "required": ["compliance_score", "tri_branch_efficiency"],
-      "properties": {
-        "compliance_score": {"type": "number", "minimum": 0, "maximum": 100},
-        "tri_branch_efficiency": {"type": "object", "properties": {
-          "consensus_achievement_rate": {"type": "number", "minimum": 0, "maximum": 1},
-          "average_decision_time_minutes": {"type": "number", "minimum": 0},
-          "executive_approval_rate": {"type": "number", "minimum": 0, "maximum": 1},
-          "legislative_challenge_rate": {"type": "number", "minimum": 0, "maximum": 1},
-          "judicial_override_count": {"type": "number", "minimum": 0}
-        }},
-        "zero_tolerance_adherence": {"type": "number", "minimum": 0, "maximum": 100},
-        "anti_hallucination_effectiveness": {"type": "object", "properties": {
-          "context7_success_rate": {"type": "number", "minimum": 0, "maximum": 1},
-          "fetch_verification_accuracy": {"type": "number", "minimum": 0, "maximum": 1},
-          "false_information_blocked": {"type": "number", "minimum": 0}
-        }}
-      }
-    },
-    "achievements": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id", "title", "earned_date"],
-        "properties": {
-          "id": {"type": "string"},
-          "title": {"type": "string"},
-          "earned_date": {"type": "string", "format": "date-time"},
-          "description": {"type": "string"},
-          "impact": {"type": "string"}
+          "workflow": {"type": "string"},
+          "rl_reward": {"type": "number", "minimum": 0},
+          "rl_penalty": {"type": "number", "maximum": 0},
+          "reason": {"type": "string"},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "schemas_updated": {"type": "array", "items": {"type": "string"}},
+          "mcp_chain": {"type": "array", "items": {"type": "string"}}
         }
       }
     },
-    "reinforcement_learning_ledger": {
+    "current_focus": {
       "type": "object",
-      "required": ["total_score", "rewards", "penalties", "metrics", "checksum_validation", "transaction_log"],
       "properties": {
-        "total_score": {"type": "number"},
-        "session_score": {"type": "number"},
-        "lifetime_score": {"type": "number"},
-        "rewards": {
-          "type": "object",
-          "required": ["total_earned", "by_category"],
-          "properties": {
-            "total_earned": {"type": "number", "minimum": 0},
-            "session_earned": {"type": "number", "minimum": 0},
-            "lifetime_earned": {"type": "number", "minimum": 0},
-            "by_category": {
-              "type": "object",
-              "properties": {
-                "constitutional_compliance": {"type": "number", "minimum": 0},
-                "successful_validation": {"type": "number", "minimum": 0},
-                "autonomous_recovery": {"type": "number", "minimum": 0},
-                "consensus_achievement": {"type": "number", "minimum": 0},
-                "zero_duplication": {"type": "number", "minimum": 0},
-                "pattern_reuse": {"type": "number", "minimum": 0},
-                "emd_compliance": {"type": "number", "minimum": 0},
-                "mcp_integration": {"type": "number", "minimum": 0}
-              }
-            }
-          }
-        },
-        "penalties": {
-          "type": "object",
-          "required": ["total_incurred", "by_category"],
-          "properties": {
-            "total_incurred": {"type": "number", "maximum": 0},
-            "session_incurred": {"type": "number", "maximum": 0},
-            "lifetime_incurred": {"type": "number", "maximum": 0},
-            "by_category": {
-              "type": "object",
-              "properties": {
-                "file_creation_violation": {"type": "number", "maximum": 0},
-                "constitutional_breach": {"type": "number", "maximum": 0},
-                "validation_failure": {"type": "number", "maximum": 0},
-                "mcp_omission": {"type": "number", "maximum": 0},
-                "unused_variables": {"type": "number", "maximum": 0},
-                "emd_violation": {"type": "number", "maximum": 0},
-                "permission_request": {"type": "number", "maximum": 0},
-                "duplicate_logic": {"type": "number", "maximum": 0},
-                "consensus_failure": {"type": "number", "maximum": 0}
-              }
-            }
-          }
-        },
-        "metrics": {
-          "type": "object",
-          "required": ["learning_efficiency", "actions_total", "success_rate"],
-          "properties": {
-            "learning_efficiency": {"type": "number", "minimum": 0, "maximum": 100},
-            "actions_total": {"type": "integer", "minimum": 0},
-            "actions_successful": {"type": "integer", "minimum": 0},
-            "actions_failed": {"type": "integer", "minimum": 0},
-            "success_rate": {"type": "number", "minimum": 0, "maximum": 100},
-            "autonomy_level": {"type": "number", "minimum": 0, "maximum": 100},
-            "autonomy_adjustment": {"type": "number"}
-          }
-        },
-        "checksum_validation": {
-          "type": "object",
-          "required": ["calculated_total", "stored_total", "is_valid"],
-          "properties": {
-            "calculated_total": {"type": "number"},
-            "stored_total": {"type": "number"},
-            "is_valid": {"type": "boolean"},
-            "last_validated": {"type": "string", "format": "date-time"},
-            "discrepancy_count": {"type": "integer", "minimum": 0}
-          }
-        },
-        "transaction_log": {
-          "type": "array",
-          "maxItems": 1000,
-          "items": {
-            "type": "object",
-            "required": ["id", "timestamp", "type", "category", "points", "running_total"],
-            "properties": {
-              "id": {"type": "string", "pattern": "^tx-[0-9]+$"},
-              "timestamp": {"type": "string", "format": "date-time"},
-              "type": {"type": "string", "enum": ["reward", "penalty"]},
-              "category": {"type": "string"},
-              "points": {"type": "number"},
-              "action": {"type": "string"},
-              "source_file": {"type": "string"},
-              "running_total": {"type": "number"},
-              "verified": {"type": "boolean"}
-            }
-          }
-        }
+        "task": {"type": "string"},
+        "tests_ready": {"type": "array", "items": {"type": "string"}}
       }
     }
   }

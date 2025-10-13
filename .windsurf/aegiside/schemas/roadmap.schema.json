@@ -8,9 +8,9 @@
     "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
     "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
   },
-  "description": "Strategic planning with AegisKG strategic knowledge graphs and anti-hallucination roadmap",
+  "description": "Strategic project planning and milestones",
   "type": "object",
-  "required": ["schema_version", "last_updated", "strategic_objectives"],
+  "required": ["schema_version", "last_updated"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -20,83 +20,37 @@
       "type": "string",
       "format": "date-time"
     },
-    "strategic_objectives": {
+    "project_overview": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "objective": {"type": "string"},
+        "status": {"type": "string"},
+        "completion": {"type": "string"}
+      }
+    },
+    "strategic_goals": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["phase_id", "name", "status"],
         "properties": {
-          "phase_id": {"type": "string"},
-          "name": {"type": "string"},
-          "status": {"type": "string", "enum": ["not_started", "in_progress", "completed", "blocked"]},
-          "start_date": {"type": "string", "format": "date-time"},
-          "end_date": {"type": "string", "format": "date-time"},
-          "completion_percentage": {"type": "number", "minimum": 0, "maximum": 100},
-          "milestones": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["id", "title", "target_date", "status"],
-              "properties": {
-                "id": {"type": "string"},
-                "title": {"type": "string"},
-                "target_date": {"type": "string", "format": "date-time"},
-                "status": {"type": "string", "enum": ["not_started", "in_progress", "completed", "blocked"]},
-                "business_impact": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
-                "kanban_task_ids": {"type": "array", "items": {"$ref": "#/$defs/kanban_task_id"}},
-                "proposal_id": {"$ref": "#/$defs/proposal_id"},
-                "governance_decision_id": {"$ref": "#/$defs/governance_decision_id"}
-              },
-              "additionalProperties": false
-            }
-          },
-          "dependencies": {"type": "array", "items": {"type": "string"}},
-          "risks": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "risk": {"type": "string"},
-                "probability": {"type": "number", "minimum": 0, "maximum": 1},
-                "impact": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
-                "mitigation": {"type": "string"}
-              }
-            }
-          }
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "status": {"type": "string"},
+          "completion_date": {"type": "string", "format": "date-time"},
+          "deliverables": {"type": "array", "items": {"type": "string"}},
+          "impact": {"type": "string"},
+          "priority": {"type": "string"}
         }
       }
     },
-    "resource_allocation": {
+    "client_requirements": {
       "type": "object",
       "properties": {
-        "development_hours": {"type": "number", "minimum": 0},
-        "design_hours": {"type": "number", "minimum": 0},
-        "testing_hours": {"type": "number", "minimum": 0},
-        "documentation_hours": {"type": "number", "minimum": 0}
-      }
-    },
-    
-    "anti_hallucination_roadmap": {
-      "type": "object",
-      "properties": {
-        "context7_integration_milestones": {"type": "array", "items": {
-          "type": "object",
-          "required": ["milestone", "documentation_sources"],
-          "properties": {
-            "milestone": {"type": "string"},
-            "documentation_sources": {"type": "array", "items": {"type": "string", "format": "uri"}},
-            "accuracy_target": {"type": "number", "minimum": 0, "maximum": 1},
-            "completion_target": {"type": "string", "format": "date"}
-          }
-        }},
-        "link_storage_objectives": {"type": "array", "items": {
-          "type": "object",
-          "properties": {
-            "category": {"type": "string"},
-            "target_links_count": {"type": "number", "minimum": 0},
-            "verification_strategy": {"type": "string"}
-          }
-        }}
+        "platforms": {"type": "array", "items": {"type": "string"}},
+        "scale": {"type": "string"},
+        "cost": {"type": "string"},
+        "timeline": {"type": "string"}
       }
     }
   }

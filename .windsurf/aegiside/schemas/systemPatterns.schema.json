@@ -2,9 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://aegiside.org/schemas/systemPatterns.json",
   "title": "System Patterns Schema",
-  "description": "Architecture patterns with MCP-enriched documentation links, constitutional compliance, and RL reward tracking",
+  "description": "Architecture patterns with practical implementation details",
   "type": "object",
-  "required": ["schema_version", "last_updated", "architecture_patterns", "mcp_enriched_links", "rl_reward_ledger"],
+  "required": ["schema_version", "last_updated"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -15,203 +15,34 @@
       "format": "date-time"
     },
     "architecture_patterns": {
-      "type": "array",
-      "items": {
+      "type": "object",
+      "description": "Named patterns with implementation details",
+      "additionalProperties": {
         "type": "object",
-        "required": ["id", "name", "category", "success_rate"],
         "properties": {
-          "id": {"type": "string"},
-          "name": {"type": "string"},
-          "category": {"type": "string"},
+          "pattern": {"type": "string"},
           "description": {"type": "string"},
-          "success_rate": {"type": "number", "minimum": 0, "maximum": 100},
-          "usage_count": {"type": "number", "minimum": 0},
-          "last_used": {"type": "string", "format": "date-time"},
-          "rl_reward_accumulated": {"type": "number", "minimum": 0},
-          "times_rewarded": {"type": "integer", "minimum": 0},
-          "implementation_template": {
-            "type": "object",
-            "properties": {
-              "steps": {"type": "array", "items": {"type": "string"}},
-              "estimated_hours": {"type": "number", "minimum": 0},
-              "complexity_score": {"type": "number", "minimum": 0, "maximum": 10}
-            }
-          },
-          "quality_metrics": {
-            "type": "object",
-            "properties": {
-              "success_rate": {"type": "number", "minimum": 0, "maximum": 1},
-              "performance_impact": {"type": "string"},
-              "maintenance_score": {"type": "number", "minimum": 0, "maximum": 10},
-              "adoption_rate": {"type": "number", "minimum": 0, "maximum": 1}
-            }
-          },
-          "variations": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {"type": "string"},
-                "success_rate": {"type": "number", "minimum": 0, "maximum": 100}
-              }
-            }
-          }
+          "implementation": {"type": "string"},
+          "status": {"type": "string"},
+          "rl_reward": {"type": "number", "minimum": 0}
         }
       }
     },
-    "successful_implementations": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id", "pattern_id", "task_id"],
-        "properties": {
-          "id": {"type": "string"},
-          "pattern_id": {"type": "string"},
-          "task_id": {"type": "string"},
-          "implementation_date": {"type": "string", "format": "date-time"},
-          "completion_time_hours": {"type": "number", "minimum": 0},
-          "quality_score": {"type": "number", "minimum": 0, "maximum": 10},
-          "reusable_components": {"type": "array", "items": {"type": "string"}}
-        }
-      }
-    },
-    "pattern_relationships": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["primary_pattern", "related_patterns", "relationship_type"],
-        "properties": {
-          "primary_pattern": {"type": "string"},
-          "related_patterns": {"type": "array", "items": {"type": "string"}},
-          "relationship_type": {"type": "string", "enum": ["dependency", "alternative", "enhancement", "conflict"]},
-          "strength": {"type": "number", "minimum": 0, "maximum": 1}
-        }
-      }
-    },
-    "optimization_suggestions": {
-      "type": "array",
-      "maxItems": 10,
-      "items": {
-        "type": "object",
-        "required": ["pattern_id", "suggestion", "impact"],
-        "properties": {
-          "pattern_id": {"type": "string"},
-          "suggestion": {"type": "string"},
-          "impact": {"type": "string"},
-          "confidence": {"type": "number", "minimum": 0, "maximum": 1}
-        }
-      }
-    },
-    "mcp_enriched_links": {
+    "emd_compliance": {
       "type": "object",
-      "required": ["documentation_links"],
-      "properties": {
-        "documentation_links": {"type": "array", "items": {
-          "type": "object",
-          "required": ["framework", "official_docs_url", "context7_verified"],
-          "properties": {
-            "framework": {"type": "string"},
-            "official_docs_url": {"type": "string", "format": "uri"},
-            "context7_verified": {"type": "boolean"},
-            "last_accessed": {"type": "string", "format": "date-time"},
-            "accuracy_score": {"type": "number", "minimum": 0, "maximum": 1},
-            "usage_frequency": {"type": "number", "minimum": 0}
-          }
-        }},
-        "link_storage_dashboard": {"type": "array", "items": {
-          "type": "object",
-          "required": ["category", "links"],
-          "properties": {
-            "category": {"type": "string"},
-            "links": {"type": "array", "items": {"type": "string", "format": "uri"}},
-            "priority_order": {"type": "number", "minimum": 1}
-          }
-        }}
-      }
+      "additionalProperties": {"type": "string"}
     },
-    "governance_decisions": {
-      "type": "array",
-      "description": "Persisted parliamentary oversight decisions with consensus scoring and rationale",
-      "items": {
-        "type": "object",
-        "required": [
-          "decision_id",
-          "consensus_score",
-          "approved",
-          "timestamp"
-        ],
-        "properties": {
-          "decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"},
-          "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
-          "proposal_type": {"type": "string", "enum": ["technical", "strategic", "quality"]},
-          "consensus_score": {"type": "number", "minimum": 0, "maximum": 100},
-          "votes": {
-            "type": "object",
-            "properties": {
-              "executive": {"type": "number", "minimum": 0, "maximum": 100},
-              "legislative": {"type": "number", "minimum": 0, "maximum": 100},
-              "judicial": {"type": "number", "minimum": 0, "maximum": 100}
-            }
-          },
-          "veto": {
-            "type": "object",
-            "properties": {
-              "applied": {"type": "boolean"},
-              "by": {"type": "string", "enum": ["chief_justice", "none"]},
-              "reason": {"type": "string"}
-            }
-          },
-          "rationale": {"type": "string"},
-          "links": {
-            "type": "object",
-            "properties": {
-              "evidence_patterns": {"type": "array", "items": {"type": "string"}},
-              "mistake_ids": {"type": "array", "items": {"type": "string"}},
-              "roadmap_items": {"type": "array", "items": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"}}
-            }
-          },
-          "approved": {"type": "boolean"},
-          "timestamp": {"type": "string", "format": "date-time"}
-        },
-        "additionalProperties": false
-      }
-    },
-    "constitutional_compliance": {
+    "cost_savings": {
       "type": "object",
-      "properties": {
-        "tri_branch_approvals": {"type": "array", "items": {
-          "type": "object",
-          "required": ["pattern_id", "consensus_score"],
-          "properties": {
-            "pattern_id": {"type": "string"},
-            "consensus_score": {"type": "number", "minimum": 0, "maximum": 100},
-            "approved_by": {"type": "array", "items": {"type": "string"}},
-            "approval_date": {"type": "string", "format": "date-time"}
-          }
-        }},
-        "governance_validation_score": {"type": "number", "minimum": 0, "maximum": 100},
-        "emf_compliance": {"type": "boolean"},
-        "zero_tolerance_adherence": {"type": "boolean"}
-      }
+      "additionalProperties": {"type": "string"}
     },
-    "rl_reward_ledger": {
+    "mcp_integration": {
       "type": "object",
-      "required": ["total_rewards", "by_category"],
-      "properties": {
-        "total_rewards": {"type": "number", "minimum": 0},
-        "session_rewards": {"type": "number", "minimum": 0},
-        "by_category": {
-          "type": "object",
-          "properties": {
-            "constitutional_compliance": {"type": "number", "minimum": 0},
-            "successful_validation": {"type": "number", "minimum": 0},
-            "zero_duplication": {"type": "number", "minimum": 0},
-            "emd_compliance": {"type": "number", "minimum": 0}
-          }
-        },
-        "last_sync_with_progress": {"type": "string", "format": "date-time"},
-        "sync_verified": {"type": "boolean"}
-      }
+      "additionalProperties": {"type": "string"}
+    },
+    "deprecated": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
     }
   }
 }

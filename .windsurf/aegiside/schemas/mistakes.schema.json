@@ -8,9 +8,9 @@
     "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
     "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
   },
-  "description": "Error patterns with predictive analytics and RL penalty tracking",
+  "description": "Error patterns with prevention rules",
   "type": "object",
-  "required": ["schema_version", "last_updated", "error_patterns", "context7_source_priority", "rl_penalty_ledger"],
+  "required": ["schema_version", "last_updated", "error_patterns"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -22,132 +22,32 @@
     },
     "error_patterns": {
       "type": "array",
+      "description": "Prepend new errors at [0]",
       "items": {
         "type": "object",
-        "required": ["id", "category", "pattern_name", "frequency"],
         "properties": {
           "id": {"type": "string"},
+          "timestamp": {"type": "string", "format": "date-time"},
           "category": {"type": "string"},
-          "pattern_name": {"type": "string"},
           "description": {"type": "string"},
-          "frequency": {"type": "number", "minimum": 1},
-          "last_occurrence": {"type": "string", "format": "date-time"},
-          "fix_strategy": {"type": "string"},
+          "impact": {"type": "string"},
+          "root_cause": {"type": "string"},
           "prevention_rule": {"type": "string"},
-          "related_tasks": {"type": "array", "items": {"type": "string"}},
-          "proposal_id": {"$ref": "#/$defs/proposal_id"},
-          "kanban_task_id": {"$ref": "#/$defs/kanban_task_id"},
-          "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"},
-          "governance_decision_id": {"$ref": "#/$defs/governance_decision_id"},
-          "severity": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+          "article_violated": {"type": "string"},
           "rl_penalty": {"type": "number", "maximum": 0},
-          "constitutional_article": {"type": "string"},
+          "error": {"type": "string"},
+          "solution": {"type": "string"},
+          "prevention": {"type": "string"},
+          "occurred_at": {"type": "string", "format": "date-time"},
           "resolved": {"type": "boolean"},
-          "resolved_at": {"type": "string", "format": "date-time"},
+          "constitutional_article": {"type": "string"},
           "learning": {"type": "string"}
-        },
-        "additionalProperties": false
+        }
       }
     },
-    "instant_lint_tracking": {
+    "prevention_checklist": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id", "file", "rule", "frequency"],
-        "properties": {
-          "id": {"type": "string"},
-          "file": {"type": "string"},
-          "rule": {"type": "string"},
-          "frequency": {"type": "number", "minimum": 1},
-          "auto_fixed": {"type": "boolean"},
-          "pattern_identified": {"type": "string"},
-          "proposal_id": {"$ref": "#/$defs/proposal_id"},
-          "kanban_task_id": {"$ref": "#/$defs/kanban_task_id"}
-        },
-        "additionalProperties": false
-      }
-    },
-    "learning_data": {
-      "type": "object",
-      "properties": {
-        "successful_fixes": {"type": "number", "minimum": 0},
-        "patterns_prevented": {"type": "number", "minimum": 0},
-        "time_saved_hours": {"type": "number", "minimum": 0},
-        "accuracy_improvement": {"type": "number"}
-      }
-    },
-    "predictive_warnings": {
-      "type": "array",
-      "maxItems": 10,
-      "items": {
-        "type": "object",
-        "required": ["id", "type", "confidence"],
-        "properties": {
-          "id": {"type": "string"},
-          "type": {"type": "string"},
-          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
-          "description": {"type": "string"},
-          "suggested_action": {"type": "string"},
-          "related_task": {"type": "string"},
-          "proposal_id": {"$ref": "#/$defs/proposal_id"},
-          "kanban_task_id": {"$ref": "#/$defs/kanban_task_id"},
-          "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"}
-        },
-        "additionalProperties": false
-      }
-    },
-    "context7_source_priority": {
-      "type": "object",
-      "required": ["verified_sources"],
-      "properties": {
-        "verified_sources": {"type": "array", "items": {
-          "type": "object",
-          "required": ["source_url", "accuracy_score", "usage_count"],
-          "properties": {
-            "source_url": {"type": "string", "format": "uri"},
-            "accuracy_score": {"type": "number", "minimum": 0, "maximum": 1},
-            "usage_count": {"type": "number", "minimum": 0},
-            "last_verified": {"type": "string", "format": "date-time"},
-            "error_reduction_impact": {"type": "number"}
-          }
-        }},
-        "blacklisted_sources": {"type": "array", "items": {"type": "string", "format": "uri"}},
-        "priority_frameworks": {"type": "array", "items": {"type": "string"}}
-      }
-    },
-    "anti_hallucination_metrics": {
-      "type": "object",
-      "properties": {
-        "context7_calls_total": {"type": "number", "minimum": 0},
-        "fetch_verifications": {"type": "number", "minimum": 0},
-        "accuracy_improvement": {"type": "number"},
-        "false_positive_rate": {"type": "number", "minimum": 0, "maximum": 1},
-        "documentation_coverage": {"type": "number", "minimum": 0, "maximum": 1}
-      }
-    },
-    "rl_penalty_ledger": {
-      "type": "object",
-      "required": ["total_penalties", "by_category"],
-      "properties": {
-        "total_penalties": {"type": "number", "maximum": 0},
-        "session_penalties": {"type": "number", "maximum": 0},
-        "by_category": {
-          "type": "object",
-          "properties": {
-            "file_creation_violation": {"type": "number", "maximum": 0},
-            "constitutional_breach": {"type": "number", "maximum": 0},
-            "validation_failure": {"type": "number", "maximum": 0},
-            "mcp_omission": {"type": "number", "maximum": 0},
-            "unused_variables": {"type": "number", "maximum": 0},
-            "emd_violation": {"type": "number", "maximum": 0},
-            "permission_request": {"type": "number", "maximum": 0},
-            "duplicate_logic": {"type": "number", "maximum": 0},
-            "consensus_failure": {"type": "number", "maximum": 0}
-          }
-        },
-        "last_sync_with_progress": {"type": "string", "format": "date-time"},
-        "sync_verified": {"type": "boolean"}
-      }
+      "items": {"type": "string"}
     }
   }
 }

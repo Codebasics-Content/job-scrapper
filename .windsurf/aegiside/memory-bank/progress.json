@@ -1,5 +1,12 @@
 {
   "schema_version": "1.0.0",
+  "last_updated": "2025-10-13T23:49:26+05:30",
+  "metrics": {
+    "total_rl_score": -7,
+    "tasks_completed": 35,
+    "tasks_failed": 0,
+    "commits": 6
+  },
   "reinforcement_learning": [
     {
       "workflow": "continue",
@@ -114,15 +121,9 @@
       "timestamp": "2025-10-13T16:35:15+05:30"
     }
   ],
-  "last_updated": "2025-10-13T22:42:42+05:30",
   "current_focus": {
     "task": "3x 20-job validation tests ready, awaiting /update then execution",
     "location_fixed": "All tests use location='' per JobSpy docs",
     "tests_ready": ["test_linkedin_20_validation.py", "test_indeed_20_validation.py", "test_naukri_20_validation.py"]
-  },
-  "metrics": {
-    "total_rl_score": -7,
-    "tasks_completed": 35,
-    "commits": 6
   }
 }

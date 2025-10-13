@@ -2,9 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "memory.schema.json",
   "title": "Knowledge Graph Memory Schema",
-  "description": "Schema for @mcp:memory knowledge graph storage with entities, relations, observations, and RL pattern reuse tracking",
+  "description": "Knowledge graph with entities, relations, and observations",
   "type": "object",
-  "required": ["schema_version", "last_updated", "entities", "relations", "rl_pattern_reuse_ledger"],
+  "required": ["schema_version", "last_updated", "entities"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -15,11 +15,6 @@
       "type": "string",
       "format": "date-time",
       "description": "ISO 8601 timestamp of last modification"
-    },
-    "default_user": {
-      "type": "string",
-      "description": "Default user entity name for personalization",
-      "default": "default_user"
     },
     "entities": {
       "type": "array",
@@ -58,26 +53,6 @@
               "minLength": 1,
               "maxLength": 500
             }
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "When entity was first created"
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "When entity was last updated"
-          },
-          "rl_reuse_count": {
-            "type": "integer",
-            "minimum": 0,
-            "description": "Number of times pattern was reused (for pattern entities)"
-          },
-          "rl_reward_accumulated": {
-            "type": "number",
-            "minimum": 0,
-            "description": "Total RL rewards from reusing this pattern"
           }
         }
       }
@@ -118,105 +93,8 @@
               "replaces",
               "extends"
             ]
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "When relation was established"
           }
         }
-      }
-    },
-    "metadata": {
-      "type": "object",
-      "description": "Knowledge graph metadata and statistics",
-      "properties": {
-        "total_entities": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Total number of entities in graph"
-        },
-        "total_relations": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Total number of relations in graph"
-        },
-        "total_observations": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Total number of observations across all entities"
-        },
-        "graph_depth": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Maximum depth of relationship chains"
-        },
-        "last_query": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Timestamp of last memory query"
-        }
-      }
-    },
-    "user_context": {
-      "type": "object",
-      "description": "User-specific context for personalization",
-      "properties": {
-        "identity": {
-          "type": "object",
-          "description": "Basic identity information",
-          "properties": {
-            "age": {"type": "string"},
-            "gender": {"type": "string"},
-            "location": {"type": "string"},
-            "job_title": {"type": "string"},
-            "education_level": {"type": "string"}
-          }
-        },
-        "behaviors": {
-          "type": "array",
-          "description": "User interests, habits, patterns",
-          "items": {"type": "string"}
-        },
-        "preferences": {
-          "type": "object",
-          "description": "Communication and working preferences",
-          "properties": {
-            "communication_style": {"type": "string"},
-            "preferred_language": {"type": "string"},
-            "working_hours": {"type": "string"},
-            "notification_preferences": {"type": "string"}
-          }
-        },
-        "goals": {
-          "type": "array",
-          "description": "User goals, targets, aspirations",
-          "items": {"type": "string"}
-        }
-      }
-    },
-    "rl_pattern_reuse_ledger": {
-      "type": "object",
-      "required": ["total_reuse_rewards", "by_pattern"],
-      "properties": {
-        "total_reuse_rewards": {"type": "number", "minimum": 0},
-        "session_reuse_rewards": {"type": "number", "minimum": 0},
-        "by_pattern": {
-          "type": "object",
-          "description": "Pattern entity names mapped to reuse counts",
-          "patternProperties": {
-            "^[A-Za-z0-9_]+$": {
-              "type": "object",
-              "properties": {
-                "reuse_count": {"type": "integer", "minimum": 0},
-                "reward_accumulated": {"type": "number", "minimum": 0},
-                "confidence_score": {"type": "number", "minimum": 0, "maximum": 1}
-              }
-            }
-          }
-        },
-        "last_sync_with_progress": {"type": "string", "format": "date-time"},
-        "sync_verified": {"type": "boolean"}
       }
     }
   }

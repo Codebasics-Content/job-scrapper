@@ -8,9 +8,9 @@
     "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
     "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
   },
-  "description": "Task workflow management with parliamentary approval tracking",
+  "description": "Simple kanban workflow - todo/in_progress/done columns",
   "type": "object",
-  "required": ["schema_version", "last_updated", "columns", "tasks"],
+  "required": ["schema_version", "last_updated", "columns"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -22,81 +22,47 @@
     },
     "columns": {
       "type": "object",
-      "required": ["todo", "in_progress", "done", "approved"],
       "properties": {
         "todo": {
-          "type": "object",
-          "properties": {
-            "wip_limit": {"type": "number", "minimum": 0},
-            "task_ids": {"type": "array", "items": {"type": "string"}}
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "priority": {"type": "string"},
+              "tags": {"type": "array", "items": {"type": "string"}},
+              "added_at": {"type": "string", "format": "date-time"}
+            }
           }
         },
         "in_progress": {
-          "type": "object",
-          "properties": {
-            "wip_limit": {"type": "number", "minimum": 1, "maximum": 5},
-            "task_ids": {"type": "array", "items": {"type": "string"}}
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "priority": {"type": "string"},
+              "tags": {"type": "array", "items": {"type": "string"}},
+              "started_at": {"type": "string", "format": "date-time"}
+            }
           }
         },
         "done": {
-          "type": "object",
-          "properties": {
-            "task_ids": {"type": "array", "items": {"type": "string"}}
-          }
-        },
-        "approved": {
-          "type": "object",
-          "properties": {
-            "task_ids": {"type": "array", "items": {"type": "string"}}
-          }
-        },
-        "additionalProperties": false
-      }
-    },
-    "tasks": {
-      "type": "array",
-      "maxItems": 100,
-      "items": {
-        "type": "object",
-        "required": ["id", "title", "status", "priority"],
-        "properties": {
-          "id": {"type": "string"},
-          "title": {"type": "string", "maxLength": 200},
-          "description": {"type": "string", "maxLength": 1000},
-          "status": {"type": "string", "enum": ["todo", "in_progress", "done", "approved", "blocked"]},
-          "priority": {"type": "string", "enum": ["P0", "P1", "P2", "P3"]},
-          "created_at": {"type": "string", "format": "date-time"},
-          "updated_at": {"type": "string", "format": "date-time"},
-          "assignee": {"type": "string", "enum": ["project_manager", "dev_minister", "tech_minister", "quality_shadow", "innovation_shadow", "analytics_shadow"]},
-          "parliamentary_approval": {
+          "type": "array",
+          "items": {
             "type": "object",
             "properties": {
-              "consensus_score": {"type": "number", "minimum": 0, "maximum": 100},
-              "approved": {"type": "boolean"},
-              "executive_vote": {"type": "number", "minimum": 0, "maximum": 30},
-              "legislative_vote": {"type": "number", "minimum": 0, "maximum": 45},
-              "judicial_vote": {"type": "number", "minimum": 0, "maximum": 25}
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "completed_at": {"type": "string", "format": "date-time"},
+              "tags": {"type": "array", "items": {"type": "string"}},
+              "rl_impact": {"type": "number"},
+              "cost_savings": {"type": "string"}
             }
-          },
-          "proposal_id": {"$ref": "#/$defs/proposal_id"},
-          "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"},
-          "governance_decision_id": {"$ref": "#/$defs/governance_decision_id"},
-          "dependencies": {"type": "array", "items": {"type": "string"}},
-          "blocked_by": {"type": "array", "items": {"type": "string"}},
-          "estimated_hours": {"type": "number", "minimum": 0},
-          "actual_hours": {"type": "number", "minimum": 0},
-          "tags": {"type": "array", "items": {"type": "string"}}
-        },
-        "additionalProperties": false
-      }
-    },
-    "workflow_metrics": {
-      "type": "object",
-      "properties": {
-        "cycle_time_avg_hours": {"type": "number", "minimum": 0},
-        "throughput_per_week": {"type": "number", "minimum": 0},
-        "wip_current": {"type": "number", "minimum": 0},
-        "blocked_count": {"type": "number", "minimum": 0}
+          }
+        }
       }
     }
   }
