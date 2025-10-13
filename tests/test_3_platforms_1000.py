@@ -42,7 +42,7 @@ def test_3_platforms_with_logs() -> pd.DataFrame:
     # Test configuration
     platforms = ["linkedin", "indeed", "naukri"]
     search_term = "AI Engineer"
-    location = "United States"
+    location = ""  # Empty for worldwide search without country barriers
     jobs_per_platform = 1000
     
     logger.info(f"\n🔍 Configuration:")

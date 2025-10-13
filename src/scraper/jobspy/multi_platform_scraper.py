@@ -20,7 +20,7 @@ SKILLS_REF = Path(__file__).parent.parent.parent.parent / "skills_reference_2025
 def scrape_multi_platform(
     platforms: list[str],
     search_term: str,
-    location: str = "United States",
+    location: str = "",
     results_wanted: int = 100,
     hours_old: int = 72,
     linkedin_fetch_description: bool = True,
@@ -29,14 +29,14 @@ def scrape_multi_platform(
     Scrape jobs from 3 supported platforms with selective proxy usage
     
     Supported platforms:
-    - LinkedIn: BrightData proxy (for >100 jobs)
-    - Indeed: Direct scraping (no proxy, unlimited)
-    - Naukri: Direct scraping (no proxy, unlimited + native skills)
+    - LinkedIn: BrightData proxy (for >100 jobs) - global search with empty location
+    - Indeed: Direct scraping (no proxy, unlimited) - worldwide search
+    - Naukri: Direct scraping (no proxy, unlimited + native skills) - India focus
     
     Args:
         platforms: List of platforms - only "linkedin", "indeed", "naukri" supported
         search_term: Job search keyword
-        location: Location filter
+        location: Location filter (empty string "" for worldwide search)
         results_wanted: Jobs to scrape per platform
         hours_old: Filter by posting age
         linkedin_fetch_description: Fetch full LinkedIn descriptions
