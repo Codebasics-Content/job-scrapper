@@ -42,26 +42,33 @@ async def scrape_naukri_urls(
                 search_url = build_search_url(keyword, location, page=page_num)
                 html = await browser.render_url(search_url, wait_seconds=5.0)
                 if not html:
-                    logger.warning(f"No HTML returned for page {page_num}")
+                    logger.error(f"❌ No HTML returned for page {page_num}")
                     return []
+                
+                logger.debug(f"📄 Page {page_num} HTML length: {len(html)} bytes")
                 
                 # Save HTML for debugging (first page only)
                 if save_debug:
                     from pathlib import Path
                     debug_file = Path("debug_naukri_listing.html")
                     debug_file.write_text(html, encoding="utf-8")
-                    logger.info(f"✅ Saved HTML to {debug_file.absolute()} for selector debugging")
+                    logger.info(f"✅ Saved HTML to {debug_file.absolute()}")
                 
                 soup = BeautifulSoup(html, "html.parser")
-                logger.info(f"✅ Page {page_num} scraped")
-
+                
                 urls: list[tuple[str, str]] = []
                 for card_sel in CARD_SELECTORS_CSS:
-                    for card in soup.select(card_sel):
+                    cards = soup.select(card_sel)
+                    logger.info(f"🔍 Page {page_num} selector '{card_sel}': {len(cards)} cards")
+                    for card in cards:
                         card_data = parse_search_card(card)
                         if card_data["url"] and card_data["title"]:
                             url = normalize_job_url(card_data["url"]) or card_data["url"]
                             urls.append((card_data["title"], url))
+                    if urls:  # Stop after first successful selector
+                        break
+                
+                logger.info(f"✅ Page {page_num}: extracted {len(urls)} URLs")
                 return urls
 
             batch_results = await asyncio.gather(*[_scrape_page_urls(browser, page_num, headless, save_debug=(page_num == 1)) for page_num in page_batch])

@@ -18,10 +18,20 @@ async def scrape_naukri_jobs_unified(
     headless: bool = False,
 ) -> List[JobDetailModel]:
     """Unified Naukri scraper orchestrating two-phase process"""
-    # Phase 1: Scrape URLs
-    urls = await scrape_naukri_urls(keyword=keyword, location=location, limit=limit, headless=headless)
+    import logging
+    logger = logging.getLogger(__name__)
     
-    # Phase 2: Scrape details for unscraped URLs
+    # Phase 1: Scrape URLs and store to DB
+    url_models = await scrape_naukri_urls(
+        keyword=keyword,
+        location=location,
+        limit=limit,
+        headless=headless,
+        store_to_db=True  # CRITICAL: Store URLs for Phase 2
+    )
+    logger.info(f"✅ Phase 1: Collected {len(url_models)} URLs")
+    
+    # Phase 2: Scrape details for unscraped URLs from DB
     jobs = await scrape_naukri_details(
         platform="naukri",
         input_role=keyword,
@@ -29,6 +39,7 @@ async def scrape_naukri_jobs_unified(
         headless=headless,
         store_to_db=True
     )
+    logger.info(f"✅ Phase 2: Scraped {len(jobs)} job details")
     
     return jobs
 
