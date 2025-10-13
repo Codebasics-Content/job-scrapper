@@ -3,6 +3,56 @@
   "last_updated": "2025-10-13T20:15:23+05:30",
   "event_tracking": [
     {
+      "id": "evt-naukri-validation-failure-010",
+      "timestamp": "2025-10-13T22:52:02+05:30",
+      "type": "validation_failure",
+      "task_id": "test_naukri_20",
+      "description": "CRITICAL: Naukri 20-job validation failed - 0 jobs scraped in 13.9s",
+      "context": {
+        "duration_seconds": 13.9,
+        "jobs_scraped": 0,
+        "passed": 0,
+        "failed": 0,
+        "issue": "Scraper broken - no jobs returned",
+        "next_action": "HALT → context7 research → fix immediately"
+      },
+      "rl_penalty": -20
+    },
+    {
+      "id": "evt-indeed-validation-success-009",
+      "timestamp": "2025-10-13T22:51:29+05:30",
+      "type": "validation_success",
+      "task_id": "test_indeed_20",
+      "description": "Indeed 20-job validation: 100% success (20/20 jobs with descriptions + skills)",
+      "context": {
+        "duration_seconds": 3.8,
+        "jobs_scraped": 20,
+        "passed": 20,
+        "failed": 0,
+        "rate": "7.0 jobs/sec",
+        "db_stored": 20,
+        "avg_skills_per_job": 21
+      },
+      "rl_reward": 10
+    },
+    {
+      "id": "evt-linkedin-validation-success-008",
+      "timestamp": "2025-10-13T22:49:54+05:30",
+      "type": "validation_success",
+      "task_id": "test_linkedin_20",
+      "description": "LinkedIn 20-job validation: 100% success (20/20 jobs with descriptions + skills)",
+      "context": {
+        "duration_seconds": 33.0,
+        "jobs_scraped": 20,
+        "passed": 20,
+        "failed": 0,
+        "rate": "0.6 jobs/sec",
+        "db_stored": 20,
+        "avg_skills_per_job": 23
+      },
+      "rl_reward": 10
+    },
+    {
       "id": "evt-naukri-architecture-update-007",
       "timestamp": "2025-10-13T22:42:42+05:30",
       "type": "architecture_documentation",

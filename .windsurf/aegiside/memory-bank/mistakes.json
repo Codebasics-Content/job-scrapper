@@ -3,6 +3,17 @@
   "last_updated": "2025-10-13T20:07:38+05:30",
   "error_patterns": [
     {
+      "id": "naukri-zero-jobs-scraped",
+      "timestamp": "2025-10-13T22:52:02+05:30",
+      "category": "validation_failure",
+      "description": "Naukri scraper returned 0 jobs in 13.9s during test_naukri_20_validation.py",
+      "impact": "CRITICAL - Naukri scraping completely broken",
+      "root_cause": "Unknown - needs investigation. Possible: selectors changed, bot detection, browser not opening, Phase 1 URL extraction failure",
+      "prevention_rule": "ALWAYS verify Naukri scraper extracts URLs in Phase 1. Check browser opens with headless=False. Validate selectors against live site.",
+      "article_violated": "Art 5 (Zero-tolerance validation), Art 15 (HALT-FIX-VALIDATE)",
+      "rl_penalty": -20
+    },
+    {
       "id": "naukri_css_selectors_failing",
       "category": "critical_error",
       "error": "Browser opened successfully but scraped 0 jobs. 'Could not extract job URL from card' repeated 5 times. CSS selectors not finding job cards.",

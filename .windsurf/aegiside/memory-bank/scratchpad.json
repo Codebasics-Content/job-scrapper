@@ -9,30 +9,6 @@
   },
   "priority_queue": [
     {
-      "id": "naukri_architecture_verified",
-      "task": "Naukri 2-phase architecture documented in memory bank",
-      "priority": "P0",
-      "blocker": false,
-      "context": "Phase 1: URL extraction (5 concurrent tabs, dedupe vs jobs table). Phase 2: Detail scraping (5 tabs/batch, skill extraction). Ready for validation test.",
-      "added_at": "2025-10-13T22:42:42+05:30"
-    },
-    {
-      "id": "test_linkedin_20",
-      "task": "Execute test_linkedin_20_validation.py with venv",
-      "priority": "P0",
-      "blocker": false,
-      "context": "Validate 20 LinkedIn jobs: descriptions + skills. RL: +10 success, -15 failure. Store to jobs.db.",
-      "added_at": "2025-10-13T20:10:15+05:30"
-    },
-    {
-      "id": "test_indeed_20",
-      "task": "Execute test_indeed_20_validation.py with venv",
-      "priority": "P0",
-      "blocker": false,
-      "context": "Validate 20 Indeed jobs: descriptions + skills. RL: +10 success, -15 failure. Store to jobs.db.",
-      "added_at": "2025-10-13T20:10:15+05:30"
-    },
-    {
       "id": "test_naukri_20",
       "task": "Execute test_naukri_20_validation.py with venv",
       "priority": "P0",
@@ -50,6 +26,24 @@
     }
   ],
   "completed": [
+    {
+      "id": "test_indeed_20",
+      "task": "Execute test_indeed_20_validation.py with venv",
+      "completed_at": "2025-10-13T22:51:29+05:30",
+      "outcome": "100% success: 20/20 jobs with descriptions + skills. Rate: 7.0 jobs/sec (fastest). Stored to jobs.db. RL: +10. Exit code: 0"
+    },
+    {
+      "id": "test_linkedin_20",
+      "task": "Execute test_linkedin_20_validation.py with venv",
+      "completed_at": "2025-10-13T22:49:54+05:30",
+      "outcome": "100% success: 20/20 jobs with descriptions + skills. Rate: 0.6 jobs/sec. Stored to jobs.db. RL: +10. Exit code: 0"
+    },
+    {
+      "id": "naukri_architecture_verified",
+      "task": "Naukri 2-phase architecture documented in memory bank",
+      "completed_at": "2025-10-13T22:48:10+05:30",
+      "outcome": "Documented 2-phase Playwright scraping: Phase 1 URL extraction (5 concurrent), Phase 2 detail scraping (5 tabs/batch). Updated 4 schemas. RL: +10. Commit: 80fb7f9"
+    },
     {
       "id": "location_parameter_fix",
       "task": "Research and fix location parameter for all platforms",

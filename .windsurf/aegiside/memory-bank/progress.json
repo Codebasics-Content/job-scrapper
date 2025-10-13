@@ -2,6 +2,30 @@
   "schema_version": "1.0.0",
   "reinforcement_learning": [
     {
+      "workflow": "test_naukri_20_validation",
+      "rl_penalty": -20,
+      "reason": "CRITICAL FAILURE: 0 jobs scraped in 13.9s. Naukri scraper broken. HALT required.",
+      "timestamp": "2025-10-13T22:52:02+05:30",
+      "schemas_updated": ["activeContext", "scratchpad", "progress", "mistakes"],
+      "mcp_chain": ["filesystem.read_text_file", "terminal.execute", "filesystem.edit_file"]
+    },
+    {
+      "workflow": "test_indeed_20_validation",
+      "rl_reward": 10,
+      "reason": "100% success: 20/20 Indeed jobs with descriptions + skills. Rate: 7.0 jobs/sec (fastest). Stored to jobs.db.",
+      "timestamp": "2025-10-13T22:51:29+05:30",
+      "schemas_updated": ["activeContext", "scratchpad", "progress"],
+      "mcp_chain": ["filesystem.read_text_file", "terminal.execute", "filesystem.edit_file"]
+    },
+    {
+      "workflow": "test_linkedin_20_validation",
+      "rl_reward": 10,
+      "reason": "100% success: 20/20 LinkedIn jobs with descriptions + skills. Rate: 0.6 jobs/sec. Stored to jobs.db.",
+      "timestamp": "2025-10-13T22:49:54+05:30",
+      "schemas_updated": ["activeContext", "scratchpad", "progress"],
+      "mcp_chain": ["filesystem.read_text_file", "terminal.execute", "filesystem.edit_file"]
+    },
+    {
       "workflow": "naukri_architecture_documentation",
       "rl_reward": 10,
       "reason": "Documented Naukri 2-phase scraping: Phase 1 URL extraction (5 concurrent tabs, dedupe vs jobs table), Phase 2 detail scraping (5 tabs/batch, skills from descriptions)",
@@ -90,7 +114,7 @@
   },
   "metrics": {
     "total_rl_score": -12,
-    "tasks_completed": 31,
+    "tasks_completed": 34,
     "commits": 5
   }
 }
