@@ -93,9 +93,13 @@ def scrape_multi_platform(
                     # Extract skills from descriptions
                     if 'description' in batch_df.columns:
                         logger.info(f"   🔍 Extracting skills from {len(batch_df)} jobs...")
-                        batch_df['skills'] = batch_df['description'].apply(
-                            lambda desc: extract_skills_advanced(str(desc), str(SKILLS_REF)) if pd.notna(desc) else []
-                        )
+                        
+                        def extract_job_skills(desc: object) -> list[str]:
+                            if pd.notna(desc) and desc:
+                                return extract_skills_advanced(str(desc), str(SKILLS_REF))
+                            return []
+                        
+                        batch_df['skills'] = batch_df['description'].apply(extract_job_skills)
                     
                     platform_results.append(batch_df)
                     total_so_far = sum(len(df) for df in platform_results)
