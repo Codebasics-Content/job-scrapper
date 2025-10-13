@@ -2,6 +2,30 @@
   "schema_version": "1.0.0",
   "reinforcement_learning": [
     {
+      "workflow": "failed_autonomous_resolution",
+      "rl_penalty": -30,
+      "reason": "Did not autonomously resolve Naukri test failure. User had to point out browser wasn't opening.",
+      "timestamp": "2025-10-13T20:27:05+05:30",
+      "prevention": "Article 7: 0-99% autonomy = MUST resolve errors without asking. Monitor tests, validate execution.",
+      "correction": "Heavy penalty applied. Must execute → validate → fix → repeat until working."
+    },
+    {
+      "workflow": "naukri_architecture_misunderstanding",
+      "rl_penalty": -50,
+      "reason": "Failed to understand Naukri pipeline: 1) Open browser 2) Scrape URLs 3) 5 parallel detail scrapers. No browser opened.",
+      "timestamp": "2025-10-13T20:24:22+05:30",
+      "prevention": "ALWAYS verify browser automation architecture. Test execution is mandatory.",
+      "correction": "Must verify Playwright browser launches with headless=False and asyncio.Semaphore(5) concurrency."
+    },
+    {
+      "workflow": "tool_misuse_write_vs_edit",
+      "rl_penalty": -100,
+      "reason": "Used mcp3_write_file instead of replace_file_content. EXPLOITING (overwriting) not EXPLORING (surgical edits).",
+      "timestamp": "2025-10-13T20:15:23+05:30",
+      "prevention": "Article 22: ALWAYS use replace_file_content for existing files. NEVER write_to_file/mcp3_write_file.",
+      "correction": "Massive user frustration. Write operations on existing files = productivity loss."
+    },
+    {
       "workflow": "location_research_fix",
       "rl_penalty": -25,
       "reason": "Hardcoded 'Worldwide' location without @mcp:context7 research. JobSpy requires 'City, State' format or empty string ''",

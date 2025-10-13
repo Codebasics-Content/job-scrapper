@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import logging
-import asyncio
 from typing import List
 
 from src.models import JobDetailModel
@@ -62,9 +61,10 @@ async def scrape_jobs_with_skills(
                     platform=row.get('site', 'unknown'),
                     actual_role=keyword,
                     url=row.get('job_url', ''),
-                    job_description=desc[:2000],
+                    job_description=desc,
                     skills=','.join(skills) if skills else '',
-                    company_name=row.get('company', '')[:200],
+                    company_name=row.get('company', ''),
+                    posted_date=None,
                 )
                 all_jobs.append(job)
     
@@ -76,7 +76,6 @@ async def scrape_jobs_with_skills(
             location=location,
             limit=limit,
             headless=False,
-            store_to_db=store_to_db,
         )
         
         # Extract skills from Naukri jobs

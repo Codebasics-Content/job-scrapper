@@ -3,6 +3,45 @@
   "last_updated": "2025-10-13T20:07:38+05:30",
   "error_patterns": [
     {
+      "id": "exploiting_write_file_instead_edit",
+      "category": "critical_error",
+      "error": "Used mcp3_write_file (filesystem MCP) instead of replace_file_content for editing existing files. This is EXPLOITING (overwriting) instead of EXPLORING (surgical edits).",
+      "root_cause": "Violated Article 22 and USER MANDATE to ALWAYS UPDATE existing files first. Used wrong tool that overwrites entire file instead of making targeted edits.",
+      "solution": "ALWAYS use replace_file_content for existing files. NEVER use write_to_file or mcp3_write_file unless creating NEW files explicitly.",
+      "prevention": "MANDATORY: Use replace_file_content for ALL edits to existing files. Only create new files when explicitly required.",
+      "occurred_at": "2025-10-13T20:15:23+05:30",
+      "resolved": false,
+      "constitutional_article": "Article 22: Anti-Duplication & File Reuse - ALWAYS update existing files first",
+      "rl_penalty": -100,
+      "learning": "User mandate violation: Using write operations on existing files = exploitation, not exploration. Massive productivity loss."
+    },
+    {
+      "id": "naukri_browser_not_opening",
+      "category": "critical_error",
+      "error": "Naukri test hung with no browser opening. Pipeline is designed to: 1) Open browser, 2) Scrape job URLs, 3) Scrape details in 5 parallel concurrencies. Browser never launched.",
+      "root_cause": "Failed to understand Naukri architecture requires Playwright browser automation with headless=False and 5 parallel detail page scrapers.",
+      "solution": "Verify scrape_naukri_jobs_unified actually opens Playwright browser and processes details with asyncio.Semaphore(5) for concurrency control.",
+      "prevention": "ALWAYS verify browser automation architecture before claiming fixes are complete. Test execution is mandatory.",
+      "occurred_at": "2025-10-13T20:24:22+05:30",
+      "resolved": false,
+      "constitutional_article": "Article 7: Autonomous Operations - Must execute and validate, not just edit code",
+      "rl_penalty": -50,
+      "learning": "Naukri requires: Browser open → URL scraping → 5 parallel detail scrapers. Not just API calls."
+    },
+    {
+      "id": "failed_autonomous_error_resolution",
+      "category": "critical_error",
+      "error": "Did not autonomously resolve Naukri test failure. User had to point out browser wasn't opening and architecture was ignored.",
+      "root_cause": "Stopped after parameter fix without validating full execution pipeline. Should have checked test output and verified browser launch.",
+      "solution": "ALWAYS monitor test execution, check for actual browser launch, verify expected behavior completes before moving to next task.",
+      "prevention": "Article 7 mandate: 0-99% autonomy = MUST resolve errors without asking. Heavy penalties for non-autonomous failure.",
+      "occurred_at": "2025-10-13T20:27:05+05:30",
+      "resolved": false,
+      "constitutional_article": "Article 7: Right to Autonomous Execution - No permission needed for fixes",
+      "rl_penalty": -30,
+      "learning": "User demands heavy penalties for failure to autonomously resolve. Must execute → validate → fix → repeat until working."
+    },
+    {
       "id": "hardcoded_worldwide_location",
       "category": "critical_error",
       "error": "Hardcoded 'Worldwide' location without researching platform-specific location formats. Not all platforms support 'Worldwide' as valid location parameter.",
