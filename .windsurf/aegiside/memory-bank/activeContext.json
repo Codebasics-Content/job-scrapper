@@ -3,6 +3,21 @@
   "last_updated": "2025-10-13T20:15:23+05:30",
   "event_tracking": [
     {
+      "id": "evt-continue-recovery-011",
+      "timestamp": "2025-10-13T22:55:20+05:30",
+      "type": "continue_recovery",
+      "task_id": "context_restoration",
+      "description": "/continue: Context restored. Blocker: Naukri scraper broken (0 jobs). Ready to resume.",
+      "context": {
+        "downtime_seconds": 198,
+        "pending_tasks": 2,
+        "blocker": "Naukri scraper: 0 jobs scraped in 13.9s",
+        "last_successful_task": "test_indeed_20 (7.0 jobs/sec)",
+        "current_rl_score": -12
+      },
+      "rl_reward": 5
+    },
+    {
       "id": "evt-naukri-validation-failure-010",
       "timestamp": "2025-10-13T22:52:02+05:30",
       "type": "validation_failure",
