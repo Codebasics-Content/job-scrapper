@@ -2,36 +2,30 @@
 
 # Job card selectors (CSS primary, XPath fallback) - 2025 Naukri
 CARD_SELECTORS_CSS = [
-    ".srp-jobtuple-wrapper",
-    "div.srp-jobtuple-wrapper",
-    "article.jobTuple",
-    ".cust-job-tuple",
-    "article[data-job-id]",
-    "div[class*='tuple']",
+    ".srp-jobtuple-wrapper",  # Primary: <div class="srp-jobtuple-wrapper" data-job-id="...">
+    ".cust-job-tuple",  # Secondary: nested inside srp-jobtuple-wrapper
+    "div[data-job-id]",  # Fallback: any div with data-job-id
 ]
+
 CARD_SELECTORS_XPATH = [
     "//div[contains(@class, 'srp-jobtuple-wrapper')]",
-    "//article[contains(@class, 'jobTuple')]",
     "//div[contains(@class, 'cust-job-tuple')]",
-    "//article[@data-job-id]",
+    "//div[@data-job-id]",
 ]
 
 # Job title link selectors (CSS primary, XPath fallback) - 2025 Naukri
 TITLE_SELECTORS_CSS = [
-    "a.title.fw500",
-    "a.title",
-    "a[href*='/job-listings-']",
-    "a[href*='/jobDetail/']",
-    ".row1 a",
-    "a.jobTitle",
-    "a[title]",
+    "a.title",  # Primary: <a class="title" href="..." title="Python Developer">
+    ".row1 h2 a",  # Nested: <div class="row1"><h2><a class="title">
+    "h2 > a",  # Fallback: any h2 > a inside card
+    "a[href*='job-listings']",  # URL pattern match
 ]
+
 TITLE_SELECTORS_XPATH = [
-    "//a[contains(@class, 'title') and contains(@class, 'fw500')]",
-    "//a[contains(@class, 'title')]",
-    "//div[@class='row1']//a",
-    "//a[contains(@href, '/job-listings-')]",
-    "//a[contains(@href, '/jobDetail/')]",
+    ".//a[contains(@class, 'title')]",
+    ".//div[contains(@class, 'row1')]//h2/a",
+    ".//h2/a",
+    ".//a[contains(@href, 'job-listings')]",
 ]
 
 # Job description selectors (CSS primary, XPath fallback)
