@@ -22,13 +22,13 @@ def check_and_clean_descriptions() -> None:
         cursor.execute("""
             SELECT COUNT(*) 
             FROM jobs 
-            WHERE site = ? AND (description IS NULL OR description = '')
+            WHERE platform = ? AND (job_description IS NULL OR job_description = '')
         """, (platform,))
-        none_count = cursor.fetchone()[0]
+        none_count: int = cursor.fetchone()[0]
         
         # Count total jobs
-        cursor.execute("SELECT COUNT(*) FROM jobs WHERE site = ?", (platform,))
-        total_count = cursor.fetchone()[0]
+        cursor.execute("SELECT COUNT(*) FROM jobs WHERE platform = ?", (platform,))
+        total_count: int = cursor.fetchone()[0]
         
         print(f"\n{platform.upper()}:")
         print(f"   Total jobs: {total_count}")
@@ -39,7 +39,7 @@ def check_and_clean_descriptions() -> None:
             print(f"   🗑️  Removing {none_count} jobs with missing descriptions...")
             cursor.execute("""
                 DELETE FROM jobs 
-                WHERE site = ? AND (description IS NULL OR description = '')
+                WHERE platform = ? AND (job_description IS NULL OR job_description = '')
             """, (platform,))
             total_removed += none_count
     
@@ -53,8 +53,8 @@ def check_and_clean_descriptions() -> None:
     # Show final counts
     print("📊 FINAL DATABASE STATE:")
     for platform in platforms:
-        cursor.execute("SELECT COUNT(*) FROM jobs WHERE site = ?", (platform,))
-        count = cursor.fetchone()[0]
+        cursor.execute("SELECT COUNT(*) FROM jobs WHERE platform = ?", (platform,))
+        count: int = cursor.fetchone()[0]
         print(f"   {platform.capitalize()}: {count} jobs (all with descriptions)")
     
     conn.close()
