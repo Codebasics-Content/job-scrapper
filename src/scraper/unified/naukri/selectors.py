@@ -1,10 +1,9 @@
 """Naukri CSS and XPath selectors configuration"""
 
-# Job card selectors (CSS primary, XPath fallback) - 2025 Naukri
+# Job card selectors (verified Oct 2025 HTML) - ONLY use outer wrapper with data-job-id
 CARD_SELECTORS_CSS = [
-    ".srp-jobtuple-wrapper",  # Primary: <div class="srp-jobtuple-wrapper" data-job-id="...">
-    ".cust-job-tuple",  # Secondary: nested inside srp-jobtuple-wrapper
-    "div[data-job-id]",  # Fallback: any div with data-job-id
+    ".srp-jobtuple-wrapper",  # <div class="srp-jobtuple-wrapper" data-job-id="...">
+    "div[data-job-id]",  # Fallback: any div with data-job-id attribute
 ]
 
 CARD_SELECTORS_XPATH = [

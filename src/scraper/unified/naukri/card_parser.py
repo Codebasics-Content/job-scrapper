@@ -53,7 +53,14 @@ def extract_location_from_card(card: Tag) -> str:
 
 def extract_job_url_from_card(card: Tag) -> str | None:
     """Extract job URL from card using selectors from selectors.py (2025 Naukri)"""
-    # Use comprehensive TITLE_SELECTORS_CSS from selectors.py
+    # First check for data-job-id on the card itself (most reliable)
+    job_id = card.get("data-job-id")
+    if job_id and isinstance(job_id, str):
+        fallback_url = f"https://www.naukri.com/job-listings-{job_id}"
+        logger.debug(f"✅ Using data-job-id: {fallback_url}")
+        return fallback_url
+    
+    # Try to find link with href attribute
     for sel in TITLE_SELECTORS_CSS:
         elem = card.select_one(sel)
         if elem:
@@ -63,17 +70,16 @@ def extract_job_url_from_card(card: Tag) -> str | None:
                 logger.debug(f"✅ Found URL with selector '{sel}': {job_url[:80]}")
                 return job_url
     
-    # Fallback: Try data-job-id attribute
-    job_id = card.get("data-job-id")
-    if job_id and isinstance(job_id, str):
-        fallback_url = f"https://www.naukri.com/job-listings-{job_id}"
-        logger.debug(f"✅ Using data-job-id fallback: {fallback_url}")
-        return fallback_url
+    # If card is .cust-job-tuple, try parent for data-job-id
+    parent = card.parent
+    if parent:
+        parent_job_id = parent.get("data-job-id")
+        if parent_job_id and isinstance(parent_job_id, str):
+            fallback_url = f"https://www.naukri.com/job-listings-{parent_job_id}"
+            logger.debug(f"✅ Using parent data-job-id: {fallback_url}")
+            return fallback_url
     
-    # Debug: Print card structure
-    card_classes = card.get("class", [])
-    logger.error(f"❌ URL extraction failed. Card classes: {card_classes}")
-    logger.error(f"Card HTML snippet: {str(card)[:300]}")
+    logger.error(f"❌ URL extraction failed. Card: {card.get('class', [])}")
     return None
 
 
