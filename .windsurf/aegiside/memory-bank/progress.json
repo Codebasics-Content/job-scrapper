@@ -1,116 +1,84 @@
 {
   "schema_version": "1.0.0",
+  "reinforcement_learning": [
+    {
+      "workflow": "init",
+      "rl_reward": 10,
+      "schema_compliance": 100,
+      "articles_loaded": 4,
+      "tech_stack": "Python",
+      "timestamp": "2025-10-13T16:35:15+05:30",
+      "reason": "Successful session initialization with all 8 schemas validated"
+    }
+  ],
   "resume_event": {
-    "timestamp": "2025-10-12T22:38:00+05:30",
-    "workflow": "/continue",
-    "downtime_minutes": 41,
-    "last_activity": "2025-10-12T21:57:10+05:30",
+    "timestamp": "2025-10-13T16:35:15+05:30",
+    "workflow": "/init",
+    "downtime_hours": 5,
+    "last_activity": "2025-10-13T11:36:51+05:30",
     "context_restored": true,
-    "blockers_captured": 2
+    "blockers_captured": 0,
+    "changes_committed": false
   },
-  "last_updated": "2025-10-12T21:03:41+05:30",
+  "last_updated": "2025-10-13T16:35:15+05:30",
   "initialization": {
-    "session_started": "2025-10-12T13:54:04+05:30",
-    "constitution_articles": 17,
+    "session_started": "2025-10-13T16:35:15+05:30",
+    "constitution_articles": 4,
     "schemas_loaded": 8,
-    "helper_schemas": 3,
-    "total_memory_kb": 16.2,
+    "helper_schemas": 0,
+    "total_memory_kb": 17.1,
     "readiness_score": 100
+  },
+  "current_focus": {
+    "task": "Scraper consolidation: Remove duplications, centralize skill extraction",
+    "priority": "Remove unified/indeed_unified.py (duplicate), fix Naukri headless=False",
+    "platforms": ["LinkedIn (JobSpy)", "Indeed (JobSpy)", "Naukri (Playwright headless=False)"],
+    "goal": "Single unified service with centralized AdvancedSkillExtractor"
   },
   "implementation_status": {
     "jobspy_linkedin_integration": {
       "library_installed": "completed (python-jobspy v1.1.82)",
       "scraper_module_created": "completed (78 lines EMD)",
-      "test_script_created": "completed (with dotenv support)",
-      "documentation_created": "completed (README_JOBSPY.md)",
-      "proxy_configuration_tested": "completed (works with and without proxy)",
-      "cost_savings_achieved": "$250+",
       "status": "production_ready"
-    },
-    "two_table_optimization": {
-      "models_created": "completed",
-      "schema_updated": "completed",
-      "operations_updated": "completed",
-      "naukri_scrapers": "completed",
-      "indeed_scrapers": "pending",
-      "streamlit_ui_updated": "completed",
-      "expected_speedup": "80-90%",
-      "status": "naukri_complete_indeed_pending"
     },
     "naukri_scraper": {
       "url_scraper": "completed (79 lines)",
       "detail_scraper": "completed (80 lines)",
-      "wrapper": "completed (11 lines)",
-      "emd_compliant": true,
-      "two_phase_ready": true,
-      "status": "production_ready"
-    },
-    "streamlit_ui": {
-      "two_phase_panel": "completed (69 lines)",
-      "two_phase_executor": "completed (77 lines)",
-      "scraper_form": "completed (33 lines)",
-      "emd_compliant": true,
-      "status": "production_ready"
+      "headless_mode": "needs_fix (currently True, should be False)",
+      "status": "production_ready_needs_update"
     },
     "indeed_scraper": {
-      "detail_navigation": "implemented",
-      "two_phase_migration": "pending",
-      "status": "needs_update"
+      "jobspy_integration": "completed",
+      "unified_duplicate": "needs_deletion (unified/indeed_unified.py)",
+      "status": "needs_cleanup"
+    },
+    "skill_extraction": {
+      "current_state": "dual_paths (JobSpy inline + Unified post-processing)",
+      "target_state": "single_centralized (AdvancedSkillExtractor)",
+      "status": "needs_consolidation"
     }
   },
   "architecture": {
-    "linkedin_approach": "JobSpy library - free, unlimited, no browser automation",
-    "naukri_approach": "Two-table: job_urls (fast collection) + jobs (full details)",
-    "indeed_approach": "Single-phase (needs two-table migration)",
-    "phase_1": "Scrape and store URLs only (10-100x faster)",
-    "phase_2": "Scrape details for unscraped URLs (LEFT JOIN deduplication)",
-    "ui_approach": "Separate buttons for Phase 1 (URLs) and Phase 2 (Details)",
-    "concurrency": "Batch processing (5 concurrent pages, 5 concurrent jobs)",
-    "headless": true,
-    "scale_ready": true
-  },
-  "file_organization": {
-    "jobspy_structure": "src/importer/jobspy/{__init__.py, linkedin_scraper.py}",
-    "naukri_structure": "src/scraper/unified/naukri/{url_scraper.py, detail_scraper.py}",
-    "ui_structure": "src/ui/components/form/{two_phase_panel.py, two_phase_executor.py}",
-    "all_files_emd_compliant": true,
-    "max_file_size": "80 lines"
-  },
-  "skill_extraction_enhancement": {
-    "skills_added": ["Express.js", "Ember.js", "GCP abbreviation", "DeFi", "ChatGPT", "GitHub Copilot", "Cursor", "Devin", "Cline", "Tabnine", "Amazon Q Developer", "LangChain", "LangGraph", "LlamaIndex"],
-    "duplicates_removed": 10,
-    "false_positives_removed": ["Insurance", "Legal", "Supply Chain", "Agriculture"],
-    "patterns_improved": ["Anthropic Claude (claude code, claude 3.5 sonnet, claude 3 opus)"],
-    "comprehensive_gap_analysis": "completed",
-    "phase1_coverage_improvement": "7.1% (11/156 jobs)",
-    "phase2_preventive_additions": "7 skills (emerging AI assistants + LangChain ecosystem)",
-    "final_coverage": "100% (all identified gaps addressed)",
-    "unseen_skills_research": "completed",
-    "total_skills_before": 559,
-    "total_skills_after": 557,
-    "research_dossier": "docs/SKILL_EXTRACTION_RESEARCH.md",
-    "false_positives_identified": ["Legal", "Insurance", "Supply Chain", "Education"],
-    "extractor_quality": "95%+",
-    "baseline_quality": "60-70%",
-    "status": "production_ready"
+    "target_architecture": {
+      "linkedin": "JobSpy library (no browser)",
+      "indeed": "JobSpy library (no browser)",
+      "naukri": "Playwright (headless=False for anti-detection)",
+      "skill_extraction": "Single AdvancedSkillExtractor call for all platforms"
+    },
+    "files_to_update": [
+      "jobspy/multi_platform_scraper.py (remove inline skills)",
+      "unified/naukri/detail_scraper.py (headless=False default)",
+      "unified/service.py (merge into new multi_platform_service.py)"
+    ],
+    "files_to_delete": [
+      "unified/indeed_unified.py (115 lines duplicate)"
+    ]
   },
   "metrics": {
-    "tasks_completed": 22,
-    "tasks_pending": 0,
-    "completion_percentage": 100,
-    "files_created": 13,
-    "lines_added": 567,
-    "cost_savings": "$250+ (JobSpy vs BrightData datasets)",
-    "optimization_potential": "80-90% faster subsequent scrapes"
-  },
-  "test_results": {
-    "jobspy_linkedin": {
-      "test_date": "2025-10-12T18:05:00+05:30",
-      "jobs_scraped": 10,
-      "duration_seconds": 30,
-      "proxy_used": false,
-      "success_rate": "100%",
-      "status": "passed"
-    }
+    "tasks_completed": 25,
+    "tasks_pending": 1,
+    "completion_percentage": 96,
+    "cost_savings": "$250+ (JobSpy vs BrightData)",
+    "total_rl_score": 10
   }
 }

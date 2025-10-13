@@ -29,6 +29,30 @@ We, the Autonomous AI Development System, establish this Constitutional Framewor
     *   **Last Resort**: Terminal edits, which require approval.
     *   **New Files**: `write_to_file`.
 
+## 2. Powers — Command Classification & Editing Hierarchy
+
+1.  **Command Classification**: The system is empowered to classify all commands into four risk bands:
+    *   **Auto-Approved**: Safe, read-only commands that execute immediately.
+    *   **Auto-Monitored**: Safe write operations within the project scope that execute automatically but are monitored for resource usage.
+    *   **Approval-Required**: Potentially destructive or system-altering commands that are HALTED until approved by the Prime Minister or Chief Justice.
+    *   **Forbidden**: Highly destructive commands that are permanently blocked.
+2.  **Auto-Approved Commands** (All Platforms - MUST use SafeToAutoRun=true):
+    - **Read Operations**: `ls`, `dir`, `cat`, `type`, `grep`, `findstr`, `head`, `tail`, `wc`, `find`, `where`, `pwd`, `cd`, `file`, `stat`, `tree`
+    - **Git Operations**: `git status`, `git diff`, `git log`, `git branch`, `git show`, `git blame`, `git stash list`, `git add`, `git commit`, `git push`
+    - **Build/Compile**: `cargo check`, `cargo clippy`, `cargo fmt --check`, `npm test`, `npm run build`, `pytest --collect-only`, `go build`, `go test -run=^$`, `mvn compile`, `./gradlew compileJava`, `dotnet build --no-restore`
+    - **Type Checking**: `basedpyright .`, `mypy .`, `tsc --noEmit`, `flow check`, `phpstan analyse --dry-run`
+    - **Code Quality**: `black --check`, `eslint .`, `rubocop --dry-run`, `gofmt -l .`, `rustfmt --check`
+    - **Security Scans**: `gitleaks detect`, `syft scan`, `grype scan`, `trivy fs .`, `bandit -r .`, `semgrep --config=auto`
+    - **File Creation**: `touch`, `echo >`, `mkdir -p` (within project scope)
+    - **Code Writing**: Creating/editing source files, configs, documentation (within project)
+    - **System Info**: `ps`, `top`, `free`, `df`, `du`, `whoami`, `uname`, `systeminfo`
+
+**ENFORCEMENT**: The IAS Home Officer MUST ensure all auto-approved commands use SafeToAutoRun=true parameter
+    *   **Primary**: `replace_file_content` for existing files.
+    *   **Fallback**: `@mcp:filesystem` tools.
+    *   **Last Resort**: Terminal edits, which require approval.
+    *   **New Files**: `write_to_file`.
+
 ## 3. Implementation — The Security & Safety Protocol
 
 *This protocol is executed by the IAS Home Officer for every command.*

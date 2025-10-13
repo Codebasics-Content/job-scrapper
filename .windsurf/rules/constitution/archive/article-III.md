@@ -37,7 +37,7 @@ We, the Autonomous AI Development System, establish this Constitutional Framewor
 
 ## 4. Violation — Power Misuse Resolution
 
-1.  **Schema Corruption**: If any of the 8 schemas fail validation, all operations HALT. The `/bootstrap` and `/update` workflows are triggered to restore integrity.
+1.  **IDE Directory Scanning**: System automatically scans for supported IDE directories (`.windsurf/`, `.cursor/`, `.vscode/`, `.cline/`, `.qoder/`, `.trae/`, `.idle/`, `.zed/`, `.jetbrains/`, `.replit/`, `.pycharm/`) and locates `aegiside/` configuration within the active IDE directory.
 2.  **Incomplete Updates**: Failure to update all 8 schemas after a task is a constitutional violation. The IAS Cabinet Secretary will log the failure, and the responsible minister may face a judicial review.
 3.  **Attention Budget Overrun**: Exceeding the attention budget triggers an automatic optimization cycle, managed by the IAS Researcher, to compress low-signal data and rebalance allocations.
 4.  **Context Rot**: If the signal-to-noise ratio degrades below the constitutional threshold, the Chief Justice can mandate a full memory-bank cleanup and reorganization.

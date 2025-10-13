@@ -8,9 +8,9 @@
     "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
     "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
   },
-  "description": "Error patterns with predictive analytics",
+  "description": "Error patterns with predictive analytics and RL penalty tracking",
   "type": "object",
-  "required": ["schema_version", "last_updated", "error_patterns", "context7_source_priority"],
+  "required": ["schema_version", "last_updated", "error_patterns", "context7_source_priority", "rl_penalty_ledger"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -39,7 +39,12 @@
           "kanban_task_id": {"$ref": "#/$defs/kanban_task_id"},
           "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"},
           "governance_decision_id": {"$ref": "#/$defs/governance_decision_id"},
-          "severity": {"type": "string", "enum": ["critical", "high", "medium", "low"]}
+          "severity": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+          "rl_penalty": {"type": "number", "maximum": 0},
+          "constitutional_article": {"type": "string"},
+          "resolved": {"type": "boolean"},
+          "resolved_at": {"type": "string", "format": "date-time"},
+          "learning": {"type": "string"}
         },
         "additionalProperties": false
       }
@@ -118,6 +123,30 @@
         "accuracy_improvement": {"type": "number"},
         "false_positive_rate": {"type": "number", "minimum": 0, "maximum": 1},
         "documentation_coverage": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "rl_penalty_ledger": {
+      "type": "object",
+      "required": ["total_penalties", "by_category"],
+      "properties": {
+        "total_penalties": {"type": "number", "maximum": 0},
+        "session_penalties": {"type": "number", "maximum": 0},
+        "by_category": {
+          "type": "object",
+          "properties": {
+            "file_creation_violation": {"type": "number", "maximum": 0},
+            "constitutional_breach": {"type": "number", "maximum": 0},
+            "validation_failure": {"type": "number", "maximum": 0},
+            "mcp_omission": {"type": "number", "maximum": 0},
+            "unused_variables": {"type": "number", "maximum": 0},
+            "emd_violation": {"type": "number", "maximum": 0},
+            "permission_request": {"type": "number", "maximum": 0},
+            "duplicate_logic": {"type": "number", "maximum": 0},
+            "consensus_failure": {"type": "number", "maximum": 0}
+          }
+        },
+        "last_sync_with_progress": {"type": "string", "format": "date-time"},
+        "sync_verified": {"type": "boolean"}
       }
     }
   }

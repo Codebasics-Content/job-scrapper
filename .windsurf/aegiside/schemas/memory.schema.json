@@ -2,9 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "memory.schema.json",
   "title": "Knowledge Graph Memory Schema",
-  "description": "Schema for @mcp:memory knowledge graph storage with entities, relations, and observations",
+  "description": "Schema for @mcp:memory knowledge graph storage with entities, relations, observations, and RL pattern reuse tracking",
   "type": "object",
-  "required": ["schema_version", "last_updated", "entities", "relations"],
+  "required": ["schema_version", "last_updated", "entities", "relations", "rl_pattern_reuse_ledger"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -68,6 +68,16 @@
             "type": "string",
             "format": "date-time",
             "description": "When entity was last updated"
+          },
+          "rl_reuse_count": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of times pattern was reused (for pattern entities)"
+          },
+          "rl_reward_accumulated": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Total RL rewards from reusing this pattern"
           }
         }
       }
@@ -183,6 +193,30 @@
           "description": "User goals, targets, aspirations",
           "items": {"type": "string"}
         }
+      }
+    },
+    "rl_pattern_reuse_ledger": {
+      "type": "object",
+      "required": ["total_reuse_rewards", "by_pattern"],
+      "properties": {
+        "total_reuse_rewards": {"type": "number", "minimum": 0},
+        "session_reuse_rewards": {"type": "number", "minimum": 0},
+        "by_pattern": {
+          "type": "object",
+          "description": "Pattern entity names mapped to reuse counts",
+          "patternProperties": {
+            "^[A-Za-z0-9_]+$": {
+              "type": "object",
+              "properties": {
+                "reuse_count": {"type": "integer", "minimum": 0},
+                "reward_accumulated": {"type": "number", "minimum": 0},
+                "confidence_score": {"type": "number", "minimum": 0, "maximum": 1}
+              }
+            }
+          }
+        },
+        "last_sync_with_progress": {"type": "string", "format": "date-time"},
+        "sync_verified": {"type": "boolean"}
       }
     }
   }

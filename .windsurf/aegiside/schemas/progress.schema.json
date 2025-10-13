@@ -8,9 +8,9 @@
     "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
     "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
   },
-  "description": "Development milestones with constitutional compliance metrics and anti-hallucination tracking",
+  "description": "Development milestones with constitutional compliance metrics, anti-hallucination tracking, and RL scoring ledger",
   "type": "object",
-  "required": ["schema_version", "last_updated", "milestone_tracking", "constitutional_metrics"],
+  "required": ["schema_version", "last_updated", "milestone_tracking", "constitutional_metrics", "reinforcement_learning_ledger"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -113,6 +113,103 @@
           "earned_date": {"type": "string", "format": "date-time"},
           "description": {"type": "string"},
           "impact": {"type": "string"}
+        }
+      }
+    },
+    "reinforcement_learning_ledger": {
+      "type": "object",
+      "required": ["total_score", "rewards", "penalties", "metrics", "checksum_validation", "transaction_log"],
+      "properties": {
+        "total_score": {"type": "number"},
+        "session_score": {"type": "number"},
+        "lifetime_score": {"type": "number"},
+        "rewards": {
+          "type": "object",
+          "required": ["total_earned", "by_category"],
+          "properties": {
+            "total_earned": {"type": "number", "minimum": 0},
+            "session_earned": {"type": "number", "minimum": 0},
+            "lifetime_earned": {"type": "number", "minimum": 0},
+            "by_category": {
+              "type": "object",
+              "properties": {
+                "constitutional_compliance": {"type": "number", "minimum": 0},
+                "successful_validation": {"type": "number", "minimum": 0},
+                "autonomous_recovery": {"type": "number", "minimum": 0},
+                "consensus_achievement": {"type": "number", "minimum": 0},
+                "zero_duplication": {"type": "number", "minimum": 0},
+                "pattern_reuse": {"type": "number", "minimum": 0},
+                "emd_compliance": {"type": "number", "minimum": 0},
+                "mcp_integration": {"type": "number", "minimum": 0}
+              }
+            }
+          }
+        },
+        "penalties": {
+          "type": "object",
+          "required": ["total_incurred", "by_category"],
+          "properties": {
+            "total_incurred": {"type": "number", "maximum": 0},
+            "session_incurred": {"type": "number", "maximum": 0},
+            "lifetime_incurred": {"type": "number", "maximum": 0},
+            "by_category": {
+              "type": "object",
+              "properties": {
+                "file_creation_violation": {"type": "number", "maximum": 0},
+                "constitutional_breach": {"type": "number", "maximum": 0},
+                "validation_failure": {"type": "number", "maximum": 0},
+                "mcp_omission": {"type": "number", "maximum": 0},
+                "unused_variables": {"type": "number", "maximum": 0},
+                "emd_violation": {"type": "number", "maximum": 0},
+                "permission_request": {"type": "number", "maximum": 0},
+                "duplicate_logic": {"type": "number", "maximum": 0},
+                "consensus_failure": {"type": "number", "maximum": 0}
+              }
+            }
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "required": ["learning_efficiency", "actions_total", "success_rate"],
+          "properties": {
+            "learning_efficiency": {"type": "number", "minimum": 0, "maximum": 100},
+            "actions_total": {"type": "integer", "minimum": 0},
+            "actions_successful": {"type": "integer", "minimum": 0},
+            "actions_failed": {"type": "integer", "minimum": 0},
+            "success_rate": {"type": "number", "minimum": 0, "maximum": 100},
+            "autonomy_level": {"type": "number", "minimum": 0, "maximum": 100},
+            "autonomy_adjustment": {"type": "number"}
+          }
+        },
+        "checksum_validation": {
+          "type": "object",
+          "required": ["calculated_total", "stored_total", "is_valid"],
+          "properties": {
+            "calculated_total": {"type": "number"},
+            "stored_total": {"type": "number"},
+            "is_valid": {"type": "boolean"},
+            "last_validated": {"type": "string", "format": "date-time"},
+            "discrepancy_count": {"type": "integer", "minimum": 0}
+          }
+        },
+        "transaction_log": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "type": "object",
+            "required": ["id", "timestamp", "type", "category", "points", "running_total"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^tx-[0-9]+$"},
+              "timestamp": {"type": "string", "format": "date-time"},
+              "type": {"type": "string", "enum": ["reward", "penalty"]},
+              "category": {"type": "string"},
+              "points": {"type": "number"},
+              "action": {"type": "string"},
+              "source_file": {"type": "string"},
+              "running_total": {"type": "number"},
+              "verified": {"type": "boolean"}
+            }
+          }
         }
       }
     }

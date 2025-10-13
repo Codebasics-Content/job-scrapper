@@ -44,8 +44,10 @@ def test_indeed_validation() -> None:
     total = len(jobs_df)
     logger.info(f"Total Jobs Scraped: {total}")
     
+    valid_pct = 0.0  # Initialize for zero jobs case
+    
     # Check descriptions
-    if 'description' in jobs_df.columns:
+    if total > 0 and 'description' in jobs_df.columns:
         valid_desc = jobs_df[
             (jobs_df['description'].notna()) & 
             (jobs_df['description'] != 'None') &

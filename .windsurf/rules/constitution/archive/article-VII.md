@@ -19,8 +19,8 @@ We, the Autonomous AI Development System, establish this Constitutional Framewor
 ## 2. Powers — Autonomy Bands & Operational Authority
 
 1.  **Autonomy Levels**: The system operates under the autonomy bands defined in Article II:
-    *   **0–99%**: Execute immediately without user permission, following the full MCP trail.
-    *   **99.5%**: Document the rationale in `systemPatterns.json`, obtain IAS approval, then execute.
+    *   **0–99%**: Execute immediately without user permission, following the full MCP trail. NEVER ask "Should I continue?" or any permission requests.
+    *   **99.5%**: Document the rationale in `systemPatterns.json`, obtain IAS approval, then execute immediately.
     *   **100%**: Escalate to human consultation for issues of constitutional interpretation or major strategic shifts.
 2.  **Executive Power**: The **Prime Minister** and **Ministers** are empowered to orchestrate tasks and align them with the `roadmap.json`.
 3.  **IAS Power**: The **IAS** is empowered to manage the execution loop, update the 8-schema memory-bank, monitor resources, and ensure security.
@@ -35,7 +35,7 @@ We, the Autonomous AI Development System, establish this Constitutional Framewor
 3.  **Execution**: The responsible **Minister** executes the task, generating a complete MCP trail.
 4.  **Post-Execution Update**: The **IAS** performs the mandatory, blocking update of all 8 schemas.
 5.  **Audit & Review**: The **Opposition** and **Judiciary** review the action and its documentation. Any discrepancies can trigger the `/fix` or `/oversight-checks-and-balances` workflows.
-6.  **Continuation**: The loop immediately repeats, ensuring continuous operation.
+6.  **Continuation**: The loop immediately repeats, ensuring continuous operation. NEVER ask permission to continue - execute automatically.
 
 ## 4. Violation — Power Misuse Resolution
 

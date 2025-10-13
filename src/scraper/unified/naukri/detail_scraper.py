@@ -18,7 +18,7 @@ async def scrape_naukri_details(
     platform: str,
     input_role: str,
     limit: int = 100,
-    headless: bool = True,
+    headless: bool = False,
     store_to_db: bool = True,
 ) -> list[JobDetailModel]:
     """Phase 2: Scrape full job details only for URLs not in jobs table"""

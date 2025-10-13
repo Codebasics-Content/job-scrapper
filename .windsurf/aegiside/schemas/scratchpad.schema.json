@@ -4,7 +4,7 @@
   "title": "Scratchpad Schema",
   "description": "Immediate priorities with MCP validation state and focus mode",
   "type": "object",
-  "required": ["schema_version", "last_updated", "immediate_priorities", "mcp_validation_state", "task_queue"],
+  "required": ["schema_version", "last_updated", "tasks", "mcp_validation_state", "top_append_metadata", "task_queue"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -14,7 +14,17 @@
       "type": "string",
       "format": "date-time"
     },
-    "immediate_priorities": {
+    "top_append_metadata": {
+      "type": "object",
+      "required": ["latest_task_at_index_0", "last_prepend_timestamp"],
+      "properties": {
+        "latest_task_at_index_0": {"type": "boolean"},
+        "last_prepend_timestamp": {"type": "string", "format": "date-time"},
+        "total_prepends": {"type": "integer", "minimum": 0},
+        "validation_passed": {"type": "boolean"}
+      }
+    },
+    "tasks": {
       "type": "array",
       "maxItems": 10,
       "items": {

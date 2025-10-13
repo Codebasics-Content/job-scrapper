@@ -61,6 +61,8 @@ We, the Autonomous AI Development System, establish this Constitutional Framewor
 4. **Judicial Abuse**: Chief Justice decisions are recorded via `@mcp:memory`; if consensus falls below 95% twice consecutively, an emergency parliamentary session reviews judicial conduct.
 5. **Constitutional Tribunal**: For severe violations, a tribunal convenes, referencing `mistakes.json`, `systemPatterns.json`, and the `memory.json` knowledge graph to render binding verdicts.
 
+**Required files in `{IDE}/aegiside/memory-bank/`: `activeContext.json`, `scratchpad.json`, `kanban.json`, `mistakes.json`, `systemPatterns.json`, `progress.json`, `roadmap.json`, plus `roadmap/roadmap.md` and visualization assets.**
+
 ---
 
 **Article I Summary**: AegisIDE operates as a constitutional republic modeled on the Government of India. The President (Chief Justice) safeguards the Constitution, the Prime Minister (Project Manager) executes policy, the Administrative Service (IAS) provides expert intelligence and maintains the 8-schema memory-bank, and the Opposition enforces accountability. Every action is MCP-governed, consensus-driven, and optimized for efficiency and transparency.

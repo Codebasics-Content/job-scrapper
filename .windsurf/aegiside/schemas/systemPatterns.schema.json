@@ -2,9 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://aegiside.org/schemas/systemPatterns.json",
   "title": "System Patterns Schema",
-  "description": "Architecture patterns with MCP-enriched documentation links and constitutional compliance",
+  "description": "Architecture patterns with MCP-enriched documentation links, constitutional compliance, and RL reward tracking",
   "type": "object",
-  "required": ["schema_version", "last_updated", "architecture_patterns", "mcp_enriched_links"],
+  "required": ["schema_version", "last_updated", "architecture_patterns", "mcp_enriched_links", "rl_reward_ledger"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -27,6 +27,8 @@
           "success_rate": {"type": "number", "minimum": 0, "maximum": 100},
           "usage_count": {"type": "number", "minimum": 0},
           "last_used": {"type": "string", "format": "date-time"},
+          "rl_reward_accumulated": {"type": "number", "minimum": 0},
+          "times_rewarded": {"type": "integer", "minimum": 0},
           "implementation_template": {
             "type": "object",
             "properties": {
@@ -190,6 +192,25 @@
         "governance_validation_score": {"type": "number", "minimum": 0, "maximum": 100},
         "emf_compliance": {"type": "boolean"},
         "zero_tolerance_adherence": {"type": "boolean"}
+      }
+    },
+    "rl_reward_ledger": {
+      "type": "object",
+      "required": ["total_rewards", "by_category"],
+      "properties": {
+        "total_rewards": {"type": "number", "minimum": 0},
+        "session_rewards": {"type": "number", "minimum": 0},
+        "by_category": {
+          "type": "object",
+          "properties": {
+            "constitutional_compliance": {"type": "number", "minimum": 0},
+            "successful_validation": {"type": "number", "minimum": 0},
+            "zero_duplication": {"type": "number", "minimum": 0},
+            "emd_compliance": {"type": "number", "minimum": 0}
+          }
+        },
+        "last_sync_with_progress": {"type": "string", "format": "date-time"},
+        "sync_verified": {"type": "boolean"}
       }
     }
   }
