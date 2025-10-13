@@ -1,15 +1,20 @@
-"""Multi-platform JobSpy scraper with selective proxy usage (≤80 lines EMD)"""
+"""Multi-platform JobSpy scraper with selective proxy usage + skill extraction"""
 from __future__ import annotations
 
 import logging
 from datetime import datetime
+from pathlib import Path
 
 import pandas as pd
 from jobspy import scrape_jobs
 
 from .proxy_config import get_proxy_for_platform
+from ...analysis.skill_extraction import extract_skills_advanced
 
 logger = logging.getLogger(__name__)
+
+# Path to skills reference
+SKILLS_REF = Path(__file__).parent.parent.parent.parent / "skills_reference_2025.json"
 
 
 def scrape_multi_platform(
@@ -85,6 +90,13 @@ def scrape_multi_platform(
                 batch_duration = (batch_end - batch_start).total_seconds()
                 
                 if batch_df is not None and len(batch_df) > 0:
+                    # Extract skills from descriptions
+                    if 'description' in batch_df.columns:
+                        logger.info(f"   🔍 Extracting skills from {len(batch_df)} jobs...")
+                        batch_df['skills'] = batch_df['description'].apply(
+                            lambda desc: extract_skills_advanced(str(desc), str(SKILLS_REF)) if pd.notna(desc) else []
+                        )
+                    
                     platform_results.append(batch_df)
                     total_so_far = sum(len(df) for df in platform_results)
                     elapsed = (batch_end - start_time).total_seconds()
