@@ -38,10 +38,21 @@ async def scrape_naukri_urls(
         while len(job_urls) < limit and page <= max_pages:
             page_batch = list(range(page, min(page + concurrent_pages, max_pages + 1)))
 
-            async def scrape_page(page_num: int) -> list[tuple[str, str]]:
+            async def _scrape_page_urls(browser: PlaywrightBrowser, page_num: int, headless: bool = False, save_debug: bool = False) -> list[tuple[str, str]]:
                 search_url = build_search_url(keyword, location, page=page_num)
-                list_html = await browser.render_url(search_url, wait_seconds=5.0)
-                soup = BeautifulSoup(list_html, "html.parser")
+                html = await browser.render_url(search_url, wait_seconds=5.0)
+                if not html:
+                    logger.warning(f"No HTML returned for page {page_num}")
+                    return []
+                
+                # Save HTML for debugging (first page only)
+                if save_debug:
+                    from pathlib import Path
+                    debug_file = Path("debug_naukri_listing.html")
+                    debug_file.write_text(html, encoding="utf-8")
+                    logger.info(f"✅ Saved HTML to {debug_file.absolute()} for selector debugging")
+                
+                soup = BeautifulSoup(html, "html.parser")
                 logger.info(f"✅ Page {page_num} scraped")
 
                 urls: list[tuple[str, str]] = []
@@ -53,11 +64,11 @@ async def scrape_naukri_urls(
                             urls.append((card_data["title"], url))
                 return urls
 
-            batch_results = await asyncio.gather(*[scrape_page(p) for p in page_batch])
+            batch_results = await asyncio.gather(*[_scrape_page_urls(browser, page_num, headless, save_debug=(page_num == 1)) for page_num in page_batch])
 
             for urls_list in batch_results:
                 for title, url in urls_list:
-                    if url not in [u for t, u in job_urls]:
+                    if url not in [existing_url for _, existing_url in job_urls]:
                         job_urls.append((title, url))
                     if len(job_urls) >= limit:
                         break
