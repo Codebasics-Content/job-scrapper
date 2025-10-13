@@ -2,6 +2,27 @@
   "schema_version": "1.0.0",
   "last_updated": "2025-10-13T19:50:53+05:30",
   "architecture_patterns": {
+    "naukri_2phase_scraping": {
+      "pattern": "Two-phase Playwright scraping with concurrent execution",
+      "phase_1_url_extraction": {
+        "browser": "Playwright (headless=False)",
+        "concurrency": "5 tabs max",
+        "flow": "Open search URL → Scrape job URLs → Deduplicate against jobs table (platform='naukri' + url) → Store to job_url table",
+        "implementation": "src/scraper/unified/naukri/url_scraper.py",
+        "database": "INSERT into job_url after EXISTS check on jobs table"
+      },
+      "phase_2_detail_scraping": {
+        "browser": "Playwright (headless=False)",
+        "concurrency": "5 tabs/batch in single window",
+        "flow": "Load URLs from job_url → Open in batches → Extract job details → Parse skills from description → Store to jobs table",
+        "implementation": "src/scraper/unified/naukri/detail_scraper.py",
+        "skill_extraction": "AdvancedSkillExtractor (557 skills reference)",
+        "database": "INSERT into jobs with full details + skills"
+      },
+      "anti_detection": "headless=False shows visible browser to bypass Naukri bot detection",
+      "rl_reward": 20,
+      "status": "production_ready"
+    },
     "consolidated_scraper": {
       "approach": "JobSpy (LinkedIn+Indeed) + Playwright (Naukri) with centralized AdvancedSkillExtractor",
       "implementation": "multi_platform_service.py (89 lines)",

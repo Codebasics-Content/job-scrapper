@@ -9,6 +9,14 @@
   },
   "priority_queue": [
     {
+      "id": "naukri_architecture_verified",
+      "task": "Naukri 2-phase architecture documented in memory bank",
+      "priority": "P0",
+      "blocker": false,
+      "context": "Phase 1: URL extraction (5 concurrent tabs, dedupe vs jobs table). Phase 2: Detail scraping (5 tabs/batch, skill extraction). Ready for validation test.",
+      "added_at": "2025-10-13T22:42:42+05:30"
+    },
+    {
       "id": "test_linkedin_20",
       "task": "Execute test_linkedin_20_validation.py with venv",
       "priority": "P0",

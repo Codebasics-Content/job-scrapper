@@ -3,6 +3,21 @@
   "last_updated": "2025-10-13T20:15:23+05:30",
   "event_tracking": [
     {
+      "id": "evt-naukri-architecture-update-007",
+      "timestamp": "2025-10-13T22:42:42+05:30",
+      "type": "architecture_documentation",
+      "task_id": "naukri_2phase_scraper",
+      "description": "Documented Naukri 2-phase scraping architecture with Playwright concurrent execution",
+      "context": {
+        "phase_1": "URL extraction: Playwright opens 5 concurrent tabs, scrapes search results, stores to job_url table after deduplication check against jobs table (naukri platform + url)",
+        "phase_2": "Detail scraping: Batch process URLs (5 concurrent tabs/window), extract job details + skills from descriptions, store to jobs table",
+        "browser_config": "headless=False for anti-bot detection",
+        "concurrency": "5 tabs max per batch",
+        "deduplication": "Cross-verify job_url vs jobs table by platform+url before Phase 2"
+      },
+      "rl_reward": 10
+    },
+    {
       "id": "evt-continue-recovery-006",
       "timestamp": "2025-10-13T21:37:24+05:30",
       "type": "continue_recovery",
