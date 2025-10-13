@@ -3,6 +3,19 @@
   "last_updated": "2025-10-13T20:07:38+05:30",
   "error_patterns": [
     {
+      "id": "naukri_browser_root_cause_found",
+      "category": "critical_error",
+      "error": "Browser never opened because scrape_naukri_urls() ignores headless parameter. Phase 1 hardcoded headless=True, but unified function passes headless=False.",
+      "root_cause": "scrape_naukri_urls in url_scraper.py line 23 has default headless=True and doesn't receive the parameter from unified caller. Browser automation requires headless=False to open visibly.",
+      "solution": "naukri_unified.py must pass headless parameter to scrape_naukri_urls() call. Currently only passes to scrape_naukri_details().",
+      "prevention": "ALWAYS trace parameter flow through all function calls. Verify parameters reach their intended destinations.",
+      "occurred_at": "2025-10-13T20:43:00+05:30",
+      "resolved": false,
+      "constitutional_article": "Article 7: Autonomous Operations - Must trace execution flow and identify root causes",
+      "rl_penalty": -60,
+      "learning": "Playwright error 'Target closed' was symptom, not cause. Real issue: headless=True in Phase 1 prevented visible browser launch."
+    },
+    {
       "id": "exploiting_write_file_instead_edit",
       "category": "critical_error",
       "error": "Used mcp3_write_file (filesystem MCP) instead of replace_file_content for editing existing files. This is EXPLOITING (overwriting) instead of EXPLORING (surgical edits).",

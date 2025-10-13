@@ -19,7 +19,7 @@ async def scrape_naukri_jobs_unified(
 ) -> List[JobDetailModel]:
     """Unified Naukri scraper orchestrating two-phase process"""
     # Phase 1: Scrape URLs
-    urls = await scrape_naukri_urls(keyword=keyword, location=location, limit=limit)
+    urls = await scrape_naukri_urls(keyword=keyword, location=location, limit=limit, headless=headless)
     
     # Phase 2: Scrape details for unscraped URLs
     jobs = await scrape_naukri_details(

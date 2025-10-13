@@ -2,6 +2,14 @@
   "schema_version": "1.0.0",
   "reinforcement_learning": [
     {
+      "workflow": "root_cause_analysis_naukri",
+      "rl_penalty": -60,
+      "reason": "Browser never opened. Root cause: headless parameter not passed from naukri_unified to scrape_naukri_urls. Phase 1 defaulted to headless=True.",
+      "timestamp": "2025-10-13T20:43:00+05:30",
+      "prevention": "ALWAYS trace parameter flow through entire call chain. Verify all parameters reach their destinations.",
+      "correction": "Fixed: Added headless=headless to scrape_naukri_urls() call in naukri_unified.py line 22."
+    },
+    {
       "workflow": "failed_autonomous_resolution",
       "rl_penalty": -30,
       "reason": "Did not autonomously resolve Naukri test failure. User had to point out browser wasn't opening.",
