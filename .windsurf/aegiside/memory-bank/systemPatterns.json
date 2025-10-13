@@ -1,309 +1,38 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T18:13:58+05:30",
+  "last_updated": "2025-10-13T19:50:53+05:30",
   "architecture_patterns": {
-    "jobspy_integration": {
-      "approach": "Use python-jobspy library for free, unlimited LinkedIn scraping",
-      "rationale": "Saves $250+ vs BrightData datasets, provides real-time data, supports 6+ platforms, zero setup cost",
-      "implementation": {
-        "library": "python-jobspy v1.1.82",
-        "scraper_module": "src/importer/jobspy/linkedin_scraper.py (78 lines EMD)",
-        "test_script": "test_jobspy_linkedin.py with dotenv support",
-        "documentation": "README_JOBSPY.md with complete setup guide"
+    "consolidated_scraper": {
+      "approach": "JobSpy (LinkedIn+Indeed) + Playwright (Naukri) with centralized AdvancedSkillExtractor",
+      "implementation": "multi_platform_service.py (89 lines)",
+      "platforms": {
+        "linkedin": "JobSpy - free, no browser",
+        "indeed": "JobSpy - free, no browser",
+        "naukri": "Playwright - headless=False for anti-detection"
       },
-      "features": [
-        "Scrapes LinkedIn, Indeed, ZipRecruiter, Glassdoor, Google Jobs",
-        "Returns pandas DataFrame with full job details",
-        "Built-in proxy support (optional)",
-        "No browser automation overhead - pure HTTP requests",
-        "Works perfectly without proxy for 50-200 jobs/session"
-      ],
-      "cost_savings": "$250+ (vs BrightData datasets minimum purchase)",
-      "output_schema": {
-        "title": "string",
-        "company": "string",
-        "location": "string",
-        "job_type": "fulltime|parttime|internship|contract",
-        "job_url": "string (direct LinkedIn URL)",
-        "description": "string (full description)",
-        "date_posted": "string",
-        "is_remote": "boolean",
-        "job_level": "string (LinkedIn specific)",
-        "company_industry": "string"
-      },
-      "proxy_configuration": {
-        "required_format": "http://brd-customer-{ID}-zone-{ZONE}:{PASSWORD}@localhost:{PORT}",
-        "optional": true,
-        "use_case": "Only needed for 1000+ jobs/day to avoid rate limits",
-        "tested_without_proxy": "Successfully scraped 10 jobs in 30 seconds"
-      }
+      "skills": "Single AdvancedSkillExtractor instance (557 skills reference)",
+      "status": "production_ready"
     },
-    "two_table_optimization": {
-      "approach": "Separate URL collection from detail scraping for 80-90% speedup",
-      "rationale": "URL scraping is 10-100x faster than full detail scraping. Storing URLs first enables resume capability and deduplication.",
-      "implementation": {
-        "naukri_scraper": {
-          "url_scraper": "src/scraper/unified/naukri/url_scraper.py (79 lines)",
-          "detail_scraper": "src/scraper/unified/naukri/detail_scraper.py (80 lines)",
-          "wrapper": "src/scraper/unified/naukri_unified.py (11 lines)"
-        },
-        "streamlit_ui": {
-          "two_phase_panel": "src/ui/components/form/two_phase_panel.py (69 lines)",
-          "two_phase_executor": "src/ui/components/form/two_phase_executor.py (77 lines)",
-          "scraper_form": "src/ui/components/scraper_form.py (33 lines)"
-        }
-      },
-      "components": [
-        "JobUrlModel (lightweight URL storage)",
-        "JobDetailModel (full job details)",
-        "job_urls table (fast collection)",
-        "jobs table (detail enrichment)",
-        "LEFT JOIN query (identify unscraped URLs)",
-        "Two separate UI buttons (Phase 1 URLs, Phase 2 Details)"
-      ]
-    },
-    "streamlit_ui_patterns": {
-      "approach": "Modular two-phase UI with separate buttons and real-time database status",
-      "features": [
-        "Two buttons: '🔗 Phase 1: Scrape URLs' and '📄 Phase 2: Scrape Details'",
-        "Real-time unscraped URL count from database",
-        "Phase 2 button disabled when no unscraped URLs exist",
-        "Progress bars and metrics for both phases",
-        "Async execution with asyncio.run()"
-      ],
-      "rationale": "Clear separation of URL and detail workflows, user sees database status before scraping"
-    },
-    "emd_compliance": {
-      "jobspy_scraper": "78 lines (single function with proxy support)",
-      "url_scraper": "79 lines (async URL collection, Playwright, BeautifulSoup)",
-      "detail_scraper": "80 lines (async detail scraping with LEFT JOIN query)",
-      "two_phase_panel": "69 lines (UI config with real-time DB status)",
-      "two_phase_executor": "77 lines (Phase 1 and Phase 2 execution logic)",
-      "wrapper": "11 lines (thin re-export layer)",
-      "benefit": "Maximum 80 lines per file, easy maintenance, clear separation of concerns"
+    "deprecated": {
+      "unified_folder": "Old Playwright scrapers for Indeed - ignore",
+      "indeed_unified": "Deleted 115 lines duplicate",
+      "service_py": "Old service, replaced by multi_platform_service.py"
     }
   },
-  "database_patterns": {
-    "normalization": {
-      "input_role": "Lowercase with underscores (e.g., 'AI Engineer' -> 'ai_engineer')",
-      "job_id": "MD5 hash of platform + URL (16 chars)"
-    },
-    "deduplication": {
-      "url_level": "UNIQUE(platform, url) in job_urls table",
-      "detail_level": "Query unscraped: LEFT JOIN where jobs.job_id IS NULL"
-    },
-    "performance": {
-      "indexes": ["platform_role on job_urls", "url on both tables", "platform on jobs"],
-      "foreign_key": "jobs.job_id references job_urls.job_id"
-    }
+  "emd_compliance": {
+    "multi_platform_service": "89 lines (within limit)",
+    "benefit": "Single source of truth for skill extraction"
   },
-  "technical_stack": {
-    "linkedin_scraping": "python-jobspy (free, no browser)",
-    "naukri_indeed_scraping": "Playwright (async, headless)",
-    "html_parsing": "BeautifulSoup4",
-    "database": "SQLite with two-table schema",
-    "models": "Pydantic v2 with validation",
-    "ui_framework": "Streamlit with async execution",
-    "skill_extraction": "Regex-based from full descriptions",
-    "concurrency": "asyncio with batch processing"
-  },
-  "deployment": {
-    "brightdata_proxy": "Optional - only for high-volume scraping (1000+ jobs/day)",
-    "proxy_authentication": "http://brd-customer-{ID}-zone-{ZONE}:{PASSWORD}@localhost:{PORT}",
-    "docker_whitelist": "Add 172.19.0.1 or 172.0.0.0/8 to proxy_manager_config.json",
-    "jobspy_setup": "pip install python-jobspy (already installed)"
+  "cost_savings": {
+    "jobspy": "$250+ saved vs BrightData datasets",
+    "proxy": "Optional for LinkedIn only, not needed for Indeed/Naukri"
   },
   "mcp_integration": {
-    "filesystem": "Read/write memory bank schemas and code files",
-    "context7": "Validate JobSpy integration patterns",
-    "memory": "Store cost optimization patterns ($250+ saved)",
-    "fetch": "Research JobSpy documentation",
-    "time": "Timestamp all operations",
-    "git": "Version control checkpoints",
-    "math": "Compute cost savings and performance metrics",
-    "sequential_thinking": "Plan integration steps"
-  },
-  "brightdata_proxy_research": {
-    "research_date": "2025-10-12",
-    "sources": [
-      "github.com/luminati-io/luminati-proxy",
-      "docs.brightdata.com/api-reference/proxy-manager",
-      "Context7 documentation analysis"
-    ],
-    "conclusion": "Luminati Proxy Manager CANNOT work standalone - it is a CLIENT that MUST authenticate with BrightData's PAID cloud network",
-    "architecture": {
-      "component": "Luminati Proxy Manager (Docker/NPM)",
-      "role": "Gateway/Client software (FREE)",
-      "backend": "BrightData Cloud Proxy Network (PAID $15/GB)",
-      "flow": "User App → localhost:24000 (Manager) → brd.superproxy.io (BrightData Cloud) → Target Website"
-    },
-    "required_parameters": {
-      "customer": "BrightData customer ID (e.g., 'hl_864cf5cf')",
-      "password": "Zone password from BrightData dashboard",
-      "zone": "Proxy zone type (residential, datacenter, mobile)",
-      "proxy": "Default: 'brd.superproxy.io' (BrightData's super proxy)",
-      "proxy_port": "Default: 22225"
-    },
-    "evidence_from_docs": {
-      "example_code": "const proxy = new Server({ customer: 'CUSTOMER', password: 'PASSWORD', zone: 'gen' });",
-      "cli_options": "--customer, --password, --zone are REQUIRED for proxy operation",
-      "default_proxy": "--proxy defaults to 'brd.superproxy.io' (BrightData cloud)",
-      "no_standalone_mode": "No CLI option exists to run without BrightData backend"
-    },
-    "cost_structure": {
-      "software": "FREE (Docker image, NPM package, bash install)",
-      "service": "PAID ($15/GB for residential proxies)",
-      "business_model": "Freemium - free software locks you into paid service"
-    },
-    "attempted_workarounds": {
-      "no_dropin_mode": "--no-dropin only disables auto-credentials, still requires BrightData auth",
-      "ext_proxies": "--ext_proxies option exists but requires external paid proxies",
-      "localhost_only": "localhost:24000 just forwards to BrightData, cannot provide IPs standalone"
-    },
-    "user_config_analysis": {
-      "ports": "24000 (US), 24001 (India) configured",
-      "zone": "residential",
-      "gb_cost": 15,
-      "password": "gkl7gk6qk7s0",
-      "whitelist": "0.0.0.0/0 (all IPs whitelisted)",
-      "status": "407 Proxy Authentication Required - indicates BrightData cloud rejecting credentials"
-    },
-    "recommendation": {
-      "for_free_scraping": "Use JobSpy without proxy (already working, 10 jobs in 30s)",
-      "for_high_volume": "Pay BrightData $15/GB if scraping 1000+ jobs/day",
-      "alternative_proxies": "Use free public proxies or self-hosted VPN (unstable, not recommended)"
-    },
-    "key_insight": "Installation being FREE does not mean the SERVICE is free. Luminati Manager is just client software - the actual proxy IPs come from BrightData's paid network."
-  },
-  "jobspy_platform_research": {
-    "research_date": "2025-10-12T22:45:00+05:30",
-    "objective": "Identify which JobSpy platforms support scalable job description + skills extraction",
-    "methodology": "MCP-driven analysis using @mcp:fetch, @mcp:context7, @mcp:sequential-thinking",
-    "platforms_analyzed": 7,
-    "findings": {
-      "tier1_recommended": {
-        "indeed": {
-          "scale_rating": "EXCELLENT",
-          "rate_limiting": "None (best scraper currently)",
-          "job_description": "Yes (description field)",
-          "skills_extraction": "Manual from description",
-          "countries_supported": 60,
-          "max_jobs_per_search": "User-configurable via Streamlit limit input (no platform cap)",
-          "cost": "Free",
-          "recommendation": "Primary platform for unlimited scale",
-          "key_features": [
-            "No rate limiting",
-            "Global coverage (USA, India, UK, Canada, Europe, Asia)",
-            "Filters: hours_old, job_type, is_remote, easy_apply",
-            "Best for bulk scraping operations"
-          ]
-        },
-        "naukri": {
-          "scale_rating": "EXCELLENT",
-          "rate_limiting": "Reasonable (moderate volume)",
-          "job_description": "Yes (description field)",
-          "skills_extraction": "NATIVE skills field (pre-parsed)",
-          "countries_supported": "India",
-          "max_jobs_per_search": "User-configurable via Streamlit limit input",
-          "cost": "Free",
-          "recommendation": "Secondary platform + skills validation dataset",
-          "unique_fields": [
-            "skills (pre-extracted by Naukri)",
-            "experience_range",
-            "company_rating",
-            "company_reviews_count",
-            "vacancy_count",
-            "work_from_home_type"
-          ],
-          "strategic_value": "Native skills field provides ground truth for validating our AdvancedSkillExtractor accuracy"
-        }
-      },
-      "tier2_conditional": {
-        "linkedin": {
-          "scale_rating": "GOOD (with proxies)",
-          "rate_limiting": "Aggressive (~10 pages per IP)",
-          "job_description": "Yes (requires linkedin_fetch_description=True)",
-          "skills_extraction": "Manual from description",
-          "countries_supported": "Global",
-          "max_jobs_per_search": "User-configurable via Streamlit limit input (~1000 practical limit per IP without proxies)",
-          "cost": "Free (proxies needed for scale)",
-          "recommendation": "Tertiary platform for premium roles",
-          "limitations": "Rate limits make proxies mandatory for >100 jobs",
-          "unique_fields": ["job_level", "company_industry"]
-        },
-        "zip_recruiter": {
-          "scale_rating": "LIMITED",
-          "rate_limiting": "Moderate",
-          "job_description": "Yes",
-          "skills_extraction": "Manual from description",
-          "countries_supported": "USA, Canada only",
-          "max_jobs_per_search": "User-configurable via Streamlit limit input",
-          "cost": "Free",
-          "recommendation": "Use only for USA/Canada specific requirements"
-        }
-      },
-      "tier3_not_recommended": {
-        "glassdoor": {
-          "scale_rating": "POOR",
-          "reason": "Aggressive rate limiting",
-          "recommendation": "Avoid for production scraping"
-        },
-        "google": {
-          "scale_rating": "POOR",
-          "reason": "Complex syntax, limited control via google_search_term parameter",
-          "recommendation": "Avoid - use Indeed instead"
-        },
-        "bayt": {
-          "scale_rating": "LIMITED",
-          "reason": "Only uses search_term parameter, limited filtering",
-          "recommendation": "Avoid - use Naukri for international markets"
-        }
-      }
-    },
-    "scale_capacity_estimates": {
-      "without_proxies": "10,000+ jobs/day across Indeed + Naukri",
-      "with_proxies": "50,000+ jobs/day adding LinkedIn",
-      "cost_per_10k_jobs": "$0 (Indeed + Naukri free-tier)"
-    },
-    "implementation_strategy": {
-      "optimal_combination": ["indeed", "naukri", "linkedin"],
-      "primary_scraper": "Indeed (unlimited scale, global)",
-      "secondary_scraper": "Naukri (native skills + India market)",
-      "tertiary_scraper": "LinkedIn (premium roles with proxy rotation)",
-      "batch_size_recommendations": {
-        "indeed": "50-100 jobs/batch (no rate limits)",
-        "naukri": "50 jobs/batch (moderate limits)",
-        "linkedin": "25-50 jobs/batch (aggressive limits)"
-      }
-    },
-    "skills_extraction_approach": {
-      "all_platforms": "Use AdvancedSkillExtractor on description field (557 skills reference)",
-      "naukri_advantage": "Use native skills field as validation/training dataset",
-      "cross_validation": "Compare extracted skills vs Naukri native skills to measure accuracy",
-      "improvement_path": "Use Naukri skills as ground truth to improve extraction patterns"
-    },
-    "technical_integration": {
-      "existing_module": "src/scraper/jobspy/batch_scraper.py",
-      "modification_needed": "Change site_name from ['linkedin'] to ['indeed', 'naukri', 'linkedin']",
-      "emd_compliance": "Current file 80 lines, may need decomposition for multi-platform",
-      "database_storage": "Existing JobDetailModel supports all platform fields"
-    },
-    "mcp_evidence": {
-      "fetch_source": "https://github.com/speedyapply/JobSpy README.md",
-      "context7_validation": "Confirmed 7 platforms, rate limiting behavior, schema fields",
-      "sequential_thinking": "8-step analysis covering scale, costs, implementation",
-      "math_calculations": "10,000-50,000 jobs/day capacity estimates"
-    },
-    "recommendations": {
-      "immediate_action": "Extend batch_scraper.py to support Indeed and Naukri",
-      "validation_project": "Build Naukri skills validation dataset (1000+ jobs)",
-      "scale_testing": "Test Indeed unlimited scraping with 1000 job batch",
-      "cost_optimization": "Remain on free tier - proxies only if exceeding 10K jobs/day"
-    },
-    "constitutional_alignment": {
-      "free_tier_focus": "Indeed + Naukri = $0 cost for 10K+ jobs/day",
-      "emd_compliance": "Decompose batch_scraper.py if adding multi-platform logic",
-      "mcp_integration": "All research via mandatory MCP chain (fetch, context7, sequential-thinking, math)"
-    }
+    "filesystem": "Schema management",
+    "context7": "Documentation lookup",
+    "memory": "Pattern storage",
+    "git": "Version control",
+    "time": "Timestamps",
+    "math": "Metrics calculation"
   }
 }

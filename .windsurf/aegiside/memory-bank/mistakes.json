@@ -1,74 +1,39 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-13T12:24:00+05:30",
+  "last_updated": "2025-10-13T19:48:57+05:30",
   "error_patterns": [
+    {
+      "id": "overthinking_architecture_gaps",
+      "category": "analysis_error",
+      "error": "Identified 5 'gaps' when user only wanted simple consolidation: JobSpy (LinkedIn+Indeed) + Playwright (Naukri)",
+      "root_cause": "Overthinking architecture. Treated deprecated unified/ folder as active instead of recognizing it as legacy code to ignore",
+      "solution": "ONLY gap: Streamlit UI needs to import new multi_platform_service.py. Everything else in unified/ is deprecated.",
+      "prevention": "When user says 'only considerations X, Y, Z' - STOP analyzing beyond those considerations. Old code = ignore, not fix.",
+      "occurred_at": "2025-10-13T19:48:57+05:30",
+      "resolved": false,
+      "constitutional_article": "Article 17: Duty to Apply Learned Patterns",
+      "rl_penalty": -15,
+      "learning": "Simplicity over complexity. User's 'only considerations' statement = hard constraint, not suggestion."
+    },
     {
       "id": "file_creation_violation_naukri_test",
       "category": "constitutional_violation",
       "error": "Attempted to create test_naukri_unified_20.py when test_naukri_20_validation.py already exists",
-      "root_cause": "Failed to execute mandatory pre-creation check: did not search for existing test files before attempting creation",
-      "solution": "UPDATE existing test_naukri_20_validation.py to use unified scraper with headless=False parameter",
-      "prevention": "ALWAYS run find_by_name or grep_search for similar files BEFORE write_to_file. Pattern: test_*_validation.py already existed.",
+      "root_cause": "Failed to execute mandatory pre-creation check",
+      "solution": "UPDATE existing test_naukri_20_validation.py",
+      "prevention": "ALWAYS run find_by_name or grep_search BEFORE write_to_file",
       "occurred_at": "2025-10-13T12:23:00+05:30",
       "resolved": false,
-      "constitutional_article": "global_rules.md Section 2: File Modification Protocol",
-      "penalty": "Reinforcement learning: -10 reward for violating File Modification Protocol",
+      "constitutional_article": "global_rules.md Section 2",
+      "rl_penalty": -10,
       "learning": "Before ANY file creation: 1) Search existing, 2) Update if found, 3) Create only if justified"
-    },
-    {
-      "id": "naukri_unified_missing_function",
-      "category": "architecture",
-      "error": "ImportError: cannot import name 'scrape_naukri_jobs_unified' from 'src.scraper.unified.naukri_unified'",
-      "root_cause": "service.py expects unified function but naukri_unified.py only exports two-phase functions (scrape_naukri_urls, scrape_naukri_details)",
-      "solution": "Created wrapper function scrape_naukri_jobs_unified that orchestrates two-phase process",
-      "prevention": "Verify function exports match imports before refactoring",
-      "occurred_at": "2025-10-12T22:37:00+05:30",
-      "resolved": true,
-      "resolved_at": "2025-10-12T22:42:00+05:30",
-      "impact": "Resolved - wrapper function added to naukri_unified.py"
-    },
-    {
-      "id": "brightdata_proxy_403",
-      "category": "configuration",
-      "error": "HTTPSConnectionPool: Max retries exceeded (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))",
-      "root_cause": "BrightData proxy requires authentication credentials in URL format. Plain http://localhost:24000 gets rejected.",
-      "solution": "Use authenticated format: http://brd-customer-{CUSTOMER_ID}-zone-{ZONE}:{PASSWORD}@localhost:{PORT}",
-      "prevention": "Always include proxy authentication when using Luminati Proxy Manager",
-      "occurred_at": "2025-10-12T18:04:00+05:30",
-      "resolved": true,
-      "workaround": "JobSpy works without proxy for reasonable volumes (50-200 jobs/session)",
-      "documentation": "README_JOBSPY.md documents both proxy and no-proxy approaches"
-    },
-    {
-      "id": "docker_ip_whitelist",
-      "category": "network",
-      "error": "Connection from your IP (172.19.0.1) is forbidden",
-      "root_cause": "Luminati proxy manager blocks Docker container IP by default. Requires explicit whitelisting.",
-      "solution": "Add Docker network IP to proxy_manager_config.json whitelist_ips: ['127.0.0.1', '172.19.0.1'] or use range '172.0.0.0/8'",
-      "prevention": "Configure proxy whitelist for all Docker network IPs during setup",
-      "occurred_at": "2025-10-12T18:09:00+05:30",
-      "resolved": false,
-      "workaround": "Continue without proxy - works perfectly for reasonable volumes",
-      "impact": "Low - proxy optional for JobSpy, only needed for 1000+ jobs/day"
-    }
-  ],
-  "resolved_issues": [
-    {
-      "issue": "Naukri finding 0 jobs",
-      "resolution": "Updated CSS selectors from 'srp-jobtuple-wrapper' to 'article.jobTuple'",
-      "date": "2025-10-12T14:30:00+05:30"
-    },
-    {
-      "issue": "Chrome anti-detection failing",
-      "resolution": "Use uc.ChromeOptions() not selenium.Options(), add excludeSwitches",
-      "date": "2025-10-12T14:00:00+05:30"
     }
   ],
   "prevention_checklist": [
-    "Always use authenticated proxy URLs for BrightData",
-    "Whitelist Docker IPs in proxy manager config",
-    "Test without proxy first for simple scraping tasks",
-    "Use uc.ChromeOptions() for Selenium anti-detection",
-    "Keep CSS selectors flexible with multiple fallbacks"
+    "When user says 'only X, Y, Z' - those are THE constraints, nothing else matters",
+    "Deprecated folders (unified/) = ignore, don't analyze for gaps",
+    "ALWAYS search existing files before creating new ones",
+    "Keep CSS selectors flexible with multiple fallbacks",
+    "Simplicity beats complexity - fewer moving parts = better"
   ]
 }

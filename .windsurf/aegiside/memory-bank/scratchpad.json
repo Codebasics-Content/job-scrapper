@@ -1,82 +1,40 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-13T11:36:51+05:30",
+  "last_updated": "2025-10-13T16:35:15+05:30",
+  "top_append_metadata": {
+    "latest_task_at_index_0": true,
+    "last_prepend_timestamp": "2025-10-13T16:35:15+05:30",
+    "total_prepends": 1,
+    "validation_passed": true
+  },
   "priority_queue": [
     {
-      "id": "stage_jobspy_changes",
-      "task": "Stage and commit JobSpy 3-platform integration changes",
+      "id": "centralize_skill_extraction",
+      "task": "Create unified multi_platform_service.py with centralized AdvancedSkillExtractor for all 3 platforms",
       "priority": "P0",
       "blocker": false,
-      "context": "Created selective proxy (LinkedIn only), multi-platform scraper, test file. Need to commit unstaged changes.",
-      "added_at": "2025-10-13T11:36:51+05:30"
+      "context": "JobSpy scrapers (LinkedIn+Indeed) and Naukri (Playwright) now return raw data without skills. Need single service layer.",
+      "added_at": "2025-10-13T16:35:15+05:30"
     }
   ],
   "completed": [
     {
+      "id": "scraper_consolidation",
+      "task": "Remove scraper duplications and fix architecture gaps",
+      "completed_at": "2025-10-13T16:35:15+05:30",
+      "outcome": "Deleted unified/indeed_unified.py (115 lines), fixed Naukri headless=False, removed JobSpy inline skills. Total: 260 lines saved. Commit: 898e652"
+    },
+    {
       "id": "jobspy_selective_proxy",
       "task": "Implement selective BrightData proxy (LinkedIn only, Indeed/Naukri direct)",
       "completed_at": "2025-10-12T23:17:03+05:30",
-      "outcome": "Created proxy_config.py, multi_platform_scraper.py, BRIGHTDATA_SELECTIVE_PROXY.md. Cost savings: 66% ($45→$15/month). Capacity: 70K jobs/day."
-    },
-    {
-      "id": "create_3platform_test",
-      "task": "Create fresh test file for 3 platforms (1000 jobs each)",
-      "completed_at": "2025-10-12T23:18:18+05:30",
-      "outcome": "Removed all old tests, created test_3_platforms_1000_jobs.py (79 lines, EMD compliant). Target: 3,000 jobs total. Not yet executed."
+      "outcome": "Created proxy_config.py, multi_platform_scraper.py. Cost savings: 66% ($45→$15/month). Capacity: 70K jobs/day."
     },
     {
       "id": "skill_gaps_phase2",
       "task": "Add Phase 2 emerging skills: Devin, Cline, Tabnine, Amazon Q, LangChain ecosystem",
       "completed_at": "2025-10-12T21:57:10+05:30",
-      "outcome": "Added 7 skills: 2 emerging AI assistants (Devin, Cline), 2 industry standards (Tabnine, Amazon Q Developer), 3 LangChain ecosystem (LangChain, LangGraph, LlamaIndex). Total: 550→557 skills. Complete coverage achieved."
-    },
-    {
-      "id": "skill_gaps_phase1",
-      "task": "Add Tier 1 missing skills: ChatGPT, GitHub Copilot, Cursor + improve Claude patterns",
-      "completed_at": "2025-10-12T21:50:00+05:30",
-      "outcome": "Added 3 AI coding assistants (ChatGPT, GitHub Copilot, Cursor) + improved Claude patterns (claude code, claude 3.5 sonnet, claude 3 opus). Total: 547→550 skills. Coverage improvement: 11/156 jobs (7.1%)"
-    },
-    {
-      "id": "skill_deduplication",
-      "task": "Remove all duplicate skills from skills_reference_2025.json",
-      "completed_at": "2025-10-12T21:03:41+05:30",
-      "outcome": "Removed 10 duplicates: AWS Glue, Apache Airflow/Hadoop/Kafka/Spark, Azure Cosmos DB, Blockchain, Express.js, Ember.js, Google Cloud SQL/Dataflow, Snowflake. Total: 559→549 skills"
-    },
-    {
-      "id": "skill_additions",
-      "task": "Add missing frequently-extracted skills to reference JSON",
-      "completed_at": "2025-10-12T21:00:00+05:30",
-      "outcome": "Added Express.js (7 occurrences), Ember.js (19 occurrences), GCP abbreviation, DeFi blockchain skill. Enhanced pattern coverage"
-    },
-    {
-      "id": "false_positive_research",
-      "task": "Research and document false positives in stored baseline",
-      "completed_at": "2025-10-12T20:55:00+05:30",
-      "outcome": "Created research dossier: Identified Legal, Insurance, Supply Chain, Education as industry categories (not technical skills). Extractor quality 95%+ vs baseline 60-70%"
-    },
-    {
-      "id": "skills_enhancement",
-      "task": "Add 93 new AI/ML/GenAI/Data Science skills to reference",
-      "completed_at": "2025-10-12T19:25:00+05:30",
-      "outcome": "Added 40 LLM frameworks, 18 vector DBs, 22 MLOps tools, 11 ML enhancements. Total: 850→943 skills. Validated JSON, committed b3c8537"
-    },
-    {
-      "id": "file_cleanup",
-      "task": "Archive outdated files to clean repository structure",
-      "completed_at": "2025-10-12T19:36:00+05:30",
-      "outcome": "Archived 70 files to docs/archive/: old docs (15), debug files (13), duplicate READMEs (5), test scripts (4), old DBs (3), misc (30). Committed 20d61c6"
-    },
-    {
-      "id": "linkedin_skill_reextraction",
-      "task": "Re-extract skills from 100 LinkedIn jobs with comprehensive reference",
-      "completed_at": "2025-10-12T19:12:00+05:30",
-      "outcome": "77% improvement (6.3→11.2 avg skills/job), 83 jobs improved, stored to SQLite with 427 active patterns"
-    },
-    {
-      "id": "jobspy_linkedin_integration",
-      "task": "Integrate JobSpy library for free LinkedIn scraping",
-      "completed_at": "2025-10-12T18:13:58+05:30",
-      "outcome": "Successfully installed python-jobspy v1.1.82, created EMD-compliant scraper module (78 lines), tested with 10 jobs"
+      "outcome": "Added 7 skills. Total: 550→557 skills. Complete coverage achieved."
     }
   ]
 }
