@@ -3,6 +3,19 @@
   "last_updated": "2025-10-13T20:07:38+05:30",
   "error_patterns": [
     {
+      "id": "naukri_css_selectors_failing",
+      "category": "critical_error",
+      "error": "Browser opened successfully but scraped 0 jobs. 'Could not extract job URL from card' repeated 5 times. CSS selectors not finding job cards.",
+      "root_cause": "CARD_SELECTORS_CSS in selectors.py may be outdated. Naukri website structure changed. Selectors: 'article.jobTuple', '.cust-job-tuple', 'article[data-job-id]' not matching current HTML.",
+      "solution": "Need to inspect live Naukri search page HTML and update selectors to match 2025 structure. Verify card_parser.py extracts URLs correctly.",
+      "prevention": "Browser automation success ≠ data extraction success. ALWAYS verify data was actually scraped, not just that browser opened.",
+      "occurred_at": "2025-10-13T20:45:30+05:30",
+      "resolved": false,
+      "constitutional_article": "Article 7: Autonomous Operations - Must validate full pipeline, not just individual steps",
+      "rl_penalty": -40,
+      "learning": "Browser opened (headless fix worked) but 0 jobs scraped. CSS selectors need research via @mcp:fetch or manual inspection."
+    },
+    {
       "id": "naukri_browser_root_cause_found",
       "category": "critical_error",
       "error": "Browser never opened because scrape_naukri_urls() ignores headless parameter. Phase 1 hardcoded headless=True, but unified function passes headless=False.",
