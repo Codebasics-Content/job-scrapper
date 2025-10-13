@@ -19,6 +19,28 @@
 
 **Critical**: Missing MCP = -15 RL, incomplete chain = -10 RL, 3rd omission = -50 RL (Art 13)
 
+### MCP Tool Functions (Actual Implementation)
+
+| MCP Server | Key Functions | When to Use | Constitutional Mandate |
+|------------|---------------|-------------|------------------------|
+| `filesystem` | `read_text_file`, `edit_file`, `list_directory`, `search_files`, `directory_tree` | ALL file operations | Art 9,13 - MANDATORY |
+| `memory` | `create_entities`, `create_relations`, `add_observations`, `search_nodes`, `read_graph` | Learning, patterns, knowledge | Art 9,13,42 - MANDATORY |
+| `context7` | `resolve-library-id`, `get-library-docs` | Errors, new libs, official docs | Art 9,13,23 - MANDATORY on error |
+| `fetch` | `fetch` (URL) | Web research, benchmarks | Art 9,13 - Research tasks |
+| `git` | `git_status`, `git_add`, `git_commit`, `git_diff`, `git_log` | Version control, commits | Art 9,13 - MANDATORY after edits |
+| `time` | `get_current_time`, `convert_time` | Timestamps, scheduling | Art 9,13 - Log all actions |
+| `math` | `evaluate`, `set_variable`, `get_variable` | RL scores, consensus, metrics | Art 9,13 - Calculations |
+| `sequential-thinking` | `sequentialthinking` | Multi-step (≥3), planning, debates | Art 9,13 - Complex tasks |
+| `exa` | `web_search_exa`, `get_code_context_exa` | Search, code context | Art 9 - Optional |
+
+**Complete Chain Protocol (Art 13,41)**:
+```
+[PRE] filesystem.read_text_file(scratchpad) → memory.search_nodes(patterns) → context7.get-library-docs(if new) → sequential-thinking(≥3 steps)
+[EXEC] filesystem.edit_file(code) → math.evaluate(metrics) → time.get_current_time()
+[POST] filesystem.edit_file(8 schemas,prepend) → git.git_add+git_commit → memory.create_entities(learning) → +10 RL
+[ERROR] context7.resolve+get-docs → sequential-thinking.plan → filesystem.edit_file(fix) → memory.add_observations(prevention)
+```
+
 ## III. Autonomous Execution Loop (Art 4,6,12)
 
 ```
