@@ -18,11 +18,15 @@ def check_and_clean_descriptions() -> None:
     total_removed = 0
     
     for platform in platforms:
-        # Count None descriptions
+        # Count None descriptions (NULL, empty, or string "None")
         cursor.execute("""
             SELECT COUNT(*) 
             FROM jobs 
-            WHERE platform = ? AND (job_description IS NULL OR job_description = '')
+            WHERE platform = ? AND (
+                job_description IS NULL 
+                OR job_description = '' 
+                OR job_description = 'None'
+            )
         """, (platform,))
         none_count: int = cursor.fetchone()[0]
         
@@ -39,7 +43,11 @@ def check_and_clean_descriptions() -> None:
             print(f"   🗑️  Removing {none_count} jobs with missing descriptions...")
             cursor.execute("""
                 DELETE FROM jobs 
-                WHERE platform = ? AND (job_description IS NULL OR job_description = '')
+                WHERE platform = ? AND (
+                    job_description IS NULL 
+                    OR job_description = '' 
+                    OR job_description = 'None'
+                )
             """, (platform,))
             total_removed += none_count
     
