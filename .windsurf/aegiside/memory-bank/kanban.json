@@ -1,64 +1,67 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T18:13:58+05:30",
+  "last_updated": "2025-10-13T20:15:23+05:30",
   "columns": {
-    "todo": [],
-    "in_progress": [],
+    "todo": [
+      {
+        "id": "test_indeed_20",
+        "title": "Execute test_indeed_20_validation.py with venv",
+        "priority": "P0",
+        "tags": ["testing", "validation", "indeed", "jobspy"],
+        "added_at": "2025-10-13T20:10:15+05:30"
+      },
+      {
+        "id": "test_naukri_20",
+        "title": "Execute test_naukri_20_validation.py with venv",
+        "priority": "P0",
+        "tags": ["testing", "validation", "naukri", "playwright"],
+        "added_at": "2025-10-13T20:10:15+05:30"
+      },
+      {
+        "id": "scale_test_1000",
+        "title": "Scale test: 1000 jobs per platform",
+        "priority": "P1",
+        "tags": ["testing", "scale", "validation"],
+        "added_at": "2025-10-13T20:10:15+05:30"
+      }
+    ],
+    "in_progress": [
+      {
+        "id": "test_linkedin_20",
+        "title": "Execute test_linkedin_20_validation.py with venv",
+        "priority": "P0",
+        "tags": ["testing", "validation", "linkedin", "jobspy"],
+        "started_at": "2025-10-13T20:15:23+05:30"
+      }
+    ],
     "done": [
+      {
+        "id": "location_parameter_fix",
+        "title": "Research and fix location parameter for all platforms",
+        "completed_at": "2025-10-13T20:10:15+05:30",
+        "tags": ["research", "mcp", "context7", "parameter-fix"],
+        "rl_impact": -25
+      },
+      {
+        "id": "delete_unified_indeed",
+        "title": "Delete unified/indeed/ folder",
+        "completed_at": "2025-10-13T20:01:14+05:30",
+        "tags": ["cleanup", "anti-duplication"],
+        "rl_impact": -30
+      },
+      {
+        "id": "centralize_skill_extraction",
+        "title": "Create multi_platform_service.py",
+        "completed_at": "2025-10-13T16:40:22+05:30",
+        "tags": ["architecture", "consolidation", "emd"],
+        "rl_impact": 30
+      },
       {
         "id": "jobspy_linkedin_integration",
         "title": "JobSpy LinkedIn scraper integration",
         "completed_at": "2025-10-12T18:13:58+05:30",
         "tags": ["integration", "linkedin", "free-tier", "emd"],
         "cost_savings": "$250+"
-      },
-      {
-        "id": "streamlit_two_phase_ui",
-        "title": "Two-phase Streamlit UI with separate buttons",
-        "completed_at": "2025-10-12T15:50:00+05:30",
-        "tags": ["ui", "streamlit", "two-table", "emd"]
-      },
-      {
-        "id": "naukri_two_phase_scrapers",
-        "title": "Create Naukri two-phase scrapers with EMD compliance",
-        "completed_at": "2025-10-12T15:40:00+05:30",
-        "tags": ["optimization", "scraping", "two-table", "emd"]
-      },
-      {
-        "id": "two_table_models",
-        "title": "Create JobUrlModel and JobDetailModel",
-        "completed_at": "2025-10-12T15:10:00+05:30",
-        "tags": ["models", "optimization", "two-table"]
-      },
-      {
-        "id": "two_table_schema",
-        "title": "Update database schema for job_urls and jobs tables",
-        "completed_at": "2025-10-12T15:15:00+05:30",
-        "tags": ["database", "schema", "two-table"]
-      },
-      {
-        "id": "two_phase_operations",
-        "title": "Implement two-phase storage operations",
-        "completed_at": "2025-10-12T15:20:00+05:30",
-        "tags": ["database", "operations", "two-table"]
-      },
-      {
-        "id": "playwright_integration",
-        "title": "Playwright detail page navigation",
-        "completed_at": "2025-10-12T13:50:00+05:30",
-        "tags": ["architecture", "scraping"]
-      },
-      {
-        "id": "linkedin_removal",
-        "title": "Remove LinkedIn scraper",
-        "completed_at": "2025-10-12T13:50:00+05:30",
-        "tags": ["cleanup"]
-      },
-      {
-        "id": "db_storage",
-        "title": "Database batch storage integration",
-        "completed_at": "2025-10-12T13:50:00+05:30",
-        "tags": ["database", "storage"]
       }
     ]
   }
