@@ -2,6 +2,7 @@
 
 import logging
 from bs4 import Tag
+from .selectors import TITLE_SELECTORS_CSS
 
 logger = logging.getLogger(__name__)
 
@@ -51,27 +52,20 @@ def extract_location_from_card(card: Tag) -> str:
 
 
 def extract_job_url_from_card(card: Tag) -> str | None:
-    """Extract job URL from card - matches test_playwright_detail_pages.py approach"""
-    # Primary: Extract from title link (2025 Naukri structure)
-    title_elem = card.select_one(".title")
-    if title_elem:
-        href_val = title_elem.get("href")
-        if href_val and isinstance(href_val, str):
-            job_url = href_val if href_val.startswith("http") else f"https://www.naukri.com{href_val}"
-            return job_url
+    """Extract job URL from card using selectors from selectors.py (2025 Naukri)"""
+    # Use comprehensive TITLE_SELECTORS_CSS from selectors.py
+    for sel in TITLE_SELECTORS_CSS:
+        elem = card.select_one(sel)
+        if elem:
+            href_val = elem.get("href")
+            if href_val and isinstance(href_val, str):
+                job_url = href_val if href_val.startswith("http") else f"https://www.naukri.com{href_val}"
+                return job_url
     
     # Fallback: Try data-job-id attribute
     job_id = card.get("data-job-id")
     if job_id and isinstance(job_id, str):
         return f"https://www.naukri.com/job-listings-{job_id}"
-    
-    # Last resort: Try other title selectors
-    for sel in ["a.title-text", "a[title]"]:
-        elem = card.select_one(sel)
-        if elem:
-            href_val = elem.get("href")
-            if href_val and isinstance(href_val, str):
-                return href_val if href_val.startswith("http") else f"https://www.naukri.com{href_val}"
     
     logger.warning("Could not extract job URL from card")
     return None
