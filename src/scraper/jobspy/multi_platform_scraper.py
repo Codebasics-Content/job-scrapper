@@ -58,26 +58,58 @@ def scrape_multi_platform(
         logger.info(f"Starting {platform} scrape")
         
         try:
-            jobs_df = scrape_jobs(
-                site_name=[platform],
-                search_term=search_term,
-                location=location,
-                results_wanted=results_wanted,
-                hours_old=hours_old,
-                linkedin_fetch_description=linkedin_fetch_description,
-                proxies=proxies,
-            )
+            # Batch scraping for real-time progress (100 jobs per batch)
+            batch_size = 100
+            num_batches = (results_wanted + batch_size - 1) // batch_size
+            platform_results = []
             
-            end_time = datetime.now()
-            duration = (end_time - start_time).total_seconds()
+            for batch_num in range(1, num_batches + 1):
+                batch_start = datetime.now()
+                current_batch = min(batch_size, results_wanted - (batch_num - 1) * batch_size)
+                
+                batch_msg = f"   📦 Batch {batch_num}/{num_batches} (target: {current_batch} jobs)..."
+                print(batch_msg)
+                logger.info(batch_msg)
+                
+                batch_df = scrape_jobs(
+                    site_name=[platform],
+                    search_term=search_term,
+                    location=location,
+                    results_wanted=current_batch,
+                    hours_old=hours_old,
+                    linkedin_fetch_description=linkedin_fetch_description,
+                    proxies=proxies,
+                )
+                
+                batch_end = datetime.now()
+                batch_duration = (batch_end - batch_start).total_seconds()
+                
+                if batch_df is not None and len(batch_df) > 0:
+                    platform_results.append(batch_df)
+                    total_so_far = sum(len(df) for df in platform_results)
+                    elapsed = (batch_end - start_time).total_seconds()
+                    rate = total_so_far / elapsed if elapsed > 0 else 0
+                    
+                    progress_msg = f"   ✅ Batch {batch_num} done: {len(batch_df)} jobs | Total: {total_so_far}/{results_wanted} | {batch_duration:.1f}s | Rate: {rate:.1f} jobs/s"
+                    print(progress_msg)
+                    logger.info(progress_msg)
+                else:
+                    warn_msg = f"   ⚠️  Batch {batch_num} returned 0 jobs"
+                    print(warn_msg)
+                    logger.warning(warn_msg)
             
-            if jobs_df is not None and len(jobs_df) > 0:
-                all_results.append(jobs_df)
-                success_msg = f"   ✅ SUCCESS: {len(jobs_df)} jobs in {duration:.1f}s ({len(jobs_df)/duration:.1f} jobs/sec)"
-                print(success_msg)
-                logger.info(success_msg)
+            # Combine all batches
+            if platform_results:
+                combined_df = pd.concat(platform_results, ignore_index=True)
+                all_results.append(combined_df)
+                
+                end_time = datetime.now()
+                total_duration = (end_time - start_time).total_seconds()
+                final_msg = f"   🎉 {platform.upper()} COMPLETE: {len(combined_df)} jobs in {total_duration:.1f}s ({len(combined_df)/total_duration:.1f} jobs/sec)"
+                print(final_msg)
+                logger.info(final_msg)
             else:
-                warn_msg = f"   ⚠️  No jobs found after {duration:.1f}s"
+                warn_msg = f"   ⚠️  No jobs found for {platform}"
                 print(warn_msg)
                 logger.warning(warn_msg)
                 
