@@ -90,13 +90,17 @@ def scrape_multi_platform(
                 batch_duration = (batch_end - batch_start).total_seconds()
                 
                 if batch_df is not None and len(batch_df) > 0:
-                    # Extract skills from descriptions
+                    # Extract skills from descriptions with strict validation
                     if 'description' in batch_df.columns:
                         logger.info(f"   🔍 Extracting skills from {len(batch_df)} jobs...")
                         
                         def extract_job_skills(desc: object) -> list[str]:
-                            """Extract skills from job description"""
-                            if desc and str(desc).strip():
+                            """Extract skills only from valid descriptions"""
+                            # Strict validation: not None, not "None" string, >50 chars
+                            if (desc is not None and 
+                                str(desc) != "None" and 
+                                str(desc).strip() and 
+                                len(str(desc).strip()) > 50):
                                 return extract_skills_advanced(str(desc), str(SKILLS_REF))
                             return []
                         
