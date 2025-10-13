@@ -25,7 +25,7 @@ async def test_naukri_validation() -> None:
     start = datetime.now()
     
     # Scrape 20 jobs using unified scraper with visible browser
-    jobs = await scrape_naukri_jobs_unified(
+    scraped_jobs = await scrape_naukri_jobs_unified(
         keyword="AI Engineer",
         location="",
         limit=20,
@@ -33,6 +33,7 @@ async def test_naukri_validation() -> None:
     )
     
     duration = (datetime.now() - start).total_seconds()
+    logger.info(f"Scraping completed: {len(scraped_jobs)} jobs returned")
     
     # Query from database for validation
     logger.info("\n" + "="*70)
