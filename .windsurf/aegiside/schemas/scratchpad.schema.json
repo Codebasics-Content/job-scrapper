@@ -2,6 +2,10 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://aegiside.org/schemas/scratchpad.json",
   "title": "Scratchpad Schema",
+  "$defs": {
+    "task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
+    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"}
+  },
   "description": "Task priority queue - prepend new tasks at [0] + metrics synced FROM progress.json",
   "type": "object",
   "required": ["schema_version", "last_updated", "metrics", "top_append_metadata", "priority_queue"],
@@ -41,11 +45,12 @@
         "type": "object",
         "required": ["id", "task", "priority"],
         "properties": {
-          "id": {"type": "string"},
+          "id": {"$ref": "#/$defs/task_id"},
           "task": {"type": "string"},
           "priority": {"type": "string"},
           "blocker": {"type": "boolean"},
           "context": {"type": "string"},
+          "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"},
           "added_at": {"type": "string", "format": "date-time"}
         }
       }
@@ -56,10 +61,11 @@
       "items": {
         "type": "object",
         "properties": {
-          "id": {"type": "string"},
+          "id": {"$ref": "#/$defs/task_id"},
           "task": {"type": "string"},
           "completed_at": {"type": "string", "format": "date-time"},
-          "outcome": {"type": "string"}
+          "outcome": {"type": "string"},
+          "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"}
         }
       }
     }
