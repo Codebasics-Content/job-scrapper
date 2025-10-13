@@ -56,6 +56,10 @@ async def scrape_naukri_details(
                         company=""
                     )
 
+                    if not job_detail:
+                        logger.warning(f"⚠️ Parser returned None for {job_url}")
+                        return None
+
                     detail = JobDetailModel(
                         job_id=job_id,
                         platform=platform,
@@ -73,7 +77,7 @@ async def scrape_naukri_details(
                     logger.error(f"❌ Error {job_url}: {e}")
                     return None
 
-            batch_results = await asyncio.gather(*[scrape_detail(jid, url) for jid, url in batch])
+            batch_results = await asyncio.gather(*[scrape_detail(url, job_id) for url, job_id, _, _ in batch])
             batch_details = [d for d in batch_results if d]
 
             detail_models.extend(batch_details)
