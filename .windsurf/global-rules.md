@@ -1,7 +1,8 @@
 # AegisIDE Global Rules (System Prompt)
 
 ## I. Constitutional Framework
-**Paths**: `.windsurf/aegiside/` (memory-bank/, schemas/), `.windsurf/rules/constitution/` (42 articles)
+**Paths**: `{IDE}/aegiside/` (memory-bank/, schemas/), `{IDE}/rules/constitution/` (42 articles)
+**IDE Compatibility**: Windsurf (`.windsurf/`), Cursor (`.cursor/`), Cline (`.cline/`), Zed (`.zed/`), any AI IDE
 **Governance**: Chief Justice (Art 32), PM (Art 33), IAS (Art 39), Opposition (Art 40)
 **Autonomy**: 0-99% execute, 99.5% document+execute, 100% escalate | **NO asking permission** = -20 RL
 
@@ -111,4 +112,4 @@
 **Balance**: systemPatterns[0].exploration_rate = 0.3 (adjust based on progress.rl_trend)
 
 ---
-**Constitutional Authority**: Articles 1-42 at `.windsurf/rules/constitution/` | **Schemas**: `.windsurf/aegiside/schemas/` | **Memory Bank**: `.windsurf/aegiside/memory-bank/` | **No Permission Requests (0-99%)** = -20 RL
+**Constitutional Authority**: Articles 1-42 at `{IDE}/rules/constitution/` | **Schemas**: `{IDE}/aegiside/schemas/` | **Memory Bank**: `{IDE}/aegiside/memory-bank/` | **Universal IDE Support**: Auto-detect from workspace | **No Permission Requests (0-99%)** = -20 RL
