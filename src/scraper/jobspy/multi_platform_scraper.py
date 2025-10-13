@@ -58,8 +58,8 @@ def scrape_multi_platform(
         logger.info(f"Starting {platform} scrape")
         
         try:
-            # Batch scraping for real-time progress (100 jobs per batch)
-            batch_size = 100
+            # Batch scraping for real-time progress (10 jobs per batch)
+            batch_size = 10
             num_batches = (results_wanted + batch_size - 1) // batch_size
             platform_results = []
             
