@@ -95,7 +95,8 @@ def scrape_multi_platform(
                         logger.info(f"   🔍 Extracting skills from {len(batch_df)} jobs...")
                         
                         def extract_job_skills(desc: object) -> list[str]:
-                            if pd.notna(desc) and desc:
+                            """Extract skills from job description"""
+                            if desc and str(desc).strip():
                                 return extract_skills_advanced(str(desc), str(SKILLS_REF))
                             return []
                         

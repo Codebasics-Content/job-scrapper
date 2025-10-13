@@ -6,11 +6,11 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from db.connection import get_connection
+from db.connection import connection
 
 def check_and_clean_descriptions():
     """Check for None descriptions by platform and remove them"""
-    conn = get_connection()
+    conn = connection()
     cursor = conn.cursor()
     
     print("=" * 80)
