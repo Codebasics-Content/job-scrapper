@@ -60,7 +60,10 @@ async def test_naukri_20_jobs():
     print(f"💾 Stored: {stored} jobs to DB")
     
     # RL scoring
-    if failed == 0:
+    if len(jobs) == 0:
+        print(f"❌ RL PENALTY: -20 (0 jobs scraped - scraper broken)")
+        return {"penalty": -20, "passed": 0, "failed": 0}
+    elif failed == 0:
         print(f"🎉 RL REWARD: +10 (100% success)")
         return {"reward": 10, "passed": passed, "failed": 0}
     else:
