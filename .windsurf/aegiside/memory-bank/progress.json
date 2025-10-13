@@ -2,18 +2,32 @@
   "schema_version": "1.0.0",
   "reinforcement_learning": [
     {
+      "workflow": "location_research_fix",
+      "rl_penalty": -25,
+      "reason": "Hardcoded 'Worldwide' location without @mcp:context7 research. JobSpy requires 'City, State' format or empty string ''",
+      "timestamp": "2025-10-13T20:07:38+05:30",
+      "prevention": "@mcp:context7 MANDATORY before hardcoding ANY parameter values",
+      "correction": "Fixed all 3 tests to use location='' per JobSpy official docs"
+    },
+    {
       "workflow": "update",
       "rl_reward": 8,
       "schemas_synced": 8,
-      "reason": "8-schema atomic sync complete. Fixed systemPatterns.json size violation (14.79 KB → 1.35 KB).",
+      "reason": "8-schema atomic sync. Fixed systemPatterns.json size (14.79 KB → 1.35 KB)",
       "timestamp": "2025-10-13T19:50:53+05:30"
     },
     {
       "workflow": "gap_analysis",
       "rl_penalty": -15,
-      "reason": "Overthinking: Identified 5 gaps when user only wanted JobSpy(LinkedIn+Indeed) + Playwright(Naukri).",
-      "timestamp": "2025-10-13T19:48:57+05:30",
-      "prevention": "When user says 'only X, Y, Z' - hard constraint, ignore everything else"
+      "reason": "Overthinking: Identified 5 gaps when user only wanted JobSpy(LinkedIn+Indeed) + Playwright(Naukri)",
+      "timestamp": "2025-10-13T19:48:57+05:30"
+    },
+    {
+      "workflow": "file_cleanup",
+      "rl_penalty": -30,
+      "reason": "Repeated failure to remove unified/indeed/ folder (6 files)",
+      "timestamp": "2025-10-13T20:01:14+05:30",
+      "resolution": "Deleted unified/indeed/ - JobSpy owns Indeed, not Playwright"
     },
     {
       "workflow": "consolidation",
@@ -28,15 +42,15 @@
       "timestamp": "2025-10-13T16:35:15+05:30"
     }
   ],
-  "last_updated": "2025-10-13T19:50:53+05:30",
+  "last_updated": "2025-10-13T20:10:15+05:30",
   "current_focus": {
-    "task": "Schema sync complete - ready for /next",
-    "simple_truth": "JobSpy (LinkedIn+Indeed) + Playwright (Naukri). unified/ folder = deprecated.",
-    "schemas_healthy": true
+    "task": "3x 20-job validation tests ready, awaiting /update then execution",
+    "location_fixed": "All tests use location='' per JobSpy docs",
+    "tests_ready": ["test_linkedin_20_validation.py", "test_indeed_20_validation.py", "test_naukri_20_validation.py"]
   },
   "metrics": {
-    "total_rl_score": 33,
-    "tasks_completed": 28,
-    "schemas_optimized": 1
+    "total_rl_score": -22,
+    "tasks_completed": 30,
+    "commits": 4
   }
 }

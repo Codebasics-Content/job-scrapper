@@ -1,40 +1,64 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-13T16:35:15+05:30",
+  "last_updated": "2025-10-13T20:10:15+05:30",
   "top_append_metadata": {
     "latest_task_at_index_0": true,
-    "last_prepend_timestamp": "2025-10-13T16:35:15+05:30",
+    "last_prepend_timestamp": "2025-10-13T20:10:15+05:30",
     "total_prepends": 1,
     "validation_passed": true
   },
   "priority_queue": [
     {
-      "id": "centralize_skill_extraction",
-      "task": "Create unified multi_platform_service.py with centralized AdvancedSkillExtractor for all 3 platforms",
+      "id": "test_linkedin_20",
+      "task": "Execute test_linkedin_20_validation.py with venv",
       "priority": "P0",
       "blocker": false,
-      "context": "JobSpy scrapers (LinkedIn+Indeed) and Naukri (Playwright) now return raw data without skills. Need single service layer.",
-      "added_at": "2025-10-13T16:35:15+05:30"
+      "context": "Validate 20 LinkedIn jobs: descriptions + skills. RL: +10 success, -15 failure. Store to jobs.db.",
+      "added_at": "2025-10-13T20:10:15+05:30"
+    },
+    {
+      "id": "test_indeed_20",
+      "task": "Execute test_indeed_20_validation.py with venv",
+      "priority": "P0",
+      "blocker": false,
+      "context": "Validate 20 Indeed jobs: descriptions + skills. RL: +10 success, -15 failure. Store to jobs.db.",
+      "added_at": "2025-10-13T20:10:15+05:30"
+    },
+    {
+      "id": "test_naukri_20",
+      "task": "Execute test_naukri_20_validation.py with venv",
+      "priority": "P0",
+      "blocker": false,
+      "context": "Validate 20 Naukri jobs: descriptions + skills. RL: +10 success, -15 failure. Store to jobs.db.",
+      "added_at": "2025-10-13T20:10:15+05:30"
+    },
+    {
+      "id": "scale_test_1000",
+      "task": "Scale test: 1000 jobs per platform (LinkedIn → Indeed → Naukri)",
+      "priority": "P1",
+      "blocker": false,
+      "context": "After 20-job validation passes, test at scale. Identify gaps, apply RL scoring.",
+      "added_at": "2025-10-13T20:10:15+05:30"
     }
   ],
   "completed": [
     {
-      "id": "scraper_consolidation",
-      "task": "Remove scraper duplications and fix architecture gaps",
-      "completed_at": "2025-10-13T16:35:15+05:30",
-      "outcome": "Deleted unified/indeed_unified.py (115 lines), fixed Naukri headless=False, removed JobSpy inline skills. Total: 260 lines saved. Commit: 898e652"
+      "id": "location_parameter_fix",
+      "task": "Research and fix location parameter for all platforms",
+      "completed_at": "2025-10-13T20:10:15+05:30",
+      "outcome": "@mcp:context7 research: JobSpy uses location='' for broad search. Fixed all 3 tests. RL: -25 penalty. Commit: ee34c9a"
     },
     {
-      "id": "jobspy_selective_proxy",
-      "task": "Implement selective BrightData proxy (LinkedIn only, Indeed/Naukri direct)",
-      "completed_at": "2025-10-12T23:17:03+05:30",
-      "outcome": "Created proxy_config.py, multi_platform_scraper.py. Cost savings: 66% ($45→$15/month). Capacity: 70K jobs/day."
+      "id": "delete_unified_indeed",
+      "task": "DELETE unified/indeed/ folder (6 files)",
+      "completed_at": "2025-10-13T20:01:14+05:30",
+      "outcome": "Removed duplicate Indeed Playwright scraper. JobSpy owns Indeed, not Playwright."
     },
     {
-      "id": "skill_gaps_phase2",
-      "task": "Add Phase 2 emerging skills: Devin, Cline, Tabnine, Amazon Q, LangChain ecosystem",
-      "completed_at": "2025-10-12T21:57:10+05:30",
-      "outcome": "Added 7 skills. Total: 550→557 skills. Complete coverage achieved."
+      "id": "centralize_skill_extraction",
+      "task": "Create unified multi_platform_service.py",
+      "completed_at": "2025-10-13T16:40:22+05:30",
+      "outcome": "Created multi_platform_service.py (89 lines). JobSpy (LinkedIn+Indeed) + Playwright (Naukri) with single AdvancedSkillExtractor."
     }
   ]
 }
