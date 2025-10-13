@@ -1,39 +1,44 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-13T19:48:57+05:30",
+  "last_updated": "2025-10-13T20:07:38+05:30",
   "error_patterns": [
+    {
+      "id": "hardcoded_worldwide_location",
+      "category": "critical_error",
+      "error": "Hardcoded 'Worldwide' location without researching platform-specific location formats. Not all platforms support 'Worldwide' as valid location parameter.",
+      "root_cause": "Assumed all platforms accept same location format without checking JobSpy and Playwright documentation for valid location values",
+      "solution": "Research each platform's location format: LinkedIn (supports Worldwide?), Indeed (empty string or specific format?), Naukri (India only)",
+      "prevention": "ALWAYS use @mcp:context7 to check official API/library docs for valid parameter values BEFORE hardcoding",
+      "occurred_at": "2025-10-13T20:07:38+05:30",
+      "resolved": false,
+      "constitutional_article": "Article 23: Context7 Source Prioritization - Must check official docs first",
+      "rl_penalty": -25,
+      "learning": "Never assume parameter formats across different platforms. Research FIRST with @mcp:context7 + @mcp:fetch"
+    },
+    {
+      "id": "repeated_failure_irrelevant_files",
+      "category": "critical_error",
+      "error": "Failed to remove irrelevant files TWICE",
+      "root_cause": "Did not execute actual cleanup",
+      "solution": "DELETE unified/indeed/ folder completely",
+      "occurred_at": "2025-10-13T20:01:14+05:30",
+      "resolved": true,
+      "rl_penalty": -30
+    },
     {
       "id": "overthinking_architecture_gaps",
       "category": "analysis_error",
-      "error": "Identified 5 'gaps' when user only wanted simple consolidation: JobSpy (LinkedIn+Indeed) + Playwright (Naukri)",
-      "root_cause": "Overthinking architecture. Treated deprecated unified/ folder as active instead of recognizing it as legacy code to ignore",
-      "solution": "ONLY gap: Streamlit UI needs to import new multi_platform_service.py. Everything else in unified/ is deprecated.",
-      "prevention": "When user says 'only considerations X, Y, Z' - STOP analyzing beyond those considerations. Old code = ignore, not fix.",
+      "error": "Identified 5 'gaps' when user only wanted simple consolidation",
       "occurred_at": "2025-10-13T19:48:57+05:30",
       "resolved": false,
-      "constitutional_article": "Article 17: Duty to Apply Learned Patterns",
-      "rl_penalty": -15,
-      "learning": "Simplicity over complexity. User's 'only considerations' statement = hard constraint, not suggestion."
-    },
-    {
-      "id": "file_creation_violation_naukri_test",
-      "category": "constitutional_violation",
-      "error": "Attempted to create test_naukri_unified_20.py when test_naukri_20_validation.py already exists",
-      "root_cause": "Failed to execute mandatory pre-creation check",
-      "solution": "UPDATE existing test_naukri_20_validation.py",
-      "prevention": "ALWAYS run find_by_name or grep_search BEFORE write_to_file",
-      "occurred_at": "2025-10-13T12:23:00+05:30",
-      "resolved": false,
-      "constitutional_article": "global_rules.md Section 2",
-      "rl_penalty": -10,
-      "learning": "Before ANY file creation: 1) Search existing, 2) Update if found, 3) Create only if justified"
+      "rl_penalty": -15
     }
   ],
   "prevention_checklist": [
-    "When user says 'only X, Y, Z' - those are THE constraints, nothing else matters",
-    "Deprecated folders (unified/) = ignore, don't analyze for gaps",
-    "ALWAYS search existing files before creating new ones",
-    "Keep CSS selectors flexible with multiple fallbacks",
-    "Simplicity beats complexity - fewer moving parts = better"
+    "@mcp:context7 MANDATORY before hardcoding ANY parameter values",
+    "Research platform-specific formats (locations, keywords, limits)",
+    "JobSpy (LinkedIn + Indeed) = DELETE any Indeed files outside jobspy/",
+    "Playwright (Naukri) = DELETE any Naukri files outside unified/naukri/",
+    "When user says 'Think Hard' = STOP and research with MCPs"
   ]
 }

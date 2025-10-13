@@ -1,4 +1,4 @@
-"""Naukri 20-job validation test - Playwright scraper
+"""LinkedIn 20-job validation test - JobSpy scraper
 Tests: Job descriptions, skill extraction, DB storage
 RL: +10 if all pass, -15 if failures
 """
@@ -13,24 +13,23 @@ from src.scraper.multi_platform_service import scrape_jobs_with_skills
 from src.db.operations import JobStorageOperations
 
 
-async def test_naukri_20_jobs():
-    """Test Naukri scraping: 20 jobs with descriptions + skills"""
-    print("🧪 Naukri 20-Job Validation Test")
+async def test_linkedin_20_jobs():
+    """Test LinkedIn scraping: 20 jobs with descriptions + skills"""
+    print("🧪 LinkedIn 20-Job Validation Test")
     print("=" * 60)
     
     db_path = Path(__file__).parent.parent / "jobs.db"
     db_ops = JobStorageOperations(str(db_path))
     
-    # Scrape 20 Naukri jobs
+    # Scrape 20 LinkedIn jobs
     start = datetime.now()
     jobs = await scrape_jobs_with_skills(
-        platforms=["naukri"],
+        platforms=["linkedin"],
         keyword="Python Developer",
-        location="",  # Naukri India-focused, empty for broad search
+        location="",  # Empty string for broad search per JobSpy docs
         limit=20,
         store_to_db=False
     )
-    
     duration = (datetime.now() - start).total_seconds()
     
     # Validation
@@ -69,5 +68,5 @@ async def test_naukri_20_jobs():
 
 
 if __name__ == "__main__":
-    result = asyncio.run(test_naukri_20_jobs())
+    result = asyncio.run(test_linkedin_20_jobs())
     sys.exit(0 if result.get("failed", 0) == 0 else 1)

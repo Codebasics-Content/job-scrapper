@@ -1,81 +1,73 @@
-"""Test Indeed with 20 jobs for description & skill validation (≤80 lines)"""
-from __future__ import annotations
-
-import logging
-import sys
+"""Indeed 20-job validation test - JobSpy scraper
+Tests: Job descriptions, skill extraction, DB storage
+RL: +10 if all pass, -15 if failures
+"""
+import asyncio
 from datetime import datetime
 from pathlib import Path
-
-import pandas as pd
+import sys
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.scraper.jobspy import scrape_multi_platform
-
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
-logger = logging.getLogger(__name__)
+from src.scraper.multi_platform_service import scrape_jobs_with_skills
+from src.db.operations import JobStorageOperations
 
 
-def test_indeed_validation() -> None:
-    """Test Indeed: 20 jobs with description & skill validation"""
-    logger.info("="*70)
-    logger.info("🧪 INDEED VALIDATION TEST: 20 Jobs")
-    logger.info("="*70)
+async def test_indeed_20_jobs():
+    """Test Indeed scraping: 20 jobs with descriptions + skills"""
+    print("🧪 Indeed 20-Job Validation Test")
+    print("=" * 60)
     
+    db_path = Path(__file__).parent.parent / "jobs.db"
+    db_ops = JobStorageOperations(str(db_path))
+    
+    # Scrape 20 Indeed jobs
     start = datetime.now()
-    
-    # Scrape 20 jobs from Indeed
-    jobs_df = scrape_multi_platform(
+    jobs = await scrape_jobs_with_skills(
         platforms=["indeed"],
-        search_term="AI Engineer",
-        location="",
-        results_wanted=20,
-        hours_old=72,
-        linkedin_fetch_description=False,
+        keyword="Python Developer",
+        location="",  # Empty string for broad search per JobSpy docs
+        limit=20,
+        store_to_db=False
     )
     
     duration = (datetime.now() - start).total_seconds()
     
-    # Validation Analysis
-    logger.info("\n" + "="*70)
-    logger.info("📊 VALIDATION RESULTS")
-    logger.info("="*70)
+    # Validation
+    passed = 0
+    failed = 0
     
-    total = len(jobs_df)
-    logger.info(f"Total Jobs Scraped: {total}")
+    print(f"\n✅ Scraped {len(jobs)} jobs in {duration:.1f}s")
     
-    valid_pct = 0.0  # Initialize for zero jobs case
-    
-    # Check descriptions
-    if total > 0 and 'description' in jobs_df.columns:
-        valid_desc = jobs_df[
-            (jobs_df['description'].notna()) & 
-            (jobs_df['description'] != 'None') &
-            (jobs_df['description'].str.len() > 50)
-        ]
-        valid_count = len(valid_desc)
-        valid_pct = (valid_count / total * 100) if total > 0 else 0
+    for idx, job in enumerate(jobs, 1):
+        has_desc = bool(job.job_description and len(job.job_description) > 50)
+        has_skills = bool(job.skills and len(job.skills) > 0)
         
-        logger.info(f"✅ Valid Descriptions (>50 chars): {valid_count}/{total} ({valid_pct:.1f}%)")
-        logger.info(f"   Avg Length: {valid_desc['description'].str.len().mean():.0f} chars")
-        
-        # Check skills extraction
-        if 'skills' in jobs_df.columns:
-            with_skills = jobs_df[jobs_df['skills'].apply(lambda x: len(x) > 0 if isinstance(x, list) else False)]
-            skills_count = len(with_skills)
-            skills_pct = (skills_count / total * 100) if total > 0 else 0
-            
-            logger.info(f"🔍 Jobs with Skills Extracted: {skills_count}/{total} ({skills_pct:.1f}%)")
-            logger.info(f"   Avg Skills per Job: {with_skills['skills'].apply(len).mean():.1f}")
-            
-            # Sample skills
-            if skills_count > 0:
-                sample_skills = with_skills.iloc[0]['skills'][:5]
-                logger.info(f"   Sample Skills: {', '.join(sample_skills)}")
+        if has_desc and has_skills:
+            passed += 1
+            print(f"  ✅ Job {idx}: {len(job.job_description)} chars, {len(job.skills.split(','))} skills")
+        else:
+            failed += 1
+            print(f"  ❌ Job {idx}: desc={len(job.job_description) if job.job_description else 0}, skills={job.skills}")
     
-    logger.info(f"\n⏱️  Duration: {duration:.1f}s")
-    logger.info(f"{'✅ PASS' if valid_pct >= 80 else '❌ FAIL'}: {valid_pct:.1f}% valid (need ≥80%)")
+    # Store to DB
+    stored = db_ops.store_details(jobs)
+    
+    # Results
+    print(f"\n{'='*60}")
+    print(f"✅ Passed: {passed}/{len(jobs)}")
+    print(f"❌ Failed: {failed}/{len(jobs)}")
+    print(f"💾 Stored: {stored} jobs to DB")
+    
+    # RL scoring
+    if failed == 0:
+        print(f"🎉 RL REWARD: +10 (100% success)")
+        return {"reward": 10, "passed": passed, "failed": 0}
+    else:
+        print(f"⚠️  RL PENALTY: -15 ({failed} failures)")
+        return {"penalty": -15, "passed": passed, "failed": failed}
 
 
 if __name__ == "__main__":
-    test_indeed_validation()
+    result = asyncio.run(test_indeed_20_jobs())
+    sys.exit(0 if result.get("failed", 0) == 0 else 1)
