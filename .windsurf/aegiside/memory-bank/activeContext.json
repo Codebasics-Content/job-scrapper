@@ -1,6 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-13T20:15:23+05:30",
+  "last_updated": "2025-10-13T23:49:26+05:30",
+  "metrics": {
+    "total_rl_score": -22,
+    "tasks_completed": 31,
+    "tasks_pending": 4,
+    "constitutional_compliance": 100,
+    "session_readiness": 100,
+    "emd_compliance": "All files compliant"
+  },
   "event_tracking": [
     {
       "id": "evt-continue-recovery-011",
@@ -193,14 +201,6 @@
     }
   ],
   "blockers": [],
-  "metrics": {
-    "tasks_completed": 31,
-    "tasks_pending": 4,
-    "constitutional_compliance": 100,
-    "session_readiness": 100,
-    "emd_compliance": "All files compliant",
-    "total_rl_score": -22
-  },
   "next_action": {
     "workflow": "/next",
     "priority_task": "test_linkedin_20",
