@@ -68,13 +68,14 @@ async def scrape_jobs_with_skills(
                 )
                 all_jobs.append(job)
     
-    # Scrape via Naukri HeadlessX (hybrid: server-side rendering with anti-detection)
+    # Scrape via Naukri Playwright (headless=False to bypass bot detection)
     if naukri_requested:
-        logger.info("Scraping Naukri via HeadlessX (automatic anti-detection)...")
+        logger.info("Scraping Naukri via Playwright (headless=False, visible browser)...")
         naukri_jobs = await scrape_naukri_jobs_unified(
             keyword=keyword,
             location=location,
             limit=limit,
+            headless=False,  # Opens visible browser to bypass bot detection
         )
         
         # Extract skills from Naukri jobs
