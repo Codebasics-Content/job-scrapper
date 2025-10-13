@@ -60,14 +60,20 @@ def extract_job_url_from_card(card: Tag) -> str | None:
             href_val = elem.get("href")
             if href_val and isinstance(href_val, str):
                 job_url = href_val if href_val.startswith("http") else f"https://www.naukri.com{href_val}"
+                logger.debug(f"✅ Found URL with selector '{sel}': {job_url[:80]}")
                 return job_url
     
     # Fallback: Try data-job-id attribute
     job_id = card.get("data-job-id")
     if job_id and isinstance(job_id, str):
-        return f"https://www.naukri.com/job-listings-{job_id}"
+        fallback_url = f"https://www.naukri.com/job-listings-{job_id}"
+        logger.debug(f"✅ Using data-job-id fallback: {fallback_url}")
+        return fallback_url
     
-    logger.warning("Could not extract job URL from card")
+    # Debug: Print card structure
+    card_classes = card.get("class", [])
+    logger.error(f"❌ URL extraction failed. Card classes: {card_classes}")
+    logger.error(f"Card HTML snippet: {str(card)[:300]}")
     return None
 
 
