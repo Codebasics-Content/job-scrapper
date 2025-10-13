@@ -8,9 +8,9 @@
     "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
     "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
   },
-  "description": "Simple kanban workflow - todo/in_progress/done columns",
+  "description": "Workflow management with todo, in_progress, done columns + metrics synced FROM progress.json",
   "type": "object",
-  "required": ["schema_version", "last_updated", "columns"],
+  "required": ["schema_version", "last_updated", "metrics", "columns"],
   "properties": {
     "schema_version": {
       "type": "string",
@@ -19,6 +19,17 @@
     "last_updated": {
       "type": "string",
       "format": "date-time"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "SYNCED FROM progress.json after every task",
+      "required": ["total_rl_score", "tasks_completed"],
+      "properties": {
+        "total_rl_score": {"type": "number"},
+        "tasks_completed": {"type": "integer", "minimum": 0},
+        "tasks_failed": {"type": "integer", "minimum": 0},
+        "commits": {"type": "integer", "minimum": 0}
+      }
     },
     "columns": {
       "type": "object",
