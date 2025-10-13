@@ -3,6 +3,21 @@
   "last_updated": "2025-10-13T20:15:23+05:30",
   "event_tracking": [
     {
+      "id": "evt-continue-recovery-006",
+      "timestamp": "2025-10-13T21:37:24+05:30",
+      "type": "continue_recovery",
+      "task_id": "naukri_scraper_fix",
+      "description": "/continue: Context restored. Naukri Phase 1 failing (0 URLs extracted). Playwright not rendering.",
+      "context": {
+        "downtime_seconds": 4741,
+        "pending_tasks": 4,
+        "blocker": "Naukri scraper: Bot detection or page load failure",
+        "diagnosis_file": "docs/NAUKRI_SCRAPER_DIAGNOSIS.md",
+        "last_test_result": "0 jobs scraped, -20 RL penalty"
+      },
+      "rl_reward": 5
+    },
+    {
       "id": "evt-bootstrap-sync-005",
       "timestamp": "2025-10-13T20:15:23+05:30",
       "type": "bootstrap_sync",
@@ -55,10 +70,11 @@
     "technology_stack": "Python + Streamlit + JobSpy + Playwright"
   },
   "current_execution": {
-    "task_id": "test_linkedin_20",
-    "task_name": "Execute test_linkedin_20_validation.py with venv",
-    "status": "ready",
-    "priority": "P0"
+    "task_id": "naukri_scraper_fix",
+    "task_name": "Fix Naukri Phase 1 URL extraction (Playwright rendering failure)",
+    "status": "in_progress",
+    "priority": "P0_BLOCKER",
+    "blocker_reason": "0 URLs extracted, bot detection suspected"
   },
   "mcp_integration_state": {
     "filesystem": "active",
