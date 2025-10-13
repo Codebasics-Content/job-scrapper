@@ -1,16 +1,12 @@
 """Check and clean jobs with None descriptions from database"""
 import sqlite3
-import sys
 from pathlib import Path
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
+DB_PATH = Path(__file__).parent / "jobs.db"
 
-from db.connection import connection
-
-def check_and_clean_descriptions():
+def check_and_clean_descriptions() -> None:
     """Check for None descriptions by platform and remove them"""
-    conn = connection()
+    conn = sqlite3.connect(str(DB_PATH))
     cursor = conn.cursor()
     
     print("=" * 80)
