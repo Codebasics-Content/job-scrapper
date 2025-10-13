@@ -9,7 +9,7 @@ EMD Compliance: ≤80 lines
 """
 
 from typing import Any
-from .regex_extractor import load_skill_patterns, extract_skills_from_text
+from .extractor import AdvancedSkillExtractor
 
 def extract_skills_batch(job_descriptions: list[str]) -> list[list[str]]:
     """
@@ -28,12 +28,12 @@ def extract_skills_batch(job_descriptions: list[str]) -> list[list[str]]:
     if not job_descriptions:
         return []
     
-    # Load patterns once for entire batch
-    skill_patterns = load_skill_patterns()
+    # Initialize extractor once for entire batch
+    extractor = AdvancedSkillExtractor('skills_reference_2025.json')
     
-    # Process all jobs with same compiled patterns
+    # Process all jobs with same extractor instance
     results: list[list[str]] = [
-        extract_skills_from_text(jd, skill_patterns)
+        extractor.extract(jd)
         for jd in job_descriptions
     ]
     

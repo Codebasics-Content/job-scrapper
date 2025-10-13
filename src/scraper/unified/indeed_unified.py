@@ -10,13 +10,13 @@ import asyncio
 from typing import List
 from bs4 import BeautifulSoup
 
-from src.models import JobModel
+from src.models import JobDetailModel
 from src.scraper.services.playwright_browser import PlaywrightBrowser
 from src.db.operations import JobStorageOperations
 from .indeed.selectors import CARD_SELECTORS_CSS
 from .indeed.url_builder import build_search_url, normalize_job_url
 from .indeed.card_parser import parse_search_card
-from .indeed.parser import create_job_model
+from .indeed.parser import create_job_detail_model
 
 logger = logging.getLogger(__name__)
 
@@ -27,13 +27,13 @@ async def scrape_indeed_jobs_unified(
     limit: int = 10000,
     batch_size: int = 50,
     store_to_db: bool = True,
-    headless: bool = True,
-) -> List[JobModel]:
+    headless: bool = False,
+) -> List[JobDetailModel]:
     """Scrape Indeed at scale with Playwright detail page navigation"""
-    all_jobs: List[JobModel] = []
+    all_jobs: List[JobDetailModel] = []
     db_ops = JobStorageOperations() if store_to_db else None
 
-    async with PlaywrightBrowser(headless=headless, use_stealth=True) as browser:
+    async with PlaywrightBrowser(headless=headless, use_stealth=False) as browser:
         job_urls: list[str] = []
         start = 0
         max_pages = 100
@@ -93,10 +93,17 @@ async def scrape_indeed_jobs_unified(
             batch_urls = job_urls[batch_start:batch_start + concurrent_jobs]
             
             # Scrape detail pages concurrently
-            async def scrape_detail(job_url: str) -> JobModel | None:
+            async def scrape_detail(job_url: str) -> JobDetailModel | None:
                 try:
                     detail_html = await browser.render_url(job_url, wait_seconds=3.0)
-                    job = create_job_model(job_url, detail_html)
+                    job_id = job_url.split('/')[-1].split('?')[0]
+                    job = create_job_detail_model(
+                        job_id=f"indeed_{job_id}",
+                        platform="indeed",
+                        actual_role="AI Engineer",
+                        url=job_url,
+                        html=detail_html
+                    )
                     return job
                 except Exception as e:
                     logger.error(f"❌ Error {job_url}: {e}")

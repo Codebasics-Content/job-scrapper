@@ -2,7 +2,7 @@
 # Batch import with duplicate checking and skills extraction
 
 import logging
-from src.analysis.skill_extraction import extract_skills_from_text, load_skill_patterns
+from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
 from src.db.operations import JobStorageOperations
 from .linkedin_parser import parse_brightdata_batch
 
@@ -31,13 +31,13 @@ def import_linkedin_jobs(
         logger.warning("No valid jobs parsed from BrightData response")
         return 0, 0
     
-    # Load skill patterns once for batch processing
-    skill_patterns = load_skill_patterns()
+    # Initialize skill extractor once for batch processing
+    extractor = AdvancedSkillExtractor('skills_reference_2025.json')
     
     # Extract skills for each job
     for job in jobs:
         if job.job_description:
-            skills = extract_skills_from_text(job.job_description, skill_patterns)
+            skills = extractor.extract(job.job_description)
             job.skills = ','.join(skills) if skills else ''
     
     # Store to database with duplicate checking

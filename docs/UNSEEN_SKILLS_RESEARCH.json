@@ -1,0 +1,36 @@
+{
+  "research_date": "2025-10-12T21:06:19+05:30",
+  "descriptions_analyzed": 156,
+  "existing_skills_checked": 1132,
+  "unseen_skills_found": 7,
+  "top_unseen_skills": [
+    {
+      "skill": "e.g",
+      "occurrences": 44
+    },
+    {
+      "skill": "u.s",
+      "occurrences": 18
+    },
+    {
+      "skill": "foundation",
+      "occurrences": 13
+    },
+    {
+      "skill": "datasets",
+      "occurrences": 7
+    },
+    {
+      "skill": "vite",
+      "occurrences": 4
+    },
+    {
+      "skill": "i.e",
+      "occurrences": 4
+    },
+    {
+      "skill": "careers.microsoft.com",
+      "occurrences": 4
+    }
+  ]
+}

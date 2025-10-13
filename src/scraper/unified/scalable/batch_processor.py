@@ -8,7 +8,7 @@ from __future__ import annotations
 import logging
 from typing import List, AsyncGenerator
 
-from src.models import JobModel
+from src.models import JobDetailModel
 
 logger = logging.getLogger(__name__)
 
@@ -28,14 +28,14 @@ class BatchProcessor:
 
     async def process_batch(
         self,
-        jobs: List[JobModel],
-    ) -> List[JobModel]:
+        jobs: List[JobDetailModel],
+    ) -> List[JobDetailModel]:
         """Process a single batch of jobs"""
         logger.info(
             f"Processing batch of {len(jobs)} jobs for {self.platform}"
         )
         
-        successful_jobs: List[JobModel] = []
+        successful_jobs: List[JobDetailModel] = []
         
         for job in jobs:
             try:
@@ -52,18 +52,18 @@ class BatchProcessor:
         
         return successful_jobs
 
-    def _validate_job(self, job: JobModel) -> bool:
+    def _validate_job(self, job: JobDetailModel) -> bool:
         """Validate job has minimum required data"""
-        if not job.jd or len(job.jd) < 500:
+        if not job.job_description or len(job.job_description) < 50:
             return False
-        if not job.Job_Role or not job.Company:
+        if not job.actual_role or not job.company_name:
             return False
         return True
 
     async def stream_batches(
         self,
-        all_jobs: List[JobModel],
-    ) -> AsyncGenerator[List[JobModel], None]:
+        all_jobs: List[JobDetailModel],
+    ) -> AsyncGenerator[List[JobDetailModel], None]:
         """Stream jobs in batches for memory-efficient processing"""
         total_jobs = len(all_jobs)
         logger.info(

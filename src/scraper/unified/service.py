@@ -21,8 +21,8 @@ from __future__ import annotations
 
 from typing import List
 
-from src.models import JobModel
-from src.analysis.skill_extraction import extract_skills_from_text, load_skill_patterns
+from src.models import JobDetailModel
+from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
 from .indeed_unified import scrape_indeed_jobs_unified
 from .naukri_unified import scrape_naukri_jobs_unified
 
@@ -50,7 +50,7 @@ async def scrape_jobs(
     keyword: str,
     location: str,
     limit: int = 50,
-) -> List[JobModel]:
+) -> List[JobDetailModel]:
     """Scrape jobs and extract skills using lightweight regex patterns"""
     p = platform.lower()
     
@@ -62,13 +62,13 @@ async def scrape_jobs(
     else:
         raise ValueError(f"Unsupported platform: {platform}. Supported: indeed, naukri")
     
-    # Load skill patterns once for batch processing (performance optimization)
-    skill_patterns = load_skill_patterns()
+    # Initialize skill extractor once for batch processing (performance optimization)
+    extractor = AdvancedSkillExtractor('skills_reference_2025.json')
     
-    # Extract skills for each job using fast regex matching
+    # Extract skills for each job using advanced 3-layer extraction
     for job in jobs:
         if hasattr(job, 'jd') and job.jd:
-            skills = extract_skills_from_text(job.jd, skill_patterns)
+            skills = extractor.extract(job.jd)
             job.skills = ','.join(skills) if skills else ''
     
     return jobs

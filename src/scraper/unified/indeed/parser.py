@@ -5,7 +5,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 from src.models import JobDetailModel
-from src.analysis.skill_extraction.regex_extractor import extract_skills_from_text
+from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
 from .selectors import DESC_SELECTORS_CSS
 
 
@@ -47,7 +47,8 @@ def create_job_detail_model(
     if not desc:
         return None
     
-    skills_list = extract_skills_from_text(desc)
+    extractor = AdvancedSkillExtractor('skills_reference_2025.json')
+    skills_list = extractor.extract(desc)
     skills_str = ", ".join(skills_list) if skills_list else ""
     
     return JobDetailModel(

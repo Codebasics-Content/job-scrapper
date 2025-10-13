@@ -1,7 +1,19 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-12T18:13:58+05:30",
+  "last_updated": "2025-10-12T22:38:00+05:30",
   "error_patterns": [
+    {
+      "id": "naukri_unified_missing_function",
+      "category": "architecture",
+      "error": "ImportError: cannot import name 'scrape_naukri_jobs_unified' from 'src.scraper.unified.naukri_unified'",
+      "root_cause": "service.py expects unified function but naukri_unified.py only exports two-phase functions (scrape_naukri_urls, scrape_naukri_details)",
+      "solution": "Created wrapper function scrape_naukri_jobs_unified that orchestrates two-phase process",
+      "prevention": "Verify function exports match imports before refactoring",
+      "occurred_at": "2025-10-12T22:37:00+05:30",
+      "resolved": true,
+      "resolved_at": "2025-10-12T22:42:00+05:30",
+      "impact": "Resolved - wrapper function added to naukri_unified.py"
+    },
     {
       "id": "brightdata_proxy_403",
       "category": "configuration",
