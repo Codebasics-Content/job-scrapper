@@ -3,7 +3,7 @@ Fetches only unscraped URLs from job_urls table
 """
 from __future__ import annotations
 import asyncio
-from typing import List, Dict, Any
+from typing import List, Dict
 from src.models import JobDetailModel, JobURLModel
 from src.scraper.services.session_manager import (
     create_authenticated_session,
@@ -38,10 +38,10 @@ async def scrape_naukri_details_api(
     # Step 2: Establish session
     browser, context, cookies = await create_authenticated_session(headless)
     
+    # Step 3: Create API client
+    client = NaukriAPIClient(cookies)
+    
     try:
-        # Step 3: Create API client
-        client: NaukriAPIClient | None = None
-        client = NaukriAPIClient(cookies)
         
         # Step 4: Fetch details concurrently (5 concurrent)
         semaphore = asyncio.Semaphore(5)
@@ -73,7 +73,7 @@ async def scrape_naukri_details_api(
         await close_session(browser, context)
 
 
-def _parse_job_detail(data: Dict[str, Any], url_model: JobURLModel) -> JobDetailModel:
+def _parse_job_detail(data: Dict[str, object], url_model: JobURLModel) -> JobDetailModel:
     """Parse API response to JobDetailModel"""
     job = data.get("jobDetails", {})
     

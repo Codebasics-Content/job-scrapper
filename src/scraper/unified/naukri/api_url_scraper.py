@@ -3,7 +3,7 @@ Uses session transfer for captcha bypass
 """
 from __future__ import annotations
 import asyncio
-from typing import List, Dict, Any
+from typing import List, Dict
 from src.models import JobURLModel
 from src.scraper.services.session_manager import (
     create_authenticated_session,
@@ -28,10 +28,10 @@ async def scrape_naukri_urls_api(
     # Step 1: Establish session
     browser, context, cookies = await create_authenticated_session(headless)
     
+    # Step 2: Create API client with session
+    client = NaukriAPIClient(cookies)
+    
     try:
-        # Step 2: Create API client with session
-        client: NaukriAPIClient | None = None
-        client = NaukriAPIClient(cookies)
         
         # Step 3: Calculate pages (20 jobs per page)
         total_pages = (limit + 19) // 20
@@ -66,7 +66,7 @@ async def scrape_naukri_urls_api(
         await close_session(browser, context)
 
 
-def _parse_job_urls(data: Dict[str, Any], keyword: str) -> List[JobURLModel]:
+def _parse_job_urls(data: Dict[str, object], keyword: str) -> List[JobURLModel]:
     """Parse API response to JobURLModel"""
     models = []
     for job in data.get("jobDetails", []):

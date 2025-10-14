@@ -3,7 +3,7 @@ Establishes authenticated browser session for API use
 """
 from __future__ import annotations
 from playwright.async_api import async_playwright, Browser, BrowserContext
-from typing import List, Dict, Any
+from typing import List, Dict
 import logging
 
 logger = logging.getLogger(__name__)
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 async def create_authenticated_session(
     headless: bool = True
-) -> tuple[Browser, BrowserContext, List[Dict[str, Any]]]:
+) -> tuple[Browser, BrowserContext, List[Dict[str, object]]]:
     """Create Playwright session and extract cookies
     
     Returns:
@@ -31,7 +31,7 @@ async def create_authenticated_session(
     
     # Extract cookies and convert to dict format
     raw_cookies = await context.cookies()
-    cookies: List[Dict[str, Any]] = [
+    cookies: List[Dict[str, object]] = [
         {k: v for k, v in cookie.items()} for cookie in raw_cookies
     ]
     logger.info(f"Extracted {len(cookies)} cookies from session")

@@ -3,7 +3,7 @@ Bypasses 406/captcha by using authenticated browser session
 """
 from __future__ import annotations
 import httpx
-from typing import Dict, List, Any
+from typing import Dict, List
 import logging
 
 logger = logging.getLogger(__name__)
@@ -16,7 +16,7 @@ class NaukriAPIClient:
     SEARCH_API = f"{BASE_URL}/jobapi/v3/search"
     DETAIL_API = f"{BASE_URL}/jobapi/v4/job"
     
-    def __init__(self, cookies: List[Dict[str, Any]]):
+    def __init__(self, cookies: List[Dict[str, object]]):
         """Initialize with Playwright cookies"""
         self.client = httpx.AsyncClient(
             cookies={c["name"]: c["value"] for c in cookies},
@@ -29,7 +29,7 @@ class NaukriAPIClient:
     
     async def search_jobs(
         self, keyword: str, page_no: int = 1, limit: int = 20
-    ) -> Dict[str, Any]:
+    ) -> Dict[str, object]:
         """Search API - returns job list with IDs"""
         params = {
             "k": keyword,
@@ -47,7 +47,7 @@ class NaukriAPIClient:
             logger.error(f"Search API error: {e}")
             raise
     
-    async def get_job_detail(self, job_id: str) -> Dict[str, Any]:
+    async def get_job_detail(self, job_id: str) -> Dict[str, object]:
         """Detail API - returns full job data"""
         url = f"{self.DETAIL_API}/{job_id}"
         params = {
