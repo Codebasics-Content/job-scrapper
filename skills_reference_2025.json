@@ -323,11 +323,8 @@
       {
         "name": "Oracle Database",
         "patterns": [
-          "\\boracle\\b",
-          "\\boracle db\\b",
-          "\\boracle database\\b",
-          "\\bplsql\\b",
-          "\\bpl/sql\\b"
+          "\\boracle\\s+database\\b",
+          "\\boracle\\s+db\\b"
         ]
       },
       {
@@ -1892,9 +1889,9 @@
       {
         "name": "Apache Spark",
         "patterns": [
-          "\\bspark\\b",
-          "\\bapache spark\\b",
-          "\\bpyspark\\b"
+          "\\bapache\\s+spark\\b",
+          "\\bpyspark\\b",
+          "\\bspark\\s+(?:streaming|sql|mllib|graphx)\\b"
         ]
       },
       {
@@ -3142,12 +3139,6 @@
           "\\bstrategic thinking\\b",
           "\\bstrategic planning\\b",
           "\\bstrategy\\b"
-        ]
-      },
-      {
-        "name": "Research Skills",
-        "patterns": [
-          "\\bresearch\\s+(?:skills|experience|background)\\b"
         ]
       },
       {

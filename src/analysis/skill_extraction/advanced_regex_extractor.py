@@ -21,7 +21,6 @@ MULTI_WORD_SKILLS = [
     "continuous deployment",
     "retrieval augmented generation",
     "large language models",
-    "CI/CD",
     "MLOps",
     "DevOps",
     "RAG"
