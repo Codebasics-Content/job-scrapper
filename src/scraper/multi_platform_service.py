@@ -1,5 +1,5 @@
 # Multi-Platform Job Scraper Service - Centralized Skill Extraction
-# Unified service for LinkedIn (JobSpy), Indeed (JobSpy), Naukri (Playwright)
+# 2-Platform Architecture: LinkedIn (JobSpy) + Naukri (Playwright)
 from __future__ import annotations
 
 import logging
@@ -21,48 +21,44 @@ async def scrape_jobs_with_skills(
     headless: bool = False,
     store_to_db: bool = True,
 ) -> List[JobDetailModel]:
-    """Unified scraper with centralized skill extraction
+    """2-Platform scraper with advanced deduplication
     
     Platforms:
-        - linkedin: JobSpy (free, no browser)
-        - indeed: JobSpy (free, no browser)
+        - linkedin: JobSpy (multi-layer fuzzy deduplication)
         - naukri: Playwright (headless=False for anti-detection)
     
     Returns:
-        List of JobDetailModel with skills extracted
+        List of JobDetailModel with skills extracted and deduplicated
     """
     all_jobs: List[JobDetailModel] = []
     extractor = AdvancedSkillExtractor('skills_reference_2025.json')
     
-    # Separate platforms: JobSpy vs Playwright
-    jobspy_platforms = [p for p in platforms if p in ["linkedin", "indeed"]]
+    # Separate platforms: JobSpy (LinkedIn only) vs Playwright (Naukri)
+    jobspy_platforms = [p for p in platforms if p == "linkedin"]
     naukri_requested = "naukri" in platforms
     
-    # Scrape via JobSpy (LinkedIn + Indeed)
+    # Scrape via JobSpy (LinkedIn only with fuzzy deduplication)
     if jobspy_platforms:
-        logger.info(f"Scraping {jobspy_platforms} via JobSpy...")
+        logger.info(f"Scraping LinkedIn via JobSpy with multi-layer deduplication...")
         df = scrape_multi_platform(
             platforms=jobspy_platforms,
             search_term=keyword,
             location=location,
             results_wanted=limit,
+            store_to_db=store_to_db,
         )
         
         if df is not None and len(df) > 0:
-            # Convert DataFrame to JobDetailModel and extract skills
+            # Jobs already stored by multi_platform_scraper per batch
+            # Just collect for return
             for _, row in df.iterrows():
-                desc = str(row.get('description', ''))
-                skills = []
-                if desc and len(desc.strip()) > 50:
-                    skills = extractor.extract(desc)
-                
                 job = JobDetailModel(
                     job_id=f"{row.get('site', 'unknown')}_{row.get('job_url', '').split('/')[-1]}",
                     platform=row.get('site', 'unknown'),
                     actual_role=keyword,
                     url=row.get('job_url', ''),
-                    job_description=desc,
-                    skills=','.join(skills) if skills else '',
+                    job_description=str(row.get('description', '')),
+                    skills=str(row.get('skills', '')),  # Already extracted and stored
                     company_name=row.get('company', ''),
                     posted_date=None,
                 )
@@ -87,4 +83,7 @@ async def scrape_jobs_with_skills(
         all_jobs.extend(naukri_jobs)
     
     logger.info(f"Total jobs scraped: {len(all_jobs)} with skills extracted")
+    if store_to_db:
+        logger.info(f"✅ All {len(all_jobs)} jobs stored to database in batches")
+    
     return all_jobs

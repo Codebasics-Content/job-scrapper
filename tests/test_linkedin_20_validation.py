@@ -1,4 +1,4 @@
-"""LinkedIn 20-job validation test - JobSpy scraper
+"""LinkedIn 1000-job scale test - JobSpy scraper
 Tests: Job descriptions, skill extraction, DB storage
 RL: +10 if all pass, -15 if failures
 """
@@ -10,33 +10,40 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.scraper.multi_platform_service import scrape_jobs_with_skills
-from src.db.operations import JobStorageOperations
 
 
 async def test_linkedin_20_jobs():
-    """Test LinkedIn scraping: 20 jobs with descriptions + skills"""
-    print("🧪 LinkedIn 20-Job Validation Test")
+    """Test LinkedIn scraping: 100 AI Engineer jobs with descriptions + skills"""
+    print("🧪 LinkedIn 100-Job Scale Test")
     print("=" * 60)
+    print(f"⏰ Start Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"🎯 Target: 100 AI Engineer jobs from LinkedIn")
+    print(f"🔧 Platform: JobSpy library\n")
     
     db_path = Path(__file__).parent.parent / "jobs.db"
-    db_ops = JobStorageOperations(str(db_path))
+    print(f"💾 Database: {db_path}\n")
     
-    # Scrape 20 LinkedIn jobs
+    # Scrape 100 LinkedIn jobs
+    print("🚀 Starting scrape...")
     start = datetime.now()
     jobs = await scrape_jobs_with_skills(
         platforms=["linkedin"],
-        keyword="Python Developer",
+        keyword="AI Engineer",
         location="",  # Empty string for broad search per JobSpy docs
-        limit=20,
-        store_to_db=False
+        limit=100,
+        store_to_db=True  # ✅ STORE TO DATABASE DURING SCRAPING
     )
     duration = (datetime.now() - start).total_seconds()
+    print(f"\n⏱️  Scraping completed in {duration:.1f}s ({duration/60:.1f} min)")
     
     # Validation
+    print(f"\n📊 Validating {len(jobs)} jobs...")
+    print(f"📋 Checking: Job descriptions (>50 chars) + Skills extraction")
+    print(f"📦 Batch Size: 10 jobs per batch\n")
+    
     passed = 0
     failed = 0
-    
-    print(f"\n✅ Scraped {len(jobs)} jobs in {duration:.1f}s")
+    batch_start = datetime.now()
     
     for idx, job in enumerate(jobs, 1):
         has_desc = bool(job.job_description and len(job.job_description) > 50)
@@ -44,19 +51,39 @@ async def test_linkedin_20_jobs():
         
         if has_desc and has_skills:
             passed += 1
-            print(f"  ✅ Job {idx}: {len(job.job_description)} chars, {len(job.skills.split(','))} skills")
         else:
             failed += 1
             print(f"  ❌ Job {idx}: desc={len(job.job_description) if job.job_description else 0}, skills={job.skills}")
-    
-    # Store to DB
-    stored = db_ops.store_details(jobs)
+        
+        # Batch logging every 10 jobs
+        if idx % 10 == 0:
+            batch_time = (datetime.now() - batch_start).total_seconds()
+            print(f"\n  📦 BATCH {idx//10}: Jobs {idx-9}-{idx}")
+            print(f"     ✅ Passed in batch: {passed - (passed - 10 if idx > 10 else 0)}")
+            print(f"     ⏱️  Batch time: {batch_time:.2f}s")
+            print(f"     📊 Total progress: {idx}/{len(jobs)} ({idx/len(jobs)*100:.1f}%)")
+            print(f"     ✅ Cumulative passed: {passed}")
+            print(f"     ❌ Cumulative failed: {failed}\n")
+            batch_start = datetime.now()
     
     # Results
-    print(f"\n{'='*60}")
-    print(f"✅ Passed: {passed}/{len(jobs)}")
-    print(f"❌ Failed: {failed}/{len(jobs)}")
-    print(f"💾 Stored: {stored} jobs to DB")
+    print("\n" + "="*60)
+    print("📈 RESULTS SUMMARY")
+    print("="*60)
+    
+    if len(jobs) == 0:
+        print("⚠️  No jobs scraped (all were duplicates or LinkedIn has no new jobs)")
+        print(f"💡 Suggestion: Clear database OR use different search keyword")
+        print(f"⏱️  Total Time: {duration:.1f}s ({duration/60:.1f} min)")
+        print(f"💾 Database: {db_path}")
+        return
+    
+    print(f"✅ Passed: {passed}/{len(jobs)} ({passed/len(jobs)*100:.1f}%)")
+    print(f"❌ Failed: {failed}/{len(jobs)} ({failed/len(jobs)*100:.1f}%)")
+    print(f"⏱️  Total Time: {duration:.1f}s ({duration/60:.1f} min)")
+    print(f"💾 Database: {db_path}")
+    print(f"⚡ Speed: {len(jobs)/duration:.2f} jobs/sec")
+    print(f"⏰ End Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
     # RL scoring
     if failed == 0:

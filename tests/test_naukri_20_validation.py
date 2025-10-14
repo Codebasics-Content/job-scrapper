@@ -14,8 +14,8 @@ from src.db.operations import JobStorageOperations
 
 
 async def test_naukri_20_jobs():
-    """Test Naukri scraping: 20 jobs with descriptions + skills"""
-    print("🧪 Naukri 20-Job Validation Test")
+    """Test Naukri scraping: 1000 AI Engineer jobs with descriptions + skills"""
+    print("🧪 Naukri 1000-Job Scale Test")
     print("=" * 60)
     
     db_path = Path(__file__).parent.parent / "jobs.db"
@@ -24,9 +24,9 @@ async def test_naukri_20_jobs():
     # Scrape 20 Naukri jobs
     start = datetime.now()
     jobs = await scrape_naukri_jobs_browser(
-        keyword="Python Developer",
+        keyword="AI Engineer",
         location="",
-        limit=20,
+        limit=1000,
         headless=False
     )
     

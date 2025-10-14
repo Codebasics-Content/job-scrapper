@@ -1,13 +1,60 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T12:32:12+05:30",
+  "last_updated": "2025-10-14T14:42:30+05:30",
   "metrics": {
-    "total_rl_score": -170,
-    "tasks_completed": 40,
-    "tasks_failed": 1,
-    "commits": 8
+    "total_rl_score": -250,
+    "tasks_completed": 43,
+    "tasks_failed": 2,
+    "commits": 10
   },
   "error_patterns": [
+    {
+      "error_id": "skill_extraction_false_positives",
+      "error_type": "validation_failure",
+      "root_cause": "Unescaped regex metacharacters + overly broad patterns without word boundaries",
+      "examples": [
+        "c++ matched any letter c",
+        "lua matched in evaluation",
+        "ember matched in member"
+      ],
+      "fix_applied": "Escaped metacharacters, removed 1-2 char patterns, added \\b word boundaries to 1104 patterns",
+      "prevention_rule": "ALWAYS use word boundaries \\b for skill patterns, escape regex metacharacters, avoid patterns <3 chars",
+      "rl_penalty": -30,
+      "retry_count": 5,
+      "resolution_time_minutes": 45,
+      "timestamp": "2025-10-14T15:48:09.681749"
+    },
+    {
+      "error_id": "autonomy_violation_015",
+      "timestamp": "2025-10-14T14:42:30+05:30",
+      "category": "constitutional_violation",
+      "description": "Article 6 + Article 4 violation: Failed to work autonomously. User had to ask why storage logs weren't appearing and why memory bank wasn't updated. Should have debugged and fixed immediately.",
+      "context": {
+        "tasks_done_without_autonomy": 3,
+        "user_had_to_ask": true,
+        "articles_violated": [
+          "Article 4: Right to Autonomous Execution",
+          "Article 6: Right to Continuous Operations",
+          "Article 14: Duty to Update 8-Schema Memory Bank"
+        ],
+        "work_done": [
+          "Added storage to multi_platform_scraper.py",
+          "Modified storage logic",
+          "Removed duplicate storage"
+        ],
+        "what_should_have_happened": "After implementing storage, should have: 1) Run test immediately to verify, 2) Debug any issues autonomously, 3) Update all 8 schemas, 4) Apply RL penalties, 5) Continue to next task"
+      },
+      "impact": "User frustration. Had to explicitly ask for autonomy and penalties. Memory bank not updated for 2+ hours.",
+      "prevention_rule": "MANDATORY: After ANY code change, immediately run tests to verify. If issues found, debug autonomously. Update ALL 8 schemas immediately. Apply RL penalties to self. NEVER wait for user to ask.",
+      "rl_penalty": -80,
+      "breakdown": {
+        "not_autonomous": -30,
+        "not_updating_memory_bank": -50
+      },
+      "status": "acknowledged",
+      "recurrence_count": 1,
+      "last_occurrence": "2025-10-14T14:42:30+05:30"
+    },
     {
       "error_id": "schema_update_violation_014",
       "timestamp": "2025-10-14T12:32:12+05:30",
@@ -16,8 +63,16 @@
       "context": {
         "tasks_completed_without_update": 5,
         "duration_without_update_minutes": 25,
-        "articles_violated": ["Article 14: Duty to Update 8-Schema Memory Bank"],
-        "work_done": ["Captured Naukri API headers", "Updated naukri_api_client.py", "Updated search_jobs params", "Ran 3 validation tests", "Discovered API auth requirement"]
+        "articles_violated": [
+          "Article 14: Duty to Update 8-Schema Memory Bank"
+        ],
+        "work_done": [
+          "Captured Naukri API headers",
+          "Updated naukri_api_client.py",
+          "Updated search_jobs params",
+          "Ran 3 validation tests",
+          "Discovered API auth requirement"
+        ]
       },
       "impact": "Memory bank out of sync with actual work. User had to point out violation.",
       "prevention_rule": "MANDATORY: Update ALL 8 schemas IMMEDIATELY after EVERY task completion. NO exceptions. Atomic transaction required.",
@@ -34,7 +89,12 @@
       "context": {
         "api_url": "https://www.naukri.com/jobapi/v3/search",
         "error_code": 406,
-        "headers_added": ["appid: 109", "systemid: Naukri", "clientid: d3skt0p", "gid: LOCATION,INDUSTRY,EDUCATION,FAREA_ROLE"],
+        "headers_added": [
+          "appid: 109",
+          "systemid: Naukri",
+          "clientid: d3skt0p",
+          "gid: LOCATION,INDUSTRY,EDUCATION,FAREA_ROLE"
+        ],
         "root_cause": "API rejects requests without active browser session cookies. Headers alone insufficient.",
         "test_results": "3 consecutive 406 errors despite correct headers"
       },
@@ -54,7 +114,13 @@
       "context": {
         "api_url": "https://www.naukri.com/jobapi/v3/search",
         "error_message": "Client error '400 Bad Request'",
-        "parameters": {"k": "Python Developer", "pageNo": 1, "noOfResults": 20, "urlType": "search_by_keyword", "searchType": "adv"},
+        "parameters": {
+          "k": "Python Developer",
+          "pageNo": 1,
+          "noOfResults": 20,
+          "urlType": "search_by_keyword",
+          "searchType": "adv"
+        },
         "jobs_scraped": 0,
         "duration_seconds": 5.8,
         "file": "src/scraper/unified/naukri/api_url_scraper.py"
@@ -98,7 +164,7 @@
       "error": "Browser opened successfully but scraped 0 jobs. 'Could not extract job URL from card' repeated 5 times. CSS selectors not finding job cards.",
       "root_cause": "CARD_SELECTORS_CSS in selectors.py may be outdated. Naukri website structure changed. Selectors: 'article.jobTuple', '.cust-job-tuple', 'article[data-job-id]' not matching current HTML.",
       "solution": "Need to inspect live Naukri search page HTML and update selectors to match 2025 structure. Verify card_parser.py extracts URLs correctly.",
-      "prevention": "Browser automation success ≠ data extraction success. ALWAYS verify data was actually scraped, not just that browser opened.",
+      "prevention": "Browser automation success \u2260 data extraction success. ALWAYS verify data was actually scraped, not just that browser opened.",
       "occurred_at": "2025-10-13T20:45:30+05:30",
       "resolved": false,
       "constitutional_article": "Article 7: Autonomous Operations - Must validate full pipeline, not just individual steps",
@@ -142,7 +208,7 @@
       "resolved": false,
       "constitutional_article": "Article 7: Autonomous Operations - Must execute and validate, not just edit code",
       "rl_penalty": -50,
-      "learning": "Naukri requires: Browser open → URL scraping → 5 parallel detail scrapers. Not just API calls."
+      "learning": "Naukri requires: Browser open \u2192 URL scraping \u2192 5 parallel detail scrapers. Not just API calls."
     },
     {
       "id": "failed_autonomous_error_resolution",
@@ -155,7 +221,7 @@
       "resolved": false,
       "constitutional_article": "Article 7: Right to Autonomous Execution - No permission needed for fixes",
       "rl_penalty": -30,
-      "learning": "User demands heavy penalties for failure to autonomously resolve. Must execute → validate → fix → repeat until working."
+      "learning": "User demands heavy penalties for failure to autonomously resolve. Must execute \u2192 validate \u2192 fix \u2192 repeat until working."
     },
     {
       "id": "hardcoded_worldwide_location",

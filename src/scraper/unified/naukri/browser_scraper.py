@@ -18,84 +18,97 @@ async def scrape_naukri_jobs_browser(
     limit: int = 20,
     headless: bool = False
 ) -> List[JobDetailModel]:
-    """Scrape Naukri jobs using direct browser HTML extraction"""
+    """Scrape Naukri jobs with pagination - no caps, dynamic limit"""
     
     jobs: List[JobDetailModel] = []
-    search_url = f"https://www.naukri.com/{keyword.lower().replace(' ', '-')}-jobs"
+    base_url = f"https://www.naukri.com/{keyword.lower().replace(' ', '-')}-jobs"
+    page = 1
     
     async with PlaywrightBrowser(headless=headless) as browser:
-        try:
-            # Render search page
-            html = await browser.render_url(search_url, wait_seconds=3.0)
-            
-            if not html:
-                logger.error("Failed to render search page")
-                return jobs
-            
-            # Parse HTML
-            soup = BeautifulSoup(html, 'html.parser')
-            
-            # Find job cards - try multiple selectors
-            selectors = [
-                '.cust-job-tuple',
-                'article.jobTuple',
-                'article[data-job-id]'
-            ]
-            
-            job_cards = []
-            for selector in selectors:
-                job_cards = soup.select(selector)
-                if job_cards:
-                    logger.info(f"Found {len(job_cards)} jobs using selector: {selector}")
+        while len(jobs) < limit:
+            try:
+                # Build paginated URL (page 1 has no suffix, page 2+ has -2, -3, etc.)
+                search_url = f"{base_url}-{page}" if page > 1 else base_url
+                logger.info(f"📄 Page {page}: {search_url} (collected {len(jobs)}/{limit})")
+                
+                # Render search page
+                html = await browser.render_url(search_url, wait_seconds=3.0)
+                
+                if not html:
+                    logger.error(f"Failed to render page {page}")
                     break
-            
-            # Extract job data
-            for card in job_cards[:limit]:
-                try:
-                    # Extract title
-                    title_elem = card.select_one('.title, .jobTuple-title a, [class*="title"]')
-                    title = title_elem.text.strip() if title_elem else "Unknown Title"
-                    
-                    # Extract URL
-                    link_elem = card.select_one('a[href*="job-listings"]')
-                    href = link_elem.get('href', '') if link_elem else ''
-                    url = href if href.startswith('http') else f"https://www.naukri.com{href}"
-                    
-                    # Extract company (2025 Naukri: .comp-name inside .comp-dtls-wrap)
-                    company_elem = card.select_one('.comp-name, .companyInfo, [class*="company"]')
-                    company = company_elem.text.strip() if company_elem else "Unknown Company"
-                    
-                    # Generate job_id from URL
-                    job_id = JobUrlModel.generate_job_id("naukri", url) if url else JobUrlModel.generate_job_id("naukri", f"{title}-{company}")
-                    
-                    # Extract posted date (2025 Naukri: .job-post-day)
-                    date_elem = card.select_one('.job-post-day, [class*="date"], [class*="post"]')
-                    posted_date = date_elem.text.strip() if date_elem else None
-                    
-                    jobs.append(JobDetailModel(
-                        job_id=job_id,
-                        platform="naukri",
-                        actual_role=title,
-                        url=url,
-                        job_description="",
-                        company_name=company,
-                        posted_date=posted_date
-                    ))
-                    
-                except Exception as e:
-                    logger.warning(f"Failed to parse job card: {e}")
-                    continue
-            
-            logger.info(f"✅ Scraped {len(jobs)} jobs from Naukri browser")
-            
-            # Enrich with parallel page scraping (5 concurrent tabs)
-            if jobs:
-                jobs = await _enrich_parallel_pages(jobs, browser)
-            
-        except Exception as e:
-            logger.error(f"Browser scraping failed: {e}")
+                
+                # Parse HTML
+                soup = BeautifulSoup(html, 'html.parser')
+                
+                # Find job cards
+                selectors = ['.cust-job-tuple', 'article.jobTuple', 'article[data-job-id]']
+                job_cards = []
+                for selector in selectors:
+                    job_cards = soup.select(selector)
+                    if job_cards:
+                        break
+                
+                if not job_cards:
+                    logger.info(f"No more jobs found on page {page}")
+                    break
+                
+                # Extract job data from current page
+                for card in job_cards:
+                    try:
+                        # Extract title
+                        title_elem = card.select_one('.title, .jobTuple-title a, [class*="title"]')
+                        title = title_elem.text.strip() if title_elem else "Unknown Title"
+                        
+                        # Extract URL
+                        link_elem = card.select_one('a[href*="job-listings"]')
+                        href = link_elem.get('href', '') if link_elem else ''
+                        url = href if href.startswith('http') else f"https://www.naukri.com{href}"
+                        
+                        # Extract company (2025 Naukri: .comp-name inside .comp-dtls-wrap)
+                        company_elem = card.select_one('.comp-name, .companyInfo, [class*="company"]')
+                        company = company_elem.text.strip() if company_elem else "Unknown Company"
+                        
+                        # Generate job_id from URL
+                        job_id = JobUrlModel.generate_job_id("naukri", url) if url else JobUrlModel.generate_job_id("naukri", f"{title}-{company}")
+                        
+                        # Extract posted date text (e.g., "1 day ago", "Just now")
+                        # Note: JobDetailModel expects datetime, so keep as None for now
+                        # TODO: Parse relative dates ("1 day ago") to datetime objects
+                        posted_date = None
+                        
+                        jobs.append(JobDetailModel(
+                            job_id=job_id,
+                            platform="naukri",
+                            actual_role=title,
+                            url=url,
+                            job_description="",
+                            company_name=company,
+                            posted_date=posted_date
+                        ))
+                        
+                        # Stop if we've reached the limit
+                        if len(jobs) >= limit:
+                            break
+                        
+                    except Exception as e:
+                        logger.warning(f"Failed to parse job card: {e}")
+                        continue
+                
+                # Move to next page
+                page += 1
+                
+            except Exception as e:
+                logger.error(f"Page {page} scraping failed: {e}")
+                break
+        
+        logger.info(f"✅ Scraped {len(jobs)} jobs from {page-1} pages")
+        
+        # Enrich with parallel page scraping (5 concurrent tabs)
+        if jobs:
+            jobs = await _enrich_parallel_pages(jobs, browser)
     
-    return jobs[:limit]
+    return jobs
 
 
 async def _enrich_parallel_pages(

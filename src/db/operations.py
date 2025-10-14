@@ -69,6 +69,17 @@ class JobStorageOperations:
             logger.info(f"Stored {stored}/{len(details)} job details")
             return stored
     
+    def get_existing_urls(self, urls: list[str]) -> set[str]:
+        """Check which URLs already exist in database"""
+        if not urls:
+            return set()
+        with self.connection.get_connection_context() as conn:
+            placeholders = ','.join('?' * len(urls))
+            cursor = conn.execute(f"""
+                SELECT url FROM jobs WHERE url IN ({placeholders})
+            """, urls)
+            return {row[0] for row in cursor.fetchall()}
+    
     def get_unscraped_urls(self, platform: str, input_role: str, limit: int = 100) -> list[tuple[str, str, str, str]]:
         """Get URLs that need detail scraping: (url, job_id, platform, actual_role)"""
         with self.connection.get_connection_context() as conn:

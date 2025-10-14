@@ -41,12 +41,23 @@ def scrape_linkedin_jobs(
     proxy_url = os.getenv("PROXY_URL")
     proxies = [proxy_url] if proxy_url else None
     
+    print("\n" + "="*60)
+    print("🔐 PROXY STATUS CHECK")
+    print("="*60)
     if proxies:
+        print(f"✅ BrightData Proxy: CONFIGURED")
+        print(f"🌐 Proxy URL: {proxy_url[:50]}..." if len(proxy_url) > 50 else f"🌐 Proxy URL: {proxy_url}")
         logger.info(f"Using BrightData proxy: {proxy_url}")
     else:
+        print(f"❌ BrightData Proxy: NOT CONFIGURED")
+        print(f"⚠️  WARNING: LinkedIn may rate limit without proxy!")
         logger.warning("No proxy configured - LinkedIn may rate limit")
+    print("="*60 + "\n")
     
     try:
+        print(f"🚀 JobSpy API Call Starting...")
+        print(f"📍 Search: '{keyword}' in '{location}'")
+        print(f"🎯 Target: {limit} jobs\n")
         logger.info(
             f"Scraping LinkedIn: {keyword} in {location} "
             f"(limit={limit}, proxy={bool(proxies)})"
@@ -67,13 +78,17 @@ def scrape_linkedin_jobs(
         )
         
         if df is None or df.empty:
+            print(f"❌ JobSpy returned 0 jobs")
             logger.warning("No jobs found")
             return []
         
+        print(f"✅ JobSpy returned {len(df)} jobs")
+        print(f"📊 DataFrame shape: {df.shape}")
         logger.info(f"Successfully scraped {len(df)} LinkedIn jobs")
         
         # Convert DataFrame to list of dicts
         jobs = df.to_dict('records')
+        print(f"✅ Converted to {len(jobs)} job dictionaries\n")
         return jobs
         
     except Exception as e:
