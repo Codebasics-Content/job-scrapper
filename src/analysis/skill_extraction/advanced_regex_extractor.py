@@ -5,7 +5,7 @@ Achieves 80-85% accuracy with 0.3s/job speed (10x faster than spaCy)
 import re
 from typing import Any
 
-# Multi-word skills (ordered by length - longest first)
+# Multi-word technical skills that should be matched as phrases
 MULTI_WORD_SKILLS = [
     "natural language processing",
     "machine learning operations",
@@ -25,6 +25,11 @@ MULTI_WORD_SKILLS = [
     "DevOps",
     "RAG"
 ]
+
+# NOTE: Removed problematic patterns that match common English:
+# - CI/CD: matches "CI" in words, use skills_reference.json pattern instead
+# - Express.Js: matches "express" (common verb)
+# - GenAI: too generic, matches "gen" in words
 
 # Context-aware patterns
 SKILL_CONTEXT_PATTERNS = {

@@ -569,9 +569,10 @@
       {
         "name": "Express.js",
         "patterns": [
-          "\\bexpress\\b",
           "\\bexpress\\.js\\b",
-          "\\bexpressjs\\b"
+          "\\bexpressjs\\b",
+          "\\bexpress\\s+framework\\b",
+          "\\bexpress\\s+server\\b"
         ]
       },
       {
@@ -931,8 +932,8 @@
       {
         "name": "AWS Lambda",
         "patterns": [
-          "\\blambda\\b",
-          "\\baws lambda\\b"
+          "\\baws\\s+lambda\\b",
+          "\\blambda\\s+function\\b"
         ]
       },
       {
@@ -1215,9 +1216,9 @@
       {
         "name": "Google Cloud Platform",
         "patterns": [
-          "\\bgcp\\b",
-          "\\bgoogle cloud\\b",
-          "\\bgoogle cloud platform\\b"
+          "\\bgoogle cloud platform\\b",
+          "\\bgcp\\b(?!\\s*certified)",
+          "\\bg\\.c\\.p\\.\\b"
         ]
       },
       {
@@ -1230,8 +1231,9 @@
       {
         "name": "Google Cloud Storage",
         "patterns": [
-          "\\bgcs\\b",
-          "\\bgoogle cloud storage\\b"
+          "\\bgoogle\\s+cloud\\s+storage\\b",
+          "\\bgcs\\b(?!\\s*certified)",
+          "\\bcloud\\s+storage\\s+bucket\\b"
         ]
       },
       {
@@ -1244,7 +1246,8 @@
       {
         "name": "Google BigQuery",
         "patterns": [
-          "\\bbigquery\\b"
+          "\\bgoogle\\s+bigquery\\b",
+          "\\bbigquery\\b(?=\\s+(?:table|dataset|query|sql))"
         ]
       },
       {
@@ -1766,13 +1769,8 @@
       {
         "name": "Anthropic Claude",
         "patterns": [
-          "\\bclaude\\b",
-          "\\banthropic\\b",
-          "\\bclaude 3\\b",
-          "\\bclaude code\\b",
-          "\\bclaude ai\\b",
-          "\\bclaude 3.5 sonnet\\b",
-          "\\bclaude 3 opus\\b"
+          "\\banthropic\\s+claude\\b",
+          "\\bclaude\\s+(?:ai|api|model)\\b"
         ]
       },
       {
@@ -1904,15 +1902,15 @@
       {
         "name": "Apache Kafka",
         "patterns": [
-          "\\bkafka\\b",
-          "\\bapache kafka\\b"
+          "\\bapache\\s+kafka\\b",
+          "\\bkafka\\s+(?:topic|broker|stream|producer|consumer)\\b"
         ]
       },
       {
         "name": "Apache Airflow",
         "patterns": [
-          "\\bairflow\\b",
-          "\\bapache airflow\\b"
+          "\\bapache\\s+airflow\\b",
+          "\\bairflow\\s+(?:dag|pipeline|workflow)\\b"
         ]
       },
       {
@@ -2586,8 +2584,8 @@
       {
         "name": "Apache Flink",
         "patterns": [
-          "\\bflink\\b",
-          "\\bapache flink\\b"
+          "\\bapache\\s+flink\\b",
+          "\\bflink\\s+(?:streaming|job)\\b"
         ]
       },
       {
@@ -3788,9 +3786,9 @@
       {
         "name": "Generative AI",
         "patterns": [
-          "\\bgenerative ai\\b",
-          "\\bgenai\\b",
-          "\\bgen ai\\b"
+          "\\bgenerative\\s+ai\\b",
+          "\\bgen\\s+ai\\b",
+          "\\bgenai\\b(?=\\s+(?:model|application|system))"
         ]
       },
       {
