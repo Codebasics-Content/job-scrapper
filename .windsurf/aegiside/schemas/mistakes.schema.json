@@ -52,7 +52,9 @@
           "occurred_at": {"type": "string", "format": "date-time"},
           "resolved": {"type": "boolean"},
           "constitutional_article": {"type": "string"},
-          "learning": {"type": "string"}
+          "learning": {"type": "string"},
+          "gae_advantage": {"type": "number", "description": "GAE advantage at time of penalty"},
+          "kl_divergence": {"type": "number", "description": "KL divergence contributing to penalty"}
         }
       }
     },

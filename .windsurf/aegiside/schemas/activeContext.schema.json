@@ -37,6 +37,19 @@
         "blocker_reason": {"type": "string"}
       }
     },
+    "rl_runtime": {
+      "type": "object",
+      "description": "Real-time RL architecture state",
+      "properties": {
+        "current_gae_advantage": {"type": "number"},
+        "session_kl_divergence": {"type": "number"},
+        "active_branch": {"type": "string", "enum": ["task_success", "validation", "pattern_reuse", "mcp_integration", "innovation"]},
+        "exploit_mode": {"type": "boolean", "description": "true=exploitation(70%), false=exploration(30%)"},
+        "strategy_effectiveness": {"type": "number", "minimum": 0, "maximum": 1, "description": "Current strategy effectiveness (triggers auto-adapt if <0.8)"},
+        "autonomous_loop_active": {"type": "boolean", "description": "Recursive self-teaching loop active"},
+        "parallel_workers": {"type": "integer", "minimum": 1, "description": "Number of concurrent workers"}
+      }
+    },
     "event_tracking": {
       "type": "array",
       "description": "Prepend new events at [0]",

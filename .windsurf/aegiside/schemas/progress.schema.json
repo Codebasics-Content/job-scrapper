@@ -25,20 +25,78 @@
     },
     "reinforcement_learning": {
       "type": "array",
-      "description": "Transaction log - prepend entries at [0]",
-      "maxItems": 100,
+      "description": "RL transaction ledger (prepend at [0]) - PPO+GAE architecture",
       "items": {
         "type": "object",
-        "required": ["workflow", "timestamp", "reason"],
         "properties": {
-          "workflow": {"type": "string"},
-          "rl_reward": {"type": "number", "minimum": 0},
-          "rl_penalty": {"type": "number", "maximum": 0},
-          "reason": {"type": "string"},
+          "tx_id": {"type": "string"},
           "timestamp": {"type": "string", "format": "date-time"},
-          "schemas_updated": {"type": "array", "items": {"type": "string"}},
-          "mcp_chain": {"type": "array", "items": {"type": "string"}}
+          "category": {"type": "string"},
+          "reward": {"type": "number"},
+          "penalty": {"type": "number"},
+          "source_file": {"type": "string"},
+          "description": {"type": "string"},
+          "gae_advantage": {"type": "number", "description": "GAE advantage estimation (gamma=1.0, lambda=1.0)"},
+          "kl_divergence": {"type": "number", "description": "KL penalty (kl_coef=0.005)"}
         }
+      }
+    },
+    "rl_architecture": {
+      "type": "object",
+      "description": "PPO+GAE RL system configuration",
+      "properties": {
+        "algorithm": {"type": "string", "default": "PPO"},
+        "kl_coefficient": {"type": "number", "default": 0.005},
+        "gae_params": {
+          "type": "object",
+          "properties": {
+            "gamma": {"type": "number", "default": 1.0},
+            "lambda": {"type": "number", "default": 1.0}
+          }
+        },
+        "exploit_explore_ratio": {
+          "type": "object",
+          "properties": {
+            "exploitation": {"type": "number", "default": 0.7},
+            "exploration": {"type": "number", "default": 0.3}
+          }
+        },
+        "value_network": {"type": "string", "default": "multi-branch"},
+        "reward_design": {"type": "string", "default": "automated_llm"}
+      }
+    },
+    "value_network_branches": {
+      "type": "object",
+      "description": "Multi-branch value network with per-component tracking",
+      "properties": {
+        "task_success_value": {"type": "number", "description": "Value estimate for task completion branch"},
+        "validation_value": {"type": "number", "description": "Value estimate for quality validation branch"},
+        "pattern_reuse_value": {"type": "number", "description": "Value estimate for knowledge exploitation branch"},
+        "mcp_integration_value": {"type": "number", "description": "Value estimate for MCP chain completion branch"},
+        "innovation_value": {"type": "number", "description": "Value estimate for exploration bonus branch"},
+        "branch_weights": {
+          "type": "object",
+          "description": "Dynamic weights for each value branch (sum=1.0)",
+          "properties": {
+            "task_success": {"type": "number", "minimum": 0, "maximum": 1},
+            "validation": {"type": "number", "minimum": 0, "maximum": 1},
+            "pattern_reuse": {"type": "number", "minimum": 0, "maximum": 1},
+            "mcp_integration": {"type": "number", "minimum": 0, "maximum": 1},
+            "innovation": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        },
+        "last_updated": {"type": "string", "format": "date-time"}
+      }
+    },
+    "reference_policy": {
+      "type": "object",
+      "description": "Baseline policy for KL divergence calculation",
+      "properties": {
+        "policy_snapshot": {"type": "string", "description": "Reference policy state identifier"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "update_frequency": {"type": "string", "default": "every_50_tasks"},
+        "last_kl_divergence": {"type": "number"},
+        "drift_threshold": {"type": "number", "default": 0.01, "description": "Max allowed KL before policy reset"}
       }
     },
     "current_focus": {

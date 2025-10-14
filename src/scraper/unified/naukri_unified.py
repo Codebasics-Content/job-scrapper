@@ -1,47 +1,59 @@
-"""Two-Phase Naukri Scraper - 80-90% Speedup via URL Caching
+"""Naukri API-Based Scraper - Session Transfer Architecture
 
-Phase 1: Scrape URLs only (10-100x faster)
-Phase 2: Scrape details only for unscraped URLs (LEFT JOIN deduplication)
+Phase 1: URL extraction via API (5 concurrent, captcha bypass)
+Phase 2: Detail scraping via API (5 concurrent, deduplication)
 """
 from __future__ import annotations
 
 from typing import List
 from src.models import JobDetailModel
-from .naukri.url_scraper import scrape_naukri_urls
-from .naukri.detail_scraper import scrape_naukri_details
+from .naukri.api_url_scraper import scrape_naukri_urls_api
+from .naukri.api_detail_scraper import scrape_naukri_details_api
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 async def scrape_naukri_jobs_unified(
     keyword: str,
     location: str,
     limit: int = 100,
-    headless: bool = False,
+    headless: bool = True,
 ) -> List[JobDetailModel]:
-    """Unified Naukri scraper orchestrating two-phase process"""
-    import logging
-    logger = logging.getLogger(__name__)
+    """Unified API-based Naukri scraper
     
-    # Phase 1: Scrape URLs and store to DB
-    url_models = await scrape_naukri_urls(
+    Architecture:
+    1. Playwright establishes session (bypass captcha)
+    2. Extract cookies for API authentication
+    3. Phase 1: API URL extraction (5 concurrent pages)
+    4. Phase 2: API detail scraping (5 concurrent jobs)
+    """
+    
+    # Phase 1: API-based URL extraction
+    url_models = await scrape_naukri_urls_api(
         keyword=keyword,
         location=location,
         limit=limit,
         headless=headless,
-        store_to_db=True  # CRITICAL: Store URLs for Phase 2
+        store_to_db=True,
     )
-    logger.info(f"✅ Phase 1: Collected {len(url_models)} URLs")
+    logger.info(f"✅ Phase 1 (API): Collected {len(url_models)} URLs")
     
-    # Phase 2: Scrape details for unscraped URLs from DB
-    jobs = await scrape_naukri_details(
+    # Phase 2: API-based detail scraping with deduplication
+    jobs = await scrape_naukri_details_api(
         platform="naukri",
         input_role=keyword,
         limit=limit,
         headless=headless,
-        store_to_db=True
+        store_to_db=True,
     )
-    logger.info(f"✅ Phase 2: Scraped {len(jobs)} job details")
+    logger.info(f"✅ Phase 2 (API): Scraped {len(jobs)} details")
     
     return jobs
 
 
-__all__ = ["scrape_naukri_urls", "scrape_naukri_details", "scrape_naukri_jobs_unified"]
+__all__ = [
+    "scrape_naukri_urls_api",
+    "scrape_naukri_details_api",
+    "scrape_naukri_jobs_unified",
+]

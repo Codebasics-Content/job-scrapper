@@ -22,7 +22,12 @@
         "total_rl_score": {"type": "number"},
         "tasks_completed": {"type": "integer", "minimum": 0},
         "tasks_failed": {"type": "integer", "minimum": 0},
-        "commits": {"type": "integer", "minimum": 0}
+        "commits": {"type": "integer", "minimum": 0},
+        "rl_reward": {"type": "number"},
+        "success_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "gae_advantage": {"type": "number", "description": "GAE advantage at time of reward"},
+        "value_branch": {"type": "string", "enum": ["task_success", "validation", "pattern_reuse", "mcp_integration", "innovation"]},
+        "timestamp": {"type": "string", "format": "date-time"}
       }
     },
     "architecture_patterns": {
