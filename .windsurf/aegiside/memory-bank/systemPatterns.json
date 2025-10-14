@@ -50,7 +50,7 @@
       "indeed_unified": "Deleted 115 lines duplicate",
       "service_py": "Old service, replaced by multi_platform_service.py"
     }
-  },
+  ],
   "emd_compliance": {
     "multi_platform_service": "89 lines (within limit)",
     "benefit": "Single source of truth for skill extraction"
