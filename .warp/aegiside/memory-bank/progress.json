@@ -144,12 +144,5 @@
       "completion": 100,
       "notes": "Constitutional framework complete with all articles and memory bank"
     }
-  },
-  "metrics": {
-    "totalFiles": 150,
-    "linesOfCode": 8500,
-    "testCoverage": 75,
-    "documentationCoverage": 80,
-    "technicalDebt": "low"
   }
 }

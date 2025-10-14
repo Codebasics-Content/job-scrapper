@@ -50,8 +50,7 @@
         "proposedFix": "Add JSON.parse step in visualization preprocessing"
       },
       "status": "identified"
-    }
-  ],
+    },
     {
       "id": "schema-violation-2025-10-14-004",
       "category": "constitutional_violation",
