@@ -1,6 +1,8 @@
 # 🔍 Job Scraper & Analytics Dashboard
 
-> Scrape jobs from **Naukri**, **LinkedIn**, and **Indeed** using BrightData, then analyze skills and trends with advanced visualizations.
+> Scrape jobs from **LinkedIn** and **Naukri** with advanced skill extraction, deduplication, and analytics visualization.
+
+**🎯 2-Platform Architecture**: LinkedIn (JobSpy + BrightData) + Naukri (Playwright)
 
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/streamlit-1.28+-red.svg)](https://streamlit.io/)
@@ -10,10 +12,10 @@
 
 ## ✨ Features
 
-### 🤖 **Multi-Platform Scraping**
-- **Naukri** - India's #1 job portal (Recommended - Most reliable)
-- **LinkedIn** - Professional networking platform
-- **Indeed** - Global job search engine
+### 🤖 **2-Platform Scraping**
+- ✅ **LinkedIn** - Via JobSpy library with BrightData proxy (multi-layer fuzzy deduplication)
+- ✅ **Naukri** - Via Playwright with 5-tab parallel scraping
+- ❌ **Indeed** - Deprecated (removed October 2025)
 
 ### 📊 **Advanced Analytics Dashboard**
 - **Top Skills Analysis** - 3 chart types (Bar, Area, Table)
@@ -29,29 +31,20 @@
 - **Real-time scraping** with progress tracking
 - **Bypasses reCAPTCHA** and bot protections automatically
 
-### 📈 **Scalability & Limitations**
+### 🎯 **Key Features**
+- **Advanced Skill Extraction**: Context-aware pattern matching with 2025 skills taxonomy
+- **Multi-Layer Deduplication**: Fuzzy matching on title + company + location (90% similarity)
+- **Parallel Processing**: 5 concurrent browser tabs for Naukri scraping
+- **Robust Error Handling**: Automatic CSS selector fallback, proxy rotation, retry logic
+- **Real-time Progress**: Live updates with job count, success rate, elapsed time
 
-#### **10K+ Job Scraping (Supported)**
-- **Platform-Specific Rate Limiting**: Indeed (5 concurrent), LinkedIn (2 concurrent), Naukri (15 concurrent)
-- **Batch Processing**: 1000 jobs/batch with streaming database writes
-- **Checkpoint/Resume**: Automatic crash recovery with JSON persistence
-- **Progress Tracking**: Real-time ETA with moving average throughput
-- **Realistic Timeline**: 10K jobs ≈ 8-12 hours depending on platform mix
+---
 
-#### **100K Job Scraping (Not Recommended)**
-⚠️ **100K+ jobs face significant constraints:**
-- **Time Requirements**: 80-120+ hours of continuous execution
-- **API Rate Limits**: Platform detection risk increases exponentially
-- **Resource Constraints**: Memory pressure, network stability requirements
-- **Cost Implications**: BrightData usage costs scale linearly with volume
-- **Recommended Alternative**: Use official APIs (LinkedIn Talent Solutions, Indeed Publisher API) for enterprise-scale needs
+## 📚 Documentation
 
-**For 10K+ operations, use scalable components:**
-```python
-from src.scraper.unified.service import (
-    BatchProcessor, CheckpointManager, ProgressTracker, get_rate_limiter
-)
-```
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Complete system architecture for stakeholders
+- **[SOLUTION.md](SOLUTION.md)** - Implementation details
+- **[docs/](docs/)** - Technical documentation
 
 ---
 
@@ -68,154 +61,114 @@ pip install -r requirements.txt
 playwright install chromium
 ```
 
-### 2. BrightData Setup
+### 2. Configure BrightData (LinkedIn Only)
 
-**Get your credentials from [BrightData](https://brightdata.com):**
-
-1. Log in to your BrightData account
-2. Go to **"Scraping Browser"** section
-3. Copy your **WebSocket URL** (starts with `wss://`)
-4. Get your **API Token** from account settings
-
-### 3. Configure Environment Variables
-
-**Create `.env` file in project root:**
+**Create `.env` file:**
 
 ```bash
 cp .env.example .env
 ```
 
-**Add your credentials:**
+**Add credentials (get from [BrightData](https://brightdata.com)):**
 
 ```env
-BRIGHTDATA_API_TOKEN=your_api_token_here
-BRIGHTDATA_BROWSER_URL=wss://brd-customer-hl_xxxxx-zone-scraping_browser1:xxxxx@brd.superproxy.io:9222
+BRIGHTDATA_USERNAME=your_username
+BRIGHTDATA_PASSWORD=your_password
+BRIGHTDATA_HOST=brd.superproxy.io
+BRIGHTDATA_PORT=33335
 ```
 
-> 💡 **See [`ENV_SETUP.md`](ENV_SETUP.md) for detailed setup instructions**
+> 💡 **Naukri works without proxy** - Playwright handles anti-detection automatically
 
-### 4. Run the Application
+### 3. Run the Application
 
 ```bash
 streamlit run streamlit_app.py
-```
-
-The app will open at `http://localhost:8501`
-
----
-
-## 📖 Documentation
-
-| Document | Description |
-|----------|-------------|
-| **[QUICKSTART.md](QUICKSTART.md)** | Step-by-step guide to get started |
-| **[ENV_SETUP.md](ENV_SETUP.md)** | Environment variables setup (3 methods, troubleshooting) |
-| **[STRUCTURE_CONSOLIDATED.md](STRUCTURE_CONSOLIDATED.md)** | Consolidated folder structure |
-| **[BRIGHTDATA_MIGRATION_SUMMARY.md](BRIGHTDATA_MIGRATION_SUMMARY.md)** | Complete migration details |
-| **[FINAL_CONFIG_UPDATE.md](FINAL_CONFIG_UPDATE.md)** | Latest configuration changes |
 
 ---
 
 ## 🎯 Usage
 
-### **Tab 1: Scraper**
+### **Scraper Tab**
 
-1. **Select Platform** - Choose Naukri, LinkedIn, or Indeed
-2. **Enter Job Role** - e.g., "Data Scientist", "Python Developer"
-3. **Set Number of Jobs** - 5 to 1000 jobs
-4. **Select Countries** (LinkedIn/Indeed only)
-5. **Click "Start Scraping"**
+1. Select platforms: **LinkedIn**, **Naukri**, or both
+2. Enter job role (e.g., "AI Engineer", "Data Scientist")
+3. Set location (optional, leave empty for worldwide)
+4. Set number of jobs (10-1000 per platform)
+5. Click **"Start Scraping"**
 
-**Results:** Jobs are scraped in real-time and stored in SQLite database.
+**Results**: Real-time progress with job count, success rate, and elapsed time
 
-### **Tab 2: Analytics Dashboard**
+### **Analytics Tab**
 
-View comprehensive insights:
-
-#### **Overview**
-- Total jobs, companies, unique roles, avg skills per job
-
-#### **Top Skills (3 tabs)**
-- 📊 Bar Chart - All top 20 skills with percentages
-- 🥧 Area Chart - Top 10 skills distribution
-- 📈 Table View - Detailed leaderboard
-
-#### **Job Role Analysis (3 tabs)**
-- 📊 Role Distribution - Top 15 job roles
-- 🎯 Skills by Role - Comparative skill demand
-- 🔥 Role-Skill Matrix - Heatmap correlation
-
-#### **Additional Insights**
-- Platform distribution
-- Top 20 hiring companies
-- Top 15 locations
-- Recent jobs table (last 50)
-- Export data (CSV/JSON)
+**Overview Metrics**: Total jobs, companies, roles, avg skills  
+**Skills Analysis**: Top 20 skills with bar/area/table views  
+**Role Distribution**: Top 15 roles with comparative analysis  
+**Insights**: Platform split, top companies, locations  
+**Export**: Download as CSV or JSON
 
 ---
 
-## 🏗️ Architecture
+## 🏭️ Architecture
 
 ```
-User Input → Streamlit UI → Platform Selection
-                                  ↓
-               ┌──────────────────┼──────────────────┐
-               ↓                  ↓                  ↓
-           Naukri             LinkedIn            Indeed
-               ↓                  ↓                  ↓
-       BrightData          BrightData          BrightData
-     Scraping Browser   Scraping Browser   Scraping Browser
-               ↓                  ↓                  ↓
-               └──────────────────┼──────────────────┘
-                                  ↓
-                          SQLite Database
-                                  ↓
-                        Analytics Dashboard
-                                  ↓
-                   Advanced Visualizations
-                 (Skills, Roles, Heatmaps)
+Streamlit UI
+    ↓
+multi_platform_service.py (Orchestrator)
+    ↓
+    ├── LinkedIn (JobSpy + BrightData Proxy)
+    │   └── Multi-layer fuzzy deduplication
+    │
+    └── Naukri (Playwright)
+        └── 5-tab parallel scraping
+    ↓
+Advanced Skill Extraction (skills_reference_2025.json)
+    ↓
+SQLite Database (jobs.db)
+    ↓
+Analytics Dashboard (Streamlit)
 ```
 
-**Key Components:**
-- **BrightData Client** - Unified browser automation
-- **Skills Parser** - Extracts technical skills from job descriptions
-- **Analytics Engine** - Calculates percentages and correlations
-- **Visualization Layer** - Generates charts and heatmaps
+**Core Files**:
+- `src/scraper/multi_platform_service.py` - Unified orchestrator
+- `src/scraper/jobspy/scraper.py` - LinkedIn scraping
+- `src/scraper/unified/naukri_unified.py` - Naukri scraping
+- `src/ui/components/` - Streamlit UI components
+- `skills_reference_2025.json` - 2025 tech skills taxonomy
 
 ---
 
-## 📊 Performance
+## 📊 Performance Benchmarks
 
-| Platform | Speed (20 jobs) | Success Rate | Method |
-|----------|----------------|--------------|--------|
-| **Naukri** | 10-20s | 95%+ | BrightData Browser |
-| **LinkedIn** | 10-20s | 95%+ | BrightData Browser (optimized) |
-| **Indeed** | 15-25s | 95%+ | BrightData Browser |
+| Platform | Speed (20 jobs) | Success Rate | Technology |
+|----------|----------------|--------------|------------|
+| **LinkedIn** | ~33s (0.6 jobs/s) | 100% | JobSpy + BrightData |
+| **Naukri** | ~29s (0.7 jobs/s) | 100% | Playwright (5 tabs) |
 
-**Improvements over manual methods:**
-- 🚀 **5-6x faster** (removed slow click operations)
-- ✅ **Bypasses reCAPTCHA** (Naukri was completely blocked before)
-- 🎯 **95%+ success rate** (vs 60-70% with manual methods)
-- 📉 **81% fewer files** (simplified architecture)
+**Key Metrics**:
+- ✅ **100% success rate** on validation tests
+- 🚀 **Parallel processing**: 5 concurrent tabs (Naukri)
+- 📊 **Skills extraction**: ~23 skills/job (LinkedIn), ~6 skills/job (Naukri)
+- 🔄 **Deduplication**: Multi-layer fuzzy matching (90% similarity)
 
 ---
 
 ## 🛠️ Technology Stack
 
-**Scraping:**
-- [BrightData](https://brightdata.com) - Scraping browser infrastructure
-- [Playwright](https://playwright.dev/) - Browser automation
-- Python AsyncIO - Asynchronous scraping
+**Core**:
+- Python 3.13+ with asyncio
+- [Playwright](https://playwright.dev/) - Browser automation (Naukri)
+- [python-jobspy](https://github.com/Bunsly/JobSpy) - LinkedIn scraper
+- [BrightData](https://brightdata.com) - Proxy for LinkedIn
 
-**Backend:**
-- Python 3.11+
-- SQLite - Job data storage
-- Pydantic - Settings validation
+**Data**:
+- SQLite - Job storage with deduplication
+- Pydantic - Data validation
+- Pandas/NumPy - Analytics
 
-**Frontend & Analytics:**
-- [Streamlit](https://streamlit.io/) - Web UI
-- Pandas - Data manipulation
-- NumPy - Numerical operations
+**UI**:
+- [Streamlit](https://streamlit.io/) - Dashboard
+- Plotly - Interactive charts
 
 ---
 
@@ -223,37 +176,33 @@ User Input → Streamlit UI → Platform Selection
 
 ```
 Job_Scrapper/
-├── .env                         # Your credentials (create this)
-├── .env.example                 # Template
-├── streamlit_app.py             # Main application
-├── jobs.db                      # SQLite database (auto-created)
+├── streamlit_app.py              # ⭐ Main entry point
+├── ARCHITECTURE.md               # 📚 Complete system documentation
+├── requirements.txt              # Python dependencies
+├── jobs.db                       # SQLite database (auto-created)
+├── skills_reference_2025.json    # Skills taxonomy
+├── .env                          # BrightData credentials
 │
 ├── src/
-│   ├── models.py                # Data models
-│   ├── db/                      # Database operations
 │   ├── scraper/
-│   │   └── brightdata/          # ✅ ALL platform scrapers here
-│   │       ├── clients/         # Browser client
-│   │       ├── config/          # Settings & countries
-│   │       ├── parsers/         # Skills extraction
-│   │       ├── linkedin_browser_scraper.py   # LinkedIn
-│   │       ├── indeed_browser_scraper.py     # Indeed
-│   │       └── naukri_browser_scraper.py     # Naukri
-│   └── analysis/
-│       └── analysis/
-│           └── visualization/    # Chart generators
+│   │   ├── multi_platform_service.py  # ⭐ Unified orchestrator
+│   │   ├── jobspy/                    # LinkedIn scraper
+│   │   ├── unified/                   # Naukri scraper
+│   │   ├── services/                  # API clients
+│   │   └── _deprecated/               # Legacy code (archived)
+│   │
+│   ├── ui/components/             # ⭐ Streamlit UI
+│   │   ├── scraper_form.py
+│   │   ├── form/                     # Scraping UI
+│   │   └── analytics/                # Analytics UI
+│   │
+│   ├── analysis/skill_extraction/ # Skill extraction logic
+│   └── db/                        # Database operations
 │
-├── docs/
-│   ├── INDEX.md                 # Documentation index
-│   └── archive/                 # Old documentation (17 files)
-│
-└── Documentation (Root - 5 files):
-    ├── README.md                 # This file
-    ├── QUICKSTART.md             # Quick start guide
-    ├── ENV_SETUP.md              # Environment setup
-    ├── STRUCTURE_CONSOLIDATED.md # Folder structure
-    ├── BRIGHTDATA_MIGRATION_SUMMARY.md
-    └── FINAL_CONFIG_UPDATE.md
+└── tests/
+    ├── test_linkedin_20_validation.py
+    ├── test_naukri_20_validation.py
+    └── test_2_platforms_1000.py
 ```
 
 ---
