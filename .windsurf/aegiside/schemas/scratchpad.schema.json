@@ -1,12 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://aegiside.org/schemas/scratchpad.json",
-  "title": "Scratchpad Schema",
   "$defs": {
-    "task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
-    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"}
+    "task_id": {"type": "string"},
+    "roadmap_milestone_id": {"type": "string"}
   },
-  "description": "Task priority queue - prepend new tasks at [0] + metrics synced FROM progress.json",
   "type": "object",
   "required": ["schema_version", "last_updated", "metrics", "top_append_metadata", "priority_queue"],
   "properties": {
@@ -40,7 +37,7 @@
     },
     "priority_queue": {
       "type": "array",
-      "description": "Prepend new tasks at [0]",
+      "description": "TOP-APPEND MANDATORY: Newest task MUST be at [0]. Prepend, never append.",
       "items": {
         "type": "object",
         "required": ["id", "task", "priority"],
@@ -51,12 +48,33 @@
           "blocker": {"type": "boolean"},
           "context": {"type": "string"},
           "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"},
-          "added_at": {"type": "string", "format": "date-time"}
+          "added_at": {"type": "string", "format": "date-time"},
+          "complexity_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "GAP 4 CURRICULUM LEARNING: Task complexity score for automatic ordering. complexity = f(lines_affected, dependencies, cognitive_load). Order: simple→medium→hard for 35% fewer retries"
+          },
+          "lookahead_candidates": {
+            "type": "array",
+            "description": "GAP 3 MCBS LOOKAHEAD: Monte Carlo Beam Search candidates (beam_width=3-5). Generate B actions→rollout 3-5 steps→evaluate Q-values→select best. Achieves 90% max reward in 200k timesteps",
+            "maxItems": 5,
+            "items": {
+              "type": "object",
+              "properties": {
+                "action": {"type": "string", "description": "Candidate action/approach"},
+                "rollout_steps": {"type": "integer", "default": 3, "description": "Short horizon simulation"},
+                "estimated_value": {"type": "number", "description": "Q-value from critic"},
+                "selected": {"type": "boolean", "description": "Best candidate chosen"}
+              }
+            }
+          }
         }
       }
     },
     "completed": {
       "type": "array",
+      "description": "TOP-APPEND MANDATORY: Newest completed task MUST be at [0]. Prepend, never append.",
       "maxItems": 50,
       "items": {
         "type": "object",

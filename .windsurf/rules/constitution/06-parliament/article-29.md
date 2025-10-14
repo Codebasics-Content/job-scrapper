@@ -22,6 +22,8 @@ last_updated: 2025-10-13T13:24:19+05:30
 
 **Audit**: Review completed implementations, verify quality/compliance, measure success criteria, file violations.
 
+**Approval Stage Verification**: Review tasks in kanban 'done' column for constitutional compliance before moving to 'approved'. Quality Shadow validates code quality, Innovation Shadow verifies approach, Analytics Shadow confirms metrics. Failure returns task to 'todo' with remediation requirements.
+
 **Alternatives**: Submit competing proposals with IAS dossiers, demonstrate superior, force comparison, earn +20 RL if adopted.
 
 ## 3. Implementation — Opposition Protocol
@@ -40,6 +42,14 @@ last_updated: 2025-10-13T13:24:19+05:30
 1. Complete: Shadow reviews outcome, verify criteria, check quality/standards, measure metrics
 2. Findings: Success→+15 RL implementer | Issues→mistakes.json {audit_finding_id, implementation_ref, auditor, issues[], severity, remediation_required}
 3. Remediate: Address issues, re-audit, -10 RL fail, +10 RL success
+```
+
+**Approval Verification Protocol** (4 steps):
+```
+1. Review: Task in kanban 'done' column triggers Opposition review
+2. Verification: Quality Shadow (EMD/validation), Innovation Shadow (patterns/approach), Analytics Shadow (RL impact/metrics)
+3. Decision: ALL 3 approve→move to 'approved' (+20 RL) | ANY fail→move to 'todo' with mistakes.json remediation plan
+4. Documentation: @mcp:filesystem update kanban.json, @mcp:memory store approval pattern, @mcp:time timestamp approval
 ```
 
 ## 4. Violations — Opposition Violations

@@ -1,16 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T00:04:17+05:30",
+  "last_updated": "2025-10-14T11:56:57+05:30",
   "metrics": {
-    "total_rl_score": -7,
-    "tasks_completed": 35,
-    "tasks_failed": 0,
-    "commits": 6
+    "total_rl_score": -70,
+    "tasks_completed": 3,
+    "tasks_failed": 1,
+    "commits": 10
   },
   "entities": [
     {
       "name": "JobSpy",
-      "type": "integration",
+      "entityType": "tool",
       "observations": [
         "Free LinkedIn scraping library - python-jobspy v1.1.82",
         "Cost savings: $250+ vs BrightData datasets",
@@ -23,8 +23,8 @@
       ]
     },
     {
-      "name": "BrightData Proxy",
-      "type": "infrastructure",
+      "name": "BrightData_Proxy",
+      "entityType": "tool",
       "observations": [
         "Requires authentication format: http://brd-customer-{ID}-zone-{ZONE}:{PASSWORD}@localhost:{PORT}",
         "Plain http://localhost:24000 gets 403 Forbidden",
@@ -34,8 +34,8 @@
       ]
     },
     {
-      "name": "Two-Table Architecture",
-      "type": "pattern",
+      "name": "Two_Table_Architecture",
+      "entityType": "pattern",
       "observations": [
         "job_urls table for fast URL collection",
         "jobs table for full detail enrichment",
@@ -49,17 +49,17 @@
     {
       "from": "JobSpy",
       "to": "LinkedIn",
-      "type": "scrapes"
+      "relationType": "uses"
     },
     {
-      "from": "BrightData Proxy",
+      "from": "BrightData_Proxy",
       "to": "JobSpy",
-      "type": "optional_for"
+      "relationType": "related_to"
     },
     {
-      "from": "Two-Table Architecture",
+      "from": "Two_Table_Architecture",
       "to": "Naukri",
-      "type": "implements"
+      "relationType": "implements"
     }
   ]
 }

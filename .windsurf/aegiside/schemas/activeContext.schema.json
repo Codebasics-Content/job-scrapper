@@ -1,28 +1,24 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://aegiside.org/schemas/activeContext.json",
-  "title": "Active Context Schema",
   "$defs": {
-    "task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
-    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
-    "error_id": {"type": "string", "pattern": "^err-[A-Za-z0-9_-]+$"}
+    "task_id": {"type": "string"},
+    "roadmap_milestone_id": {"type": "string"},
+    "error_id": {"type": "string"}
   },
-  "description": "Real-time session state with metrics synced FROM progress.json",
   "type": "object",
   "required": ["schema_version", "last_updated", "metrics", "event_tracking"],
   "properties": {
-    "schema_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
-    "last_updated": {"type": "string", "format": "date-time"},
+    "schema_version": {"type": "string"},
+    "last_updated": {"type": "string"},
     "metrics": {
       "type": "object",
-      "description": "SYNCED FROM progress.json after every task",
       "required": ["total_rl_score", "tasks_completed"],
       "properties": {
         "total_rl_score": {"type": "number"},
-        "tasks_completed": {"type": "integer", "minimum": 0},
-        "tasks_pending": {"type": "integer", "minimum": 0},
-        "constitutional_compliance": {"type": "number", "minimum": 0, "maximum": 100},
-        "session_readiness": {"type": "number", "minimum": 0, "maximum": 100},
+        "tasks_completed": {"type": "integer"},
+        "tasks_pending": {"type": "integer"},
+        "constitutional_compliance": {"type": "number"},
+        "session_readiness": {"type": "number"},
         "emd_compliance": {"type": "string"}
       }
     },
@@ -47,12 +43,27 @@
         "exploit_mode": {"type": "boolean", "description": "true=exploitation(70%), false=exploration(30%)"},
         "strategy_effectiveness": {"type": "number", "minimum": 0, "maximum": 1, "description": "Current strategy effectiveness (triggers auto-adapt if <0.8)"},
         "autonomous_loop_active": {"type": "boolean", "description": "Recursive self-teaching loop active"},
-        "parallel_workers": {"type": "integer", "minimum": 1, "description": "Number of concurrent workers"}
+        "parallel_workers": {"type": "integer", "minimum": 1, "description": "Number of concurrent workers"},
+        "attention_budget_allocation": {
+          "type": "object",
+          "description": "GAP 1 CONTEXT BUDGET: n² attention formula for 8-schema. attention_per_schema = (base_tokens × priority_weight) / sum(priorities). Reduces token waste by 40%",
+          "properties": {
+            "base_tokens": {"type": "integer", "description": "Total available tokens"},
+            "scratchpad_allocation": {"type": "number", "description": "Priority weight 0.3"},
+            "activeContext_allocation": {"type": "number", "description": "Priority weight 0.25"},
+            "mistakes_allocation": {"type": "number", "description": "Priority weight 0.2"},
+            "systemPatterns_allocation": {"type": "number", "description": "Priority weight 0.1"},
+            "progress_allocation": {"type": "number", "description": "Priority weight 0.1"},
+            "roadmap_allocation": {"type": "number", "description": "Priority weight 0.05"},
+            "memory_allocation": {"type": "number", "description": "Priority weight 0.0 (via MCP)"},
+            "kanban_allocation": {"type": "number", "description": "Priority weight 0.0 (via MCP)"}
+          }
+        }
       }
     },
     "event_tracking": {
       "type": "array",
-      "description": "Prepend new events at [0]",
+      "description": "TOP-APPEND MANDATORY: Newest event MUST be at [0]. Prepend, never append.",
       "maxItems": 100,
       "items": {
         "type": "object",

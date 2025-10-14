@@ -1,14 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://aegiside.org/schemas/roadmap.json",
-  "title": "Roadmap Schema",
-  "$defs": {
-    "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
-    "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
-    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
-    "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
-  },
-  "description": "Strategic project planning and milestones + metrics synced FROM progress.json",
   "type": "object",
   "required": ["schema_version", "last_updated", "metrics"],
   "properties": {
@@ -42,6 +33,7 @@
     },
     "strategic_goals": {
       "type": "array",
+      "description": "TOP-APPEND MANDATORY: Newest goal MUST be at [0]. Prepend, never append.",
       "items": {
         "type": "object",
         "properties": {

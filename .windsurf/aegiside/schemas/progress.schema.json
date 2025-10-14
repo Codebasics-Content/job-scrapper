@@ -1,12 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://aegiside.org/schemas/progress.json",
-  "title": "Progress Schema",
-  "$defs": {
-    "workflow_id": {"type": "string", "pattern": "^wf-[A-Za-z0-9_-]+$"},
-    "task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"}
-  },
-  "description": "RL ledger with metrics as SOURCE OF TRUTH for all schemas, synced to activeContext",
   "type": "object",
   "required": ["schema_version", "reinforcement_learning"],
   "properties": {
@@ -25,7 +18,7 @@
     },
     "reinforcement_learning": {
       "type": "array",
-      "description": "RL transaction ledger (prepend at [0]) - PPO+GAE architecture",
+      "description": "TOP-APPEND MANDATORY: Newest transaction MUST be at [0]. RL ledger with PPO+GAE architecture.",
       "items": {
         "type": "object",
         "properties": {
@@ -62,7 +55,38 @@
           }
         },
         "value_network": {"type": "string", "default": "multi-branch"},
-        "reward_design": {"type": "string", "default": "automated_llm"}
+        "reward_design": {"type": "string", "default": "automated_llm"},
+        "n_step_td_learning": {
+          "type": "object",
+          "description": "Temporal Difference n-step returns for credit assignment across multi-step tasks. Formula: V(s) ← V(s) + α[r + γV(s') - V(s)]",
+          "properties": {
+            "n_steps": {"type": "integer", "default": 3, "description": "Lookahead horizon for TD(n)"},
+            "discount_gamma": {"type": "number", "default": 0.99, "description": "Discount factor for future rewards"},
+            "td_error_threshold": {"type": "number", "default": 0.1, "description": "Trigger learning update when |TD_error| > threshold"},
+            "sub_goal_rewards": {
+              "type": "array",
+              "description": "Track intermediate sub-goal rewards for n-step returns",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "step": {"type": "integer"},
+                  "gae_advantage": {"type": "number", "description": "GAE advantage: Σ(γλ)^k × δ_{t+k}"},
+                  "kl_divergence": {"type": "number", "description": "KL(π_new || π_ref) for policy stability"},
+                  "rl_computation": {
+                    "type": "object",
+                    "description": "Actual RL formula calculations for this transaction",
+                    "properties": {
+                      "td_error": {"type": "number", "description": "r_t + γV(s_{t+1}) - V(s_t)"},
+                      "value_updated": {"type": "number", "description": "V(s) + α*TD_error"},
+                      "policy_probabilities": {"type": "object", "description": "Softmax π(a) = exp(Q/τ)/Σexp(Q/τ)"},
+                      "monte_carlo_return": {"type": "number", "description": "G_t = Σγ^k*r_{t+k}"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "value_network_branches": {

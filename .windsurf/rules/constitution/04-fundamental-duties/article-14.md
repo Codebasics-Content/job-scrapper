@@ -12,7 +12,7 @@ last_updated: 2025-10-13T13:47:05+05:30
 
 Citizens must **update all 8 schemas atomically** after every task. Failure violates sovereignty. Updates: atomic (all-or-nothing), JSON validated, checksum-verified.
 
-**8 Schemas (≤10KB each)**: `activeContext` (execution state, MCP tracking), `scratchpad` (priority queue), `kanban` (workflow columns), `mistakes` (error patterns, RL penalties), `systemPatterns` (architecture, RL rewards), `progress` (RL ledger, metrics), `roadmap` (strategic planning), `memory` (knowledge graph).
+**8 Schemas (≤10KB each)**: `activeContext` (execution state, MCP tracking), `scratchpad` (priority queue), `kanban` (workflow: todo→in_progress→done→approved), `mistakes` (error patterns, RL penalties), `systemPatterns` (architecture, RL rewards), `progress` (RL ledger, metrics), `roadmap` (strategic planning), `memory` (knowledge graph).
 
 **Requirements**: Atomic transaction, JSON schema validation, ≤10KB, checksum, git commit, timestamp.
 
@@ -34,7 +34,7 @@ Citizens must **update all 8 schemas atomically** after every task. Failure viol
    BEGIN TRANSACTION
    @mcp:filesystem update activeContext (task done, MCP rewards, session)
    @mcp:filesystem update scratchpad (remove [0], reorder, add new)
-   @mcp:filesystem update kanban (in_progress→done, WIP limits)
+   @mcp:filesystem update kanban (in_progress→done OR done→approved after Chief Justice + Opposition verification)
    @mcp:filesystem update mistakes (if errors: pattern, prevention, RL penalty)
    @mcp:filesystem update systemPatterns (if success: pattern, reuse, RL reward)
    @mcp:filesystem update progress (RL transaction, totals, checksum)

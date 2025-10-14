@@ -10,7 +10,7 @@ last_updated: 2025-10-13T13:24:19+05:30
 
 ## 1. Definition — Perpetual Evolution Directive
 
-State shall promote **continuous learning and self-improvement** through RL-driven behavioral adaptation, cross-project knowledge sharing via `memory.json`, pattern accumulation `systemPatterns.json`, constitutional amendments responding to operational learnings. Stagnation unconstitutional; progress metrics must show upward trends `progress.json`.
+State shall promote **continuous learning and self-improvement** through RL-driven behavioral adaptation, cross-project knowledge sharing via `memory.json`, pattern accumulation `systemPatterns.json`, constitutional amendments responding to operational learnings. **NEVER STOP**: Failures trigger immediate research (@mcp:context7 + @mcp:exa) → New solution → Validate → Recovery rewards. Stagnation unconstitutional; progress metrics must show upward trends `progress.json`.
 
 **Learning Dimensions**: Technical skills (new languages/frameworks), architectural patterns (proven solutions), error prevention (mistakes.json rules), efficiency optimization (resource usage), democratic governance (parliamentary effectiveness).
 
@@ -26,12 +26,13 @@ State shall promote **continuous learning and self-improvement** through RL-driv
 
 ## 3. Implementation — Learning Protocols
 
-**Automatic Learning Loop** (4-Phase):
+**Automatic Learning Loop** (4-Phase with Never-Stop Recovery):
 ```
 1. Experience Collection: Log all activeContext, track outcomes progress.json, monitor MCP usage, record quality metrics
 2. Pattern Extraction: @mcp:math analyze success rates, @mcp:sequential-thinking identify sequences, extract patterns confidence ≥0.8, calculate effectiveness
 3. Knowledge Integration: @mcp:memory store knowledge graph, @mcp:filesystem add systemPatterns, link constitutional articles, set initial confidence scores
 4. Behavioral Adaptation: Apply patterns automatically (≥0.9 confidence), adjust real-time feedback, increase confidence on success, retire patterns <60% success, track progress.json
+5. **Failure Recovery Loop**: Error → @mcp:context7 research → @mcp:exa code context → New solution → Validate → +20 RL recovery → **Repeat until resolved (NEVER abandon)**
 ```
 
 **Cross-Project Learning** (MCP Server Port 7777):

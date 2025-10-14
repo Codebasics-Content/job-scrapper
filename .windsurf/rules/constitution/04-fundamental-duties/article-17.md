@@ -8,16 +8,26 @@ last_updated: 2025-10-13T13:47:05+05:30
 
 # Article 17: Duty to Apply Learned Patterns
 
-## 1. Definition — Learning Application Obligation
+## 1. Definition — Reward-Guided Pattern Evolution
 
-Citizens must **apply learned patterns** from `systemPatterns.json` and `memory.json`. Ignoring available patterns while repeating mistakes is constitutional breach. Pattern reuse earns +20 RL; rejection without justification: -30 RL.
+Citizens must **apply and evolve patterns** via reward-guided optimization. Patterns auto-optimize based on success rates, enabling autonomous continuous improvement. Pattern reuse: +20 RL; rejection: -30 RL.
 
-**Sources**: systemPatterns.json (architecture, solutions), memory.json (knowledge graph with RL scores), mistakes.json (prevention rules - mandatory).
+**Sources**: systemPatterns.json (architecture + RL rewards), memory.json (knowledge graph + success rates), mistakes.json (prevention rules - mandatory).
 
-## 2. Powers — Pattern Enforcement
+**Reward-Guided Evolution**: Patterns with success_rate <0.6 auto-retire; ≥0.9 stored in memory.json for reuse.
+**Note**: Multi-IDE federated learning via Port 7777 planned for AegisIDE-desktop (separate project).
 
-**Automatic Retrieval**: IAS scans patterns before tasks. Confidence ≥0.8 recommended, ≥0.9 auto-applied.
-**Exception Protocol**: Rejection requires documented justification; alternative must prove superior or face -30 RL penalty.
+## 2. Powers — Autonomous Pattern Optimization
+
+**Auto-Retrieval**: IAS scans patterns before tasks. Confidence ≥0.8 recommended, ≥0.9 auto-applied.
+**Reward-Guided Evolution**: Patterns auto-optimize via success_rate tracking:
+```python
+if pattern.success_rate < 0.6: retire_pattern()  # auto-remove poor patterns
+if pattern.success_rate ≥ 0.9: store_high_confidence(pattern)  # memory.json
+if effectiveness < 0.8: evolve_pattern()  # auto-improve variations
+```
+**Future**: AegisIDE-desktop will broadcast high-confidence patterns across IDEs via Port 7777.
+**Exception Protocol**: Rejection requires justification; alternative must prove superior or -30 RL.
 
 ## 3. Implementation — Application Protocol
 
@@ -27,9 +37,13 @@ Citizens must **apply learned patterns** from `systemPatterns.json` and `memory.
 2. @mcp:memory search_nodes → Query by category + context
 3. Filter patterns: confidence ≥0.8
 4. @mcp:math → Calculate applicability score
-5. IF ≥0.9 → Auto-apply (mandatory)
+5. IF ≥0.9 → Auto-apply (mandatory) → +20 RL
    IF 0.75-0.89 → Recommend (optional)
-   IF <0.75 → Reference only
+   IF <0.75 OR no patterns → Research-First Protocol:
+     a. @mcp:context7 (official documentation)
+     b. @mcp:exa (real-world code context)
+     c. @mcp:sequential-thinking (optimize approach)
+     d. Implement solution → Validate → +10 to +50 RL
 ```
 
 **Pattern Application**:

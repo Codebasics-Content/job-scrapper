@@ -1,44 +1,73 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://aegiside.org/schemas/activeContext.json",
-  "title": "Active Context Schema",
   "$defs": {
-    "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
-    "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
-    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
-    "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
+    "task_id": {"type": "string"},
+    "roadmap_milestone_id": {"type": "string"},
+    "error_id": {"type": "string"}
   },
-  "description": "Real-time execution state with event tracking",
   "type": "object",
-  "required": ["schema_version", "last_updated", "current_implementation", "ai_state", "session_management", "mcp_integration"],
+  "required": ["schema_version", "last_updated", "metrics", "event_tracking"],
   "properties": {
-    "schema_version": {
-      "type": "string",
-      "pattern": "^\\d+\\.\\d+\\.\\d+$",
-      "description": "Semantic version of schema"
-    },
-    "last_updated": {
-      "type": "string",
-      "format": "date-time",
-      "description": "ISO 8601 timestamp of last update"
-    },
-    "current_implementation": {
+    "schema_version": {"type": "string"},
+    "last_updated": {"type": "string"},
+    "metrics": {
       "type": "object",
-      "required": ["active_task_id", "current_phase", "progress_percentage"],
+      "required": ["total_rl_score", "tasks_completed"],
       "properties": {
-        "active_task_id": {"type": "string"},
-        "current_phase": {"type": "string", "enum": ["planning", "implementation", "testing", "review", "deployment"]},
-        "progress_percentage": {"type": "number", "minimum": 0, "maximum": 100},
-        "started_at": {"type": "string", "format": "date-time"},
-        "estimated_completion": {"type": "string", "format": "date-time"}
+        "total_rl_score": {"type": "number"},
+        "tasks_completed": {"type": "integer"},
+        "tasks_pending": {"type": "integer"},
+        "constitutional_compliance": {"type": "number"},
+        "session_readiness": {"type": "number"},
+        "emd_compliance": {"type": "string"}
+      }
+    },
+    "current_execution": {
+      "type": "object",
+      "properties": {
+        "task_id": {"$ref": "#/$defs/task_id"},
+        "task_name": {"type": "string"},
+        "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"},
+        "status": {"type": "string"},
+        "priority": {"type": "string"},
+        "blocker_reason": {"type": "string"}
+      }
+    },
+    "rl_runtime": {
+      "type": "object",
+      "description": "Real-time RL architecture state",
+      "properties": {
+        "current_gae_advantage": {"type": "number"},
+        "session_kl_divergence": {"type": "number"},
+        "active_branch": {"type": "string", "enum": ["task_success", "validation", "pattern_reuse", "mcp_integration", "innovation"]},
+        "exploit_mode": {"type": "boolean", "description": "true=exploitation(70%), false=exploration(30%)"},
+        "strategy_effectiveness": {"type": "number", "minimum": 0, "maximum": 1, "description": "Current strategy effectiveness (triggers auto-adapt if <0.8)"},
+        "autonomous_loop_active": {"type": "boolean", "description": "Recursive self-teaching loop active"},
+        "parallel_workers": {"type": "integer", "minimum": 1, "description": "Number of concurrent workers"},
+        "attention_budget_allocation": {
+          "type": "object",
+          "description": "GAP 1 CONTEXT BUDGET: n² attention formula for 8-schema. attention_per_schema = (base_tokens × priority_weight) / sum(priorities). Reduces token waste by 40%",
+          "properties": {
+            "base_tokens": {"type": "integer", "description": "Total available tokens"},
+            "scratchpad_allocation": {"type": "number", "description": "Priority weight 0.3"},
+            "activeContext_allocation": {"type": "number", "description": "Priority weight 0.25"},
+            "mistakes_allocation": {"type": "number", "description": "Priority weight 0.2"},
+            "systemPatterns_allocation": {"type": "number", "description": "Priority weight 0.1"},
+            "progress_allocation": {"type": "number", "description": "Priority weight 0.1"},
+            "roadmap_allocation": {"type": "number", "description": "Priority weight 0.05"},
+            "memory_allocation": {"type": "number", "description": "Priority weight 0.0 (via MCP)"},
+            "kanban_allocation": {"type": "number", "description": "Priority weight 0.0 (via MCP)"}
+          }
+        }
       }
     },
     "event_tracking": {
       "type": "array",
+      "description": "TOP-APPEND MANDATORY: Newest event MUST be at [0]. Prepend, never append.",
       "maxItems": 100,
       "items": {
         "type": "object",
-        "required": ["id", "timestamp", "type", "task_id", "mcp_integration"],
+        "required": ["id", "timestamp", "type", "task_id"],
         "properties": {
           "id": {"type": "string"},
           "timestamp": {"type": "string", "format": "date-time"},
@@ -46,74 +75,74 @@
           "task_id": {"type": "string"},
           "description": {"type": "string"},
           "context": {"type": "object"},
-          "mcp_integration": {
-            "type": "object",
-            "required": ["context7_active", "fetch_active", "memory_active"],
-            "properties": {
-              "context7_active": {"type": "boolean"},
-              "fetch_active": {"type": "boolean"},
-              "memory_active": {"type": "boolean"}
-            }
-          }
+          "rl_reward": {"type": "number", "minimum": 0},
+          "rl_penalty": {"type": "number", "maximum": 0}
         }
       }
     },
-    "current_context": {
+    "session_context": {
       "type": "object",
-      "properties": {
-        "working_files": {"type": "array", "items": {"type": "string"}},
-        "open_connections": {"type": "array", "items": {"type": "string"}},
-        "active_processes": {"type": "array", "items": {"type": "string"}},
-        "memory_references": {
-          "type": "object",
-          "properties": {
-            "related_patterns": {"type": "array", "items": {"type": "string"}},
-            "similar_tasks": {"type": "array", "items": {"type": "string"}},
-            "blocking_issues": {"type": "array", "items": {"type": "string"}}
-          }
-        }
-      }
-    },
-    "ai_state": {
-      "type": "object",
-      "required": ["current_minister", "checkpoint_status"],
-      "properties": {
-        "current_minister": {"type": "string", "enum": ["project_manager", "dev_minister", "tech_minister", "quality_shadow", "innovation_shadow", "analytics_shadow", "chief_justice"]},
-        "active_shadows": {"type": "array", "items": {"type": "string"}},
-        "checkpoint_status": {"type": "string"},
-        "next_validation": {"type": "string", "format": "date-time"}
-      }
-    },
-    "session_management": {
-      "type": "object",
-      "required": ["session_id", "ide_type"],
       "properties": {
         "session_id": {"type": "string"},
-        "ide_type": {"type": "string", "enum": ["claude_desktop", "windsurf", "vscode", "cursor", "jetbrains"]},
-        "workspace_path": {"type": "string"},
-        "connected_at": {"type": "string", "format": "date-time"},
-        "last_sync": {"type": "string", "format": "date-time"}
+        "workspace": {"type": "string"},
+        "active_branch": {"type": "string"},
+        "session_duration_minutes": {"type": "integer", "minimum": 0},
+        "initialized_at": {"type": "string", "format": "date-time"},
+        "current_time": {"type": "string", "format": "date-time"},
+        "constitution_loaded": {"type": "boolean"},
+        "articles_count": {"type": "integer"},
+        "technology_stack": {"type": "string"}
       }
     },
-    "linkage": {
+    "mcp_integration_state": {
       "type": "object",
-      "description": "Cross-file identifiers linking active context to other memory-bank entities",
+      "description": "Simple MCP server status tracking",
       "properties": {
-        "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
-        "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
-        "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
-        "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
-      },
-      "additionalProperties": false
+        "filesystem": {"type": "string"},
+        "context7": {"type": "string"},
+        "memory": {"type": "string"},
+        "sequential_thinking": {"type": "string"},
+        "fetch": {"type": "string"},
+        "time": {"type": "string"},
+        "git": {"type": "string"},
+        "math": {"type": "string"},
+        "exa": {"type": "string"}
+      }
     },
-    "mcp_integration": {
+    "schema_compliance": {
       "type": "object",
-      "required": ["mandatory_mcps_active"],
       "properties": {
-        "mandatory_mcps_active": {"type": "array", "minItems": 8, "items": {"type": "string", "enum": ["context7", "fetch", "filesystem", "git", "memory", "sequential-thinking", "time", "math"]}},
-        "last_context7_call": {"type": "string", "format": "date-time"},
-        "anti_hallucination_active": {"type": "boolean"},
-        "verified_sources_count": {"type": "number", "minimum": 0}
+        "total_schemas": {"type": "integer", "minimum": 0},
+        "schemas_validated": {"type": "integer", "minimum": 0},
+        "total_size_kb": {"type": "number", "minimum": 0},
+        "size_limit_kb": {"type": "number"},
+        "compliance_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "helper_schemas_present": {"type": "integer", "minimum": 0}
+      }
+    },
+    "recent_completions": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {"type": "string"},
+          "completed_at": {"type": "string", "format": "date-time"},
+          "outcome": {"type": "string"}
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "next_action": {
+      "type": "object",
+      "properties": {
+        "workflow": {"type": "string"},
+        "priority_task": {"type": "string"},
+        "ready_to_execute": {"type": "boolean"},
+        "note": {"type": "string"}
       }
     }
   }

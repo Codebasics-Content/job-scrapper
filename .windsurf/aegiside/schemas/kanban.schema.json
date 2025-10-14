@@ -1,14 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://aegiside.org/schemas/kanban.json",
-  "title": "Kanban Schema",
-  "$defs": {
-    "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
-    "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
-    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
-    "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
-  },
-  "description": "Workflow management with todo, in_progress, done columns + metrics synced FROM progress.json",
   "type": "object",
   "required": ["schema_version", "last_updated", "metrics", "columns"],
   "properties": {
@@ -73,6 +64,38 @@
               "cost_savings": {"type": "string"}
             }
           }
+        },
+        "approved": {
+          "type": "array",
+          "description": "Constitutional verification passed - Chief Justice + Opposition approval",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "approved_at": {"type": "string", "format": "date-time"},
+              "tags": {"type": "array", "items": {"type": "string"}},
+              "rl_impact": {"type": "number"},
+              "constitutional_compliance": {"type": "number"},
+              "approved_by": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "activity_log": {
+      "type": "array",
+      "description": "TOP-APPEND MANDATORY: Newest entry MUST be at [0]. Prepend, never append.",
+      "items": {
+        "type": "object",
+        "required": ["id", "timestamp", "action", "task_id", "actor"],
+        "properties": {
+          "id": {"type": "string"},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "action": {"type": "string"},
+          "task_id": {"type": "string"},
+          "actor": {"type": "string"},
+          "details": {"type": "string"}
         }
       }
     }

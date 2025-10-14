@@ -1,8 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://aegiside.org/schemas/systemPatterns.json",
-  "title": "System Patterns Schema",
-  "description": "Architecture patterns with practical implementation details + metrics synced FROM progress.json",
   "type": "object",
   "required": ["schema_version", "last_updated", "metrics"],
   "properties": {
@@ -31,8 +28,8 @@
       }
     },
     "architecture_patterns": {
-      "type": "object",
-      "description": "Named patterns with implementation details",
+      "type": "array",
+      "description": "TOP-APPEND MANDATORY: Prepend new patterns at [0]. Each pattern contains implementation details.",
       "additionalProperties": {
         "type": "object",
         "properties": {

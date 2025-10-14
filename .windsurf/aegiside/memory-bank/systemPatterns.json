@@ -1,13 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T00:04:17+05:30",
+  "last_updated": "2025-10-14T11:56:57+05:30",
   "metrics": {
-    "total_rl_score": -7,
-    "tasks_completed": 35,
-    "tasks_failed": 0,
-    "commits": 6
+    "total_rl_score": -70,
+    "tasks_completed": 3,
+    "tasks_failed": 1,
+    "commits": 10,
+    "rl_reward": 0,
+    "success_rate": 0.75,
+    "gae_advantage": -0.5,
+    "value_branch": "task_success",
+    "timestamp": "2025-10-14T11:56:57+05:30"
   },
-  "architecture_patterns": {
+  "architecture_patterns": [
     "naukri_2phase_scraping": {
       "pattern": "Two-phase Playwright scraping with concurrent execution",
       "phase_1_url_extraction": {

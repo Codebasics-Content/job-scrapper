@@ -1,119 +1,133 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://aegiside.org/schemas/progress.json",
-  "title": "Progress Schema",
-  "$defs": {
-    "proposal_id": {"type": "string", "pattern": "^proposal-[A-Za-z0-9_-]+$"},
-    "kanban_task_id": {"type": "string", "pattern": "^task-[A-Za-z0-9_-]+$"},
-    "roadmap_milestone_id": {"type": "string", "pattern": "^rm-[A-Za-z0-9_-]+$"},
-    "governance_decision_id": {"type": "string", "pattern": "^gd-[A-Za-z0-9_-]+$"}
-  },
-  "description": "Development milestones with constitutional compliance metrics and anti-hallucination tracking",
   "type": "object",
-  "required": ["schema_version", "last_updated", "milestone_tracking", "constitutional_metrics"],
+  "required": ["schema_version", "reinforcement_learning"],
   "properties": {
-    "schema_version": {
-      "type": "string",
-      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    "schema_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "last_updated": {"type": "string", "format": "date-time"},
+    "metrics": {
+      "type": "object",
+      "description": "SOURCE OF TRUTH - activeContext.metrics syncs total_rl_score from here",
+      "required": ["total_rl_score", "tasks_completed", "commits"],
+      "properties": {
+        "total_rl_score": {"type": "number"},
+        "tasks_completed": {"type": "integer", "minimum": 0},
+        "tasks_failed": {"type": "integer", "minimum": 0},
+        "commits": {"type": "integer", "minimum": 0}
+      }
     },
-    "last_updated": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "milestone_tracking": {
+    "reinforcement_learning": {
       "type": "array",
+      "description": "TOP-APPEND MANDATORY: Newest transaction MUST be at [0]. RL ledger with PPO+GAE architecture.",
       "items": {
         "type": "object",
-        "required": ["id", "name", "status", "completion_percentage"],
         "properties": {
-          "id": {"type": "string"},
-          "name": {"type": "string"},
-          "status": {"type": "string", "enum": ["not_started", "in_progress", "completed", "blocked"]},
-          "completion_percentage": {"type": "number", "minimum": 0, "maximum": 100},
-          "started_at": {"type": "string", "format": "date-time"},
-          "target_completion": {"type": "string", "format": "date-time"},
-          "actual_completion": {"type": ["string", "null"], "format": "date-time"},
-          "tasks_completed": {"type": "number", "minimum": 0},
-          "tasks_total": {"type": "number", "minimum": 0},
-          "parliamentary_approval": {"type": "number", "minimum": 0, "maximum": 100},
-          "kanban_task_ids": {"type": "array", "items": {"$ref": "#/$defs/kanban_task_id"}},
-          "proposal_id": {"$ref": "#/$defs/proposal_id"},
-          "governance_decision_id": {"$ref": "#/$defs/governance_decision_id"},
-          "quality_metrics": {
-            "type": "object",
-            "properties": {
-              "test_coverage": {"type": "number", "minimum": 0, "maximum": 100},
-              "code_quality_score": {"type": "number", "minimum": 0, "maximum": 10},
-              "performance_score": {"type": "number", "minimum": 0, "maximum": 10}
-            }
+          "tx_id": {"type": "string"},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "category": {"type": "string"},
+          "reward": {"type": "number"},
+          "penalty": {"type": "number"},
+          "source_file": {"type": "string"},
+          "description": {"type": "string"},
+          "gae_advantage": {"type": "number", "description": "GAE advantage estimation (gamma=1.0, lambda=1.0)"},
+          "kl_divergence": {"type": "number", "description": "KL penalty (kl_coef=0.005)"}
+        }
+      }
+    },
+    "rl_architecture": {
+      "type": "object",
+      "description": "PPO+GAE RL system configuration",
+      "properties": {
+        "algorithm": {"type": "string", "default": "PPO"},
+        "kl_coefficient": {"type": "number", "default": 0.005},
+        "gae_params": {
+          "type": "object",
+          "properties": {
+            "gamma": {"type": "number", "default": 1.0},
+            "lambda": {"type": "number", "default": 1.0}
           }
         },
-        "additionalProperties": false
-      }
-    },
-    "compressed_history": {
-      "type": "object",
-      "properties": {
-        "total_tasks_completed": {"type": "number", "minimum": 0},
-        "total_bugs_fixed": {"type": "number", "minimum": 0},
-        "total_deployments": {"type": "number", "minimum": 0},
-        "avg_task_completion_hours": {"type": "number", "minimum": 0},
-        "sprint_velocity": {"type": "number", "minimum": 0},
-        "quality_trend": {"type": "string", "enum": ["improving", "stable", "declining"]}
-      }
-    },
-    "current_sprint": {
-      "type": "object",
-      "properties": {
-        "sprint_id": {"type": "string"},
-        "started": {"type": "string", "format": "date-time"},
-        "ends": {"type": "string", "format": "date-time"},
-        "planned_points": {"type": "number", "minimum": 0},
-        "completed_points": {"type": "number", "minimum": 0},
-        "on_track": {"type": "boolean"}
-      }
-    },
-    "performance_analytics": {
-      "type": "object",
-      "properties": {
-        "velocity_trends": {"type": "array", "items": {"type": "number"}},
-        "quality_improvements": {"type": "number"},
-        "bottleneck_analysis": {"type": "string"},
-        "predictive_timeline": {"type": "string", "format": "date-time"}
-      }
-    },
-    "constitutional_metrics": {
-      "type": "object",
-      "required": ["compliance_score", "tri_branch_efficiency"],
-      "properties": {
-        "compliance_score": {"type": "number", "minimum": 0, "maximum": 100},
-        "tri_branch_efficiency": {"type": "object", "properties": {
-          "consensus_achievement_rate": {"type": "number", "minimum": 0, "maximum": 1},
-          "average_decision_time_minutes": {"type": "number", "minimum": 0},
-          "executive_approval_rate": {"type": "number", "minimum": 0, "maximum": 1},
-          "legislative_challenge_rate": {"type": "number", "minimum": 0, "maximum": 1},
-          "judicial_override_count": {"type": "number", "minimum": 0}
-        }},
-        "zero_tolerance_adherence": {"type": "number", "minimum": 0, "maximum": 100},
-        "anti_hallucination_effectiveness": {"type": "object", "properties": {
-          "context7_success_rate": {"type": "number", "minimum": 0, "maximum": 1},
-          "fetch_verification_accuracy": {"type": "number", "minimum": 0, "maximum": 1},
-          "false_information_blocked": {"type": "number", "minimum": 0}
-        }}
-      }
-    },
-    "achievements": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id", "title", "earned_date"],
-        "properties": {
-          "id": {"type": "string"},
-          "title": {"type": "string"},
-          "earned_date": {"type": "string", "format": "date-time"},
-          "description": {"type": "string"},
-          "impact": {"type": "string"}
+        "exploit_explore_ratio": {
+          "type": "object",
+          "properties": {
+            "exploitation": {"type": "number", "default": 0.7},
+            "exploration": {"type": "number", "default": 0.3}
+          }
+        },
+        "value_network": {"type": "string", "default": "multi-branch"},
+        "reward_design": {"type": "string", "default": "automated_llm"},
+        "n_step_td_learning": {
+          "type": "object",
+          "description": "Temporal Difference n-step returns for credit assignment across multi-step tasks. Formula: V(s) ← V(s) + α[r + γV(s') - V(s)]",
+          "properties": {
+            "n_steps": {"type": "integer", "default": 3, "description": "Lookahead horizon for TD(n)"},
+            "discount_gamma": {"type": "number", "default": 0.99, "description": "Discount factor for future rewards"},
+            "td_error_threshold": {"type": "number", "default": 0.1, "description": "Trigger learning update when |TD_error| > threshold"},
+            "sub_goal_rewards": {
+              "type": "array",
+              "description": "Track intermediate sub-goal rewards for n-step returns",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "step": {"type": "integer"},
+                  "gae_advantage": {"type": "number", "description": "GAE advantage: Σ(γλ)^k × δ_{t+k}"},
+                  "kl_divergence": {"type": "number", "description": "KL(π_new || π_ref) for policy stability"},
+                  "rl_computation": {
+                    "type": "object",
+                    "description": "Actual RL formula calculations for this transaction",
+                    "properties": {
+                      "td_error": {"type": "number", "description": "r_t + γV(s_{t+1}) - V(s_t)"},
+                      "value_updated": {"type": "number", "description": "V(s) + α*TD_error"},
+                      "policy_probabilities": {"type": "object", "description": "Softmax π(a) = exp(Q/τ)/Σexp(Q/τ)"},
+                      "monte_carlo_return": {"type": "number", "description": "G_t = Σγ^k*r_{t+k}"}
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
+      }
+    },
+    "value_network_branches": {
+      "type": "object",
+      "description": "Multi-branch value network with per-component tracking",
+      "properties": {
+        "task_success_value": {"type": "number", "description": "Value estimate for task completion branch"},
+        "validation_value": {"type": "number", "description": "Value estimate for quality validation branch"},
+        "pattern_reuse_value": {"type": "number", "description": "Value estimate for knowledge exploitation branch"},
+        "mcp_integration_value": {"type": "number", "description": "Value estimate for MCP chain completion branch"},
+        "innovation_value": {"type": "number", "description": "Value estimate for exploration bonus branch"},
+        "branch_weights": {
+          "type": "object",
+          "description": "Dynamic weights for each value branch (sum=1.0)",
+          "properties": {
+            "task_success": {"type": "number", "minimum": 0, "maximum": 1},
+            "validation": {"type": "number", "minimum": 0, "maximum": 1},
+            "pattern_reuse": {"type": "number", "minimum": 0, "maximum": 1},
+            "mcp_integration": {"type": "number", "minimum": 0, "maximum": 1},
+            "innovation": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        },
+        "last_updated": {"type": "string", "format": "date-time"}
+      }
+    },
+    "reference_policy": {
+      "type": "object",
+      "description": "Baseline policy for KL divergence calculation",
+      "properties": {
+        "policy_snapshot": {"type": "string", "description": "Reference policy state identifier"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "update_frequency": {"type": "string", "default": "every_50_tasks"},
+        "last_kl_divergence": {"type": "number"},
+        "drift_threshold": {"type": "number", "default": 0.01, "description": "Max allowed KL before policy reset"}
+      }
+    },
+    "current_focus": {
+      "type": "object",
+      "properties": {
+        "task": {"type": "string"},
+        "tests_ready": {"type": "array", "items": {"type": "string"}}
       }
     }
   }

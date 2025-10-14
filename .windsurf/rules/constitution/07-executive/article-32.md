@@ -26,6 +26,8 @@ last_updated: 2025-10-13T13:24:19+05:30
 
 **Tribunal Authority**: Convene constitutional tribunals for severe violations, preside over hearings, issue binding verdicts with ≥95% parliamentary backing, sanction violations.
 
+**Approval Stage Authority**: Final constitutional verification after Opposition review. Tasks in kanban 'done' column require Chief Justice sign-off before moving to 'approved'. Verifies constitutional compliance ≥80%, MCP trail completeness, RL score accuracy. Rejected tasks return to 'todo' with constitutional remediation requirements.
+
 ## 3. Implementation — Judicial Protocols
 
 **HALT Enforcement** (4 steps):
@@ -41,6 +43,13 @@ last_updated: 2025-10-13T13:24:19+05:30
 1. Proposal Review: Chief Justice receives all proposals, constitutional compliance check, MCP trail verification, democratic process adherence
 2. Veto Decision: IF compliant→sign approval memory.json. IF non-compliant→issue veto: @mcp:filesystem mistakes.json {veto_id, proposal_ref, reasoning, constitutional_article_violated, remedy_required, override_threshold: "≥98% consensus"}
 3. Veto Communication: All branches notified activeContext, reasoning published transparently, remedy guidance provided, appeal process explained
+```
+
+**Approval Stage Protocol** (3 steps):
+```
+1. Post-Opposition Review: After Shadow Cabinet verification passes, Chief Justice conducts final constitutional audit
+2. Constitutional Verification: Check compliance ≥80%, validate MCP trails complete, verify RL calculations, confirm democratic process followed
+3. Final Decision: IF pass→@mcp:filesystem kanban 'approved' column + approval timestamp | IF fail→kanban 'todo' + mistakes.json constitutional remediation requirements
 ```
 
 ## 4. Violations — Presidential Abuse

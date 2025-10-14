@@ -1,13 +1,41 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-13T23:49:26+05:30",
+  "last_updated": "2025-10-14T11:56:57+05:30",
   "metrics": {
-    "total_rl_score": -7,
-    "tasks_completed": 35,
+    "total_rl_score": -70,
+    "tasks_completed": 3,
     "tasks_pending": 2,
-    "constitutional_compliance": 100,
-    "session_readiness": 100,
-    "emd_compliance": "All files compliant"
+    "constitutional_compliance": 60,
+    "session_readiness": 80,
+    "emd_compliance": "Pending schema fixes"
+  },
+  "current_execution": {
+    "task_id": "schema_rebuild_all_8",
+    "task_name": "Rebuild ALL 8 memory bank files with EXACT schema field order",
+    "roadmap_milestone_id": "constitutional_compliance_restoration",
+    "status": "in_progress",
+    "priority": "P0_CRITICAL",
+    "blocker_reason": "Schema violations across all files - fields out of order"
+  },
+  "rl_runtime": {
+    "current_gae_advantage": -0.5,
+    "session_kl_divergence": 0.002,
+    "active_branch": "task_success",
+    "exploit_mode": false,
+    "strategy_effectiveness": 0.4,
+    "autonomous_loop_active": true,
+    "parallel_workers": 1,
+    "attention_budget_allocation": {
+      "base_tokens": 200000,
+      "scratchpad_allocation": 60000,
+      "activeContext_allocation": 50000,
+      "mistakes_allocation": 40000,
+      "systemPatterns_allocation": 20000,
+      "progress_allocation": 20000,
+      "roadmap_allocation": 10000,
+      "memory_allocation": 0,
+      "kanban_allocation": 0
+    }
   },
   "event_tracking": [
     {
