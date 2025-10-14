@@ -1,7 +1,13 @@
 {
-  "version": "1.0",
-  "timestamp": "2025-10-10T08:48:03Z",
-  "errors": [
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-14T11:47:00+05:30",
+  "metrics": {
+    "total_rl_score": -70,
+    "tasks_completed": 3,
+    "tasks_failed": 1,
+    "commits": 5
+  },
+  "error_patterns": [
     {
       "id": "error-001",
       "timestamp": "2025-10-09T00:00:00Z",
@@ -46,7 +52,6 @@
       "status": "identified"
     }
   ],
-  "error_patterns": [
     {
       "id": "schema-violation-2025-10-14-004",
       "category": "constitutional_violation",
@@ -92,6 +97,26 @@
       "severity": "high"
     }
   ],
+  "instant_lint_tracking": [],
+  "learning_data": {
+    "successful_fixes": 2,
+    "patterns_prevented": 1,
+    "time_saved_hours": 0.5,
+    "accuracy_improvement": 0.15
+  },
+  "predictive_warnings": [],
+  "context7_source_priority": {
+    "verified_sources": [],
+    "blacklisted_sources": [],
+    "priority_frameworks": ["pydantic", "httpx", "playwright"]
+  },
+  "anti_hallucination_metrics": {
+    "context7_calls_total": 2,
+    "fetch_verifications": 1,
+    "accuracy_improvement": 0.2,
+    "false_positive_rate": 0.0,
+    "documentation_coverage": 0.85
+  },
   "patterns": {
     "commonMistakes": [
       "Not validating data formats at boundaries",
