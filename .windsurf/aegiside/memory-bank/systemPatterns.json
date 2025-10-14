@@ -1,18 +1,37 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T11:56:57+05:30",
+  "last_updated": "2025-10-14T12:32:12+05:30",
   "metrics": {
-    "total_rl_score": -100,
-    "tasks_completed": 3,
+    "total_rl_score": -170,
+    "tasks_completed": 8,
     "tasks_failed": 1,
-    "commits": 10,
-    "rl_reward": 0,
-    "success_rate": 0.75,
-    "gae_advantage": -0.5,
-    "value_branch": "task_success",
-    "timestamp": "2025-10-14T11:56:57+05:30"
+    "commits": 8,
+    "rl_reward": -70,
+    "success_rate": 0.88,
+    "gae_advantage": -0.3,
+    "value_branch": "learning",
+    "timestamp": "2025-10-14T12:32:12+05:30"
   },
   "architecture_patterns": [
+    {
+      "pattern": "Naukri API Authentication - Browser Session Required",
+      "discovery": "2025-10-14T12:30:00+05:30",
+      "authentication_method": {
+        "type": "browser_session_cookies",
+        "description": "Naukri API v3 requires authenticated browser session cookies, not just headers",
+        "headers_insufficient": ["appid", "systemid", "clientid", "gid"],
+        "error_without_auth": "406 Not Acceptable",
+        "solution": "Use Playwright browser automation to establish session, extract cookies, then use API"
+      },
+      "implementation": {
+        "approach": "Playwright scraper with browser authentication",
+        "file": "src/scraper/unified/naukri_unified.py",
+        "function": "scrape_naukri_jobs_unified",
+        "flow": "Open browser → Establish session → API calls with cookies"
+      },
+      "rl_learning": "Headers alone = -20 RL failure. Browser auth = working solution.",
+      "status": "documented"
+    },
     {
       "pattern": "Two-phase Playwright scraping with concurrent execution",
       "phase_1_url_extraction": {

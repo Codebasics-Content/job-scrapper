@@ -9,7 +9,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.scraper.unified.naukri_unified import scrape_naukri_jobs_unified
+from src.scraper.unified.naukri.browser_scraper import scrape_naukri_jobs_browser
 from src.db.operations import JobStorageOperations
 
 
@@ -23,11 +23,11 @@ async def test_naukri_20_jobs():
     
     # Scrape 20 Naukri jobs
     start = datetime.now()
-    jobs = await scrape_naukri_jobs_unified(
+    jobs = await scrape_naukri_jobs_browser(
         keyword="Python Developer",
-        location="",  # Naukri India-focused, empty for broad search
+        location="",
         limit=20,
-        headless=False  # CRITICAL: Naukri blocks headless browsers
+        headless=False
     )
     
     duration = (datetime.now() - start).total_seconds()

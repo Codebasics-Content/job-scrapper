@@ -1,13 +1,55 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-13T23:49:26+05:30",
+  "last_updated": "2025-10-14T12:32:12+05:30",
   "metrics": {
-    "total_rl_score": -110,
-    "tasks_completed": 35,
-    "tasks_failed": 0,
-    "commits": 6
+    "total_rl_score": -170,
+    "tasks_completed": 40,
+    "tasks_failed": 1,
+    "commits": 8
   },
   "reinforcement_learning": [
+    {
+      "tx_id": "rl-2025-10-14-12:54:50",
+      "timestamp": "2025-10-14T12:54:50+05:30",
+      "category": "parallel_scraping_success",
+      "reward": 50,
+      "source_file": "browser_scraper.py",
+      "description": "Implemented 5-tab parallel page scraping with improved CSS selectors - 100% success (20/20 jobs)",
+      "pattern_applied": "asyncio.Semaphore(5) for concurrent browser tabs",
+      "mcp_chain": ["filesystem", "sequential-thinking", "time"],
+      "success_metrics": {
+        "jobs_scraped": 20,
+        "success_rate": 100,
+        "time_seconds": 30.1,
+        "parallel_tabs": 5
+      }
+    },
+    {
+      "tx_id": "rl-schema-violation-015",
+      "timestamp": "2025-10-14T12:32:12+05:30",
+      "workflow": "naukri_api_fix",
+      "category": "constitutional_violation",
+      "reward": -50,
+      "source_file": "mistakes.json",
+      "description": "Article 14 violation: Failed to update 8 schemas after completing 5 tasks over 25 minutes. User had to demand update.",
+      "gae_advantage": -0.85,
+      "kl_divergence": 0.008,
+      "value_branch": "duty_failure",
+      "tasks_completed_without_update": 5
+    },
+    {
+      "tx_id": "rl-api-auth-discovery-014",
+      "timestamp": "2025-10-14T12:30:00+05:30",
+      "workflow": "research",
+      "category": "root_cause_analysis",
+      "reward": -20,
+      "source_file": "mistakes.json",
+      "description": "Discovered Naukri API requires authenticated browser cookies, not just headers. 3 test runs confirmed 406 errors.",
+      "gae_advantage": 0.1,
+      "kl_divergence": 0.002,
+      "value_branch": "learning",
+      "solution": "Use Playwright scraper (naukri_unified.py) instead of direct API calls"
+    },
     {
       "tx_id": "rl-naukri-test-fail-013",
       "timestamp": "2025-10-14T12:27:00+05:30",

@@ -1,13 +1,51 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T12:05:40+05:30",
+  "last_updated": "2025-10-14T12:32:12+05:30",
   "metrics": {
-    "total_rl_score": -100,
-    "tasks_completed": 35,
-    "tasks_failed": 0,
-    "commits": 6
+    "total_rl_score": -170,
+    "tasks_completed": 40,
+    "tasks_failed": 1,
+    "commits": 8
   },
   "error_patterns": [
+    {
+      "error_id": "schema_update_violation_014",
+      "timestamp": "2025-10-14T12:32:12+05:30",
+      "category": "constitutional_violation",
+      "description": "Article 14 violation: Failed to update 8 schemas after completing multiple tasks (header capture, API updates, test runs)",
+      "context": {
+        "tasks_completed_without_update": 5,
+        "duration_without_update_minutes": 25,
+        "articles_violated": ["Article 14: Duty to Update 8-Schema Memory Bank"],
+        "work_done": ["Captured Naukri API headers", "Updated naukri_api_client.py", "Updated search_jobs params", "Ran 3 validation tests", "Discovered API auth requirement"]
+      },
+      "impact": "Memory bank out of sync with actual work. User had to point out violation.",
+      "prevention_rule": "MANDATORY: Update ALL 8 schemas IMMEDIATELY after EVERY task completion. NO exceptions. Atomic transaction required.",
+      "rl_penalty": -50,
+      "status": "acknowledged",
+      "recurrence_count": 1,
+      "last_occurrence": "2025-10-14T12:32:12+05:30"
+    },
+    {
+      "error_id": "naukri_api_requires_auth_cookies",
+      "timestamp": "2025-10-14T12:32:00+05:30",
+      "category": "api_authentication",
+      "description": "Naukri API v3 requires authenticated browser session cookies, not just headers",
+      "context": {
+        "api_url": "https://www.naukri.com/jobapi/v3/search",
+        "error_code": 406,
+        "headers_added": ["appid: 109", "systemid: Naukri", "clientid: d3skt0p", "gid: LOCATION,INDUSTRY,EDUCATION,FAREA_ROLE"],
+        "root_cause": "API rejects requests without active browser session cookies. Headers alone insufficient.",
+        "test_results": "3 consecutive 406 errors despite correct headers"
+      },
+      "impact": "API-based scraping blocked. Must use Playwright scraper with browser authentication.",
+      "prevention_rule": "For Naukri: Use Playwright scraper (browser auth) instead of direct API calls. API requires active session.",
+      "rl_penalty": -20,
+      "status": "root_cause_found",
+      "solution": "Switch to naukri_unified.py Playwright scraper which authenticates via browser",
+      "recurrence_count": 1,
+      "last_occurrence": "2025-10-14T12:32:00+05:30"
+    },
     {
       "error_id": "naukri_api_400_error",
       "timestamp": "2025-10-14T12:27:00+05:30",

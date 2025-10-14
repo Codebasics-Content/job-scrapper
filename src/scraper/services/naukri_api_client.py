@@ -23,6 +23,12 @@ class NaukriAPIClient:
             headers={
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                 "Referer": self.BASE_URL,
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "appid": "109",
+                "systemid": "Naukri",
+                "clientid": "d3skt0p",
+                "gid": "LOCATION,INDUSTRY,EDUCATION,FAREA_ROLE",
             },
             timeout=30.0,
         )
@@ -31,12 +37,18 @@ class NaukriAPIClient:
         self, keyword: str, page_no: int = 1, limit: int = 20
     ) -> Dict[str, object]:
         """Search API - returns job list with IDs"""
+        # Match exact captured API parameters
+        seo_key = keyword.lower().replace(" ", "-") + "-jobs"
         params = {
-            "k": keyword,
-            "pageNo": page_no,
             "noOfResults": limit,
             "urlType": "search_by_keyword",
             "searchType": "adv",
+            "keyword": keyword,
+            "pageNo": page_no,
+            "k": keyword,
+            "seoKey": seo_key,
+            "src": "directSearch",
+            "latLong": "",
         }
         
         try:
@@ -63,6 +75,10 @@ class NaukriAPIClient:
         except Exception as e:
             logger.error(f"Detail API error for {job_id}: {e}")
             raise
+    
+    async def fetch_jobs_bulk(self, keyword: str, limit: int = 20) -> Dict[str, object]:
+        """Bulk fetch jobs with all details via search API"""
+        return await self.search_jobs(keyword=keyword, limit=limit)
     
     async def close(self):
         """Cleanup client"""

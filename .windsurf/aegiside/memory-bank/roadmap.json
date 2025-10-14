@@ -1,17 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T11:56:57+05:30",
+  "last_updated": "2025-10-14T12:32:12+05:30",
   "metrics": {
-    "total_rl_score": -100,
-    "tasks_completed": 3,
+    "total_rl_score": -170,
+    "tasks_completed": 8,
     "tasks_failed": 1,
-    "commits": 10
+    "commits": 8
   },
   "project_overview": {
     "name": "Job Scrapper - Multi-Platform Optimization",
     "objective": "Free LinkedIn (JobSpy) + two-table Naukri/Indeed at 10K+ scale",
-    "status": "linkedin_complete_naukri_complete",
-    "completion": "95%"
+    "status": "naukri_validation_blocked_api_auth",
+    "completion": "92%",
+    "blocker": "Naukri API requires browser authentication - switching to Playwright scraper"
   },
   "strategic_goals": [
     {

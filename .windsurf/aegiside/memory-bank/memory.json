@@ -1,13 +1,25 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T11:56:57+05:30",
+  "last_updated": "2025-10-14T12:32:12+05:30",
   "metrics": {
-    "total_rl_score": -100,
-    "tasks_completed": 3,
+    "total_rl_score": -170,
+    "tasks_completed": 8,
     "tasks_failed": 1,
-    "commits": 10
+    "commits": 8
   },
   "entities": [
+    {
+      "name": "Naukri_API_Authentication",
+      "entityType": "pattern",
+      "observations": [
+        "Naukri API v3 requires authenticated browser session cookies",
+        "Headers alone insufficient: appid, systemid, clientid, gid tested - all failed with 406",
+        "Direct API calls without browser session = 406 Not Acceptable",
+        "Solution: Use Playwright to establish session, then API calls work",
+        "Test file already configured: test_naukri_20_validation.py uses scrape_naukri_jobs_unified",
+        "Discovery date: 2025-10-14 after 3 failed test runs"
+      ]
+    },
     {
       "name": "JobSpy",
       "entityType": "tool",

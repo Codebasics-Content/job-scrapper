@@ -1,26 +1,26 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T11:56:57+05:30",
+  "last_updated": "2025-10-14T12:32:12+05:30",
   "metrics": {
-    "total_rl_score": -100,
-    "tasks_completed": 3,
+    "total_rl_score": -170,
+    "tasks_completed": 8,
     "tasks_failed": 1,
-    "commits": 10
+    "commits": 8
   },
   "top_append_metadata": {
     "latest_task_at_index_0": true,
-    "last_prepend_timestamp": "2025-10-13T20:10:15+05:30",
-    "total_prepends": 1,
+    "last_prepend_timestamp": "2025-10-14T12:32:12+05:30",
+    "total_prepends": 2,
     "validation_passed": true
   },
   "priority_queue": [
     {
-      "id": "fix_naukri_api_400",
-      "task": "Research and fix Naukri API 400 error via @mcp:context7",
+      "id": "test_naukri_playwright",
+      "task": "Run test_naukri_20_validation.py using Playwright scraper (browser auth)",
       "priority": "P0",
       "blocker": true,
-      "context": "API v3 search returns 400. Research correct params, headers, auth. Test minimal request first. Blocking test_naukri_20.",
-      "added_at": "2025-10-14T12:27:00+05:30"
+      "context": "API requires browser cookies. Use naukri_unified.py (already configured in test). Validate 20 jobs with descriptions.",
+      "added_at": "2025-10-14T12:32:12+05:30"
     },
     {
       "id": "scale_test_1000",

@@ -67,6 +67,13 @@ class PlaywrightBrowser:
         page = await self.context.new_page()
         return page
     
+    async def get_cookies(self) -> list[dict[str, str]]:
+        """Get cookies from browser context"""
+        if not self.context:
+            raise RuntimeError("Browser context not initialized")
+        cookies = await self.context.cookies()
+        return cookies
+    
     async def render_url(self, url: str, wait_seconds: float = 3.0, timeout_ms: int = 60000, wait_until: Literal['commit', 'domcontentloaded', 'load', 'networkidle'] = 'networkidle') -> str:
         """Render URL with error handling and configurable timeout"""
         page = await self.new_page()
