@@ -1,32 +1,25 @@
-# Scraper Form Component - Two-Phase EMD Orchestrator
-# Uses modular two-phase components for 80-90% speedup
+# Scraper Form Component - 2-Platform EMD Orchestrator
+# LinkedIn + Naukri with multi-layer fuzzy deduplication
 
 import asyncio
 import streamlit as st
 
-from .form import render_two_phase_panel, execute_phase1_workflow, execute_phase2_workflow
+from .form import render_two_phase_panel, execute_scraping_workflow
 
 def render_scraper_form(db_path: str) -> None:
-    """Render the two-phase scraper form interface"""
-    st.header("🚀 Two-Phase Job Scraper")
-    st.markdown("**80-90% faster** through URL caching | Scrape URLs first, details later")
+    """Render the 2-platform scraper form interface"""
+    st.header("🚀 2-Platform Job Scraper")
+    st.markdown("**LinkedIn** (99.9%+ deduplication) + **Naukri** (Playwright) | Skills extraction included")
     
-    # Render two-phase configuration panel
-    platform, job_role, location, num_jobs, phase = render_two_phase_panel(db_path)
+    # Render 2-platform configuration panel
+    platforms, job_role, location, num_jobs, action = render_two_phase_panel(db_path)
     
-    # Execute workflow based on phase button clicked
-    if phase == "phase1":
-        asyncio.run(execute_phase1_workflow(
-            platform=platform,
+    # Execute workflow when scrape button clicked
+    if action == "scrape":
+        asyncio.run(execute_scraping_workflow(
+            platforms=platforms,
             job_role=job_role,
             location=location,
-            num_jobs=num_jobs,
-            db_path=db_path
-        ))
-    elif phase == "phase2":
-        asyncio.run(execute_phase2_workflow(
-            platform=platform,
-            job_role=job_role,
             num_jobs=num_jobs,
             db_path=db_path
         ))

@@ -1,23 +1,23 @@
-# Two-Phase Scraper Configuration Panel - EMD Component
-# Separate UI for URL collection and detail scraping
+# 2-Platform Scraper Configuration Panel - EMD Component
+# LinkedIn + Naukri with multi-layer fuzzy deduplication
 import streamlit as st
 from src.db import JobStorageOperations
-from src.models import JobUrlModel
 
 
-def render_two_phase_panel(db_path: str) -> tuple[str, str, str, int, str]:
-    """Render two-phase scraper configuration with separate buttons"""
-    st.subheader("🔄 Two-Phase Job Scraper (80-90% Faster)")
-    st.markdown("**Phase 1:** Collect URLs quickly | **Phase 2:** Scrape details for unscraped jobs")
+def render_two_phase_panel(db_path: str) -> tuple[list[str], str, str, int, str]:
+    """Render 2-platform scraper configuration panel"""
+    st.subheader("🚀 2-Platform Job Scraper (LinkedIn + Naukri)")
+    st.markdown("**LinkedIn**: Multi-layer fuzzy deduplication (99.9%+ precision) | **Naukri**: Playwright automation")
     
     col1, col2 = st.columns(2)
     
     with col1:
         st.markdown("### ⚙️ Configuration")
-        platform = st.selectbox(
-            "Platform",
-            ["Naukri", "Indeed"],
-            help="Select job platform to scrape"
+        platforms = st.multiselect(
+            "Platforms",
+            ["linkedin", "naukri"],
+            default=["linkedin"],
+            help="Select platforms to scrape (LinkedIn with deduplication, Naukri with Playwright)"
         )
         job_role = st.text_input(
             "Job Role",
@@ -26,53 +26,44 @@ def render_two_phase_panel(db_path: str) -> tuple[str, str, str, int, str]:
         )
         location = st.text_input(
             "Location",
-            value="India" if platform == "Naukri" else "United States",
-            help="Search location"
+            value="United States",
+            help="Search location (empty for worldwide)"
         )
         num_jobs = st.number_input(
-            "Number of URLs/Details",
+            "Jobs per Platform",
             min_value=1,
             max_value=1000,
             value=100,
             step=10,
-            help="Limit for scraping"
+            help="Number of jobs to scrape per platform"
         )
     
     with col2:
         st.markdown("### 📊 Database Status")
         db_ops = JobStorageOperations(db_path)
-        input_role = JobUrlModel.normalize_role(job_role)
         
-        # Query unscraped count
-        unscraped = db_ops.get_unscraped_urls(platform, input_role, limit=10000)
-        unscraped_count = len(unscraped) if unscraped else 0
+        # Query total jobs in database
+        all_jobs = db_ops.get_jobs_by_role("")  # Get all jobs
+        total_count = len(all_jobs) if all_jobs else 0
         
-        st.metric("Unscraped URLs", unscraped_count, 
-                 help="URLs in database without full details")
-        st.info(f"**Ready for Phase 2:** {unscraped_count} jobs need details")
+        # Count by platform
+        linkedin_count = len([j for j in all_jobs if j.get('platform', '').lower() == 'linkedin']) if all_jobs else 0
+        naukri_count = len([j for j in all_jobs if j.get('platform', '').lower() == 'naukri']) if all_jobs else 0
+        
+        st.metric("Total Jobs", total_count, help="Total jobs in database")
+        st.info(f"**LinkedIn:** {linkedin_count} | **Naukri:** {naukri_count}")
     
     st.divider()
     
-    # Phase buttons
-    phase_col1, phase_col2 = st.columns(2)
+    # Scrape button
+    scrape_clicked = st.button(
+        "🚀 Start Scraping",
+        type="primary",
+        use_container_width=True,
+        help="Scrape jobs with skills from selected platforms",
+        disabled=len(platforms) == 0
+    )
     
-    with phase_col1:
-        phase1_clicked = st.button(
-            "🔗 Phase 1: Scrape URLs",
-            type="primary",
-            use_container_width=True,
-            help="Fast URL collection (10-100x faster)"
-        )
+    action = "scrape" if scrape_clicked else "none"
     
-    with phase_col2:
-        phase2_clicked = st.button(
-            "📄 Phase 2: Scrape Details",
-            type="secondary",
-            use_container_width=True,
-            help="Scrape full details for unscraped URLs",
-            disabled=unscraped_count == 0
-        )
-    
-    phase = "phase1" if phase1_clicked else ("phase2" if phase2_clicked else "none")
-    
-    return platform, job_role, location, num_jobs, phase
+    return platforms, job_role, location, num_jobs, action

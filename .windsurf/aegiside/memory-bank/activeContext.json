@@ -39,6 +39,23 @@
   },
   "event_tracking": [
     {
+      "id": "evt-continue-recovery-013",
+      "timestamp": "2025-10-14T17:11:21+05:30",
+      "type": "continue_recovery",
+      "task_id": "cleanup_optimization",
+      "description": "/continue: Context restored. Completed cleanup optimization - removed ~1,050 lines (importer, local_proxy, Indeed scrapers)",
+      "context": {
+        "downtime_seconds": 16731,
+        "pending_tasks": 1,
+        "last_completed": "cleanup_optimization",
+        "files_deleted": 11,
+        "files_modified": 11,
+        "docs_created": 3,
+        "current_rl_score": -140
+      },
+      "rl_reward": 5
+    },
+    {
       "id": "evt-init-session-012",
       "timestamp": "2025-10-14T12:13:05+05:30",
       "type": "session_initialization",

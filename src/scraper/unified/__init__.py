@@ -1,1 +1,1 @@
-# Package: unified headless scrapers (LinkedIn, Indeed, Naukri)
+# Package: unified Naukri scraper (LinkedIn via JobSpy)
