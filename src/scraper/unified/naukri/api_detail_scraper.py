@@ -46,7 +46,7 @@ async def scrape_naukri_details_api(
         # Step 4: Fetch details concurrently (5 concurrent)
         semaphore = asyncio.Semaphore(5)
         
-        async def fetch_detail(url_model) -> JobDetailModel | None:
+        async def fetch_detail(url_model: JobURLModel) -> JobDetailModel | None:
             async with semaphore:
                 try:
                     data = await client.get_job_detail(url_model.job_id)

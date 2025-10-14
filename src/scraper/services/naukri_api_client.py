@@ -16,10 +16,10 @@ class NaukriAPIClient:
     SEARCH_API = f"{BASE_URL}/jobapi/v3/search"
     DETAIL_API = f"{BASE_URL}/jobapi/v4/job"
     
-    def __init__(self, cookies: List[Dict[str, object]]):
+    def __init__(self, cookies: Dict[str, str]):
         """Initialize with Playwright cookies"""
         self.client = httpx.AsyncClient(
-            cookies={c["name"]: c["value"] for c in cookies},
+            cookies=cookies,
             headers={
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                 "Referer": self.BASE_URL,

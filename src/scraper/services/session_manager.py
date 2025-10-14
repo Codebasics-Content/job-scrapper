@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 async def create_authenticated_session(
     headless: bool = True
-) -> tuple[Browser, BrowserContext, List[Dict[str, object]]]:
+) -> tuple[Browser, BrowserContext, Dict[str, str]]:
     """Create Playwright session and extract cookies
     
     Returns:
@@ -29,11 +29,11 @@ async def create_authenticated_session(
     page = await context.new_page()
     await page.goto("https://www.naukri.com", wait_until="networkidle")
     
-    # Extract cookies and convert to dict format
+    # Extract cookies as dict for httpx
     raw_cookies = await context.cookies()
-    cookies: List[Dict[str, object]] = [
-        {k: v for k, v in cookie.items()} for cookie in raw_cookies
-    ]
+    cookies: Dict[str, str] = {
+        str(c["name"]): str(c["value"]) for c in raw_cookies
+    }
     logger.info(f"Extracted {len(cookies)} cookies from session")
     
     return browser, context, cookies

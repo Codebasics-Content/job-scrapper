@@ -69,7 +69,9 @@ async def scrape_naukri_urls_api(
 def _parse_job_urls(data: Dict[str, object], keyword: str) -> List[JobURLModel]:
     """Parse API response to JobURLModel"""
     models = []
-    for job in data.get("jobDetails", []):
+    job_list = data.get("jobDetails", [])
+    assert isinstance(job_list, list)
+    for job in job_list:
         models.append(
             JobURLModel(
                 job_id=job["jobId"],
