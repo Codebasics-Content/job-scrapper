@@ -16,11 +16,12 @@
   "priority_queue": [
     {
       "id": "scale_test_1000",
-      "task": "Scale test: 1000 jobs per platform (LinkedIn → Indeed → Naukri)",
+      "task": "Scale test: 1000 jobs per platform (LinkedIn + Naukri)",
       "priority": "P1",
       "blocker": false,
-      "context": "After 20-job validation passes, test at scale. Identify gaps, apply RL scoring.",
-      "added_at": "2025-10-13T20:10:15+05:30"
+      "context": "After cleanup optimization: Test 2-platform architecture at scale. LinkedIn (JobSpy + BrightData proxy) + Naukri (Playwright). Identify performance bottlenecks.",
+      "added_at": "2025-10-13T20:10:15+05:30",
+      "updated_at": "2025-10-14T17:11:21+05:30"
     }
   ],
   "completed": [
