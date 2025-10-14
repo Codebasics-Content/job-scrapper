@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "last_updated": "2025-10-13T23:49:26+05:30",
   "metrics": {
-    "total_rl_score": -7,
+    "total_rl_score": -100,
     "tasks_completed": 35,
     "tasks_failed": 0,
     "commits": 6

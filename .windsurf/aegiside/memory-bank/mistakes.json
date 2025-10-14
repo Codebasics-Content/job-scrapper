@@ -9,6 +9,21 @@
   },
   "error_patterns": [
     {
+      "error_id": "err-research-violation-001",
+      "timestamp": "2025-10-14T12:03:29+05:30",
+      "category": "rl_mandate_violation",
+      "description": "Failed to research global workflows before answering user questions",
+      "resolution_status": "learning",
+      "prevention_rule": "ALWAYS research using @mcp:context7, @mcp:exa, @mcp:fetch BEFORE answering ANY question. Research alone = +2 RL, Research + solution = +20-50 RL. NO research = -30 RL penalty",
+      "constitutional_violation": "Article 17 (pattern application) + RL-driven mandate from Memory",
+      "rl_penalty": -30,
+      "anti_hallucination": {
+        "source_required": "Global workflows at /home/gaurav-wankhede/.codeium/windsurf-next/global_workflows/",
+        "verification_method": "Read actual files before claiming they don't exist",
+        "trust_score": 0
+      }
+    },
+    {
       "id": "naukri-zero-jobs-scraped",
       "timestamp": "2025-10-13T22:52:02+05:30",
       "category": "validation_failure",
