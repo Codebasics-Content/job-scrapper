@@ -14,6 +14,24 @@
   },
   "architecture_patterns": [
     {
+      "pattern": "Parallel Browser Tab Scraping with asyncio.Semaphore",
+      "implementation": {
+        "approach": "5 concurrent browser tabs controlled by asyncio.Semaphore(5)",
+        "file": "src/scraper/unified/naukri/browser_scraper.py",
+        "functions": ["_enrich_parallel_pages", "_scrape_job_page"],
+        "css_selectors": {
+          "description": ".styles_JDC__dang-inner-html__h0K4t, [class*='job-description'], .dang-inner-html",
+          "skills_container": ".styles_jhc__key-skill__DKjCg, [class*='key-skill'], .key-skill",
+          "skills_items": "a, span.chip, .chip-text"
+        },
+        "performance": "20 jobs in 30.1s with 100% success rate"
+      },
+      "discovery": "2025-10-14T12:54:50+05:30",
+      "rl_reward": 50,
+      "success_rate": 1.0,
+      "status": "production_ready"
+    },
+    {
       "pattern": "Naukri API Authentication - Browser Session Required",
       "discovery": "2025-10-14T12:30:00+05:30",
       "authentication_method": {

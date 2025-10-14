@@ -10,20 +10,6 @@
   "columns": {
     "todo": [
       {
-        "id": "test_indeed_20",
-        "title": "Execute test_indeed_20_validation.py with venv",
-        "priority": "P0",
-        "tags": ["testing", "validation", "indeed", "jobspy"],
-        "added_at": "2025-10-13T20:10:15+05:30"
-      },
-      {
-        "id": "test_naukri_20",
-        "title": "Execute test_naukri_20_validation.py with venv",
-        "priority": "P0",
-        "tags": ["testing", "validation", "naukri", "playwright"],
-        "added_at": "2025-10-13T20:10:15+05:30"
-      },
-      {
         "id": "scale_test_1000",
         "title": "Scale test: 1000 jobs per platform",
         "priority": "P1",
@@ -33,6 +19,14 @@
     ],
     "in_progress": [],
     "done": [
+      {
+        "id": "test_naukri_parallel_scraping",
+        "title": "Implement and test parallel page scraping for Naukri (5 tabs)",
+        "completed_at": "2025-10-14T12:54:50+05:30",
+        "tags": ["implementation", "testing", "naukri", "parallel", "playwright"],
+        "rl_impact": 50,
+        "outcome": "100% success - 20/20 jobs with descriptions and skills in 30.1s"
+      },
       {
         "id": "naukri_api_auth_research",
         "title": "Research Naukri API authentication requirements",

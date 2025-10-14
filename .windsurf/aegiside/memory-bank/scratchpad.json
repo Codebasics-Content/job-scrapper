@@ -15,14 +15,6 @@
   },
   "priority_queue": [
     {
-      "id": "test_naukri_playwright",
-      "task": "Run test_naukri_20_validation.py using Playwright scraper (browser auth)",
-      "priority": "P0",
-      "blocker": true,
-      "context": "API requires browser cookies. Use naukri_unified.py (already configured in test). Validate 20 jobs with descriptions.",
-      "added_at": "2025-10-14T12:32:12+05:30"
-    },
-    {
       "id": "scale_test_1000",
       "task": "Scale test: 1000 jobs per platform (LinkedIn → Indeed → Naukri)",
       "priority": "P1",
@@ -32,6 +24,12 @@
     }
   ],
   "completed": [
+    {
+      "id": "test_naukri_playwright",
+      "task": "Implement parallel page scraping (5 tabs) for Naukri job descriptions and skills",
+      "completed_at": "2025-10-14T12:54:50+05:30",
+      "outcome": "100% success: 20/20 jobs with descriptions (avg 883 chars) + skills (avg 6 per job). Parallel execution 30.1s. RL: +50. asyncio.Semaphore(5) pattern."
+    },
     {
       "id": "test_indeed_20",
       "task": "Execute test_indeed_20_validation.py with venv",

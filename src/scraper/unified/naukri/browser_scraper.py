@@ -37,10 +37,9 @@ async def scrape_naukri_jobs_browser(
             
             # Find job cards - try multiple selectors
             selectors = [
-                'article.jobTuple',
                 '.cust-job-tuple',
-                'article[data-job-id]',
-                '.srp-jobtuple-wrapper'
+                'article.jobTuple',
+                'article[data-job-id]'
             ]
             
             job_cards = []
@@ -62,12 +61,16 @@ async def scrape_naukri_jobs_browser(
                     href = link_elem.get('href', '') if link_elem else ''
                     url = href if href.startswith('http') else f"https://www.naukri.com{href}"
                     
-                    # Extract company
-                    company_elem = card.select_one('.companyInfo, [class*="company"]')
+                    # Extract company (2025 Naukri: .comp-name inside .comp-dtls-wrap)
+                    company_elem = card.select_one('.comp-name, .companyInfo, [class*="company"]')
                     company = company_elem.text.strip() if company_elem else "Unknown Company"
                     
                     # Generate job_id from URL
                     job_id = JobUrlModel.generate_job_id("naukri", url) if url else JobUrlModel.generate_job_id("naukri", f"{title}-{company}")
+                    
+                    # Extract posted date (2025 Naukri: .job-post-day)
+                    date_elem = card.select_one('.job-post-day, [class*="date"], [class*="post"]')
+                    posted_date = date_elem.text.strip() if date_elem else None
                     
                     jobs.append(JobDetailModel(
                         job_id=job_id,
@@ -76,7 +79,7 @@ async def scrape_naukri_jobs_browser(
                         url=url,
                         job_description="",
                         company_name=company,
-                        posted_date=None
+                        posted_date=posted_date
                     ))
                     
                 except Exception as e:
