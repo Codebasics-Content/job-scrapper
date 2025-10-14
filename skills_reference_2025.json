@@ -8,114 +8,112 @@
       {
         "name": "Python",
         "patterns": [
-          "python",
-          "python3",
-          "py3",
-          "python 3",
-          "cpython",
-          "pypy"
+          "\\bpython\\b",
+          "\\bpython3\\b",
+          "\\bpy3\\b",
+          "\\bpython 3\\b",
+          "\\bcpython\\b",
+          "\\bpypy\\b"
         ]
       },
       {
         "name": "JavaScript",
         "patterns": [
-          "javascript",
-          "js",
-          "ecmascript",
-          "es6",
-          "es2015",
-          "es2020"
+          "\\bjavascript\\b",
+          "\\becmascript\\b",
+          "\\bes6\\b",
+          "\\bes2015\\b",
+          "\\bes2020\\b"
         ]
       },
       {
         "name": "TypeScript",
         "patterns": [
-          "typescript",
-          "ts"
+          "\\btypescript\\b"
         ]
       },
       {
         "name": "Java",
         "patterns": [
-          "java",
-          "java 8",
-          "java 11",
-          "java 17",
-          "java 21",
-          "openjdk"
+          "\\bjava\\b",
+          "\\bjava 8\\b",
+          "\\bjava 11\\b",
+          "\\bjava 17\\b",
+          "\\bjava 21\\b",
+          "\\bopenjdk\\b"
         ]
       },
       {
         "name": "C++",
         "patterns": [
-          "c++",
-          "cpp",
-          "c plus plus",
-          "c\\+\\+"
+          "\\bc\\+\\+\\b",
+          "\\bcpp\\b",
+          "\\bc plus plus\\b",
+          "\\bc\\+\\+\\b"
         ]
       },
       {
         "name": "C#",
         "patterns": [
-          "c#",
-          "csharp",
-          "c sharp",
-          "c\\#"
+          "\\bc\\#\\b",
+          "\\bcsharp\\b",
+          "\\bc sharp\\b",
+          "\\bc\\#\\b"
         ]
       },
       {
         "name": "C",
         "patterns": [
           "\\b[C](?=\\s*(?:programming|language|\\+\\+))",
-          "ansi c",
-          "c programming",
-          "c language"
+          "\\bansi c\\b",
+          "\\bc programming\\b",
+          "\\bc language\\b"
         ]
       },
       {
         "name": "Go",
         "patterns": [
-          "golang",
+          "\\bgolang\\b",
           "(?<!on\\s)(?<!to\\s)\\b(?:Go|Golang)\\b(?!ing|ogle)",
-          "go language"
+          "\\bgo language\\b"
         ]
       },
       {
         "name": "Rust",
         "patterns": [
           "\\brust\\b(?!\\s+(?:proof|resistant))",
-          "rust lang",
-          "rustlang"
+          "\\brust lang\\b",
+          "\\brustlang\\b"
         ]
       },
       {
         "name": "Swift",
         "patterns": [
-          "swift",
-          "swift 5",
-          "swiftui"
+          "\\bswift\\b",
+          "\\bswift 5\\b",
+          "\\bswiftui\\b"
         ]
       },
       {
         "name": "Kotlin",
         "patterns": [
-          "kotlin"
+          "\\bkotlin\\b"
         ]
       },
       {
         "name": "Ruby",
         "patterns": [
-          "ruby",
-          "ruby on rails",
-          "ror"
+          "\\bruby\\b",
+          "\\bruby on rails\\b",
+          "\\bror\\b"
         ]
       },
       {
         "name": "PHP",
         "patterns": [
-          "php",
-          "php 7",
-          "php 8"
+          "\\bphp\\b",
+          "\\bphp 7\\b",
+          "\\bphp 8\\b"
         ]
       },
       {
@@ -128,176 +126,174 @@
         "name": "R",
         "patterns": [
           "\\b[R](?=\\s*(?:programming|statistical|language))",
-          "r programming",
-          "r language",
-          "r statistical"
+          "\\br programming\\b",
+          "\\br language\\b",
+          "\\br statistical\\b"
         ]
       },
       {
         "name": "Perl",
         "patterns": [
-          "perl",
-          "perl5"
+          "\\bperl\\b",
+          "\\bperl5\\b"
         ]
       },
       {
         "name": "Dart",
         "patterns": [
-          "dart",
-          "dart language"
+          "\\bdart\\b",
+          "\\bdart language\\b"
         ]
       },
       {
         "name": "Elixir",
         "patterns": [
-          "elixir"
+          "\\belixir\\b"
         ]
       },
       {
         "name": "Haskell",
         "patterns": [
-          "haskell"
+          "\\bhaskell\\b"
         ]
       },
       {
         "name": "Clojure",
         "patterns": [
-          "clojure"
+          "\\bclojure\\b"
         ]
       },
       {
         "name": "Erlang",
         "patterns": [
-          "erlang"
+          "\\berlang\\b"
         ]
       },
       {
         "name": "F#",
         "patterns": [
-          "f#",
-          "fsharp",
-          "f sharp"
+          "\\bfsharp\\b",
+          "\\bf sharp\\b"
         ]
       },
       {
         "name": "Julia",
         "patterns": [
-          "julia",
-          "julia language"
+          "\\bjulia\\b",
+          "\\bjulia language\\b"
         ]
       },
       {
         "name": "Lua",
         "patterns": [
-          "lua"
+          "\\blua\\b"
         ]
       },
       {
         "name": "Shell Scripting",
         "patterns": [
-          "bash",
-          "shell",
-          "zsh",
-          "sh",
-          "shell scripting",
-          "bash scripting"
+          "\\bbash\\b",
+          "\\bshell\\b",
+          "\\bzsh\\b",
+          "\\bshell scripting\\b",
+          "\\bbash scripting\\b"
         ]
       },
       {
         "name": "PowerShell",
         "patterns": [
-          "powershell",
-          "pwsh"
+          "\\bpowershell\\b",
+          "\\bpwsh\\b"
         ]
       },
       {
         "name": "MATLAB",
         "patterns": [
-          "matlab"
+          "\\bmatlab\\b"
         ]
       },
       {
         "name": "Groovy",
         "patterns": [
-          "groovy"
+          "\\bgroovy\\b"
         ]
       },
       {
         "name": "Objective-C",
         "patterns": [
-          "objective-c",
-          "objective c",
-          "objc"
+          "\\bobjective-c\\b",
+          "\\bobjective c\\b",
+          "\\bobjc\\b"
         ]
       },
       {
         "name": "Assembly",
         "patterns": [
-          "assembly",
-          "asm",
-          "x86",
-          "arm assembly"
+          "\\bassembly\\b",
+          "\\basm\\b",
+          "\\bx86\\b",
+          "\\barm assembly\\b"
         ]
       },
       {
         "name": "COBOL",
         "patterns": [
-          "cobol"
+          "\\bcobol\\b"
         ]
       },
       {
         "name": "Fortran",
         "patterns": [
-          "fortran"
+          "\\bfortran\\b"
         ]
       },
       {
         "name": "Ada",
         "patterns": [
-          "ada programming"
+          "\\bada programming\\b"
         ]
       },
       {
         "name": "Pascal",
         "patterns": [
-          "pascal"
+          "\\bpascal\\b"
         ]
       },
       {
         "name": "Prolog",
         "patterns": [
-          "prolog"
+          "\\bprolog\\b"
         ]
       },
       {
         "name": "Lisp",
         "patterns": [
-          "lisp",
-          "common lisp"
+          "\\blisp\\b",
+          "\\bcommon lisp\\b"
         ]
       },
       {
         "name": "Scheme",
         "patterns": [
-          "scheme"
+          "\\bscheme\\b"
         ]
       },
       {
         "name": "Racket",
         "patterns": [
-          "racket"
+          "\\bracket\\b"
         ]
       },
       {
         "name": "OCaml",
         "patterns": [
-          "ocaml"
+          "\\bocaml\\b"
         ]
       },
       {
         "name": "Crystal",
         "patterns": [
-          "crystal language"
+          "\\bcrystal language\\b"
         ]
       }
     ],
@@ -305,115 +301,114 @@
       {
         "name": "SQL",
         "patterns": [
-          "sql",
-          "structured query language"
+          "\\bsql\\b",
+          "\\bstructured query language\\b"
         ]
       },
       {
         "name": "PostgreSQL",
         "patterns": [
-          "postgresql",
-          "postgres",
-          "psql"
+          "\\bpostgresql\\b",
+          "\\bpostgres\\b",
+          "\\bpsql\\b"
         ]
       },
       {
         "name": "MySQL",
         "patterns": [
-          "mysql",
-          "mariadb"
+          "\\bmysql\\b",
+          "\\bmariadb\\b"
         ]
       },
       {
         "name": "Oracle Database",
         "patterns": [
-          "oracle",
-          "oracle db",
-          "oracle database",
-          "plsql",
-          "pl/sql"
+          "\\boracle\\b",
+          "\\boracle db\\b",
+          "\\boracle database\\b",
+          "\\bplsql\\b",
+          "\\bpl/sql\\b"
         ]
       },
       {
         "name": "Microsoft SQL Server",
         "patterns": [
-          "sql server",
-          "mssql",
-          "ms sql",
-          "t-sql",
-          "tsql"
+          "\\bsql server\\b",
+          "\\bmssql\\b",
+          "\\bms sql\\b",
+          "\\bt-sql\\b",
+          "\\btsql\\b"
         ]
       },
       {
         "name": "SQLite",
         "patterns": [
-          "sqlite",
-          "sqlite3"
+          "\\bsqlite\\b",
+          "\\bsqlite3\\b"
         ]
       },
       {
         "name": "Amazon RDS",
         "patterns": [
-          "amazon rds",
-          "aws rds",
-          "rds"
+          "\\bamazon rds\\b",
+          "\\baws rds\\b",
+          "\\brds\\b"
         ]
       },
       {
         "name": "Google Cloud SQL",
         "patterns": [
-          "cloud sql",
-          "google cloud sql"
+          "\\bcloud sql\\b",
+          "\\bgoogle cloud sql\\b"
         ]
       },
       {
         "name": "Azure SQL",
         "patterns": [
-          "azure sql",
-          "azure sql database"
+          "\\bazure sql\\b",
+          "\\bazure sql database\\b"
         ]
       },
       {
         "name": "IBM Db2",
         "patterns": [
-          "db2",
-          "ibm db2"
+          "\\bdb2\\b",
+          "\\bibm db2\\b"
         ]
       },
       {
         "name": "Snowflake",
         "patterns": [
-          "snowflake",
-          "snowflake db"
+          "\\bsnowflake\\b",
+          "\\bsnowflake db\\b"
         ]
       },
       {
         "name": "Amazon Redshift",
         "patterns": [
-          "redshift",
-          "amazon redshift",
-          "aws redshift"
+          "\\bredshift\\b",
+          "\\bamazon redshift\\b",
+          "\\baws redshift\\b"
         ]
       },
       {
         "name": "BigQuery",
         "patterns": [
-          "bigquery",
-          "google bigquery",
-          "bq"
+          "\\bbigquery\\b",
+          "\\bgoogle bigquery\\b"
         ]
       },
       {
         "name": "Teradata",
         "patterns": [
-          "teradata"
+          "\\bteradata\\b"
         ]
       },
       {
         "name": "Vertica",
         "patterns": [
-          "vertica",
-          "hp vertica"
+          "\\bvertica\\b",
+          "\\bhp vertica\\b"
         ]
       }
     ],
@@ -421,127 +416,126 @@
       {
         "name": "MongoDB",
         "patterns": [
-          "mongodb",
-          "mongo"
+          "\\bmongodb\\b",
+          "\\bmongo\\b"
         ]
       },
       {
         "name": "Redis",
         "patterns": [
-          "redis"
+          "\\bredis\\b"
         ]
       },
       {
         "name": "Cassandra",
         "patterns": [
-          "cassandra",
-          "apache cassandra"
+          "\\bcassandra\\b",
+          "\\bapache cassandra\\b"
         ]
       },
       {
         "name": "DynamoDB",
         "patterns": [
-          "dynamodb",
-          "amazon dynamodb",
-          "aws dynamodb"
+          "\\bdynamodb\\b",
+          "\\bamazon dynamodb\\b",
+          "\\baws dynamodb\\b"
         ]
       },
       {
         "name": "Elasticsearch",
         "patterns": [
-          "elasticsearch",
-          "elastic search",
-          "es"
+          "\\belasticsearch\\b",
+          "\\belastic search\\b"
         ]
       },
       {
         "name": "Couchbase",
         "patterns": [
-          "couchbase"
+          "\\bcouchbase\\b"
         ]
       },
       {
         "name": "Neo4j",
         "patterns": [
-          "neo4j",
-          "neo 4j"
+          "\\bneo4j\\b",
+          "\\bneo 4j\\b"
         ]
       },
       {
         "name": "CouchDB",
         "patterns": [
-          "couchdb",
-          "couch db"
+          "\\bcouchdb\\b",
+          "\\bcouch db\\b"
         ]
       },
       {
         "name": "Firebase",
         "patterns": [
-          "firebase",
-          "firebase realtime database",
-          "firestore"
+          "\\bfirebase\\b",
+          "\\bfirebase realtime database\\b",
+          "\\bfirestore\\b"
         ]
       },
       {
         "name": "Amazon DocumentDB",
         "patterns": [
-          "documentdb",
-          "amazon documentdb"
+          "\\bdocumentdb\\b",
+          "\\bamazon documentdb\\b"
         ]
       },
       {
         "name": "Azure Cosmos DB",
         "patterns": [
-          "cosmos db",
-          "cosmosdb",
-          "azure cosmos"
+          "\\bcosmos db\\b",
+          "\\bcosmosdb\\b",
+          "\\bazure cosmos\\b"
         ]
       },
       {
         "name": "HBase",
         "patterns": [
-          "hbase",
-          "apache hbase"
+          "\\bhbase\\b",
+          "\\bapache hbase\\b"
         ]
       },
       {
         "name": "Memcached",
         "patterns": [
-          "memcached"
+          "\\bmemcached\\b"
         ]
       },
       {
         "name": "Riak",
         "patterns": [
-          "riak"
+          "\\briak\\b"
         ]
       },
       {
         "name": "InfluxDB",
         "patterns": [
-          "influxdb",
-          "influx db"
+          "\\binfluxdb\\b",
+          "\\binflux db\\b"
         ]
       },
       {
         "name": "TimescaleDB",
         "patterns": [
-          "timescaledb",
-          "timescale"
+          "\\btimescaledb\\b",
+          "\\btimescale\\b"
         ]
       },
       {
         "name": "ArangoDB",
         "patterns": [
-          "arangodb",
-          "arango"
+          "\\barangodb\\b",
+          "\\barango\\b"
         ]
       },
       {
         "name": "RavenDB",
         "patterns": [
-          "ravendb",
-          "raven db"
+          "\\bravendb\\b",
+          "\\braven db\\b"
         ]
       }
     ],
@@ -549,172 +543,172 @@
       {
         "name": "Django",
         "patterns": [
-          "django",
-          "django rest",
-          "drf"
+          "\\bdjango\\b",
+          "\\bdjango rest\\b",
+          "\\bdrf\\b"
         ]
       },
       {
         "name": "Flask",
         "patterns": [
-          "flask"
+          "\\bflask\\b"
         ]
       },
       {
         "name": "FastAPI",
         "patterns": [
-          "fastapi",
-          "fast api"
+          "\\bfastapi\\b",
+          "\\bfast api\\b"
         ]
       },
       {
         "name": "Spring Boot",
         "patterns": [
-          "spring boot",
-          "spring framework",
-          "spring"
+          "\\bspring boot\\b",
+          "\\bspring framework\\b",
+          "\\bspring\\b"
         ]
       },
       {
         "name": "Express.js",
         "patterns": [
-          "express",
-          "express\\.js",
-          "expressjs"
+          "\\bexpress\\b",
+          "\\bexpress\\.js\\b",
+          "\\bexpressjs\\b"
         ]
       },
       {
         "name": "Node.js",
         "patterns": [
-          "node.js",
-          "nodejs",
-          "node js"
+          "\\bnode.js\\b",
+          "\\bnodejs\\b",
+          "\\bnode js\\b"
         ]
       },
       {
         "name": "Ruby on Rails",
         "patterns": [
-          "ruby on rails",
-          "rails",
-          "ror"
+          "\\bruby on rails\\b",
+          "\\brails\\b",
+          "\\bror\\b"
         ]
       },
       {
         "name": "ASP.NET",
         "patterns": [
-          "asp.net",
-          "aspnet",
-          "asp net"
+          "\\basp.net\\b",
+          "\\baspnet\\b",
+          "\\basp net\\b"
         ]
       },
       {
         "name": "ASP.NET Core",
         "patterns": [
-          "asp.net core",
-          "aspnet core"
+          "\\basp.net core\\b",
+          "\\baspnet core\\b"
         ]
       },
       {
         "name": "Laravel",
         "patterns": [
-          "laravel"
+          "\\blaravel\\b"
         ]
       },
       {
         "name": "Symfony",
         "patterns": [
-          "symfony"
+          "\\bsymfony\\b"
         ]
       },
       {
         "name": "Gin",
         "patterns": [
-          "gin framework",
-          "gin-gonic"
+          "\\bgin framework\\b",
+          "\\bgin-gonic\\b"
         ]
       },
       {
         "name": "Echo",
         "patterns": [
-          "echo framework"
+          "\\becho framework\\b"
         ]
       },
       {
         "name": "Fiber",
         "patterns": [
-          "fiber framework",
-          "gofiber"
+          "\\bfiber framework\\b",
+          "\\bgofiber\\b"
         ]
       },
       {
         "name": "NestJS",
         "patterns": [
-          "nestjs",
-          "nest.js",
-          "nest js"
+          "\\bnestjs\\b",
+          "\\bnest.js\\b",
+          "\\bnest js\\b"
         ]
       },
       {
         "name": "Phoenix",
         "patterns": [
-          "phoenix framework",
-          "phoenix elixir"
+          "\\bphoenix framework\\b",
+          "\\bphoenix elixir\\b"
         ]
       },
       {
         "name": "Actix",
         "patterns": [
-          "actix",
-          "actix-web"
+          "\\bactix\\b",
+          "\\bactix-web\\b"
         ]
       },
       {
         "name": "Rocket",
         "patterns": [
-          "rocket framework",
-          "rocket rust"
+          "\\brocket framework\\b",
+          "\\brocket rust\\b"
         ]
       },
       {
         "name": "Quarkus",
         "patterns": [
-          "quarkus"
+          "\\bquarkus\\b"
         ]
       },
       {
         "name": "Micronaut",
         "patterns": [
-          "micronaut"
+          "\\bmicronaut\\b"
         ]
       },
       {
         "name": "Vert.x",
         "patterns": [
-          "vert.x",
-          "vertx"
+          "\\bvert.x\\b",
+          "\\bvertx\\b"
         ]
       },
       {
         "name": "Play Framework",
         "patterns": [
-          "play framework",
-          "playframework"
+          "\\bplay framework\\b",
+          "\\bplayframework\\b"
         ]
       },
       {
         "name": "Koa",
         "patterns": [
-          "koa",
-          "koa.js",
-          "koajs"
+          "\\bkoa\\b",
+          "\\bkoa.js\\b",
+          "\\bkoajs\\b"
         ]
       },
       {
         "name": "Hapi",
         "patterns": [
-          "hapi",
-          "hapi.js",
-          "hapijs"
+          "\\bhapi\\b",
+          "\\bhapi.js\\b",
+          "\\bhapijs\\b"
         ]
       }
     ],
@@ -722,113 +716,113 @@
       {
         "name": "React",
         "patterns": [
-          "react",
-          "reactjs",
-          "react.js",
-          "react js"
+          "\\breact\\b",
+          "\\breactjs\\b",
+          "\\breact.js\\b",
+          "\\breact js\\b"
         ]
       },
       {
         "name": "Angular",
         "patterns": [
-          "angular",
-          "angularjs",
-          "angular 2",
-          "angular 4"
+          "\\bangular\\b",
+          "\\bangularjs\\b",
+          "\\bangular 2\\b",
+          "\\bangular 4\\b"
         ]
       },
       {
         "name": "Vue.js",
         "patterns": [
-          "vue",
-          "vue.js",
-          "vuejs",
-          "vue js"
+          "\\bvue\\b",
+          "\\bvue.js\\b",
+          "\\bvuejs\\b",
+          "\\bvue js\\b"
         ]
       },
       {
         "name": "Svelte",
         "patterns": [
-          "svelte",
-          "sveltejs"
+          "\\bsvelte\\b",
+          "\\bsveltejs\\b"
         ]
       },
       {
         "name": "Next.js",
         "patterns": [
-          "next.js",
-          "nextjs",
-          "next js"
+          "\\bnext.js\\b",
+          "\\bnextjs\\b",
+          "\\bnext js\\b"
         ]
       },
       {
         "name": "Nuxt.js",
         "patterns": [
-          "nuxt",
-          "nuxt.js",
-          "nuxtjs"
+          "\\bnuxt\\b",
+          "\\bnuxt.js\\b",
+          "\\bnuxtjs\\b"
         ]
       },
       {
         "name": "Gatsby",
         "patterns": [
-          "gatsby",
-          "gatsbyjs"
+          "\\bgatsby\\b",
+          "\\bgatsbyjs\\b"
         ]
       },
       {
         "name": "Ember.js",
         "patterns": [
-          "ember",
-          "ember.js",
-          "emberjs"
+          "\\bember\\b",
+          "\\bember.js\\b",
+          "\\bemberjs\\b"
         ]
       },
       {
         "name": "Backbone.js",
         "patterns": [
-          "backbone",
-          "backbone.js"
+          "\\bbackbone\\b",
+          "\\bbackbone.js\\b"
         ]
       },
       {
         "name": "jQuery",
         "patterns": [
-          "jquery"
+          "\\bjquery\\b"
         ]
       },
       {
         "name": "Alpine.js",
         "patterns": [
-          "alpine.js",
-          "alpinejs",
-          "alpine js"
+          "\\balpine.js\\b",
+          "\\balpinejs\\b",
+          "\\balpine js\\b"
         ]
       },
       {
         "name": "Solid.js",
         "patterns": [
-          "solid.js",
-          "solidjs"
+          "\\bsolid.js\\b",
+          "\\bsolidjs\\b"
         ]
       },
       {
         "name": "Qwik",
         "patterns": [
-          "qwik framework"
+          "\\bqwik framework\\b"
         ]
       },
       {
         "name": "Remix",
         "patterns": [
-          "remix run",
-          "remix framework"
+          "\\bremix run\\b",
+          "\\bremix framework\\b"
         ]
       },
       {
         "name": "Astro",
         "patterns": [
-          "astro framework"
+          "\\bastro framework\\b"
         ]
       }
     ],
@@ -836,81 +830,81 @@
       {
         "name": "React Native",
         "patterns": [
-          "react native",
-          "react-native"
+          "\\breact native\\b",
+          "\\breact-native\\b"
         ]
       },
       {
         "name": "Flutter",
         "patterns": [
-          "flutter"
+          "\\bflutter\\b"
         ]
       },
       {
         "name": "SwiftUI",
         "patterns": [
-          "swiftui",
-          "swift ui"
+          "\\bswiftui\\b",
+          "\\bswift ui\\b"
         ]
       },
       {
         "name": "UIKit",
         "patterns": [
-          "uikit"
+          "\\buikit\\b"
         ]
       },
       {
         "name": "Android Development",
         "patterns": [
-          "android development",
-          "android studio"
+          "\\bandroid development\\b",
+          "\\bandroid studio\\b"
         ]
       },
       {
         "name": "Jetpack Compose",
         "patterns": [
-          "jetpack compose",
-          "compose"
+          "\\bjetpack compose\\b",
+          "\\bcompose\\b"
         ]
       },
       {
         "name": "Xamarin",
         "patterns": [
-          "xamarin"
+          "\\bxamarin\\b"
         ]
       },
       {
         "name": "Ionic",
         "patterns": [
-          "ionic framework"
+          "\\bionic framework\\b"
         ]
       },
       {
         "name": "Cordova",
         "patterns": [
-          "cordova",
-          "apache cordova",
-          "phonegap"
+          "\\bcordova\\b",
+          "\\bapache cordova\\b",
+          "\\bphonegap\\b"
         ]
       },
       {
         "name": "Capacitor",
         "patterns": [
-          "capacitor",
-          "capacitorjs"
+          "\\bcapacitor\\b",
+          "\\bcapacitorjs\\b"
         ]
       },
       {
         "name": "Kotlin Multiplatform",
         "patterns": [
-          "kotlin multiplatform",
-          "kmm"
+          "\\bkotlin multiplatform\\b",
+          "\\bkmm\\b"
         ]
       },
       {
         "name": "NativeScript",
         "patterns": [
-          "nativescript"
+          "\\bnativescript\\b"
         ]
       }
     ],
@@ -918,186 +912,185 @@
       {
         "name": "AWS",
         "patterns": [
-          "aws",
-          "amazon web services"
+          "\\baws\\b",
+          "\\bamazon web services\\b"
         ]
       },
       {
         "name": "AWS EC2",
         "patterns": [
-          "ec2",
-          "aws ec2",
-          "elastic compute"
+          "\\bec2\\b",
+          "\\baws ec2\\b",
+          "\\belastic compute\\b"
         ]
       },
       {
         "name": "AWS S3",
         "patterns": [
-          "s3",
-          "aws s3",
-          "simple storage service"
+          "\\baws s3\\b",
+          "\\bsimple storage service\\b"
         ]
       },
       {
         "name": "AWS Lambda",
         "patterns": [
-          "lambda",
-          "aws lambda"
+          "\\blambda\\b",
+          "\\baws lambda\\b"
         ]
       },
       {
         "name": "AWS RDS",
         "patterns": [
-          "rds",
-          "aws rds",
-          "relational database service"
+          "\\brds\\b",
+          "\\baws rds\\b",
+          "\\brelational database service\\b"
         ]
       },
       {
         "name": "AWS DynamoDB",
         "patterns": [
-          "dynamodb",
-          "aws dynamodb"
+          "\\bdynamodb\\b",
+          "\\baws dynamodb\\b"
         ]
       },
       {
         "name": "AWS ECS",
         "patterns": [
-          "ecs",
-          "aws ecs",
-          "elastic container service"
+          "\\becs\\b",
+          "\\baws ecs\\b",
+          "\\belastic container service\\b"
         ]
       },
       {
         "name": "AWS EKS",
         "patterns": [
-          "eks",
-          "aws eks",
-          "elastic kubernetes"
+          "\\beks\\b",
+          "\\baws eks\\b",
+          "\\belastic kubernetes\\b"
         ]
       },
       {
         "name": "AWS CloudFormation",
         "patterns": [
-          "cloudformation",
-          "aws cloudformation"
+          "\\bcloudformation\\b",
+          "\\baws cloudformation\\b"
         ]
       },
       {
         "name": "AWS CloudWatch",
         "patterns": [
-          "cloudwatch",
-          "aws cloudwatch"
+          "\\bcloudwatch\\b",
+          "\\baws cloudwatch\\b"
         ]
       },
       {
         "name": "AWS IAM",
         "patterns": [
-          "iam",
-          "aws iam",
-          "identity and access management"
+          "\\biam\\b",
+          "\\baws iam\\b",
+          "\\bidentity and access management\\b"
         ]
       },
       {
         "name": "AWS VPC",
         "patterns": [
-          "vpc",
-          "aws vpc",
-          "virtual private cloud"
+          "\\bvpc\\b",
+          "\\baws vpc\\b",
+          "\\bvirtual private cloud\\b"
         ]
       },
       {
         "name": "AWS SNS",
         "patterns": [
-          "sns",
-          "aws sns",
-          "simple notification service"
+          "\\bsns\\b",
+          "\\baws sns\\b",
+          "\\bsimple notification service\\b"
         ]
       },
       {
         "name": "AWS SQS",
         "patterns": [
-          "sqs",
-          "aws sqs",
-          "simple queue service"
+          "\\bsqs\\b",
+          "\\baws sqs\\b",
+          "\\bsimple queue service\\b"
         ]
       },
       {
         "name": "AWS API Gateway",
         "patterns": [
-          "api gateway",
-          "aws api gateway"
+          "\\bapi gateway\\b",
+          "\\baws api gateway\\b"
         ]
       },
       {
         "name": "AWS Step Functions",
         "patterns": [
-          "step functions",
-          "aws step functions"
+          "\\bstep functions\\b",
+          "\\baws step functions\\b"
         ]
       },
       {
         "name": "AWS Kinesis",
         "patterns": [
-          "kinesis",
-          "aws kinesis"
+          "\\bkinesis\\b",
+          "\\baws kinesis\\b"
         ]
       },
       {
         "name": "AWS Glue",
         "patterns": [
-          "aws glue",
-          "glue"
+          "\\baws glue\\b",
+          "\\bglue\\b"
         ]
       },
       {
         "name": "AWS Athena",
         "patterns": [
-          "athena",
-          "aws athena"
+          "\\bathena\\b",
+          "\\baws athena\\b"
         ]
       },
       {
         "name": "AWS EMR",
         "patterns": [
-          "emr",
-          "aws emr",
-          "elastic mapreduce"
+          "\\bemr\\b",
+          "\\baws emr\\b",
+          "\\belastic mapreduce\\b"
         ]
       },
       {
         "name": "AWS SageMaker",
         "patterns": [
-          "sagemaker",
-          "aws sagemaker"
+          "\\bsagemaker\\b",
+          "\\baws sagemaker\\b"
         ]
       },
       {
         "name": "AWS Bedrock",
         "patterns": [
-          "bedrock",
-          "aws bedrock"
+          "\\bbedrock\\b",
+          "\\baws bedrock\\b"
         ]
       },
       {
         "name": "AWS CodePipeline",
         "patterns": [
-          "codepipeline",
-          "aws codepipeline"
+          "\\bcodepipeline\\b",
+          "\\baws codepipeline\\b"
         ]
       },
       {
         "name": "AWS CodeBuild",
         "patterns": [
-          "codebuild",
-          "aws codebuild"
+          "\\bcodebuild\\b",
+          "\\baws codebuild\\b"
         ]
       },
       {
         "name": "AWS CodeDeploy",
         "patterns": [
-          "codedeploy",
-          "aws codedeploy"
+          "\\bcodedeploy\\b",
+          "\\baws codedeploy\\b"
         ]
       }
     ],
@@ -1105,119 +1098,119 @@
       {
         "name": "Azure",
         "patterns": [
-          "azure",
-          "microsoft azure"
+          "\\bazure\\b",
+          "\\bmicrosoft azure\\b"
         ]
       },
       {
         "name": "Azure Virtual Machines",
         "patterns": [
-          "azure vm",
-          "azure virtual machines"
+          "\\bazure vm\\b",
+          "\\bazure virtual machines\\b"
         ]
       },
       {
         "name": "Azure App Service",
         "patterns": [
-          "azure app service",
-          "app service"
+          "\\bazure app service\\b",
+          "\\bapp service\\b"
         ]
       },
       {
         "name": "Azure Functions",
         "patterns": [
-          "azure functions"
+          "\\bazure functions\\b"
         ]
       },
       {
         "name": "Azure SQL Database",
         "patterns": [
-          "azure sql",
-          "azure sql database"
+          "\\bazure sql\\b",
+          "\\bazure sql database\\b"
         ]
       },
       {
         "name": "Azure Kubernetes Service",
         "patterns": [
-          "aks",
-          "azure kubernetes",
-          "azure aks"
+          "\\baks\\b",
+          "\\bazure kubernetes\\b",
+          "\\bazure aks\\b"
         ]
       },
       {
         "name": "Azure Container Instances",
         "patterns": [
-          "azure container instances",
-          "aci"
+          "\\bazure container instances\\b",
+          "\\baci\\b"
         ]
       },
       {
         "name": "Azure DevOps",
         "patterns": [
-          "azure devops",
-          "azdo"
+          "\\bazure devops\\b",
+          "\\bazdo\\b"
         ]
       },
       {
         "name": "Azure Active Directory",
         "patterns": [
-          "azure ad",
-          "azure active directory",
-          "aad"
+          "\\bazure ad\\b",
+          "\\bazure active directory\\b",
+          "\\baad\\b"
         ]
       },
       {
         "name": "Azure Storage",
         "patterns": [
-          "azure storage",
-          "azure blob storage"
+          "\\bazure storage\\b",
+          "\\bazure blob storage\\b"
         ]
       },
       {
         "name": "Azure Service Bus",
         "patterns": [
-          "azure service bus",
-          "service bus"
+          "\\bazure service bus\\b",
+          "\\bservice bus\\b"
         ]
       },
       {
         "name": "Azure Event Hubs",
         "patterns": [
-          "azure event hubs",
-          "event hubs"
+          "\\bazure event hubs\\b",
+          "\\bevent hubs\\b"
         ]
       },
       {
         "name": "Azure Logic Apps",
         "patterns": [
-          "azure logic apps",
-          "logic apps"
+          "\\bazure logic apps\\b",
+          "\\blogic apps\\b"
         ]
       },
       {
         "name": "Azure Monitor",
         "patterns": [
-          "azure monitor"
+          "\\bazure monitor\\b"
         ]
       },
       {
         "name": "Azure Machine Learning",
         "patterns": [
-          "azure ml",
-          "azure machine learning"
+          "\\bazure ml\\b",
+          "\\bazure machine learning\\b"
         ]
       },
       {
         "name": "Azure Cognitive Services",
         "patterns": [
-          "azure cognitive services",
-          "cognitive services"
+          "\\bazure cognitive services\\b",
+          "\\bcognitive services\\b"
         ]
       },
       {
         "name": "Azure OpenAI",
         "patterns": [
-          "azure openai"
+          "\\bazure openai\\b"
         ]
       }
     ],
@@ -1225,106 +1218,105 @@
       {
         "name": "Google Cloud Platform",
         "patterns": [
-          "gcp",
-          "google cloud",
-          "google cloud platform"
+          "\\bgcp\\b",
+          "\\bgoogle cloud\\b",
+          "\\bgoogle cloud platform\\b"
         ]
       },
       {
         "name": "Google Compute Engine",
         "patterns": [
-          "compute engine",
-          "gce"
+          "\\bcompute engine\\b",
+          "\\bgce\\b"
         ]
       },
       {
         "name": "Google Cloud Storage",
         "patterns": [
-          "gcs",
-          "google cloud storage"
+          "\\bgcs\\b",
+          "\\bgoogle cloud storage\\b"
         ]
       },
       {
         "name": "Google Cloud Functions",
         "patterns": [
-          "cloud functions",
-          "gcf"
+          "\\bcloud functions\\b",
+          "\\bgcf\\b"
         ]
       },
       {
         "name": "Google BigQuery",
         "patterns": [
-          "bigquery",
-          "bq"
+          "\\bbigquery\\b"
         ]
       },
       {
         "name": "Google Kubernetes Engine",
         "patterns": [
-          "gke",
-          "google kubernetes engine"
+          "\\bgke\\b",
+          "\\bgoogle kubernetes engine\\b"
         ]
       },
       {
         "name": "Google App Engine",
         "patterns": [
-          "app engine",
-          "gae"
+          "\\bapp engine\\b",
+          "\\bgae\\b"
         ]
       },
       {
         "name": "Google Cloud Run",
         "patterns": [
-          "cloud run"
+          "\\bcloud run\\b"
         ]
       },
       {
         "name": "Google Cloud Pub/Sub",
         "patterns": [
-          "pub/sub",
-          "pubsub",
-          "cloud pubsub"
+          "\\bpub/sub\\b",
+          "\\bpubsub\\b",
+          "\\bcloud pubsub\\b"
         ]
       },
       {
         "name": "Google Dataflow",
         "patterns": [
-          "dataflow",
-          "google dataflow"
+          "\\bdataflow\\b",
+          "\\bgoogle dataflow\\b"
         ]
       },
       {
         "name": "Google Dataproc",
         "patterns": [
-          "dataproc",
-          "google dataproc"
+          "\\bdataproc\\b",
+          "\\bgoogle dataproc\\b"
         ]
       },
       {
         "name": "Google Cloud Build",
         "patterns": [
-          "cloud build"
+          "\\bcloud build\\b"
         ]
       },
       {
         "name": "Google Cloud IAM",
         "patterns": [
-          "cloud iam",
-          "gcp iam"
+          "\\bcloud iam\\b",
+          "\\bgcp iam\\b"
         ]
       },
       {
         "name": "Google Vertex AI",
         "patterns": [
-          "vertex ai",
-          "google vertex"
+          "\\bvertex ai\\b",
+          "\\bgoogle vertex\\b"
         ]
       },
       {
         "name": "Google Cloud Firestore",
         "patterns": [
-          "firestore",
-          "cloud firestore"
+          "\\bfirestore\\b",
+          "\\bcloud firestore\\b"
         ]
       }
     ],
@@ -1332,251 +1324,250 @@
       {
         "name": "Docker",
         "patterns": [
-          "docker",
-          "containerization"
+          "\\bdocker\\b",
+          "\\bcontainerization\\b"
         ]
       },
       {
         "name": "Kubernetes",
         "patterns": [
-          "kubernetes",
-          "k8s"
+          "\\bkubernetes\\b",
+          "\\bk8s\\b"
         ]
       },
       {
         "name": "Helm",
         "patterns": [
-          "helm",
-          "helm charts"
+          "\\bhelm\\b",
+          "\\bhelm charts\\b"
         ]
       },
       {
         "name": "Jenkins",
         "patterns": [
-          "jenkins"
+          "\\bjenkins\\b"
         ]
       },
       {
         "name": "GitLab CI/CD",
         "patterns": [
-          "gitlab ci",
-          "gitlab ci/cd",
-          "gitlab pipeline"
+          "\\bgitlab ci\\b",
+          "\\bgitlab ci/cd\\b",
+          "\\bgitlab pipeline\\b"
         ]
       },
       {
         "name": "GitHub Actions",
         "patterns": [
-          "github actions"
+          "\\bgithub actions\\b"
         ]
       },
       {
         "name": "CircleCI",
         "patterns": [
-          "circleci",
-          "circle ci"
+          "\\bcircleci\\b",
+          "\\bcircle ci\\b"
         ]
       },
       {
         "name": "Travis CI",
         "patterns": [
-          "travis ci",
-          "travisci"
+          "\\btravis ci\\b",
+          "\\btravisci\\b"
         ]
       },
       {
         "name": "TeamCity",
         "patterns": [
-          "teamcity"
+          "\\bteamcity\\b"
         ]
       },
       {
         "name": "Bamboo",
         "patterns": [
-          "bamboo",
-          "atlassian bamboo"
+          "\\bbamboo\\b",
+          "\\batlassian bamboo\\b"
         ]
       },
       {
         "name": "ArgoCD",
         "patterns": [
-          "argocd",
-          "argo cd"
+          "\\bargocd\\b",
+          "\\bargo cd\\b"
         ]
       },
       {
         "name": "Flux",
         "patterns": [
-          "flux cd",
-          "fluxcd"
+          "\\bflux cd\\b",
+          "\\bfluxcd\\b"
         ]
       },
       {
         "name": "Terraform",
         "patterns": [
-          "terraform",
-          "tf"
+          "\\bterraform\\b"
         ]
       },
       {
         "name": "Ansible",
         "patterns": [
-          "ansible"
+          "\\bansible\\b"
         ]
       },
       {
         "name": "Puppet",
         "patterns": [
-          "puppet"
+          "\\bpuppet\\b"
         ]
       },
       {
         "name": "Chef",
         "patterns": [
-          "chef"
+          "\\bchef\\b"
         ]
       },
       {
         "name": "SaltStack",
         "patterns": [
-          "saltstack",
-          "salt"
+          "\\bsaltstack\\b",
+          "\\bsalt\\b"
         ]
       },
       {
         "name": "Vagrant",
         "patterns": [
-          "vagrant"
+          "\\bvagrant\\b"
         ]
       },
       {
         "name": "Packer",
         "patterns": [
-          "packer",
-          "hashicorp packer"
+          "\\bpacker\\b",
+          "\\bhashicorp packer\\b"
         ]
       },
       {
         "name": "Vault",
         "patterns": [
-          "vault",
-          "hashicorp vault"
+          "\\bvault\\b",
+          "\\bhashicorp vault\\b"
         ]
       },
       {
         "name": "Consul",
         "patterns": [
-          "consul",
-          "hashicorp consul"
+          "\\bconsul\\b",
+          "\\bhashicorp consul\\b"
         ]
       },
       {
         "name": "Nomad",
         "patterns": [
-          "nomad",
-          "hashicorp nomad"
+          "\\bnomad\\b",
+          "\\bhashicorp nomad\\b"
         ]
       },
       {
         "name": "OpenShift",
         "patterns": [
-          "openshift",
-          "red hat openshift"
+          "\\bopenshift\\b",
+          "\\bred hat openshift\\b"
         ]
       },
       {
         "name": "Rancher",
         "patterns": [
-          "rancher"
+          "\\brancher\\b"
         ]
       },
       {
         "name": "Istio",
         "patterns": [
-          "istio",
-          "service mesh"
+          "\\bistio\\b",
+          "\\bservice mesh\\b"
         ]
       },
       {
         "name": "Linkerd",
         "patterns": [
-          "linkerd"
+          "\\blinkerd\\b"
         ]
       },
       {
         "name": "Prometheus",
         "patterns": [
-          "prometheus"
+          "\\bprometheus\\b"
         ]
       },
       {
         "name": "Grafana",
         "patterns": [
-          "grafana"
+          "\\bgrafana\\b"
         ]
       },
       {
         "name": "Datadog",
         "patterns": [
-          "datadog"
+          "\\bdatadog\\b"
         ]
       },
       {
         "name": "New Relic",
         "patterns": [
-          "new relic",
-          "newrelic"
+          "\\bnew relic\\b",
+          "\\bnewrelic\\b"
         ]
       },
       {
         "name": "Splunk",
         "patterns": [
-          "splunk"
+          "\\bsplunk\\b"
         ]
       },
       {
         "name": "ELK Stack",
         "patterns": [
-          "elk",
-          "elk stack",
-          "elasticsearch logstash kibana"
+          "\\belk\\b",
+          "\\belk stack\\b",
+          "\\belasticsearch logstash kibana\\b"
         ]
       },
       {
         "name": "Jaeger",
         "patterns": [
-          "jaeger"
+          "\\bjaeger\\b"
         ]
       },
       {
         "name": "Zipkin",
         "patterns": [
-          "zipkin"
+          "\\bzipkin\\b"
         ]
       },
       {
         "name": "Sentry",
         "patterns": [
-          "sentry"
+          "\\bsentry\\b"
         ]
       },
       {
         "name": "PagerDuty",
         "patterns": [
-          "pagerduty",
-          "pager duty"
+          "\\bpagerduty\\b",
+          "\\bpager duty\\b"
         ]
       },
       {
         "name": "Nagios",
         "patterns": [
-          "nagios"
+          "\\bnagios\\b"
         ]
       },
       {
         "name": "Zabbix",
         "patterns": [
-          "zabbix"
+          "\\bzabbix\\b"
         ]
       }
     ],
@@ -1584,47 +1575,45 @@
       {
         "name": "Git",
         "patterns": [
-          "git",
-          "version control"
+          "\\bgit\\b",
+          "\\bversion control\\b"
         ]
       },
       {
         "name": "GitHub",
         "patterns": [
-          "github"
+          "\\bgithub\\b"
         ]
       },
       {
         "name": "GitLab",
         "patterns": [
-          "gitlab"
+          "\\bgitlab\\b"
         ]
       },
       {
         "name": "Bitbucket",
         "patterns": [
-          "bitbucket"
+          "\\bbitbucket\\b"
         ]
       },
       {
         "name": "Mercurial",
         "patterns": [
-          "mercurial",
-          "hg"
+          "\\bmercurial\\b"
         ]
       },
       {
         "name": "Subversion",
         "patterns": [
-          "svn",
-          "subversion"
+          "\\bsvn\\b",
+          "\\bsubversion\\b"
         ]
       },
       {
         "name": "Perforce",
         "patterns": [
-          "perforce",
-          "p4"
+          "\\bperforce\\b"
         ]
       }
     ],
@@ -1632,425 +1621,424 @@
       {
         "name": "TensorFlow",
         "patterns": [
-          "tensorflow",
-          "tf"
+          "\\btensorflow\\b"
         ]
       },
       {
         "name": "PyTorch",
         "patterns": [
-          "pytorch",
-          "torch"
+          "\\bpytorch\\b",
+          "\\btorch\\b"
         ]
       },
       {
         "name": "Scikit-learn",
         "patterns": [
-          "scikit-learn",
-          "sklearn",
-          "scikit learn"
+          "\\bscikit-learn\\b",
+          "\\bsklearn\\b",
+          "\\bscikit learn\\b"
         ]
       },
       {
         "name": "Keras",
         "patterns": [
-          "keras"
+          "\\bkeras\\b"
         ]
       },
       {
         "name": "JAX",
         "patterns": [
-          "jax",
-          "google jax"
+          "\\bjax\\b",
+          "\\bgoogle jax\\b"
         ]
       },
       {
         "name": "XGBoost",
         "patterns": [
-          "xgboost"
+          "\\bxgboost\\b"
         ]
       },
       {
         "name": "LightGBM",
         "patterns": [
-          "lightgbm",
-          "lgbm"
+          "\\blightgbm\\b",
+          "\\blgbm\\b"
         ]
       },
       {
         "name": "CatBoost",
         "patterns": [
-          "catboost"
+          "\\bcatboost\\b"
         ]
       },
       {
         "name": "Pandas",
         "patterns": [
-          "pandas"
+          "\\bpandas\\b"
         ]
       },
       {
         "name": "NumPy",
         "patterns": [
-          "numpy"
+          "\\bnumpy\\b"
         ]
       },
       {
         "name": "SciPy",
         "patterns": [
-          "scipy"
+          "\\bscipy\\b"
         ]
       },
       {
         "name": "Matplotlib",
         "patterns": [
-          "matplotlib"
+          "\\bmatplotlib\\b"
         ]
       },
       {
         "name": "Seaborn",
         "patterns": [
-          "seaborn"
+          "\\bseaborn\\b"
         ]
       },
       {
         "name": "Plotly",
         "patterns": [
-          "plotly"
+          "\\bplotly\\b"
         ]
       },
       {
         "name": "Bokeh",
         "patterns": [
-          "bokeh"
+          "\\bbokeh\\b"
         ]
       },
       {
         "name": "Altair",
         "patterns": [
-          "altair"
+          "\\baltair\\b"
         ]
       },
       {
         "name": "NLTK",
         "patterns": [
-          "nltk",
-          "natural language toolkit"
+          "\\bnltk\\b",
+          "\\bnatural language toolkit\\b"
         ]
       },
       {
         "name": "spaCy",
         "patterns": [
-          "spacy"
+          "\\bspacy\\b"
         ]
       },
       {
         "name": "Gensim",
         "patterns": [
-          "gensim"
+          "\\bgensim\\b"
         ]
       },
       {
         "name": "Transformers",
         "patterns": [
-          "transformers",
-          "hugging face transformers"
+          "\\btransformers\\b",
+          "\\bhugging face transformers\\b"
         ]
       },
       {
         "name": "Hugging Face",
         "patterns": [
-          "hugging face",
-          "huggingface"
+          "\\bhugging face\\b",
+          "\\bhuggingface\\b"
         ]
       },
       {
         "name": "Sentence Transformers",
         "patterns": [
-          "sentence transformers",
-          "sentence-transformers"
+          "\\bsentence transformers\\b",
+          "\\bsentence-transformers\\b"
         ]
       },
       {
         "name": "OpenAI API",
         "patterns": [
-          "openai",
-          "openai api",
-          "gpt-4",
-          "gpt-3",
-          "gpt-3.5"
+          "\\bopenai\\b",
+          "\\bopenai api\\b",
+          "\\bgpt-4\\b",
+          "\\bgpt-3\\b",
+          "\\bgpt-3.5\\b"
         ]
       },
       {
         "name": "Anthropic Claude",
         "patterns": [
-          "claude",
-          "anthropic",
-          "claude 3",
-          "claude code",
-          "claude ai",
-          "claude 3.5 sonnet",
-          "claude 3 opus"
+          "\\bclaude\\b",
+          "\\banthropic\\b",
+          "\\bclaude 3\\b",
+          "\\bclaude code\\b",
+          "\\bclaude ai\\b",
+          "\\bclaude 3.5 sonnet\\b",
+          "\\bclaude 3 opus\\b"
         ]
       },
       {
         "name": "ChatGPT",
         "patterns": [
-          "chatgpt",
-          "chat gpt",
-          "chat-gpt",
-          "openai chatgpt",
-          "customgpt",
-          "customgpts"
+          "\\bchatgpt\\b",
+          "\\bchat gpt\\b",
+          "\\bchat-gpt\\b",
+          "\\bopenai chatgpt\\b",
+          "\\bcustomgpt\\b",
+          "\\bcustomgpts\\b"
         ]
       },
       {
         "name": "GitHub Copilot",
         "patterns": [
-          "github copilot",
-          "copilot",
-          "gh copilot"
+          "\\bgithub copilot\\b",
+          "\\bcopilot\\b",
+          "\\bgh copilot\\b"
         ]
       },
       {
         "name": "Cursor",
         "patterns": [
-          "cursor",
-          "cursor ide",
-          "cursor ai",
-          "cursor editor"
+          "\\bcursor\\b",
+          "\\bcursor ide\\b",
+          "\\bcursor ai\\b",
+          "\\bcursor editor\\b"
         ]
       },
       {
         "name": "Devin",
         "patterns": [
-          "devin",
-          "devin ai",
-          "cognition ai devin"
+          "\\bdevin\\b",
+          "\\bdevin ai\\b",
+          "\\bcognition ai devin\\b"
         ]
       },
       {
         "name": "Cline",
         "patterns": [
-          "cline",
-          "cline ai"
+          "\\bcline\\b",
+          "\\bcline ai\\b"
         ]
       },
       {
         "name": "Tabnine",
         "patterns": [
-          "tabnine",
-          "tab nine"
+          "\\btabnine\\b",
+          "\\btab nine\\b"
         ]
       },
       {
         "name": "Amazon Q Developer",
         "patterns": [
-          "amazon q",
-          "q developer",
-          "amazon q developer",
-          "codewhisperer",
-          "amazon codewhisperer"
+          "\\bamazon q\\b",
+          "\\bq developer\\b",
+          "\\bamazon q developer\\b",
+          "\\bcodewhisperer\\b",
+          "\\bamazon codewhisperer\\b"
         ]
       },
       {
         "name": "LangChain",
         "patterns": [
-          "langchain",
-          "lang chain",
-          "lang-chain"
+          "\\blangchain\\b",
+          "\\blang chain\\b",
+          "\\blang-chain\\b"
         ]
       },
       {
         "name": "LangGraph",
         "patterns": [
-          "langgraph",
-          "lang graph",
-          "lang-graph"
+          "\\blanggraph\\b",
+          "\\blang graph\\b",
+          "\\blang-graph\\b"
         ]
       },
       {
         "name": "LlamaIndex",
         "patterns": [
-          "llamaindex",
-          "llama index",
-          "llama-index"
+          "\\bllamaindex\\b",
+          "\\bllama index\\b",
+          "\\bllama-index\\b"
         ]
       },
       {
         "name": "Gemini",
         "patterns": [
-          "gemini",
-          "google gemini",
-          "gemini pro"
+          "\\bgemini\\b",
+          "\\bgoogle gemini\\b",
+          "\\bgemini pro\\b"
         ]
       },
       {
         "name": "Stable Diffusion",
         "patterns": [
-          "stable diffusion"
+          "\\bstable diffusion\\b"
         ]
       },
       {
         "name": "DALL-E",
         "patterns": [
-          "dall-e",
-          "dall e"
+          "\\bdall-e\\b",
+          "\\bdall e\\b"
         ]
       },
       {
         "name": "Midjourney",
         "patterns": [
-          "midjourney"
+          "\\bmidjourney\\b"
         ]
       },
       {
         "name": "Apache Spark",
         "patterns": [
-          "spark",
-          "apache spark",
-          "pyspark"
+          "\\bspark\\b",
+          "\\bapache spark\\b",
+          "\\bpyspark\\b"
         ]
       },
       {
         "name": "Apache Hadoop",
         "patterns": [
-          "hadoop",
-          "apache hadoop"
+          "\\bhadoop\\b",
+          "\\bapache hadoop\\b"
         ]
       },
       {
         "name": "Apache Kafka",
         "patterns": [
-          "kafka",
-          "apache kafka"
+          "\\bkafka\\b",
+          "\\bapache kafka\\b"
         ]
       },
       {
         "name": "Apache Airflow",
         "patterns": [
-          "airflow",
-          "apache airflow"
+          "\\bairflow\\b",
+          "\\bapache airflow\\b"
         ]
       },
       {
         "name": "Apache Beam",
         "patterns": [
-          "beam",
-          "apache beam"
+          "\\bbeam\\b",
+          "\\bapache beam\\b"
         ]
       },
       {
         "name": "Dask",
         "patterns": [
-          "dask"
+          "\\bdask\\b"
         ]
       },
       {
         "name": "Ray",
         "patterns": [
-          "ray",
-          "ray framework"
+          "\\bray\\b",
+          "\\bray framework\\b"
         ]
       },
       {
         "name": "MLflow",
         "patterns": [
-          "mlflow"
+          "\\bmlflow\\b"
         ]
       },
       {
         "name": "Kubeflow",
         "patterns": [
-          "kubeflow"
+          "\\bkubeflow\\b"
         ]
       },
       {
         "name": "Weights & Biases",
         "patterns": [
-          "wandb",
-          "weights & biases",
-          "weights and biases"
+          "\\bwandb\\b",
+          "\\bweights & biases\\b",
+          "\\bweights and biases\\b"
         ]
       },
       {
         "name": "DVC",
         "patterns": [
-          "dvc",
-          "data version control"
+          "\\bdvc\\b",
+          "\\bdata version control\\b"
         ]
       },
       {
         "name": "Great Expectations",
         "patterns": [
-          "great expectations"
+          "\\bgreat expectations\\b"
         ]
       },
       {
         "name": "Evidently",
         "patterns": [
-          "evidently ai"
+          "\\bevidently ai\\b"
         ]
       },
       {
         "name": "Statsmodels",
         "patterns": [
-          "statsmodels"
+          "\\bstatsmodels\\b"
         ]
       },
       {
         "name": "Prophet",
         "patterns": [
-          "prophet",
-          "facebook prophet"
+          "\\bprophet\\b",
+          "\\bfacebook prophet\\b"
         ]
       },
       {
         "name": "Optuna",
         "patterns": [
-          "optuna"
+          "\\boptuna\\b"
         ]
       },
       {
         "name": "Hyperopt",
         "patterns": [
-          "hyperopt"
+          "\\bhyperopt\\b"
         ]
       },
       {
         "name": "Auto-sklearn",
         "patterns": [
-          "auto-sklearn",
-          "autosklearn"
+          "\\bauto-sklearn\\b",
+          "\\bautosklearn\\b"
         ]
       },
       {
         "name": "TPOT",
         "patterns": [
-          "tpot"
+          "\\btpot\\b"
         ]
       },
       {
         "name": "H2O.ai",
         "patterns": [
-          "h2o",
-          "h2o.ai"
+          "\\bh2o\\b",
+          "\\bh2o.ai\\b"
         ]
       },
       {
         "name": "Jupyter",
         "patterns": [
-          "jupyter",
-          "jupyter notebook",
-          "jupyterlab"
+          "\\bjupyter\\b",
+          "\\bjupyter notebook\\b",
+          "\\bjupyterlab\\b"
         ]
       },
       {
         "name": "Google Colab",
         "patterns": [
-          "colab",
-          "google colab",
-          "colaboratory"
+          "\\bcolab\\b",
+          "\\bgoogle colab\\b",
+          "\\bcolaboratory\\b"
         ]
       }
     ],
@@ -2058,276 +2046,276 @@
       {
         "name": "LangChain",
         "patterns": [
-          "langchain",
-          "lang chain"
+          "\\blangchain\\b",
+          "\\blang chain\\b"
         ]
       },
       {
         "name": "LangGraph",
         "patterns": [
-          "langgraph",
-          "lang graph"
+          "\\blanggraph\\b",
+          "\\blang graph\\b"
         ]
       },
       {
         "name": "LangSmith",
         "patterns": [
-          "langsmith",
-          "lang smith"
+          "\\blangsmith\\b",
+          "\\blang smith\\b"
         ]
       },
       {
         "name": "LlamaIndex",
         "patterns": [
-          "llamaindex",
-          "llama index",
-          "llama-index"
+          "\\bllamaindex\\b",
+          "\\bllama index\\b",
+          "\\bllama-index\\b"
         ]
       },
       {
         "name": "Haystack",
         "patterns": [
-          "haystack",
-          "deepset haystack"
+          "\\bhaystack\\b",
+          "\\bdeepset haystack\\b"
         ]
       },
       {
         "name": "Semantic Kernel",
         "patterns": [
-          "semantic kernel",
-          "microsoft semantic kernel"
+          "\\bsemantic kernel\\b",
+          "\\bmicrosoft semantic kernel\\b"
         ]
       },
       {
         "name": "AutoGen",
         "patterns": [
-          "autogen",
-          "microsoft autogen"
+          "\\bautogen\\b",
+          "\\bmicrosoft autogen\\b"
         ]
       },
       {
         "name": "CrewAI",
         "patterns": [
-          "crewai",
-          "crew ai"
+          "\\bcrewai\\b",
+          "\\bcrew ai\\b"
         ]
       },
       {
         "name": "GPT-4",
         "patterns": [
-          "gpt-4",
-          "gpt4",
-          "gpt 4"
+          "\\bgpt-4\\b",
+          "\\bgpt4\\b",
+          "\\bgpt 4\\b"
         ]
       },
       {
         "name": "GPT-3.5",
         "patterns": [
-          "gpt-3.5",
-          "gpt3.5",
-          "gpt 3.5"
+          "\\bgpt-3.5\\b",
+          "\\bgpt3.5\\b",
+          "\\bgpt 3.5\\b"
         ]
       },
       {
         "name": "Claude 3",
         "patterns": [
-          "claude 3",
-          "claude-3"
+          "\\bclaude 3\\b",
+          "\\bclaude-3\\b"
         ]
       },
       {
         "name": "Llama 2",
         "patterns": [
-          "llama 2",
-          "llama2",
-          "llama-2"
+          "\\bllama 2\\b",
+          "\\bllama2\\b",
+          "\\bllama-2\\b"
         ]
       },
       {
         "name": "Llama 3",
         "patterns": [
-          "llama 3",
-          "llama3",
-          "llama-3"
+          "\\bllama 3\\b",
+          "\\bllama3\\b",
+          "\\bllama-3\\b"
         ]
       },
       {
         "name": "Mistral",
         "patterns": [
-          "mistral",
-          "mistral ai"
+          "\\bmistral\\b",
+          "\\bmistral ai\\b"
         ]
       },
       {
         "name": "Mixtral",
         "patterns": [
-          "mixtral"
+          "\\bmixtral\\b"
         ]
       },
       {
         "name": "Ollama",
         "patterns": [
-          "ollama"
+          "\\bollama\\b"
         ]
       },
       {
         "name": "vLLM",
         "patterns": [
-          "vllm",
-          "v-llm"
+          "\\bvllm\\b",
+          "\\bv-llm\\b"
         ]
       },
       {
         "name": "Text Generation Inference",
         "patterns": [
-          "text generation inference",
-          "tgi"
+          "\\btext generation inference\\b",
+          "\\btgi\\b"
         ]
       },
       {
         "name": "LM Studio",
         "patterns": [
-          "lm studio",
-          "lmstudio"
+          "\\blm studio\\b",
+          "\\blmstudio\\b"
         ]
       },
       {
         "name": "Replicate",
         "patterns": [
-          "replicate",
-          "replicate ai"
+          "\\breplicate\\b",
+          "\\breplicate ai\\b"
         ]
       },
       {
         "name": "Cohere",
         "patterns": [
-          "cohere",
-          "cohere ai"
+          "\\bcohere\\b",
+          "\\bcohere ai\\b"
         ]
       },
       {
         "name": "Together AI",
         "patterns": [
-          "together ai",
-          "together.ai"
+          "\\btogether ai\\b",
+          "\\btogether.ai\\b"
         ]
       },
       {
         "name": "Groq",
         "patterns": [
-          "groq"
+          "\\bgroq\\b"
         ]
       },
       {
         "name": "Anyscale",
         "patterns": [
-          "anyscale"
+          "\\banyscale\\b"
         ]
       },
       {
         "name": "PEFT",
         "patterns": [
-          "peft",
-          "parameter-efficient fine-tuning"
+          "\\bpeft\\b",
+          "\\bparameter-efficient fine-tuning\\b"
         ]
       },
       {
         "name": "LoRA",
         "patterns": [
-          "lora",
-          "low-rank adaptation"
+          "\\blora\\b",
+          "\\blow-rank adaptation\\b"
         ]
       },
       {
         "name": "QLoRA",
         "patterns": [
-          "qlora"
+          "\\bqlora\\b"
         ]
       },
       {
         "name": "Adapters",
         "patterns": [
-          "adapters",
-          "adapter-transformers"
+          "\\badapters\\b",
+          "\\badapter-transformers\\b"
         ]
       },
       {
         "name": "DeepSpeed",
         "patterns": [
-          "deepspeed"
+          "\\bdeepspeed\\b"
         ]
       },
       {
         "name": "Accelerate",
         "patterns": [
-          "accelerate",
-          "huggingface accelerate"
+          "\\baccelerate\\b",
+          "\\bhuggingface accelerate\\b"
         ]
       },
       {
         "name": "RLHF",
         "patterns": [
-          "rlhf",
-          "reinforcement learning from human feedback"
+          "\\brlhf\\b",
+          "\\breinforcement learning from human feedback\\b"
         ]
       },
       {
         "name": "DPO",
         "patterns": [
-          "dpo",
-          "direct preference optimization"
+          "\\bdpo\\b",
+          "\\bdirect preference optimization\\b"
         ]
       },
       {
         "name": "Instructor",
         "patterns": [
-          "instructor",
-          "instructor embeddings"
+          "\\binstructor\\b",
+          "\\binstructor embeddings\\b"
         ]
       },
       {
         "name": "Guidance",
         "patterns": [
-          "guidance",
-          "microsoft guidance"
+          "\\bguidance\\b",
+          "\\bmicrosoft guidance\\b"
         ]
       },
       {
         "name": "LMQL",
         "patterns": [
-          "lmql"
+          "\\blmql\\b"
         ]
       },
       {
         "name": "DSPy",
         "patterns": [
-          "dspy"
+          "\\bdspy\\b"
         ]
       },
       {
         "name": "LiteLLM",
         "patterns": [
-          "litellm",
-          "lite llm"
+          "\\blitellm\\b",
+          "\\blite llm\\b"
         ]
       },
       {
         "name": "OpenLLM",
         "patterns": [
-          "openllm",
-          "open llm"
+          "\\bopenllm\\b",
+          "\\bopen llm\\b"
         ]
       },
       {
         "name": "Axolotl",
         "patterns": [
-          "axolotl"
+          "\\baxolotl\\b"
         ]
       },
       {
         "name": "Unsloth",
         "patterns": [
-          "unsloth"
+          "\\bunsloth\\b"
         ]
       }
     ],
@@ -2335,121 +2323,121 @@
       {
         "name": "Pinecone",
         "patterns": [
-          "pinecone",
-          "pinecone db"
+          "\\bpinecone\\b",
+          "\\bpinecone db\\b"
         ]
       },
       {
         "name": "Weaviate",
         "patterns": [
-          "weaviate"
+          "\\bweaviate\\b"
         ]
       },
       {
         "name": "Chroma",
         "patterns": [
-          "chroma",
-          "chromadb",
-          "chroma db"
+          "\\bchroma\\b",
+          "\\bchromadb\\b",
+          "\\bchroma db\\b"
         ]
       },
       {
         "name": "Qdrant",
         "patterns": [
-          "qdrant"
+          "\\bqdrant\\b"
         ]
       },
       {
         "name": "Milvus",
         "patterns": [
-          "milvus"
+          "\\bmilvus\\b"
         ]
       },
       {
         "name": "FAISS",
         "patterns": [
-          "faiss",
-          "facebook ai similarity search"
+          "\\bfaiss\\b",
+          "\\bfacebook ai similarity search\\b"
         ]
       },
       {
         "name": "PGVector",
         "patterns": [
-          "pgvector",
-          "pg vector"
+          "\\bpgvector\\b",
+          "\\bpg vector\\b"
         ]
       },
       {
         "name": "Redis Vector",
         "patterns": [
-          "redis vector",
-          "redisvector"
+          "\\bredis vector\\b",
+          "\\bredisvector\\b"
         ]
       },
       {
         "name": "Elasticsearch Vector",
         "patterns": [
-          "elasticsearch vector",
-          "knn search"
+          "\\belasticsearch vector\\b",
+          "\\bknn search\\b"
         ]
       },
       {
         "name": "Vespa",
         "patterns": [
-          "vespa",
-          "vespa ai"
+          "\\bvespa\\b",
+          "\\bvespa ai\\b"
         ]
       },
       {
         "name": "LanceDB",
         "patterns": [
-          "lancedb",
-          "lance db"
+          "\\blancedb\\b",
+          "\\blance db\\b"
         ]
       },
       {
         "name": "Zilliz",
         "patterns": [
-          "zilliz"
+          "\\bzilliz\\b"
         ]
       },
       {
         "name": "Marqo",
         "patterns": [
-          "marqo"
+          "\\bmarqo\\b"
         ]
       },
       {
         "name": "Deep Lake",
         "patterns": [
-          "deep lake",
-          "activeloop"
+          "\\bdeep lake\\b",
+          "\\bactiveloop\\b"
         ]
       },
       {
         "name": "Annoy",
         "patterns": [
-          "annoy",
-          "approximate nearest neighbors"
+          "\\bannoy\\b",
+          "\\bapproximate nearest neighbors\\b"
         ]
       },
       {
         "name": "ScaNN",
         "patterns": [
-          "scann",
-          "google scann"
+          "\\bscann\\b",
+          "\\bgoogle scann\\b"
         ]
       },
       {
         "name": "NMSLIB",
         "patterns": [
-          "nmslib"
+          "\\bnmslib\\b"
         ]
       },
       {
         "name": "Vald",
         "patterns": [
-          "vald"
+          "\\bvald\\b"
         ]
       }
     ],
@@ -2457,146 +2445,146 @@
       {
         "name": "BentoML",
         "patterns": [
-          "bentoml",
-          "bento ml"
+          "\\bbentoml\\b",
+          "\\bbento ml\\b"
         ]
       },
       {
         "name": "Seldon Core",
         "patterns": [
-          "seldon",
-          "seldon core"
+          "\\bseldon\\b",
+          "\\bseldon core\\b"
         ]
       },
       {
         "name": "KServe",
         "patterns": [
-          "kserve",
-          "k serve"
+          "\\bkserve\\b",
+          "\\bk serve\\b"
         ]
       },
       {
         "name": "TensorFlow Serving",
         "patterns": [
-          "tensorflow serving",
-          "tf serving"
+          "\\btensorflow serving\\b",
+          "\\btf serving\\b"
         ]
       },
       {
         "name": "TorchServe",
         "patterns": [
-          "torchserve",
-          "torch serve"
+          "\\btorchserve\\b",
+          "\\btorch serve\\b"
         ]
       },
       {
         "name": "Ray Serve",
         "patterns": [
-          "ray serve"
+          "\\bray serve\\b"
         ]
       },
       {
         "name": "Triton Inference Server",
         "patterns": [
-          "triton",
-          "nvidia triton",
-          "triton inference server"
+          "\\btriton\\b",
+          "\\bnvidia triton\\b",
+          "\\btriton inference server\\b"
         ]
       },
       {
         "name": "ONNX",
         "patterns": [
-          "onnx",
-          "open neural network exchange"
+          "\\bonnx\\b",
+          "\\bopen neural network exchange\\b"
         ]
       },
       {
         "name": "ONNX Runtime",
         "patterns": [
-          "onnx runtime",
-          "onnxruntime"
+          "\\bonnx runtime\\b",
+          "\\bonnxruntime\\b"
         ]
       },
       {
         "name": "TensorRT",
         "patterns": [
-          "tensorrt",
-          "tensor rt"
+          "\\btensorrt\\b",
+          "\\btensor rt\\b"
         ]
       },
       {
         "name": "OpenVINO",
         "patterns": [
-          "openvino",
-          "intel openvino"
+          "\\bopenvino\\b",
+          "\\bintel openvino\\b"
         ]
       },
       {
         "name": "MLRun",
         "patterns": [
-          "mlrun"
+          "\\bmlrun\\b"
         ]
       },
       {
         "name": "Metaflow",
         "patterns": [
-          "metaflow",
-          "netflix metaflow"
+          "\\bmetaflow\\b",
+          "\\bnetflix metaflow\\b"
         ]
       },
       {
         "name": "ZenML",
         "patterns": [
-          "zenml"
+          "\\bzenml\\b"
         ]
       },
       {
         "name": "Kedro",
         "patterns": [
-          "kedro"
+          "\\bkedro\\b"
         ]
       },
       {
         "name": "Feast",
         "patterns": [
-          "feast",
-          "feature store"
+          "\\bfeast\\b",
+          "\\bfeature store\\b"
         ]
       },
       {
         "name": "Tecton",
         "patterns": [
-          "tecton"
+          "\\btecton\\b"
         ]
       },
       {
         "name": "Hopsworks",
         "patterns": [
-          "hopsworks"
+          "\\bhopsworks\\b"
         ]
       },
       {
         "name": "Streamlit",
         "patterns": [
-          "streamlit"
+          "\\bstreamlit\\b"
         ]
       },
       {
         "name": "Gradio",
         "patterns": [
-          "gradio"
+          "\\bgradio\\b"
         ]
       },
       {
         "name": "Chainlit",
         "patterns": [
-          "chainlit"
+          "\\bchainlit\\b"
         ]
       },
       {
         "name": "Mesop",
         "patterns": [
-          "mesop"
+          "\\bmesop\\b"
         ]
       }
     ],
@@ -2604,78 +2592,78 @@
       {
         "name": "Apache Flink",
         "patterns": [
-          "flink",
-          "apache flink"
+          "\\bflink\\b",
+          "\\bapache flink\\b"
         ]
       },
       {
         "name": "Apache NiFi",
         "patterns": [
-          "nifi",
-          "apache nifi"
+          "\\bnifi\\b",
+          "\\bapache nifi\\b"
         ]
       },
       {
         "name": "dbt",
         "patterns": [
-          "dbt",
-          "data build tool"
+          "\\bdbt\\b",
+          "\\bdata build tool\\b"
         ]
       },
       {
         "name": "Databricks",
         "patterns": [
-          "databricks"
+          "\\bdatabricks\\b"
         ]
       },
       {
         "name": "Fivetran",
         "patterns": [
-          "fivetran"
+          "\\bfivetran\\b"
         ]
       },
       {
         "name": "Airbyte",
         "patterns": [
-          "airbyte"
+          "\\bairbyte\\b"
         ]
       },
       {
         "name": "Talend",
         "patterns": [
-          "talend"
+          "\\btalend\\b"
         ]
       },
       {
         "name": "Informatica",
         "patterns": [
-          "informatica"
+          "\\binformatica\\b"
         ]
       },
       {
         "name": "Azure Data Factory",
         "patterns": [
-          "azure data factory",
-          "adf"
+          "\\bazure data factory\\b",
+          "\\badf\\b"
         ]
       },
       {
         "name": "Prefect",
         "patterns": [
-          "prefect"
+          "\\bprefect\\b"
         ]
       },
       {
         "name": "Dagster",
         "patterns": [
-          "dagster"
+          "\\bdagster\\b"
         ]
       },
       {
         "name": "Luigi",
         "patterns": [
-          "luigi",
-          "spotify luigi"
+          "\\bluigi\\b",
+          "\\bspotify luigi\\b"
         ]
       }
     ],
@@ -2683,156 +2671,155 @@
       {
         "name": "Jest",
         "patterns": [
-          "jest",
-          "jest testing"
+          "\\bjest\\b",
+          "\\bjest testing\\b"
         ]
       },
       {
         "name": "Pytest",
         "patterns": [
-          "pytest"
+          "\\bpytest\\b"
         ]
       },
       {
         "name": "JUnit",
         "patterns": [
-          "junit"
+          "\\bjunit\\b"
         ]
       },
       {
         "name": "Selenium",
         "patterns": [
-          "selenium",
-          "selenium webdriver"
+          "\\bselenium\\b",
+          "\\bselenium webdriver\\b"
         ]
       },
       {
         "name": "Cypress",
         "patterns": [
-          "cypress",
-          "cypress.io"
+          "\\bcypress\\b",
+          "\\bcypress.io\\b"
         ]
       },
       {
         "name": "Playwright",
         "patterns": [
-          "playwright"
+          "\\bplaywright\\b"
         ]
       },
       {
         "name": "TestNG",
         "patterns": [
-          "testng"
+          "\\btestng\\b"
         ]
       },
       {
         "name": "Mocha",
         "patterns": [
-          "mocha",
-          "mocha.js"
+          "\\bmocha\\b",
+          "\\bmocha.js\\b"
         ]
       },
       {
         "name": "Chai",
         "patterns": [
-          "chai",
-          "chai.js"
+          "\\bchai\\b",
+          "\\bchai.js\\b"
         ]
       },
       {
         "name": "Jasmine",
         "patterns": [
-          "jasmine"
+          "\\bjasmine\\b"
         ]
       },
       {
         "name": "Robot Framework",
         "patterns": [
-          "robot framework"
+          "\\brobot framework\\b"
         ]
       },
       {
         "name": "Cucumber",
         "patterns": [
-          "cucumber",
-          "bdd"
+          "\\bcucumber\\b",
+          "\\bbdd\\b"
         ]
       },
       {
         "name": "Postman",
         "patterns": [
-          "postman"
+          "\\bpostman\\b"
         ]
       },
       {
         "name": "REST Assured",
         "patterns": [
-          "rest assured",
-          "restassured"
+          "\\brest assured\\b",
+          "\\brestassured\\b"
         ]
       },
       {
         "name": "K6",
         "patterns": [
-          "k6",
-          "k6 load testing"
+          "\\bk6 load testing\\b"
         ]
       },
       {
         "name": "JMeter",
         "patterns": [
-          "jmeter",
-          "apache jmeter"
+          "\\bjmeter\\b",
+          "\\bapache jmeter\\b"
         ]
       },
       {
         "name": "Gatling",
         "patterns": [
-          "gatling"
+          "\\bgatling\\b"
         ]
       },
       {
         "name": "Locust",
         "patterns": [
-          "locust"
+          "\\blocust\\b"
         ]
       },
       {
         "name": "SonarQube",
         "patterns": [
-          "sonarqube",
-          "sonar"
+          "\\bsonarqube\\b",
+          "\\bsonar\\b"
         ]
       },
       {
         "name": "ESLint",
         "patterns": [
-          "eslint"
+          "\\beslint\\b"
         ]
       },
       {
         "name": "Prettier",
         "patterns": [
-          "prettier"
+          "\\bprettier\\b"
         ]
       },
       {
         "name": "Black",
         "patterns": [
-          "black",
-          "python black"
+          "\\bblack\\b",
+          "\\bpython black\\b"
         ]
       },
       {
         "name": "Pylint",
         "patterns": [
-          "pylint"
+          "\\bpylint\\b"
         ]
       },
       {
         "name": "Flake8",
         "patterns": [
-          "flake8"
+          "\\bflake8\\b"
         ]
       }
     ],
@@ -2840,187 +2827,186 @@
       {
         "name": "Penetration Testing",
         "patterns": [
-          "penetration testing",
-          "pentesting",
-          "pen testing"
+          "\\bpenetration testing\\b",
+          "\\bpentesting\\b",
+          "\\bpen testing\\b"
         ]
       },
       {
         "name": "Ethical Hacking",
         "patterns": [
-          "ethical hacking",
-          "white hat"
+          "\\bethical hacking\\b",
+          "\\bwhite hat\\b"
         ]
       },
       {
         "name": "OWASP",
         "patterns": [
-          "owasp",
-          "owasp top 10"
+          "\\bowasp\\b",
+          "\\bowasp top 10\\b"
         ]
       },
       {
         "name": "Burp Suite",
         "patterns": [
-          "burp suite",
-          "burpsuite"
+          "\\bburp suite\\b",
+          "\\bburpsuite\\b"
         ]
       },
       {
         "name": "Metasploit",
         "patterns": [
-          "metasploit"
+          "\\bmetasploit\\b"
         ]
       },
       {
         "name": "Nmap",
         "patterns": [
-          "nmap"
+          "\\bnmap\\b"
         ]
       },
       {
         "name": "Wireshark",
         "patterns": [
-          "wireshark"
+          "\\bwireshark\\b"
         ]
       },
       {
         "name": "Kali Linux",
         "patterns": [
-          "kali linux",
-          "kali"
+          "\\bkali linux\\b",
+          "\\bkali\\b"
         ]
       },
       {
         "name": "SIEM",
         "patterns": [
-          "siem",
-          "security information and event management"
+          "\\bsiem\\b",
+          "\\bsecurity information and event management\\b"
         ]
       },
       {
         "name": "IDS/IPS",
         "patterns": [
-          "ids",
-          "ips",
-          "intrusion detection",
-          "intrusion prevention"
+          "\\bids\\b",
+          "\\bips\\b",
+          "\\bintrusion detection\\b",
+          "\\bintrusion prevention\\b"
         ]
       },
       {
         "name": "Firewall",
         "patterns": [
-          "firewall",
-          "firewall management"
+          "\\bfirewall\\b",
+          "\\bfirewall management\\b"
         ]
       },
       {
         "name": "OAuth",
         "patterns": [
-          "oauth",
-          "oauth2",
-          "oauth 2.0"
+          "\\boauth\\b",
+          "\\boauth2\\b",
+          "\\boauth 2.0\\b"
         ]
       },
       {
         "name": "JWT",
         "patterns": [
-          "jwt",
-          "json web token"
+          "\\bjwt\\b",
+          "\\bjson web token\\b"
         ]
       },
       {
         "name": "SSL/TLS",
         "patterns": [
-          "ssl",
-          "tls",
-          "https",
-          "ssl/tls"
+          "\\bssl\\b",
+          "\\btls\\b",
+          "\\bhttps\\b",
+          "\\bssl/tls\\b"
         ]
       },
       {
         "name": "Encryption",
         "patterns": [
-          "encryption",
-          "aes",
-          "rsa",
-          "cryptography"
+          "\\bencryption\\b",
+          "\\baes\\b",
+          "\\brsa\\b",
+          "\\bcryptography\\b"
         ]
       },
       {
         "name": "IAM",
         "patterns": [
-          "iam",
-          "identity and access management"
+          "\\biam\\b",
+          "\\bidentity and access management\\b"
         ]
       },
       {
         "name": "Zero Trust",
         "patterns": [
-          "zero trust",
-          "zero trust architecture"
+          "\\bzero trust\\b",
+          "\\bzero trust architecture\\b"
         ]
       },
       {
         "name": "SAST",
         "patterns": [
-          "sast",
-          "static application security testing"
+          "\\bsast\\b",
+          "\\bstatic application security testing\\b"
         ]
       },
       {
         "name": "DAST",
         "patterns": [
-          "dast",
-          "dynamic application security testing"
+          "\\bdast\\b",
+          "\\bdynamic application security testing\\b"
         ]
       },
       {
         "name": "Vulnerability Management",
         "patterns": [
-          "vulnerability management",
-          "vuln management"
+          "\\bvulnerability management\\b",
+          "\\bvuln management\\b"
         ]
       },
       {
         "name": "Incident Response",
         "patterns": [
-          "incident response",
-          "ir"
+          "\\bincident response\\b"
         ]
       },
       {
         "name": "Threat Intelligence",
         "patterns": [
-          "threat intelligence",
-          "cyber threat"
+          "\\bthreat intelligence\\b",
+          "\\bcyber threat\\b"
         ]
       },
       {
         "name": "GDPR",
         "patterns": [
-          "gdpr",
-          "general data protection regulation"
+          "\\bgdpr\\b",
+          "\\bgeneral data protection regulation\\b"
         ]
       },
       {
         "name": "HIPAA",
         "patterns": [
-          "hipaa"
+          "\\bhipaa\\b"
         ]
       },
       {
         "name": "SOC 2",
         "patterns": [
-          "soc 2",
-          "soc2"
+          "\\bsoc 2\\b",
+          "\\bsoc2\\b"
         ]
       },
       {
         "name": "ISO 27001",
         "patterns": [
-          "iso 27001",
-          "iso27001"
+          "\\biso 27001\\b",
+          "\\biso27001\\b"
         ]
       }
     ],
@@ -3028,203 +3014,201 @@
       {
         "name": "Communication",
         "patterns": [
-          "communication",
-          "written communication",
-          "verbal communication",
-          "effective communication"
+          "\\bcommunication\\b",
+          "\\bwritten communication\\b",
+          "\\bverbal communication\\b",
+          "\\beffective communication\\b"
         ]
       },
       {
         "name": "Leadership",
         "patterns": [
-          "leadership",
-          "team leadership",
-          "leading teams"
+          "\\bleadership\\b",
+          "\\bteam leadership\\b",
+          "\\bleading teams\\b"
         ]
       },
       {
         "name": "Problem Solving",
         "patterns": [
-          "problem solving",
-          "problem-solving",
-          "analytical thinking",
-          "critical thinking"
+          "\\bproblem solving\\b",
+          "\\bproblem-solving\\b",
+          "\\banalytical thinking\\b",
+          "\\bcritical thinking\\b"
         ]
       },
       {
         "name": "Teamwork",
         "patterns": [
-          "teamwork",
-          "team collaboration",
-          "collaboration",
-          "team player"
+          "\\bteamwork\\b",
+          "\\bteam collaboration\\b",
+          "\\bcollaboration\\b",
+          "\\bteam player\\b"
         ]
       },
       {
         "name": "Time Management",
         "patterns": [
-          "time management",
-          "prioritization",
-          "task management"
+          "\\btime management\\b",
+          "\\bprioritization\\b",
+          "\\btask management\\b"
         ]
       },
       {
         "name": "Project Management",
         "patterns": [
-          "project management",
-          "pm"
+          "\\bproject management\\b"
         ]
       },
       {
         "name": "Adaptability",
         "patterns": [
-          "adaptability",
-          "flexible",
-          "flexibility",
-          "adaptable"
+          "\\badaptability\\b",
+          "\\bflexible\\b",
+          "\\bflexibility\\b",
+          "\\badaptable\\b"
         ]
       },
       {
         "name": "Creativity",
         "patterns": [
-          "creativity",
-          "creative thinking",
-          "innovation",
-          "innovative"
+          "\\bcreativity\\b",
+          "\\bcreative thinking\\b",
+          "\\binnovation\\b",
+          "\\binnovative\\b"
         ]
       },
       {
         "name": "Attention to Detail",
         "patterns": [
-          "attention to detail",
-          "detail-oriented",
-          "meticulous"
+          "\\battention to detail\\b",
+          "\\bdetail-oriented\\b",
+          "\\bmeticulous\\b"
         ]
       },
       {
         "name": "Decision Making",
         "patterns": [
-          "decision making",
-          "decision-making",
-          "judgment"
+          "\\bdecision making\\b",
+          "\\bdecision-making\\b",
+          "\\bjudgment\\b"
         ]
       },
       {
         "name": "Conflict Resolution",
         "patterns": [
-          "conflict resolution",
-          "conflict management"
+          "\\bconflict resolution\\b",
+          "\\bconflict management\\b"
         ]
       },
       {
         "name": "Negotiation",
         "patterns": [
-          "negotiation",
-          "negotiating"
+          "\\bnegotiation\\b",
+          "\\bnegotiating\\b"
         ]
       },
       {
         "name": "Presentation Skills",
         "patterns": [
-          "presentation",
-          "presenting",
-          "public speaking"
+          "\\bpresentation\\b",
+          "\\bpresenting\\b",
+          "\\bpublic speaking\\b"
         ]
       },
       {
         "name": "Customer Service",
         "patterns": [
-          "customer service",
-          "client service",
-          "customer support"
+          "\\bcustomer service\\b",
+          "\\bclient service\\b",
+          "\\bcustomer support\\b"
         ]
       },
       {
         "name": "Emotional Intelligence",
         "patterns": [
-          "emotional intelligence",
-          "eq",
-          "empathy"
+          "\\bemotional intelligence\\b",
+          "\\bempathy\\b"
         ]
       },
       {
         "name": "Mentoring",
         "patterns": [
-          "mentoring",
-          "mentorship",
-          "coaching"
+          "\\bmentoring\\b",
+          "\\bmentorship\\b",
+          "\\bcoaching\\b"
         ]
       },
       {
         "name": "Strategic Thinking",
         "patterns": [
-          "strategic thinking",
-          "strategic planning",
-          "strategy"
+          "\\bstrategic thinking\\b",
+          "\\bstrategic planning\\b",
+          "\\bstrategy\\b"
         ]
       },
       {
         "name": "Research Skills",
         "patterns": [
-          "research",
-          "research skills",
-          "analytical research"
+          "\\bresearch\\b",
+          "\\bresearch skills\\b",
+          "\\banalytical research\\b"
         ]
       },
       {
         "name": "Self-Motivated",
         "patterns": [
-          "self-motivated",
-          "self motivated",
-          "self-starter",
-          "self starter"
+          "\\bself-motivated\\b",
+          "\\bself motivated\\b",
+          "\\bself-starter\\b",
+          "\\bself starter\\b"
         ]
       },
       {
         "name": "Multitasking",
         "patterns": [
-          "multitasking",
-          "multi-tasking"
+          "\\bmultitasking\\b",
+          "\\bmulti-tasking\\b"
         ]
       },
       {
         "name": "Organization",
         "patterns": [
-          "organization",
-          "organizational skills",
-          "organized"
+          "\\borganization\\b",
+          "\\borganizational skills\\b",
+          "\\borganized\\b"
         ]
       },
       {
         "name": "Active Listening",
         "patterns": [
-          "active listening",
-          "listening skills"
+          "\\bactive listening\\b",
+          "\\blistening skills\\b"
         ]
       },
       {
         "name": "Interpersonal Skills",
         "patterns": [
-          "interpersonal skills",
-          "interpersonal",
-          "people skills"
+          "\\binterpersonal skills\\b",
+          "\\binterpersonal\\b",
+          "\\bpeople skills\\b"
         ]
       },
       {
         "name": "Work Ethic",
         "patterns": [
-          "work ethic",
-          "strong work ethic",
-          "dedicated"
+          "\\bwork ethic\\b",
+          "\\bstrong work ethic\\b",
+          "\\bdedicated\\b"
         ]
       },
       {
         "name": "Cultural Awareness",
         "patterns": [
-          "cultural awareness",
-          "diversity",
-          "inclusion",
-          "cross-cultural"
+          "\\bcultural awareness\\b",
+          "\\bdiversity\\b",
+          "\\binclusion\\b",
+          "\\bcross-cultural\\b"
         ]
       }
     ],
@@ -3232,145 +3216,142 @@
       {
         "name": "Agile",
         "patterns": [
-          "agile",
-          "agile methodology",
-          "agile development"
+          "\\bagile\\b",
+          "\\bagile methodology\\b",
+          "\\bagile development\\b"
         ]
       },
       {
         "name": "Scrum",
         "patterns": [
-          "scrum"
+          "\\bscrum\\b"
         ]
       },
       {
         "name": "Kanban",
         "patterns": [
-          "kanban"
+          "\\bkanban\\b"
         ]
       },
       {
         "name": "Waterfall",
         "patterns": [
-          "waterfall",
-          "waterfall methodology"
+          "\\bwaterfall\\b",
+          "\\bwaterfall methodology\\b"
         ]
       },
       {
         "name": "DevOps",
         "patterns": [
-          "devops",
-          "dev ops"
+          "\\bdevops\\b",
+          "\\bdev ops\\b"
         ]
       },
       {
         "name": "Lean",
         "patterns": [
-          "lean",
-          "lean methodology",
-          "lean manufacturing"
+          "\\blean\\b",
+          "\\blean methodology\\b",
+          "\\blean manufacturing\\b"
         ]
       },
       {
         "name": "Six Sigma",
         "patterns": [
-          "six sigma",
-          "6 sigma"
+          "\\bsix sigma\\b",
+          "\\b6 sigma\\b"
         ]
       },
       {
         "name": "Test-Driven Development",
         "patterns": [
-          "tdd",
-          "test-driven development",
-          "test driven development"
+          "\\btdd\\b",
+          "\\btest-driven development\\b",
+          "\\btest driven development\\b"
         ]
       },
       {
         "name": "Behavior-Driven Development",
         "patterns": [
-          "bdd",
-          "behavior-driven development",
-          "behaviour-driven development"
+          "\\bbdd\\b",
+          "\\bbehavior-driven development\\b",
+          "\\bbehaviour-driven development\\b"
         ]
       },
       {
         "name": "Continuous Integration",
         "patterns": [
-          "ci",
-          "continuous integration"
+          "\\bcontinuous integration\\b"
         ]
       },
       {
         "name": "Continuous Deployment",
         "patterns": [
-          "cd",
-          "continuous deployment",
-          "continuous delivery"
+          "\\bcontinuous deployment\\b",
+          "\\bcontinuous delivery\\b"
         ]
       },
       {
         "name": "Microservices",
         "patterns": [
-          "microservices",
-          "micro-services",
-          "microservice architecture"
+          "\\bmicroservices\\b",
+          "\\bmicro-services\\b",
+          "\\bmicroservice architecture\\b"
         ]
       },
       {
         "name": "Domain-Driven Design",
         "patterns": [
-          "ddd",
-          "domain-driven design",
-          "domain driven design"
+          "\\bddd\\b",
+          "\\bdomain-driven design\\b",
+          "\\bdomain driven design\\b"
         ]
       },
       {
         "name": "Event-Driven Architecture",
         "patterns": [
-          "event-driven",
-          "event driven",
-          "eda"
+          "\\bevent-driven\\b",
+          "\\bevent driven\\b",
+          "\\beda\\b"
         ]
       },
       {
         "name": "Design Thinking",
         "patterns": [
-          "design thinking"
+          "\\bdesign thinking\\b"
         ]
       },
       {
         "name": "SAFe",
         "patterns": [
-          "safe",
-          "scaled agile"
+          "\\bsafe\\b",
+          "\\bscaled agile\\b"
         ]
       },
       {
         "name": "Extreme Programming",
         "patterns": [
-          "xp",
-          "extreme programming"
+          "\\bextreme programming\\b"
         ]
       },
       {
         "name": "Feature-Driven Development",
         "patterns": [
-          "fdd",
-          "feature-driven development"
+          "\\bfdd\\b",
+          "\\bfeature-driven development\\b"
         ]
       },
       {
         "name": "ITIL",
         "patterns": [
-          "itil",
-          "it infrastructure library"
+          "\\bitil\\b",
+          "\\bit infrastructure library\\b"
         ]
       },
       {
         "name": "COBIT",
         "patterns": [
-          "cobit"
+          "\\bcobit\\b"
         ]
       }
     ],
@@ -3378,177 +3359,177 @@
       {
         "name": "AWS Certified Solutions Architect",
         "patterns": [
-          "aws certified solutions architect",
-          "aws solutions architect",
-          "aws csa"
+          "\\baws certified solutions architect\\b",
+          "\\baws solutions architect\\b",
+          "\\baws csa\\b"
         ]
       },
       {
         "name": "AWS Certified Developer",
         "patterns": [
-          "aws certified developer",
-          "aws developer"
+          "\\baws certified developer\\b",
+          "\\baws developer\\b"
         ]
       },
       {
         "name": "AWS Certified SysOps",
         "patterns": [
-          "aws sysops",
-          "aws certified sysops"
+          "\\baws sysops\\b",
+          "\\baws certified sysops\\b"
         ]
       },
       {
         "name": "Azure Administrator",
         "patterns": [
-          "azure administrator",
-          "az-104"
+          "\\bazure administrator\\b",
+          "\\baz-104\\b"
         ]
       },
       {
         "name": "Azure Solutions Architect",
         "patterns": [
-          "azure solutions architect",
-          "az-305"
+          "\\bazure solutions architect\\b",
+          "\\baz-305\\b"
         ]
       },
       {
         "name": "Azure Developer",
         "patterns": [
-          "azure developer",
-          "az-204"
+          "\\bazure developer\\b",
+          "\\baz-204\\b"
         ]
       },
       {
         "name": "Google Cloud Professional",
         "patterns": [
-          "google cloud professional",
-          "gcp certified"
+          "\\bgoogle cloud professional\\b",
+          "\\bgcp certified\\b"
         ]
       },
       {
         "name": "CKA",
         "patterns": [
-          "cka",
-          "certified kubernetes administrator"
+          "\\bcka\\b",
+          "\\bcertified kubernetes administrator\\b"
         ]
       },
       {
         "name": "CKAD",
         "patterns": [
-          "ckad",
-          "certified kubernetes application developer"
+          "\\bckad\\b",
+          "\\bcertified kubernetes application developer\\b"
         ]
       },
       {
         "name": "CKS",
         "patterns": [
-          "cks",
-          "certified kubernetes security specialist"
+          "\\bcks\\b",
+          "\\bcertified kubernetes security specialist\\b"
         ]
       },
       {
         "name": "PMP",
         "patterns": [
-          "pmp",
-          "project management professional"
+          "\\bpmp\\b",
+          "\\bproject management professional\\b"
         ]
       },
       {
         "name": "CISSP",
         "patterns": [
-          "cissp",
-          "certified information systems security professional"
+          "\\bcissp\\b",
+          "\\bcertified information systems security professional\\b"
         ]
       },
       {
         "name": "CEH",
         "patterns": [
-          "ceh",
-          "certified ethical hacker"
+          "\\bceh\\b",
+          "\\bcertified ethical hacker\\b"
         ]
       },
       {
         "name": "OSCP",
         "patterns": [
-          "oscp",
-          "offensive security certified professional"
+          "\\boscp\\b",
+          "\\boffensive security certified professional\\b"
         ]
       },
       {
         "name": "CompTIA Security+",
         "patterns": [
-          "security\\+",
-          "comptia security"
+          "\\bsecurity\\+\\b",
+          "\\bcomptia security\\b"
         ]
       },
       {
         "name": "CompTIA Network+",
         "patterns": [
-          "network\\+",
-          "comptia network"
+          "\\bnetwork\\+\\b",
+          "\\bcomptia network\\b"
         ]
       },
       {
         "name": "Certified Scrum Master",
         "patterns": [
-          "csm",
-          "certified scrum master"
+          "\\bcsm\\b",
+          "\\bcertified scrum master\\b"
         ]
       },
       {
         "name": "Certified SAFe Agilist",
         "patterns": [
-          "safe agilist",
-          "certified safe"
+          "\\bsafe agilist\\b",
+          "\\bcertified safe\\b"
         ]
       },
       {
         "name": "ITIL Foundation",
         "patterns": [
-          "itil foundation",
-          "itil certified"
+          "\\bitil foundation\\b",
+          "\\bitil certified\\b"
         ]
       },
       {
         "name": "Terraform Associate",
         "patterns": [
-          "terraform associate",
-          "terraform certified"
+          "\\bterraform associate\\b",
+          "\\bterraform certified\\b"
         ]
       },
       {
         "name": "Red Hat Certified",
         "patterns": [
-          "rhcsa",
-          "rhce",
-          "red hat certified"
+          "\\brhcsa\\b",
+          "\\brhce\\b",
+          "\\bred hat certified\\b"
         ]
       },
       {
         "name": "Oracle Certified Professional",
         "patterns": [
-          "ocp",
-          "oracle certified professional"
+          "\\bocp\\b",
+          "\\boracle certified professional\\b"
         ]
       },
       {
         "name": "Microsoft Certified",
         "patterns": [
-          "microsoft certified",
-          "mcsa",
-          "mcse"
+          "\\bmicrosoft certified\\b",
+          "\\bmcsa\\b",
+          "\\bmcse\\b"
         ]
       },
       {
         "name": "Databricks Certified",
         "patterns": [
-          "databricks certified"
+          "\\bdatabricks certified\\b"
         ]
       },
       {
         "name": "Snowflake Certified",
         "patterns": [
-          "snowflake certified"
+          "\\bsnowflake certified\\b"
         ]
       }
     ],
@@ -3556,146 +3537,145 @@
       {
         "name": "Jira",
         "patterns": [
-          "jira",
-          "atlassian jira"
+          "\\bjira\\b",
+          "\\batlassian jira\\b"
         ]
       },
       {
         "name": "Confluence",
         "patterns": [
-          "confluence",
-          "atlassian confluence"
+          "\\bconfluence\\b",
+          "\\batlassian confluence\\b"
         ]
       },
       {
         "name": "Trello",
         "patterns": [
-          "trello"
+          "\\btrello\\b"
         ]
       },
       {
         "name": "Asana",
         "patterns": [
-          "asana"
+          "\\basana\\b"
         ]
       },
       {
         "name": "Monday.com",
         "patterns": [
-          "monday\\.com"
+          "\\bmonday\\.com\\b"
         ]
       },
       {
         "name": "Notion",
         "patterns": [
-          "notion"
+          "\\bnotion\\b"
         ]
       },
       {
         "name": "Slack",
         "patterns": [
-          "slack"
+          "\\bslack\\b"
         ]
       },
       {
         "name": "Microsoft Teams",
         "patterns": [
-          "microsoft teams",
-          "teams"
+          "\\bmicrosoft teams\\b",
+          "\\bteams\\b"
         ]
       },
       {
         "name": "Zoom",
         "patterns": [
-          "zoom"
+          "\\bzoom\\b"
         ]
       },
       {
         "name": "Salesforce",
         "patterns": [
-          "salesforce",
-          "sfdc"
+          "\\bsalesforce\\b",
+          "\\bsfdc\\b"
         ]
       },
       {
         "name": "HubSpot",
         "patterns": [
-          "hubspot"
+          "\\bhubspot\\b"
         ]
       },
       {
         "name": "Tableau",
         "patterns": [
-          "tableau"
+          "\\btableau\\b"
         ]
       },
       {
         "name": "Power BI",
         "patterns": [
-          "power bi",
-          "powerbi"
+          "\\bpower bi\\b",
+          "\\bpowerbi\\b"
         ]
       },
       {
         "name": "Looker",
         "patterns": [
-          "looker"
+          "\\blooker\\b"
         ]
       },
       {
         "name": "Google Analytics",
         "patterns": [
-          "google analytics",
-          "ga4"
+          "\\bgoogle analytics\\b",
+          "\\bga4\\b"
         ]
       },
       {
         "name": "Mixpanel",
         "patterns": [
-          "mixpanel"
+          "\\bmixpanel\\b"
         ]
       },
       {
         "name": "Amplitude",
         "patterns": [
-          "amplitude"
+          "\\bamplitude\\b"
         ]
       },
       {
         "name": "Figma",
         "patterns": [
-          "figma"
+          "\\bfigma\\b"
         ]
       },
       {
         "name": "Sketch",
         "patterns": [
-          "sketch"
+          "\\bsketch\\b"
         ]
       },
       {
         "name": "Adobe XD",
         "patterns": [
-          "adobe xd",
-          "xd"
+          "\\badobe xd\\b"
         ]
       },
       {
         "name": "InVision",
         "patterns": [
-          "invision"
+          "\\binvision\\b"
         ]
       },
       {
         "name": "Miro",
         "patterns": [
-          "miro"
+          "\\bmiro\\b"
         ]
       },
       {
         "name": "Lucidchart",
         "patterns": [
-          "lucidchart"
+          "\\blucidchart\\b"
         ]
       }
     ],
@@ -3703,118 +3683,118 @@
       {
         "name": "Financial Services",
         "patterns": [
-          "financial services",
-          "fintech",
-          "banking",
-          "finance"
+          "\\bfinancial services\\b",
+          "\\bfintech\\b",
+          "\\bbanking\\b",
+          "\\bfinance\\b"
         ]
       },
       {
         "name": "Healthcare",
         "patterns": [
-          "healthcare",
-          "health tech",
-          "medical",
-          "clinical"
+          "\\bhealthcare\\b",
+          "\\bhealth tech\\b",
+          "\\bmedical\\b",
+          "\\bclinical\\b"
         ]
       },
       {
         "name": "E-commerce",
         "patterns": [
-          "e-commerce",
-          "ecommerce",
-          "retail"
+          "\\be-commerce\\b",
+          "\\becommerce\\b",
+          "\\bretail\\b"
         ]
       },
       {
         "name": "Education",
         "patterns": [
-          "education",
-          "edtech",
-          "learning"
+          "\\beducation\\b",
+          "\\bedtech\\b",
+          "\\blearning\\b"
         ]
       },
       {
         "name": "Telecommunications",
         "patterns": [
-          "telecommunications",
-          "telecom"
+          "\\btelecommunications\\b",
+          "\\btelecom\\b"
         ]
       },
       {
         "name": "Manufacturing",
         "patterns": [
-          "manufacturing",
-          "industrial"
+          "\\bmanufacturing\\b",
+          "\\bindustrial\\b"
         ]
       },
       {
         "name": "Cybersecurity",
         "patterns": [
-          "cybersecurity",
-          "infosec",
-          "information security"
+          "\\bcybersecurity\\b",
+          "\\binfosec\\b",
+          "\\binformation security\\b"
         ]
       },
       {
         "name": "Blockchain",
         "patterns": [
-          "blockchain",
-          "crypto",
-          "cryptocurrency",
-          "web3"
+          "\\bblockchain\\b",
+          "\\bcrypto\\b",
+          "\\bcryptocurrency\\b",
+          "\\bweb3\\b"
         ]
       },
       {
         "name": "IoT",
         "patterns": [
-          "iot",
-          "internet of things"
+          "\\biot\\b",
+          "\\binternet of things\\b"
         ]
       },
       {
         "name": "Gaming",
         "patterns": [
-          "gaming",
-          "game development",
-          "game dev"
+          "\\bgaming\\b",
+          "\\bgame development\\b",
+          "\\bgame dev\\b"
         ]
       },
       {
         "name": "Media & Entertainment",
         "patterns": [
-          "media",
-          "entertainment",
-          "streaming"
+          "\\bmedia\\b",
+          "\\bentertainment\\b",
+          "\\bstreaming\\b"
         ]
       },
       {
         "name": "Energy",
         "patterns": [
-          "energy",
-          "oil and gas",
-          "renewable energy"
+          "\\benergy\\b",
+          "\\boil and gas\\b",
+          "\\brenewable energy\\b"
         ]
       },
       {
         "name": "Real Estate",
         "patterns": [
-          "real estate",
-          "proptech"
+          "\\breal estate\\b",
+          "\\bproptech\\b"
         ]
       },
       {
         "name": "Automotive",
         "patterns": [
-          "automotive",
-          "auto industry"
+          "\\bautomotive\\b",
+          "\\bauto industry\\b"
         ]
       },
       {
         "name": "Aerospace",
         "patterns": [
-          "aerospace",
-          "aviation"
+          "\\baerospace\\b",
+          "\\baviation\\b"
         ]
       }
     ],
@@ -3822,143 +3802,139 @@
       {
         "name": "Generative AI",
         "patterns": [
-          "generative ai",
-          "genai",
-          "gen ai"
+          "\\bgenerative ai\\b",
+          "\\bgenai\\b",
+          "\\bgen ai\\b"
         ]
       },
       {
         "name": "Large Language Models",
         "patterns": [
           "llm[''']?s?",
-          "large language models"
+          "\\blarge language models\\b"
         ]
       },
       {
         "name": "Prompt Engineering",
         "patterns": [
-          "prompt engineering",
-          "prompt design"
+          "\\bprompt engineering\\b",
+          "\\bprompt design\\b"
         ]
       },
       {
         "name": "RAG",
         "patterns": [
           "(?<!Leve)(?<!frag)\\brag\\b(?!e|ed|ing|ment)",
-          "retrieval augmented generation",
-          "retrieval-augmented generation"
+          "\\bretrieval augmented generation\\b",
+          "\\bretrieval-augmented generation\\b"
         ]
       },
       {
         "name": "Vector Databases",
         "patterns": [
-          "vector database",
-          "vector db",
-          "embedding database"
+          "\\bvector database\\b",
+          "\\bvector db\\b",
+          "\\bembedding database\\b"
         ]
       },
       {
         "name": "Edge Computing",
         "patterns": [
-          "edge computing",
-          "edge ai"
+          "\\bedge computing\\b",
+          "\\bedge ai\\b"
         ]
       },
       {
         "name": "Quantum Computing",
         "patterns": [
-          "quantum computing",
-          "quantum"
+          "\\bquantum computing\\b",
+          "\\bquantum\\b"
         ]
       },
       {
         "name": "AR/VR",
         "patterns": [
-          "ar",
-          "vr",
-          "augmented reality",
-          "virtual reality",
-          "mixed reality",
-          "xr"
+          "\\baugmented reality\\b",
+          "\\bvirtual reality\\b",
+          "\\bmixed reality\\b"
         ]
       },
       {
         "name": "5G",
         "patterns": [
-          "5g",
-          "5g networks"
+          "\\b5g networks\\b"
         ]
       },
       {
         "name": "Smart Contracts",
         "patterns": [
-          "smart contracts",
-          "solidity"
+          "\\bsmart contracts\\b",
+          "\\bsolidity\\b"
         ]
       },
       {
         "name": "DeFi",
         "patterns": [
-          "defi",
-          "decentralized finance"
+          "\\bdefi\\b",
+          "\\bdecentralized finance\\b"
         ]
       },
       {
         "name": "NFT",
         "patterns": [
-          "nft",
-          "nfts",
-          "non-fungible token"
+          "\\bnft\\b",
+          "\\bnfts\\b",
+          "\\bnon-fungible token\\b"
         ]
       },
       {
         "name": "Digital Twins",
         "patterns": [
-          "digital twins",
-          "digital twin"
+          "\\bdigital twins\\b",
+          "\\bdigital twin\\b"
         ]
       },
       {
         "name": "Low-Code/No-Code",
         "patterns": [
-          "low-code",
-          "no-code",
-          "low code",
-          "no code"
+          "\\blow-code\\b",
+          "\\bno-code\\b",
+          "\\blow code\\b",
+          "\\bno code\\b"
         ]
       },
       {
         "name": "Serverless",
         "patterns": [
-          "serverless",
-          "serverless architecture",
-          "faas"
+          "\\bserverless\\b",
+          "\\bserverless architecture\\b",
+          "\\bfaas\\b"
         ]
       },
       {
         "name": "WebAssembly",
         "patterns": [
-          "webassembly",
-          "wasm"
+          "\\bwebassembly\\b",
+          "\\bwasm\\b"
         ]
       },
       {
         "name": "GraphQL",
         "patterns": [
-          "graphql"
+          "\\bgraphql\\b"
         ]
       },
       {
         "name": "gRPC",
         "patterns": [
-          "grpc"
+          "\\bgrpc\\b"
         ]
       },
       {
         "name": "Apache Arrow",
         "patterns": [
-          "apache arrow",
-          "arrow"
+          "\\bapache arrow\\b",
+          "\\barrow\\b"
         ]
       }
     ]

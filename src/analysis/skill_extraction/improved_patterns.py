@@ -9,15 +9,10 @@ IMPROVED_SINGLE_LETTER = {
     'Go': r'(?<!on\s)(?<!to\s)\b(?:Go|Golang)\b(?!ing|ogle)',
 }
 
-# Short words with negative lookbehind/lookahead
-IMPROVED_SHORT_WORDS = {
-    'Gin': r'(?<!En)gin(?!eer|eering)\b',
-    'RAG': r'(?<!Leve)(?<!frag)\brag\b(?!e|ed|ing|ment)',
-    'Scala': r'\bscala\b(?!ble|bility)',
-    'Ada': r'\bada\b(?!pt|pting)',
-    'Lean': r'(?<!c)lean\b(?!\s+(?:on|in|towards))',
-    'Rust': r'\brust\b(?!\s+(?:proof|resistant))',
-}
+# REMOVED: Short words causing false positives
+# Rely on skills_reference_2025.json for all pattern matching
+# Previous patterns over-matched: Gin ("Engineering"), etc.
+IMPROVED_SHORT_WORDS = {}
 
 # Exclude common non-skill contexts
 EXCLUDE_CONTEXTS = {
