@@ -13,7 +13,7 @@
     "timestamp": "2025-10-14T11:56:57+05:30"
   },
   "architecture_patterns": [
-    "naukri_2phase_scraping": {
+    {
       "pattern": "Two-phase Playwright scraping with concurrent execution",
       "phase_1_url_extraction": {
         "browser": "Playwright (headless=False)",
@@ -34,7 +34,7 @@
       "rl_reward": 20,
       "status": "production_ready"
     },
-    "consolidated_scraper": {
+    {
       "approach": "JobSpy (LinkedIn+Indeed) + Playwright (Naukri) with centralized AdvancedSkillExtractor",
       "implementation": "multi_platform_service.py (89 lines)",
       "platforms": {
@@ -45,7 +45,7 @@
       "skills": "Single AdvancedSkillExtractor instance (557 skills reference)",
       "status": "production_ready"
     },
-    "deprecated": {
+    {
       "unified_folder": "Old Playwright scrapers for Indeed - ignore",
       "indeed_unified": "Deleted 115 lines duplicate",
       "service_py": "Old service, replaced by multi_platform_service.py"

@@ -175,17 +175,6 @@
     }
   ],
   "session_context": {
-    "session_id": "validation-tests-prep",
-    "workspace": "/mnt/windows_d/Gauravs-Files-and-Folders/Freelance/Codebasics/Job_Scrapper",
-    "active_branch": "main",
-    "session_duration_minutes": 240,
-    "initialized_at": "2025-10-13T16:35:15+05:30",
-    "current_time": "2025-10-13T20:15:23+05:30",
-    "constitution_loaded": true,
-    "articles_count": 42,
-    "technology_stack": "Python + Streamlit + JobSpy + Playwright"
-  },
-  "current_execution": {
     "task_id": "naukri_scraper_fix",
     "task_name": "Fix Naukri Phase 1 URL extraction (Playwright rendering failure)",
     "status": "in_progress",
