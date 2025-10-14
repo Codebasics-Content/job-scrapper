@@ -115,35 +115,5 @@
     "accuracy_improvement": 0.2,
     "false_positive_rate": 0.0,
     "documentation_coverage": 0.85
-  },
-  "patterns": {
-    "commonMistakes": [
-      "Not validating data formats at boundaries",
-      "Inconsistent naming conventions across modules",
-      "Insufficient data type validation",
-      "Schema validation skipped before memory bank updates"
-    ],
-    "preventionStrategies": [
-      "Use Pydantic models for all data structures",
-      "Implement validation at all data entry points",
-      "Maintain constitutional standards document",
-      "Run automated validation in CI/CD"
-    ]
-  },
-  "metrics": {
-    "totalErrors": 3,
-    "resolvedErrors": 2,
-    "pendingErrors": 1,
-    "resolutionRate": 66.7
-  },
-  "recentIncidents": [
-    {
-      "id": "incident-003",
-      "timestamp": "2025-10-10T09:03:30Z",
-      "issue": "Misunderstanding about .windsurf folder deletion",
-      "resolution": "Restored .windsurf folder from git. Clarified dual IDE support: .windsurf for Windsurf IDE, .warp for Warp terminal",
-      "lesson": "Always verify file operations before assuming user intent. Both IDE structures coexist",
-      "status": "resolved"
-    }
-  ]
+  }
 }

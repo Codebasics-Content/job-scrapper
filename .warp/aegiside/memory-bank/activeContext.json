@@ -58,6 +58,9 @@
   },
   "clientRequirements": {
     "objective": "Job Skills Trend Analysis Platform",
+    "metrics": {
+      "total_rl_score": -70
+    },
     "trendFormula": "(distinct_skill_count / total_jobs) * 100 = skill_percentage",
     "inputMethod": "Terminal text input for job role keyword",
     "jobLimit": "Slider control: 5 to 50,000 jobs",
