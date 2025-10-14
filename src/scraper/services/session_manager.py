@@ -29,8 +29,11 @@ async def create_authenticated_session(
     page = await context.new_page()
     await page.goto("https://www.naukri.com", wait_until="networkidle")
     
-    # Extract cookies for API transfer
-    cookies = await context.cookies()
+    # Extract cookies and convert to dict format
+    raw_cookies = await context.cookies()
+    cookies: List[Dict[str, Any]] = [
+        {k: v for k, v in cookie.items()} for cookie in raw_cookies
+    ]
     logger.info(f"Extracted {len(cookies)} cookies from session")
     
     return browser, context, cookies
