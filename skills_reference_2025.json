@@ -1762,11 +1762,8 @@
       {
         "name": "OpenAI API",
         "patterns": [
-          "\\bopenai\\b",
-          "\\bopenai api\\b",
-          "\\bgpt-4\\b",
-          "\\bgpt-3\\b",
-          "\\bgpt-3.5\\b"
+          "\\bopenai\\s+api\\b",
+          "\\bopenai api\\b"
         ]
       },
       {
@@ -3150,9 +3147,7 @@
       {
         "name": "Research Skills",
         "patterns": [
-          "\\bresearch\\b",
-          "\\bresearch skills\\b",
-          "\\banalytical research\\b"
+          "\\bresearch\\s+(?:skills|experience|background)\\b"
         ]
       },
       {
@@ -3935,6 +3930,48 @@
         "patterns": [
           "\\bapache arrow\\b",
           "\\barrow\\b"
+        ]
+      }
+    ],
+    "Data Science & Analytics": [
+      {
+        "name": "Causal Inference",
+        "patterns": [
+          "\\bcausal inference\\b",
+          "\\bcausality\\b",
+          "\\bcausal analysis\\b"
+        ]
+      },
+      {
+        "name": "Machine Learning",
+        "patterns": [
+          "\\bmachine learning\\b",
+          "\\bML\\b(?!\\s*Ops)",
+          "\\bml algorithms\\b"
+        ]
+      },
+      {
+        "name": "Analytics",
+        "patterns": [
+          "\\banalytics\\b",
+          "\\banalytical\\b",
+          "\\banalysis\\b"
+        ]
+      },
+      {
+        "name": "A/B Testing",
+        "patterns": [
+          "\\ba/b test\\b",
+          "\\ba/b testing\\b",
+          "\\bexperimentation\\b"
+        ]
+      },
+      {
+        "name": "Statistical Analysis",
+        "patterns": [
+          "\\bstatistical analysis\\b",
+          "\\bstatistics\\b",
+          "\\bstatistical modeling\\b"
         ]
       }
     ]
