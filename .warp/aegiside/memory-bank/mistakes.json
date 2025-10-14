@@ -46,50 +46,58 @@
       "status": "identified"
     }
   ],
+  "error_patterns": [
+    {
+      "id": "schema-violation-2025-10-14-004",
+      "category": "constitutional_violation",
+      "pattern_name": "Schema Structure Violation",
+      "description": "Updated mistakes.json without validating against schema - added objects to commonMistakes string array",
+      "frequency": 1,
+      "last_occurrence": "2025-10-14T11:43:00+05:30",
+      "fix_strategy": "ALWAYS validate against .aegiside/schemas/*.schema.json before updating memory bank",
+      "prevention_rule": "Run schema validation via filesystem before ANY memory bank update",
+      "severity": "critical"
+    },
+    {
+      "id": "lint-2025-10-14-001",
+      "category": "type_safety",
+      "pattern_name": "Cookie Type Mismatch",
+      "description": "Used Dict[str, object] instead of Dict[str, str] for httpx cookies",
+      "frequency": 4,
+      "last_occurrence": "2025-10-14T11:42:00+05:30",
+      "fix_strategy": "Use Dict[str, str] for cookies, add type assertions for API responses",
+      "prevention_rule": "ALWAYS use Dict[str, str] for cookie types to match httpx expectations",
+      "severity": "high"
+    },
+    {
+      "id": "lint-2025-10-14-002",
+      "category": "unused_imports",
+      "pattern_name": "Unused List Import",
+      "description": "List import remains after changing Dict[str, str] return type",
+      "frequency": 2,
+      "last_occurrence": "2025-10-14T11:45:00+05:30",
+      "fix_strategy": "Remove unused List imports from session_manager.py and naukri_api_client.py",
+      "prevention_rule": "Remove unused imports immediately after type changes",
+      "severity": "low"
+    },
+    {
+      "id": "dependency-2025-10-14-003",
+      "category": "runtime_error",
+      "pattern_name": "Missing Dependencies",
+      "description": "pydantic not installed in system Python (venv required)",
+      "frequency": 1,
+      "last_occurrence": "2025-10-14T11:43:00+05:30",
+      "fix_strategy": "Always use venv/bin/python for test execution",
+      "prevention_rule": "ALWAYS verify dependencies via 'source venv/bin/activate' before running tests",
+      "severity": "high"
+    }
+  ],
   "patterns": {
     "commonMistakes": [
-      {
-        "id": "lint-2025-10-14-001",
-        "timestamp": "2025-10-14T11:40:00+05:30",
-        "category": "type_safety",
-        "error": "Used Any type instead of proper types (Dict[str, object])",
-        "context": "session_manager.py, naukri_api_client.py, api_url_scraper.py, api_detail_scraper.py",
-        "impact": "Type safety violations across 4 files",
-        "rl_penalty": -15,
-        "article_violated": "Art 13 (Missing proper MCP type validation)",
-        "prevention_rule": "ALWAYS use Dict[str, str] for cookie types to match httpx expectations. Use type assertions for API responses.",
-        "resolution": "Updated all files to use proper Dict[str, str] for cookies, added type assertions",
-        "resolved_at": "2025-10-14T11:42:00+05:30"
-      },
-      {
-        "id": "lint-2025-10-14-002",
-        "timestamp": "2025-10-14T11:40:00+05:30",
-        "category": "unused_imports",
-        "error": "Unused List import in session_manager.py and naukri_api_client.py",
-        "context": "Changed return type from List[Dict] to Dict[str, str]",
-        "impact": "Code cleanliness violation",
-        "rl_penalty": -5,
-        "article_violated": "Art 15 (Code quality standards)",
-        "prevention_rule": "Remove unused imports immediately after type changes",
-        "resolution": "Pending - imports still present",
-        "resolved_at": null
-      },
-      {
-        "id": "dependency-2025-10-14-003",
-        "timestamp": "2025-10-14T11:43:00+05:30",
-        "category": "runtime_error",
-        "error": "ModuleNotFoundError: No module named 'pydantic'",
-        "context": "test_naukri_20_validation.py execution",
-        "impact": "Test execution blocked",
-        "rl_penalty": -20,
-        "article_violated": "Art 14 (Schema validation requirements)",
-        "prevention_rule": "ALWAYS verify dependencies installed before test execution. Check requirements.txt alignment.",
-        "resolution": "Installing pydantic + httpx + playwright via pip3",
-        "resolved_at": null
-      },
       "Not validating data formats at boundaries",
       "Inconsistent naming conventions across modules",
-      "Insufficient data type validation"
+      "Insufficient data type validation",
+      "Schema validation skipped before memory bank updates"
     ],
     "preventionStrategies": [
       "Use Pydantic models for all data structures",

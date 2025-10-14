@@ -1,42 +1,4 @@
 {
-  "rl_transactions": [
-    {
-      "tx_id": "rl-2025-10-14-006",
-      "timestamp": "2025-10-14T11:43:00+05:30",
-      "category": "penalty",
-      "reward": -20,
-      "source_file": "mistakes.json",
-      "description": "Dependency error: pydantic not installed - blocked test execution (Art 14 violation)",
-      "article": "Art 14"
-    },
-    {
-      "tx_id": "rl-2025-10-14-005",
-      "timestamp": "2025-10-14T11:42:00+05:30",
-      "category": "reward",
-      "reward": 20,
-      "source_file": "session_manager.py, naukri_api_client.py, api_url_scraper.py, api_detail_scraper.py",
-      "description": "Fixed cookie type system: Dict[str, str] for httpx compatibility, added type assertions (+20 RL)",
-      "article": "Art 13,15"
-    },
-    {
-      "tx_id": "rl-2025-10-14-004",
-      "timestamp": "2025-10-14T11:40:00+05:30",
-      "category": "penalty",
-      "reward": -15,
-      "source_file": "session_manager.py, naukri_api_client.py",
-      "description": "Type safety violations: Used Any instead of proper types (Art 13 MCP validation failure)",
-      "article": "Art 13"
-    },
-    {
-      "tx_id": "rl-2025-10-14-003",
-      "timestamp": "2025-10-14T11:40:00+05:30",
-      "category": "penalty",
-      "reward": -5,
-      "source_file": "session_manager.py, naukri_api_client.py",
-      "description": "Unused imports not removed after type changes (Art 15 code quality)",
-      "article": "Art 15"
-    }
-  ],
   "version": "1.0",
   "timestamp": "2025-10-10T09:03:30Z",
   "projectMetrics": {

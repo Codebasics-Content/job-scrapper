@@ -3,7 +3,7 @@ Bypasses 406/captcha by using authenticated browser session
 """
 from __future__ import annotations
 import httpx
-from typing import Dict, List
+from typing import Dict
 import logging
 
 logger = logging.getLogger(__name__)
