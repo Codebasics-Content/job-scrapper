@@ -2,12 +2,25 @@
   "schema_version": "1.0.0",
   "last_updated": "2025-10-13T23:49:26+05:30",
   "metrics": {
-    "total_rl_score": -90,
+    "total_rl_score": -110,
     "tasks_completed": 35,
     "tasks_failed": 0,
     "commits": 6
   },
   "reinforcement_learning": [
+    {
+      "tx_id": "rl-naukri-test-fail-013",
+      "timestamp": "2025-10-14T12:27:00+05:30",
+      "workflow": "next",
+      "category": "validation_failure",
+      "reward": -20,
+      "source_file": "mistakes.json",
+      "description": "Naukri 20-job test failed: 400 API error, 0 jobs scraped in 5.8s. API parameters incorrect or endpoint changed.",
+      "gae_advantage": -0.25,
+      "kl_divergence": 0.003,
+      "value_branch": "task_failure",
+      "needs_research": true
+    },
     {
       "tx_id": "rl-init-012",
       "timestamp": "2025-10-14T12:13:05+05:30",

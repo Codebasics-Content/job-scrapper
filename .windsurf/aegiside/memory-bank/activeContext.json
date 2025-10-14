@@ -10,12 +10,12 @@
     "emd_compliance": "Pending schema fixes"
   },
   "current_execution": {
-    "task_id": "schema_rebuild_all_8",
-    "task_name": "Rebuild ALL 8 memory bank files with EXACT schema field order",
-    "roadmap_milestone_id": "constitutional_compliance_restoration",
-    "status": "in_progress",
+    "task_id": "naukri_api_400_fix",
+    "task_name": "Fix Naukri API 400 Bad Request error - research correct parameters",
+    "roadmap_milestone_id": "naukri_scraper_validation",
+    "status": "blocked",
     "priority": "P0_CRITICAL",
-    "blocker_reason": "Schema violations across all files - fields out of order"
+    "blocker_reason": "Naukri API v3 search endpoint returns 400 error - parameters may be incorrect or API changed"
   },
   "rl_runtime": {
     "current_gae_advantage": -0.5,

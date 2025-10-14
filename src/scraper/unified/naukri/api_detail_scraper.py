@@ -4,16 +4,13 @@ Fetches only unscraped URLs from job_urls table
 from __future__ import annotations
 import asyncio
 from typing import List, Dict
-from src.models import JobDetailModel, JobURLModel
+from src.models import JobDetailModel, JobUrlModel
 from src.scraper.services.session_manager import (
     create_authenticated_session,
     close_session,
 )
 from src.scraper.services.naukri_api_client import NaukriAPIClient
-from src.db.operations import (
-    get_unscraped_job_urls,
-    batch_upsert_jobs,
-)
+from src.db.operations import JobStorageOperations
 import logging
 
 logger = logging.getLogger(__name__)
@@ -29,7 +26,17 @@ async def scrape_naukri_details_api(
     """Phase 2: Fetch job details via API (5 concurrent)"""
     
     # Step 1: Get unscraped URLs (deduplication)
-    url_models = get_unscraped_job_urls(platform, input_role, limit)
+    db_ops = JobStorageOperations()
+    url_tuples = db_ops.get_unscraped_urls(platform, input_role or "python_developer", limit)
+    
+    # Convert tuples to JobUrlModel
+    url_models = [JobUrlModel(
+        url=url,
+        job_id=job_id,
+        platform=plat,
+        input_role=input_role or "python_developer",
+        actual_role=actual
+    ) for url, job_id, plat, actual in url_tuples]
     
     if not url_models:
         logger.info("No unscraped URLs found")
@@ -46,7 +53,7 @@ async def scrape_naukri_details_api(
         # Step 4: Fetch details concurrently (5 concurrent)
         semaphore = asyncio.Semaphore(5)
         
-        async def fetch_detail(url_model: JobURLModel) -> JobDetailModel | None:
+        async def fetch_detail(url_model: JobUrlModel) -> JobDetailModel | None:
             async with semaphore:
                 try:
                     data = await client.get_job_detail(url_model.job_id)
@@ -63,7 +70,7 @@ async def scrape_naukri_details_api(
         
         # Step 6: Store to DB
         if store_to_db and job_models:
-            batch_upsert_jobs(job_models)
+            db_ops.store_details(job_models)
         
         logger.info(f"Scraped {len(job_models)} job details via API")
         return job_models
@@ -73,7 +80,7 @@ async def scrape_naukri_details_api(
         await close_session(browser, context)
 
 
-def _parse_job_detail(data: Dict[str, object], url_model: JobURLModel) -> JobDetailModel:
+def _parse_job_detail(data: Dict[str, object], url_model: JobUrlModel) -> JobDetailModel:
     """Parse API response to JobDetailModel"""
     job = data.get("jobDetails", {})
     

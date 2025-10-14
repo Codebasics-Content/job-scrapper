@@ -15,12 +15,12 @@
   },
   "priority_queue": [
     {
-      "id": "test_naukri_20",
-      "task": "Execute test_naukri_20_validation.py with venv",
+      "id": "fix_naukri_api_400",
+      "task": "Research and fix Naukri API 400 error via @mcp:context7",
       "priority": "P0",
-      "blocker": false,
-      "context": "Validate 20 Naukri jobs: descriptions + skills. RL: +10 success, -15 failure. Store to jobs.db.",
-      "added_at": "2025-10-13T20:10:15+05:30"
+      "blocker": true,
+      "context": "API v3 search returns 400. Research correct params, headers, auth. Test minimal request first. Blocking test_naukri_20.",
+      "added_at": "2025-10-14T12:27:00+05:30"
     },
     {
       "id": "scale_test_1000",

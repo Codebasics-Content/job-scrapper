@@ -9,6 +9,26 @@
   },
   "error_patterns": [
     {
+      "error_id": "naukri_api_400_error",
+      "timestamp": "2025-10-14T12:27:00+05:30",
+      "category": "api_failure",
+      "description": "Naukri API returns 400 Bad Request on search endpoint",
+      "context": {
+        "api_url": "https://www.naukri.com/jobapi/v3/search",
+        "error_message": "Client error '400 Bad Request'",
+        "parameters": {"k": "Python Developer", "pageNo": 1, "noOfResults": 20, "urlType": "search_by_keyword", "searchType": "adv"},
+        "jobs_scraped": 0,
+        "duration_seconds": 5.8,
+        "file": "src/scraper/unified/naukri/api_url_scraper.py"
+      },
+      "impact": "test_naukri_20_validation.py failed with 0 jobs scraped",
+      "prevention_rule": "IMMEDIATE: Research Naukri API v3 parameter requirements via @mcp:context7. API may require additional headers, authentication tokens, or parameter changes. Test with minimal parameters first.",
+      "rl_penalty": -20,
+      "status": "needs_research",
+      "recurrence_count": 1,
+      "last_occurrence": "2025-10-14T12:27:00+05:30"
+    },
+    {
       "error_id": "err-research-violation-001",
       "timestamp": "2025-10-14T12:03:29+05:30",
       "category": "rl_mandate_violation",
