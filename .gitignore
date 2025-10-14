@@ -52,6 +52,7 @@ dist/
 *brightdata*credentials*
 *api*key*
 *api*token*
+proxy_manager_config.json
 
 # Database files
 *.db
