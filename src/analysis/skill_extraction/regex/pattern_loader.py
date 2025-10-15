@@ -15,24 +15,22 @@ def load_skill_patterns() -> dict[str, list[re.Pattern[str]]]:
     
     compiled_patterns: dict[str, list[re.Pattern[str]]] = {}
     
-    for category, skills_list in data.get("skills", {}).items():
-        # Skip non-technical skill categories
-        if category in EXCLUDED_CATEGORIES:
+    # skills is now a flat list, not categorized dict
+    skills_list: list[dict[str, Any]] = data.get("skills", [])
+    
+    for skill_obj in skills_list:
+        skill_name: str = skill_obj["name"]
+        
+        # Skip specific non-technical skills
+        if skill_name in EXCLUDED_SKILLS:
             continue
             
-        for skill_obj in skills_list:
-            skill_name: str = skill_obj["name"]
-            
-            # Skip specific non-technical skills
-            if skill_name in EXCLUDED_SKILLS:
-                continue
-                
-            patterns: list[str] = skill_obj.get("patterns", [skill_name.lower()])
-            
-            # Compile regex patterns with word boundaries for accuracy
-            compiled_patterns[skill_name] = [
-                re.compile(rf'\b{re.escape(p)}\b', re.IGNORECASE)
-                for p in patterns
-            ]
+        patterns: list[str] = skill_obj.get("patterns", [skill_name.lower()])
+        
+        # Compile regex patterns (patterns already have \b boundaries)
+        compiled_patterns[skill_name] = [
+            re.compile(p, re.IGNORECASE)
+            for p in patterns
+        ]
     
     return compiled_patterns
