@@ -1,13 +1,9 @@
 """
-Layer 3: Direct pattern matching with improved regex
+Layer 3: Direct pattern matching ONLY from skills_reference_2025.json
+All patterns centralized in single source of truth
 """
 import re
 from typing import Any
-from .improved_patterns import (
-    IMPROVED_SINGLE_LETTER,
-    CLOUD_PLATFORMS,
-    PROGRAMMING_LANGUAGES
-)
 
 
 def layer3_extract_direct(
@@ -21,25 +17,21 @@ def layer3_extract_direct(
     """
     skills = []
     
-    # Build pattern -> canonical_name mapping from skills_reference
+    # Build pattern -> canonical_name mapping ONLY from skills_reference_2025.json
     pattern_to_skill: dict[str, str] = {}
     
-    # Add improved patterns (for backward compatibility)
-    for skill_name, pattern_str in IMPROVED_SINGLE_LETTER.items():
-        pattern_to_skill[pattern_str] = skill_name
-    for skill_name, pattern_str in CLOUD_PLATFORMS.items():
-        pattern_to_skill[pattern_str] = skill_name
-    for skill_name, pattern_str in PROGRAMMING_LANGUAGES.items():
-        pattern_to_skill[pattern_str] = skill_name
-    
-    # Add patterns from skills_reference - map pattern -> canonical name
+    # All patterns come from skills_reference parameter (loaded from JSON)
     for skill_data in skills_reference:
         canonical_name = skill_data['name']
         for pattern_str in skill_data.get('patterns', []):
             pattern_to_skill[pattern_str] = canonical_name
     
+    # Sort patterns by length (longest first) to prioritize specific matches
+    # This ensures "React Native" matches before "React", "Google Cloud Platform" before "GCP"
+    sorted_patterns = sorted(pattern_to_skill.items(), key=lambda x: len(x[0]), reverse=True)
+    
     # Extract using patterns and return canonical names
-    for pattern_str, canonical_name in pattern_to_skill.items():
+    for pattern_str, canonical_name in sorted_patterns:
         try:
             pattern = re.compile(pattern_str, re.IGNORECASE)
             

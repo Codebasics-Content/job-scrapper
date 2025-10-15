@@ -5,31 +5,9 @@ Achieves 80-85% accuracy with 0.3s/job speed (10x faster than spaCy)
 import re
 from typing import Any
 
-# Multi-word technical skills that should be matched as phrases
-# NOTE: Removed "continuous integration" and "continuous deployment" - now consolidated
-# in skills_reference_2025.json as "Continuous Integration/Continuous Deployment"
-MULTI_WORD_SKILLS = [
-    "natural language processing",
-    "machine learning operations",
-    "computer vision",
-    "data science",
-    "deep learning",
-    "neural networks",
-    "predictive modeling",
-    "model deployment",
-    "data pipelines",
-    "model lifecycle management",
-    "retrieval augmented generation",
-    "large language models",
-    "MLOps",
-    "DevOps",
-    "RAG"
-]
-
-# NOTE: Removed problematic patterns that match common English:
-# - CI/CD: matches "CI" in words, use skills_reference.json pattern instead
-# - Express.Js: matches "express" (common verb)
-# - GenAI: too generic, matches "gen" in words
+# REMOVED: All hardcoded MULTI_WORD_SKILLS to prevent hallucinations
+# ALL patterns must come from skills_reference_2025.json for single source of truth
+# This eliminates duplicate/conflicting pattern management across multiple files
 
 # Context-aware patterns
 SKILL_CONTEXT_PATTERNS = {
@@ -44,22 +22,9 @@ SKILL_CONTEXT_PATTERNS = {
 
 
 def layer1_extract_phrases(text: str) -> tuple[list[dict[str, Any]], list[tuple[int, int]]]:
-    """Layer 1: Extract multi-word phrases"""
-    skills = []
-    consumed = []
-    
-    for skill in MULTI_WORD_SKILLS:
-        pattern = re.compile(r'\b' + re.escape(skill) + r'\b', re.IGNORECASE)
-        for match in pattern.finditer(text):
-            skills.append({
-                'skill': skill,
-                'start': match.start(),
-                'end': match.end(),
-                'layer': 1
-            })
-            consumed.append((match.start(), match.end()))
-    
-    return skills, consumed
+    """Layer 1: DEPRECATED - Now handled by layer3_direct.py using skills_reference_2025.json"""
+    # Return empty - all pattern matching now centralized in skills_reference_2025.json
+    return [], []
 
 
 def layer2_extract_context(text: str, consumed: list[tuple[int, int]]) -> tuple[list[dict[str, Any]], list[tuple[int, int]]]:

@@ -11,7 +11,9 @@
       "name": "AWS",
       "patterns": [
         "\\bAWS\\b",
-        "\\baws\\b"
+        "\\baws\\b",
+        "\\bAmazon\\s+Web\\s+Services\\b",
+        "\\bamazon\\s+web\\s+services\\b"
       ]
     },
     {
@@ -1277,7 +1279,7 @@
     {
       "name": "Ruby",
       "patterns": [
-        "\\bruby\\ on\\ rails\\b",
+        "\\bRuby\\b",
         "\\bruby\\b"
       ]
     },
@@ -1595,6 +1597,76 @@
       "name": "n8n",
       "patterns": [
         "\\bn8n\\b"
+      ]
+    },
+    {
+      "name": "Flutter",
+      "category": "Mobile Development",
+      "patterns": [
+        "\\bFlutter\\b",
+        "\\bflutter\\b"
+      ]
+    },
+    {
+      "name": "Ionic",
+      "category": "Mobile Development",
+      "patterns": [
+        "\\bIonic\\b",
+        "\\bionic\\b"
+      ]
+    },
+    {
+      "name": "Ruby On Rails",
+      "category": "Backend Framework",
+      "patterns": [
+        "\\bRuby\\s+on\\s+Rails\\b",
+        "\\bruby\\s+on\\s+rails\\b",
+        "\\bRails\\b",
+        "\\brails\\b"
+      ]
+    },
+    {
+      "name": "Nuxt.Js",
+      "category": "Frontend Framework",
+      "patterns": [
+        "\\bNuxt\\.?js\\b",
+        "\\bNuxt\\b",
+        "\\bnuxt\\.?js\\b",
+        "\\bnuxt\\b"
+      ]
+    },
+    {
+      "name": "Astro",
+      "category": "Frontend Framework",
+      "patterns": [
+        "\\bAstro\\b",
+        "\\bastro\\b"
+      ]
+    },
+    {
+      "name": "Solid.Js",
+      "category": "Frontend Framework",
+      "patterns": [
+        "\\bSolid\\.?js\\b",
+        "\\bSolidJS\\b",
+        "\\bsolid\\.?js\\b",
+        "\\bsolidjs\\b"
+      ]
+    },
+    {
+      "name": "Qwik",
+      "category": "Frontend Framework",
+      "patterns": [
+        "\\bQwik\\b",
+        "\\bqwik\\b"
+      ]
+    },
+    {
+      "name": "Webpack",
+      "category": "Build Tool",
+      "patterns": [
+        "\\bWebpack\\b",
+        "\\bwebpack\\b"
       ]
     }
   ]
