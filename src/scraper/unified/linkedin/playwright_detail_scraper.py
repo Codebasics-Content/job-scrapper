@@ -1,16 +1,15 @@
 """LinkedIn Detail Scraping via Playwright (Phase 2)
-EMD Compliance: ≤80 lines, 5 concurrent contexts (Naukri pattern)
+EMD Compliance: ≤80 lines, Naukri batching pattern
 """
 from __future__ import annotations
 
 import asyncio
 import logging
-import os
 from typing import List
-from playwright.async_api import async_playwright
 from src.models import JobDetailModel, JobUrlModel
 from src.db.operations import JobStorageOperations
 from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
+from src.scraper.services.playwright_browser import PlaywrightBrowser
 from .selector_config import DETAIL_SELECTORS, WAIT_TIMEOUTS
 
 logger = logging.getLogger(__name__)
@@ -23,63 +22,49 @@ async def scrape_linkedin_details_playwright(
     store_to_db: bool = True,
     headless: bool = False,
 ) -> List[JobDetailModel]:
-    """Phase 2: Extract LinkedIn job details with skills from JD"""
+    """Phase 2: Extract LinkedIn job details with Naukri batching pattern"""
     
     db_ops = JobStorageOperations()
-    
-    # Get URLs to scrape
     url_models = db_ops.get_urls_to_scrape(platform, limit)
-    logger.info(f"📋 Found {len(url_models)} URLs to scrape")
     
     if not url_models:
+        logger.info(f"No URLs to scrape for {platform}")
         return []
     
-    # Initialize skills extractor
+    logger.info(f"📋 Found {len(url_models)} URLs to scrape")
     extractor = AdvancedSkillExtractor('skills_reference_2025.json')
-    
-    proxy_url = os.getenv("PROXY_URL")
-    proxy_config = None
-    
-    if proxy_url and proxy_url.startswith("http"):
-        proxy_parts = proxy_url.replace("http://", "").replace("https://", "")
-        auth_host = proxy_parts.split("@")
-        username, password = auth_host[0].split(":")
-        server = f"http://{auth_host[1]}"
-        proxy_config = {"server": server, "username": username, "password": password}
-    
     jobs: List[JobDetailModel] = []
     
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=headless, proxy=proxy_config)
+    # Use PlaywrightBrowser service (same as Naukri)
+    async with PlaywrightBrowser(headless=headless) as browser:
+        concurrent_jobs = 5  # Same as Naukri
         
-        # Concurrent scraping (5 tabs in SINGLE browser window)
-        semaphore = asyncio.Semaphore(5)
-        
-        async def scrape_job(url_model: JobUrlModel) -> JobDetailModel | None:
-            """Scrape single job in a new tab within same browser"""
-            page = None
-            async with semaphore:
+        # Process in batches (Naukri pattern)
+        for batch_start in range(0, len(url_models), concurrent_jobs):
+            batch = url_models[batch_start:batch_start + concurrent_jobs]
+            
+            async def scrape_job(url_model: JobUrlModel) -> JobDetailModel | None:
                 try:
-                    page = await browser.new_page()
-                    await page.goto(url_model.url, timeout=WAIT_TIMEOUTS["navigation"])
+                    # Render URL using browser service
+                    html = await browser.render_url(
+                        url_model.url,
+                        wait_seconds=2.0,
+                        timeout_ms=WAIT_TIMEOUTS["navigation"],
+                        wait_until='networkidle'
+                    )
                     
-                    try:
-                        show_more = await page.query_selector(DETAIL_SELECTORS["show_more_button"][0])
-                        if show_more:
-                            await show_more.click()
-                            await asyncio.sleep(1)
-                    except:
-                        pass
-                    
-                    desc_elem = await page.query_selector(DETAIL_SELECTORS["description"][0])
-                    description = await desc_elem.inner_text() if desc_elem else ""
+                    # Extract description from HTML
+                    from bs4 import BeautifulSoup
+                    soup = BeautifulSoup(html, 'html.parser')
+                    desc_elem = soup.select_one(DETAIL_SELECTORS["description"][0])
+                    description = desc_elem.get_text(strip=True) if desc_elem else ""
                     
                     skills = extractor.extract(description) if len(description.strip()) > 50 else []
                     skill_str = ','.join([s for s in skills if isinstance(s, str)])
                     
-                    job = JobDetailModel(
+                    return JobDetailModel(
                         job_id=url_model.job_id,
-                        platform=url_model.platform,
+                        platform=platform,
                         actual_role=url_model.actual_role,
                         url=url_model.url,
                         job_description=description,
@@ -88,26 +73,21 @@ async def scrape_linkedin_details_playwright(
                         company_detail="",
                         posted_date=None
                     )
-                    return job
-                    
                 except Exception as e:
-                    logger.warning(f"Failed to scrape {url_model.url}: {e}")
+                    logger.warning(f"Failed {url_model.url}: {e}")
                     return None
-                finally:
-                    if page:
-                        await page.close()
-        
-        tasks = [scrape_job(u) for u in url_models]
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-        jobs = [r for r in results if isinstance(r, JobDetailModel)]
-        
-        await browser.close()
-    
-    # Deduplicate and store
-    if store_to_db and jobs:
-        existing = db_ops.get_existing_urls([j.url for j in jobs])
-        new_jobs = [j for j in jobs if j.url not in existing]
-        db_ops.store_details(new_jobs)
-        logger.info(f"✅ Stored {len(new_jobs)} NEW LinkedIn jobs")
+            
+            # Gather batch results
+            batch_results = await asyncio.gather(*[scrape_job(u) for u in batch])
+            batch_jobs = [j for j in batch_results if j]
+            jobs.extend(batch_jobs)
+            
+            # Store batch
+            if store_to_db and batch_jobs:
+                stored = db_ops.store_details(batch_jobs)
+                logger.info(f"💾 Batch {batch_start // concurrent_jobs + 1}: {stored} stored")
+            
+            await asyncio.sleep(1.5)
+            logger.info(f"📈 Progress: {len(jobs)}/{len(url_models)}")
     
     return jobs
