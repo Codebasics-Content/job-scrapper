@@ -6,6 +6,8 @@ import re
 from typing import Any
 
 # Multi-word technical skills that should be matched as phrases
+# NOTE: Removed "continuous integration" and "continuous deployment" - now consolidated
+# in skills_reference_2025.json as "Continuous Integration/Continuous Deployment"
 MULTI_WORD_SKILLS = [
     "natural language processing",
     "machine learning operations",
@@ -17,8 +19,6 @@ MULTI_WORD_SKILLS = [
     "model deployment",
     "data pipelines",
     "model lifecycle management",
-    "continuous integration",
-    "continuous deployment",
     "retrieval augmented generation",
     "large language models",
     "MLOps",

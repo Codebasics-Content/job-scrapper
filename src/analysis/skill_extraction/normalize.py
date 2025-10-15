@@ -5,11 +5,12 @@ from typing import Any
 
 
 # Synonym mapping (canonical -> variants)
+# NOTE: Removed CI/CD - now consolidated in skills_reference_2025.json as
+# "Continuous Integration/Continuous Deployment" with both short and long form patterns
 SKILL_SYNONYMS = {
     "Machine Learning": ["machine learning", "ml", "ml engineering"],
     "Natural Language Processing": ["natural language processing", "nlp"],
     "MLOps": ["mlops", "ml ops", "machine learning operations"],
-    "CI/CD": ["ci/cd", "ci-cd", "cicd", "continuous integration", "continuous deployment"],
     "Deep Learning": ["deep learning", "dl"],
     "RAG": ["rag", "retrieval augmented generation"],
     "LLM": ["llm", "large language model", "large language models"],
@@ -49,8 +50,10 @@ def deduplicate_skills(skills: list[dict[str, Any]]) -> list[str]:
             seen.add(skill.lower())
             unique_skills.append(skill)
     
-    # Remove overlapping duplicates: if "CI/CD" present, remove "CI", "Ci", "CD", "Cd"
-    if 'CI/CD' in unique_skills:
-        unique_skills = [s for s in unique_skills if s.upper() not in ['CI', 'CD']]
+    # Remove overlapping duplicates:
+    # "Continuous Integration/Continuous Deployment" supersedes individual CI/CD components
+    cicd_long = 'Continuous Integration/Continuous Deployment'
+    if cicd_long in unique_skills:
+        unique_skills = [s for s in unique_skills if s.upper() not in ['CI', 'CD', 'CI/CD']]
     
     return unique_skills

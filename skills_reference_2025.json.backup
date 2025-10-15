@@ -1,5 +1,5 @@
 {
-  "total_skills": 246,
+  "total_skills": 248,
   "skills": [
     {
       "name": ".NET",
@@ -8,10 +8,10 @@
       ]
     },
     {
-      "name": "AWS",
+      "name": "AI",
       "patterns": [
-        "\\bAWS\\b",
-        "\\baws\\b"
+        "\\bAI\\b",
+        "\\bai\\b"
       ]
     },
     {
@@ -70,29 +70,18 @@
       ]
     },
     {
-      "name": "Application Programming Interface",
+      "name": "API",
       "patterns": [
         "\\bAPI\\b",
         "\\bAPIs\\b",
         "\\bapi\\b",
-        "\\bapis\\b",
-        "\\bapplication programming interface\\b",
-        "\\bApplication\\s+Programming\\s+Interface\\b"
+        "\\bapis\\b"
       ]
     },
     {
       "name": "Argocd",
       "patterns": [
         "\\bargocd\\b"
-      ]
-    },
-    {
-      "name": "Artificial Intelligence",
-      "patterns": [
-        "\\bAI\\b",
-        "\\bai\\b",
-        "\\bartificial intelligence\\b",
-        "\\bArtificial\\s+Intelligence\\b"
       ]
     },
     {
@@ -103,17 +92,16 @@
       ]
     },
     {
-      "name": "AutoGen",
-      "patterns": [
-        "\\bautogen\\b",
-        "\\bauto\\s+gen\\b",
-        "\\bmicrosoft\\s+autogen\\b"
-      ]
-    },
-    {
       "name": "Autogen",
       "patterns": [
         "\\bautogen\\b"
+      ]
+    },
+    {
+      "name": "AWS",
+      "patterns": [
+        "\\bAWS\\b",
+        "\\baws\\b"
       ]
     },
     {
@@ -192,6 +180,12 @@
       ]
     },
     {
+      "name": "Bentoml",
+      "patterns": [
+        "\\bbentoml\\b"
+      ]
+    },
+    {
       "name": "BERT",
       "patterns": [
         "\\bBERT\\b",
@@ -199,9 +193,10 @@
       ]
     },
     {
-      "name": "Bentoml",
+      "name": "BI",
       "patterns": [
-        "\\bbentoml\\b"
+        "\\bBI\\b",
+        "\\bbi\\b"
       ]
     },
     {
@@ -223,42 +218,9 @@
       ]
     },
     {
-      "name": "Business Intelligence",
-      "patterns": [
-        "\\bBI\\b",
-        "\\bbi\\b",
-        "\\bbusiness intelligence\\b",
-        "\\bBusiness\\s+Intelligence\\b"
-      ]
-    },
-    {
       "name": "C",
       "patterns": [
         "\\bc\\b"
-      ]
-    },
-    {
-      "name": "CMS",
-      "patterns": [
-        "\\bCMS\\b",
-        "\\bcms\\b"
-      ]
-    },
-    {
-      "name": "CSS",
-      "patterns": [
-        "\\bCSS\\b",
-        "\\bcascading\\ style\\ sheets\\b",
-        "\\bcss\\b"
-      ]
-    },
-    {
-      "name": "CSS3",
-      "patterns": [
-        "\\bCSS3\\b",
-        "\\bCSS\\b",
-        "\\bcss3\\b",
-        "\\bcss\\b"
       ]
     },
     {
@@ -274,6 +236,13 @@
       ]
     },
     {
+      "name": "CD",
+      "patterns": [
+        "\\bCD\\b",
+        "\\bcd\\b"
+      ]
+    },
+    {
       "name": "Chatgpt",
       "patterns": [
         "\\bchatgpt\\b"
@@ -286,6 +255,22 @@
       ]
     },
     {
+      "name": "CI",
+      "patterns": [
+        "\\bCI\\b",
+        "\\bci\\b"
+      ]
+    },
+    {
+      "name": "CI/CD",
+      "patterns": [
+        "\\bCI/CD\\b",
+        "\\bci/cd\\b",
+        "\\bcontinuous\\ deployment\\b",
+        "\\bcontinuous\\ integration\\b"
+      ]
+    },
+    {
       "name": "Circleci",
       "patterns": [
         "\\bcircleci\\b"
@@ -295,6 +280,13 @@
       "name": "Cline",
       "patterns": [
         "\\bcline\\b"
+      ]
+    },
+    {
+      "name": "CMS",
+      "patterns": [
+        "\\bCMS\\b",
+        "\\bcms\\b"
       ]
     },
     {
@@ -323,25 +315,26 @@
       ]
     },
     {
-      "name": "Continuous Integration/Continuous Deployment",
-      "patterns": [
-        "\\bCI/CD\\b",
-        "\\bContinuous\\s+Integration/Continuous\\s+Deployment\\b",
-        "\\bci/cd\\b",
-        "\\bcontinuous integration/continuous deployment\\b"
-      ]
-    },
-    {
-      "name": "CrewAI",
-      "patterns": [
-        "\\bcrewai\\b",
-        "\\bcrew\\s+ai\\b"
-      ]
-    },
-    {
       "name": "Crewai",
       "patterns": [
         "\\bcrewai\\b"
+      ]
+    },
+    {
+      "name": "CSS",
+      "patterns": [
+        "\\bCSS\\b",
+        "\\bcascading\\ style\\ sheets\\b",
+        "\\bcss\\b"
+      ]
+    },
+    {
+      "name": "CSS3",
+      "patterns": [
+        "\\bCSS3\\b",
+        "\\bCSS\\b",
+        "\\bcss3\\b",
+        "\\bcss\\b"
       ]
     },
     {
@@ -456,13 +449,6 @@
       ]
     },
     {
-      "name": "EMR",
-      "patterns": [
-        "\\bEMR\\b",
-        "\\bemr\\b"
-      ]
-    },
-    {
       "name": "Edge Computing",
       "patterns": [
         "\\bedge\\ ai\\b",
@@ -482,24 +468,29 @@
       ]
     },
     {
+      "name": "EMR",
+      "patterns": [
+        "\\bEMR\\b",
+        "\\bemr\\b"
+      ]
+    },
+    {
       "name": "Encryption",
       "patterns": [
         "\\bencryption\\b"
       ]
     },
     {
-      "name": "Express.Js",
+      "name": "ETL",
       "patterns": [
-        "\\bexpress\\.js\\b"
+        "\\bETL\\b",
+        "\\betl\\b"
       ]
     },
     {
-      "name": "Extract Transform Load",
+      "name": "Express.Js",
       "patterns": [
-        "\\bETL\\b",
-        "\\betl\\b",
-        "\\bextract transform load\\b",
-        "\\bExtract\\s+Transform\\s+Load\\b"
+        "\\bexpress\\.js\\b"
       ]
     },
     {
@@ -530,22 +521,6 @@
       "name": "Flask",
       "patterns": [
         "\\bflask\\b"
-      ]
-    },
-    {
-      "name": "GPT",
-      "patterns": [
-        "\\bGPT\\b",
-        "\\bgpt\\b"
-      ]
-    },
-    {
-      "name": "GPU",
-      "patterns": [
-        "\\bGPU\\b",
-        "\\bGPUs\\b",
-        "\\bgpu\\b",
-        "\\bgpus\\b"
       ]
     },
     {
@@ -624,9 +599,25 @@
       ]
     },
     {
+      "name": "GPT",
+      "patterns": [
+        "\\bGPT\\b",
+        "\\bgpt\\b"
+      ]
+    },
+    {
       "name": "Gpt Apis",
       "patterns": [
         "\\bgpt\\ apis\\b"
+      ]
+    },
+    {
+      "name": "GPU",
+      "patterns": [
+        "\\bGPU\\b",
+        "\\bGPUs\\b",
+        "\\bgpu\\b",
+        "\\bgpus\\b"
       ]
     },
     {
@@ -654,22 +645,6 @@
       ]
     },
     {
-      "name": "HTML5",
-      "patterns": [
-        "\\bHTML5\\b",
-        "\\bHTML\\b",
-        "\\bhtml5\\b",
-        "\\bhtml\\b"
-      ]
-    },
-    {
-      "name": "HTTP",
-      "patterns": [
-        "\\bHTTP\\b",
-        "\\bhttp\\b"
-      ]
-    },
-    {
       "name": "Haystack",
       "patterns": [
         "\\bhaystack\\b"
@@ -692,6 +667,22 @@
       "patterns": [
         "\\bhtml\\b",
         "\\bhypertext\\ markup\\ language\\b"
+      ]
+    },
+    {
+      "name": "HTML5",
+      "patterns": [
+        "\\bHTML5\\b",
+        "\\bHTML\\b",
+        "\\bhtml5\\b",
+        "\\bhtml\\b"
+      ]
+    },
+    {
+      "name": "HTTP",
+      "patterns": [
+        "\\bHTTP\\b",
+        "\\bhttp\\b"
       ]
     },
     {
@@ -809,16 +800,16 @@
       ]
     },
     {
+      "name": "Keras",
+      "patterns": [
+        "\\bkeras\\b"
+      ]
+    },
+    {
       "name": "KMS",
       "patterns": [
         "\\bKMS\\b",
         "\\bkms\\b"
-      ]
-    },
-    {
-      "name": "Keras",
-      "patterns": [
-        "\\bkeras\\b"
       ]
     },
     {
@@ -846,34 +837,6 @@
       ]
     },
     {
-      "name": "LLM",
-      "patterns": [
-        "\\bLLM\\b",
-        "\\bLLMs\\b",
-        "\\blarge\\ language\\ model\\b",
-        "\\blarge\\ language\\ models\\b",
-        "\\bllm\\ fine\\b",
-        "\\bllm\\ safety\\b",
-        "\\bllm\\b",
-        "\\bllms\\ fine\\b",
-        "\\bllms\\b"
-      ]
-    },
-    {
-      "name": "LangChain",
-      "patterns": [
-        "\\blangchain\\b",
-        "\\blang\\s+chain\\b"
-      ]
-    },
-    {
-      "name": "LangGraph",
-      "patterns": [
-        "\\blanggraph\\b",
-        "\\blang\\s+graph\\b"
-      ]
-    },
-    {
       "name": "Langchain",
       "patterns": [
         "\\blangchain\\b"
@@ -892,17 +855,23 @@
       ]
     },
     {
-      "name": "LlamaIndex",
-      "patterns": [
-        "\\bllamaindex\\b",
-        "\\bllama\\s+index\\b",
-        "\\bgpt\\s+index\\b"
-      ]
-    },
-    {
       "name": "Llamaindex",
       "patterns": [
         "\\bllamaindex\\b"
+      ]
+    },
+    {
+      "name": "LLM",
+      "patterns": [
+        "\\bLLM\\b",
+        "\\bLLMs\\b",
+        "\\blarge\\ language\\ model\\b",
+        "\\blarge\\ language\\ models\\b",
+        "\\bllm\\ fine\\b",
+        "\\bllm\\ safety\\b",
+        "\\bllm\\b",
+        "\\bllms\\ fine\\b",
+        "\\bllms\\b"
       ]
     },
     {
@@ -915,12 +884,6 @@
       "name": "Lora",
       "patterns": [
         "\\blora\\b"
-      ]
-    },
-    {
-      "name": "MLOps",
-      "patterns": [
-        "\\bMLOps\\b"
       ]
     },
     {
@@ -951,6 +914,14 @@
       ]
     },
     {
+      "name": "Model Context Protocol",
+      "patterns": [
+        "\\bMCP\\b",
+        "\\bmcp\\b",
+        "\\bmodel\\s+context\\s+protocol\\b"
+      ]
+    },
+    {
       "name": "Microservices",
       "patterns": [
         "\\bmicroservices\\b"
@@ -969,17 +940,15 @@
       ]
     },
     {
-      "name": "Mocha",
+      "name": "MLOps",
       "patterns": [
-        "\\bmocha\\b"
+        "\\bMLOps\\b"
       ]
     },
     {
-      "name": "Model Context Protocol",
+      "name": "Mocha",
       "patterns": [
-        "\\bMCP\\b",
-        "\\bmcp\\b",
-        "\\bmodel\\s+context\\s+protocol\\b"
+        "\\bmocha\\b"
       ]
     },
     {
@@ -1209,32 +1178,16 @@
       ]
     },
     {
+      "name": "Ray",
+      "patterns": [
+        "\\bray\\b"
+      ]
+    },
+    {
       "name": "RDS",
       "patterns": [
         "\\bRDS\\b",
         "\\brds\\b"
-      ]
-    },
-    {
-      "name": "REST",
-      "patterns": [
-        "\\bREST\\b",
-        "\\bRESTful\\b",
-        "\\brest\\b",
-        "\\brestful\\b"
-      ]
-    },
-    {
-      "name": "RL",
-      "patterns": [
-        "\\bRL\\b",
-        "\\brl\\b"
-      ]
-    },
-    {
-      "name": "Ray",
-      "patterns": [
-        "\\bray\\b"
       ]
     },
     {
@@ -1269,6 +1222,22 @@
       ]
     },
     {
+      "name": "REST",
+      "patterns": [
+        "\\bREST\\b",
+        "\\bRESTful\\b",
+        "\\brest\\b",
+        "\\brestful\\b"
+      ]
+    },
+    {
+      "name": "RL",
+      "patterns": [
+        "\\bRL\\b",
+        "\\brl\\b"
+      ]
+    },
+    {
       "name": "Rlhf",
       "patterns": [
         "\\brlhf\\b"
@@ -1295,15 +1264,6 @@
       ]
     },
     {
-      "name": "SDK",
-      "patterns": [
-        "\\bSDK\\b",
-        "\\bSDKs\\b",
-        "\\bsdk\\b",
-        "\\bsdks\\b"
-      ]
-    },
-    {
       "name": "SageMaker",
       "patterns": [
         "\\bSageMaker\\b"
@@ -1325,6 +1285,15 @@
       "name": "Scipy",
       "patterns": [
         "\\bscipy\\b"
+      ]
+    },
+    {
+      "name": "SDK",
+      "patterns": [
+        "\\bSDK\\b",
+        "\\bSDKs\\b",
+        "\\bsdk\\b",
+        "\\bsdks\\b"
       ]
     },
     {
@@ -1394,6 +1363,14 @@
       ]
     },
     {
+      "name": "SQL",
+      "patterns": [
+        "\\bSQL\\b",
+        "\\bsql\\b",
+        "\\bstructured\\ query\\ language\\b"
+      ]
+    },
+    {
       "name": "Sqlite",
       "patterns": [
         "\\bsqlite\\b"
@@ -1412,16 +1389,6 @@
       ]
     },
     {
-      "name": "Structured Query Language",
-      "patterns": [
-        "\\bSQL\\b",
-        "\\bsql\\b",
-        "\\bstructured\\ query\\ language\\b",
-        "\\bstructured query language\\b",
-        "\\bStructured\\s+Query\\s+Language\\b"
-      ]
-    },
-    {
       "name": "Svelte",
       "patterns": [
         "\\bsvelte\\b"
@@ -1434,13 +1401,6 @@
       ]
     },
     {
-      "name": "TCP",
-      "patterns": [
-        "\\bTCP\\b",
-        "\\btcp\\b"
-      ]
-    },
-    {
       "name": "Tableau",
       "patterns": [
         "\\btableau\\b"
@@ -1450,6 +1410,13 @@
       "name": "Talend",
       "patterns": [
         "\\btalend\\b"
+      ]
+    },
+    {
+      "name": "TCP",
+      "patterns": [
+        "\\bTCP\\b",
+        "\\btcp\\b"
       ]
     },
     {
@@ -1513,27 +1480,23 @@
       ]
     },
     {
+      "name": "UI",
+      "patterns": [
+        "\\bUI\\b",
+        "\\bui\\b"
+      ]
+    },
+    {
       "name": "Uml",
       "patterns": [
         "\\buml\\b"
       ]
     },
     {
-      "name": "User Experience",
+      "name": "UX",
       "patterns": [
         "\\bUX\\b",
-        "\\bux\\b",
-        "\\buser experience\\b",
-        "\\bUser\\s+Experience\\b"
-      ]
-    },
-    {
-      "name": "User Interface",
-      "patterns": [
-        "\\bUI\\b",
-        "\\bui\\b",
-        "\\buser interface\\b",
-        "\\bUser\\s+Interface\\b"
+        "\\bux\\b"
       ]
     },
     {
@@ -1592,9 +1555,46 @@
       ]
     },
     {
+      "name": "LangGraph",
+      "patterns": [
+        "\\blanggraph\\b",
+        "\\blang\\s+graph\\b"
+      ]
+    },
+    {
+      "name": "LlamaIndex",
+      "patterns": [
+        "\\bllamaindex\\b",
+        "\\bllama\\s+index\\b",
+        "\\bgpt\\s+index\\b"
+      ]
+    },
+    {
+      "name": "CrewAI",
+      "patterns": [
+        "\\bcrewai\\b",
+        "\\bcrew\\s+ai\\b"
+      ]
+    },
+    {
+      "name": "AutoGen",
+      "patterns": [
+        "\\bautogen\\b",
+        "\\bauto\\s+gen\\b",
+        "\\bmicrosoft\\s+autogen\\b"
+      ]
+    },
+    {
       "name": "n8n",
       "patterns": [
         "\\bn8n\\b"
+      ]
+    },
+    {
+      "name": "LangChain",
+      "patterns": [
+        "\\blangchain\\b",
+        "\\blang\\s+chain\\b"
       ]
     }
   ]
