@@ -7,7 +7,7 @@ import asyncio
 import logging
 from typing import List
 from playwright.async_api import async_playwright
-from src.models import JobDetailModel, JobUrlModel
+from src.models import JobDetailModel
 from src.db.operations import JobStorageOperations
 from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
 from .selector_config import DETAIL_SELECTORS, WAIT_TIMEOUTS
