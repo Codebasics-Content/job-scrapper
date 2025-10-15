@@ -36,6 +36,7 @@ def normalize_skill(skill: str) -> str:
 def deduplicate_skills(skills: list[dict[str, Any]]) -> list[str]:
     """
     Extract skill names, normalize, and deduplicate
+    Handles overlapping patterns (e.g., CI/CD contains CI and CD)
     """
     skill_names = [s['skill'] for s in skills]
     normalized = [normalize_skill(name) for name in skill_names]
@@ -47,5 +48,9 @@ def deduplicate_skills(skills: list[dict[str, Any]]) -> list[str]:
         if skill.lower() not in seen:
             seen.add(skill.lower())
             unique_skills.append(skill)
+    
+    # Remove overlapping duplicates: if "CI/CD" present, remove "CI", "Ci", "CD", "Cd"
+    if 'CI/CD' in unique_skills:
+        unique_skills = [s for s in unique_skills if s.upper() not in ['CI', 'CD']]
     
     return unique_skills
