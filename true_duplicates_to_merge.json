@@ -1,0 +1,88 @@
+[
+  {
+    "short": "CV",
+    "long": "Computer Vision",
+    "short_patterns": [
+      "\\bCV\\b",
+      "\\bcomputer\\ vision\\b"
+    ],
+    "long_patterns": [
+      "\\bCV\\b",
+      "\\bcomputer\\ vision\\b"
+    ]
+  },
+  {
+    "short": "DL",
+    "long": "Deep Learning",
+    "short_patterns": [
+      "\\bDL\\b",
+      "\\bdeep\\ learning\\b",
+      "\\bdl\\b"
+    ],
+    "long_patterns": [
+      "\\bDL\\b",
+      "\\bdeep\\ learning\\b",
+      "\\bdl\\b"
+    ]
+  },
+  {
+    "short": "Gcp",
+    "long": "Google Cloud Platform",
+    "short_patterns": [
+      "\\bgcp\\b"
+    ],
+    "long_patterns": [
+      "\\bgoogle\\ cloud\\ platform\\b"
+    ]
+  },
+  {
+    "short": "ML",
+    "long": "Machine Learning",
+    "short_patterns": [
+      "\\bML\\b",
+      "\\bmachine\\ learning\\b",
+      "\\bml\\ frameworks\\b",
+      "\\bml\\ fundamentals\\b",
+      "\\bml\\ infrastructure\\b",
+      "\\bml\\ lifecycle\\ management\\b",
+      "\\bml\\ methodologies\\b",
+      "\\bml\\ ops\\ tools\\b",
+      "\\bml\\ systems\\b",
+      "\\bml\\b"
+    ],
+    "long_patterns": [
+      "\\bML\\b",
+      "\\bmachine\\ learning\\b",
+      "\\bml\\ frameworks\\b",
+      "\\bml\\ fundamentals\\b",
+      "\\bml\\ infrastructure\\b",
+      "\\bml\\ lifecycle\\ management\\b",
+      "\\bml\\ methodologies\\b",
+      "\\bml\\ ops\\ tools\\b",
+      "\\bml\\ systems\\b",
+      "\\bml\\b"
+    ]
+  },
+  {
+    "short": "NLP",
+    "long": "Natural Language Processing",
+    "short_patterns": [
+      "\\bNLP\\b",
+      "\\bnatural\\ language\\ processing\\b"
+    ],
+    "long_patterns": [
+      "\\bNLP\\b",
+      "\\bnatural\\ language\\ processing\\b"
+    ]
+  },
+  {
+    "short": "CI",
+    "long": "Causal Inference",
+    "short_patterns": [
+      "\\bCI\\b"
+    ],
+    "long_patterns": [
+      "\\bcausal\\ inference\\b"
+    ]
+  }
+]

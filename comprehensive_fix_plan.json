@@ -1,0 +1,95 @@
+{
+  "duplicates_to_merge_and_delete": [
+    {
+      "action": "merge_and_delete",
+      "keep": "LLM",
+      "delete": "LLMs",
+      "reason": "LLM already has \\bllms\\b pattern, LLMs is redundant"
+    },
+    {
+      "action": "merge_and_delete",
+      "keep": "Golang",
+      "delete": "Go",
+      "merge_patterns": [
+        "\\bgo\\b"
+      ],
+      "reason": "Go and Golang are the same language"
+    },
+    {
+      "action": "merge_and_delete",
+      "keep": "Postgresql",
+      "delete": "Postgres",
+      "merge_patterns": [
+        "\\bpostgres\\b"
+      ],
+      "reason": "Postgres and Postgresql are the same database"
+    },
+    {
+      "action": "merge_and_delete",
+      "keep": "Google Cloud Platform",
+      "delete": "Gcp",
+      "merge_patterns": [
+        "\\bgcp\\b"
+      ],
+      "reason": "GCP is abbreviation of Google Cloud Platform"
+    },
+    {
+      "action": "merge_and_delete",
+      "keep": "Apache Spark",
+      "delete": "Spark",
+      "merge_patterns": [
+        "\\bspark\\b"
+      ],
+      "reason": "Spark is Apache Spark"
+    }
+  ],
+  "add_parent_patterns": [
+    {
+      "action": "add_patterns",
+      "skills": [
+        "Aws Bedrock",
+        "Aws Cloud Services",
+        "Aws Codepipeline",
+        "Aws Lambda",
+        "Aws Sagemaker"
+      ],
+      "add_pattern": "\\baws\\b",
+      "reason": "AWS children should match 'AWS' alone"
+    },
+    {
+      "action": "add_patterns",
+      "skills": [
+        "Azure Functions",
+        "Azure Kubernetes Service",
+        "Azure Openai",
+        "Azure Storage"
+      ],
+      "add_pattern": "\\bazure\\b",
+      "reason": "Azure children should match 'Azure' alone"
+    },
+    {
+      "action": "add_patterns",
+      "skills": [
+        "React Native"
+      ],
+      "add_pattern": "\\breact\\b",
+      "reason": "React Native uses React"
+    },
+    {
+      "action": "add_patterns",
+      "skills": [
+        "CSS3"
+      ],
+      "add_pattern": "\\bcss\\b",
+      "reason": "CSS3 is a version of CSS"
+    },
+    {
+      "action": "add_patterns",
+      "skills": [
+        "HTML5"
+      ],
+      "add_pattern": "\\bhtml\\b",
+      "reason": "HTML5 is a version of HTML"
+    }
+  ]
+}

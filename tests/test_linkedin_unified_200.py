@@ -22,27 +22,28 @@ async def test_linkedin_unified():
     """Test LinkedIn Unified Scraper (Playwright + BrightData)"""
     
     print("\n" + "="*70)
-    print("🧪 TESTING: LinkedIn Unified Scraper (Playwright + BrightData)")
+    print("🧪 TESTING: LinkedIn Unified Scraper - 1000 Jobs at Scale")
     print("="*70)
     
-    print(f"\n🎯 Target: 200 LinkedIn jobs")
+    print(f"\n🎯 Target: 1000 UNIQUE LinkedIn jobs (after deduplication)")
     print(f"🔍 Search: 'AI Engineer'")
     print(f"📍 Location: '' (worldwide)")
     print(f"🌐 Method: Playwright with BrightData residential proxy")
+    print(f"⚡ Adaptive collection: will gather ~500 URLs (max)")
     
     try:
         # Scrape using unified Playwright scraper
         jobs = await scrape_linkedin_jobs_unified(
             keyword="AI Engineer",
             location="",  # Worldwide
-            limit=200,
+            limit=1000,  # 1000 UNIQUE jobs after deduplication
             headless=False  # Visible browser for debugging
         )
         
         print(f"\n" + "="*70)
         print(f"✅ SCRAPING COMPLETED")
         print(f"="*70)
-        print(f"📦 Total jobs scraped: {len(jobs)}")
+        print(f"📦 Total UNIQUE jobs scraped: {len(jobs)}")
         print(f"📝 Jobs stored in database: jobs.db")
         
         # Show sample

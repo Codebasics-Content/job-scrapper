@@ -1,0 +1,202 @@
+[
+  {
+    "name": "AI",
+    "patterns": [
+      "\\bAI\\b"
+    ]
+  },
+  {
+    "name": "ML",
+    "patterns": [
+      "\\bML\\b"
+    ]
+  },
+  {
+    "name": "LLMs",
+    "patterns": [
+      "\\bLLMs\\b"
+    ]
+  },
+  {
+    "name": "NLP",
+    "patterns": [
+      "\\bNLP\\b"
+    ]
+  },
+  {
+    "name": "API",
+    "patterns": [
+      "\\bAPI\\b",
+      "\\bAPIs\\b"
+    ]
+  },
+  {
+    "name": "CI",
+    "patterns": [
+      "\\bCI\\b"
+    ]
+  },
+  {
+    "name": "CD",
+    "patterns": [
+      "\\bCD\\b"
+    ]
+  },
+  {
+    "name": "REST",
+    "patterns": [
+      "\\bREST\\b",
+      "\\bRESTful\\b"
+    ]
+  },
+  {
+    "name": "ETL",
+    "patterns": [
+      "\\bETL\\b"
+    ]
+  },
+  {
+    "name": "MLOps",
+    "patterns": [
+      "\\bMLOps\\b"
+    ]
+  },
+  {
+    "name": "UI",
+    "patterns": [
+      "\\bUI\\b"
+    ]
+  },
+  {
+    "name": "DevOps",
+    "patterns": [
+      "\\bDevOps\\b"
+    ]
+  },
+  {
+    "name": "CMS",
+    "patterns": [
+      "\\bCMS\\b"
+    ]
+  },
+  {
+    "name": "MCP",
+    "patterns": [
+      "\\bMCP\\b"
+    ]
+  },
+  {
+    "name": "UX",
+    "patterns": [
+      "\\bUX\\b"
+    ]
+  },
+  {
+    "name": "BERT",
+    "patterns": [
+      "\\bBERT\\b"
+    ]
+  },
+  {
+    "name": "GPU",
+    "patterns": [
+      "\\bGPU\\b"
+    ]
+  },
+  {
+    "name": "OCR",
+    "patterns": [
+      "\\bOCR\\b"
+    ]
+  },
+  {
+    "name": "RDS",
+    "patterns": [
+      "\\bRDS\\b"
+    ]
+  },
+  {
+    "name": "DL",
+    "patterns": [
+      "\\bDL\\b"
+    ]
+  },
+  {
+    "name": "BI",
+    "patterns": [
+      "\\bBI\\b"
+    ]
+  },
+  {
+    "name": "GPT",
+    "patterns": [
+      "\\bGPT\\b"
+    ]
+  },
+  {
+    "name": "SDK",
+    "patterns": [
+      "\\bSDK\\b"
+    ]
+  },
+  {
+    "name": "S3",
+    "patterns": [
+      "\\bS3\\b"
+    ]
+  },
+  {
+    "name": "SageMaker",
+    "patterns": [
+      "\\bSageMaker\\b"
+    ]
+  },
+  {
+    "name": "EC2",
+    "patterns": [
+      "\\bEC2\\b"
+    ]
+  },
+  {
+    "name": "CV",
+    "patterns": [
+      "\\bCV\\b"
+    ]
+  },
+  {
+    "name": "RL",
+    "patterns": [
+      "\\bRL\\b"
+    ]
+  },
+  {
+    "name": "EMR",
+    "patterns": [
+      "\\bEMR\\b"
+    ]
+  },
+  {
+    "name": "HTTP",
+    "patterns": [
+      "\\bHTTP\\b"
+    ]
+  },
+  {
+    "name": "TCP",
+    "patterns": [
+      "\\bTCP\\b"
+    ]
+  },
+  {
+    "name": "YOLO",
+    "patterns": [
+      "\\bYOLO\\b"
+    ]
+  },
+  {
+    "name": "IDE",
+    "patterns": [
+      "\\bIDE\\b"
+    ]
+  }
+]

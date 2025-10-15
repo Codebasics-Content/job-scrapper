@@ -4,7 +4,7 @@ import json
 import re
 from typing import Any
 
-from .config import SKILLS_JSON_PATH, EXCLUDED_CATEGORIES, EXCLUDED_SKILLS
+from .config import SKILLS_JSON_PATH, EXCLUDED_SKILLS
 
 
 def load_skill_patterns() -> dict[str, list[re.Pattern[str]]]:
