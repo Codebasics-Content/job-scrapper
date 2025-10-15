@@ -29,10 +29,11 @@ COMMON_WORDS = {
     "than", "then", "there", "these", "this", "those",
     "what", "when", "where", "which", "who", "why", "how",
     
-    # Framework/Platform generic terms (when standalone)
+    # Generic tech terms (filter ONLY when standalone, not in compound skills)
     "framework", "frameworks", "platform", "platforms",
     "server", "servers", "service", "services",
-    "tool", "tools", "library", "libraries"
+    "tool", "tools", "library", "libraries",
+    "agentic"  # Generic "agentic" without specific framework name
 }
 
 
@@ -56,7 +57,8 @@ def filter_common_words(skill: str) -> str | None:
 def split_by_conjunctions(text: str) -> list[str]:
     """
     Split text by conjunctions (And, Or) into separate skills
-    Example: "MCP And Agentic Framework" → ["MCP", "Agentic Framework"]
+    Example: "MCP And Servers" → ["MCP", "Servers"]
+    Note: Generic terms like "Framework" will be filtered by filter_common_words()
     """
     import re
     # Split by And/Or (case-insensitive) but preserve other text

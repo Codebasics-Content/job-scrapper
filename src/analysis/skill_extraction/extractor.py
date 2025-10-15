@@ -6,6 +6,7 @@ from .advanced_regex_extractor import layer1_extract_phrases, layer2_extract_con
 from .layer3_direct import layer3_extract_direct
 from .normalize import deduplicate_skills
 from .confidence_scorer import ConfidenceScorer
+from .common_words_filter import filter_common_words, split_by_conjunctions
 
 
 class AdvancedSkillExtractor:
@@ -73,8 +74,19 @@ class AdvancedSkillExtractor:
                     'has_context': True
                 }
         
-        # Normalize skills - convert back to dict format for deduplicate_skills
-        all_skills_dicts = [{'skill': name} for name in skills_metadata.keys()]
+        # Filter and split skills before normalization
+        filtered_skills = []
+        for skill_name in skills_metadata.keys():
+            # Split by conjunctions first (e.g., "MCP And Servers" → ["MCP", "Servers"])
+            parts = split_by_conjunctions(skill_name)
+            for part in parts:
+                # Filter common/grammatical words
+                cleaned = filter_common_words(part)
+                if cleaned:  # Only keep non-empty skills
+                    filtered_skills.append(cleaned)
+        
+        # Normalize skills - convert to dict format for deduplicate_skills
+        all_skills_dicts = [{'skill': name} for name in filtered_skills]
         normalized = deduplicate_skills(all_skills_dicts)
         
         if not return_confidence:
