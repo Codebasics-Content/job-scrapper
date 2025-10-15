@@ -6,6 +6,10 @@ import asyncio
 from datetime import datetime
 from pathlib import Path
 import sys
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -98,4 +102,4 @@ async def test_linkedin_200_jobs():
 
 if __name__ == "__main__":
     result = asyncio.run(test_linkedin_200_jobs())
-    sys.exit(0 if result.get("failed", 0) == 0 else 1)
+    sys.exit(0 if result and result.get("failed", 0) == 0 else 1)

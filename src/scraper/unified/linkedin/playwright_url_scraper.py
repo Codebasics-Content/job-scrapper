@@ -20,17 +20,26 @@ async def scrape_linkedin_urls_playwright(
     location: str,
     limit: int = 100,
     store_to_db: bool = True,
+    headless: bool = False,
 ) -> List[JobUrlModel]:
-    """Phase 1: Extract LinkedIn job URLs via Playwright + BrightData proxy"""
+    """Phase 1: Extract LinkedIn job URLs via Playwright + BrightData HTTP proxy"""
     
-    proxy_url = os.getenv("PROXY_URL")  # wss://scraping_browser2 URL
-    if not proxy_url or not proxy_url.startswith("wss://"):
-        raise ValueError("PROXY_URL must be wss:// format for scraping_browser2")
+    proxy_url = os.getenv("PROXY_URL")
+    proxy_config = None
     
-    logger.info(f"🔗 Connecting to BrightData proxy: {proxy_url[:50]}...")
+    if proxy_url and proxy_url.startswith("http"):
+        # Parse proxy URL: http://user:pass@host:port
+        proxy_parts = proxy_url.replace("http://", "").replace("https://", "")
+        auth_host = proxy_parts.split("@")
+        username, password = auth_host[0].split(":")
+        server = f"http://{auth_host[1]}"
+        proxy_config = {"server": server, "username": username, "password": password}
+        logger.info(f"🔗 Using proxy: {server}")
+    else:
+        logger.info("🔗 No proxy - direct connection")
     
     async with async_playwright() as p:
-        browser = await p.chromium.connect_over_cdp(proxy_url)
+        browser = await p.chromium.launch(headless=headless, proxy=proxy_config)
         page = await browser.new_page()
         
         # Navigate to LinkedIn jobs search

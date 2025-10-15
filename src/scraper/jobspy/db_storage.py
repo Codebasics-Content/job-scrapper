@@ -19,7 +19,7 @@ def store_jobspy_to_db(jobs_df: pd.DataFrame) -> int:
     
     job_models = []
     
-    for index, row in jobs_df.iterrows():
+    for _, row in jobs_df.iterrows():
         # Convert JobSpy data to JobModel format
         job_model = JobModel(
             platform="linkedin",

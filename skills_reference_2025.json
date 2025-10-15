@@ -3463,14 +3463,66 @@
         "patterns": [
           "\\bgenerative\\s+ai\\b",
           "\\bgen\\s+ai\\b",
-          "\\bgenai\\b(?=\\s+(?:model|application|system))"
+          "\\bgenai\\b"
         ]
       },
       {
         "name": "Large Language Models",
         "patterns": [
-          "llm[''']?s?",
-          "\\blarge language models\\b"
+          "\\blarge\\s+language\\s+models?\\b",
+          "\\bllms?\\b"
+        ]
+      },
+      {
+        "name": "MLOps",
+        "patterns": [
+          "\\bmlops\\b",
+          "\\bml\\s+ops\\b"
+        ]
+      },
+      {
+        "name": "Model Deployment",
+        "patterns": [
+          "\\bmodel\\s+deployment\\b"
+        ]
+      },
+      {
+        "name": "Neural Networks",
+        "patterns": [
+          "\\bneural\\s+networks?\\b"
+        ]
+      },
+      {
+        "name": "Computer Vision",
+        "patterns": [
+          "\\bcomputer\\s+vision\\b"
+        ]
+      },
+      {
+        "name": "Natural Language Processing",
+        "patterns": [
+          "\\bnatural\\s+language\\s+processing\\b",
+          "\\bnlp\\b"
+        ]
+      },
+      {
+        "name": "Deep Learning",
+        "patterns": [
+          "\\bdeep\\s+learning\\b"
+        ]
+      },
+      {
+        "name": "Data Pipelines",
+        "patterns": [
+          "\\bdata\\s+pipelines?\\b"
+        ]
+      },
+      {
+        "name": "CI/CD",
+        "patterns": [
+          "\\bci\\s*\\/\\s*cd\\b",
+          "\\bcontinuous\\s+integration\\b",
+          "\\bcontinuous\\s+deployment\\b"
         ]
       },
       {

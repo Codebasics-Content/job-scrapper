@@ -20,7 +20,7 @@ class BrightDataClient:
         await self.connect()
         return self
     
-    async def __aexit__(self, exc_type, exc_val, exc_tb):
+    async def __aexit__(self, exc_type: type[BaseException] | None, exc_val: BaseException | None, exc_tb: object) -> None:
         await self.disconnect()
     
     async def connect(self):
@@ -51,6 +51,7 @@ class BrightDataClient:
         if not self.browser:
             await self.connect()
         
+        assert self.browser is not None, "Browser connection failed"
         page: Page = await self.browser.new_page()
         
         try:

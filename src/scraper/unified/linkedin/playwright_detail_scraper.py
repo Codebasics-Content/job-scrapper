@@ -21,6 +21,7 @@ async def scrape_linkedin_details_playwright(
     input_role: str,
     limit: int = 100,
     store_to_db: bool = True,
+    headless: bool = False,
 ) -> List[JobDetailModel]:
     """Phase 2: Extract LinkedIn job details with skills from JD"""
     
@@ -37,18 +38,26 @@ async def scrape_linkedin_details_playwright(
     extractor = AdvancedSkillExtractor('skills_reference_2025.json')
     
     proxy_url = os.getenv("PROXY_URL")
-    if not proxy_url or not proxy_url.startswith("wss://"):
-        raise ValueError("PROXY_URL must be wss:// format")
+    proxy_config = None
+    
+    if proxy_url and proxy_url.startswith("http"):
+        proxy_parts = proxy_url.replace("http://", "").replace("https://", "")
+        auth_host = proxy_parts.split("@")
+        username, password = auth_host[0].split(":")
+        server = f"http://{auth_host[1]}"
+        proxy_config = {"server": server, "username": username, "password": password}
     
     jobs: List[JobDetailModel] = []
     
     async with async_playwright() as p:
-        browser = await p.chromium.connect_over_cdp(proxy_url)
+        browser = await p.chromium.launch(headless=headless, proxy=proxy_config)
         
-        # Concurrent scraping (5 tabs like Naukri)
+        # Concurrent scraping (5 tabs in SINGLE browser window)
         semaphore = asyncio.Semaphore(5)
         
         async def scrape_job(url_model: JobUrlModel) -> JobDetailModel | None:
+            """Scrape single job in a new tab within same browser"""
+            page = None
             async with semaphore:
                 try:
                     page = await browser.new_page()
@@ -68,18 +77,25 @@ async def scrape_linkedin_details_playwright(
                     skills = extractor.extract(description) if len(description.strip()) > 50 else []
                     skill_str = ','.join([s for s in skills if isinstance(s, str)])
                     
-                    await page.close()
+                    job = JobDetailModel(
+                        job_id=url_model.job_id,
+                        platform=url_model.platform,
+                        actual_role=url_model.actual_role,
+                        url=url_model.url,
+                        job_description=description,
+                        skills=skill_str,
+                        company_name="",
+                        company_detail="",
+                        posted_date=None
+                    )
+                    return job
                     
-                    if skill_str:
-                        return JobDetailModel(
-                            job_id=url_model.job_id, platform=platform,
-                            actual_role=input_role, url=url_model.url,
-                            job_description=description[:2000], skills=skill_str,
-                            company_name="", posted_date=None
-                        )
                 except Exception as e:
-                    logger.warning(f"Failed {url_model.url}: {e}")
-                return None
+                    logger.warning(f"Failed to scrape {url_model.url}: {e}")
+                    return None
+                finally:
+                    if page:
+                        await page.close()
         
         tasks = [scrape_job(u) for u in url_models]
         results = await asyncio.gather(*tasks, return_exceptions=True)

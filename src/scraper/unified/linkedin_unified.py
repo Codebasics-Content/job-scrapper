@@ -46,6 +46,7 @@ async def scrape_linkedin_jobs_unified(
         location=location,
         limit=limit,
         store_to_db=True,
+        headless=headless,
     )
     logger.info(f"✅ Phase 1 (Playwright): Collected {len(url_models)} LinkedIn URLs")
     
@@ -55,6 +56,7 @@ async def scrape_linkedin_jobs_unified(
         input_role=keyword,
         limit=limit,
         store_to_db=True,
+        headless=headless,
     )
     logger.info(f"✅ Phase 2 (Playwright): Scraped {len(jobs)} LinkedIn jobs with skills")
     

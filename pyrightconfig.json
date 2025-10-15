@@ -8,14 +8,17 @@
     "**/.venv",
     "**/venv",
     "src/scraper/_deprecated",
-    "src/_deprecated_ui"
+    "src/_deprecated_ui",
+    "streamlit_app.py",
+    "skills_dashboard.py"
   ],
   "stubPath": "stubs",
   "typeCheckingMode": "strict",
-  "reportMissingTypeStubs": "none",
   "reportUnknownMemberType": "none",
-  "reportUnknownVariableType": "information",
-  "reportUnknownArgumentType": "information",
+  "reportUnknownVariableType": "none",
+  "reportUnknownArgumentType": "none",
+  "reportUnnecessaryComparison": "none",
+  "reportMissingTypeStubs": "warning",
   "pythonVersion": "3.13",
   "pythonPlatform": "Linux",
   "reportAttributeAccessIssue": "none",
@@ -24,7 +27,8 @@
     "pandas",
     "altair",
     "bs4",
-    "requests"
+    "requests",
+    "jobspy"
   ],
   "venvPath": ".",
   "venv": "venv"

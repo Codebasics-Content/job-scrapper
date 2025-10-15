@@ -67,4 +67,4 @@ SCROLL_CONFIG = {
 
 def get_first_matching_selector(selectors: list[str]) -> str:
     """Get first selector from fallback list"""
-    return selectors[0] if isinstance(selectors, list) else selectors
+    return selectors[0]
