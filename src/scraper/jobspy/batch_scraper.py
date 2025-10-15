@@ -1,9 +1,8 @@
 """Large-scale LinkedIn job scraper with rate limiting (≤80 lines EMD)"""
 import time
 import random
-from typing import Optional
 import pandas as pd
-from python_jobspy import scrape_jobs
+from jobspy import scrape_jobs
 
 
 def scrape_jobs_batch(

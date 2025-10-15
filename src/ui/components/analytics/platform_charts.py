@@ -25,6 +25,6 @@ def render_platform_distribution(all_jobs: List[Dict[str, Any]]) -> None:
     with col2:
         st.dataframe(
             platform_counts.reset_index().rename(columns={'index': 'Platform', 'platform': 'Count'}),
-            use_container_width=True,
+            width='stretch',
             hide_index=True
         )

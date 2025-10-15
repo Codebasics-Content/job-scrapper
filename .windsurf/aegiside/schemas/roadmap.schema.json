@@ -13,10 +13,10 @@
     },
     "metrics": {
       "type": "object",
-      "description": "SYNCED FROM progress.json after every task",
-      "required": ["total_rl_score", "tasks_completed"],
+      "description": "Local milestone RL ONLY - Reference progress.json for total_rl_score",
+      "required": ["rl_source_ref"],
       "properties": {
-        "total_rl_score": {"type": "number"},
+        "rl_source_ref": {"type": "string", "const": "progress.json", "description": "SINGLE SOURCE OF TRUTH for total_rl_score"},
         "tasks_completed": {"type": "integer", "minimum": 0},
         "tasks_failed": {"type": "integer", "minimum": 0},
         "commits": {"type": "integer", "minimum": 0}

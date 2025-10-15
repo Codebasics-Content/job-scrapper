@@ -12,9 +12,10 @@
     "last_updated": {"type": "string"},
     "metrics": {
       "type": "object",
-      "required": ["total_rl_score", "tasks_completed"],
+      "description": "Local session metrics - NO total_rl_score stored here. Reference progress.json for authoritative RL score.",
+      "required": ["rl_source_ref", "tasks_completed"],
       "properties": {
-        "total_rl_score": {"type": "number"},
+        "rl_source_ref": {"type": "string", "const": "progress.json", "description": "SINGLE SOURCE OF TRUTH for total_rl_score"},
         "tasks_completed": {"type": "integer"},
         "tasks_pending": {"type": "integer"},
         "constitutional_compliance": {"type": "number"},

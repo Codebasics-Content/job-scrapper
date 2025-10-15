@@ -2,12 +2,34 @@
   "schema_version": "1.0.0",
   "last_updated": "2025-10-14T14:42:30+05:30",
   "metrics": {
-    "total_rl_score": -250,
+    "rl_source_ref": "progress.json",
     "tasks_completed": 43,
     "tasks_failed": 2,
     "commits": 10
   },
   "error_patterns": [
+    {
+      "error_id": "jobspy_infinite_hang_no_timeout",
+      "error_type": "external_library_blocking",
+      "root_cause": "JobSpy scrape_jobs() has NO timeout parameter. When LinkedIn rate-limits, function blocks indefinitely waiting for response that never comes.",
+      "symptoms": [
+        "Logs show '📡 Calling JobSpy API' but NEVER '✅ JobSpy returned'",
+        "Terminal hangs at scrape_jobs() call (lines 93-102)",
+        "No error, no response - just infinite wait"
+      ],
+      "fix_applied": "Wrapped scrape_jobs() with concurrent.futures.ThreadPoolExecutor and 60-second timeout. Returns None on timeout, allowing graceful continuation.",
+      "prevention_rule": "ALWAYS wrap external API calls without built-in timeouts using ThreadPoolExecutor.submit() + future.result(timeout=N). Never trust third-party libraries to handle timeouts.",
+      "rl_penalty": -20,
+      "file_modified": "src/scraper/jobspy/multi_platform_scraper.py",
+      "lines_changed": "7, 98-125",
+      "timestamp": "2025-10-14T20:13:00+05:30",
+      "resolution_time_minutes": 45,
+      "mcp_research": {
+        "context7_used": true,
+        "library_checked": "/speedyapply/jobspy",
+        "finding": "No timeout parameter exists in scrape_jobs() function"
+      }
+    },
     {
       "error_id": "skill_extraction_false_positives",
       "error_type": "validation_failure",

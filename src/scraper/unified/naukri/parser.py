@@ -45,7 +45,8 @@ def create_job_detail_model(
     
     job_id = JobUrlModel.generate_job_id("Naukri", job_url)
     extractor = AdvancedSkillExtractor('skills_reference_2025.json')
-    skills_list = extractor.extract(desc)
+    # Extract skills as list[str] (default return_confidence=False)
+    skills_list: list[str] = extractor.extract(desc, return_confidence=False)  # type: ignore[assignment]
     skills_str = ", ".join(skills_list) if skills_list else ""
     
     return JobDetailModel(

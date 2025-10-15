@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "last_updated": "2025-10-14T12:32:12+05:30",
   "metrics": {
-    "total_rl_score": -95,
+    "rl_source_ref": "progress.json",
     "tasks_completed": 14,
     "tasks_failed": 1,
     "commits": 13
@@ -32,12 +32,6 @@
       "task": "Implement parallel page scraping (5 tabs) for Naukri job descriptions and skills",
       "completed_at": "2025-10-14T12:54:50+05:30",
       "outcome": "100% success: 20/20 jobs with descriptions (avg 883 chars) + skills (avg 6 per job). Parallel execution 30.1s. RL: +50. asyncio.Semaphore(5) pattern."
-    },
-    {
-      "id": "test_indeed_20",
-      "task": "Execute test_indeed_20_validation.py with venv",
-      "completed_at": "2025-10-13T22:51:29+05:30",
-      "outcome": "100% success: 20/20 jobs with descriptions + skills. Rate: 7.0 jobs/sec (fastest). Stored to jobs.db. RL: +10. Exit code: 0"
     },
     {
       "id": "test_linkedin_20",

@@ -61,7 +61,8 @@ async def scrape_jobs(
     # Extract skills for each job using advanced 3-layer extraction
     for job in jobs:
         if hasattr(job, 'jd') and job.jd:
-            skills = extractor.extract(job.jd)
+            # Extract skills as list[str] (default return_confidence=False)
+            skills: list[str] = extractor.extract(job.jd, return_confidence=False)  # type: ignore[assignment]
             job.skills = ','.join(skills) if skills else ''
     
     return jobs

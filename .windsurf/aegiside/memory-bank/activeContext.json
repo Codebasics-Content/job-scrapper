@@ -39,6 +39,21 @@
   },
   "event_tracking": [
     {
+      "id": "evt-next-import-fixes-2025-10-15-14:37",
+      "timestamp": "2025-10-15T14:37:45+05:30",
+      "type": "error_resolution",
+      "task_id": "linkedin_test_execution",
+      "description": "/next: Fixed import errors autonomously. operations.py TYPE_CHECKING resolved with __future__ annotations. playwright_detail_scraper.py import path corrected. Test code ready.",
+      "context": {
+        "errors_fixed": 2,
+        "files_modified": 2,
+        "test_status": "ready_needs_env",
+        "blocker": "PROXY_URL environment variable required",
+        "total_rl_score": 5
+      },
+      "rl_reward": 20
+    },
+    {
       "id": "evt-bootstrap-2025-10-15-14:34",
       "timestamp": "2025-10-15T14:34:13+05:30",
       "type": "bootstrap_complete",

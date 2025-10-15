@@ -22,7 +22,6 @@
   },
   "proxies": [
     {
-      "country": "us",
       "debug": "none",
       "iface": "0.0.0.0",
       "keep_alive": true,
@@ -34,7 +33,8 @@
       "whitelist_ips": [
         "0.0.0.0/0"
       ],
-      "null_response": false
+      "null_response": false,
+      "note": "Worldwide proxy - remove 'country' field for global coverage"
     }
   ]
 }

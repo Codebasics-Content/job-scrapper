@@ -20,12 +20,13 @@ def render_analytics_overview(all_jobs: List[Dict[str, Any]]) -> None:
     with col1:
         st.metric("Total Jobs", f"{total_jobs:,}")
     with col2:
-        unique_companies = df['company'].nunique()
-        st.metric("Companies", f"{unique_companies:,}")
+        unique_companies = df['platform'].nunique()
+        st.metric("Platforms", f"{unique_companies:,}")
     with col3:
-        unique_roles = df['job_role'].nunique()
+        unique_roles = df['actual_role'].nunique()
         st.metric("Unique Roles", f"{unique_roles:,}")
     with col4:
-        skills_counts = df['skills'].str.split(',').str.len()
-        avg_skills = skills_counts.mean()
-        st.metric("Avg Skills/Job", f"{avg_skills:.1f}")
+        # Display job count by platform
+        linkedin_count = len(df[df['platform'].str.lower() == 'linkedin'])
+        naukri_count = len(df[df['platform'].str.lower() == 'naukri'])
+        st.metric("LinkedIn/Naukri", f"{linkedin_count}/{naukri_count}")

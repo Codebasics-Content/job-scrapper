@@ -48,7 +48,7 @@ async def scrape_jobs_with_skills(
             store_to_db=store_to_db,
         )
         
-        if df is not None and len(df) > 0:
+        if len(df) > 0:
             # Jobs already stored by multi_platform_scraper per batch
             # Just collect for return
             for _, row in df.iterrows():
@@ -77,7 +77,8 @@ async def scrape_jobs_with_skills(
         # Extract skills from Naukri jobs
         for job in naukri_jobs:
             if hasattr(job, 'jd') and job.jd and len(job.jd.strip()) > 50:
-                skills = extractor.extract(job.jd)
+                # Extract skills as list[str] (default return_confidence=False)
+                skills: list[str] = extractor.extract(job.jd, return_confidence=False)  # type: ignore[assignment]
                 job.skills = ','.join(skills) if skills else ''
         
         all_jobs.extend(naukri_jobs)

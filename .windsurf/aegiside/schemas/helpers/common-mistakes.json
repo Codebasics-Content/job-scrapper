@@ -244,5 +244,151 @@
     "article_reference": "Article XV: Tool Usage & Error Prevention",
     "mistake_tolerance": "ZERO - All mistakes must be logged and learned from",
     "enforcement": "@mcp:filesystem blocks next task until mistake documented"
+  },
+
+  "python_development_practices": {
+    "virtual_environment_usage": {
+      "severity": "CRITICAL",
+      "description": "ALWAYS activate venv before running Python commands",
+      "platforms": {
+        "linux": {
+          "activation": "source venv/bin/activate",
+          "validation": "which python should show venv path",
+          "commands": [
+            "source venv/bin/activate",
+            "python --version",
+            "pip list"
+          ]
+        },
+        "windows": {
+          "activation": "venv\\Scripts\\activate or .\\venv\\Scripts\\Activate.ps1",
+          "validation": "where python should show venv path",
+          "commands": [
+            "venv\\Scripts\\activate",
+            "python --version",
+            "pip list"
+          ]
+        },
+        "macos": {
+          "activation": "source venv/bin/activate",
+          "validation": "which python should show venv path",
+          "commands": [
+            "source venv/bin/activate",
+            "python3 --version",
+            "pip3 list"
+          ]
+        }
+      },
+      "prevention_rule": "NEVER run python/pip commands without activating venv first",
+      "detection": "Check if sys.prefix != sys.base_prefix in Python",
+      "rl_penalty": -30
+    },
+
+    "type_checker_usage": {
+      "severity": "CRITICAL",
+      "description": "ALWAYS use basedpyright instead of pyright for stricter type checking",
+      "platforms": {
+        "linux": {
+          "installation": "pip install basedpyright",
+          "execution": "basedpyright src/",
+          "config": "pyrightconfig.json with typeCheckingMode: strict"
+        },
+        "windows": {
+          "installation": "pip install basedpyright",
+          "execution": "basedpyright src/",
+          "config": "pyrightconfig.json with typeCheckingMode: strict"
+        },
+        "macos": {
+          "installation": "pip3 install basedpyright",
+          "execution": "basedpyright src/",
+          "config": "pyrightconfig.json with typeCheckingMode: strict"
+        }
+      },
+      "why_basedpyright": "Stricter than pyright, catches more type issues, better for production code",
+      "prevention_rule": "NEVER use pyright - always use basedpyright",
+      "rl_penalty": -25
+    },
+
+    "type_annotation_rules": {
+      "severity": "CRITICAL",
+      "description": "NEVER use Any type - always use specific types with Union/OR",
+      "forbidden_patterns": [
+        {
+          "wrong": "from typing import Any\ndef func(data: Any) -> Any:",
+          "correct": "def func(data: dict[str, str | int] | list[str]) -> str | None:",
+          "reason": "Any defeats type safety - use specific Union types"
+        },
+        {
+          "wrong": "result: Any = process_data()",
+          "correct": "result: str | int | None = process_data()",
+          "reason": "Explicit union types enable static analysis"
+        },
+        {
+          "wrong": "config: dict = load_config()",
+          "correct": "config: dict[str, str | int | bool] = load_config()",
+          "reason": "Generic dict/list need type arguments"
+        },
+        {
+          "wrong": "items: list = []",
+          "correct": "items: list[dict[str, str]] = []",
+          "reason": "Empty collections must declare element type"
+        }
+      ],
+      "required_types": [
+        "Function parameters: ALWAYS typed",
+        "Return values: ALWAYS typed (use -> None if no return)",
+        "Class attributes: ALWAYS typed at declaration",
+        "Generic collections: ALWAYS specify element types dict[K, V], list[T]",
+        "Union types: Use | operator (Python 3.10+) or Union[A, B]",
+        "Optional: Use T | None instead of Optional[T]"
+      ],
+      "platform_validation": {
+        "linux": "basedpyright --warnings src/",
+        "windows": "basedpyright --warnings src/",
+        "macos": "basedpyright --warnings src/"
+      },
+      "prevention_rule": "Run basedpyright before every commit - zero Any types allowed",
+      "rl_penalty": -40
+    },
+
+    "proxy_configuration_errors": {
+      "severity": "HIGH",
+      "description": "JobSpy proxy format issues causing LinkedIn rate limiting",
+      "common_issues": [
+        {
+          "issue": "Proxy not being passed to JobSpy",
+          "cause": "proxies parameter is None or empty list",
+          "fix": "Validate proxy_url exists before creating proxies list",
+          "validation": "Print proxy URL before scrape_jobs() call"
+        },
+        {
+          "issue": "Proxy format mismatch",
+          "cause": "JobSpy expects list of strings without http:// prefix",
+          "correct_format": "['user:pass@host:port']",
+          "wrong_formats": ["'http://user:pass@host:port'", "'wss://user:pass@host:port'"],
+          "fix": "Strip protocol prefix before passing to JobSpy"
+        },
+        {
+          "issue": "BrightData zone mismatch",
+          "cause": "Using scraping_browser zone for HTTP proxy",
+          "fix": "Convert scraping_browser to residential zone",
+          "correct_zone": "residential"
+        },
+        {
+          "issue": "Port mismatch",
+          "cause": "Using CDP port 9222 instead of proxy port 22225",
+          "fix": "Replace :9222 with :22225 for HTTP proxy"
+        }
+      ],
+      "testing_protocol": [
+        "1. Print proxy configuration before JobSpy call",
+        "2. Verify proxy format: user:pass@host:port (no protocol)",
+        "3. Test with small limit first (limit=5)",
+        "4. Monitor for rate limit errors",
+        "5. Validate jobs returned > 0"
+      ],
+      "prevention_rule": "Always validate proxy configuration with print statements",
+      "rl_penalty": -35
+    }
   }
 }

@@ -2,26 +2,54 @@
 from __future__ import annotations
 
 import os
-from typing import Optional
+import logging
+
+logger = logging.getLogger(__name__)
 
 
-def get_brightdata_proxy() -> Optional[str]:
+def get_brightdata_proxy() -> str | None:
     """
-    Get BrightData proxy URL from environment
+    Get BrightData proxy for JobSpy (converts wss:// to http:// format)
+    
+    Handles both formats:
+    1. wss://brd-customer-hl_xxx-zone-scraping_browser2:pass@brd.superproxy.io:9222
+    2. http://brd-customer-hl_xxx-zone-residential:pass@brd.superproxy.io:22225
     
     Returns:
-        Proxy URL in format: wss://brd-customer-{ID}-zone-{ZONE}:{PASS}@...
+        Proxy in format: user:pass@host:port (NO http:// prefix)
         or None if not configured
     """
-    proxy_url = os.getenv("BRIGHTDATA_BROWSER_URL")
+    proxy_url = os.getenv("PROXY_URL")
+    if not proxy_url:
+        logger.debug("PROXY_URL environment variable not set")
+        return None
     
-    if proxy_url and proxy_url.startswith("wss://brd-customer-"):
+    logger.info(f"Raw PROXY_URL: {proxy_url[:50]}...")
+    
+    # Handle WebSocket format (convert to HTTP proxy)
+    if proxy_url.startswith("wss://"):
+        # Extract: wss://username:password@host:port
+        proxy_url = proxy_url.replace("wss://", "")
+        
+        # Replace scraping_browser zone with residential (or use BRIGHTDATA_ZONE)
+        zone = os.getenv("BRIGHTDATA_ZONE", "residential")
+        proxy_url = proxy_url.replace("-zone-scraping_browser1", f"-zone-{zone}")
+        proxy_url = proxy_url.replace("-zone-scraping_browser2", f"-zone-{zone}")
+        
+        # Replace CDP port 9222 with proxy port 22225
+        proxy_url = proxy_url.replace(":9222", ":22225")
+        
         return proxy_url
     
-    return None
+    # Handle HTTP format (remove http:// prefix)
+    if proxy_url.startswith("http://") or proxy_url.startswith("https://"):
+        return proxy_url.replace("http://", "").replace("https://", "")
+    
+    # Already in correct format
+    return proxy_url
 
 
-def get_proxy_for_platform(platform: str) -> Optional[list[str]]:
+def get_proxy_for_platform(platform: str) -> list[str] | None:
     """
     Get proxy list based on platform requirements
     

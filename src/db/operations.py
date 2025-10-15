@@ -1,5 +1,7 @@
 # Two-Phase Database Operations - URL Collection + Detail Scraping
 # EMD Compliance: ≤80 lines, Optimized for 80-90% speedup
+from __future__ import annotations
+
 import logging
 import threading
 from typing import TYPE_CHECKING
@@ -90,3 +92,29 @@ class JobStorageOperations:
                 LIMIT ?
             """, (platform, input_role, limit))
             return cursor.fetchall()
+    
+    def get_urls_to_scrape(self, platform: str, limit: int = 100) -> list[JobUrlModel]:
+        """Get unscraped URLs as JobUrlModel objects (LinkedIn/unified scraper compatibility)"""
+        from src.models import JobUrlModel
+        with self.connection.get_connection_context() as conn:
+            cursor = conn.execute("""
+                SELECT u.url, u.job_id, u.platform, u.input_role, u.actual_role FROM job_urls u
+                LEFT JOIN jobs j ON u.job_id = j.job_id
+                WHERE u.platform = ? AND j.job_id IS NULL
+                LIMIT ?
+            """, (platform, limit))
+            rows = cursor.fetchall()
+            return [JobUrlModel(
+                url=row[0],
+                job_id=row[1],
+                platform=row[2],
+                input_role=row[3],
+                actual_role=row[4]
+            ) for row in rows]
+    
+    def get_all_jobs(self) -> list[dict[str, str]]:
+        """Get all jobs for database stats"""
+        with self.connection.get_connection_context() as conn:
+            cursor = conn.execute("SELECT job_id, platform, actual_role, skills FROM jobs")
+            return [{"job_id": row[0], "platform": row[1], "actual_role": row[2], "skills": row[3]} 
+                    for row in cursor.fetchall()]

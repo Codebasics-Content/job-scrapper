@@ -23,9 +23,9 @@ def render_config_panel() -> tuple[str, str, int]:
         num_jobs = st.number_input(
             "📊 Number of Jobs",
             min_value=1,
-            max_value=100,
+            max_value=100000,
             value=10,
-            help="Recommended: 10-50 jobs for optimal performance"
+            help="Scale: 1-100,000 jobs (Recommended: 10-50 for testing, 1000+ for production)"
         )
     
     return job_role, platform, num_jobs

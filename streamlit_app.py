@@ -44,7 +44,7 @@ with tab2:
     
     # Load data from database
     db_ops = JobStorageOperations(DB_PATH)
-    all_jobs = db_ops.get_jobs_by_role("")  # Get all jobs
+    all_jobs = db_ops.get_all_jobs()
     
     # Render modular analytics components
     render_analytics_overview(all_jobs)

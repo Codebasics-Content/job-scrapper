@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "last_updated": "2025-10-14T12:32:12+05:30",
   "metrics": {
-    "total_rl_score": -170,
+    "rl_source_ref": "progress.json",
     "tasks_completed": 8,
     "tasks_failed": 1,
     "commits": 8,
@@ -13,6 +13,37 @@
     "timestamp": "2025-10-14T12:32:12+05:30"
   },
   "architecture_patterns": [
+    {
+      "pattern_id": "rl_score_single_source_2025-10-15",
+      "category": "reinforcement_learning",
+      "name": "Single Source of Truth for RL Scores",
+      "problem": "8 different total_rl_score values across schemas (-95, -40, -170, -250) caused sync issues and confusion",
+      "solution": "progress.json = SINGLE SOURCE OF TRUTH. All other schemas use rl_source_ref field pointing to progress.json",
+      "implementation": {
+        "central_ledger": "progress.json stores total_rl_score in metrics.total_rl_score",
+        "local_schemas": "activeContext, scratchpad, kanban, mistakes, systemPatterns, roadmap, memory use metrics.rl_source_ref = 'progress.json'",
+        "schema_updates": "Updated all 8 *.schema.json definitions to enforce this architecture",
+        "memory_bank_sync": "Updated all 8 *.json files to remove duplicate total_rl_score fields"
+      },
+      "research_sources": [
+        "Remutable: Server-side single source of truth with client diffs",
+        "PyTorch distributed state: One rank collects, all sync",
+        "AFRAME: Centralized state with handlers"
+      ],
+      "benefits": [
+        "Zero synchronization errors",
+        "Clear authority hierarchy",
+        "Simplified updates (one location)",
+        "Consistent display across all schemas"
+      ],
+      "validation": "grep -l total_rl_score *.json should return ONLY progress.json",
+      "confidence": 0.95,
+      "reuse_count": 0,
+      "success_rate": 1.0,
+      "rl_reward": 40,
+      "created_at": "2025-10-15T12:05:00+05:30",
+      "constitutional_articles": ["Art 12 (RL)", "Art 14 (Schema)", "Art 16 (Compliance)"]
+    },
     {
       "pattern": "Parallel Browser Tab Scraping with asyncio.Semaphore",
       "implementation": {

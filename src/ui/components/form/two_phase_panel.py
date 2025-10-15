@@ -6,9 +6,6 @@ from src.db import JobStorageOperations
 
 def render_two_phase_panel(db_path: str) -> tuple[list[str], str, str, int, str]:
     """Render 2-platform scraper configuration panel"""
-    st.subheader("🚀 2-Platform Job Scraper (LinkedIn + Naukri)")
-    st.markdown("**LinkedIn**: Multi-layer fuzzy deduplication (99.9%+ precision) | **Naukri**: Playwright automation")
-    
     col1, col2 = st.columns(2)
     
     with col1:
@@ -26,13 +23,13 @@ def render_two_phase_panel(db_path: str) -> tuple[list[str], str, str, int, str]
         )
         location = st.text_input(
             "Location",
-            value="United States",
-            help="Search location (empty for worldwide)"
+            value="",
+            help="Leave empty for worldwide jobs (recommended for LinkedIn)"
         )
         num_jobs = st.number_input(
             "Jobs per Platform",
             min_value=1,
-            max_value=1000,
+            max_value=100000,
             value=100,
             step=10,
             help="Number of jobs to scrape per platform"
@@ -43,12 +40,12 @@ def render_two_phase_panel(db_path: str) -> tuple[list[str], str, str, int, str]
         db_ops = JobStorageOperations(db_path)
         
         # Query total jobs in database
-        all_jobs = db_ops.get_jobs_by_role("")  # Get all jobs
-        total_count = len(all_jobs) if all_jobs else 0
+        all_jobs = db_ops.get_all_jobs()
+        total_count = len(all_jobs)
         
         # Count by platform
-        linkedin_count = len([j for j in all_jobs if j.get('platform', '').lower() == 'linkedin']) if all_jobs else 0
-        naukri_count = len([j for j in all_jobs if j.get('platform', '').lower() == 'naukri']) if all_jobs else 0
+        linkedin_count = len([j for j in all_jobs if j.get('platform', '').lower() == 'linkedin'])
+        naukri_count = len([j for j in all_jobs if j.get('platform', '').lower() == 'naukri'])
         
         st.metric("Total Jobs", total_count, help="Total jobs in database")
         st.info(f"**LinkedIn:** {linkedin_count} | **Naukri:** {naukri_count}")

@@ -26,7 +26,7 @@ async def test_naukri_20_jobs():
     jobs = await scrape_naukri_jobs_browser(
         keyword="AI Engineer",
         location="",
-        limit=1000,
+        limit=100000,
         headless=False
     )
     

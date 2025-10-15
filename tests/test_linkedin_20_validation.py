@@ -1,5 +1,5 @@
-"""LinkedIn 1000-job scale test - JobSpy scraper
-Tests: Job descriptions, skill extraction, DB storage
+"""LinkedIn 200-job scale test - Playwright Unified Scraper
+Tests: Job descriptions, skill extraction, DB storage, BrightData proxy
 RL: +10 if all pass, -15 if failures
 """
 import asyncio
@@ -9,29 +9,31 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.scraper.multi_platform_service import scrape_jobs_with_skills
+from src.scraper.unified.linkedin_unified import scrape_linkedin_jobs_unified
 
 
-async def test_linkedin_20_jobs():
-    """Test LinkedIn scraping: 100 AI Engineer jobs with descriptions + skills"""
-    print("🧪 LinkedIn 100-Job Scale Test")
+async def test_linkedin_200_jobs():
+    """Test LinkedIn Playwright scraping: 200 AI Engineer jobs with descriptions + skills"""
+    print("🧪 LinkedIn 200-Job Playwright Scale Test")
     print("=" * 60)
     print(f"⏰ Start Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"🎯 Target: 100 AI Engineer jobs from LinkedIn")
-    print(f"🔧 Platform: JobSpy library\n")
+    print("🎯 Target: 200 AI Engineer jobs from LinkedIn (Worldwide)")
+    print("🔧 Platform: Playwright + BrightData scraping_browser2")
+    print("⚡ Concurrency: 5 concurrent tabs (Naukri pattern)\n")
     
     db_path = Path(__file__).parent.parent / "jobs.db"
     print(f"💾 Database: {db_path}\n")
     
-    # Scrape 100 LinkedIn jobs
-    print("🚀 Starting scrape...")
+    # Scrape 200 LinkedIn jobs via Playwright
+    print("🚀 Starting Playwright scrape with BrightData proxy...")
+    print("📋 Phase 1: URL Collection (scroll job search)")
+    print("📋 Phase 2: Detail Scraping (navigate + extract JD + skills)\n")
     start = datetime.now()
-    jobs = await scrape_jobs_with_skills(
-        platforms=["linkedin"],
+    jobs = await scrape_linkedin_jobs_unified(
         keyword="AI Engineer",
-        location="",  # Empty string for broad search per JobSpy docs
-        limit=100,
-        store_to_db=True  # ✅ STORE TO DATABASE DURING SCRAPING
+        location="",  # Worldwide search
+        limit=200,
+        headless=True  # Proxy controls browser, this param ignored
     )
     duration = (datetime.now() - start).total_seconds()
     print(f"\n⏱️  Scraping completed in {duration:.1f}s ({duration/60:.1f} min)")
@@ -95,5 +97,5 @@ async def test_linkedin_20_jobs():
 
 
 if __name__ == "__main__":
-    result = asyncio.run(test_linkedin_20_jobs())
+    result = asyncio.run(test_linkedin_200_jobs())
     sys.exit(0 if result.get("failed", 0) == 0 else 1)
