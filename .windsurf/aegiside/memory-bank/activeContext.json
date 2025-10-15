@@ -37,7 +37,69 @@
       "kanban_allocation": 0
     }
   },
-  "event_tracking": [
+  "events": [
+    {
+      "id": "evt-init-session-2025-10-16",
+      "timestamp": "2025-10-16T00:49:00+05:30",
+      "type": "session_init",
+      "workflow": "/init",
+      "description": "Session initialized: 8 schemas validated (100%), Python project detected, mistakes noted (-50 RL database deletion)",
+      "context": {
+        "schema_compliance": 100,
+        "articles_loaded": ["01", "02", "03"],
+        "language_detected": "python",
+        "rl_architecture_verified": true,
+        "total_rl_score": -275,
+        "autonomous_loop_activated": true,
+        "next_task": "linkedin_1000_jobs_collection"
+      },
+      "rl_source_ref": "progress.json"
+    },
+    {
+      "id": "evt-continue-recovery-017",
+      "timestamp": "2025-10-15T21:35:03+05:30",
+      "type": "continue_auto_chain",
+      "task_id": "job-validation-auto-chain-12",
+      "description": "/continue: Auto-chaining to Job 12 (NO asking permission)",
+      "context": {
+        "downtime_seconds": 0,
+        "pending_tasks": 362,
+        "jobs_completed": "1-11",
+        "auto_chain": true
+      },
+      "rl_reward": 5
+    },
+    {
+      "id": "evt-continue-recovery-016",
+      "timestamp": "2025-10-15T21:28:47+05:30",
+      "type": "continue_recovery",
+      "task_id": "job-validation-continue-from-11",
+      "description": "/continue: Context restored. Auto-chaining to Job 11.",
+      "context": {
+        "downtime_seconds": 0,
+        "pending_tasks": 363,
+        "jobs_completed": "1-10",
+        "next_job": "Job 11",
+        "total_rl_score": -85
+      },
+      "rl_reward": 5
+    },
+    {
+      "id": "evt-continue-recovery-015",
+      "timestamp": "2025-10-15T21:24:04+05:30",
+      "type": "continue_recovery",
+      "task_id": "job-validation-restart-from-8",
+      "description": "/continue workflow: Context restored. Restarting from Job 8 after batch violation.",
+      "context": {
+        "downtime_seconds": 0,
+        "pending_tasks": 361,
+        "jobs_completed": "1-7, 13",
+        "restart_from": "Job 8",
+        "total_rl_score": -100,
+        "schemas_validated": 8
+      },
+      "rl_reward": 5
+    },
     {
       "id": "evt-continue-next-complete-2025-10-15-17:16",
       "timestamp": "2025-10-15T17:16:47+05:30",
@@ -124,6 +186,7 @@
       "timestamp": "2025-10-14T12:13:05+05:30",
       "type": "session_initialization",
       "task_id": "session_init",
+      "current_focus": "Process Job 1 ONLY: Full description scan, find FP+FN, update DB+JSON, update all 8 schemas. NO batch processing.",
       "description": "/init workflow: Session initialized with 8-schema validation + selective article loading",
       "context": {
         "schemas_validated": 8,
@@ -275,16 +338,14 @@
     }
   ],
   "session_context": {
-    "current_task": {
-      "task_id": "rl_score_sync_architecture_2025-10-15",
-      "description": "Researched RL score sync strategies (single source vs distributed). Implemented progress.json as SINGLE SOURCE OF TRUTH, all other schemas reference it. Updated all 8 schema definitions + JSON files. Refined global_rules.md to 10,155 chars with sequential flow.",
-      "status": "completed",
-      "started_at": "2025-10-15T11:50:30+05:30",
-      "completed_at": "2025-10-15T12:05:30+05:30",
-      "autonomy_level": 99,
-      "mcp_chain_required": true,
-      "outcome": "Research: Remutable/PyTorch/AFRAME patterns confirmed centralized approach. Implementation: progress.json = ledger (-25 RL total), others use rl_source_ref field. Zero sync errors. +40 RL reward."
-    }
+    "current_task": "Job-by-job validation (SINGLE job processing) - Currently on Job 1/373",
+    "description": "Researched RL score sync strategies (single source vs distributed). Implemented progress.json as SINGLE SOURCE OF TRUTH, all other schemas reference it. Updated all 8 schema definitions + JSON files. Refined global_rules.md to 10,155 chars with sequential flow.",
+    "status": "completed",
+    "started_at": "2025-10-15T11:50:30+05:30",
+    "completed_at": "2025-10-15T12:05:30+05:30",
+    "autonomy_level": 99,
+    "mcp_chain_required": true,
+    "outcome": "Research: Remutable/PyTorch/AFRAME patterns confirmed centralized approach. Implementation: progress.json = ledger (-25 RL total), others use rl_source_ref field. Zero sync errors. +40 RL reward."
   },
   "mcp_integration_state": {
     "filesystem": "active",

@@ -13,7 +13,17 @@
     "total_prepends": 2,
     "validation_passed": true
   },
-  "priority_queue": [],
+  "priority_queue": [
+    {
+      "task_id": "job-validation-002",
+      "priority": 1,
+      "title": "Process Job 2/373 - SINGLE job only",
+      "description": "SQL: LIMIT 1 OFFSET 1. Full description scan. Find FP+FN. Update DB+JSON+All 8 schemas.",
+      "status": "pending",
+      "dependencies": ["job-validation-001"],
+      "estimated_effort": "low",
+      "created_at": "2025-10-15T21:16:00+05:30"
+    }],
   "completed": [
     {
       "id": "stakeholder_docs_cleanup",
