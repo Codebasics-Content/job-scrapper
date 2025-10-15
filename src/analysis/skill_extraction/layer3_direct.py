@@ -30,13 +30,12 @@ def layer3_extract_direct(
         **PROGRAMMING_LANGUAGES
     }
     
-    # Add patterns from skills reference
-    for category_skills in skills_reference.values():
-        for skill_data in category_skills:
-            skill_name = skill_data['name']
-            for pattern_str in skill_data.get('patterns', []):
-                if skill_name not in all_patterns:
-                    all_patterns[skill_name] = pattern_str
+    # Add patterns from skills reference (it's a list, not dict)
+    for skill_data in skills_reference:
+        skill_name = skill_data['name']
+        for pattern_str in skill_data.get('patterns', []):
+            if skill_name not in all_patterns:
+                all_patterns[skill_name] = pattern_str
     
     # Extract using improved patterns
     for skill_name, pattern_str in all_patterns.items():
