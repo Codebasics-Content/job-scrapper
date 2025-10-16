@@ -12,6 +12,8 @@ from src.scraper.unified.linkedin.date_parser import parse_linkedin_date
 from src.scraper.unified.linkedin.selector_config import DETAIL_SELECTORS
 from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
 from src.analysis.skill_extraction.skill_validator import SkillValidator
+from src.scraper.unified.linkedin.retry_helper import retry_with_backoff
+from src.scraper.unified.linkedin.job_validator import JobValidator
 
 logger = logging.getLogger(__name__)
 
@@ -67,8 +69,10 @@ async def scrape_job_details_sequential(
     
     for idx, url_tuple in enumerate(urls, 1):
         url = url_tuple[0]
-        job_id = f"linkedin_{url.split('/')[-1]}"
-        platform = url_tuple[1]
+        # Extract clean LinkedIn job ID (just the number from URL)
+        linkedin_job_id = url.split('/')[-1]
+        job_id = linkedin_job_id  # Store clean ID without prefix
+        platform = "linkedin"  # Set platform name correctly
         actual_role = url_tuple[2]
         
         logger.info(f"🔄 [{idx}/{len(urls)}] Processing: {job_id[:40]}")
@@ -106,6 +110,19 @@ async def scrape_job_details_sequential(
             logger.info(f"✅ Page loaded for {job_id[:30]}")
             
             # Extract data
+            logger.info(f"📝 Extracting job title...")
+            scraped_job_title = ""
+            for selector in DETAIL_SELECTORS["job_title"]:
+                title_elem = await page.query_selector(selector)
+                if title_elem:
+                    scraped_job_title = (await title_elem.inner_text()).strip()
+                    logger.info(f"✅ Found job title: {scraped_job_title}")
+                    break
+            
+            if not scraped_job_title:
+                logger.warning(f"⚠️ Job title not found on page, using URL-based: {actual_role}")
+                scraped_job_title = actual_role
+            
             logger.info(f"📝 Extracting description...")
             job_description = ""
             for selector in DETAIL_SELECTORS["description"]:
@@ -124,6 +141,10 @@ async def scrape_job_details_sequential(
                     logger.info(f"✅ Found company: {company_name}")
                     break
             
+            if not company_name:
+                logger.warning(f"⚠️ Company name not found on page for {job_id[:40]}")
+                company_name = "Unknown Company"
+            
             # Extract posted date with fallback selectors
             posted_date_str = ""
             for selector in DETAIL_SELECTORS["posted_date"]:
@@ -141,26 +162,28 @@ async def scrape_job_details_sequential(
             extracted_skills_list = cast(list[str], skill_extractor.extract(job_description, return_confidence=False))
             extracted_skills = ", ".join(extracted_skills_list[:15]) if extracted_skills_list else ""
             
-            # Validate extracted skills
+            # Validate extracted skills against canonical 557 skills
             validated_skills = ""
             if extracted_skills.strip():
-                validated_skills, is_valid = skills_validator.validate_skills(
-                    extracted_skills, min_confidence=min_skills_confidence
-                )
-                if not is_valid:
-                    logger.debug(f"💡 {job_id} - low confidence skills, using extracted")
-                    validated_skills = extracted_skills  # Use extracted skills even if low confidence
+                # SkillValidator.validate_and_extract returns Set[str], not tuple
+                canonical_skills = skills_validator.validate_and_extract(job_description)
+                if canonical_skills:
+                    validated_skills = ", ".join(sorted(canonical_skills))
+                else:
+                    logger.debug(f"💡 {job_id} - no canonical matches, using extracted")
+                    validated_skills = extracted_skills
             
             # Parse posted date from relative time string
             posted_date = parse_linkedin_date(posted_date_str) if posted_date_str else None
             if posted_date:
                 logger.debug(f"📅 Parsed date: {posted_date.strftime('%Y-%m-%d %H:%M:%S')}")
             
-            # Create job model
+            # Create job model - use scraped title if available, fallback to URL-based
+            final_job_title = scraped_job_title if scraped_job_title else actual_role
             job = JobDetailModel(
                 job_id=job_id,
                 platform=platform,
-                actual_role=actual_role,
+                actual_role=final_job_title,
                 url=url,
                 job_description=job_description[:5000],
                 skills=validated_skills,
@@ -168,27 +191,47 @@ async def scrape_job_details_sequential(
                 posted_date=posted_date
             )
             
-            # Validate false positives/negatives
-            is_valid = bool(job.job_description.strip())
+            # ✅ VALIDATION GATE 1: JobValidator - Required fields, URL, description length
+            job_validator = JobValidator(min_description_length=100)
+            is_valid, validation_reason = job_validator.validate_job(job)
             
-            if is_valid:
-                # Store immediately to database
-                stored = db_ops.store_details([job])
-                if stored > 0:
-                    job_details.append(job)
-                    processed += 1
-                    logger.info(f"✅ Scraped & Stored #{processed} - {job_id[:40]}")
-                else:
-                    logger.warning(f"⚠️ Failed to store {job_id} - marking as scraped")
-                    db_ops.mark_url_scraped(url)
+            if not is_valid:
+                logger.warning(f"⚠️ Validation failed: {job_id[:40]} - {validation_reason}")
+                continue  # Skip to next job, do NOT mark scraped
+            
+            # ✅ VALIDATION GATE 2: SkillValidator - False positive/negative accuracy
+            if validated_skills:
+                accuracy_report = skills_validator.calculate_accuracy(
+                    job.job_description, validated_skills
+                )
+                precision = accuracy_report.get('precision', 0)
+                recall = accuracy_report.get('recall', 0)
+                
+                if precision < 0.5:  # Too many false positives
+                    logger.warning(f"⚠️ Low precision ({precision:.2f}) for {job_id[:40]}")
+                    # Use canonical skills only
+                    canonical = accuracy_report.get('canonical_skills', [])
+                    job.skills = ", ".join(canonical) if canonical else ""
+                
+                logger.debug(f"📊 Skills accuracy: precision={precision:.2f}, recall={recall:.2f}")
+            
+            # ✅ VALIDATION GATE 3: Database storage
+            stored = db_ops.store_details([job])
+            if stored > 0:
+                # ✅ SUCCESS: Mark scraped=1 ONLY after successful storage
+                db_ops.mark_urls_scraped([url])
+                job_details.append(job)
+                processed += 1
+                logger.info(f"✅ Scraped & Stored #{processed} - {job_id[:40]}")
             else:
-                logger.warning(f"⏭️ Invalid job {job_id} - marking as scraped")
-                db_ops.mark_url_scraped(url)
+                logger.error(f"❌ Database storage failed for {job_id[:40]}")
+                # Do NOT mark scraped - allow retry
+                continue
             
         except Exception as e:
             logger.error(f"❌ Failed {job_id} - {e}")
-            # Mark failed URL as scraped to avoid retry
-            db_ops.mark_url_scraped(url)
+            # Do NOT mark scraped - allow retry on next run
+            continue
         finally:
             if page:
                 await page.close()
