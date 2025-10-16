@@ -11,7 +11,7 @@ from src.models.models import JobDetailModel
 from src.scraper.unified.linkedin.date_parser import parse_linkedin_date
 from src.scraper.unified.linkedin.selector_config import DETAIL_SELECTORS
 from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
-from src.analysis.skill_extraction.skill_validator import SkillsValidator
+from src.analysis.skill_extraction.skill_validator import SkillValidator
 
 logger = logging.getLogger(__name__)
 
