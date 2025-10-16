@@ -4,116 +4,176 @@
     {
       "name": ".NET",
       "patterns": [
-        "\\b\\.net\\b"
+        "\\bNET\\b",
+        "\\b.net\\b",
+        "\\b\\.NET\\b",
+        "\\bnet\\b",
+        "\\b\\.net\\b",
+        "\\b.NET\\b"
       ]
     },
     {
       "name": "Android Development",
       "patterns": [
-        "\\bandroid\\ development\\b"
+        "\\bad\\b",
+        "\\bandroid\\s+development\\b",
+        "\\bAD\\b",
+        "\\bandroid\\ development\\b",
+        "\\bAndroid\\s+Development\\b",
+        "\\bANDROID\\s+DEVELOPMENT\\b"
       ]
     },
     {
       "name": "Angular",
       "patterns": [
+        "\\bAngular\\b",
+        "\\bANGULAR\\b",
         "\\bangular\\b"
       ]
     },
     {
       "name": "Ansible",
       "patterns": [
-        "\\bansible\\b"
+        "\\bansible\\b",
+        "\\bANSIBLE\\b",
+        "\\bAnsible\\b"
       ]
     },
     {
       "name": "Anthropic Claude",
       "patterns": [
-        "\\banthropic\\ claude\\b"
+        "\\banthropic\\s+claude\\b",
+        "\\bac\\b",
+        "\\bAnthropic\\s+Claude\\b",
+        "\\bAC\\b",
+        "\\banthropic\\ claude\\b",
+        "\\bANTHROPIC\\s+CLAUDE\\b"
       ]
     },
     {
       "name": "Apache Airflow",
       "patterns": [
-        "\\bapache\\ airflow\\b"
+        "\\bapache\\ airflow\\b",
+        "\\baa\\b",
+        "\\bApache\\s+Airflow\\b",
+        "\\bapache\\s+airflow\\b",
+        "\\bAPACHE\\s+AIRFLOW\\b",
+        "\\bAA\\b"
       ]
     },
     {
       "name": "Apache Beam",
       "patterns": [
-        "\\bapache\\ beam\\b"
+        "\\bAB\\b",
+        "\\bapache\\s+beam\\b",
+        "\\bab\\b",
+        "\\bAPACHE\\s+BEAM\\b",
+        "\\bapache\\ beam\\b",
+        "\\bApache\\s+Beam\\b"
       ]
     },
     {
       "name": "Apache Kafka",
       "patterns": [
+        "\\bApache\\s+Kafka\\b",
+        "\\bAPACHE\\s+KAFKA\\b",
+        "\\bak\\b",
+        "\\bapache\\s+kafka\\b",
+        "\\bAK\\b",
         "\\bapache\\ kafka\\b"
       ]
     },
     {
       "name": "Apache Nifi",
       "patterns": [
-        "\\bapache\\ nifi\\b"
+        "\\bApache\\s+Nifi\\b",
+        "\\bAPACHE\\s+NIFI\\b",
+        "\\bapache\\ nifi\\b",
+        "\\ban\\b",
+        "\\bapache\\s+nifi\\b",
+        "\\bAN\\b"
       ]
     },
     {
       "name": "Apache Spark",
       "patterns": [
+        "\\bapache\\s+spark\\b",
+        "\\bAPACHE\\s+SPARK\\b",
         "\\bapache\\ spark\\b",
-        "\\bspark\\b"
+        "\\bas\\b",
+        "\\bspark\\b",
+        "\\bApache\\s+Spark\\b",
+        "\\bAS\\b"
       ]
     },
     {
       "name": "Application Programming Interface",
       "patterns": [
-        "\\bAPI\\b",
         "\\bAPIs\\b",
         "\\bapi\\b",
         "\\bapis\\b",
         "\\bapplication programming interface\\b",
-        "\\bApplication\\s+Programming\\s+Interface\\b"
+        "\\bAPPLICATION\\s+PROGRAMMING\\s+INTERFACE\\b",
+        "\\bApplication\\s+Programming\\s+Interface\\b",
+        "\\bapplication\\s+programming\\s+interface\\b",
+        "\\bAPI\\b"
       ]
     },
     {
       "name": "Argocd",
       "patterns": [
-        "\\bargocd\\b"
+        "\\bArgocd\\b",
+        "\\bargocd\\b",
+        "\\bARGOCD\\b"
       ]
     },
     {
       "name": "Artificial Intelligence",
       "patterns": [
-        "\\bAI\\b",
-        "\\bai\\b",
+        "\\bartificial\\s+intelligence\\b",
         "\\bartificial intelligence\\b",
+        "\\bai\\b",
+        "\\bAI\\b",
+        "\\bARTIFICIAL\\s+INTELLIGENCE\\b",
         "\\bArtificial\\s+Intelligence\\b"
       ]
     },
     {
       "name": "Asp.Net",
       "patterns": [
-        "\\basp\\.net\\ core\\b",
-        "\\basp\\.net\\b"
+        "\\baspnet\\b",
+        "\\bAspNet\\b",
+        "\\basp\\.net\\b",
+        "\\bASP.NET\\b",
+        "\\basp.net\\b",
+        "\\bAsp\\.Net\\b",
+        "\\basp\\.net\\ core\\b"
       ]
     },
     {
       "name": "Astro",
       "category": "Frontend Framework",
       "patterns": [
+        "\\bastro\\b",
         "\\bAstro\\b",
-        "\\bastro\\b"
+        "\\bASTRO\\b"
       ]
     },
     {
       "name": "AutoGen",
       "patterns": [
+        "\\bmicrosoft\\s+autogen\\b",
         "\\bautogen\\b",
         "\\bauto\\s+gen\\b",
-        "\\bmicrosoft\\s+autogen\\b"
+        "\\bAUTOGEN\\b",
+        "\\bAutoGen\\b"
       ]
     },
     {
       "name": "Autogen",
       "patterns": [
+        "\\bAUTOGEN\\b",
+        "\\bAutogen\\b",
         "\\bautogen\\b"
       ]
     },
@@ -129,82 +189,136 @@
     {
       "name": "Aws Bedrock",
       "patterns": [
+        "\\bAWS\\s+BEDROCK\\b",
+        "\\bAB\\b",
+        "\\baws\\s+bedrock\\b",
+        "\\bab\\b",
         "\\baws\\ bedrock\\b",
-        "\\baws\\b"
+        "\\baws\\b",
+        "\\bAws\\s+Bedrock\\b"
       ]
     },
     {
       "name": "Aws Cloud Services",
       "patterns": [
+        "\\bAws\\s+Cloud\\s+Services\\b",
+        "\\bACS\\b",
+        "\\baws\\s+cloud\\s+services\\b",
         "\\baws\\ cloud\\ services\\b",
+        "\\bacs\\b",
+        "\\bAWS\\s+CLOUD\\s+SERVICES\\b",
         "\\baws\\b"
       ]
     },
     {
       "name": "Aws Codepipeline",
       "patterns": [
+        "\\bac\\b",
         "\\baws\\ codepipeline\\b",
-        "\\baws\\b"
+        "\\bAC\\b",
+        "\\bAws\\s+Codepipeline\\b",
+        "\\bAWS\\s+CODEPIPELINE\\b",
+        "\\baws\\b",
+        "\\baws\\s+codepipeline\\b"
       ]
     },
     {
       "name": "Aws Glue",
       "patterns": [
-        "\\baws\\ glue\\b"
+        "\\bAws\\s+Glue\\b",
+        "\\bag\\b",
+        "\\baws\\s+glue\\b",
+        "\\bAWS\\s+GLUE\\b",
+        "\\baws\\ glue\\b",
+        "\\bAG\\b"
       ]
     },
     {
       "name": "Aws Lambda",
       "patterns": [
+        "\\bal\\b",
         "\\baws\\ lambda\\b",
+        "\\bAws\\s+Lambda\\b",
+        "\\bAWS\\s+LAMBDA\\b",
+        "\\baws\\s+lambda\\b",
+        "\\bAL\\b",
         "\\baws\\b"
       ]
     },
     {
       "name": "Aws Sagemaker",
       "patterns": [
+        "\\baws\\s+sagemaker\\b",
+        "\\bAws\\s+Sagemaker\\b",
+        "\\bas\\b",
+        "\\bAWS\\s+SAGEMAKER\\b",
         "\\baws\\ sagemaker\\b",
-        "\\baws\\b"
+        "\\baws\\b",
+        "\\bAS\\b"
       ]
     },
     {
       "name": "Azure",
       "patterns": [
-        "\\bazure\\b"
+        "\\bazure\\b",
+        "\\bAZURE\\b",
+        "\\bAzure\\b"
       ]
     },
     {
       "name": "Azure Functions",
       "patterns": [
+        "\\bAzure\\s+Functions\\b",
+        "\\bAF\\b",
+        "\\bAZURE\\s+FUNCTIONS\\b",
         "\\bazure\\ functions\\b",
-        "\\bazure\\b"
+        "\\bazure\\b",
+        "\\baf\\b",
+        "\\bazure\\s+functions\\b"
       ]
     },
     {
       "name": "Azure Kubernetes Service",
       "patterns": [
+        "\\bazure\\s+kubernetes\\s+service\\b",
+        "\\baks\\b",
+        "\\bAKS\\b",
         "\\bazure\\ kubernetes\\ service\\b",
-        "\\bazure\\b"
+        "\\bAZURE\\s+KUBERNETES\\s+SERVICE\\b",
+        "\\bazure\\b",
+        "\\bAzure\\s+Kubernetes\\s+Service\\b"
       ]
     },
     {
       "name": "Azure Openai",
       "patterns": [
+        "\\bazure\\s+openai\\b",
         "\\bazure\\ openai\\b",
-        "\\bazure\\b"
+        "\\bAzure\\s+Openai\\b",
+        "\\bao\\b",
+        "\\bazure\\b",
+        "\\bAZURE\\s+OPENAI\\b",
+        "\\bAO\\b"
       ]
     },
     {
       "name": "Azure Storage",
       "patterns": [
+        "\\bazure\\s+storage\\b",
+        "\\bAzure\\s+Storage\\b",
         "\\bazure\\ storage\\b",
-        "\\bazure\\b"
+        "\\bas\\b",
+        "\\bazure\\b",
+        "\\bAZURE\\s+STORAGE\\b",
+        "\\bAS\\b"
       ]
     },
     {
       "name": "Bentoml",
       "patterns": [
-        "\\bbentoml\\b"
+        "\\bbentoml\\b",
+        "\\bBentoml\\b",
+        "\\bBENTOML\\b"
       ]
     },
     {
@@ -217,27 +331,35 @@
     {
       "name": "Bigquery",
       "patterns": [
-        "\\bbigquery\\b"
+        "\\bbigquery\\b",
+        "\\bBigquery\\b",
+        "\\bBIGQUERY\\b"
       ]
     },
     {
       "name": "Bitbucket",
       "patterns": [
-        "\\bbitbucket\\b"
+        "\\bbitbucket\\b",
+        "\\bBITBUCKET\\b",
+        "\\bBitbucket\\b"
       ]
     },
     {
       "name": "Black",
       "patterns": [
+        "\\bBLACK\\b",
+        "\\bBlack\\b",
         "\\bblack\\b"
       ]
     },
     {
       "name": "Business Intelligence",
       "patterns": [
+        "\\bBUSINESS\\s+INTELLIGENCE\\b",
         "\\bBI\\b",
-        "\\bbi\\b",
         "\\bbusiness intelligence\\b",
+        "\\bbi\\b",
+        "\\bbusiness\\s+intelligence\\b",
         "\\bBusiness\\s+Intelligence\\b"
       ]
     },
@@ -245,46 +367,65 @@
       "name": "C Programming",
       "patterns": [
         "\\bC\\s+programming\\b",
-        "\\bc\\s+programming\\b",
         "\\bC\\s+language\\b",
+        "\\bc/c\\+\\+\\b",
+        "\\bcp\\b",
+        "\\bc\\s+programming\\b",
+        "\\bC\\s+PROGRAMMING\\b",
+        "\\bCP\\b",
+        "\\bC\\s+Programming\\b",
         "\\bc\\s+language\\b",
-        "\\bC/C\\+\\+\\b",
-        "\\bc/c\\+\\+\\b"
+        "\\bC/C\\+\\+\\b"
       ]
     },
     {
       "name": "Cassandra",
       "patterns": [
-        "\\bcassandra\\b"
+        "\\bCassandra\\b",
+        "\\bcassandra\\b",
+        "\\bCASSANDRA\\b"
       ]
     },
     {
       "name": "Causal Inference",
       "patterns": [
-        "\\bcausal\\ inference\\b"
+        "\\bcausal\\ inference\\b",
+        "\\bCausal\\s+Inference\\b",
+        "\\bCAUSAL\\s+INFERENCE\\b",
+        "\\bci\\b",
+        "\\bCI\\b",
+        "\\bcausal\\s+inference\\b"
       ]
     },
     {
       "name": "Chatgpt",
       "patterns": [
+        "\\bCHATGPT\\b",
+        "\\bChatgpt\\b",
         "\\bchatgpt\\b"
       ]
     },
     {
       "name": "Chroma",
       "patterns": [
+        "\\bCHROMA\\b",
+        "\\bChroma\\b",
         "\\bchroma\\b"
       ]
     },
     {
       "name": "Circleci",
       "patterns": [
-        "\\bcircleci\\b"
+        "\\bcircleci\\b",
+        "\\bCircleci\\b",
+        "\\bCIRCLECI\\b"
       ]
     },
     {
       "name": "Cline",
       "patterns": [
+        "\\bCLINE\\b",
+        "\\bCline\\b",
         "\\bcline\\b"
       ]
     },
@@ -298,40 +439,56 @@
     {
       "name": "Cnns",
       "patterns": [
+        "\\bCnns\\b",
+        "\\bCNNS\\b",
         "\\bcnns\\b"
       ]
     },
     {
       "name": "Cohere",
       "patterns": [
+        "\\bCOHERE\\b",
+        "\\bCohere\\b",
         "\\bcohere\\b"
       ]
     },
     {
       "name": "Computer Vision",
       "patterns": [
+        "\\bcomputer\\s+vision\\b",
+        "\\bComputer\\s+Vision\\b",
         "\\bCV\\b",
+        "\\bCOMPUTER\\s+VISION\\b",
+        "\\bcv\\b",
         "\\bcomputer\\ vision\\b"
       ]
     },
     {
       "name": "Confluence",
       "patterns": [
-        "\\bconfluence\\b"
+        "\\bCONFLUENCE\\b",
+        "\\bconfluence\\b",
+        "\\bConfluence\\b"
       ]
     },
     {
       "name": "Continuous Integration/Continuous Deployment",
       "patterns": [
-        "\\bCI/CD\\b",
-        "\\bContinuous\\s+Integration/Continuous\\s+Deployment\\b",
+        "\\bCID\\b",
+        "\\bcid\\b",
+        "\\bcontinuous integration/continuous deployment\\b",
         "\\bci/cd\\b",
-        "\\bcontinuous integration/continuous deployment\\b"
+        "\\bContinuous\\s+Integration/Continuous\\s+Deployment\\b",
+        "\\bCI/CD\\b",
+        "\\bCONTINUOUS\\s+INTEGRATION/CONTINUOUS\\s+DEPLOYMENT\\b",
+        "\\bcontinuous\\s+integration/continuous\\s+deployment\\b"
       ]
     },
     {
       "name": "CrewAI",
       "patterns": [
+        "\\bCREWAI\\b",
+        "\\bCrewAI\\b",
         "\\bcrewai\\b",
         "\\bcrew\\s+ai\\b"
       ]
@@ -339,6 +496,8 @@
     {
       "name": "Crewai",
       "patterns": [
+        "\\bCREWAI\\b",
+        "\\bCrewai\\b",
         "\\bcrewai\\b"
       ]
     },
@@ -362,105 +521,143 @@
     {
       "name": "Cucumber",
       "patterns": [
+        "\\bCucumber\\b",
+        "\\bCUCUMBER\\b",
         "\\bcucumber\\b"
       ]
     },
     {
       "name": "Cursor",
       "patterns": [
+        "\\bCursor\\b",
+        "\\bCURSOR\\b",
         "\\bcursor\\b"
       ]
     },
     {
       "name": "Cypress",
       "patterns": [
+        "\\bCYPRESS\\b",
+        "\\bCypress\\b",
         "\\bcypress\\b"
       ]
     },
     {
       "name": "Dask",
       "patterns": [
-        "\\bdask\\b"
+        "\\bdask\\b",
+        "\\bDASK\\b",
+        "\\bDask\\b"
       ]
     },
     {
       "name": "Data Science",
       "patterns": [
+        "\\bData\\s+Science\\b",
+        "\\bDATA\\s+SCIENCE\\b",
+        "\\bDS\\b",
+        "\\bds\\b",
+        "\\bdata\\s+science\\b",
         "\\bdata\\ science\\b"
       ]
     },
     {
       "name": "Databricks",
       "patterns": [
+        "\\bDATABRICKS\\b",
+        "\\bDatabricks\\b",
         "\\bdatabricks\\b"
       ]
     },
     {
       "name": "Datadog",
       "patterns": [
+        "\\bDatadog\\b",
+        "\\bDATADOG\\b",
         "\\bdatadog\\b"
       ]
     },
     {
       "name": "Dbt",
       "patterns": [
-        "\\bdbt\\b"
+        "\\bdbt\\b",
+        "\\bDbt\\b",
+        "\\bDBT\\b"
       ]
     },
     {
       "name": "Deep Learning",
       "patterns": [
+        "\\bDeep\\s+Learning\\b",
+        "\\bDEEP\\s+LEARNING\\b",
+        "\\bdl\\b",
+        "\\bdeep\\s+learning\\b",
         "\\bDL\\b",
-        "\\bdeep\\ learning\\b",
-        "\\bdl\\b"
+        "\\bdeep\\ learning\\b"
       ]
     },
     {
       "name": "Deepspeed",
       "patterns": [
-        "\\bdeepspeed\\b"
+        "\\bdeepspeed\\b",
+        "\\bDeepspeed\\b",
+        "\\bDEEPSPEED\\b"
       ]
     },
     {
       "name": "DevOps",
       "patterns": [
+        "\\bDEVOPS\\b",
+        "\\bdevops\\b",
         "\\bDevOps\\b"
       ]
     },
     {
       "name": "Django",
       "patterns": [
-        "\\bdjango\\b"
+        "\\bdjango\\b",
+        "\\bDjango\\b",
+        "\\bDJANGO\\b"
       ]
     },
     {
       "name": "Docker",
       "patterns": [
-        "\\bdocker\\b"
+        "\\bDocker\\b",
+        "\\bdocker\\b",
+        "\\bDOCKER\\b"
       ]
     },
     {
       "name": "Dpo",
       "patterns": [
+        "\\bDPO\\b",
+        "\\bDpo\\b",
         "\\bdpo\\b"
       ]
     },
     {
       "name": "Dspy",
       "patterns": [
+        "\\bDSPY\\b",
+        "\\bDspy\\b",
         "\\bdspy\\b"
       ]
     },
     {
       "name": "Dvc",
       "patterns": [
+        "\\bDVC\\b",
+        "\\bDvc\\b",
         "\\bdvc\\b"
       ]
     },
     {
       "name": "Dynamodb",
       "patterns": [
-        "\\bdynamodb\\b"
+        "\\bdynamodb\\b",
+        "\\bDYNAMODB\\b",
+        "\\bDynamodb\\b"
       ]
     },
     {
@@ -473,26 +670,36 @@
     {
       "name": "Edge Computing",
       "patterns": [
+        "\\bEdge\\s+Computing\\b",
+        "\\bedge\\ computing\\b",
+        "\\bec\\b",
+        "\\bEC\\b",
+        "\\bEDGE\\s+COMPUTING\\b",
         "\\bedge\\ ai\\b",
-        "\\bedge\\ computing\\b"
+        "\\bedge\\s+computing\\b"
       ]
     },
     {
       "name": "EKS",
       "patterns": [
         "\\beks\\b",
-        "\\belastic kubernetes service\\b"
+        "\\belastic kubernetes service\\b",
+        "\\bEKS\\b"
       ]
     },
     {
       "name": "Elasticsearch",
       "patterns": [
+        "\\bElasticsearch\\b",
+        "\\bELASTICSEARCH\\b",
         "\\belasticsearch\\b"
       ]
     },
     {
       "name": "Electron",
       "patterns": [
+        "\\bElectron\\b",
+        "\\bELECTRON\\b",
         "\\belectron\\b"
       ]
     },
@@ -506,155 +713,224 @@
     {
       "name": "Encryption",
       "patterns": [
-        "\\bencryption\\b"
+        "\\bencryption\\b",
+        "\\bEncryption\\b",
+        "\\bENCRYPTION\\b"
       ]
     },
     {
       "name": "Express.Js",
       "patterns": [
+        "\\bexpress.js\\b",
+        "\\bExpress\\.Js\\b",
+        "\\bEXPRESS.JS\\b",
+        "\\bexpressjs\\b",
+        "\\bExpressJs\\b",
         "\\bexpress\\.js\\b"
       ]
     },
     {
       "name": "Extract Transform Load",
       "patterns": [
-        "\\bETL\\b",
-        "\\betl\\b",
+        "\\bextract\\s+transform\\s+load\\b",
+        "\\bEXTRACT\\s+TRANSFORM\\s+LOAD\\b",
         "\\bextract transform load\\b",
-        "\\bExtract\\s+Transform\\s+Load\\b"
+        "\\bExtract\\s+Transform\\s+Load\\b",
+        "\\bETL\\b",
+        "\\betl\\b"
       ]
     },
     {
       "name": "Faiss",
       "patterns": [
+        "\\bFaiss\\b",
+        "\\bFAISS\\b",
         "\\bfaiss\\b"
       ]
     },
     {
       "name": "Fastapi",
       "patterns": [
-        "\\bfastapi\\b"
+        "\\bFastapi\\b",
+        "\\bfastapi\\b",
+        "\\bFASTAPI\\b"
       ]
     },
     {
       "name": "Figma",
       "patterns": [
-        "\\bfigma\\b"
+        "\\bfigma\\b",
+        "\\bFigma\\b",
+        "\\bFIGMA\\b"
       ]
     },
     {
       "name": "Fine-tuning",
       "patterns": [
         "\\bfine.?tun(e|ing)\\b",
+        "\\bFine\\-tuning\\b",
+        "\\bfine-tuning\\b",
+        "\\bfine\\s+tuning\\b",
+        "\\bFINE-TUNING\\b",
         "\\bfinetuning\\b"
       ]
     },
     {
       "name": "FinOps",
       "patterns": [
-        "\\bfinops\\b",
-        "\\bfinancial operations\\b"
+        "\\bFINOPS\\b",
+        "\\bFinOps\\b",
+        "\\bfinancial operations\\b",
+        "\\bfinops\\b"
       ]
     },
     {
       "name": "Firewall",
       "patterns": [
-        "\\bfirewall\\b"
+        "\\bfirewall\\b",
+        "\\bFirewall\\b",
+        "\\bFIREWALL\\b"
       ]
     },
     {
       "name": "Flask",
       "patterns": [
-        "\\bflask\\b"
+        "\\bflask\\b",
+        "\\bFlask\\b",
+        "\\bFLASK\\b"
       ]
     },
     {
       "name": "Flutter",
       "category": "Mobile Development",
       "patterns": [
-        "\\bFlutter\\b",
-        "\\bflutter\\b"
+        "\\bflutter\\b",
+        "\\bFLUTTER\\b",
+        "\\bFlutter\\b"
       ]
     },
     {
       "name": "Gemini",
       "patterns": [
-        "\\bgemini\\b"
+        "\\bgemini\\b",
+        "\\bGEMINI\\b",
+        "\\bGemini\\b"
       ]
     },
     {
       "name": "GenAI",
       "patterns": [
-        "\\bgenai\\b"
+        "\\bgenai\\b",
+        "\\bGenAI\\b",
+        "\\bGENAI\\b"
       ]
     },
     {
       "name": "Git",
       "patterns": [
+        "\\bGIT\\b",
+        "\\bGit\\b",
         "\\bgit\\b"
       ]
     },
     {
       "name": "Github",
       "patterns": [
+        "\\bGITHUB\\b",
+        "\\bGithub\\b",
         "\\bgithub\\b"
       ]
     },
     {
       "name": "Github Actions",
       "patterns": [
+        "\\bGithub\\s+Actions\\b",
+        "\\bGITHUB\\s+ACTIONS\\b",
+        "\\bGA\\b",
+        "\\bga\\b",
+        "\\bgithub\\s+actions\\b",
         "\\bgithub\\ actions\\b"
       ]
     },
     {
       "name": "Github Copilot",
       "patterns": [
-        "\\bgithub\\ copilot\\b"
+        "\\bGC\\b",
+        "\\bgithub\\ copilot\\b",
+        "\\bgc\\b",
+        "\\bGITHUB\\s+COPILOT\\b",
+        "\\bgithub\\s+copilot\\b",
+        "\\bGithub\\s+Copilot\\b"
       ]
     },
     {
       "name": "Gitlab",
       "patterns": [
+        "\\bGitlab\\b",
+        "\\bgitlab\\b",
         "\\bgitlab\\ ci/cd\\b",
-        "\\bgitlab\\b"
+        "\\bGITLAB\\b"
       ]
     },
     {
       "name": "GNNs",
       "patterns": [
         "\\bgnns\\b",
-        "\\bgraph neural networks\\b"
+        "\\bgraph neural networks\\b",
+        "\\bGNNs\\b",
+        "\\bGNNS\\b"
       ]
     },
     {
       "name": "Golang",
       "patterns": [
+        "\\bGolang\\b",
+        "\\bgolang\\b",
         "\\bgo\\b",
-        "\\bgolang\\b"
+        "\\bGOLANG\\b"
       ]
     },
     {
       "name": "Google Cloud Platform",
       "patterns": [
+        "\\bGOOGLE\\s+CLOUD\\s+PLATFORM\\b",
+        "\\bgoogle\\ cloud\\ platform\\b",
+        "\\bgoogle\\s+cloud\\s+platform\\b",
         "\\bgcp\\b",
-        "\\bgoogle\\ cloud\\ platform\\b"
+        "\\bGCP\\b",
+        "\\bGoogle\\s+Cloud\\s+Platform\\b"
       ]
     },
     {
       "name": "Google Cloud Professional",
       "patterns": [
-        "\\bgoogle\\ cloud\\ professional\\b"
+        "\\bgoogle\\ cloud\\ professional\\b",
+        "\\bgoogle\\s+cloud\\s+professional\\b",
+        "\\bGOOGLE\\s+CLOUD\\s+PROFESSIONAL\\b",
+        "\\bgcp\\b",
+        "\\bGCP\\b",
+        "\\bGoogle\\s+Cloud\\s+Professional\\b"
       ]
     },
     {
       "name": "Google Vertex Ai",
       "patterns": [
-        "\\bgoogle\\ vertex\\ ai\\b"
+        "\\bgva\\b",
+        "\\bGOOGLE\\s+VERTEX\\s+AI\\b",
+        "\\bgoogle\\s+vertex\\s+ai\\b",
+        "\\bGVA\\b",
+        "\\bgoogle\\ vertex\\ ai\\b",
+        "\\bGoogle\\s+Vertex\\s+Ai\\b"
       ]
     },
     {
       "name": "Google Web Designer",
       "patterns": [
+        "\\bGWD\\b",
+        "\\bgwd\\b",
+        "\\bGOOGLE\\s+WEB\\s+DESIGNER\\b",
+        "\\bGoogle\\s+Web\\s+Designer\\b",
+        "\\bgoogle\\s+web\\s+designer\\b",
         "\\bgoogle\\ web\\ designer\\b"
       ]
     },
@@ -668,7 +944,12 @@
     {
       "name": "Gpt Apis",
       "patterns": [
-        "\\bgpt\\ apis\\b"
+        "\\bGpt\\s+Apis\\b",
+        "\\bgpt\\s+apis\\b",
+        "\\bgpt\\ apis\\b",
+        "\\bGPT\\s+APIS\\b",
+        "\\bGA\\b",
+        "\\bga\\b"
       ]
     },
     {
@@ -683,50 +964,69 @@
     {
       "name": "Grafana",
       "patterns": [
-        "\\bgrafana\\b"
+        "\\bgrafana\\b",
+        "\\bGrafana\\b",
+        "\\bGRAFANA\\b"
       ]
     },
     {
       "name": "Graphql",
       "patterns": [
+        "\\bGraphql\\b",
+        "\\bGRAPHQL\\b",
         "\\bgraphql\\b"
       ]
     },
     {
       "name": "Grpc",
       "patterns": [
-        "\\bgrpc\\b"
+        "\\bgrpc\\b",
+        "\\bGRPC\\b",
+        "\\bGrpc\\b"
       ]
     },
     {
       "name": "H2O.Ai",
       "patterns": [
-        "\\bh2o\\.ai\\b"
+        "\\bh2o\\.ai\\b",
+        "\\bh2o.ai\\b",
+        "\\bH2O\\.Ai\\b",
+        "\\bH2O.AI\\b",
+        "\\bh2oai\\b",
+        "\\bH2OAi\\b"
       ]
     },
     {
       "name": "Haystack",
       "patterns": [
+        "\\bHAYSTACK\\b",
+        "\\bHaystack\\b",
         "\\bhaystack\\b"
       ]
     },
     {
       "name": "Helm",
       "patterns": [
+        "\\bHelm\\b",
+        "\\bHELM\\b",
         "\\bhelm\\b"
       ]
     },
     {
       "name": "Hipaa",
       "patterns": [
-        "\\bhipaa\\b"
+        "\\bhipaa\\b",
+        "\\bHIPAA\\b",
+        "\\bHipaa\\b"
       ]
     },
     {
       "name": "Html",
       "patterns": [
+        "\\bHtml\\b",
         "\\bhtml\\b",
-        "\\bhypertext\\ markup\\ language\\b"
+        "\\bhypertext\\ markup\\ language\\b",
+        "\\bHTML\\b"
       ]
     },
     {
@@ -748,7 +1048,12 @@
     {
       "name": "Hugging Face",
       "patterns": [
-        "\\bhugging\\ face\\b"
+        "\\bhugging\\ face\\b",
+        "\\bHugging\\s+Face\\b",
+        "\\bhf\\b",
+        "\\bHF\\b",
+        "\\bHUGGING\\s+FACE\\b",
+        "\\bhugging\\s+face\\b"
       ]
     },
     {
@@ -770,21 +1075,26 @@
     {
       "name": "Ids/Ips",
       "patterns": [
+        "\\bIDS/IPS\\b",
+        "\\bIds/Ips\\b",
         "\\bids/ips\\b"
       ]
     },
     {
       "name": "Informatica",
       "patterns": [
-        "\\binformatica\\b"
+        "\\bINFORMATICA\\b",
+        "\\binformatica\\b",
+        "\\bInformatica\\b"
       ]
     },
     {
       "name": "Ionic",
       "category": "Mobile Development",
       "patterns": [
+        "\\bionic\\b",
         "\\bIonic\\b",
-        "\\bionic\\b"
+        "\\bIONIC\\b"
       ]
     },
     {
@@ -797,93 +1107,125 @@
     {
       "name": "Jasmine",
       "patterns": [
-        "\\bjasmine\\b"
+        "\\bJasmine\\b",
+        "\\bjasmine\\b",
+        "\\bJASMINE\\b"
       ]
     },
     {
       "name": "Java",
       "patterns": [
-        "\\bjava\\b"
+        "\\bJava\\b",
+        "\\bjava\\b",
+        "\\bJAVA\\b"
       ]
     },
     {
       "name": "Javascript",
       "patterns": [
+        "\\bjavascript\\b",
         "\\bjavascript\\ coding\\b",
-        "\\bjavascript\\b"
+        "\\bJavascript\\b",
+        "\\bJAVASCRIPT\\b"
       ]
     },
     {
       "name": "Jax",
       "patterns": [
-        "\\bjax\\b"
+        "\\bJax\\b",
+        "\\bjax\\b",
+        "\\bJAX\\b"
       ]
     },
     {
       "name": "Jenkins",
       "patterns": [
+        "\\bJenkins\\b",
+        "\\bJENKINS\\b",
         "\\bjenkins\\b"
       ]
     },
     {
       "name": "Jest",
       "patterns": [
+        "\\bJEST\\b",
+        "\\bJest\\b",
         "\\bjest\\b"
       ]
     },
     {
       "name": "Jetpack Compose",
       "patterns": [
+        "\\bJC\\b",
+        "\\bJetpack\\s+Compose\\b",
+        "\\bjetpack\\s+compose\\b",
+        "\\bjc\\b",
+        "\\bJETPACK\\s+COMPOSE\\b",
         "\\bjetpack\\ compose\\b"
       ]
     },
     {
       "name": "Jira",
       "patterns": [
+        "\\bJIRA\\b",
+        "\\bJira\\b",
         "\\bjira\\b"
       ]
     },
     {
       "name": "Jpa",
       "patterns": [
-        "\\bjpa\\b"
+        "\\bjpa\\b",
+        "\\bJPA\\b",
+        "\\bJpa\\b"
       ]
     },
     {
       "name": "Jquery",
       "patterns": [
-        "\\bjquery\\b"
+        "\\bjquery\\b",
+        "\\bJquery\\b",
+        "\\bJQUERY\\b"
       ]
     },
     {
       "name": "Junit",
       "patterns": [
-        "\\bjunit\\b"
+        "\\bJunit\\b",
+        "\\bjunit\\b",
+        "\\bJUNIT\\b"
       ]
     },
     {
       "name": "Jupyter",
       "patterns": [
-        "\\bjupyter\\b"
+        "\\bJUPYTER\\b",
+        "\\bjupyter\\b",
+        "\\bJupyter\\b"
       ]
     },
     {
       "name": "JVM",
       "patterns": [
+        "\\bjava virtual machine\\b",
         "\\bjvm\\b",
-        "\\bjava virtual machine\\b"
+        "\\bJVM\\b"
       ]
     },
     {
       "name": "K8s",
       "patterns": [
+        "\\bK8s\\b",
+        "\\bK8S\\b",
         "\\bk8s\\b"
       ]
     },
     {
       "name": "Keras",
       "patterns": [
-        "\\bkeras\\b"
+        "\\bkeras\\b",
+        "\\bKeras\\b",
+        "\\bKERAS\\b"
       ]
     },
     {
@@ -896,71 +1238,93 @@
     {
       "name": "Kotlin",
       "patterns": [
-        "\\bkotlin\\b"
+        "\\bkotlin\\b",
+        "\\bKOTLIN\\b",
+        "\\bKotlin\\b"
       ]
     },
     {
       "name": "Kserve",
       "patterns": [
+        "\\bKserve\\b",
+        "\\bKSERVE\\b",
         "\\bkserve\\b"
       ]
     },
     {
       "name": "Kubeflow",
       "patterns": [
+        "\\bKubeflow\\b",
+        "\\bKUBEFLOW\\b",
         "\\bkubeflow\\b"
       ]
     },
     {
       "name": "Kubernetes",
       "patterns": [
-        "\\bkubernetes\\b"
+        "\\bkubernetes\\b",
+        "\\bKubernetes\\b",
+        "\\bKUBERNETES\\b"
       ]
     },
     {
       "name": "LangChain",
       "patterns": [
         "\\blangchain\\b",
-        "\\blang\\s+chain\\b"
+        "\\bLangChain\\b",
+        "\\blang\\s+chain\\b",
+        "\\bLANGCHAIN\\b"
       ]
     },
     {
       "name": "Langchain",
       "patterns": [
-        "\\blangchain\\b"
+        "\\blangchain\\b",
+        "\\bLangchain\\b",
+        "\\bLANGCHAIN\\b"
       ]
     },
     {
       "name": "LangGraph",
       "patterns": [
+        "\\bLangGraph\\b",
         "\\blanggraph\\b",
+        "\\bLANGGRAPH\\b",
         "\\blang\\s+graph\\b"
       ]
     },
     {
       "name": "Langgraph",
       "patterns": [
-        "\\blanggraph\\b"
+        "\\bLanggraph\\b",
+        "\\blanggraph\\b",
+        "\\bLANGGRAPH\\b"
       ]
     },
     {
       "name": "Lightgbm",
       "patterns": [
-        "\\blightgbm\\b"
+        "\\bLIGHTGBM\\b",
+        "\\blightgbm\\b",
+        "\\bLightgbm\\b"
       ]
     },
     {
       "name": "LlamaIndex",
       "patterns": [
+        "\\bgpt\\s+index\\b",
+        "\\bLlamaIndex\\b",
         "\\bllamaindex\\b",
-        "\\bllama\\s+index\\b",
-        "\\bgpt\\s+index\\b"
+        "\\bLLAMAINDEX\\b",
+        "\\bllama\\s+index\\b"
       ]
     },
     {
       "name": "Llamaindex",
       "patterns": [
-        "\\bllamaindex\\b"
+        "\\bLLAMAINDEX\\b",
+        "\\bllamaindex\\b",
+        "\\bLlamaindex\\b"
       ]
     },
     {
@@ -980,157 +1344,219 @@
     {
       "name": "LLMOps",
       "patterns": [
-        "\\bllmops\\b"
+        "\\bllmops\\b",
+        "\\bLLMOPS\\b",
+        "\\bLLMOps\\b"
       ]
     },
     {
       "name": "Looker",
       "patterns": [
-        "\\blooker\\b"
+        "\\blooker\\b",
+        "\\bLOOKER\\b",
+        "\\bLooker\\b"
       ]
     },
     {
       "name": "Lora",
       "patterns": [
-        "\\blora\\b"
+        "\\bLora\\b",
+        "\\blora\\b",
+        "\\bLORA\\b"
       ]
     },
     {
       "name": "Machine Learning",
       "patterns": [
-        "\\bML\\b",
-        "\\bmachine\\ learning\\b",
-        "\\bml\\ frameworks\\b",
-        "\\bml\\ fundamentals\\b",
-        "\\bml\\ infrastructure\\b",
-        "\\bml\\ lifecycle\\ management\\b",
-        "\\bml\\ methodologies\\b",
         "\\bml\\ ops\\ tools\\b",
+        "\\bml\\b",
+        "\\bmachine\\ learning\\b",
+        "\\bMachine\\s+Learning\\b",
+        "\\bML\\b",
+        "\\bml\\ infrastructure\\b",
+        "\\bml\\ fundamentals\\b",
+        "\\bml\\ frameworks\\b",
+        "\\bml\\ lifecycle\\ management\\b",
         "\\bml\\ systems\\b",
-        "\\bml\\b"
+        "\\bml\\ methodologies\\b",
+        "\\bmachine\\s+learning\\b",
+        "\\bMACHINE\\s+LEARNING\\b"
       ]
     },
     {
       "name": "Matlab",
       "patterns": [
+        "\\bMATLAB\\b",
+        "\\bMatlab\\b",
         "\\bmatlab\\b"
       ]
     },
     {
       "name": "Matplotlib",
       "patterns": [
-        "\\bmatplotlib\\b"
+        "\\bmatplotlib\\b",
+        "\\bMatplotlib\\b",
+        "\\bMATPLOTLIB\\b"
       ]
     },
     {
       "name": "Microservices",
       "patterns": [
-        "\\bmicroservices\\b"
+        "\\bMicroservices\\b",
+        "\\bmicroservices\\b",
+        "\\bMICROSERVICES\\b"
       ]
     },
     {
       "name": "Microsoft Sql Server",
       "patterns": [
-        "\\bsql\\ server\\b"
+        "\\bmss\\b",
+        "\\bsql\\ server\\b",
+        "\\bmicrosoft\\s+sql\\s+server\\b",
+        "\\bMicrosoft\\s+Sql\\s+Server\\b",
+        "\\bMICROSOFT\\s+SQL\\s+SERVER\\b",
+        "\\bMSS\\b"
       ]
     },
     {
       "name": "Mlflow",
       "patterns": [
+        "\\bMlflow\\b",
+        "\\bMLFLOW\\b",
         "\\bmlflow\\b"
       ]
     },
     {
       "name": "MLOps",
       "patterns": [
+        "\\bmlops\\b",
+        "\\bMLOPS\\b",
         "\\bMLOps\\b"
       ]
     },
     {
       "name": "Mocha",
       "patterns": [
+        "\\bMOCHA\\b",
+        "\\bMocha\\b",
         "\\bmocha\\b"
       ]
     },
     {
       "name": "Model Context Protocol",
       "patterns": [
-        "\\bMCP\\b",
         "\\bmcp\\b",
-        "\\bmodel\\s+context\\s+protocol\\b"
+        "\\bMCP\\b",
+        "\\bmodel\\s+context\\s+protocol\\b",
+        "\\bModel\\s+Context\\s+Protocol\\b",
+        "\\bMODEL\\s+CONTEXT\\s+PROTOCOL\\b"
       ]
     },
     {
       "name": "Mongodb",
       "patterns": [
-        "\\bmongodb\\b"
+        "\\bmongodb\\b",
+        "\\bMongodb\\b",
+        "\\bMONGODB\\b"
       ]
     },
     {
       "name": "MySQL",
       "patterns": [
-        "\\bmysql\\b"
+        "\\bMYSQL\\b",
+        "\\bmysql\\b",
+        "\\bMySQL\\b"
       ]
     },
     {
       "name": "n8n",
       "patterns": [
+        "\\bN8N\\b",
         "\\bn8n\\b"
       ]
     },
     {
       "name": "Natural Language Processing",
       "patterns": [
+        "\\bNATURAL\\s+LANGUAGE\\s+PROCESSING\\b",
+        "\\bnlp\\b",
+        "\\bNatural\\s+Language\\s+Processing\\b",
         "\\bNLP\\b",
+        "\\bnatural\\s+language\\s+processing\\b",
         "\\bnatural\\ language\\ processing\\b"
       ]
     },
     {
       "name": "Neo4J",
       "patterns": [
+        "\\bNEO4J\\b",
+        "\\bNeo4J\\b",
         "\\bneo4j\\b"
       ]
     },
     {
       "name": "Nestjs",
       "patterns": [
-        "\\bnestjs\\b"
+        "\\bnestjs\\b",
+        "\\bNestjs\\b",
+        "\\bNESTJS\\b"
       ]
     },
     {
       "name": "Neural Networks",
       "patterns": [
+        "\\bNN\\b",
+        "\\bneural\\s+networks\\b",
+        "\\bNeural\\s+Networks\\b",
+        "\\bnn\\b",
+        "\\bNEURAL\\s+NETWORKS\\b",
         "\\bneural\\ networks\\b"
       ]
     },
     {
       "name": "Next.Js",
       "patterns": [
-        "\\bnext\\.js\\b"
+        "\\bnextjs\\b",
+        "\\bNext\\.Js\\b",
+        "\\bnext.js\\b",
+        "\\bNEXT.JS\\b",
+        "\\bnext\\.js\\b",
+        "\\bNextJs\\b"
       ]
     },
     {
       "name": "Nltk",
       "patterns": [
-        "\\bnltk\\b"
+        "\\bnltk\\b",
+        "\\bNLTK\\b",
+        "\\bNltk\\b"
       ]
     },
     {
       "name": "Node.Js",
       "patterns": [
-        "\\bnode\\.js\\b"
+        "\\bnode\\.js\\b",
+        "\\bNODE.JS\\b",
+        "\\bNode\\.Js\\b",
+        "\\bnodejs\\b",
+        "\\bNodeJs\\b",
+        "\\bnode.js\\b"
       ]
     },
     {
       "name": "Notion",
       "patterns": [
-        "\\bnotion\\b"
+        "\\bnotion\\b",
+        "\\bNotion\\b",
+        "\\bNOTION\\b"
       ]
     },
     {
       "name": "Numpy",
       "patterns": [
-        "\\bnumpy\\b"
+        "\\bNumpy\\b",
+        "\\bnumpy\\b",
+        "\\bNUMPY\\b"
       ]
     },
     {
@@ -1138,9 +1564,14 @@
       "category": "Frontend Framework",
       "patterns": [
         "\\bNuxt\\.?js\\b",
+        "\\bnuxt.js\\b",
+        "\\bNuxtJs\\b",
+        "\\bNuxt\\.Js\\b",
+        "\\bNUXT.JS\\b",
+        "\\bnuxtjs\\b",
+        "\\bnuxt\\b",
         "\\bNuxt\\b",
-        "\\bnuxt\\.?js\\b",
-        "\\bnuxt\\b"
+        "\\bnuxt\\.?js\\b"
       ]
     },
     {
@@ -1153,39 +1584,51 @@
     {
       "name": "Onnx",
       "patterns": [
+        "\\bONNX\\b",
+        "\\bOnnx\\b",
         "\\bonnx\\b"
       ]
     },
     {
       "name": "Openai",
       "patterns": [
+        "\\bopenai\\b",
+        "\\bOPENAI\\b",
         "\\bopenai\\ api\\b",
-        "\\bopenai\\b"
+        "\\bOpenai\\b"
       ]
     },
     {
       "name": "Openshift",
       "patterns": [
+        "\\bOPENSHIFT\\b",
+        "\\bOpenshift\\b",
         "\\bopenshift\\b"
       ]
     },
     {
       "name": "Oracle",
       "patterns": [
-        "\\boracle\\ database\\b",
+        "\\boracle\\b",
         "\\boracle\\ warehouse\\ builder\\b",
-        "\\boracle\\b"
+        "\\bORACLE\\b",
+        "\\bOracle\\b",
+        "\\boracle\\ database\\b"
       ]
     },
     {
       "name": "Owasp",
       "patterns": [
-        "\\bowasp\\b"
+        "\\bowasp\\b",
+        "\\bOWASP\\b",
+        "\\bOwasp\\b"
       ]
     },
     {
       "name": "PaaS",
       "patterns": [
+        "\\bPaaS\\b",
+        "\\bPAAS\\b",
         "\\bpaas\\b",
         "\\bplatform as a service\\b"
       ]
@@ -1193,54 +1636,72 @@
     {
       "name": "Pandas",
       "patterns": [
-        "\\bpandas\\b"
+        "\\bPandas\\b",
+        "\\bpandas\\b",
+        "\\bPANDAS\\b"
       ]
     },
     {
       "name": "Peft",
       "patterns": [
-        "\\bpeft\\b"
+        "\\bPeft\\b",
+        "\\bpeft\\b",
+        "\\bPEFT\\b"
       ]
     },
     {
       "name": "Perl",
       "patterns": [
-        "\\bperl\\b"
+        "\\bPerl\\b",
+        "\\bperl\\b",
+        "\\bPERL\\b"
       ]
     },
     {
       "name": "Pgvector",
       "patterns": [
-        "\\bpgvector\\b"
+        "\\bpgvector\\b",
+        "\\bPgvector\\b",
+        "\\bPGVECTOR\\b"
       ]
     },
     {
       "name": "Php",
       "patterns": [
-        "\\bphp\\b"
+        "\\bphp\\b",
+        "\\bPhp\\b",
+        "\\bPHP\\b"
       ]
     },
     {
       "name": "Pinecone",
       "patterns": [
-        "\\bpinecone\\b"
+        "\\bPINECONE\\b",
+        "\\bpinecone\\b",
+        "\\bPinecone\\b"
       ]
     },
     {
       "name": "Playwright",
       "patterns": [
+        "\\bPLAYWRIGHT\\b",
+        "\\bPlaywright\\b",
         "\\bplaywright\\b"
       ]
     },
     {
       "name": "Plotly",
       "patterns": [
-        "\\bplotly\\b"
+        "\\bplotly\\b",
+        "\\bPlotly\\b",
+        "\\bPLOTLY\\b"
       ]
     },
     {
       "name": "Postgresql",
       "patterns": [
+        "\\bPOSTGRESQL\\b",
+        "\\bPostgresql\\b",
         "\\bpostgres\\b",
         "\\bpostgresql\\b"
       ]
@@ -1248,73 +1709,94 @@
     {
       "name": "Postman",
       "patterns": [
+        "\\bPOSTMAN\\b",
+        "\\bPostman\\b",
         "\\bpostman\\b"
       ]
     },
     {
       "name": "Prometheus",
       "patterns": [
-        "\\bprometheus\\b"
+        "\\bprometheus\\b",
+        "\\bPrometheus\\b",
+        "\\bPROMETHEUS\\b"
       ]
     },
     {
       "name": "Prophet",
       "patterns": [
+        "\\bProphet\\b",
+        "\\bPROPHET\\b",
         "\\bprophet\\b"
       ]
     },
     {
       "name": "Pyspark",
       "patterns": [
-        "\\bpyspark\\b"
+        "\\bPYSPARK\\b",
+        "\\bpyspark\\b",
+        "\\bPyspark\\b"
       ]
     },
     {
       "name": "Pytest",
       "patterns": [
+        "\\bPYTEST\\b",
+        "\\bPytest\\b",
         "\\bpytest\\b"
       ]
     },
     {
       "name": "Python",
       "patterns": [
-        "\\bpython\\ on\\ linux\\ platforms\\b",
-        "\\bpython\\ programming\\ language\\b",
         "\\bpython\\ programming\\b",
+        "\\bpython\\ programming\\ language\\b",
+        "\\bPYTHON\\b",
+        "\\bPython\\b",
+        "\\bpython\\ on\\ linux\\ platforms\\b",
         "\\bpython\\b"
       ]
     },
     {
       "name": "Pytorch",
       "patterns": [
-        "\\bpytorch\\b"
+        "\\bPYTORCH\\b",
+        "\\bpytorch\\b",
+        "\\bPytorch\\b"
       ]
     },
     {
       "name": "Qlora",
       "patterns": [
-        "\\bqlora\\b"
+        "\\bQlora\\b",
+        "\\bqlora\\b",
+        "\\bQLORA\\b"
       ]
     },
     {
       "name": "Qwik",
       "category": "Frontend Framework",
       "patterns": [
-        "\\bQwik\\b",
-        "\\bqwik\\b"
+        "\\bqwik\\b",
+        "\\bQWIK\\b",
+        "\\bQwik\\b"
       ]
     },
     {
       "name": "R Programming",
       "patterns": [
-        "\\bR\\s+programming\\b",
-        "\\br\\s+programming\\b",
-        "\\bR\\s+language\\b",
-        "\\br\\s+language\\b",
-        "\\bR\\s+statistical\\b",
+        "\\bR\\s+Programming\\b",
         "\\br\\s+statistical\\b",
+        "\\bR\\s+statistical\\b",
+        "\\bRP\\b",
+        "\\br\\s+programming\\b",
         "\\bR\\s+Studio\\b",
-        "\\br\\s+studio\\b"
+        "\\br\\s+language\\b",
+        "\\br\\s+studio\\b",
+        "\\bR\\s+PROGRAMMING\\b",
+        "\\bR\\s+language\\b",
+        "\\brp\\b",
+        "\\bR\\s+programming\\b"
       ]
     },
     {
@@ -1327,6 +1809,8 @@
     {
       "name": "Ray",
       "patterns": [
+        "\\bRay\\b",
+        "\\bRAY\\b",
         "\\bray\\b"
       ]
     },
@@ -1340,32 +1824,45 @@
     {
       "name": "React",
       "patterns": [
-        "\\breact\\b"
+        "\\bREACT\\b",
+        "\\breact\\b",
+        "\\bReact\\b"
       ]
     },
     {
       "name": "React Native",
       "patterns": [
+        "\\brn\\b",
+        "\\bReact\\s+Native\\b",
+        "\\bRN\\b",
+        "\\breact\\s+native\\b",
         "\\breact\\ native\\b",
+        "\\bREACT\\s+NATIVE\\b",
         "\\breact\\b"
       ]
     },
     {
       "name": "Redis",
       "patterns": [
+        "\\bRedis\\b",
+        "\\bREDIS\\b",
         "\\bredis\\b"
       ]
     },
     {
       "name": "Redux",
       "patterns": [
+        "\\bRedux\\b",
+        "\\bREDUX\\b",
         "\\bredux\\b"
       ]
     },
     {
       "name": "Replicate",
       "patterns": [
-        "\\breplicate\\b"
+        "\\breplicate\\b",
+        "\\bReplicate\\b",
+        "\\bREPLICATE\\b"
       ]
     },
     {
@@ -1390,12 +1887,15 @@
     {
       "name": "Rlhf",
       "patterns": [
-        "\\brlhf\\b"
+        "\\bRlhf\\b",
+        "\\brlhf\\b",
+        "\\bRLHF\\b"
       ]
     },
     {
       "name": "Ruby",
       "patterns": [
+        "\\bRUBY\\b",
         "\\bRuby\\b",
         "\\bruby\\b"
       ]
@@ -1405,15 +1905,21 @@
       "category": "Backend Framework",
       "patterns": [
         "\\bRuby\\s+on\\s+Rails\\b",
-        "\\bruby\\s+on\\s+rails\\b",
         "\\bRails\\b",
+        "\\bror\\b",
+        "\\bRuby\\s+On\\s+Rails\\b",
+        "\\bROR\\b",
+        "\\bRUBY\\s+ON\\s+RAILS\\b",
+        "\\bruby\\s+on\\s+rails\\b",
         "\\brails\\b"
       ]
     },
     {
       "name": "Rust",
       "patterns": [
-        "\\brust\\b"
+        "\\bRust\\b",
+        "\\brust\\b",
+        "\\bRUST\\b"
       ]
     },
     {
@@ -1426,25 +1932,35 @@
     {
       "name": "SageMaker",
       "patterns": [
-        "\\bSageMaker\\b"
+        "\\bsagemaker\\b",
+        "\\bSageMaker\\b",
+        "\\bSAGEMAKER\\b"
       ]
     },
     {
       "name": "Scala",
       "patterns": [
+        "\\bScala\\b",
+        "\\bSCALA\\b",
         "\\bscala\\b"
       ]
     },
     {
       "name": "Scikit-Learn",
       "patterns": [
-        "\\bscikit\\-learn\\b"
+        "\\bSCIKIT-LEARN\\b",
+        "\\bScikit\\-Learn\\b",
+        "\\bscikit\\-learn\\b",
+        "\\bscikit-learn\\b",
+        "\\bscikit\\s+learn\\b"
       ]
     },
     {
       "name": "Scipy",
       "patterns": [
-        "\\bscipy\\b"
+        "\\bSCIPY\\b",
+        "\\bscipy\\b",
+        "\\bScipy\\b"
       ]
     },
     {
@@ -1459,49 +1975,64 @@
     {
       "name": "Seaborn",
       "patterns": [
-        "\\bseaborn\\b"
+        "\\bseaborn\\b",
+        "\\bSEABORN\\b",
+        "\\bSeaborn\\b"
       ]
     },
     {
       "name": "Selenium",
       "patterns": [
+        "\\bSELENIUM\\b",
+        "\\bSelenium\\b",
         "\\bselenium\\b"
       ]
     },
     {
       "name": "Serverless",
       "patterns": [
+        "\\bServerless\\b",
+        "\\bSERVERLESS\\b",
         "\\bserverless\\b"
       ]
     },
     {
       "name": "SFT",
       "patterns": [
-        "\\bsft\\b",
-        "\\bsupervised fine.?tuning\\b"
+        "\\bsupervised fine.?tuning\\b",
+        "\\bSFT\\b",
+        "\\bsft\\b"
       ]
     },
     {
       "name": "Sketch",
       "patterns": [
+        "\\bSketch\\b",
+        "\\bSKETCH\\b",
         "\\bsketch\\b"
       ]
     },
     {
       "name": "Slack",
       "patterns": [
+        "\\bSlack\\b",
+        "\\bSLACK\\b",
         "\\bslack\\b"
       ]
     },
     {
       "name": "Snowflake",
       "patterns": [
+        "\\bSnowflake\\b",
+        "\\bSNOWFLAKE\\b",
         "\\bsnowflake\\b"
       ]
     },
     {
       "name": "Soap",
       "patterns": [
+        "\\bSoap\\b",
+        "\\bSOAP\\b",
         "\\bsoap\\b"
       ]
     },
@@ -1509,46 +2040,65 @@
       "name": "Solid.Js",
       "category": "Frontend Framework",
       "patterns": [
-        "\\bSolid\\.?js\\b",
-        "\\bSolidJS\\b",
         "\\bsolid\\.?js\\b",
-        "\\bsolidjs\\b"
+        "\\bSolidJS\\b",
+        "\\bSolidJs\\b",
+        "\\bsolid.js\\b",
+        "\\bSolid\\.Js\\b",
+        "\\bSolid\\.?js\\b",
+        "\\bsolidjs\\b",
+        "\\bSOLID.JS\\b"
       ]
     },
     {
       "name": "SOMs",
       "patterns": [
+        "\\bSOMs\\b",
         "\\bsoms\\b",
+        "\\bSOMS\\b",
         "\\bself.?organizing maps\\b"
       ]
     },
     {
       "name": "Sonarqube",
       "patterns": [
-        "\\bsonarqube\\b"
+        "\\bsonarqube\\b",
+        "\\bSONARQUBE\\b",
+        "\\bSonarqube\\b"
       ]
     },
     {
       "name": "Spacy",
       "patterns": [
+        "\\bSpacy\\b",
+        "\\bSPACY\\b",
         "\\bspacy\\b"
       ]
     },
     {
       "name": "Splunk",
       "patterns": [
-        "\\bsplunk\\b"
+        "\\bsplunk\\b",
+        "\\bSplunk\\b",
+        "\\bSPLUNK\\b"
       ]
     },
     {
       "name": "Spring Boot",
       "patterns": [
-        "\\bspring\\ boot\\b"
+        "\\bSPRING\\s+BOOT\\b",
+        "\\bSpring\\s+Boot\\b",
+        "\\bspring\\s+boot\\b",
+        "\\bsb\\b",
+        "\\bspring\\ boot\\b",
+        "\\bSB\\b"
       ]
     },
     {
       "name": "Sqlite",
       "patterns": [
+        "\\bSQLITE\\b",
+        "\\bSqlite\\b",
         "\\bsqlite\\b"
       ]
     },
@@ -1556,49 +2106,64 @@
       "name": "SQS",
       "patterns": [
         "\\bsqs\\b",
-        "\\bsimple queue service\\b",
-        "\\bamazon sqs\\b"
+        "\\bamazon sqs\\b",
+        "\\bSQS\\b",
+        "\\bsimple queue service\\b"
       ]
     },
     {
       "name": "Statistical Analysis",
       "patterns": [
-        "\\bstatistical\\ analysis\\b"
+        "\\bsa\\b",
+        "\\bSA\\b",
+        "\\bstatistical\\ analysis\\b",
+        "\\bStatistical\\s+Analysis\\b",
+        "\\bSTATISTICAL\\s+ANALYSIS\\b",
+        "\\bstatistical\\s+analysis\\b"
       ]
     },
     {
       "name": "Streamlit",
       "patterns": [
-        "\\bstreamlit\\b"
+        "\\bSTREAMLIT\\b",
+        "\\bstreamlit\\b",
+        "\\bStreamlit\\b"
       ]
     },
     {
       "name": "Structured Query Language",
       "patterns": [
-        "\\bSQL\\b",
-        "\\bsql\\b",
-        "\\bstructured\\ query\\ language\\b",
+        "\\bstructured\\s+query\\s+language\\b",
+        "\\bSTRUCTURED\\s+QUERY\\s+LANGUAGE\\b",
         "\\bstructured query language\\b",
-        "\\bStructured\\s+Query\\s+Language\\b"
+        "\\bStructured\\s+Query\\s+Language\\b",
+        "\\bstructured\\ query\\ language\\b",
+        "\\bsql\\b",
+        "\\bSQL\\b"
       ]
     },
     {
       "name": "STT",
       "patterns": [
         "\\bstt\\b",
+        "\\bSTT\\b",
         "\\bspeech.?to.?text\\b"
       ]
     },
     {
       "name": "SuperSet",
       "patterns": [
-        "\\bsuperset\\b",
-        "\\bapache superset\\b"
+        "\\bSuperSet\\b",
+        "\\bSUPERSET\\b",
+        "\\bapache superset\\b",
+        "\\bsuperset\\b"
       ]
     },
     {
       "name": "Svelte",
       "patterns": [
+        "\\bSVELTE\\b",
+        "\\bSvelte\\b",
         "\\bsvelte\\b"
       ]
     },
@@ -1606,31 +2171,39 @@
       "name": "SVM",
       "patterns": [
         "\\bsvm\\b",
-        "\\bsupport vector machine\\b"
+        "\\bsupport vector machine\\b",
+        "\\bSVM\\b"
       ]
     },
     {
       "name": "Swift",
       "patterns": [
-        "\\bswift\\b"
+        "\\bswift\\b",
+        "\\bSwift\\b",
+        "\\bSWIFT\\b"
       ]
     },
     {
       "name": "T5",
       "patterns": [
+        "\\btext.?to.?text transfer transformer\\b",
         "\\bt5\\b",
-        "\\btext.?to.?text transfer transformer\\b"
+        "\\bT5\\b"
       ]
     },
     {
       "name": "Tableau",
       "patterns": [
-        "\\btableau\\b"
+        "\\btableau\\b",
+        "\\bTableau\\b",
+        "\\bTABLEAU\\b"
       ]
     },
     {
       "name": "Talend",
       "patterns": [
+        "\\bTalend\\b",
+        "\\bTALEND\\b",
         "\\btalend\\b"
       ]
     },
@@ -1644,180 +2217,250 @@
     {
       "name": "Temporal.io",
       "patterns": [
+        "\\bTemporalio\\b",
+        "\\btemporal\\.io\\b",
+        "\\bTemporal\\.io\\b",
         "\\btemporal\\b",
-        "\\btemporal\\.io\\b"
+        "\\bTEMPORAL.IO\\b",
+        "\\btemporalio\\b",
+        "\\btemporal.io\\b"
       ]
     },
     {
       "name": "Tensorflow",
       "patterns": [
-        "\\btensorflow\\b"
+        "\\btensorflow\\b",
+        "\\bTensorflow\\b",
+        "\\bTENSORFLOW\\b"
       ]
     },
     {
       "name": "Tensorrt",
       "patterns": [
-        "\\btensorrt\\b"
+        "\\btensorrt\\b",
+        "\\bTensorrt\\b",
+        "\\bTENSORRT\\b"
       ]
     },
     {
       "name": "Teradata",
       "patterns": [
+        "\\bTERADATA\\b",
+        "\\bTeradata\\b",
         "\\bteradata\\b"
       ]
     },
     {
       "name": "Terraform",
       "patterns": [
+        "\\bTerraform\\b",
+        "\\bTERRAFORM\\b",
         "\\bterraform\\b"
       ]
     },
     {
       "name": "Testng",
       "patterns": [
-        "\\btestng\\b"
+        "\\btestng\\b",
+        "\\bTESTNG\\b",
+        "\\bTestng\\b"
       ]
     },
     {
       "name": "TextGrad",
       "patterns": [
-        "\\btextgrad\\b"
+        "\\bTextGrad\\b",
+        "\\btextgrad\\b",
+        "\\bTEXTGRAD\\b"
       ]
     },
     {
       "name": "TFX",
       "patterns": [
         "\\btfx\\b",
+        "\\bTFX\\b",
         "\\btensorflow extended\\b"
       ]
     },
     {
       "name": "Together Ai",
       "patterns": [
-        "\\btogether\\ ai\\b"
+        "\\bTOGETHER\\s+AI\\b",
+        "\\btogether\\s+ai\\b",
+        "\\btogether\\ ai\\b",
+        "\\bTA\\b",
+        "\\bta\\b",
+        "\\bTogether\\s+Ai\\b"
       ]
     },
     {
       "name": "Torchserve",
       "patterns": [
+        "\\bTorchserve\\b",
+        "\\bTORCHSERVE\\b",
         "\\btorchserve\\b"
       ]
     },
     {
       "name": "Transformers",
       "patterns": [
+        "\\bTransformers\\b",
+        "\\bTRANSFORMERS\\b",
         "\\btransformers\\b"
       ]
     },
     {
       "name": "Triton Inference Server",
       "patterns": [
-        "\\btriton\\ inference\\ server\\b"
+        "\\btriton\\s+inference\\s+server\\b",
+        "\\bTriton\\s+Inference\\s+Server\\b",
+        "\\btriton\\ inference\\ server\\b",
+        "\\bTIS\\b",
+        "\\btis\\b",
+        "\\bTRITON\\s+INFERENCE\\s+SERVER\\b"
       ]
     },
     {
       "name": "TTS",
       "patterns": [
-        "\\btts\\b",
-        "\\btext.?to.?speech\\b"
+        "\\btext.?to.?speech\\b",
+        "\\bTTS\\b",
+        "\\btts\\b"
       ]
     },
     {
       "name": "Typescript",
       "patterns": [
-        "\\btypescript\\b"
+        "\\bTypescript\\b",
+        "\\btypescript\\b",
+        "\\bTYPESCRIPT\\b"
       ]
     },
     {
       "name": "UiPath",
       "patterns": [
-        "\\buipath\\b"
+        "\\bUiPath\\b",
+        "\\buipath\\b",
+        "\\bUIPATH\\b"
       ]
     },
     {
       "name": "Uml",
       "patterns": [
+        "\\bUml\\b",
+        "\\bUML\\b",
         "\\buml\\b"
       ]
     },
     {
       "name": "User Experience",
       "patterns": [
-        "\\bUX\\b",
+        "\\buser\\s+experience\\b",
         "\\bux\\b",
+        "\\bUSER\\s+EXPERIENCE\\b",
+        "\\bUE\\b",
+        "\\bUX\\b",
         "\\buser experience\\b",
+        "\\bue\\b",
         "\\bUser\\s+Experience\\b"
       ]
     },
     {
       "name": "User Interface",
       "patterns": [
-        "\\bUI\\b",
-        "\\bui\\b",
         "\\buser interface\\b",
-        "\\bUser\\s+Interface\\b"
+        "\\bUSER\\s+INTERFACE\\b",
+        "\\buser\\s+interface\\b",
+        "\\bUser\\s+Interface\\b",
+        "\\bui\\b",
+        "\\bUI\\b"
       ]
     },
     {
       "name": "Vagrant",
       "patterns": [
+        "\\bVAGRANT\\b",
+        "\\bVagrant\\b",
         "\\bvagrant\\b"
       ]
     },
     {
       "name": "Vert.X",
       "patterns": [
+        "\\bVert\\.X\\b",
+        "\\bVertX\\b",
+        "\\bvert.x\\b",
+        "\\bVERT.X\\b",
+        "\\bvertx\\b",
         "\\bvert\\.x\\b"
       ]
     },
     {
       "name": "Vite",
       "patterns": [
-        "\\bvite\\b"
+        "\\bvite\\b",
+        "\\bVITE\\b",
+        "\\bVite\\b"
       ]
     },
     {
       "name": "Vllm",
       "patterns": [
-        "\\bvllm\\b"
+        "\\bvllm\\b",
+        "\\bVLLM\\b",
+        "\\bVllm\\b"
       ]
     },
     {
       "name": "VLMs",
       "patterns": [
+        "\\bVLMs\\b",
         "\\bvlms\\b",
+        "\\bVLMS\\b",
         "\\bvision language models\\b"
       ]
     },
     {
       "name": "VMware",
       "patterns": [
+        "\\bVMWARE\\b",
+        "\\bVMware\\b",
         "\\bvmware\\b"
       ]
     },
     {
       "name": "Vue.Js",
       "patterns": [
-        "\\bvue\\.js\\b"
+        "\\bVue\\.Js\\b",
+        "\\bvue.js\\b",
+        "\\bVueJs\\b",
+        "\\bvue\\.js\\b",
+        "\\bvuejs\\b",
+        "\\bVUE.JS\\b"
       ]
     },
     {
       "name": "WatsonX",
       "patterns": [
         "\\bwatsonx\\b",
-        "\\bibm watsonx\\b"
+        "\\bibm watsonx\\b",
+        "\\bWATSONX\\b",
+        "\\bWatsonX\\b"
       ]
     },
     {
       "name": "Weaviate",
       "patterns": [
-        "\\bweaviate\\b"
+        "\\bWeaviate\\b",
+        "\\bweaviate\\b",
+        "\\bWEAVIATE\\b"
       ]
     },
     {
       "name": "Webpack",
       "category": "Build Tool",
       "patterns": [
+        "\\bWEBPACK\\b",
         "\\bWebpack\\b",
         "\\bwebpack\\b"
       ]
@@ -1825,12 +2468,16 @@
     {
       "name": "Xamarin",
       "patterns": [
-        "\\bxamarin\\b"
+        "\\bxamarin\\b",
+        "\\bXAMARIN\\b",
+        "\\bXamarin\\b"
       ]
     },
     {
       "name": "Xgboost",
       "patterns": [
+        "\\bXGBOOST\\b",
+        "\\bXgboost\\b",
         "\\bxgboost\\b"
       ]
     },
