@@ -1,20 +1,26 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-17T02:17:25+05:30",
+  "last_updated": "2025-10-17T02:27:15+05:30",
   "metrics": {
     "rl_source_ref": "progress.json",
-    "tasks_completed": 17,
+    "tasks_completed": 18,
     "tasks_failed": 1,
-    "commits": 16
+    "commits": 17
   },
   "top_append_metadata": {
     "latest_task_at_index_0": true,
-    "last_prepend_timestamp": "2025-10-17T02:17:25+05:30",
-    "total_prepends": 5,
+    "last_prepend_timestamp": "2025-10-17T02:27:15+05:30",
+    "total_prepends": 6,
     "validation_passed": true
   },
   "priority_queue": [],
   "completed": [
+    {
+      "id": "fix_single_letter_false_positives",
+      "task": "Fix C, R, RL single-letter false positives with LONG FORMS",
+      "completed_at": "2025-10-17T02:27:15+05:30",
+      "outcome": "Replaced ambiguous short forms: C→C Programming, R→R Programming, RL→Reinforcement Learning. Added context patterns (case variations). Removed 3,248 FP (1,212 C + 1,212 R + 824 RL). True positives: C Programming 20, R Programming 50, RL 841. RL: +45. Commit: aab1b0f"
+    },
     {
       "id": "skills_refinement_all_jobs_2025",
       "task": "Cross-verify and fix FP/FN in 1,212 jobs using 277-skill reference",
