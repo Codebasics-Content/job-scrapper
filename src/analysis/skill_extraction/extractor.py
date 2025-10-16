@@ -113,7 +113,9 @@ class AdvancedSkillExtractor:
             skills_with_confidence.append((skill, confidence))
         
         # Sort by confidence (descending), then alphabetically
-        skills_with_confidence.sort(key=lambda x: (-x[1], x[0]))
+        def sort_key(skill_conf: tuple[str, float]) -> tuple[float, str]:
+            return (-skill_conf[1], skill_conf[0])
+        skills_with_confidence.sort(key=sort_key)
         
         return skills_with_confidence
 

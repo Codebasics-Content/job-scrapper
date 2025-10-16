@@ -39,6 +39,10 @@ dist/
 # Jupyter
 .ipynb_checkpoints/
 
+# Deprecated code
+_deprecated*/
+src/_deprecated*/
+
 # Environment variables - CRITICAL: NEVER COMMIT CREDENTIALS!
 .env
 .env.local
@@ -54,11 +58,11 @@ dist/
 *api*token*
 proxy_manager_config.json
 
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-jobs.db
+# Database files - CLIENT REQUIRES DATABASE
+# *.db
+# *.sqlite
+# *.sqlite3
+# jobs.db
 
 # Temporary files
 *.tmp

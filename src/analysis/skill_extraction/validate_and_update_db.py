@@ -2,9 +2,7 @@
 # Processes LinkedIn jobs, validates against 557 canonical skills, updates DB
 
 import sqlite3
-import json
-from pathlib import Path
-from typing import Dict, List
+from typing import Any, Dict
 from .skill_validator import SkillValidator
 
 def validate_linkedin_jobs_batch(
@@ -12,7 +10,7 @@ def validate_linkedin_jobs_batch(
     reference_path: str,
     batch_size: int = 5,
     num_batches: int = 5
-) -> Dict[str, any]:
+) -> Dict[str, Any]:
     """Process 5 batches of LinkedIn jobs with RL tracking"""
     
     validator = SkillValidator(reference_path)

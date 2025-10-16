@@ -31,9 +31,9 @@ def extract_skills_batch(job_descriptions: list[str]) -> list[list[str]]:
     # Initialize extractor once for entire batch
     extractor = AdvancedSkillExtractor('skills_reference_2025.json')
     
-    # Process all jobs with same extractor instance
+    # Process all jobs with same extractor instance (return_confidence=False for list[str])
     results: list[list[str]] = [
-        extractor.extract(jd)
+        extractor.extract(jd, return_confidence=False)  # type: ignore[misc]
         for jd in job_descriptions
     ]
     
