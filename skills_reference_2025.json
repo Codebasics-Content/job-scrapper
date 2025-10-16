@@ -15,12 +15,16 @@
     {
       "name": "Android Development",
       "patterns": [
-        "\\bad\\b",
-        "\\bandroid\\s+development\\b",
-        "\\bAD\\b",
-        "\\bandroid\\ development\\b",
+        "\\bAndroidDevelopment\\b",
+        "\\bANDROID\\s+DEVELOPMENT\\b",
         "\\bAndroid\\s+Development\\b",
-        "\\bANDROID\\s+DEVELOPMENT\\b"
+        "\\bANDROID_DEVELOPMENT\\b",
+        "\\bandroidDevelopment\\b",
+        "\\bAD\\b",
+        "\\bandroid_development\\b",
+        "\\bad\\b",
+        "\\bandroid\\ development\\b",
+        "\\bandroid\\s+development\\b"
       ]
     },
     {
@@ -42,43 +46,59 @@
     {
       "name": "Anthropic Claude",
       "patterns": [
-        "\\banthropic\\s+claude\\b",
-        "\\bac\\b",
-        "\\bAnthropic\\s+Claude\\b",
         "\\bAC\\b",
+        "\\bANTHROPIC_CLAUDE\\b",
+        "\\banthropic_claude\\b",
+        "\\bANTHROPIC\\s+CLAUDE\\b",
+        "\\banthropicClaude\\b",
+        "\\bAnthropicClaude\\b",
+        "\\bac\\b",
+        "\\banthropic\\s+claude\\b",
         "\\banthropic\\ claude\\b",
-        "\\bANTHROPIC\\s+CLAUDE\\b"
+        "\\bAnthropic\\s+Claude\\b"
       ]
     },
     {
       "name": "Apache Airflow",
       "patterns": [
-        "\\bapache\\ airflow\\b",
         "\\baa\\b",
-        "\\bApache\\s+Airflow\\b",
-        "\\bapache\\s+airflow\\b",
         "\\bAPACHE\\s+AIRFLOW\\b",
+        "\\bapache\\ airflow\\b",
+        "\\bAPACHE_AIRFLOW\\b",
+        "\\bapache\\s+airflow\\b",
+        "\\bApache\\s+Airflow\\b",
+        "\\bapacheAirflow\\b",
+        "\\bApacheAirflow\\b",
+        "\\bapache_airflow\\b",
         "\\bAA\\b"
       ]
     },
     {
       "name": "Apache Beam",
       "patterns": [
-        "\\bAB\\b",
-        "\\bapache\\s+beam\\b",
-        "\\bab\\b",
+        "\\bapacheBeam\\b",
+        "\\bAPACHE_BEAM\\b",
         "\\bAPACHE\\s+BEAM\\b",
+        "\\bab\\b",
         "\\bapache\\ beam\\b",
-        "\\bApache\\s+Beam\\b"
+        "\\bapache\\s+beam\\b",
+        "\\bApache\\s+Beam\\b",
+        "\\bApacheBeam\\b",
+        "\\bapache_beam\\b",
+        "\\bAB\\b"
       ]
     },
     {
       "name": "Apache Kafka",
       "patterns": [
+        "\\bapacheKafka\\b",
         "\\bApache\\s+Kafka\\b",
-        "\\bAPACHE\\s+KAFKA\\b",
+        "\\bApacheKafka\\b",
         "\\bak\\b",
+        "\\bAPACHE_KAFKA\\b",
+        "\\bapache_kafka\\b",
         "\\bapache\\s+kafka\\b",
+        "\\bAPACHE\\s+KAFKA\\b",
         "\\bAK\\b",
         "\\bapache\\ kafka\\b"
       ]
@@ -86,37 +106,52 @@
     {
       "name": "Apache Nifi",
       "patterns": [
-        "\\bApache\\s+Nifi\\b",
-        "\\bAPACHE\\s+NIFI\\b",
-        "\\bapache\\ nifi\\b",
-        "\\ban\\b",
         "\\bapache\\s+nifi\\b",
-        "\\bAN\\b"
+        "\\bApacheNifi\\b",
+        "\\bapache\\ nifi\\b",
+        "\\bApache\\s+Nifi\\b",
+        "\\bAN\\b",
+        "\\bAPACHE\\s+NIFI\\b",
+        "\\bapacheNifi\\b",
+        "\\bapache_nifi\\b",
+        "\\ban\\b",
+        "\\bAPACHE_NIFI\\b"
       ]
     },
     {
       "name": "Apache Spark",
       "patterns": [
-        "\\bapache\\s+spark\\b",
         "\\bAPACHE\\s+SPARK\\b",
-        "\\bapache\\ spark\\b",
-        "\\bas\\b",
-        "\\bspark\\b",
+        "\\bAS\\b",
         "\\bApache\\s+Spark\\b",
-        "\\bAS\\b"
+        "\\bapache\\s+spark\\b",
+        "\\bapache\\ spark\\b",
+        "\\bapache_spark\\b",
+        "\\bApacheSpark\\b",
+        "\\bapacheSpark\\b",
+        "\\bAPACHE_SPARK\\b",
+        "\\bas\\b",
+        "\\bspark\\b"
       ]
     },
     {
       "name": "Application Programming Interface",
       "patterns": [
-        "\\bAPIs\\b",
         "\\bapi\\b",
-        "\\bapis\\b",
-        "\\bapplication programming interface\\b",
-        "\\bAPPLICATION\\s+PROGRAMMING\\s+INTERFACE\\b",
         "\\bApplication\\s+Programming\\s+Interface\\b",
-        "\\bapplication\\s+programming\\s+interface\\b",
-        "\\bAPI\\b"
+        "\\bapis\\b",
+        "\\bAPPLICATION INTERFACE\\b",
+        "\\bapplication interface\\b",
+        "\\bapplicationProgrammingInterface\\b",
+        "\\bapplication_programming_interface\\b",
+        "\\bapplication programming interface\\b",
+        "\\bApplicationProgrammingInterface\\b",
+        "\\bApplication Interface\\b",
+        "\\bAPI\\b",
+        "\\bAPIs\\b",
+        "\\bAPPLICATION_PROGRAMMING_INTERFACE\\b",
+        "\\bAPPLICATION\\s+PROGRAMMING\\s+INTERFACE\\b",
+        "\\bapplication\\s+programming\\s+interface\\b"
       ]
     },
     {
@@ -130,12 +165,16 @@
     {
       "name": "Artificial Intelligence",
       "patterns": [
-        "\\bartificial\\s+intelligence\\b",
+        "\\bARTIFICIAL_INTELLIGENCE\\b",
+        "\\bArtificial\\s+Intelligence\\b",
+        "\\bARTIFICIAL\\s+INTELLIGENCE\\b",
         "\\bartificial intelligence\\b",
         "\\bai\\b",
-        "\\bAI\\b",
-        "\\bARTIFICIAL\\s+INTELLIGENCE\\b",
-        "\\bArtificial\\s+Intelligence\\b"
+        "\\bartificialIntelligence\\b",
+        "\\bartificial\\s+intelligence\\b",
+        "\\bArtificialIntelligence\\b",
+        "\\bartificial_intelligence\\b",
+        "\\bAI\\b"
       ]
     },
     {
@@ -189,72 +228,96 @@
     {
       "name": "Aws Bedrock",
       "patterns": [
-        "\\bAWS\\s+BEDROCK\\b",
-        "\\bAB\\b",
+        "\\baws\\ bedrock\\b",
         "\\baws\\s+bedrock\\b",
         "\\bab\\b",
-        "\\baws\\ bedrock\\b",
+        "\\baws_bedrock\\b",
+        "\\bAws\\s+Bedrock\\b",
+        "\\bAwsBedrock\\b",
+        "\\bawsBedrock\\b",
+        "\\bAWS\\s+BEDROCK\\b",
+        "\\bAWS_BEDROCK\\b",
         "\\baws\\b",
-        "\\bAws\\s+Bedrock\\b"
+        "\\bAB\\b"
       ]
     },
     {
       "name": "Aws Cloud Services",
       "patterns": [
-        "\\bAws\\s+Cloud\\s+Services\\b",
-        "\\bACS\\b",
-        "\\baws\\s+cloud\\s+services\\b",
-        "\\baws\\ cloud\\ services\\b",
-        "\\bacs\\b",
+        "\\bAwsCloudServices\\b",
         "\\bAWS\\s+CLOUD\\s+SERVICES\\b",
-        "\\baws\\b"
+        "\\bACS\\b",
+        "\\bAws\\s+Cloud\\s+Services\\b",
+        "\\bAWS_CLOUD_SERVICES\\b",
+        "\\baws_cloud_services\\b",
+        "\\baws\\ cloud\\ services\\b",
+        "\\baws\\s+cloud\\s+services\\b",
+        "\\baws\\b",
+        "\\bacs\\b",
+        "\\bawsCloudServices\\b"
       ]
     },
     {
       "name": "Aws Codepipeline",
       "patterns": [
-        "\\bac\\b",
-        "\\baws\\ codepipeline\\b",
+        "\\baws\\s+codepipeline\\b",
+        "\\bAwsCodepipeline\\b",
+        "\\bAWS\\s+CODEPIPELINE\\b",
         "\\bAC\\b",
         "\\bAws\\s+Codepipeline\\b",
-        "\\bAWS\\s+CODEPIPELINE\\b",
+        "\\bAWS_CODEPIPELINE\\b",
+        "\\baws_codepipeline\\b",
+        "\\bawsCodepipeline\\b",
+        "\\bac\\b",
         "\\baws\\b",
-        "\\baws\\s+codepipeline\\b"
+        "\\baws\\ codepipeline\\b"
       ]
     },
     {
       "name": "Aws Glue",
       "patterns": [
-        "\\bAws\\s+Glue\\b",
-        "\\bag\\b",
+        "\\bAWS_GLUE\\b",
         "\\baws\\s+glue\\b",
+        "\\baws_glue\\b",
         "\\bAWS\\s+GLUE\\b",
+        "\\bAws\\s+Glue\\b",
+        "\\bAwsGlue\\b",
         "\\baws\\ glue\\b",
-        "\\bAG\\b"
+        "\\bag\\b",
+        "\\bAG\\b",
+        "\\bawsGlue\\b"
       ]
     },
     {
       "name": "Aws Lambda",
       "patterns": [
-        "\\bal\\b",
-        "\\baws\\ lambda\\b",
-        "\\bAws\\s+Lambda\\b",
         "\\bAWS\\s+LAMBDA\\b",
+        "\\bAwsLambda\\b",
+        "\\bAws\\s+Lambda\\b",
+        "\\bal\\b",
+        "\\baws_lambda\\b",
+        "\\baws\\ lambda\\b",
+        "\\bAWS_LAMBDA\\b",
         "\\baws\\s+lambda\\b",
+        "\\baws\\b",
         "\\bAL\\b",
-        "\\baws\\b"
+        "\\bawsLambda\\b"
       ]
     },
     {
       "name": "Aws Sagemaker",
       "patterns": [
-        "\\baws\\s+sagemaker\\b",
-        "\\bAws\\s+Sagemaker\\b",
-        "\\bas\\b",
-        "\\bAWS\\s+SAGEMAKER\\b",
+        "\\bAS\\b",
+        "\\bAWS_SAGEMAKER\\b",
+        "\\bAwsSagemaker\\b",
         "\\baws\\ sagemaker\\b",
+        "\\baws_sagemaker\\b",
+        "\\bas\\b",
+        "\\bAws\\s+Sagemaker\\b",
         "\\baws\\b",
-        "\\bAS\\b"
+        "\\bawsSagemaker\\b",
+        "\\baws\\s+sagemaker\\b",
+        "\\bAWS\\s+SAGEMAKER\\b"
       ]
     },
     {
@@ -268,49 +331,65 @@
     {
       "name": "Azure Functions",
       "patterns": [
-        "\\bAzure\\s+Functions\\b",
-        "\\bAF\\b",
-        "\\bAZURE\\s+FUNCTIONS\\b",
-        "\\bazure\\ functions\\b",
         "\\bazure\\b",
         "\\baf\\b",
-        "\\bazure\\s+functions\\b"
+        "\\bAzureFunctions\\b",
+        "\\bAZURE\\s+FUNCTIONS\\b",
+        "\\bazure\\s+functions\\b",
+        "\\bazure_functions\\b",
+        "\\bazureFunctions\\b",
+        "\\bAF\\b",
+        "\\bazure\\ functions\\b",
+        "\\bAzure\\s+Functions\\b",
+        "\\bAZURE_FUNCTIONS\\b"
       ]
     },
     {
       "name": "Azure Kubernetes Service",
       "patterns": [
-        "\\bazure\\s+kubernetes\\s+service\\b",
-        "\\baks\\b",
-        "\\bAKS\\b",
-        "\\bazure\\ kubernetes\\ service\\b",
-        "\\bAZURE\\s+KUBERNETES\\s+SERVICE\\b",
+        "\\bAzureKubernetesService\\b",
+        "\\bAzure\\s+Kubernetes\\s+Service\\b",
         "\\bazure\\b",
-        "\\bAzure\\s+Kubernetes\\s+Service\\b"
+        "\\bAKS\\b",
+        "\\bazure\\s+kubernetes\\s+service\\b",
+        "\\bazureKubernetesService\\b",
+        "\\bazure\\ kubernetes\\ service\\b",
+        "\\bAZURE_KUBERNETES_SERVICE\\b",
+        "\\bazure_kubernetes_service\\b",
+        "\\baks\\b",
+        "\\bAZURE\\s+KUBERNETES\\s+SERVICE\\b"
       ]
     },
     {
       "name": "Azure Openai",
       "patterns": [
-        "\\bazure\\s+openai\\b",
-        "\\bazure\\ openai\\b",
-        "\\bAzure\\s+Openai\\b",
+        "\\bAzureOpenai\\b",
         "\\bao\\b",
+        "\\bAO\\b",
+        "\\bazure_openai\\b",
         "\\bazure\\b",
-        "\\bAZURE\\s+OPENAI\\b",
-        "\\bAO\\b"
+        "\\bazure\\s+openai\\b",
+        "\\bazureOpenai\\b",
+        "\\bAzure\\s+Openai\\b",
+        "\\bAZURE_OPENAI\\b",
+        "\\bazure\\ openai\\b",
+        "\\bAZURE\\s+OPENAI\\b"
       ]
     },
     {
       "name": "Azure Storage",
       "patterns": [
+        "\\bAS\\b",
         "\\bazure\\s+storage\\b",
-        "\\bAzure\\s+Storage\\b",
+        "\\bazureStorage\\b",
+        "\\bazure\\b",
+        "\\bAzureStorage\\b",
+        "\\bAZURE\\s+STORAGE\\b",
+        "\\bAZURE_STORAGE\\b",
         "\\bazure\\ storage\\b",
         "\\bas\\b",
-        "\\bazure\\b",
-        "\\bAZURE\\s+STORAGE\\b",
-        "\\bAS\\b"
+        "\\bazure_storage\\b",
+        "\\bAzure\\s+Storage\\b"
       ]
     },
     {
@@ -355,27 +434,35 @@
     {
       "name": "Business Intelligence",
       "patterns": [
-        "\\bBUSINESS\\s+INTELLIGENCE\\b",
-        "\\bBI\\b",
+        "\\bbusiness_intelligence\\b",
         "\\bbusiness intelligence\\b",
+        "\\bBUSINESS_INTELLIGENCE\\b",
+        "\\bBI\\b",
+        "\\bBusinessIntelligence\\b",
         "\\bbi\\b",
-        "\\bbusiness\\s+intelligence\\b",
-        "\\bBusiness\\s+Intelligence\\b"
+        "\\bbusinessIntelligence\\b",
+        "\\bBusiness\\s+Intelligence\\b",
+        "\\bBUSINESS\\s+INTELLIGENCE\\b",
+        "\\bbusiness\\s+intelligence\\b"
       ]
     },
     {
       "name": "C Programming",
       "patterns": [
-        "\\bC\\s+programming\\b",
         "\\bC\\s+language\\b",
-        "\\bc/c\\+\\+\\b",
-        "\\bcp\\b",
-        "\\bc\\s+programming\\b",
-        "\\bC\\s+PROGRAMMING\\b",
+        "\\bc_programming\\b",
+        "\\bC/C\\+\\+\\b",
         "\\bCP\\b",
-        "\\bC\\s+Programming\\b",
         "\\bc\\s+language\\b",
-        "\\bC/C\\+\\+\\b"
+        "\\bC\\s+programming\\b",
+        "\\bcp\\b",
+        "\\bC\\s+PROGRAMMING\\b",
+        "\\bCProgramming\\b",
+        "\\bcProgramming\\b",
+        "\\bc\\s+programming\\b",
+        "\\bC_PROGRAMMING\\b",
+        "\\bc/c\\+\\+\\b",
+        "\\bC\\s+Programming\\b"
       ]
     },
     {
@@ -389,12 +476,16 @@
     {
       "name": "Causal Inference",
       "patterns": [
-        "\\bcausal\\ inference\\b",
-        "\\bCausal\\s+Inference\\b",
-        "\\bCAUSAL\\s+INFERENCE\\b",
+        "\\bcausal_inference\\b",
         "\\bci\\b",
+        "\\bCausalInference\\b",
+        "\\bcausalInference\\b",
         "\\bCI\\b",
-        "\\bcausal\\s+inference\\b"
+        "\\bcausal\\s+inference\\b",
+        "\\bcausal\\ inference\\b",
+        "\\bCAUSAL_INFERENCE\\b",
+        "\\bCAUSAL\\s+INFERENCE\\b",
+        "\\bCausal\\s+Inference\\b"
       ]
     },
     {
@@ -455,11 +546,15 @@
     {
       "name": "Computer Vision",
       "patterns": [
-        "\\bcomputer\\s+vision\\b",
         "\\bComputer\\s+Vision\\b",
-        "\\bCV\\b",
-        "\\bCOMPUTER\\s+VISION\\b",
+        "\\bcomputer_vision\\b",
         "\\bcv\\b",
+        "\\bCOMPUTER\\s+VISION\\b",
+        "\\bComputerVision\\b",
+        "\\bcomputerVision\\b",
+        "\\bCV\\b",
+        "\\bcomputer\\s+vision\\b",
+        "\\bCOMPUTER_VISION\\b",
         "\\bcomputer\\ vision\\b"
       ]
     },
@@ -474,14 +569,19 @@
     {
       "name": "Continuous Integration/Continuous Deployment",
       "patterns": [
-        "\\bCID\\b",
-        "\\bcid\\b",
-        "\\bcontinuous integration/continuous deployment\\b",
-        "\\bci/cd\\b",
+        "\\bcontinuous integrationcontinuous deployment\\b",
+        "\\bcontinuous_integration/continuous_deployment\\b",
         "\\bContinuous\\s+Integration/Continuous\\s+Deployment\\b",
+        "\\bCID\\b",
         "\\bCI/CD\\b",
-        "\\bCONTINUOUS\\s+INTEGRATION/CONTINUOUS\\s+DEPLOYMENT\\b",
-        "\\bcontinuous\\s+integration/continuous\\s+deployment\\b"
+        "\\bcontinuous integration/continuous deployment\\b",
+        "\\bcid\\b",
+        "\\bcontinuous\\s+integration/continuous\\s+deployment\\b",
+        "\\bCONTINUOUS_INTEGRATION/CONTINUOUS_DEPLOYMENT\\b",
+        "\\bci/cd\\b",
+        "\\bContinuousIntegration/ContinuousDeployment\\b",
+        "\\bcontinuousIntegration/continuousDeployment\\b",
+        "\\bCONTINUOUS\\s+INTEGRATION/CONTINUOUS\\s+DEPLOYMENT\\b"
       ]
     },
     {
@@ -553,12 +653,16 @@
     {
       "name": "Data Science",
       "patterns": [
-        "\\bData\\s+Science\\b",
+        "\\bdata\\ science\\b",
         "\\bDATA\\s+SCIENCE\\b",
-        "\\bDS\\b",
-        "\\bds\\b",
         "\\bdata\\s+science\\b",
-        "\\bdata\\ science\\b"
+        "\\bData\\s+Science\\b",
+        "\\bDataScience\\b",
+        "\\bDS\\b",
+        "\\bDATA_SCIENCE\\b",
+        "\\bdataScience\\b",
+        "\\bds\\b",
+        "\\bdata_science\\b"
       ]
     },
     {
@@ -588,12 +692,16 @@
     {
       "name": "Deep Learning",
       "patterns": [
-        "\\bDeep\\s+Learning\\b",
+        "\\bDEEP_LEARNING\\b",
+        "\\bdeep_learning\\b",
         "\\bDEEP\\s+LEARNING\\b",
         "\\bdl\\b",
         "\\bdeep\\s+learning\\b",
-        "\\bDL\\b",
-        "\\bdeep\\ learning\\b"
+        "\\bdeep\\ learning\\b",
+        "\\bdeepLearning\\b",
+        "\\bDeepLearning\\b",
+        "\\bDeep\\s+Learning\\b",
+        "\\bDL\\b"
       ]
     },
     {
@@ -670,13 +778,17 @@
     {
       "name": "Edge Computing",
       "patterns": [
-        "\\bEdge\\s+Computing\\b",
+        "\\bedge\\s+computing\\b",
+        "\\bedge\\ ai\\b",
+        "\\bedge_computing\\b",
+        "\\bEDGE\\s+COMPUTING\\b",
+        "\\bedgeComputing\\b",
         "\\bedge\\ computing\\b",
         "\\bec\\b",
-        "\\bEC\\b",
-        "\\bEDGE\\s+COMPUTING\\b",
-        "\\bedge\\ ai\\b",
-        "\\bedge\\s+computing\\b"
+        "\\bEdge\\s+Computing\\b",
+        "\\bEdgeComputing\\b",
+        "\\bEDGE_COMPUTING\\b",
+        "\\bEC\\b"
       ]
     },
     {
@@ -732,12 +844,16 @@
     {
       "name": "Extract Transform Load",
       "patterns": [
-        "\\bextract\\s+transform\\s+load\\b",
-        "\\bEXTRACT\\s+TRANSFORM\\s+LOAD\\b",
-        "\\bextract transform load\\b",
-        "\\bExtract\\s+Transform\\s+Load\\b",
         "\\bETL\\b",
-        "\\betl\\b"
+        "\\bextract_transform_load\\b",
+        "\\bExtractTransformLoad\\b",
+        "\\bExtract\\s+Transform\\s+Load\\b",
+        "\\bextract transform load\\b",
+        "\\bextract\\s+transform\\s+load\\b",
+        "\\betl\\b",
+        "\\bextractTransformLoad\\b",
+        "\\bEXTRACT_TRANSFORM_LOAD\\b",
+        "\\bEXTRACT\\s+TRANSFORM\\s+LOAD\\b"
       ]
     },
     {
@@ -844,23 +960,31 @@
     {
       "name": "Github Actions",
       "patterns": [
-        "\\bGithub\\s+Actions\\b",
-        "\\bGITHUB\\s+ACTIONS\\b",
-        "\\bGA\\b",
-        "\\bga\\b",
         "\\bgithub\\s+actions\\b",
-        "\\bgithub\\ actions\\b"
+        "\\bgithub_actions\\b",
+        "\\bgithubActions\\b",
+        "\\bGithub\\s+Actions\\b",
+        "\\bgithub\\ actions\\b",
+        "\\bGithubActions\\b",
+        "\\bGA\\b",
+        "\\bGITHUB_ACTIONS\\b",
+        "\\bGITHUB\\s+ACTIONS\\b",
+        "\\bga\\b"
       ]
     },
     {
       "name": "Github Copilot",
       "patterns": [
-        "\\bGC\\b",
-        "\\bgithub\\ copilot\\b",
-        "\\bgc\\b",
-        "\\bGITHUB\\s+COPILOT\\b",
+        "\\bgithub_copilot\\b",
         "\\bgithub\\s+copilot\\b",
-        "\\bGithub\\s+Copilot\\b"
+        "\\bgithub\\ copilot\\b",
+        "\\bGithub\\s+Copilot\\b",
+        "\\bGITHUB\\s+COPILOT\\b",
+        "\\bGITHUB_COPILOT\\b",
+        "\\bGC\\b",
+        "\\bgithubCopilot\\b",
+        "\\bGithubCopilot\\b",
+        "\\bgc\\b"
       ]
     },
     {
@@ -893,45 +1017,61 @@
     {
       "name": "Google Cloud Platform",
       "patterns": [
-        "\\bGOOGLE\\s+CLOUD\\s+PLATFORM\\b",
-        "\\bgoogle\\ cloud\\ platform\\b",
-        "\\bgoogle\\s+cloud\\s+platform\\b",
-        "\\bgcp\\b",
         "\\bGCP\\b",
-        "\\bGoogle\\s+Cloud\\s+Platform\\b"
+        "\\bGoogle\\s+Cloud\\s+Platform\\b",
+        "\\bgcp\\b",
+        "\\bGoogleCloudPlatform\\b",
+        "\\bgoogleCloudPlatform\\b",
+        "\\bGOOGLE_CLOUD_PLATFORM\\b",
+        "\\bgoogle_cloud_platform\\b",
+        "\\bgoogle\\s+cloud\\s+platform\\b",
+        "\\bgoogle\\ cloud\\ platform\\b",
+        "\\bGOOGLE\\s+CLOUD\\s+PLATFORM\\b"
       ]
     },
     {
       "name": "Google Cloud Professional",
       "patterns": [
-        "\\bgoogle\\ cloud\\ professional\\b",
-        "\\bgoogle\\s+cloud\\s+professional\\b",
         "\\bGOOGLE\\s+CLOUD\\s+PROFESSIONAL\\b",
+        "\\bGoogle\\s+Cloud\\s+Professional\\b",
+        "\\bGOOGLE_CLOUD_PROFESSIONAL\\b",
+        "\\bgoogleCloudProfessional\\b",
+        "\\bgoogle_cloud_professional\\b",
+        "\\bgoogle\\s+cloud\\s+professional\\b",
         "\\bgcp\\b",
+        "\\bGoogleCloudProfessional\\b",
         "\\bGCP\\b",
-        "\\bGoogle\\s+Cloud\\s+Professional\\b"
+        "\\bgoogle\\ cloud\\ professional\\b"
       ]
     },
     {
       "name": "Google Vertex Ai",
       "patterns": [
-        "\\bgva\\b",
         "\\bGOOGLE\\s+VERTEX\\s+AI\\b",
-        "\\bgoogle\\s+vertex\\s+ai\\b",
+        "\\bGoogle\\s+Vertex\\s+Ai\\b",
+        "\\bGOOGLE_VERTEX_AI\\b",
         "\\bGVA\\b",
+        "\\bgoogle_vertex_ai\\b",
+        "\\bGoogleVertexAi\\b",
+        "\\bgva\\b",
         "\\bgoogle\\ vertex\\ ai\\b",
-        "\\bGoogle\\s+Vertex\\s+Ai\\b"
+        "\\bgoogleVertexAi\\b",
+        "\\bgoogle\\s+vertex\\s+ai\\b"
       ]
     },
     {
       "name": "Google Web Designer",
       "patterns": [
+        "\\bGoogleWebDesigner\\b",
+        "\\bGOOGLE_WEB_DESIGNER\\b",
+        "\\bgoogleWebDesigner\\b",
+        "\\bgoogle_web_designer\\b",
         "\\bGWD\\b",
-        "\\bgwd\\b",
         "\\bGOOGLE\\s+WEB\\s+DESIGNER\\b",
-        "\\bGoogle\\s+Web\\s+Designer\\b",
+        "\\bgoogle\\ web\\ designer\\b",
         "\\bgoogle\\s+web\\s+designer\\b",
-        "\\bgoogle\\ web\\ designer\\b"
+        "\\bGoogle\\s+Web\\s+Designer\\b",
+        "\\bgwd\\b"
       ]
     },
     {
@@ -945,10 +1085,14 @@
       "name": "Gpt Apis",
       "patterns": [
         "\\bGpt\\s+Apis\\b",
-        "\\bgpt\\s+apis\\b",
+        "\\bGA\\b",
         "\\bgpt\\ apis\\b",
         "\\bGPT\\s+APIS\\b",
-        "\\bGA\\b",
+        "\\bgpt\\s+apis\\b",
+        "\\bgpt_apis\\b",
+        "\\bGPT_APIS\\b",
+        "\\bGptApis\\b",
+        "\\bgptApis\\b",
         "\\bga\\b"
       ]
     },
@@ -1048,12 +1192,16 @@
     {
       "name": "Hugging Face",
       "patterns": [
-        "\\bhugging\\ face\\b",
-        "\\bHugging\\s+Face\\b",
-        "\\bhf\\b",
         "\\bHF\\b",
+        "\\bhugging_face\\b",
+        "\\bhugging\\ face\\b",
+        "\\bHuggingFace\\b",
+        "\\bhugging\\s+face\\b",
+        "\\bHugging\\s+Face\\b",
+        "\\bHUGGING_FACE\\b",
+        "\\bhuggingFace\\b",
         "\\bHUGGING\\s+FACE\\b",
-        "\\bhugging\\s+face\\b"
+        "\\bhf\\b"
       ]
     },
     {
@@ -1075,9 +1223,10 @@
     {
       "name": "Ids/Ips",
       "patterns": [
-        "\\bIDS/IPS\\b",
         "\\bIds/Ips\\b",
-        "\\bids/ips\\b"
+        "\\bidsips\\b",
+        "\\bids/ips\\b",
+        "\\bIDS/IPS\\b"
       ]
     },
     {
@@ -1156,12 +1305,16 @@
     {
       "name": "Jetpack Compose",
       "patterns": [
-        "\\bJC\\b",
-        "\\bJetpack\\s+Compose\\b",
-        "\\bjetpack\\s+compose\\b",
         "\\bjc\\b",
-        "\\bJETPACK\\s+COMPOSE\\b",
-        "\\bjetpack\\ compose\\b"
+        "\\bjetpack_compose\\b",
+        "\\bjetpackCompose\\b",
+        "\\bJetpack\\s+Compose\\b",
+        "\\bjetpack\\ compose\\b",
+        "\\bJetpackCompose\\b",
+        "\\bJC\\b",
+        "\\bjetpack\\s+compose\\b",
+        "\\bJETPACK_COMPOSE\\b",
+        "\\bJETPACK\\s+COMPOSE\\b"
       ]
     },
     {
@@ -1368,19 +1521,23 @@
     {
       "name": "Machine Learning",
       "patterns": [
-        "\\bml\\ ops\\ tools\\b",
-        "\\bml\\b",
-        "\\bmachine\\ learning\\b",
-        "\\bMachine\\s+Learning\\b",
         "\\bML\\b",
-        "\\bml\\ infrastructure\\b",
+        "\\bml\\ systems\\b",
+        "\\bMachineLearning\\b",
+        "\\bml\\ ops\\ tools\\b",
+        "\\bMACHINE_LEARNING\\b",
         "\\bml\\ fundamentals\\b",
         "\\bml\\ frameworks\\b",
         "\\bml\\ lifecycle\\ management\\b",
-        "\\bml\\ systems\\b",
+        "\\bmachine_learning\\b",
         "\\bml\\ methodologies\\b",
+        "\\bml\\ infrastructure\\b",
+        "\\bmachineLearning\\b",
+        "\\bMachine\\s+Learning\\b",
+        "\\bmachine\\ learning\\b",
         "\\bmachine\\s+learning\\b",
-        "\\bMACHINE\\s+LEARNING\\b"
+        "\\bMACHINE\\s+LEARNING\\b",
+        "\\bml\\b"
       ]
     },
     {
@@ -1410,12 +1567,16 @@
     {
       "name": "Microsoft Sql Server",
       "patterns": [
+        "\\bMicrosoftSqlServer\\b",
         "\\bmss\\b",
-        "\\bsql\\ server\\b",
         "\\bmicrosoft\\s+sql\\s+server\\b",
+        "\\bMSS\\b",
+        "\\bmicrosoft_sql_server\\b",
         "\\bMicrosoft\\s+Sql\\s+Server\\b",
-        "\\bMICROSOFT\\s+SQL\\s+SERVER\\b",
-        "\\bMSS\\b"
+        "\\bMICROSOFT_SQL_SERVER\\b",
+        "\\bsql\\ server\\b",
+        "\\bmicrosoftSqlServer\\b",
+        "\\bMICROSOFT\\s+SQL\\s+SERVER\\b"
       ]
     },
     {
@@ -1445,11 +1606,15 @@
     {
       "name": "Model Context Protocol",
       "patterns": [
+        "\\bmodelContextProtocol\\b",
         "\\bmcp\\b",
+        "\\bmodel_context_protocol\\b",
+        "\\bMODEL\\s+CONTEXT\\s+PROTOCOL\\b",
+        "\\bModel\\s+Context\\s+Protocol\\b",
         "\\bMCP\\b",
         "\\bmodel\\s+context\\s+protocol\\b",
-        "\\bModel\\s+Context\\s+Protocol\\b",
-        "\\bMODEL\\s+CONTEXT\\s+PROTOCOL\\b"
+        "\\bMODEL_CONTEXT_PROTOCOL\\b",
+        "\\bModelContextProtocol\\b"
       ]
     },
     {
@@ -1478,12 +1643,18 @@
     {
       "name": "Natural Language Processing",
       "patterns": [
+        "\\bnaturalLanguageProcessing\\b",
         "\\bNATURAL\\s+LANGUAGE\\s+PROCESSING\\b",
-        "\\bnlp\\b",
-        "\\bNatural\\s+Language\\s+Processing\\b",
+        "\\bnatural_language_processing\\b",
+        "\\bNatural Processing\\b",
+        "\\bnatural processing\\b",
+        "\\bNaturalLanguageProcessing\\b",
         "\\bNLP\\b",
-        "\\bnatural\\s+language\\s+processing\\b",
-        "\\bnatural\\ language\\ processing\\b"
+        "\\bnatural\\ language\\ processing\\b",
+        "\\bnlp\\b",
+        "\\bNATURAL_LANGUAGE_PROCESSING\\b",
+        "\\bNatural\\s+Language\\s+Processing\\b",
+        "\\bnatural\\s+language\\s+processing\\b"
       ]
     },
     {
@@ -1505,12 +1676,16 @@
     {
       "name": "Neural Networks",
       "patterns": [
-        "\\bNN\\b",
         "\\bneural\\s+networks\\b",
-        "\\bNeural\\s+Networks\\b",
         "\\bnn\\b",
         "\\bNEURAL\\s+NETWORKS\\b",
-        "\\bneural\\ networks\\b"
+        "\\bNN\\b",
+        "\\bNEURAL_NETWORKS\\b",
+        "\\bneuralNetworks\\b",
+        "\\bNeuralNetworks\\b",
+        "\\bneural\\ networks\\b",
+        "\\bNeural\\s+Networks\\b",
+        "\\bneural_networks\\b"
       ]
     },
     {
@@ -1785,18 +1960,22 @@
     {
       "name": "R Programming",
       "patterns": [
+        "\\brp\\b",
         "\\bR\\s+Programming\\b",
-        "\\br\\s+statistical\\b",
-        "\\bR\\s+statistical\\b",
-        "\\bRP\\b",
-        "\\br\\s+programming\\b",
-        "\\bR\\s+Studio\\b",
-        "\\br\\s+language\\b",
-        "\\br\\s+studio\\b",
+        "\\bR\\s+programming\\b",
+        "\\bR_PROGRAMMING\\b",
+        "\\bRProgramming\\b",
+        "\\brProgramming\\b",
         "\\bR\\s+PROGRAMMING\\b",
         "\\bR\\s+language\\b",
-        "\\brp\\b",
-        "\\bR\\s+programming\\b"
+        "\\bRP\\b",
+        "\\br_programming\\b",
+        "\\bR\\s+statistical\\b",
+        "\\br\\s+statistical\\b",
+        "\\bR\\s+Studio\\b",
+        "\\br\\s+programming\\b",
+        "\\br\\s+studio\\b",
+        "\\br\\s+language\\b"
       ]
     },
     {
@@ -1832,13 +2011,17 @@
     {
       "name": "React Native",
       "patterns": [
-        "\\brn\\b",
         "\\bReact\\s+Native\\b",
-        "\\bRN\\b",
-        "\\breact\\s+native\\b",
+        "\\breactNative\\b",
+        "\\brn\\b",
         "\\breact\\ native\\b",
+        "\\bReactNative\\b",
+        "\\bRN\\b",
+        "\\breact_native\\b",
+        "\\breact\\b",
+        "\\bREACT_NATIVE\\b",
         "\\bREACT\\s+NATIVE\\b",
-        "\\breact\\b"
+        "\\breact\\s+native\\b"
       ]
     },
     {
@@ -1878,10 +2061,14 @@
       "name": "Reinforcement Learning",
       "patterns": [
         "\\bRL\\b",
+        "\\bREINFORCEMENT\\s+LEARNING\\b",
         "\\brl\\b",
+        "\\bREINFORCEMENT_LEARNING\\b",
+        "\\breinforcementLearning\\b",
+        "\\bReinforcementLearning\\b",
         "\\breinforcement\\s+learning\\b",
         "\\bReinforcement\\s+Learning\\b",
-        "\\bREINFORCEMENT\\s+LEARNING\\b"
+        "\\breinforcement_learning\\b"
       ]
     },
     {
@@ -1904,14 +2091,18 @@
       "name": "Ruby On Rails",
       "category": "Backend Framework",
       "patterns": [
-        "\\bRuby\\s+on\\s+Rails\\b",
-        "\\bRails\\b",
-        "\\bror\\b",
-        "\\bRuby\\s+On\\s+Rails\\b",
-        "\\bROR\\b",
+        "\\brails\\b",
+        "\\bruby_on_rails\\b",
         "\\bRUBY\\s+ON\\s+RAILS\\b",
+        "\\brubyOnRails\\b",
+        "\\bROR\\b",
+        "\\bRuby\\s+on\\s+Rails\\b",
+        "\\bRUBY_ON_RAILS\\b",
+        "\\bRubyOnRails\\b",
+        "\\bror\\b",
+        "\\bRails\\b",
         "\\bruby\\s+on\\s+rails\\b",
-        "\\brails\\b"
+        "\\bRuby\\s+On\\s+Rails\\b"
       ]
     },
     {
@@ -2086,12 +2277,16 @@
     {
       "name": "Spring Boot",
       "patterns": [
+        "\\bspring_boot\\b",
         "\\bSPRING\\s+BOOT\\b",
+        "\\bsb\\b",
         "\\bSpring\\s+Boot\\b",
         "\\bspring\\s+boot\\b",
-        "\\bsb\\b",
+        "\\bSpringBoot\\b",
+        "\\bspringBoot\\b",
         "\\bspring\\ boot\\b",
-        "\\bSB\\b"
+        "\\bSB\\b",
+        "\\bSPRING_BOOT\\b"
       ]
     },
     {
@@ -2114,12 +2309,16 @@
     {
       "name": "Statistical Analysis",
       "patterns": [
-        "\\bsa\\b",
-        "\\bSA\\b",
         "\\bstatistical\\ analysis\\b",
         "\\bStatistical\\s+Analysis\\b",
+        "\\bstatistical\\s+analysis\\b",
+        "\\bstatisticalAnalysis\\b",
+        "\\bStatisticalAnalysis\\b",
+        "\\bsa\\b",
+        "\\bSTATISTICAL_ANALYSIS\\b",
+        "\\bstatistical_analysis\\b",
         "\\bSTATISTICAL\\s+ANALYSIS\\b",
-        "\\bstatistical\\s+analysis\\b"
+        "\\bSA\\b"
       ]
     },
     {
@@ -2133,13 +2332,19 @@
     {
       "name": "Structured Query Language",
       "patterns": [
+        "\\bStructured Query\\b",
+        "\\bstructuredQueryLanguage\\b",
+        "\\bSTRUCTURED_QUERY_LANGUAGE\\b",
         "\\bstructured\\s+query\\s+language\\b",
-        "\\bSTRUCTURED\\s+QUERY\\s+LANGUAGE\\b",
-        "\\bstructured query language\\b",
-        "\\bStructured\\s+Query\\s+Language\\b",
+        "\\bStructuredQueryLanguage\\b",
         "\\bstructured\\ query\\ language\\b",
+        "\\bstructured query language\\b",
+        "\\bstructured query\\b",
         "\\bsql\\b",
-        "\\bSQL\\b"
+        "\\bSQL\\b",
+        "\\bstructured_query_language\\b",
+        "\\bStructured\\s+Query\\s+Language\\b",
+        "\\bSTRUCTURED\\s+QUERY\\s+LANGUAGE\\b"
       ]
     },
     {
@@ -2285,12 +2490,16 @@
     {
       "name": "Together Ai",
       "patterns": [
-        "\\bTOGETHER\\s+AI\\b",
+        "\\bTOGETHER_AI\\b",
+        "\\bTogether\\s+Ai\\b",
         "\\btogether\\s+ai\\b",
-        "\\btogether\\ ai\\b",
-        "\\bTA\\b",
+        "\\bTOGETHER\\s+AI\\b",
         "\\bta\\b",
-        "\\bTogether\\s+Ai\\b"
+        "\\bTA\\b",
+        "\\btogether_ai\\b",
+        "\\btogether\\ ai\\b",
+        "\\bTogetherAi\\b",
+        "\\btogetherAi\\b"
       ]
     },
     {
@@ -2312,12 +2521,16 @@
     {
       "name": "Triton Inference Server",
       "patterns": [
+        "\\btis\\b",
         "\\btriton\\s+inference\\s+server\\b",
         "\\bTriton\\s+Inference\\s+Server\\b",
-        "\\btriton\\ inference\\ server\\b",
+        "\\bTritonInferenceServer\\b",
+        "\\btritonInferenceServer\\b",
         "\\bTIS\\b",
-        "\\btis\\b",
-        "\\bTRITON\\s+INFERENCE\\s+SERVER\\b"
+        "\\btriton\\ inference\\ server\\b",
+        "\\bTRITON\\s+INFERENCE\\s+SERVER\\b",
+        "\\btriton_inference_server\\b",
+        "\\bTRITON_INFERENCE_SERVER\\b"
       ]
     },
     {
@@ -2355,25 +2568,33 @@
     {
       "name": "User Experience",
       "patterns": [
-        "\\buser\\s+experience\\b",
+        "\\buserExperience\\b",
         "\\bux\\b",
         "\\bUSER\\s+EXPERIENCE\\b",
-        "\\bUE\\b",
         "\\bUX\\b",
-        "\\buser experience\\b",
+        "\\buser\\s+experience\\b",
+        "\\bUE\\b",
+        "\\bUSER_EXPERIENCE\\b",
+        "\\bUser\\s+Experience\\b",
+        "\\bUserExperience\\b",
         "\\bue\\b",
-        "\\bUser\\s+Experience\\b"
+        "\\buser_experience\\b",
+        "\\buser experience\\b"
       ]
     },
     {
       "name": "User Interface",
       "patterns": [
+        "\\bUI\\b",
         "\\buser interface\\b",
-        "\\bUSER\\s+INTERFACE\\b",
-        "\\buser\\s+interface\\b",
+        "\\bUSER_INTERFACE\\b",
         "\\bUser\\s+Interface\\b",
+        "\\buser_interface\\b",
+        "\\buserInterface\\b",
+        "\\bUserInterface\\b",
         "\\bui\\b",
-        "\\bUI\\b"
+        "\\buser\\s+interface\\b",
+        "\\bUSER\\s+INTERFACE\\b"
       ]
     },
     {
