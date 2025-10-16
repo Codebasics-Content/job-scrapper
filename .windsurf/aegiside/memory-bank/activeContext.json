@@ -1,7 +1,23 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-16T22:21:53+05:30",
+  "last_updated": "2025-10-16T22:26:00+05:30",
   "current_session": [
+    {
+      "event_id": "session-import-fix-2025-10-16T22:26",
+      "timestamp": "2025-10-16T22:26:00+05:30",
+      "event_type": "import_resolution",
+      "workflow": "fix",
+      "description": "Fixed sequential_detail_scraper imports: exported function and corrected class name",
+      "files_modified": [
+        "src/scraper/unified/linkedin/__init__.py",
+        "src/scraper/unified/linkedin/sequential_detail_scraper.py"
+      ],
+      "rl_reward": 15,
+      "rl_source_ref": "progress.json",
+      "mcp_chain": ["filesystem", "time"],
+      "status": "completed",
+      "test_verification": "passed"
+    },
     {
       "event_id": "session-company-date-fix-2025-10-16T22:21",
       "timestamp": "2025-10-16T22:21:53+05:30",
