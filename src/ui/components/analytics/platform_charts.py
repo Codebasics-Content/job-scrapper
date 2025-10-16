@@ -1,53 +1,52 @@
-# Company Skills Charts Component - EMD Architecture
-# Renders unique skills by company visualization
+# Top Skills Analytics Component - EMD Architecture
+# Renders most in-demand skills across all jobs
 
 import streamlit as st
 import pandas as pd
 from typing import List, Dict, Any
+from collections import Counter
 
 def render_platform_distribution(all_jobs: List[Dict[str, Any]]) -> None:
-    """Render unique skills by company (Top 20)"""
+    """Render top in-demand skills (Top 20)"""
     if not all_jobs:
         st.info("📭 No data available yet. Please scrape some jobs first!")
         return
     
     df = pd.DataFrame(all_jobs)
     
-    st.subheader("🏢 Unique Skills by Company (Top 20)")
-    if 'company_name' not in df.columns or 'skills' not in df.columns:
-        st.warning("⚠️ Company or skills data not available in database")
+    st.subheader("🔥 Top 20 In-Demand Skills")
+    if 'skills' not in df.columns:
+        st.warning("⚠️ Skills data not available in database")
         return
     
-    # Calculate unique skills per company
-    company_skills = {}
-    for idx, row in df.iterrows():
-        company = row.get('company_name', 'Unknown')
-        skills_str = row.get('skills', '')
-        
-        if company not in company_skills:
-            company_skills[company] = set()
-        
+    # Extract all skills and count frequency
+    all_skills = []
+    for skills_str in df['skills'].dropna():
         if skills_str:
             skills = [s.strip() for s in skills_str.split(',')]
-            company_skills[company].update(skills)
+            all_skills.extend(skills)
     
-    # Convert to dataframe and get top 20
-    skills_data = pd.DataFrame([
-        {'Company': company, 'Unique Skills': len(skills)}
-        for company, skills in company_skills.items()
-    ]).sort_values('Unique Skills', ascending=False).head(20)
-    
-    if skills_data.empty:
-        st.info("📊 No company skills data available")
+    if not all_skills:
+        st.info("📊 No skills data available")
         return
+    
+    # Count skill frequency and get top 20
+    skill_counts = Counter(all_skills)
+    top_skills = skill_counts.most_common(20)
+    
+    skills_df = pd.DataFrame(top_skills, columns=['Skill', 'Jobs Count'])
+    
+    # Calculate percentage
+    total_jobs = len(df)
+    skills_df['% of Jobs'] = (skills_df['Jobs Count'] / total_jobs * 100).round(1)
     
     # Display chart and table
     col1, col2 = st.columns([2, 1])
     with col1:
-        st.bar_chart(skills_data.set_index('Company')['Unique Skills'])
+        st.bar_chart(skills_df.set_index('Skill')['Jobs Count'])
     with col2:
         st.dataframe(
-            skills_data.reset_index(drop=True),
+            skills_df,
             width='stretch',
             hide_index=True
         )
