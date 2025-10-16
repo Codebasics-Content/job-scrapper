@@ -5,7 +5,7 @@ import sqlite3
 from .extractor import AdvancedSkillExtractor
 
 
-def deduplicate_database_skills(db_path: str, skills_reference: str) -> dict[str, list[str]]:
+def deduplicate_database_skills(db_path: str, skills_reference: str) -> dict[str, dict[str, list[str]]]:
     """Re-extract and deduplicate all skills in database"""
     extractor = AdvancedSkillExtractor(skills_reference)
     conn = sqlite3.connect(db_path)
@@ -15,17 +15,18 @@ def deduplicate_database_skills(db_path: str, skills_reference: str) -> dict[str
     cursor.execute("SELECT job_id, job_description, skills FROM jobs WHERE job_description IS NOT NULL")
     rows = cursor.fetchall()
     
-    updates = {}
+    updates: dict[str, dict[str, list[str]]] = {}
     for job_id, description, old_skills in rows:
-        # Re-extract with updated deduplication
-        new_skills = extractor.extract(description)
-        new_skills_str = ','.join(new_skills) if new_skills else ''
+        # Re-extract with updated deduplication (explicitly request list[str])
+        new_skills_list: list[str] = extractor.extract(description, return_confidence=False)  # type: ignore[assignment]
+        new_skills_str = ','.join(new_skills_list) if new_skills_list else ''
         
         if new_skills_str != old_skills:
+            old_skills_list = old_skills.split(',') if old_skills else []
             updates[job_id] = {
-                'old': old_skills.split(',') if old_skills else [],
-                'new': new_skills,
-                'removed': list(set(old_skills.split(',')) - set(new_skills)) if old_skills else []
+                'old': old_skills_list,
+                'new': new_skills_list,
+                'removed': list(set(old_skills_list) - set(new_skills_list)) if old_skills else []
             }
             
             # Update database
@@ -37,7 +38,7 @@ def deduplicate_database_skills(db_path: str, skills_reference: str) -> dict[str
     return updates
 
 
-def show_deduplication_report(updates: dict[str, list[str]]) -> None:
+def show_deduplication_report(updates: dict[str, dict[str, list[str]]]) -> None:
     """Display deduplication changes"""
     print("\n" + "="*70)
     print("SKILL DEDUPLICATION REPORT")
