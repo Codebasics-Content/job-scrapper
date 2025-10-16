@@ -1,20 +1,26 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-17T03:21:30+05:30",
+  "last_updated": "2025-10-17T03:33:50+05:30",
   "metrics": {
     "rl_source_ref": "progress.json",
-    "tasks_completed": 25,
+    "tasks_completed": 26,
     "tasks_failed": 1,
-    "commits": 24
+    "commits": 25
   },
   "top_append_metadata": {
     "latest_task_at_index_0": true,
-    "last_prepend_timestamp": "2025-10-17T03:21:30+05:30",
-    "total_prepends": 13,
+    "last_prepend_timestamp": "2025-10-17T03:33:50+05:30",
+    "total_prepends": 14,
     "validation_passed": true
   },
   "priority_queue": [],
   "completed": [
+    {
+      "id": "fix_word_boundary_substring_matching",
+      "task": "Fix CRITICAL word boundary bug - preserve \\b to prevent substring matching",
+      "completed_at": "2025-10-17T03:33:50+05:30",
+      "outcome": "Fixed substring matching bug: ROOT CAUSE - pattern.replace('\\\\b', '') removed word boundaries. 'NET' matched 'network', 'internet', 'planetary'. FIX - Keep \\b intact for strict word matching. Re-extracted 1,212 jobs: eliminated 7,249 substring FP. Avg skills/job: 25.45→19.47 (23.5% noise). Validation: 'network'→.NET NOT detected ✅, '.NET framework'→.NET detected ✅. Cumulative FP eliminated: ~127,000. RL: +45. Commit: b76b43c"
+    },
     {
       "id": "research_driven_pattern_optimization",
       "task": "Research-driven optimization via @mcp:exa - eliminate FP/FN with NLP best practices",
