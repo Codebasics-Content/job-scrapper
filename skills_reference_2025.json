@@ -5,7 +5,6 @@
       "name": ".NET",
       "patterns": [
         "\\bNET\\b",
-        "\\b.net\\b",
         "\\b\\.NET\\b",
         "\\b\\.net\\b",
         "\\b.NET\\b"
@@ -46,18 +45,11 @@
       ]
     },
     {
-      "name": "AR/VR",
+      "name": "AI/ML",
       "patterns": [
-        "\\bAR/VR\\b",
-        "\\bar/vr\\b"
-      ]
-    },
-    {
-      "name": "AWS",
-      "patterns": [
-        "\\bAWS\\b",
-        "\\bAmazon\\s+Web\\s+Services\\b",
-        "\\bamazon\\s+web\\s+services\\b"
+        "\\bAI/ML\\b",
+        "\\bai/ml\\b",
+        "\\bAI\\s*/\\s*ML\\b"
       ]
     },
     {
@@ -150,6 +142,14 @@
         "\\bAirtable\\b",
         "\\bairtable\\b",
         "\\bAIRTABLE\\b"
+      ]
+    },
+    {
+      "name": "Amazon Web Services",
+      "patterns": [
+        "\\bAmazon Web Services\\b",
+        "\\bamazon web services\\b",
+        "\\bAWS\\b"
       ]
     },
     {
@@ -272,7 +272,6 @@
       "name": "Application Programming Interface",
       "patterns": [
         "\\bApplication\\s+Programming\\s+Interface\\b",
-        "\\bapis\\b",
         "\\bAPPLICATION INTERFACE\\b",
         "\\bapplication interface\\b",
         "\\bapplicationProgrammingInterface\\b",
@@ -281,7 +280,6 @@
         "\\bApplicationProgrammingInterface\\b",
         "\\bApplication Interface\\b",
         "\\bAPI\\b",
-        "\\bAPIs\\b",
         "\\bAPPLICATION_PROGRAMMING_INTERFACE\\b",
         "\\bAPPLICATION\\s+PROGRAMMING\\s+INTERFACE\\b",
         "\\bapplication\\s+programming\\s+interface\\b"
@@ -353,6 +351,14 @@
         "\\bAttention\\s+to\\s+Detail\\b",
         "\\bATD\\b",
         "\\bATTENTION\\s+TO\\s+DETAIL\\b"
+      ]
+    },
+    {
+      "name": "Augmented Reality Virtual Reality",
+      "patterns": [
+        "\\bAugmented Reality Virtual Reality\\b",
+        "\\baugmented reality virtual reality\\b",
+        "\\bAR/VR\\b"
       ]
     },
     {
@@ -520,8 +526,7 @@
     {
       "name": "BERT",
       "patterns": [
-        "\\bBERT\\b",
-        "\\bbert\\b"
+        "\\bBERT\\b"
       ]
     },
     {
@@ -696,13 +701,6 @@
       ]
     },
     {
-      "name": "CI/CD",
-      "patterns": [
-        "\\bCI/CD\\b",
-        "\\bci/cd\\b"
-      ]
-    },
-    {
       "name": "CMS",
       "patterns": [
         "\\bCMS\\b"
@@ -719,8 +717,7 @@
       "name": "CSS3",
       "patterns": [
         "\\bCSS3\\b",
-        "\\bCSS\\b",
-        "\\bcss3\\b"
+        "\\bCSS\\b"
       ]
     },
     {
@@ -904,9 +901,7 @@
     {
       "name": "Cnns",
       "patterns": [
-        "\\bCnns\\b",
-        "\\bCNNS\\b",
-        "\\bcnns\\b"
+        "\\bCNNS\\b"
       ]
     },
     {
@@ -976,6 +971,13 @@
       ]
     },
     {
+      "name": "Computer Science",
+      "patterns": [
+        "\\bComputer Science\\b",
+        "\\bcomputer science\\b"
+      ]
+    },
+    {
       "name": "Computer Vision",
       "patterns": [
         "\\bComputer\\s+Vision\\b",
@@ -1028,6 +1030,14 @@
         "\\bcontext_window\\b",
         "\\bcontext-window\\b",
         "\\bContext.Window\\b"
+      ]
+    },
+    {
+      "name": "Continuous Integration Continuous Deployment",
+      "patterns": [
+        "\\bContinuous Integration Continuous Deployment\\b",
+        "\\bcontinuous integration continuous deployment\\b",
+        "\\bCI/CD\\b"
       ]
     },
     {
@@ -1208,9 +1218,7 @@
     {
       "name": "Dask",
       "patterns": [
-        "\\bdask\\b",
-        "\\bDASK\\b",
-        "\\bDask\\b"
+        "\\bDASK\\b"
       ]
     },
     {
@@ -1500,7 +1508,6 @@
     {
       "name": "Dbt",
       "patterns": [
-        "\\bDbt\\b",
         "\\bDBT\\b"
       ]
     },
@@ -1629,23 +1636,19 @@
     {
       "name": "Dpo",
       "patterns": [
-        "\\bDPO\\b",
-        "\\bDpo\\b"
+        "\\bDPO\\b"
       ]
     },
     {
       "name": "Dspy",
       "patterns": [
-        "\\bDSPY\\b",
-        "\\bDspy\\b",
-        "\\bdspy\\b"
+        "\\bDSPY\\b"
       ]
     },
     {
       "name": "Dvc",
       "patterns": [
-        "\\bDVC\\b",
-        "\\bDvc\\b"
+        "\\bDVC\\b"
       ]
     },
     {
@@ -1670,21 +1673,9 @@
       ]
     },
     {
-      "name": "ELT",
-      "patterns": [
-        "\\bELT\\b"
-      ]
-    },
-    {
       "name": "EMR",
       "patterns": [
         "\\bEMR\\b"
-      ]
-    },
-    {
-      "name": "ETL",
-      "patterns": [
-        "\\bETL\\b"
       ]
     },
     {
@@ -1826,6 +1817,14 @@
         "\\bexpressjs\\b",
         "\\bExpressJs\\b",
         "\\bexpress\\.js\\b"
+      ]
+    },
+    {
+      "name": "Extract Load Transform",
+      "patterns": [
+        "\\bExtract Load Transform\\b",
+        "\\bextract load transform\\b",
+        "\\bELT\\b"
       ]
     },
     {
@@ -2064,9 +2063,7 @@
     {
       "name": "GNNs",
       "patterns": [
-        "\\bgnns\\b",
         "\\bgraph neural networks\\b",
-        "\\bGNNs\\b",
         "\\bGNNS\\b"
       ]
     },
@@ -2079,9 +2076,7 @@
     {
       "name": "GPU",
       "patterns": [
-        "\\bGPU\\b",
-        "\\bGPUs\\b",
-        "\\bgpus\\b"
+        "\\bGPU\\b"
       ]
     },
     {
@@ -2137,8 +2132,7 @@
     {
       "name": "Git",
       "patterns": [
-        "\\bGIT\\b",
-        "\\bGit\\b"
+        "\\bGIT\\b"
       ]
     },
     {
@@ -2373,9 +2367,7 @@
     {
       "name": "Grpc",
       "patterns": [
-        "\\bgrpc\\b",
-        "\\bGRPC\\b",
-        "\\bGrpc\\b"
+        "\\bGRPC\\b"
       ]
     },
     {
@@ -2394,15 +2386,13 @@
       "patterns": [
         "\\bHTML5\\b",
         "\\bHTML\\b",
-        "\\bhtml5\\b",
-        "\\bhtml\\b"
+        "\\bhtml5\\b"
       ]
     },
     {
       "name": "HTTP",
       "patterns": [
-        "\\bHTTP\\b",
-        "\\bhttp\\b"
+        "\\bHTTP\\b"
       ]
     },
     {
@@ -2424,9 +2414,7 @@
     {
       "name": "Helm",
       "patterns": [
-        "\\bHelm\\b",
-        "\\bHELM\\b",
-        "\\bhelm\\b"
+        "\\bHELM\\b"
       ]
     },
     {
@@ -2440,8 +2428,6 @@
     {
       "name": "Html",
       "patterns": [
-        "\\bHtml\\b",
-        "\\bhtml\\b",
         "\\bhypertext\\ markup\\ language\\b",
         "\\bHTML\\b"
       ]
@@ -2502,9 +2488,7 @@
     {
       "name": "IDE",
       "patterns": [
-        "\\bIDE\\b",
-        "\\bIDEs\\b",
-        "\\bides\\b"
+        "\\bIDE\\b"
       ]
     },
     {
@@ -2610,6 +2594,13 @@
       ]
     },
     {
+      "name": "Internet of Things",
+      "patterns": [
+        "\\bInternet of Things\\b",
+        "\\binternet of things\\b"
+      ]
+    },
+    {
       "name": "Interpersonal Skills",
       "patterns": [
         "\\bInterpersonal\\s+Skills\\b",
@@ -2627,12 +2618,6 @@
       ]
     },
     {
-      "name": "IoT",
-      "patterns": [
-        "\\bIOT\\b"
-      ]
-    },
-    {
       "name": "Ionic",
       "category": "Mobile Development",
       "patterns": [
@@ -2644,15 +2629,13 @@
     {
       "name": "J2EE",
       "patterns": [
-        "\\bJ2EE\\b",
-        "\\bj2ee\\b"
+        "\\bJ2EE\\b"
       ]
     },
     {
       "name": "JIRA",
       "patterns": [
-        "\\bJIRA\\b",
-        "\\bjira\\b"
+        "\\bJIRA\\b"
       ]
     },
     {
@@ -2673,8 +2656,6 @@
     {
       "name": "Java",
       "patterns": [
-        "\\bJava\\b",
-        "\\bjava\\b",
         "\\bJAVA\\b"
       ]
     },
@@ -2698,7 +2679,6 @@
     {
       "name": "Jax",
       "patterns": [
-        "\\bJax\\b",
         "\\bJAX\\b"
       ]
     },
@@ -2713,9 +2693,7 @@
     {
       "name": "Jest",
       "patterns": [
-        "\\bJEST\\b",
-        "\\bJest\\b",
-        "\\bjest\\b"
+        "\\bJEST\\b"
       ]
     },
     {
@@ -2734,16 +2712,13 @@
     {
       "name": "Jira",
       "patterns": [
-        "\\bJIRA\\b",
-        "\\bJira\\b",
-        "\\bjira\\b"
+        "\\bJIRA\\b"
       ]
     },
     {
       "name": "Jpa",
       "patterns": [
-        "\\bJPA\\b",
-        "\\bJpa\\b"
+        "\\bJPA\\b"
       ]
     },
     {
@@ -2790,7 +2765,6 @@
     {
       "name": "K8s",
       "patterns": [
-        "\\bK8s\\b",
         "\\bK8S\\b"
       ]
     },
@@ -2863,19 +2837,6 @@
         "\\bkubernetes\\b",
         "\\bKubernetes\\b",
         "\\bKUBERNETES\\b"
-      ]
-    },
-    {
-      "name": "LLM",
-      "patterns": [
-        "\\bLLM\\b",
-        "\\bLLMs\\b",
-        "\\blarge\\ language\\ model\\b",
-        "\\blarge\\ language\\ models\\b",
-        "\\bllm\\ fine\\b",
-        "\\bllm\\ safety\\b",
-        "\\bllms\\ fine\\b",
-        "\\bllms\\b"
       ]
     },
     {
@@ -2952,6 +2913,14 @@
         "\\bLanggraph\\b",
         "\\blanggraph\\b",
         "\\bLANGGRAPH\\b"
+      ]
+    },
+    {
+      "name": "Large Language Model",
+      "patterns": [
+        "\\bLarge Language Model\\b",
+        "\\blarge language model\\b",
+        "\\bLLM\\b"
       ]
     },
     {
@@ -3033,9 +3002,7 @@
     {
       "name": "LoRA",
       "patterns": [
-        "\\bLORA\\b",
-        "\\blora\\b",
-        "\\bLoRA\\b"
+        "\\bLORA\\b"
       ]
     },
     {
@@ -3049,8 +3016,6 @@
     {
       "name": "Lora",
       "patterns": [
-        "\\bLora\\b",
-        "\\blora\\b",
         "\\bLORA\\b"
       ]
     },
@@ -3084,8 +3049,6 @@
     {
       "name": "Make",
       "patterns": [
-        "\\bmake\\b",
-        "\\bMake\\b",
         "\\bMAKE\\b"
       ]
     },
@@ -3112,6 +3075,13 @@
         "\\bMarketing.Analytics\\b",
         "\\bMarketing\\s+Analytics\\b",
         "\\bMarketingAnalytics\\b"
+      ]
+    },
+    {
+      "name": "Mathematics",
+      "patterns": [
+        "\\bMathematics\\b",
+        "\\bmathematics\\b"
       ]
     },
     {
@@ -3205,8 +3175,6 @@
     {
       "name": "Miro",
       "patterns": [
-        "\\bmiro\\b",
-        "\\bMiro\\b",
         "\\bMIRO\\b"
       ]
     },
@@ -3506,16 +3474,14 @@
     {
       "name": "Nltk",
       "patterns": [
-        "\\bnltk\\b",
-        "\\bNLTK\\b",
-        "\\bNltk\\b"
+        "\\bNLTK\\b"
       ]
     },
     {
-      "name": "NoSQL",
+      "name": "NoSQL Database",
       "patterns": [
-        "\\bNOSQL\\b",
-        "\\bnosql\\b",
+        "\\bNoSQL Database\\b",
+        "\\bnosql database\\b",
         "\\bNoSQL\\b"
       ]
     },
@@ -3572,8 +3538,6 @@
         "\\bNuxt\\.Js\\b",
         "\\bNUXT.JS\\b",
         "\\bnuxtjs\\b",
-        "\\bnuxt\\b",
-        "\\bNuxt\\b",
         "\\bnuxt\\.?js\\b"
       ]
     },
@@ -3603,9 +3567,7 @@
     {
       "name": "Onnx",
       "patterns": [
-        "\\bONNX\\b",
-        "\\bOnnx\\b",
-        "\\bonnx\\b"
+        "\\bONNX\\b"
       ]
     },
     {
@@ -3677,16 +3639,13 @@
     {
       "name": "PEFT",
       "patterns": [
-        "\\bPEFT\\b",
-        "\\bpeft\\b"
+        "\\bPEFT\\b"
       ]
     },
     {
       "name": "PaaS",
       "patterns": [
-        "\\bPaaS\\b",
         "\\bPAAS\\b",
-        "\\bpaas\\b",
         "\\bplatform as a service\\b"
       ]
     },
@@ -3701,8 +3660,6 @@
     {
       "name": "Peft",
       "patterns": [
-        "\\bPeft\\b",
-        "\\bpeft\\b",
         "\\bPEFT\\b"
       ]
     },
@@ -3726,8 +3683,6 @@
     {
       "name": "Perl",
       "patterns": [
-        "\\bPerl\\b",
-        "\\bperl\\b",
         "\\bPERL\\b"
       ]
     },
@@ -3750,7 +3705,6 @@
     {
       "name": "Php",
       "patterns": [
-        "\\bPhp\\b",
         "\\bPHP\\b"
       ]
     },
@@ -4110,9 +4064,7 @@
       "name": "Qwik",
       "category": "Frontend Framework",
       "patterns": [
-        "\\bqwik\\b",
-        "\\bQWIK\\b",
-        "\\bQwik\\b"
+        "\\bQWIK\\b"
       ]
     },
     {
@@ -4135,24 +4087,9 @@
       ]
     },
     {
-      "name": "RAG",
-      "patterns": [
-        "\\bRAG\\b"
-      ]
-    },
-    {
       "name": "RDS",
       "patterns": [
         "\\bRDS\\b"
-      ]
-    },
-    {
-      "name": "REST",
-      "patterns": [
-        "\\bREST\\b",
-        "\\bRESTful\\b",
-        "\\brest\\b",
-        "\\brestful\\b"
       ]
     },
     {
@@ -4174,7 +4111,6 @@
     {
       "name": "RLHF",
       "patterns": [
-        "\\brlhf\\b",
         "\\bRLHF\\b"
       ]
     },
@@ -4206,7 +4142,6 @@
     {
       "name": "Ray",
       "patterns": [
-        "\\bRay\\b",
         "\\bRAY\\b"
       ]
     },
@@ -4347,17 +4282,13 @@
     {
       "name": "Rlhf",
       "patterns": [
-        "\\bRlhf\\b",
-        "\\brlhf\\b",
         "\\bRLHF\\b"
       ]
     },
     {
       "name": "Ruby",
       "patterns": [
-        "\\bRUBY\\b",
-        "\\bRuby\\b",
-        "\\bruby\\b"
+        "\\bRUBY\\b"
       ]
     },
     {
@@ -4380,8 +4311,6 @@
     {
       "name": "Rust",
       "patterns": [
-        "\\bRust\\b",
-        "\\brust\\b",
         "\\bRUST\\b"
       ]
     },
@@ -4394,9 +4323,7 @@
     {
       "name": "SDK",
       "patterns": [
-        "\\bSDK\\b",
-        "\\bSDKs\\b",
-        "\\bsdks\\b"
+        "\\bSDK\\b"
       ]
     },
     {
@@ -4409,16 +4336,8 @@
     {
       "name": "SOMs",
       "patterns": [
-        "\\bSOMs\\b",
-        "\\bsoms\\b",
         "\\bSOMS\\b",
         "\\bself.?organizing maps\\b"
-      ]
-    },
-    {
-      "name": "SQL",
-      "patterns": [
-        "\\bSQL\\b"
       ]
     },
     {
@@ -4685,9 +4604,7 @@
     {
       "name": "Soap",
       "patterns": [
-        "\\bSoap\\b",
-        "\\bSOAP\\b",
-        "\\bsoap\\b"
+        "\\bSOAP\\b"
       ]
     },
     {
@@ -4811,6 +4728,13 @@
         "\\bStatisticalModeling\\b",
         "\\bStatistical.Modeling\\b",
         "\\bstatistical-modeling\\b"
+      ]
+    },
+    {
+      "name": "Statistics",
+      "patterns": [
+        "\\bStatistics\\b",
+        "\\bstatistics\\b"
       ]
     },
     {
@@ -5281,7 +5205,6 @@
     {
       "name": "UMAP",
       "patterns": [
-        "\\bumap\\b",
         "\\bUMAP\\b"
       ]
     },
@@ -5296,7 +5219,6 @@
     {
       "name": "Uml",
       "patterns": [
-        "\\bUml\\b",
         "\\bUML\\b"
       ]
     },
@@ -5388,8 +5310,6 @@
     {
       "name": "VLMs",
       "patterns": [
-        "\\bVLMs\\b",
-        "\\bvlms\\b",
         "\\bVLMS\\b",
         "\\bvision language models\\b"
       ]
@@ -5458,17 +5378,13 @@
     {
       "name": "Vite",
       "patterns": [
-        "\\bvite\\b",
-        "\\bVITE\\b",
-        "\\bVite\\b"
+        "\\bVITE\\b"
       ]
     },
     {
       "name": "Vllm",
       "patterns": [
-        "\\bvllm\\b",
-        "\\bVLLM\\b",
-        "\\bVllm\\b"
+        "\\bVLLM\\b"
       ]
     },
     {
@@ -5519,9 +5435,7 @@
     {
       "name": "Web3",
       "patterns": [
-        "\\bWEB3\\b",
-        "\\bweb3\\b",
-        "\\bWeb3\\b"
+        "\\bWEB3\\b"
       ]
     },
     {
@@ -5593,8 +5507,7 @@
     {
       "name": "YOLO",
       "patterns": [
-        "\\bYOLO\\b",
-        "\\byolo\\b"
+        "\\bYOLO\\b"
       ]
     },
     {
