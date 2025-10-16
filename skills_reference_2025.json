@@ -1,5 +1,5 @@
 {
-  "total_skills": 502,
+  "total_skills": 514,
   "skills": [
     {
       "name": ".NET",
@@ -7,7 +7,6 @@
         "\\bNET\\b",
         "\\b.net\\b",
         "\\b\\.NET\\b",
-        "\\bnet\\b",
         "\\b\\.net\\b",
         "\\b.NET\\b"
       ]
@@ -25,16 +24,13 @@
         "\\b5G\\s+TECHNOLOGY\\b",
         "\\b5g-technology\\b",
         "\\b5gtechnology\\b",
-        "\\b5T\\b",
         "\\b5G_Technology\\b",
-        "\\b5GTechnology\\b",
-        "\\b5t\\b"
+        "\\b5GTechnology\\b"
       ]
     },
     {
       "name": "A/B Testing",
       "patterns": [
-        "\\bat\\b",
         "\\bA/B.Testing\\b",
         "\\ba/btesting\\b",
         "\\ba/bTesting\\b",
@@ -42,7 +38,6 @@
         "\\ba/b_testing\\b",
         "\\ba/b\\s+testing\\b",
         "\\ba/b.testing\\b",
-        "\\bAT\\b",
         "\\bA/B-Testing\\b",
         "\\bA/B_Testing\\b",
         "\\bA/BTesting\\b",
@@ -61,7 +56,6 @@
       "name": "AWS",
       "patterns": [
         "\\bAWS\\b",
-        "\\baws\\b",
         "\\bAmazon\\s+Web\\s+Services\\b",
         "\\bamazon\\s+web\\s+services\\b"
       ]
@@ -83,9 +77,7 @@
         "\\bActive_Listening\\b",
         "\\bactive\\s+listening\\b",
         "\\bActive\\s+Listening\\b",
-        "\\bAL\\b",
         "\\bactive.listening\\b",
-        "\\bal\\b",
         "\\bactiveListening\\b",
         "\\bActiveListening\\b",
         "\\bActive-Listening\\b",
@@ -109,10 +101,8 @@
         "\\badobexd\\b",
         "\\badobe-xd\\b",
         "\\badobe\\s+xd\\b",
-        "\\bAX\\b",
         "\\bAdobeXD\\b",
         "\\bAdobe_XD\\b",
-        "\\bax\\b",
         "\\bAdobe-XD\\b",
         "\\badobe_xd\\b",
         "\\badobeXd\\b",
@@ -128,13 +118,11 @@
         "\\bagent\\s+frameworks\\b",
         "\\bAGENT\\s+FRAMEWORKS\\b",
         "\\bAgentFrameworks\\b",
-        "\\baf\\b",
         "\\bAgent-Frameworks\\b",
         "\\bagent_frameworks\\b",
         "\\bAgent\\s+Frameworks\\b",
         "\\bagentFrameworks\\b",
         "\\bAgent_Frameworks\\b",
-        "\\bAF\\b",
         "\\bAgent.Frameworks\\b",
         "\\bagent.frameworks\\b"
       ]
@@ -144,18 +132,24 @@
       "patterns": [
         "\\bagile.methodology\\b",
         "\\bAgileMethodology\\b",
-        "\\bAM\\b",
         "\\bagile\\s+methodology\\b",
         "\\bAgile_Methodology\\b",
         "\\bagile_methodology\\b",
         "\\bagile-methodology\\b",
         "\\bagileMethodology\\b",
-        "\\bam\\b",
         "\\bAgile\\s+Methodology\\b",
         "\\bAgile-Methodology\\b",
         "\\bagilemethodology\\b",
         "\\bAGILE\\s+METHODOLOGY\\b",
         "\\bAgile.Methodology\\b"
+      ]
+    },
+    {
+      "name": "Airtable",
+      "patterns": [
+        "\\bAirtable\\b",
+        "\\bairtable\\b",
+        "\\bAIRTABLE\\b"
       ]
     },
     {
@@ -174,9 +168,7 @@
         "\\bAndroid\\s+Development\\b",
         "\\bANDROID_DEVELOPMENT\\b",
         "\\bandroidDevelopment\\b",
-        "\\bAD\\b",
         "\\bandroid_development\\b",
-        "\\bad\\b",
         "\\bandroid\\ development\\b",
         "\\bandroid\\s+development\\b"
       ]
@@ -200,13 +192,11 @@
     {
       "name": "Anthropic Claude",
       "patterns": [
-        "\\bAC\\b",
         "\\bANTHROPIC_CLAUDE\\b",
         "\\banthropic_claude\\b",
         "\\bANTHROPIC\\s+CLAUDE\\b",
         "\\banthropicClaude\\b",
         "\\bAnthropicClaude\\b",
-        "\\bac\\b",
         "\\banthropic\\s+claude\\b",
         "\\banthropic\\ claude\\b",
         "\\bAnthropic\\s+Claude\\b"
@@ -215,7 +205,6 @@
     {
       "name": "Apache Airflow",
       "patterns": [
-        "\\baa\\b",
         "\\bAPACHE\\s+AIRFLOW\\b",
         "\\bapache\\ airflow\\b",
         "\\bAPACHE_AIRFLOW\\b",
@@ -223,8 +212,7 @@
         "\\bApache\\s+Airflow\\b",
         "\\bapacheAirflow\\b",
         "\\bApacheAirflow\\b",
-        "\\bapache_airflow\\b",
-        "\\bAA\\b"
+        "\\bapache_airflow\\b"
       ]
     },
     {
@@ -233,13 +221,11 @@
         "\\bapacheBeam\\b",
         "\\bAPACHE_BEAM\\b",
         "\\bAPACHE\\s+BEAM\\b",
-        "\\bab\\b",
         "\\bapache\\ beam\\b",
         "\\bapache\\s+beam\\b",
         "\\bApache\\s+Beam\\b",
         "\\bApacheBeam\\b",
-        "\\bapache_beam\\b",
-        "\\bAB\\b"
+        "\\bapache_beam\\b"
       ]
     },
     {
@@ -248,12 +234,10 @@
         "\\bapacheKafka\\b",
         "\\bApache\\s+Kafka\\b",
         "\\bApacheKafka\\b",
-        "\\bak\\b",
         "\\bAPACHE_KAFKA\\b",
         "\\bapache_kafka\\b",
         "\\bapache\\s+kafka\\b",
         "\\bAPACHE\\s+KAFKA\\b",
-        "\\bAK\\b",
         "\\bapache\\ kafka\\b"
       ]
     },
@@ -264,11 +248,9 @@
         "\\bApacheNifi\\b",
         "\\bapache\\ nifi\\b",
         "\\bApache\\s+Nifi\\b",
-        "\\bAN\\b",
         "\\bAPACHE\\s+NIFI\\b",
         "\\bapacheNifi\\b",
         "\\bapache_nifi\\b",
-        "\\ban\\b",
         "\\bAPACHE_NIFI\\b"
       ]
     },
@@ -276,7 +258,6 @@
       "name": "Apache Spark",
       "patterns": [
         "\\bAPACHE\\s+SPARK\\b",
-        "\\bAS\\b",
         "\\bApache\\s+Spark\\b",
         "\\bapache\\s+spark\\b",
         "\\bapache\\ spark\\b",
@@ -284,14 +265,12 @@
         "\\bApacheSpark\\b",
         "\\bapacheSpark\\b",
         "\\bAPACHE_SPARK\\b",
-        "\\bas\\b",
         "\\bspark\\b"
       ]
     },
     {
       "name": "Application Programming Interface",
       "patterns": [
-        "\\bapi\\b",
         "\\bApplication\\s+Programming\\s+Interface\\b",
         "\\bapis\\b",
         "\\bAPPLICATION INTERFACE\\b",
@@ -323,12 +302,10 @@
         "\\bArtificial\\s+Intelligence\\b",
         "\\bARTIFICIAL\\s+INTELLIGENCE\\b",
         "\\bartificial intelligence\\b",
-        "\\bai\\b",
         "\\bartificialIntelligence\\b",
         "\\bartificial\\s+intelligence\\b",
         "\\bArtificialIntelligence\\b",
-        "\\bartificial_intelligence\\b",
-        "\\bAI\\b"
+        "\\bartificial_intelligence\\b"
       ]
     },
     {
@@ -375,8 +352,7 @@
         "\\bAttention_to_Detail\\b",
         "\\bAttention\\s+to\\s+Detail\\b",
         "\\bATD\\b",
-        "\\bATTENTION\\s+TO\\s+DETAIL\\b",
-        "\\batd\\b"
+        "\\bATTENTION\\s+TO\\s+DETAIL\\b"
       ]
     },
     {
@@ -402,15 +378,12 @@
       "patterns": [
         "\\baws\\ bedrock\\b",
         "\\baws\\s+bedrock\\b",
-        "\\bab\\b",
         "\\baws_bedrock\\b",
         "\\bAws\\s+Bedrock\\b",
         "\\bAwsBedrock\\b",
         "\\bawsBedrock\\b",
         "\\bAWS\\s+BEDROCK\\b",
-        "\\bAWS_BEDROCK\\b",
-        "\\baws\\b",
-        "\\bAB\\b"
+        "\\bAWS_BEDROCK\\b"
       ]
     },
     {
@@ -424,8 +397,6 @@
         "\\baws_cloud_services\\b",
         "\\baws\\ cloud\\ services\\b",
         "\\baws\\s+cloud\\s+services\\b",
-        "\\baws\\b",
-        "\\bacs\\b",
         "\\bawsCloudServices\\b"
       ]
     },
@@ -435,13 +406,10 @@
         "\\baws\\s+codepipeline\\b",
         "\\bAwsCodepipeline\\b",
         "\\bAWS\\s+CODEPIPELINE\\b",
-        "\\bAC\\b",
         "\\bAws\\s+Codepipeline\\b",
         "\\bAWS_CODEPIPELINE\\b",
         "\\baws_codepipeline\\b",
         "\\bawsCodepipeline\\b",
-        "\\bac\\b",
-        "\\baws\\b",
         "\\baws\\ codepipeline\\b"
       ]
     },
@@ -455,8 +423,6 @@
         "\\bAws\\s+Glue\\b",
         "\\bAwsGlue\\b",
         "\\baws\\ glue\\b",
-        "\\bag\\b",
-        "\\bAG\\b",
         "\\bawsGlue\\b"
       ]
     },
@@ -466,27 +432,21 @@
         "\\bAWS\\s+LAMBDA\\b",
         "\\bAwsLambda\\b",
         "\\bAws\\s+Lambda\\b",
-        "\\bal\\b",
         "\\baws_lambda\\b",
         "\\baws\\ lambda\\b",
         "\\bAWS_LAMBDA\\b",
         "\\baws\\s+lambda\\b",
-        "\\baws\\b",
-        "\\bAL\\b",
         "\\bawsLambda\\b"
       ]
     },
     {
       "name": "Aws Sagemaker",
       "patterns": [
-        "\\bAS\\b",
         "\\bAWS_SAGEMAKER\\b",
         "\\bAwsSagemaker\\b",
         "\\baws\\ sagemaker\\b",
         "\\baws_sagemaker\\b",
-        "\\bas\\b",
         "\\bAws\\s+Sagemaker\\b",
-        "\\baws\\b",
         "\\bawsSagemaker\\b",
         "\\baws\\s+sagemaker\\b",
         "\\bAWS\\s+SAGEMAKER\\b"
@@ -504,13 +464,11 @@
       "name": "Azure Functions",
       "patterns": [
         "\\bazure\\b",
-        "\\baf\\b",
         "\\bAzureFunctions\\b",
         "\\bAZURE\\s+FUNCTIONS\\b",
         "\\bazure\\s+functions\\b",
         "\\bazure_functions\\b",
         "\\bazureFunctions\\b",
-        "\\bAF\\b",
         "\\bazure\\ functions\\b",
         "\\bAzure\\s+Functions\\b",
         "\\bAZURE_FUNCTIONS\\b"
@@ -528,7 +486,6 @@
         "\\bazure\\ kubernetes\\ service\\b",
         "\\bAZURE_KUBERNETES_SERVICE\\b",
         "\\bazure_kubernetes_service\\b",
-        "\\baks\\b",
         "\\bAZURE\\s+KUBERNETES\\s+SERVICE\\b"
       ]
     },
@@ -536,8 +493,6 @@
       "name": "Azure Openai",
       "patterns": [
         "\\bAzureOpenai\\b",
-        "\\bao\\b",
-        "\\bAO\\b",
         "\\bazure_openai\\b",
         "\\bazure\\b",
         "\\bazure\\s+openai\\b",
@@ -551,7 +506,6 @@
     {
       "name": "Azure Storage",
       "patterns": [
-        "\\bAS\\b",
         "\\bazure\\s+storage\\b",
         "\\bazureStorage\\b",
         "\\bazure\\b",
@@ -559,7 +513,6 @@
         "\\bAZURE\\s+STORAGE\\b",
         "\\bAZURE_STORAGE\\b",
         "\\bazure\\ storage\\b",
-        "\\bas\\b",
         "\\bazure_storage\\b",
         "\\bAzure\\s+Storage\\b"
       ]
@@ -574,8 +527,6 @@
     {
       "name": "Bash Scripting",
       "patterns": [
-        "\\bBS\\b",
-        "\\bbs\\b",
         "\\bbash\\s+scripting\\b",
         "\\bbashScripting\\b",
         "\\bBASH\\s+SCRIPTING\\b",
@@ -593,7 +544,6 @@
     {
       "name": "Batch Processing",
       "patterns": [
-        "\\bBP\\b",
         "\\bBatch\\s+Processing\\b",
         "\\bbatch.processing\\b",
         "\\bbatchProcessing\\b",
@@ -605,7 +555,6 @@
         "\\bbatch\\s+processing\\b",
         "\\bBATCH\\s+PROCESSING\\b",
         "\\bbatchprocessing\\b",
-        "\\bbp\\b",
         "\\bBatch.Processing\\b"
       ]
     },
@@ -613,9 +562,7 @@
       "name": "Bayesian Statistics",
       "patterns": [
         "\\bBAYESIAN\\s+STATISTICS\\b",
-        "\\bBS\\b",
         "\\bbayesian_statistics\\b",
-        "\\bbs\\b",
         "\\bbayesianstatistics\\b",
         "\\bbayesian\\s+statistics\\b",
         "\\bbayesian.statistics\\b",
@@ -649,10 +596,8 @@
       "patterns": [
         "\\bbig_data\\b",
         "\\bbig-data\\b",
-        "\\bBD\\b",
         "\\bbigdata\\b",
         "\\bBig_Data\\b",
-        "\\bbd\\b",
         "\\bBigData\\b",
         "\\bBig\\s+Data\\b",
         "\\bBig-Data\\b",
@@ -711,10 +656,8 @@
         "\\bBusiness\\s+Analytics\\b",
         "\\bbusiness-analytics\\b",
         "\\bBusinessAnalytics\\b",
-        "\\bBA\\b",
         "\\bbusiness\\s+analytics\\b",
         "\\bBusiness.Analytics\\b",
-        "\\bba\\b",
         "\\bbusinessanalytics\\b",
         "\\bbusiness_analytics\\b",
         "\\bBUSINESS\\s+ANALYTICS\\b",
@@ -728,9 +671,7 @@
         "\\bbusiness_intelligence\\b",
         "\\bbusiness intelligence\\b",
         "\\bBUSINESS_INTELLIGENCE\\b",
-        "\\bBI\\b",
         "\\bBusinessIntelligence\\b",
-        "\\bbi\\b",
         "\\bbusinessIntelligence\\b",
         "\\bBusiness\\s+Intelligence\\b",
         "\\bBUSINESS\\s+INTELLIGENCE\\b",
@@ -743,10 +684,8 @@
         "\\bC\\s+language\\b",
         "\\bc_programming\\b",
         "\\bC/C\\+\\+\\b",
-        "\\bCP\\b",
         "\\bc\\s+language\\b",
         "\\bC\\s+programming\\b",
-        "\\bcp\\b",
         "\\bC\\s+PROGRAMMING\\b",
         "\\bCProgramming\\b",
         "\\bcProgramming\\b",
@@ -766,16 +705,14 @@
     {
       "name": "CMS",
       "patterns": [
-        "\\bCMS\\b",
-        "\\bcms\\b"
+        "\\bCMS\\b"
       ]
     },
     {
       "name": "CSS",
       "patterns": [
         "\\bCSS\\b",
-        "\\bcascading\\ style\\ sheets\\b",
-        "\\bcss\\b"
+        "\\bcascading\\ style\\ sheets\\b"
       ]
     },
     {
@@ -783,8 +720,7 @@
       "patterns": [
         "\\bCSS3\\b",
         "\\bCSS\\b",
-        "\\bcss3\\b",
-        "\\bcss\\b"
+        "\\bcss3\\b"
       ]
     },
     {
@@ -807,10 +743,8 @@
       "name": "Causal Inference",
       "patterns": [
         "\\bcausal_inference\\b",
-        "\\bci\\b",
         "\\bCausalInference\\b",
         "\\bcausalInference\\b",
-        "\\bCI\\b",
         "\\bcausal\\s+inference\\b",
         "\\bcausal\\ inference\\b",
         "\\bCAUSAL_INFERENCE\\b",
@@ -830,7 +764,6 @@
       "name": "Chain of Thought",
       "patterns": [
         "\\bchainofthought\\b",
-        "\\bcot\\b",
         "\\bCOT\\b",
         "\\bChain-of-Thought\\b",
         "\\bChain.of.Thought\\b",
@@ -848,13 +781,11 @@
     {
       "name": "Change Management",
       "patterns": [
-        "\\bcm\\b",
         "\\bchange\\s+management\\b",
         "\\bchange-management\\b",
         "\\bChange_Management\\b",
         "\\bChangeManagement\\b",
         "\\bchangemanagement\\b",
-        "\\bCM\\b",
         "\\bchangeManagement\\b",
         "\\bChange-Management\\b",
         "\\bChange\\s+Management\\b",
@@ -905,6 +836,14 @@
       ]
     },
     {
+      "name": "ClickUp",
+      "patterns": [
+        "\\bCLICKUP\\b",
+        "\\bclickup\\b",
+        "\\bClickUp\\b"
+      ]
+    },
+    {
       "name": "Cline",
       "patterns": [
         "\\bCLINE\\b",
@@ -918,14 +857,12 @@
         "\\bcloudComputing\\b",
         "\\bCLOUD\\s+COMPUTING\\b",
         "\\bCloud.Computing\\b",
-        "\\bCC\\b",
         "\\bcloud-computing\\b",
         "\\bcloudcomputing\\b",
         "\\bCloud_Computing\\b",
         "\\bCloud-Computing\\b",
         "\\bcloud_computing\\b",
         "\\bCloud\\s+Computing\\b",
-        "\\bcc\\b",
         "\\bcloud\\s+computing\\b",
         "\\bcloud.computing\\b",
         "\\bCloudComputing\\b"
@@ -938,16 +875,22 @@
         "\\bcloud_platforms\\b",
         "\\bcloud\\s+platforms\\b",
         "\\bCloud\\s+Platforms\\b",
-        "\\bcp\\b",
         "\\bcloud-platforms\\b",
         "\\bCloudPlatforms\\b",
         "\\bcloudPlatforms\\b",
         "\\bCloud-Platforms\\b",
-        "\\bCP\\b",
         "\\bcloudplatforms\\b",
         "\\bCloud.Platforms\\b",
         "\\bCLOUD\\s+PLATFORMS\\b",
         "\\bCloud_Platforms\\b"
+      ]
+    },
+    {
+      "name": "CloudWatch",
+      "patterns": [
+        "\\bCLOUDWATCH\\b",
+        "\\bCloudWatch\\b",
+        "\\bcloudwatch\\b"
       ]
     },
     {
@@ -983,10 +926,8 @@
         "\\bcode-review\\b",
         "\\bCode_Review\\b",
         "\\bcodeReview\\b",
-        "\\bcr\\b",
         "\\bCode.Review\\b",
         "\\bCode\\s+Review\\b",
-        "\\bCR\\b",
         "\\bCodeReview\\b",
         "\\bcodereview\\b",
         "\\bCode-Review\\b",
@@ -1009,12 +950,10 @@
         "\\bCohort\\s+Analysis\\b",
         "\\bCohort-Analysis\\b",
         "\\bCohort.Analysis\\b",
-        "\\bCA\\b",
         "\\bCohortAnalysis\\b",
         "\\bCOHORT\\s+ANALYSIS\\b",
         "\\bcohortanalysis\\b",
         "\\bCohort_Analysis\\b",
-        "\\bca\\b",
         "\\bcohort.analysis\\b",
         "\\bcohort\\s+analysis\\b",
         "\\bcohort-analysis\\b"
@@ -1041,11 +980,9 @@
       "patterns": [
         "\\bComputer\\s+Vision\\b",
         "\\bcomputer_vision\\b",
-        "\\bcv\\b",
         "\\bCOMPUTER\\s+VISION\\b",
         "\\bComputerVision\\b",
         "\\bcomputerVision\\b",
-        "\\bCV\\b",
         "\\bcomputer\\s+vision\\b",
         "\\bCOMPUTER_VISION\\b",
         "\\bcomputer\\ vision\\b"
@@ -1058,10 +995,8 @@
         "\\bCONFLICT\\s+RESOLUTION\\b",
         "\\bConflict.Resolution\\b",
         "\\bconflictresolution\\b",
-        "\\bcr\\b",
         "\\bConflict-Resolution\\b",
         "\\bconflict-resolution\\b",
-        "\\bCR\\b",
         "\\bConflictResolution\\b",
         "\\bconflict_resolution\\b",
         "\\bconflictResolution\\b",
@@ -1086,11 +1021,9 @@
         "\\bcontextwindow\\b",
         "\\bContextWindow\\b",
         "\\bContext_Window\\b",
-        "\\bCW\\b",
         "\\bcontextWindow\\b",
         "\\bContext\\s+Window\\b",
         "\\bcontext\\s+window\\b",
-        "\\bcw\\b",
         "\\bCONTEXT\\s+WINDOW\\b",
         "\\bcontext_window\\b",
         "\\bcontext-window\\b",
@@ -1106,13 +1039,20 @@
         "\\bCID\\b",
         "\\bCI/CD\\b",
         "\\bcontinuous integration/continuous deployment\\b",
-        "\\bcid\\b",
         "\\bcontinuous\\s+integration/continuous\\s+deployment\\b",
         "\\bCONTINUOUS_INTEGRATION/CONTINUOUS_DEPLOYMENT\\b",
         "\\bci/cd\\b",
         "\\bContinuousIntegration/ContinuousDeployment\\b",
         "\\bcontinuousIntegration/continuousDeployment\\b",
         "\\bCONTINUOUS\\s+INTEGRATION/CONTINUOUS\\s+DEPLOYMENT\\b"
+      ]
+    },
+    {
+      "name": "Copilot",
+      "patterns": [
+        "\\bcopilot\\b",
+        "\\bCOPILOT\\b",
+        "\\bCopilot\\b"
       ]
     },
     {
@@ -1143,9 +1083,7 @@
     {
       "name": "Critical Thinking",
       "patterns": [
-        "\\bCT\\b",
         "\\bcriticalthinking\\b",
-        "\\bct\\b",
         "\\bcritical\\s+thinking\\b",
         "\\bCriticalThinking\\b",
         "\\bcriticalThinking\\b",
@@ -1172,10 +1110,8 @@
         "\\bcross\\s+validation\\b",
         "\\bCross-Validation\\b",
         "\\bCROSS\\s+VALIDATION\\b",
-        "\\bCV\\b",
         "\\bcross.validation\\b",
-        "\\bCross_Validation\\b",
-        "\\bcv\\b"
+        "\\bCross_Validation\\b"
       ]
     },
     {
@@ -1196,8 +1132,6 @@
         "\\bcultural_awareness\\b",
         "\\bCultural.Awareness\\b",
         "\\bcultural.awareness\\b",
-        "\\bCA\\b",
-        "\\bca\\b",
         "\\bCultural_Awareness\\b",
         "\\bculturalawareness\\b",
         "\\bCULTURAL\\s+AWARENESS\\b",
@@ -1222,9 +1156,7 @@
         "\\bcustomeranalytics\\b",
         "\\bcustomer-analytics\\b",
         "\\bCustomerAnalytics\\b",
-        "\\bCA\\b",
         "\\bCustomer\\s+Analytics\\b",
-        "\\bca\\b",
         "\\bCUSTOMER\\s+ANALYTICS\\b",
         "\\bCustomer_Analytics\\b",
         "\\bcustomerAnalytics\\b",
@@ -1243,12 +1175,10 @@
         "\\bcustomerService\\b",
         "\\bCustomer_Service\\b",
         "\\bcustomer\\s+service\\b",
-        "\\bcs\\b",
         "\\bCustomer.Service\\b",
         "\\bcustomer.service\\b",
         "\\bcustomerservice\\b",
-        "\\bcustomer_service\\b",
-        "\\bCS\\b"
+        "\\bcustomer_service\\b"
       ]
     },
     {
@@ -1290,7 +1220,6 @@
         "\\bdataanalysis\\b",
         "\\bdata.analysis\\b",
         "\\bDataAnalysis\\b",
-        "\\bDA\\b",
         "\\bdata\\s+analysis\\b",
         "\\bdata-analysis\\b",
         "\\bData\\s+Analysis\\b",
@@ -1298,14 +1227,12 @@
         "\\bdataAnalysis\\b",
         "\\bData.Analysis\\b",
         "\\bData_Analysis\\b",
-        "\\bData-Analysis\\b",
-        "\\bda\\b"
+        "\\bData-Analysis\\b"
       ]
     },
     {
       "name": "Data Cataloging",
       "patterns": [
-        "\\bDC\\b",
         "\\bdata.cataloging\\b",
         "\\bDataCataloging\\b",
         "\\bData_Cataloging\\b",
@@ -1315,7 +1242,6 @@
         "\\bdata_cataloging\\b",
         "\\bData.Cataloging\\b",
         "\\bData\\s+Cataloging\\b",
-        "\\bdc\\b",
         "\\bdata-cataloging\\b",
         "\\bdataCataloging\\b",
         "\\bdata\\s+cataloging\\b"
@@ -1324,7 +1250,6 @@
     {
       "name": "Data Cleaning",
       "patterns": [
-        "\\bDC\\b",
         "\\bData\\s+Cleaning\\b",
         "\\bDataCleaning\\b",
         "\\bdataCleaning\\b",
@@ -1335,7 +1260,6 @@
         "\\bdatacleaning\\b",
         "\\bdata\\s+cleaning\\b",
         "\\bData_Cleaning\\b",
-        "\\bdc\\b",
         "\\bdata_cleaning\\b",
         "\\bData-Cleaning\\b"
       ]
@@ -1349,14 +1273,12 @@
         "\\bdata\\s+engineering\\b",
         "\\bData.Engineering\\b",
         "\\bdata-engineering\\b",
-        "\\bDE\\b",
         "\\bDataEngineering\\b",
         "\\bData\\s+Engineering\\b",
         "\\bData-Engineering\\b",
         "\\bdataengineering\\b",
         "\\bdataEngineering\\b",
-        "\\bData_Engineering\\b",
-        "\\bde\\b"
+        "\\bData_Engineering\\b"
       ]
     },
     {
@@ -1366,9 +1288,7 @@
         "\\bData\\s+Governance\\b",
         "\\bData.Governance\\b",
         "\\bData-Governance\\b",
-        "\\bDG\\b",
         "\\bData_Governance\\b",
-        "\\bdg\\b",
         "\\bDATA\\s+GOVERNANCE\\b",
         "\\bDataGovernance\\b",
         "\\bdata_governance\\b",
@@ -1381,10 +1301,8 @@
     {
       "name": "Data Lakes",
       "patterns": [
-        "\\bdl\\b",
         "\\bdata-lakes\\b",
         "\\bData-Lakes\\b",
-        "\\bDL\\b",
         "\\bData\\s+Lakes\\b",
         "\\bDATA\\s+LAKES\\b",
         "\\bData.Lakes\\b",
@@ -1405,15 +1323,13 @@
         "\\bDataModeling\\b",
         "\\bdata\\s+modeling\\b",
         "\\bData.Modeling\\b",
-        "\\bDM\\b",
         "\\bdata-modeling\\b",
         "\\bData-Modeling\\b",
         "\\bdata.modeling\\b",
         "\\bData\\s+Modeling\\b",
         "\\bdatamodeling\\b",
         "\\bdataModeling\\b",
-        "\\bDATA\\s+MODELING\\b",
-        "\\bdm\\b"
+        "\\bDATA\\s+MODELING\\b"
       ]
     },
     {
@@ -1424,8 +1340,6 @@
         "\\bdata.orchestration\\b",
         "\\bdata_orchestration\\b",
         "\\bdata-orchestration\\b",
-        "\\bdo\\b",
-        "\\bDO\\b",
         "\\bdataOrchestration\\b",
         "\\bdata\\s+orchestration\\b",
         "\\bData-Orchestration\\b",
@@ -1442,9 +1356,7 @@
         "\\bdataPipelines\\b",
         "\\bdata.pipelines\\b",
         "\\bData.Pipelines\\b",
-        "\\bDP\\b",
         "\\bDataPipelines\\b",
-        "\\bdp\\b",
         "\\bData-Pipelines\\b",
         "\\bdata-pipelines\\b",
         "\\bdata_pipelines\\b",
@@ -1463,9 +1375,7 @@
         "\\bDataPreprocessing\\b",
         "\\bData_Preprocessing\\b",
         "\\bData.Preprocessing\\b",
-        "\\bDP\\b",
         "\\bDATA\\s+PREPROCESSING\\b",
-        "\\bdp\\b",
         "\\bdata-preprocessing\\b",
         "\\bData-Preprocessing\\b",
         "\\bData\\s+Preprocessing\\b",
@@ -1477,7 +1387,6 @@
       "name": "Data Quality",
       "patterns": [
         "\\bdataquality\\b",
-        "\\bDQ\\b",
         "\\bdataQuality\\b",
         "\\bdata\\s+quality\\b",
         "\\bdata.quality\\b",
@@ -1487,7 +1396,6 @@
         "\\bData_Quality\\b",
         "\\bDATA\\s+QUALITY\\b",
         "\\bdata-quality\\b",
-        "\\bdq\\b",
         "\\bdata_quality\\b",
         "\\bDataQuality\\b"
       ]
@@ -1500,17 +1408,14 @@
         "\\bdata\\s+science\\b",
         "\\bData\\s+Science\\b",
         "\\bDataScience\\b",
-        "\\bDS\\b",
         "\\bDATA_SCIENCE\\b",
         "\\bdataScience\\b",
-        "\\bds\\b",
         "\\bdata_science\\b"
       ]
     },
     {
       "name": "Data Storytelling",
       "patterns": [
-        "\\bDS\\b",
         "\\bData\\s+Storytelling\\b",
         "\\bdata-storytelling\\b",
         "\\bdatastorytelling\\b",
@@ -1520,7 +1425,6 @@
         "\\bData_Storytelling\\b",
         "\\bDataStorytelling\\b",
         "\\bData-Storytelling\\b",
-        "\\bds\\b",
         "\\bData.Storytelling\\b",
         "\\bDATA\\s+STORYTELLING\\b",
         "\\bdata\\s+storytelling\\b"
@@ -1538,11 +1442,9 @@
         "\\bData-Visualization\\b",
         "\\bdata_visualization\\b",
         "\\bdata-visualization\\b",
-        "\\bdv\\b",
         "\\bdatavisualization\\b",
         "\\bdataVisualization\\b",
-        "\\bData_Visualization\\b",
-        "\\bDV\\b"
+        "\\bData_Visualization\\b"
       ]
     },
     {
@@ -1555,10 +1457,8 @@
         "\\bDataWarehousing\\b",
         "\\bDATA\\s+WAREHOUSING\\b",
         "\\bData\\s+Warehousing\\b",
-        "\\bdw\\b",
         "\\bdatawarehousing\\b",
         "\\bdataWarehousing\\b",
-        "\\bDW\\b",
         "\\bData_Warehousing\\b",
         "\\bdata-warehousing\\b",
         "\\bdata\\s+warehousing\\b"
@@ -1576,10 +1476,8 @@
         "\\bdata_wrangling\\b",
         "\\bData\\s+Wrangling\\b",
         "\\bdata.wrangling\\b",
-        "\\bdw\\b",
         "\\bData.Wrangling\\b",
         "\\bDataWrangling\\b",
-        "\\bDW\\b",
         "\\bdata-wrangling\\b"
       ]
     },
@@ -1602,7 +1500,6 @@
     {
       "name": "Dbt",
       "patterns": [
-        "\\bdbt\\b",
         "\\bDbt\\b",
         "\\bDBT\\b"
       ]
@@ -1616,14 +1513,12 @@
         "\\bDecision\\s+Making\\b",
         "\\bDECISION\\s+MAKING\\b",
         "\\bDecision.Making\\b",
-        "\\bDM\\b",
         "\\bdecision.making\\b",
         "\\bDecisionMaking\\b",
         "\\bDecision_Making\\b",
         "\\bdecisionMaking\\b",
         "\\bdecision\\s+making\\b",
-        "\\bdecisionmaking\\b",
-        "\\bdm\\b"
+        "\\bdecisionmaking\\b"
       ]
     },
     {
@@ -1632,13 +1527,11 @@
         "\\bDEEP_LEARNING\\b",
         "\\bdeep_learning\\b",
         "\\bDEEP\\s+LEARNING\\b",
-        "\\bdl\\b",
         "\\bdeep\\s+learning\\b",
         "\\bdeep\\ learning\\b",
         "\\bdeepLearning\\b",
         "\\bDeepLearning\\b",
-        "\\bDeep\\s+Learning\\b",
-        "\\bDL\\b"
+        "\\bDeep\\s+Learning\\b"
       ]
     },
     {
@@ -1669,9 +1562,7 @@
         "\\bdimensionality\\s+reduction\\b",
         "\\bdimensionalityreduction\\b",
         "\\bDimensionalityReduction\\b",
-        "\\bDR\\b",
         "\\bdimensionality-reduction\\b",
-        "\\bdr\\b",
         "\\bdimensionality.reduction\\b",
         "\\bDimensionality\\s+Reduction\\b"
       ]
@@ -1685,7 +1576,6 @@
         "\\bdiversity.and.inclusion\\b",
         "\\bdiversity_and_inclusion\\b",
         "\\bDiversity_and_Inclusion\\b",
-        "\\bdai\\b",
         "\\bDiversity-and-Inclusion\\b",
         "\\bdiversityAndInclusion\\b",
         "\\bDiversityandInclusion\\b",
@@ -1715,14 +1605,12 @@
       "name": "Docker Containers",
       "patterns": [
         "\\bDocker_Containers\\b",
-        "\\bDC\\b",
         "\\bdockercontainers\\b",
         "\\bDockerContainers\\b",
         "\\bDocker.Containers\\b",
         "\\bdocker-containers\\b",
         "\\bdockerContainers\\b",
         "\\bdocker_containers\\b",
-        "\\bdc\\b",
         "\\bDocker\\s+Containers\\b",
         "\\bdocker.containers\\b",
         "\\bdocker\\s+containers\\b",
@@ -1742,8 +1630,7 @@
       "name": "Dpo",
       "patterns": [
         "\\bDPO\\b",
-        "\\bDpo\\b",
-        "\\bdpo\\b"
+        "\\bDpo\\b"
       ]
     },
     {
@@ -1758,8 +1645,7 @@
       "name": "Dvc",
       "patterns": [
         "\\bDVC\\b",
-        "\\bDvc\\b",
-        "\\bdvc\\b"
+        "\\bDvc\\b"
       ]
     },
     {
@@ -1773,14 +1659,12 @@
     {
       "name": "EC2",
       "patterns": [
-        "\\bEC2\\b",
-        "\\bec2\\b"
+        "\\bEC2\\b"
       ]
     },
     {
       "name": "EKS",
       "patterns": [
-        "\\beks\\b",
         "\\belastic kubernetes service\\b",
         "\\bEKS\\b"
       ]
@@ -1788,22 +1672,19 @@
     {
       "name": "ELT",
       "patterns": [
-        "\\bELT\\b",
-        "\\belt\\b"
+        "\\bELT\\b"
       ]
     },
     {
       "name": "EMR",
       "patterns": [
-        "\\bEMR\\b",
-        "\\bemr\\b"
+        "\\bEMR\\b"
       ]
     },
     {
       "name": "ETL",
       "patterns": [
-        "\\bETL\\b",
-        "\\betl\\b"
+        "\\bETL\\b"
       ]
     },
     {
@@ -1815,11 +1696,9 @@
         "\\bEDGE\\s+COMPUTING\\b",
         "\\bedgeComputing\\b",
         "\\bedge\\ computing\\b",
-        "\\bec\\b",
         "\\bEdge\\s+Computing\\b",
         "\\bEdgeComputing\\b",
-        "\\bEDGE_COMPUTING\\b",
-        "\\bEC\\b"
+        "\\bEDGE_COMPUTING\\b"
       ]
     },
     {
@@ -1858,9 +1737,7 @@
         "\\bemotional-intelligence\\b",
         "\\bEmotionalIntelligence\\b",
         "\\bemotionalIntelligence\\b",
-        "\\bei\\b",
         "\\bEmotional_Intelligence\\b",
-        "\\bEI\\b",
         "\\bemotional\\s+intelligence\\b",
         "\\bEmotional.Intelligence\\b"
       ]
@@ -1893,11 +1770,9 @@
         "\\bEnsemble_Methods\\b",
         "\\bEnsembleMethods\\b",
         "\\bensemble.methods\\b",
-        "\\bem\\b",
         "\\bEnsemble\\s+Methods\\b",
         "\\bensemble_methods\\b",
-        "\\bensemble-methods\\b",
-        "\\bEM\\b"
+        "\\bensemble-methods\\b"
       ]
     },
     {
@@ -1910,8 +1785,6 @@
         "\\bethical_hacking\\b",
         "\\bEthical_Hacking\\b",
         "\\bETHICAL\\s+HACKING\\b",
-        "\\beh\\b",
-        "\\bEH\\b",
         "\\bethicalHacking\\b",
         "\\bethical.hacking\\b",
         "\\bEthicalHacking\\b",
@@ -1930,8 +1803,6 @@
     {
       "name": "Experimental Design",
       "patterns": [
-        "\\bED\\b",
-        "\\bed\\b",
         "\\bExperimental-Design\\b",
         "\\bexperimentalDesign\\b",
         "\\bexperimental\\s+design\\b",
@@ -1966,7 +1837,6 @@
         "\\bExtract\\s+Transform\\s+Load\\b",
         "\\bextract transform load\\b",
         "\\bextract\\s+transform\\s+load\\b",
-        "\\betl\\b",
         "\\bextractTransformLoad\\b",
         "\\bEXTRACT_TRANSFORM_LOAD\\b",
         "\\bEXTRACT\\s+TRANSFORM\\s+LOAD\\b"
@@ -2007,7 +1877,6 @@
       "name": "Feature Engineering",
       "patterns": [
         "\\bfeatureEngineering\\b",
-        "\\bFE\\b",
         "\\bfeatureengineering\\b",
         "\\bFeatureEngineering\\b",
         "\\bFeature_Engineering\\b",
@@ -2018,7 +1887,6 @@
         "\\bFeature-Engineering\\b",
         "\\bfeature_engineering\\b",
         "\\bFeature\\s+Engineering\\b",
-        "\\bfe\\b",
         "\\bFEATURE\\s+ENGINEERING\\b"
       ]
     },
@@ -2030,10 +1898,8 @@
         "\\bfeature\\s+selection\\b",
         "\\bFeature.Selection\\b",
         "\\bfeature-selection\\b",
-        "\\bfs\\b",
         "\\bFeature_Selection\\b",
         "\\bfeature_selection\\b",
-        "\\bFS\\b",
         "\\bFeature\\s+Selection\\b",
         "\\bFeature-Selection\\b",
         "\\bfeature.selection\\b",
@@ -2047,7 +1913,6 @@
         "\\bfew-shot_learning\\b",
         "\\bFew-Shot.Learning\\b",
         "\\bFew-Shot-Learning\\b",
-        "\\bfl\\b",
         "\\bFew\\-Shot\\s+Learning\\b",
         "\\bfew-shotlearning\\b",
         "\\bfew-shot.learning\\b",
@@ -2056,8 +1921,7 @@
         "\\bfew-shot-learning\\b",
         "\\bfew-shotLearning\\b",
         "\\bFEW-SHOT\\s+LEARNING\\b",
-        "\\bFew-ShotLearning\\b",
-        "\\bFL\\b"
+        "\\bFew-ShotLearning\\b"
       ]
     },
     {
@@ -2085,11 +1949,9 @@
         "\\bFinancial-Analysis\\b",
         "\\bfinancial-analysis\\b",
         "\\bfinancialanalysis\\b",
-        "\\bFA\\b",
         "\\bfinancial\\s+analysis\\b",
         "\\bFinancial.Analysis\\b",
         "\\bfinancial_analysis\\b",
-        "\\bfa\\b",
         "\\bFinancial_Analysis\\b",
         "\\bFINANCIAL\\s+ANALYSIS\\b",
         "\\bfinancial.analysis\\b",
@@ -2158,10 +2020,8 @@
         "\\bfunction\\s+calling\\b",
         "\\bFunction\\s+Calling\\b",
         "\\bFunction_Calling\\b",
-        "\\bFC\\b",
         "\\bFunction.Calling\\b",
         "\\bfunction-calling\\b",
-        "\\bfc\\b",
         "\\bfunctionCalling\\b",
         "\\bFunction-Calling\\b",
         "\\bfunctioncalling\\b"
@@ -2170,10 +2030,8 @@
     {
       "name": "Functional Programming",
       "patterns": [
-        "\\bFP\\b",
         "\\bFunctional\\s+Programming\\b",
         "\\bFunctional_Programming\\b",
-        "\\bfp\\b",
         "\\bfunctional_programming\\b",
         "\\bfunctionalProgramming\\b",
         "\\bFunctionalProgramming\\b",
@@ -2194,11 +2052,9 @@
         "\\bfunnel_analysis\\b",
         "\\bFunnel.Analysis\\b",
         "\\bFunnel\\s+Analysis\\b",
-        "\\bFA\\b",
         "\\bFunnel-Analysis\\b",
         "\\bfunnelanalysis\\b",
         "\\bfunnel\\s+analysis\\b",
-        "\\bfa\\b",
         "\\bfunnelAnalysis\\b",
         "\\bFunnel_Analysis\\b",
         "\\bfunnel-analysis\\b",
@@ -2217,8 +2073,7 @@
     {
       "name": "GPT",
       "patterns": [
-        "\\bGPT\\b",
-        "\\bgpt\\b"
+        "\\bGPT\\b"
       ]
     },
     {
@@ -2226,7 +2081,6 @@
       "patterns": [
         "\\bGPU\\b",
         "\\bGPUs\\b",
-        "\\bgpu\\b",
         "\\bgpus\\b"
       ]
     },
@@ -2235,12 +2089,10 @@
       "patterns": [
         "\\bGameDevelopment\\b",
         "\\bGame_Development\\b",
-        "\\bGD\\b",
         "\\bGame.Development\\b",
         "\\bGame-Development\\b",
         "\\bGAME\\s+DEVELOPMENT\\b",
         "\\bgame_development\\b",
-        "\\bgd\\b",
         "\\bgame\\s+development\\b",
         "\\bGame\\s+Development\\b",
         "\\bgameDevelopment\\b",
@@ -2278,18 +2130,15 @@
         "\\bgenerative_ai\\b",
         "\\bgenerative-ai\\b",
         "\\bgenerativeai\\b",
-        "\\bGA\\b",
         "\\bgenerativeAi\\b",
-        "\\bgenerative\\s+ai\\b",
-        "\\bga\\b"
+        "\\bgenerative\\s+ai\\b"
       ]
     },
     {
       "name": "Git",
       "patterns": [
         "\\bGIT\\b",
-        "\\bGit\\b",
-        "\\bgit\\b"
+        "\\bGit\\b"
       ]
     },
     {
@@ -2299,7 +2148,6 @@
         "\\bgit\\s+version\\s+control\\b",
         "\\bGitVersionControl\\b",
         "\\bgit-version-control\\b",
-        "\\bgvc\\b",
         "\\bgit.version.control\\b",
         "\\bgit_version_control\\b",
         "\\bgitVersionControl\\b",
@@ -2344,10 +2192,8 @@
         "\\bGithub\\s+Actions\\b",
         "\\bgithub\\ actions\\b",
         "\\bGithubActions\\b",
-        "\\bGA\\b",
         "\\bGITHUB_ACTIONS\\b",
-        "\\bGITHUB\\s+ACTIONS\\b",
-        "\\bga\\b"
+        "\\bGITHUB\\s+ACTIONS\\b"
       ]
     },
     {
@@ -2359,10 +2205,8 @@
         "\\bGithub\\s+Copilot\\b",
         "\\bGITHUB\\s+COPILOT\\b",
         "\\bGITHUB_COPILOT\\b",
-        "\\bGC\\b",
         "\\bgithubCopilot\\b",
-        "\\bGithubCopilot\\b",
-        "\\bgc\\b"
+        "\\bGithubCopilot\\b"
       ]
     },
     {
@@ -2379,7 +2223,6 @@
       "patterns": [
         "\\bGolang\\b",
         "\\bgolang\\b",
-        "\\bgo\\b",
         "\\bGOLANG\\b"
       ]
     },
@@ -2397,9 +2240,7 @@
         "\\bgoogle_analytics\\b",
         "\\bgoogle\\s+analytics\\b",
         "\\bGOOGLE\\s+ANALYTICS\\b",
-        "\\bgoogleAnalytics\\b",
-        "\\bGA\\b",
-        "\\bga\\b"
+        "\\bgoogleAnalytics\\b"
       ]
     },
     {
@@ -2407,7 +2248,6 @@
       "patterns": [
         "\\bGCP\\b",
         "\\bGoogle\\s+Cloud\\s+Platform\\b",
-        "\\bgcp\\b",
         "\\bGoogleCloudPlatform\\b",
         "\\bgoogleCloudPlatform\\b",
         "\\bGOOGLE_CLOUD_PLATFORM\\b",
@@ -2426,7 +2266,6 @@
         "\\bgoogleCloudProfessional\\b",
         "\\bgoogle_cloud_professional\\b",
         "\\bgoogle\\s+cloud\\s+professional\\b",
-        "\\bgcp\\b",
         "\\bGoogleCloudProfessional\\b",
         "\\bGCP\\b",
         "\\bgoogle\\ cloud\\ professional\\b"
@@ -2441,7 +2280,6 @@
         "\\bGVA\\b",
         "\\bgoogle_vertex_ai\\b",
         "\\bGoogleVertexAi\\b",
-        "\\bgva\\b",
         "\\bgoogle\\ vertex\\ ai\\b",
         "\\bgoogleVertexAi\\b",
         "\\bgoogle\\s+vertex\\s+ai\\b"
@@ -2458,23 +2296,20 @@
         "\\bGOOGLE\\s+WEB\\s+DESIGNER\\b",
         "\\bgoogle\\ web\\ designer\\b",
         "\\bgoogle\\s+web\\s+designer\\b",
-        "\\bGoogle\\s+Web\\s+Designer\\b",
-        "\\bgwd\\b"
+        "\\bGoogle\\s+Web\\s+Designer\\b"
       ]
     },
     {
       "name": "Gpt Apis",
       "patterns": [
         "\\bGpt\\s+Apis\\b",
-        "\\bGA\\b",
         "\\bgpt\\ apis\\b",
         "\\bGPT\\s+APIS\\b",
         "\\bgpt\\s+apis\\b",
         "\\bgpt_apis\\b",
         "\\bGPT_APIS\\b",
         "\\bGptApis\\b",
-        "\\bgptApis\\b",
-        "\\bga\\b"
+        "\\bgptApis\\b"
       ]
     },
     {
@@ -2484,7 +2319,6 @@
         "\\bGRADIENT\\s+BOOSTING\\b",
         "\\bgradient_boosting\\b",
         "\\bgradient.boosting\\b",
-        "\\bGB\\b",
         "\\bgradient-boosting\\b",
         "\\bGradient-Boosting\\b",
         "\\bgradientBoosting\\b",
@@ -2492,7 +2326,6 @@
         "\\bgradientboosting\\b",
         "\\bGradient_Boosting\\b",
         "\\bGradient\\s+Boosting\\b",
-        "\\bgb\\b",
         "\\bgradient\\s+boosting\\b"
       ]
     },
@@ -2525,7 +2358,6 @@
       "patterns": [
         "\\bgrowth.mindset\\b",
         "\\bGrowthMindset\\b",
-        "\\bgm\\b",
         "\\bgrowthmindset\\b",
         "\\bgrowth_mindset\\b",
         "\\bGROWTH\\s+MINDSET\\b",
@@ -2534,7 +2366,6 @@
         "\\bGrowth-Mindset\\b",
         "\\bgrowth\\s+mindset\\b",
         "\\bgrowthMindset\\b",
-        "\\bGM\\b",
         "\\bGrowth.Mindset\\b",
         "\\bGrowth\\s+Mindset\\b"
       ]
@@ -2618,7 +2449,6 @@
     {
       "name": "Hugging Face",
       "patterns": [
-        "\\bHF\\b",
         "\\bhugging_face\\b",
         "\\bhugging\\ face\\b",
         "\\bHuggingFace\\b",
@@ -2626,19 +2456,16 @@
         "\\bHugging\\s+Face\\b",
         "\\bHUGGING_FACE\\b",
         "\\bhuggingFace\\b",
-        "\\bHUGGING\\s+FACE\\b",
-        "\\bhf\\b"
+        "\\bHUGGING\\s+FACE\\b"
       ]
     },
     {
       "name": "Hyperparameter Tuning",
       "patterns": [
-        "\\bht\\b",
         "\\bhyperparameter.tuning\\b",
         "\\bHyperparameter.Tuning\\b",
         "\\bhyperparameter_tuning\\b",
         "\\bhyperparameter\\s+tuning\\b",
-        "\\bHT\\b",
         "\\bHyperparameter-Tuning\\b",
         "\\bHyperparameter\\s+Tuning\\b",
         "\\bhyperparameter-tuning\\b",
@@ -2654,14 +2481,12 @@
       "patterns": [
         "\\bhypothesis\\s+testing\\b",
         "\\bHypothesis.Testing\\b",
-        "\\bht\\b",
         "\\bHypothesis-Testing\\b",
         "\\bhypothesistesting\\b",
         "\\bHypothesis\\s+Testing\\b",
         "\\bhypothesis-testing\\b",
         "\\bhypothesis_testing\\b",
         "\\bHYPOTHESIS\\s+TESTING\\b",
-        "\\bHT\\b",
         "\\bHypothesis_Testing\\b",
         "\\bhypothesisTesting\\b",
         "\\bHypothesisTesting\\b",
@@ -2671,8 +2496,7 @@
     {
       "name": "IAM",
       "patterns": [
-        "\\bIAM\\b",
-        "\\biam\\b"
+        "\\bIAM\\b"
       ]
     },
     {
@@ -2680,7 +2504,6 @@
       "patterns": [
         "\\bIDE\\b",
         "\\bIDEs\\b",
-        "\\bide\\b",
         "\\bides\\b"
       ]
     },
@@ -2699,7 +2522,6 @@
         "\\binference\\s+optimization\\b",
         "\\bInference-Optimization\\b",
         "\\bInference\\s+Optimization\\b",
-        "\\bio\\b",
         "\\binference.optimization\\b",
         "\\bInference.Optimization\\b",
         "\\binferenceoptimization\\b",
@@ -2708,7 +2530,6 @@
         "\\bInferenceOptimization\\b",
         "\\bINFERENCE\\s+OPTIMIZATION\\b",
         "\\bInference_Optimization\\b",
-        "\\bIO\\b",
         "\\binferenceOptimization\\b"
       ]
     },
@@ -2724,7 +2545,6 @@
       "name": "Information Security",
       "patterns": [
         "\\bInformation\\s+Security\\b",
-        "\\bis\\b",
         "\\binformationsecurity\\b",
         "\\bInformation-Security\\b",
         "\\binformation_security\\b",
@@ -2732,7 +2552,6 @@
         "\\bInformation.Security\\b",
         "\\binformation.security\\b",
         "\\binformationSecurity\\b",
-        "\\bIS\\b",
         "\\bInformationSecurity\\b",
         "\\bInformation_Security\\b",
         "\\binformation-security\\b",
@@ -2751,7 +2570,6 @@
         "\\binfrastructureAsCode\\b",
         "\\bInfrastructure-as-Code\\b",
         "\\bInfrastructure\\s+as\\s+Code\\b",
-        "\\biac\\b",
         "\\bInfrastructure.as.Code\\b",
         "\\binfrastructure-as-code\\b",
         "\\bIAC\\b",
@@ -2769,10 +2587,8 @@
     {
       "name": "Instruction Tuning",
       "patterns": [
-        "\\bIT\\b",
         "\\binstruction.tuning\\b",
         "\\binstruction\\s+tuning\\b",
-        "\\bit\\b",
         "\\bINSTRUCTION\\s+TUNING\\b",
         "\\bInstruction-Tuning\\b",
         "\\binstruction-tuning\\b",
@@ -2798,7 +2614,6 @@
       "patterns": [
         "\\bInterpersonal\\s+Skills\\b",
         "\\binterpersonalskills\\b",
-        "\\bis\\b",
         "\\binterpersonal\\s+skills\\b",
         "\\bInterpersonalSkills\\b",
         "\\bInterpersonal_Skills\\b",
@@ -2808,15 +2623,12 @@
         "\\bInterpersonal.Skills\\b",
         "\\binterpersonal_skills\\b",
         "\\binterpersonal-skills\\b",
-        "\\binterpersonal.skills\\b",
-        "\\bIS\\b"
+        "\\binterpersonal.skills\\b"
       ]
     },
     {
       "name": "IoT",
       "patterns": [
-        "\\biot\\b",
-        "\\bIoT\\b",
         "\\bIOT\\b"
       ]
     },
@@ -2847,7 +2659,6 @@
       "name": "JVM",
       "patterns": [
         "\\bjava virtual machine\\b",
-        "\\bjvm\\b",
         "\\bJVM\\b"
       ]
     },
@@ -2888,7 +2699,6 @@
       "name": "Jax",
       "patterns": [
         "\\bJax\\b",
-        "\\bjax\\b",
         "\\bJAX\\b"
       ]
     },
@@ -2911,13 +2721,11 @@
     {
       "name": "Jetpack Compose",
       "patterns": [
-        "\\bjc\\b",
         "\\bjetpack_compose\\b",
         "\\bjetpackCompose\\b",
         "\\bJetpack\\s+Compose\\b",
         "\\bjetpack\\ compose\\b",
         "\\bJetpackCompose\\b",
-        "\\bJC\\b",
         "\\bjetpack\\s+compose\\b",
         "\\bJETPACK_COMPOSE\\b",
         "\\bJETPACK\\s+COMPOSE\\b"
@@ -2934,7 +2742,6 @@
     {
       "name": "Jpa",
       "patterns": [
-        "\\bjpa\\b",
         "\\bJPA\\b",
         "\\bJpa\\b"
       ]
@@ -2972,12 +2779,10 @@
         "\\bjupyter_notebooks\\b",
         "\\bjupyterNotebooks\\b",
         "\\bJupyter\\s+Notebooks\\b",
-        "\\bJN\\b",
         "\\bJupyterNotebooks\\b",
         "\\bJupyter.Notebooks\\b",
         "\\bJupyter_Notebooks\\b",
         "\\bjupyter.notebooks\\b",
-        "\\bjn\\b",
         "\\bJupyter-Notebooks\\b",
         "\\bJUPYTER\\s+NOTEBOOKS\\b"
       ]
@@ -2986,15 +2791,13 @@
       "name": "K8s",
       "patterns": [
         "\\bK8s\\b",
-        "\\bK8S\\b",
-        "\\bk8s\\b"
+        "\\bK8S\\b"
       ]
     },
     {
       "name": "KMS",
       "patterns": [
-        "\\bKMS\\b",
-        "\\bkms\\b"
+        "\\bKMS\\b"
       ]
     },
     {
@@ -3011,9 +2814,7 @@
         "\\bKPI_Tracking\\b",
         "\\bKPI-Tracking\\b",
         "\\bKPI\\s+Tracking\\b",
-        "\\bKT\\b",
-        "\\bkpiTracking\\b",
-        "\\bkt\\b"
+        "\\bkpiTracking\\b"
       ]
     },
     {
@@ -3073,7 +2874,6 @@
         "\\blarge\\ language\\ models\\b",
         "\\bllm\\ fine\\b",
         "\\bllm\\ safety\\b",
-        "\\bllm\\b",
         "\\bllms\\ fine\\b",
         "\\bllms\\b"
       ]
@@ -3083,9 +2883,7 @@
       "patterns": [
         "\\bLLM-Agents\\b",
         "\\bllm\\s+agents\\b",
-        "\\bla\\b",
         "\\bllm.agents\\b",
-        "\\bLA\\b",
         "\\bLLMAgents\\b",
         "\\bllmAgents\\b",
         "\\bLLM.Agents\\b",
@@ -3103,10 +2901,8 @@
         "\\bllmFine-tuning\\b",
         "\\bllm_fine-tuning\\b",
         "\\bLLM_Fine-tuning\\b",
-        "\\bLF\\b",
         "\\bllm.fine-tuning\\b",
         "\\bLLM-Fine-tuning\\b",
-        "\\blf\\b",
         "\\bllm-fine-tuning\\b",
         "\\bLLMFine-tuning\\b",
         "\\bllm\\s+fine-tuning\\b",
@@ -3169,7 +2965,6 @@
         "\\blarge.language.models\\b",
         "\\blarge-language-models\\b",
         "\\bLarge.Language.Models\\b",
-        "\\bllm\\b",
         "\\bLarge-Language-Models\\b",
         "\\bLargeLanguageModels\\b",
         "\\bLarge\\s+Language\\s+Models\\b",
@@ -3199,6 +2994,14 @@
         "\\bLIGHTGBM\\b",
         "\\blightgbm\\b",
         "\\bLightgbm\\b"
+      ]
+    },
+    {
+      "name": "LinkedIn",
+      "patterns": [
+        "\\bLinkedIn\\b",
+        "\\bLINKEDIN\\b",
+        "\\blinkedin\\b"
       ]
     },
     {
@@ -3255,14 +3058,12 @@
       "name": "MLOps",
       "patterns": [
         "\\bmlops\\b",
-        "\\bMLOPS\\b",
-        "\\bMLOps\\b"
+        "\\bMLOPS\\b"
       ]
     },
     {
       "name": "Machine Learning",
       "patterns": [
-        "\\bML\\b",
         "\\bml\\ systems\\b",
         "\\bMachineLearning\\b",
         "\\bml\\ ops\\ tools\\b",
@@ -3277,8 +3078,15 @@
         "\\bMachine\\s+Learning\\b",
         "\\bmachine\\ learning\\b",
         "\\bmachine\\s+learning\\b",
-        "\\bMACHINE\\s+LEARNING\\b",
-        "\\bml\\b"
+        "\\bMACHINE\\s+LEARNING\\b"
+      ]
+    },
+    {
+      "name": "Make",
+      "patterns": [
+        "\\bmake\\b",
+        "\\bMake\\b",
+        "\\bMAKE\\b"
       ]
     },
     {
@@ -3299,13 +3107,11 @@
         "\\bmarketing-analytics\\b",
         "\\bmarketing.analytics\\b",
         "\\bmarketing_analytics\\b",
-        "\\bma\\b",
         "\\bmarketingAnalytics\\b",
         "\\bmarketing\\s+analytics\\b",
         "\\bMarketing.Analytics\\b",
         "\\bMarketing\\s+Analytics\\b",
-        "\\bMarketingAnalytics\\b",
-        "\\bMA\\b"
+        "\\bMarketingAnalytics\\b"
       ]
     },
     {
@@ -3335,9 +3141,7 @@
     {
       "name": "Message Queues",
       "patterns": [
-        "\\bMQ\\b",
         "\\bMessage-Queues\\b",
-        "\\bmq\\b",
         "\\bmessage\\s+queues\\b",
         "\\bMessage.Queues\\b",
         "\\bmessagequeues\\b",
@@ -3362,12 +3166,10 @@
         "\\bMetrics\\s+Analysis\\b",
         "\\bMetricsAnalysis\\b",
         "\\bmetrics_analysis\\b",
-        "\\bma\\b",
         "\\bmetricsanalysis\\b",
         "\\bmetricsAnalysis\\b",
         "\\bMetrics_Analysis\\b",
-        "\\bMetrics.Analysis\\b",
-        "\\bMA\\b"
+        "\\bMetrics.Analysis\\b"
       ]
     },
     {
@@ -3382,7 +3184,6 @@
       "name": "Microsoft Sql Server",
       "patterns": [
         "\\bMicrosoftSqlServer\\b",
-        "\\bmss\\b",
         "\\bmicrosoft\\s+sql\\s+server\\b",
         "\\bMSS\\b",
         "\\bmicrosoft_sql_server\\b",
@@ -3399,6 +3200,14 @@
         "\\bMilvus\\b",
         "\\bMILVUS\\b",
         "\\bmilvus\\b"
+      ]
+    },
+    {
+      "name": "Miro",
+      "patterns": [
+        "\\bmiro\\b",
+        "\\bMiro\\b",
+        "\\bMIRO\\b"
       ]
     },
     {
@@ -3421,7 +3230,6 @@
       "name": "Mobile Development",
       "patterns": [
         "\\bMobile\\s+Development\\b",
-        "\\bmd\\b",
         "\\bmobiledevelopment\\b",
         "\\bmobileDevelopment\\b",
         "\\bmobile-development\\b",
@@ -3431,7 +3239,6 @@
         "\\bMobileDevelopment\\b",
         "\\bMOBILE\\s+DEVELOPMENT\\b",
         "\\bmobile.development\\b",
-        "\\bMD\\b",
         "\\bmobile\\s+development\\b",
         "\\bMobile-Development\\b"
       ]
@@ -3447,13 +3254,11 @@
     {
       "name": "Model Compression",
       "patterns": [
-        "\\bmc\\b",
         "\\bMODEL\\s+COMPRESSION\\b",
         "\\bModelCompression\\b",
         "\\bModel.Compression\\b",
         "\\bmodelcompression\\b",
         "\\bmodel-compression\\b",
-        "\\bMC\\b",
         "\\bmodel\\s+compression\\b",
         "\\bmodel_compression\\b",
         "\\bModel-Compression\\b",
@@ -3467,7 +3272,6 @@
       "name": "Model Context Protocol",
       "patterns": [
         "\\bmodelContextProtocol\\b",
-        "\\bmcp\\b",
         "\\bmodel_context_protocol\\b",
         "\\bMODEL\\s+CONTEXT\\s+PROTOCOL\\b",
         "\\bModel\\s+Context\\s+Protocol\\b",
@@ -3480,7 +3284,6 @@
     {
       "name": "Model Deployment",
       "patterns": [
-        "\\bmd\\b",
         "\\bmodel.deployment\\b",
         "\\bMODEL\\s+DEPLOYMENT\\b",
         "\\bmodeldeployment\\b",
@@ -3490,7 +3293,6 @@
         "\\bModel-Deployment\\b",
         "\\bModel\\s+Deployment\\b",
         "\\bmodel-deployment\\b",
-        "\\bMD\\b",
         "\\bModelDeployment\\b",
         "\\bmodel_deployment\\b",
         "\\bmodel\\s+deployment\\b"
@@ -3501,7 +3303,6 @@
       "patterns": [
         "\\bmodel\\s+evaluation\\b",
         "\\bMODEL\\s+EVALUATION\\b",
-        "\\bme\\b",
         "\\bmodel.evaluation\\b",
         "\\bmodel-evaluation\\b",
         "\\bModel_Evaluation\\b",
@@ -3511,8 +3312,7 @@
         "\\bModel\\s+Evaluation\\b",
         "\\bmodelevaluation\\b",
         "\\bModelEvaluation\\b",
-        "\\bModel-Evaluation\\b",
-        "\\bME\\b"
+        "\\bModel-Evaluation\\b"
       ]
     },
     {
@@ -3525,9 +3325,7 @@
         "\\bModel_Monitoring\\b",
         "\\bModelMonitoring\\b",
         "\\bmodel-monitoring\\b",
-        "\\bMM\\b",
         "\\bModel\\s+Monitoring\\b",
-        "\\bmm\\b",
         "\\bmodelMonitoring\\b",
         "\\bmodel\\s+monitoring\\b",
         "\\bmodel_monitoring\\b",
@@ -3546,9 +3344,7 @@
         "\\bModelOptimization\\b",
         "\\bmodeloptimization\\b",
         "\\bModel_Optimization\\b",
-        "\\bMO\\b",
         "\\bModel\\s+Optimization\\b",
-        "\\bmo\\b",
         "\\bModel-Optimization\\b",
         "\\bModel.Optimization\\b"
       ]
@@ -3560,11 +3356,9 @@
         "\\bMODEL\\s+TRAINING\\b",
         "\\bModel.Training\\b",
         "\\bmodeltraining\\b",
-        "\\bMT\\b",
         "\\bModel-Training\\b",
         "\\bModel\\s+Training\\b",
         "\\bmodel.training\\b",
-        "\\bmt\\b",
         "\\bModelTraining\\b",
         "\\bmodel-training\\b",
         "\\bmodelTraining\\b",
@@ -3623,7 +3417,6 @@
         "\\bNaturalLanguageProcessing\\b",
         "\\bNLP\\b",
         "\\bnatural\\ language\\ processing\\b",
-        "\\bnlp\\b",
         "\\bNATURAL_LANGUAGE_PROCESSING\\b",
         "\\bNatural\\s+Language\\s+Processing\\b",
         "\\bnatural\\s+language\\s+processing\\b"
@@ -3660,9 +3453,7 @@
         "\\bNetwork-Security\\b",
         "\\bnetwork\\s+security\\b",
         "\\bNETWORK\\s+SECURITY\\b",
-        "\\bns\\b",
         "\\bNetwork.Security\\b",
-        "\\bNS\\b",
         "\\bNetworkSecurity\\b",
         "\\bnetwork.security\\b",
         "\\bnetworkSecurity\\b",
@@ -3684,9 +3475,7 @@
       "name": "Neural Networks",
       "patterns": [
         "\\bneural\\s+networks\\b",
-        "\\bnn\\b",
         "\\bNEURAL\\s+NETWORKS\\b",
-        "\\bNN\\b",
         "\\bNEURAL_NETWORKS\\b",
         "\\bneuralNetworks\\b",
         "\\bNeuralNetworks\\b",
@@ -3791,8 +3580,7 @@
     {
       "name": "OCR",
       "patterns": [
-        "\\bOCR\\b",
-        "\\bocr\\b"
+        "\\bOCR\\b"
       ]
     },
     {
@@ -3801,7 +3589,6 @@
         "\\bobject-oriented\\s+programming\\b",
         "\\bObject-Oriented_Programming\\b",
         "\\bobject-orientedprogramming\\b",
-        "\\bOP\\b",
         "\\bObject-Oriented.Programming\\b",
         "\\bobject-oriented.programming\\b",
         "\\bOBJECT-ORIENTED\\s+PROGRAMMING\\b",
@@ -3809,7 +3596,6 @@
         "\\bObject-Oriented-Programming\\b",
         "\\bobject-orientedProgramming\\b",
         "\\bobject-oriented-programming\\b",
-        "\\bop\\b",
         "\\bObject\\-Oriented\\s+Programming\\b",
         "\\bobject-oriented_programming\\b"
       ]
@@ -3825,13 +3611,11 @@
     {
       "name": "OpenAI API",
       "patterns": [
-        "\\boa\\b",
         "\\bopenai_api\\b",
         "\\bopenai-api\\b",
         "\\bOpenAI\\s+API\\b",
         "\\bopenaiApi\\b",
         "\\bOpenAIAPI\\b",
-        "\\bOA\\b",
         "\\bOPENAI\\s+API\\b",
         "\\bOpenAI_API\\b",
         "\\bOpenAI.API\\b",
@@ -3887,8 +3671,7 @@
     {
       "name": "PCA",
       "patterns": [
-        "\\bPCA\\b",
-        "\\bpca\\b"
+        "\\bPCA\\b"
       ]
     },
     {
@@ -3932,14 +3715,12 @@
         "\\bpenetration-testing\\b",
         "\\bPenetration\\s+Testing\\b",
         "\\bPenetrationTesting\\b",
-        "\\bPT\\b",
         "\\bpenetrationTesting\\b",
         "\\bpenetration\\s+testing\\b",
         "\\bPenetration-Testing\\b",
         "\\bpenetration.testing\\b",
         "\\bpenetrationtesting\\b",
-        "\\bpenetration_testing\\b",
-        "\\bpt\\b"
+        "\\bpenetration_testing\\b"
       ]
     },
     {
@@ -3948,6 +3729,14 @@
         "\\bPerl\\b",
         "\\bperl\\b",
         "\\bPERL\\b"
+      ]
+    },
+    {
+      "name": "Perplexity",
+      "patterns": [
+        "\\bperplexity\\b",
+        "\\bPERPLEXITY\\b",
+        "\\bPerplexity\\b"
       ]
     },
     {
@@ -3961,7 +3750,6 @@
     {
       "name": "Php",
       "patterns": [
-        "\\bphp\\b",
         "\\bPhp\\b",
         "\\bPHP\\b"
       ]
@@ -4026,12 +3814,10 @@
         "\\bpower.bi\\b",
         "\\bpowerBi\\b",
         "\\bpower\\s+bi\\b",
-        "\\bpb\\b",
         "\\bPower\\s+BI\\b",
         "\\bPower-BI\\b",
         "\\bPOWER\\s+BI\\b",
-        "\\bpower_bi\\b",
-        "\\bPB\\b"
+        "\\bpower_bi\\b"
       ]
     },
     {
@@ -4040,7 +3826,6 @@
         "\\bpredictiveAnalytics\\b",
         "\\bpredictive.analytics\\b",
         "\\bPredictive\\s+Analytics\\b",
-        "\\bPA\\b",
         "\\bPREDICTIVE\\s+ANALYTICS\\b",
         "\\bPredictive-Analytics\\b",
         "\\bPredictiveAnalytics\\b",
@@ -4048,7 +3833,6 @@
         "\\bpredictive-analytics\\b",
         "\\bpredictiveanalytics\\b",
         "\\bpredictive\\s+analytics\\b",
-        "\\bpa\\b",
         "\\bpredictive_analytics\\b",
         "\\bPredictive.Analytics\\b"
       ]
@@ -4061,14 +3845,12 @@
         "\\bprescriptive.analytics\\b",
         "\\bPrescriptiveAnalytics\\b",
         "\\bprescriptiveanalytics\\b",
-        "\\bPA\\b",
         "\\bPRESCRIPTIVE\\s+ANALYTICS\\b",
         "\\bprescriptive\\s+analytics\\b",
         "\\bPrescriptive_Analytics\\b",
         "\\bprescriptive_analytics\\b",
         "\\bPrescriptive.Analytics\\b",
         "\\bprescriptiveAnalytics\\b",
-        "\\bpa\\b",
         "\\bPrescriptive-Analytics\\b"
       ]
     },
@@ -4076,9 +3858,7 @@
       "name": "Presentation Skills",
       "patterns": [
         "\\bpresentation\\s+skills\\b",
-        "\\bps\\b",
         "\\bpresentation-skills\\b",
-        "\\bPS\\b",
         "\\bpresentation.skills\\b",
         "\\bPresentation_Skills\\b",
         "\\bPresentation.Skills\\b",
@@ -4101,21 +3881,17 @@
         "\\bProbability\\s+Theory\\b",
         "\\bProbabilityTheory\\b",
         "\\bprobability-theory\\b",
-        "\\bPT\\b",
         "\\bPROBABILITY\\s+THEORY\\b",
         "\\bProbability.Theory\\b",
         "\\bprobability_theory\\b",
         "\\bProbability_Theory\\b",
-        "\\bprobability\\s+theory\\b",
-        "\\bpt\\b"
+        "\\bprobability\\s+theory\\b"
       ]
     },
     {
       "name": "Problem Solving",
       "patterns": [
-        "\\bps\\b",
         "\\bProblem.Solving\\b",
-        "\\bPS\\b",
         "\\bPROBLEM\\s+SOLVING\\b",
         "\\bproblem.solving\\b",
         "\\bproblem\\s+solving\\b",
@@ -4140,10 +3916,8 @@
         "\\bProduct_Analytics\\b",
         "\\bproduct.analytics\\b",
         "\\bproduct_analytics\\b",
-        "\\bPA\\b",
         "\\bProduct\\s+Analytics\\b",
         "\\bproductanalytics\\b",
-        "\\bpa\\b",
         "\\bproductAnalytics\\b",
         "\\bProductAnalytics\\b"
       ]
@@ -4155,14 +3929,12 @@
         "\\bProject.Management\\b",
         "\\bproject-management\\b",
         "\\bprojectManagement\\b",
-        "\\bpm\\b",
         "\\bproject\\s+management\\b",
         "\\bProject_Management\\b",
         "\\bProjectManagement\\b",
         "\\bprojectmanagement\\b",
         "\\bproject_management\\b",
         "\\bproject.management\\b",
-        "\\bPM\\b",
         "\\bProject\\s+Management\\b",
         "\\bPROJECT\\s+MANAGEMENT\\b"
       ]
@@ -4185,8 +3957,6 @@
         "\\bprompt-engineering\\b",
         "\\bPromptEngineering\\b",
         "\\bPrompt\\s+Engineering\\b",
-        "\\bpe\\b",
-        "\\bPE\\b",
         "\\bPrompt.Engineering\\b",
         "\\bprompt.engineering\\b",
         "\\bpromptEngineering\\b",
@@ -4205,8 +3975,6 @@
     {
       "name": "Public Speaking",
       "patterns": [
-        "\\bps\\b",
-        "\\bPS\\b",
         "\\bpublic.speaking\\b",
         "\\bPublic\\s+Speaking\\b",
         "\\bpublicspeaking\\b",
@@ -4268,7 +4036,6 @@
       "name": "Python Programming",
       "patterns": [
         "\\bpython.programming\\b",
-        "\\bPP\\b",
         "\\bPython_Programming\\b",
         "\\bPYTHON\\s+PROGRAMMING\\b",
         "\\bpythonProgramming\\b",
@@ -4279,7 +4046,6 @@
         "\\bPythonProgramming\\b",
         "\\bPython-Programming\\b",
         "\\bPython.Programming\\b",
-        "\\bpp\\b",
         "\\bpythonprogramming\\b"
       ]
     },
@@ -4327,7 +4093,6 @@
       "name": "Quantum Computing",
       "patterns": [
         "\\bQuantum.Computing\\b",
-        "\\bQC\\b",
         "\\bquantumcomputing\\b",
         "\\bquantum\\s+computing\\b",
         "\\bquantumComputing\\b",
@@ -4336,7 +4101,6 @@
         "\\bQuantum_Computing\\b",
         "\\bquantum_computing\\b",
         "\\bQuantum-Computing\\b",
-        "\\bqc\\b",
         "\\bQUANTUM\\s+COMPUTING\\b",
         "\\bQuantum\\s+Computing\\b",
         "\\bQuantumComputing\\b"
@@ -4354,7 +4118,6 @@
     {
       "name": "R Programming",
       "patterns": [
-        "\\brp\\b",
         "\\bR\\s+Programming\\b",
         "\\bR\\s+programming\\b",
         "\\bR_PROGRAMMING\\b",
@@ -4362,7 +4125,6 @@
         "\\brProgramming\\b",
         "\\bR\\s+PROGRAMMING\\b",
         "\\bR\\s+language\\b",
-        "\\bRP\\b",
         "\\br_programming\\b",
         "\\bR\\s+statistical\\b",
         "\\br\\s+statistical\\b",
@@ -4375,15 +4137,13 @@
     {
       "name": "RAG",
       "patterns": [
-        "\\bRAG\\b",
-        "\\brag\\b"
+        "\\bRAG\\b"
       ]
     },
     {
       "name": "RDS",
       "patterns": [
-        "\\bRDS\\b",
-        "\\brds\\b"
+        "\\bRDS\\b"
       ]
     },
     {
@@ -4399,8 +4159,6 @@
       "name": "REST API",
       "patterns": [
         "\\brest-api\\b",
-        "\\bRA\\b",
-        "\\bra\\b",
         "\\brestApi\\b",
         "\\bRESTAPI\\b",
         "\\brest.api\\b",
@@ -4442,17 +4200,14 @@
         "\\bRandom_Forest\\b",
         "\\brandomForest\\b",
         "\\bRandom-Forest\\b",
-        "\\brandom-forest\\b",
-        "\\bRF\\b",
-        "\\brf\\b"
+        "\\brandom-forest\\b"
       ]
     },
     {
       "name": "Ray",
       "patterns": [
         "\\bRay\\b",
-        "\\bRAY\\b",
-        "\\bray\\b"
+        "\\bRAY\\b"
       ]
     },
     {
@@ -4468,10 +4223,8 @@
       "patterns": [
         "\\bReact\\s+Native\\b",
         "\\breactNative\\b",
-        "\\brn\\b",
         "\\breact\\ native\\b",
         "\\bReactNative\\b",
-        "\\bRN\\b",
         "\\breact_native\\b",
         "\\breact\\b",
         "\\bREACT_NATIVE\\b",
@@ -4484,8 +4237,6 @@
       "patterns": [
         "\\bReal-time_Data\\b",
         "\\bReal\\-time\\s+Data\\b",
-        "\\bRD\\b",
-        "\\brd\\b",
         "\\bREAL-TIME\\s+DATA\\b",
         "\\breal-time-data\\b",
         "\\breal-time\\s+data\\b",
@@ -4528,8 +4279,6 @@
         "\\bregression-analysis\\b",
         "\\bRegression_Analysis\\b",
         "\\bREGRESSION\\s+ANALYSIS\\b",
-        "\\bRA\\b",
-        "\\bra\\b",
         "\\bRegression.Analysis\\b",
         "\\bRegression-Analysis\\b",
         "\\bregression.analysis\\b",
@@ -4544,9 +4293,7 @@
     {
       "name": "Reinforcement Learning",
       "patterns": [
-        "\\bRL\\b",
         "\\bREINFORCEMENT\\s+LEARNING\\b",
-        "\\brl\\b",
         "\\bREINFORCEMENT_LEARNING\\b",
         "\\breinforcementLearning\\b",
         "\\bReinforcementLearning\\b",
@@ -4589,7 +4336,6 @@
         "\\bretrieval_augmented_generation\\b",
         "\\bretrievalaugmentedgeneration\\b",
         "\\bRAG\\b",
-        "\\brag\\b",
         "\\bretrieval\\s+augmented\\s+generation\\b",
         "\\bretrieval.augmented.generation\\b",
         "\\bretrievalAugmentedGeneration\\b",
@@ -4626,7 +4372,6 @@
         "\\bRuby\\s+on\\s+Rails\\b",
         "\\bRUBY_ON_RAILS\\b",
         "\\bRubyOnRails\\b",
-        "\\bror\\b",
         "\\bRails\\b",
         "\\bruby\\s+on\\s+rails\\b",
         "\\bRuby\\s+On\\s+Rails\\b"
@@ -4643,8 +4388,7 @@
     {
       "name": "S3",
       "patterns": [
-        "\\bS3\\b",
-        "\\bs3\\b"
+        "\\bS3\\b"
       ]
     },
     {
@@ -4652,7 +4396,6 @@
       "patterns": [
         "\\bSDK\\b",
         "\\bSDKs\\b",
-        "\\bsdk\\b",
         "\\bsdks\\b"
       ]
     },
@@ -4660,8 +4403,7 @@
       "name": "SFT",
       "patterns": [
         "\\bsupervised fine.?tuning\\b",
-        "\\bSFT\\b",
-        "\\bsft\\b"
+        "\\bSFT\\b"
       ]
     },
     {
@@ -4676,7 +4418,6 @@
     {
       "name": "SQL",
       "patterns": [
-        "\\bsql\\b",
         "\\bSQL\\b"
       ]
     },
@@ -4691,7 +4432,6 @@
     {
       "name": "SQS",
       "patterns": [
-        "\\bsqs\\b",
         "\\bamazon sqs\\b",
         "\\bSQS\\b",
         "\\bsimple queue service\\b"
@@ -4700,7 +4440,6 @@
     {
       "name": "STT",
       "patterns": [
-        "\\bstt\\b",
         "\\bSTT\\b",
         "\\bspeech.?to.?text\\b"
       ]
@@ -4708,7 +4447,6 @@
     {
       "name": "SVM",
       "patterns": [
-        "\\bsvm\\b",
         "\\bsupport vector machine\\b",
         "\\bSVM\\b"
       ]
@@ -4751,9 +4489,7 @@
         "\\bschemaDesign\\b",
         "\\bSchema-Design\\b",
         "\\bschema\\s+design\\b",
-        "\\bSchema\\s+Design\\b",
-        "\\bSD\\b",
-        "\\bsd\\b"
+        "\\bSchema\\s+Design\\b"
       ]
     },
     {
@@ -4838,14 +4574,12 @@
         "\\bSELF\\s+MOTIVATION\\b",
         "\\bselfMotivation\\b",
         "\\bself_motivation\\b",
-        "\\bSM\\b",
         "\\bself.motivation\\b",
         "\\bself-motivation\\b",
         "\\bSelf-Motivation\\b",
         "\\bSelfMotivation\\b",
         "\\bSelf.Motivation\\b",
         "\\bSelf_Motivation\\b",
-        "\\bsm\\b",
         "\\bselfmotivation\\b"
       ]
     },
@@ -4853,9 +4587,7 @@
       "name": "Semantic Search",
       "patterns": [
         "\\bsemantic.search\\b",
-        "\\bSS\\b",
         "\\bsemantic-search\\b",
-        "\\bss\\b",
         "\\bsemanticsearch\\b",
         "\\bSEMANTIC\\s+SEARCH\\b",
         "\\bSemanticSearch\\b",
@@ -4888,11 +4620,17 @@
         "\\bServerless-Architecture\\b",
         "\\bserverless.architecture\\b",
         "\\bserverlessarchitecture\\b",
-        "\\bSA\\b",
         "\\bServerless.Architecture\\b",
-        "\\bsa\\b",
         "\\bSERVERLESS\\s+ARCHITECTURE\\b",
         "\\bserverless-architecture\\b"
+      ]
+    },
+    {
+      "name": "ServiceNow",
+      "patterns": [
+        "\\bservicenow\\b",
+        "\\bSERVICENOW\\b",
+        "\\bServiceNow\\b"
       ]
     },
     {
@@ -4917,17 +4655,23 @@
         "\\bsmartcontracts\\b",
         "\\bsmart.contracts\\b",
         "\\bsmart\\s+contracts\\b",
-        "\\bSC\\b",
         "\\bSmart.Contracts\\b",
         "\\bSMART\\s+CONTRACTS\\b",
         "\\bsmart-contracts\\b",
         "\\bsmart_contracts\\b",
-        "\\bsc\\b",
         "\\bsmartContracts\\b",
         "\\bSmart-Contracts\\b",
         "\\bSmartContracts\\b",
         "\\bSmart_Contracts\\b",
         "\\bSmart\\s+Contracts\\b"
+      ]
+    },
+    {
+      "name": "SmartSuite",
+      "patterns": [
+        "\\bSmartSuite\\b",
+        "\\bsmartsuite\\b",
+        "\\bSMARTSUITE\\b"
       ]
     },
     {
@@ -4989,13 +4733,11 @@
       "patterns": [
         "\\bspring_boot\\b",
         "\\bSPRING\\s+BOOT\\b",
-        "\\bsb\\b",
         "\\bSpring\\s+Boot\\b",
         "\\bspring\\s+boot\\b",
         "\\bSpringBoot\\b",
         "\\bspringBoot\\b",
         "\\bspring\\ boot\\b",
-        "\\bSB\\b",
         "\\bSPRING_BOOT\\b"
       ]
     },
@@ -5015,15 +4757,13 @@
         "\\bstakeholderManagement\\b",
         "\\bstakeholder_management\\b",
         "\\bStakeholderManagement\\b",
-        "\\bSM\\b",
         "\\bSTAKEHOLDER\\s+MANAGEMENT\\b",
         "\\bStakeholder\\s+Management\\b",
         "\\bstakeholdermanagement\\b",
         "\\bstakeholder.management\\b",
         "\\bStakeholder.Management\\b",
         "\\bStakeholder-Management\\b",
-        "\\bstakeholder\\s+management\\b",
-        "\\bsm\\b"
+        "\\bstakeholder\\s+management\\b"
       ]
     },
     {
@@ -5034,11 +4774,9 @@
         "\\bstatistical\\s+analysis\\b",
         "\\bstatisticalAnalysis\\b",
         "\\bStatisticalAnalysis\\b",
-        "\\bsa\\b",
         "\\bSTATISTICAL_ANALYSIS\\b",
         "\\bstatistical_analysis\\b",
-        "\\bSTATISTICAL\\s+ANALYSIS\\b",
-        "\\bSA\\b"
+        "\\bSTATISTICAL\\s+ANALYSIS\\b"
       ]
     },
     {
@@ -5047,14 +4785,12 @@
         "\\bstatistical\\s+inference\\b",
         "\\bstatisticalInference\\b",
         "\\bstatistical_inference\\b",
-        "\\bSI\\b",
         "\\bstatisticalinference\\b",
         "\\bStatistical\\s+Inference\\b",
         "\\bstatistical-inference\\b",
         "\\bStatistical.Inference\\b",
         "\\bStatistical-Inference\\b",
         "\\bStatisticalInference\\b",
-        "\\bsi\\b",
         "\\bStatistical_Inference\\b",
         "\\bSTATISTICAL\\s+INFERENCE\\b",
         "\\bstatistical.inference\\b"
@@ -5070,13 +4806,11 @@
         "\\bstatisticalModeling\\b",
         "\\bStatistical-Modeling\\b",
         "\\bstatistical_modeling\\b",
-        "\\bSM\\b",
         "\\bstatistical\\s+modeling\\b",
         "\\bstatistical.modeling\\b",
         "\\bStatisticalModeling\\b",
         "\\bStatistical.Modeling\\b",
-        "\\bstatistical-modeling\\b",
-        "\\bsm\\b"
+        "\\bstatistical-modeling\\b"
       ]
     },
     {
@@ -5099,13 +4833,11 @@
       "name": "Strategic Thinking",
       "patterns": [
         "\\bStrategic_Thinking\\b",
-        "\\bst\\b",
         "\\bstrategic_thinking\\b",
         "\\bstrategicthinking\\b",
         "\\bstrategic-thinking\\b",
         "\\bStrategicThinking\\b",
         "\\bstrategic.thinking\\b",
-        "\\bST\\b",
         "\\bstrategic\\s+thinking\\b",
         "\\bStrategic-Thinking\\b",
         "\\bSTRATEGIC\\s+THINKING\\b",
@@ -5118,8 +4850,6 @@
       "name": "Stream Processing",
       "patterns": [
         "\\bstream-processing\\b",
-        "\\bSP\\b",
-        "\\bsp\\b",
         "\\bStream\\s+Processing\\b",
         "\\bstream\\s+processing\\b",
         "\\bstream.processing\\b",
@@ -5150,13 +4880,11 @@
         "\\bStress\\s+Management\\b",
         "\\bstress\\s+management\\b",
         "\\bstress_management\\b",
-        "\\bSM\\b",
         "\\bStress.Management\\b",
         "\\bStress_Management\\b",
         "\\bStress-Management\\b",
         "\\bStressManagement\\b",
         "\\bstressmanagement\\b",
-        "\\bsm\\b",
         "\\bstressManagement\\b"
       ]
     },
@@ -5171,7 +4899,6 @@
         "\\bstructured\\ query\\ language\\b",
         "\\bstructured query language\\b",
         "\\bstructured query\\b",
-        "\\bsql\\b",
         "\\bSQL\\b",
         "\\bstructured_query_language\\b",
         "\\bStructured\\s+Query\\s+Language\\b",
@@ -5206,22 +4933,18 @@
     {
       "name": "T5",
       "patterns": [
-        "\\btext.?to.?text transfer transformer\\b",
-        "\\bt5\\b",
-        "\\bT5\\b"
+        "\\btext.?to.?text transfer transformer\\b"
       ]
     },
     {
       "name": "TCP",
       "patterns": [
-        "\\bTCP\\b",
-        "\\btcp\\b"
+        "\\bTCP\\b"
       ]
     },
     {
       "name": "TFX",
       "patterns": [
-        "\\btfx\\b",
         "\\bTFX\\b",
         "\\btensorflow extended\\b"
       ]
@@ -5230,8 +4953,7 @@
       "name": "TTS",
       "patterns": [
         "\\btext.?to.?speech\\b",
-        "\\bTTS\\b",
-        "\\btts\\b"
+        "\\bTTS\\b"
       ]
     },
     {
@@ -5268,12 +4990,10 @@
         "\\btechnical.writing\\b",
         "\\bTechnical-Writing\\b",
         "\\btechnical\\s+writing\\b",
-        "\\bTW\\b",
         "\\btechnical_writing\\b",
         "\\bTechnicalWriting\\b",
         "\\btechnical-writing\\b",
         "\\btechnicalWriting\\b",
-        "\\btw\\b",
         "\\bTECHNICAL\\s+WRITING\\b"
       ]
     },
@@ -5343,7 +5063,6 @@
         "\\bTextEmbeddings\\b",
         "\\bText\\s+Embeddings\\b",
         "\\btext\\s+embeddings\\b",
-        "\\bTE\\b",
         "\\bText-Embeddings\\b",
         "\\btext-embeddings\\b",
         "\\bText_Embeddings\\b",
@@ -5352,7 +5071,6 @@
         "\\btextEmbeddings\\b",
         "\\btextembeddings\\b",
         "\\bText.Embeddings\\b",
-        "\\bte\\b",
         "\\btext.embeddings\\b"
       ]
     },
@@ -5367,9 +5085,7 @@
     {
       "name": "Time Management",
       "patterns": [
-        "\\btm\\b",
         "\\btime_management\\b",
-        "\\bTM\\b",
         "\\btimeManagement\\b",
         "\\btime-management\\b",
         "\\bTimeManagement\\b",
@@ -5386,7 +5102,6 @@
     {
       "name": "Time Series Analysis",
       "patterns": [
-        "\\btsa\\b",
         "\\btime.series.analysis\\b",
         "\\btime_series_analysis\\b",
         "\\btime-series-analysis\\b",
@@ -5409,8 +5124,6 @@
         "\\bTogether\\s+Ai\\b",
         "\\btogether\\s+ai\\b",
         "\\bTOGETHER\\s+AI\\b",
-        "\\bta\\b",
-        "\\bTA\\b",
         "\\btogether_ai\\b",
         "\\btogether\\ ai\\b",
         "\\bTogetherAi\\b",
@@ -5420,8 +5133,6 @@
     {
       "name": "Token Management",
       "patterns": [
-        "\\btm\\b",
-        "\\bTM\\b",
         "\\bToken-Management\\b",
         "\\bToken\\s+Management\\b",
         "\\bTOKEN\\s+MANAGEMENT\\b",
@@ -5443,8 +5154,6 @@
         "\\bTool\\s+Calling\\b",
         "\\bTool-Calling\\b",
         "\\btoolCalling\\b",
-        "\\btc\\b",
-        "\\bTC\\b",
         "\\btool.calling\\b",
         "\\bTool_Calling\\b",
         "\\btoolcalling\\b",
@@ -5466,8 +5175,6 @@
     {
       "name": "Transfer Learning",
       "patterns": [
-        "\\bTL\\b",
-        "\\btl\\b",
         "\\btransfer-learning\\b",
         "\\bTransfer-Learning\\b",
         "\\bTransferLearning\\b",
@@ -5496,12 +5203,10 @@
         "\\btrend\\s+analysis\\b",
         "\\bTrendAnalysis\\b",
         "\\bTrend.Analysis\\b",
-        "\\bTA\\b",
         "\\btrend.analysis\\b",
         "\\bTREND\\s+ANALYSIS\\b",
         "\\btrend_analysis\\b",
         "\\bTrend_Analysis\\b",
-        "\\bta\\b",
         "\\bTrend\\s+Analysis\\b",
         "\\bTrend-Analysis\\b",
         "\\btrendAnalysis\\b",
@@ -5512,7 +5217,6 @@
     {
       "name": "Triton Inference Server",
       "patterns": [
-        "\\btis\\b",
         "\\btriton\\s+inference\\s+server\\b",
         "\\bTriton\\s+Inference\\s+Server\\b",
         "\\bTritonInferenceServer\\b",
@@ -5527,12 +5231,10 @@
     {
       "name": "Type Hints",
       "patterns": [
-        "\\bTH\\b",
         "\\btype.hints\\b",
         "\\btype-hints\\b",
         "\\bType-Hints\\b",
         "\\bType_Hints\\b",
-        "\\bth\\b",
         "\\bTypeHints\\b",
         "\\bType.Hints\\b",
         "\\btypeHints\\b",
@@ -5566,9 +5268,7 @@
         "\\bui/ux\\s+design\\b",
         "\\bui/ux.design\\b",
         "\\bUI/UX\\s+Design\\b",
-        "\\bUD\\b",
         "\\bUI/UX_Design\\b",
-        "\\bud\\b",
         "\\bui/uxdesign\\b",
         "\\bui/uxDesign\\b",
         "\\bui/ux-design\\b",
@@ -5597,8 +5297,7 @@
       "name": "Uml",
       "patterns": [
         "\\bUml\\b",
-        "\\bUML\\b",
-        "\\buml\\b"
+        "\\bUML\\b"
       ]
     },
     {
@@ -5614,10 +5313,8 @@
         "\\bUnitTesting\\b",
         "\\bunitTesting\\b",
         "\\bunit_testing\\b",
-        "\\bUT\\b",
         "\\bUnit-Testing\\b",
-        "\\bunittesting\\b",
-        "\\but\\b"
+        "\\bunittesting\\b"
       ]
     },
     {
@@ -5640,26 +5337,20 @@
         "\\bunrealengine\\b",
         "\\bUnreal\\s+Engine\\b",
         "\\bunreal_engine\\b",
-        "\\bUE\\b",
         "\\bunreal-engine\\b",
         "\\bunreal\\s+engine\\b",
-        "\\bUnreal-Engine\\b",
-        "\\bue\\b"
+        "\\bUnreal-Engine\\b"
       ]
     },
     {
       "name": "User Experience",
       "patterns": [
         "\\buserExperience\\b",
-        "\\bux\\b",
         "\\bUSER\\s+EXPERIENCE\\b",
-        "\\bUX\\b",
         "\\buser\\s+experience\\b",
-        "\\bUE\\b",
         "\\bUSER_EXPERIENCE\\b",
         "\\bUser\\s+Experience\\b",
         "\\bUserExperience\\b",
-        "\\bue\\b",
         "\\buser_experience\\b",
         "\\buser experience\\b"
       ]
@@ -5667,14 +5358,12 @@
     {
       "name": "User Interface",
       "patterns": [
-        "\\bUI\\b",
         "\\buser interface\\b",
         "\\bUSER_INTERFACE\\b",
         "\\bUser\\s+Interface\\b",
         "\\buser_interface\\b",
         "\\buserInterface\\b",
         "\\bUserInterface\\b",
-        "\\bui\\b",
         "\\buser\\s+interface\\b",
         "\\bUSER\\s+INTERFACE\\b"
       ]
@@ -5693,9 +5382,7 @@
         "\\buser\\s+research\\b",
         "\\buser_research\\b",
         "\\buser.research\\b",
-        "\\bur\\b",
-        "\\buserresearch\\b",
-        "\\bUR\\b"
+        "\\buserresearch\\b"
       ]
     },
     {
@@ -5720,11 +5407,9 @@
       "patterns": [
         "\\bVS.Code\\b",
         "\\bvscode\\b",
-        "\\bvc\\b",
         "\\bVS-Code\\b",
         "\\bvsCode\\b",
         "\\bVS_Code\\b",
-        "\\bVC\\b",
         "\\bVS\\s+CODE\\b",
         "\\bVSCode\\b",
         "\\bvs.code\\b",
@@ -5751,9 +5436,7 @@
         "\\bVector.Databases\\b",
         "\\bvector.databases\\b",
         "\\bvector_databases\\b",
-        "\\bvd\\b",
         "\\bVector_Databases\\b",
-        "\\bVD\\b",
         "\\bvector\\s+databases\\b",
         "\\bVector\\s+Databases\\b",
         "\\bvectorDatabases\\b",
@@ -5821,11 +5504,9 @@
       "patterns": [
         "\\bwebscraping\\b",
         "\\bwebScraping\\b",
-        "\\bws\\b",
         "\\bWeb\\s+Scraping\\b",
         "\\bWebScraping\\b",
         "\\bWeb-Scraping\\b",
-        "\\bWS\\b",
         "\\bWeb_Scraping\\b",
         "\\bweb-scraping\\b",
         "\\bWEB\\s+SCRAPING\\b",
@@ -5853,6 +5534,14 @@
       ]
     },
     {
+      "name": "Whimsical",
+      "patterns": [
+        "\\bWhimsical\\b",
+        "\\bWHIMSICAL\\b",
+        "\\bwhimsical\\b"
+      ]
+    },
+    {
       "name": "Wireframing",
       "patterns": [
         "\\bWireframing\\b",
@@ -5865,9 +5554,7 @@
       "patterns": [
         "\\bWork.Ethic\\b",
         "\\bwork-ethic\\b",
-        "\\bWE\\b",
         "\\bwork.ethic\\b",
-        "\\bwe\\b",
         "\\bWork-Ethic\\b",
         "\\bWork\\s+Ethic\\b",
         "\\bwork\\s+ethic\\b",
@@ -5911,6 +5598,14 @@
       ]
     },
     {
+      "name": "Zapier",
+      "patterns": [
+        "\\bzapier\\b",
+        "\\bZapier\\b",
+        "\\bZAPIER\\b"
+      ]
+    },
+    {
       "name": "Zero-Shot Learning",
       "patterns": [
         "\\bzero-shot\\s+learning\\b",
@@ -5920,8 +5615,6 @@
         "\\bzero-shot_learning\\b",
         "\\bZERO-SHOT\\s+LEARNING\\b",
         "\\bZero-Shot.Learning\\b",
-        "\\bZL\\b",
-        "\\bzl\\b",
         "\\bZero-ShotLearning\\b",
         "\\bzero-shotLearning\\b",
         "\\bzero-shotlearning\\b",
@@ -5932,8 +5625,7 @@
     {
       "name": "dbt",
       "patterns": [
-        "\\bDBT\\b",
-        "\\bdbt\\b"
+        "\\bDBT\\b"
       ]
     },
     {
@@ -5948,18 +5640,15 @@
         "\\biOS.Development\\b",
         "\\bios-development\\b",
         "\\biOS-Development\\b",
-        "\\bID\\b",
         "\\bios_development\\b",
         "\\bios.development\\b",
-        "\\bid\\b",
         "\\biosDevelopment\\b"
       ]
     },
     {
       "name": "n8n",
       "patterns": [
-        "\\bN8N\\b",
-        "\\bn8n\\b"
+        "\\bN8N\\b"
       ]
     },
     {
