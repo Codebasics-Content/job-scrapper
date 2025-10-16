@@ -1,19 +1,10 @@
 {
-  "total_skills": 246,
+  "total_skills": 277,
   "skills": [
     {
       "name": ".NET",
       "patterns": [
         "\\b\\.net\\b"
-      ]
-    },
-    {
-      "name": "AWS",
-      "patterns": [
-        "\\bAWS\\b",
-        "\\baws\\b",
-        "\\bAmazon\\s+Web\\s+Services\\b",
-        "\\bamazon\\s+web\\s+services\\b"
       ]
     },
     {
@@ -105,6 +96,14 @@
       ]
     },
     {
+      "name": "Astro",
+      "category": "Frontend Framework",
+      "patterns": [
+        "\\bAstro\\b",
+        "\\bastro\\b"
+      ]
+    },
+    {
       "name": "AutoGen",
       "patterns": [
         "\\bautogen\\b",
@@ -116,6 +115,15 @@
       "name": "Autogen",
       "patterns": [
         "\\bautogen\\b"
+      ]
+    },
+    {
+      "name": "AWS",
+      "patterns": [
+        "\\bAWS\\b",
+        "\\baws\\b",
+        "\\bAmazon\\s+Web\\s+Services\\b",
+        "\\bamazon\\s+web\\s+services\\b"
       ]
     },
     {
@@ -194,16 +202,16 @@
       ]
     },
     {
+      "name": "Bentoml",
+      "patterns": [
+        "\\bbentoml\\b"
+      ]
+    },
+    {
       "name": "BERT",
       "patterns": [
         "\\bBERT\\b",
         "\\bbert\\b"
-      ]
-    },
-    {
-      "name": "Bentoml",
-      "patterns": [
-        "\\bbentoml\\b"
       ]
     },
     {
@@ -240,30 +248,6 @@
       ]
     },
     {
-      "name": "CMS",
-      "patterns": [
-        "\\bCMS\\b",
-        "\\bcms\\b"
-      ]
-    },
-    {
-      "name": "CSS",
-      "patterns": [
-        "\\bCSS\\b",
-        "\\bcascading\\ style\\ sheets\\b",
-        "\\bcss\\b"
-      ]
-    },
-    {
-      "name": "CSS3",
-      "patterns": [
-        "\\bCSS3\\b",
-        "\\bCSS\\b",
-        "\\bcss3\\b",
-        "\\bcss\\b"
-      ]
-    },
-    {
       "name": "Cassandra",
       "patterns": [
         "\\bcassandra\\b"
@@ -297,6 +281,13 @@
       "name": "Cline",
       "patterns": [
         "\\bcline\\b"
+      ]
+    },
+    {
+      "name": "CMS",
+      "patterns": [
+        "\\bCMS\\b",
+        "\\bcms\\b"
       ]
     },
     {
@@ -344,6 +335,23 @@
       "name": "Crewai",
       "patterns": [
         "\\bcrewai\\b"
+      ]
+    },
+    {
+      "name": "CSS",
+      "patterns": [
+        "\\bCSS\\b",
+        "\\bcascading\\ style\\ sheets\\b",
+        "\\bcss\\b"
+      ]
+    },
+    {
+      "name": "CSS3",
+      "patterns": [
+        "\\bCSS3\\b",
+        "\\bCSS\\b",
+        "\\bcss3\\b",
+        "\\bcss\\b"
       ]
     },
     {
@@ -458,17 +466,17 @@
       ]
     },
     {
-      "name": "EMR",
-      "patterns": [
-        "\\bEMR\\b",
-        "\\bemr\\b"
-      ]
-    },
-    {
       "name": "Edge Computing",
       "patterns": [
         "\\bedge\\ ai\\b",
         "\\bedge\\ computing\\b"
+      ]
+    },
+    {
+      "name": "EKS",
+      "patterns": [
+        "\\beks\\b",
+        "\\belastic kubernetes service\\b"
       ]
     },
     {
@@ -481,6 +489,13 @@
       "name": "Electron",
       "patterns": [
         "\\belectron\\b"
+      ]
+    },
+    {
+      "name": "EMR",
+      "patterns": [
+        "\\bEMR\\b",
+        "\\bemr\\b"
       ]
     },
     {
@@ -523,6 +538,20 @@
       ]
     },
     {
+      "name": "Fine-tuning",
+      "patterns": [
+        "\\bfine.?tun(e|ing)\\b",
+        "\\bfinetuning\\b"
+      ]
+    },
+    {
+      "name": "FinOps",
+      "patterns": [
+        "\\bfinops\\b",
+        "\\bfinancial operations\\b"
+      ]
+    },
+    {
       "name": "Firewall",
       "patterns": [
         "\\bfirewall\\b"
@@ -535,19 +564,11 @@
       ]
     },
     {
-      "name": "GPT",
+      "name": "Flutter",
+      "category": "Mobile Development",
       "patterns": [
-        "\\bGPT\\b",
-        "\\bgpt\\b"
-      ]
-    },
-    {
-      "name": "GPU",
-      "patterns": [
-        "\\bGPU\\b",
-        "\\bGPUs\\b",
-        "\\bgpu\\b",
-        "\\bgpus\\b"
+        "\\bFlutter\\b",
+        "\\bflutter\\b"
       ]
     },
     {
@@ -594,6 +615,13 @@
       ]
     },
     {
+      "name": "GNNs",
+      "patterns": [
+        "\\bgnns\\b",
+        "\\bgraph neural networks\\b"
+      ]
+    },
+    {
       "name": "Golang",
       "patterns": [
         "\\bgo\\b",
@@ -626,9 +654,25 @@
       ]
     },
     {
+      "name": "GPT",
+      "patterns": [
+        "\\bGPT\\b",
+        "\\bgpt\\b"
+      ]
+    },
+    {
       "name": "Gpt Apis",
       "patterns": [
         "\\bgpt\\ apis\\b"
+      ]
+    },
+    {
+      "name": "GPU",
+      "patterns": [
+        "\\bGPU\\b",
+        "\\bGPUs\\b",
+        "\\bgpu\\b",
+        "\\bgpus\\b"
       ]
     },
     {
@@ -656,22 +700,6 @@
       ]
     },
     {
-      "name": "HTML5",
-      "patterns": [
-        "\\bHTML5\\b",
-        "\\bHTML\\b",
-        "\\bhtml5\\b",
-        "\\bhtml\\b"
-      ]
-    },
-    {
-      "name": "HTTP",
-      "patterns": [
-        "\\bHTTP\\b",
-        "\\bhttp\\b"
-      ]
-    },
-    {
       "name": "Haystack",
       "patterns": [
         "\\bhaystack\\b"
@@ -694,6 +722,22 @@
       "patterns": [
         "\\bhtml\\b",
         "\\bhypertext\\ markup\\ language\\b"
+      ]
+    },
+    {
+      "name": "HTML5",
+      "patterns": [
+        "\\bHTML5\\b",
+        "\\bHTML\\b",
+        "\\bhtml5\\b",
+        "\\bhtml\\b"
+      ]
+    },
+    {
+      "name": "HTTP",
+      "patterns": [
+        "\\bHTTP\\b",
+        "\\bhttp\\b"
       ]
     },
     {
@@ -728,6 +772,14 @@
       "name": "Informatica",
       "patterns": [
         "\\binformatica\\b"
+      ]
+    },
+    {
+      "name": "Ionic",
+      "category": "Mobile Development",
+      "patterns": [
+        "\\bIonic\\b",
+        "\\bionic\\b"
       ]
     },
     {
@@ -811,16 +863,29 @@
       ]
     },
     {
-      "name": "KMS",
+      "name": "JVM",
       "patterns": [
-        "\\bKMS\\b",
-        "\\bkms\\b"
+        "\\bjvm\\b",
+        "\\bjava virtual machine\\b"
+      ]
+    },
+    {
+      "name": "K8s",
+      "patterns": [
+        "\\bk8s\\b"
       ]
     },
     {
       "name": "Keras",
       "patterns": [
         "\\bkeras\\b"
+      ]
+    },
+    {
+      "name": "KMS",
+      "patterns": [
+        "\\bKMS\\b",
+        "\\bkms\\b"
       ]
     },
     {
@@ -848,20 +913,6 @@
       ]
     },
     {
-      "name": "LLM",
-      "patterns": [
-        "\\bLLM\\b",
-        "\\bLLMs\\b",
-        "\\blarge\\ language\\ model\\b",
-        "\\blarge\\ language\\ models\\b",
-        "\\bllm\\ fine\\b",
-        "\\bllm\\ safety\\b",
-        "\\bllm\\b",
-        "\\bllms\\ fine\\b",
-        "\\bllms\\b"
-      ]
-    },
-    {
       "name": "LangChain",
       "patterns": [
         "\\blangchain\\b",
@@ -869,16 +920,16 @@
       ]
     },
     {
+      "name": "Langchain",
+      "patterns": [
+        "\\blangchain\\b"
+      ]
+    },
+    {
       "name": "LangGraph",
       "patterns": [
         "\\blanggraph\\b",
         "\\blang\\s+graph\\b"
-      ]
-    },
-    {
-      "name": "Langchain",
-      "patterns": [
-        "\\blangchain\\b"
       ]
     },
     {
@@ -908,6 +959,26 @@
       ]
     },
     {
+      "name": "LLM",
+      "patterns": [
+        "\\bLLM\\b",
+        "\\bLLMs\\b",
+        "\\blarge\\ language\\ model\\b",
+        "\\blarge\\ language\\ models\\b",
+        "\\bllm\\ fine\\b",
+        "\\bllm\\ safety\\b",
+        "\\bllm\\b",
+        "\\bllms\\ fine\\b",
+        "\\bllms\\b"
+      ]
+    },
+    {
+      "name": "LLMOps",
+      "patterns": [
+        "\\bllmops\\b"
+      ]
+    },
+    {
       "name": "Looker",
       "patterns": [
         "\\blooker\\b"
@@ -917,12 +988,6 @@
       "name": "Lora",
       "patterns": [
         "\\blora\\b"
-      ]
-    },
-    {
-      "name": "MLOps",
-      "patterns": [
-        "\\bMLOps\\b"
       ]
     },
     {
@@ -971,6 +1036,12 @@
       ]
     },
     {
+      "name": "MLOps",
+      "patterns": [
+        "\\bMLOps\\b"
+      ]
+    },
+    {
       "name": "Mocha",
       "patterns": [
         "\\bmocha\\b"
@@ -994,6 +1065,12 @@
       "name": "MySQL",
       "patterns": [
         "\\bmysql\\b"
+      ]
+    },
+    {
+      "name": "n8n",
+      "patterns": [
+        "\\bn8n\\b"
       ]
     },
     {
@@ -1052,6 +1129,16 @@
       ]
     },
     {
+      "name": "Nuxt.Js",
+      "category": "Frontend Framework",
+      "patterns": [
+        "\\bNuxt\\.?js\\b",
+        "\\bNuxt\\b",
+        "\\bnuxt\\.?js\\b",
+        "\\bnuxt\\b"
+      ]
+    },
+    {
       "name": "OCR",
       "patterns": [
         "\\bOCR\\b",
@@ -1089,6 +1176,13 @@
       "name": "Owasp",
       "patterns": [
         "\\bowasp\\b"
+      ]
+    },
+    {
+      "name": "PaaS",
+      "patterns": [
+        "\\bpaas\\b",
+        "\\bplatform as a service\\b"
       ]
     },
     {
@@ -1198,6 +1292,14 @@
       ]
     },
     {
+      "name": "Qwik",
+      "category": "Frontend Framework",
+      "patterns": [
+        "\\bQwik\\b",
+        "\\bqwik\\b"
+      ]
+    },
+    {
       "name": "R",
       "patterns": [
         "\\br\\b"
@@ -1211,32 +1313,16 @@
       ]
     },
     {
+      "name": "Ray",
+      "patterns": [
+        "\\bray\\b"
+      ]
+    },
+    {
       "name": "RDS",
       "patterns": [
         "\\bRDS\\b",
         "\\brds\\b"
-      ]
-    },
-    {
-      "name": "REST",
-      "patterns": [
-        "\\bREST\\b",
-        "\\bRESTful\\b",
-        "\\brest\\b",
-        "\\brestful\\b"
-      ]
-    },
-    {
-      "name": "RL",
-      "patterns": [
-        "\\bRL\\b",
-        "\\brl\\b"
-      ]
-    },
-    {
-      "name": "Ray",
-      "patterns": [
-        "\\bray\\b"
       ]
     },
     {
@@ -1271,6 +1357,22 @@
       ]
     },
     {
+      "name": "REST",
+      "patterns": [
+        "\\bREST\\b",
+        "\\bRESTful\\b",
+        "\\brest\\b",
+        "\\brestful\\b"
+      ]
+    },
+    {
+      "name": "RL",
+      "patterns": [
+        "\\bRL\\b",
+        "\\brl\\b"
+      ]
+    },
+    {
       "name": "Rlhf",
       "patterns": [
         "\\brlhf\\b"
@@ -1284,6 +1386,16 @@
       ]
     },
     {
+      "name": "Ruby On Rails",
+      "category": "Backend Framework",
+      "patterns": [
+        "\\bRuby\\s+on\\s+Rails\\b",
+        "\\bruby\\s+on\\s+rails\\b",
+        "\\bRails\\b",
+        "\\brails\\b"
+      ]
+    },
+    {
       "name": "Rust",
       "patterns": [
         "\\brust\\b"
@@ -1294,15 +1406,6 @@
       "patterns": [
         "\\bS3\\b",
         "\\bs3\\b"
-      ]
-    },
-    {
-      "name": "SDK",
-      "patterns": [
-        "\\bSDK\\b",
-        "\\bSDKs\\b",
-        "\\bsdk\\b",
-        "\\bsdks\\b"
       ]
     },
     {
@@ -1330,6 +1433,15 @@
       ]
     },
     {
+      "name": "SDK",
+      "patterns": [
+        "\\bSDK\\b",
+        "\\bSDKs\\b",
+        "\\bsdk\\b",
+        "\\bsdks\\b"
+      ]
+    },
+    {
       "name": "Seaborn",
       "patterns": [
         "\\bseaborn\\b"
@@ -1345,6 +1457,13 @@
       "name": "Serverless",
       "patterns": [
         "\\bserverless\\b"
+      ]
+    },
+    {
+      "name": "SFT",
+      "patterns": [
+        "\\bsft\\b",
+        "\\bsupervised fine.?tuning\\b"
       ]
     },
     {
@@ -1369,6 +1488,23 @@
       "name": "Soap",
       "patterns": [
         "\\bsoap\\b"
+      ]
+    },
+    {
+      "name": "Solid.Js",
+      "category": "Frontend Framework",
+      "patterns": [
+        "\\bSolid\\.?js\\b",
+        "\\bSolidJS\\b",
+        "\\bsolid\\.?js\\b",
+        "\\bsolidjs\\b"
+      ]
+    },
+    {
+      "name": "SOMs",
+      "patterns": [
+        "\\bsoms\\b",
+        "\\bself.?organizing maps\\b"
       ]
     },
     {
@@ -1402,6 +1538,14 @@
       ]
     },
     {
+      "name": "SQS",
+      "patterns": [
+        "\\bsqs\\b",
+        "\\bsimple queue service\\b",
+        "\\bamazon sqs\\b"
+      ]
+    },
+    {
       "name": "Statistical Analysis",
       "patterns": [
         "\\bstatistical\\ analysis\\b"
@@ -1424,9 +1568,30 @@
       ]
     },
     {
+      "name": "STT",
+      "patterns": [
+        "\\bstt\\b",
+        "\\bspeech.?to.?text\\b"
+      ]
+    },
+    {
+      "name": "SuperSet",
+      "patterns": [
+        "\\bsuperset\\b",
+        "\\bapache superset\\b"
+      ]
+    },
+    {
       "name": "Svelte",
       "patterns": [
         "\\bsvelte\\b"
+      ]
+    },
+    {
+      "name": "SVM",
+      "patterns": [
+        "\\bsvm\\b",
+        "\\bsupport vector machine\\b"
       ]
     },
     {
@@ -1436,10 +1601,10 @@
       ]
     },
     {
-      "name": "TCP",
+      "name": "T5",
       "patterns": [
-        "\\bTCP\\b",
-        "\\btcp\\b"
+        "\\bt5\\b",
+        "\\btext.?to.?text transfer transformer\\b"
       ]
     },
     {
@@ -1452,6 +1617,20 @@
       "name": "Talend",
       "patterns": [
         "\\btalend\\b"
+      ]
+    },
+    {
+      "name": "TCP",
+      "patterns": [
+        "\\bTCP\\b",
+        "\\btcp\\b"
+      ]
+    },
+    {
+      "name": "Temporal.io",
+      "patterns": [
+        "\\btemporal\\b",
+        "\\btemporal\\.io\\b"
       ]
     },
     {
@@ -1485,6 +1664,19 @@
       ]
     },
     {
+      "name": "TextGrad",
+      "patterns": [
+        "\\btextgrad\\b"
+      ]
+    },
+    {
+      "name": "TFX",
+      "patterns": [
+        "\\btfx\\b",
+        "\\btensorflow extended\\b"
+      ]
+    },
+    {
       "name": "Together Ai",
       "patterns": [
         "\\btogether\\ ai\\b"
@@ -1509,9 +1701,22 @@
       ]
     },
     {
+      "name": "TTS",
+      "patterns": [
+        "\\btts\\b",
+        "\\btext.?to.?speech\\b"
+      ]
+    },
+    {
       "name": "Typescript",
       "patterns": [
         "\\btypescript\\b"
+      ]
+    },
+    {
+      "name": "UiPath",
+      "patterns": [
+        "\\buipath\\b"
       ]
     },
     {
@@ -1563,15 +1768,43 @@
       ]
     },
     {
+      "name": "VLMs",
+      "patterns": [
+        "\\bvlms\\b",
+        "\\bvision language models\\b"
+      ]
+    },
+    {
+      "name": "VMware",
+      "patterns": [
+        "\\bvmware\\b"
+      ]
+    },
+    {
       "name": "Vue.Js",
       "patterns": [
         "\\bvue\\.js\\b"
       ]
     },
     {
+      "name": "WatsonX",
+      "patterns": [
+        "\\bwatsonx\\b",
+        "\\bibm watsonx\\b"
+      ]
+    },
+    {
       "name": "Weaviate",
       "patterns": [
         "\\bweaviate\\b"
+      ]
+    },
+    {
+      "name": "Webpack",
+      "category": "Build Tool",
+      "patterns": [
+        "\\bWebpack\\b",
+        "\\bwebpack\\b"
       ]
     },
     {
@@ -1591,82 +1824,6 @@
       "patterns": [
         "\\bYOLO\\b",
         "\\byolo\\b"
-      ]
-    },
-    {
-      "name": "n8n",
-      "patterns": [
-        "\\bn8n\\b"
-      ]
-    },
-    {
-      "name": "Flutter",
-      "category": "Mobile Development",
-      "patterns": [
-        "\\bFlutter\\b",
-        "\\bflutter\\b"
-      ]
-    },
-    {
-      "name": "Ionic",
-      "category": "Mobile Development",
-      "patterns": [
-        "\\bIonic\\b",
-        "\\bionic\\b"
-      ]
-    },
-    {
-      "name": "Ruby On Rails",
-      "category": "Backend Framework",
-      "patterns": [
-        "\\bRuby\\s+on\\s+Rails\\b",
-        "\\bruby\\s+on\\s+rails\\b",
-        "\\bRails\\b",
-        "\\brails\\b"
-      ]
-    },
-    {
-      "name": "Nuxt.Js",
-      "category": "Frontend Framework",
-      "patterns": [
-        "\\bNuxt\\.?js\\b",
-        "\\bNuxt\\b",
-        "\\bnuxt\\.?js\\b",
-        "\\bnuxt\\b"
-      ]
-    },
-    {
-      "name": "Astro",
-      "category": "Frontend Framework",
-      "patterns": [
-        "\\bAstro\\b",
-        "\\bastro\\b"
-      ]
-    },
-    {
-      "name": "Solid.Js",
-      "category": "Frontend Framework",
-      "patterns": [
-        "\\bSolid\\.?js\\b",
-        "\\bSolidJS\\b",
-        "\\bsolid\\.?js\\b",
-        "\\bsolidjs\\b"
-      ]
-    },
-    {
-      "name": "Qwik",
-      "category": "Frontend Framework",
-      "patterns": [
-        "\\bQwik\\b",
-        "\\bqwik\\b"
-      ]
-    },
-    {
-      "name": "Webpack",
-      "category": "Build Tool",
-      "patterns": [
-        "\\bWebpack\\b",
-        "\\bwebpack\\b"
       ]
     }
   ]
