@@ -6,9 +6,9 @@ import streamlit as st
 from src.db import DatabaseConnection, SchemaManager, JobStorageOperations
 from src.ui.components import (
     render_analytics_overview,
-    render_platform_distribution,
     render_skills_analysis,
-    render_scraper_form
+    render_link_scraper_form,
+    render_detail_scraper_form
 )
 
 logging.basicConfig(level=logging.INFO)
@@ -27,18 +27,22 @@ st.set_page_config(
 
 # Title
 st.title("🔍 Job Scraper & Analytics Dashboard")
-st.markdown("**Scrape jobs from LinkedIn & Naukri | 99.9%+ deduplication | Skills extraction | Analytics**")
+st.markdown("**2-Phase Architecture: Link Collection → Detail Extraction | 3-Layer Skills | Zero False Positives**")
 st.divider()
 
-# Main Tabs
-tab1, tab2 = st.tabs(["🚀 Scraper", "📊 Analytics Dashboard"])
+# Main Tabs - Split Scraper Logic
+tab1, tab2, tab3 = st.tabs(["🔗 Link Scraper", "📝 Detail Scraper", "📊 Analytics"])
 
-# ==================== TAB 1: SCRAPER ====================
+# ==================== TAB 1: LINK SCRAPER ====================
 with tab1:
-    render_scraper_form(DB_PATH)
+    render_link_scraper_form(DB_PATH)
 
-# ==================== TAB 2: ANALYTICS ====================
+# ==================== TAB 2: DETAIL SCRAPER ====================
 with tab2:
+    render_detail_scraper_form(DB_PATH)
+
+# ==================== TAB 3: ANALYTICS ====================
+with tab3:
     st.header("📊 Analytics Dashboard")
     st.markdown("**Real-time insights from 2-platform architecture (LinkedIn + Naukri)**")
     
@@ -48,8 +52,6 @@ with tab2:
     
     # Render modular analytics components
     render_analytics_overview(all_jobs)
-    st.divider()
-    render_platform_distribution(all_jobs)
     st.divider()
     render_skills_analysis(all_jobs)
 

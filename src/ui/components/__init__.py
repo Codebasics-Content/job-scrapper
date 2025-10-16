@@ -5,18 +5,14 @@
 
 from .analytics_dashboard import (
     render_analytics_overview,
-    render_platform_distribution, 
     render_skills_analysis
 )
-from .scraper_form import (
-    execute_scraping_workflow,
-    render_scraper_form
-)
+from .link_scraper_form import render_link_scraper_form
+from .detail_scraper_form import render_detail_scraper_form
 
 __all__ = [
     "render_analytics_overview",
-    "render_platform_distribution", 
     "render_skills_analysis",
-    "execute_scraping_workflow",
-    "render_scraper_form"
+    "render_link_scraper_form",
+    "render_detail_scraper_form"
 ]
