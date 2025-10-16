@@ -1,18 +1,45 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T12:32:12+05:30",
+  "last_updated": "2025-10-17T02:08:07+05:30",
   "metrics": {
     "rl_source_ref": "progress.json",
-    "tasks_completed": 8,
+    "tasks_completed": 9,
     "tasks_failed": 1,
-    "commits": 8,
-    "rl_reward": -70,
-    "success_rate": 0.88,
-    "gae_advantage": -0.3,
-    "value_branch": "learning",
-    "timestamp": "2025-10-14T12:32:12+05:30"
+    "commits": 9,
+    "rl_reward": -30,
+    "success_rate": 0.9,
+    "gae_advantage": 0.4,
+    "value_branch": "task_success",
+    "timestamp": "2025-10-17T02:08:07+05:30"
   },
   "architecture_patterns": [
+    {
+      "pattern_id": "basepyright-strict-typing-compliance",
+      "category": "type_safety",
+      "name": "Strict Type Hints with basepyright",
+      "description": "Replace lambdas with explicit typed functions, import proper types from libraries, guard None values",
+      "use_cases": [
+        "Lambda sorting operations → explicit typed function",
+        "Third-party library types → proper imports (ProxySettings, etc.)",
+        "Environment variables → None guard before usage"
+      ],
+      "implementation": {
+        "lambda_to_function": "def sort_key(param: tuple[str, float]) -> tuple[float, str]: return (-param[1], param[0])",
+        "proper_imports": "from playwright.async_api import ProxySettings",
+        "none_guards": "if not value: print('Error'); exit(1)"
+      },
+      "benefits": [
+        "Zero basepyright type errors",
+        "Better IDE autocomplete",
+        "Safer runtime behavior",
+        "Constitutional Article 15 compliance"
+      ],
+      "success_rate": 1.0,
+      "confidence_score": 0.95,
+      "reuse_count": 1,
+      "rl_reward": 40,
+      "last_used": "2025-10-16T13:20:42+05:30"
+    },
     {
       "pattern_id": "rl_score_single_source_2025-10-15",
       "category": "reinforcement_learning",
