@@ -1,0 +1,2563 @@
+================================================================================
+2025 AI/GenAI/DATA ROLES - SPECIALIZED SKILLS WITH PATTERNS
+Generated: 2025-10-17 02:43:34
+================================================================================
+
+TARGET JOB ROLES:
+  • AI Engineer
+  • GenAI Engineer
+  • Data Scientist
+  • Data Engineer
+  • Data Analyst
+  • Python Developer
+  • Analyst
+
+================================================================================
+AI ENGINEER - 26 SKILLS
+================================================================================
+
+1. A/B Testing
+   Patterns (13):
+     - A/B TESTING
+     - A/B Testing
+     - A/B-Testing
+     - A/B.Testing
+     - A/BTesting
+     - A/B_Testing
+     - AT
+     - a/b testing
+     - a/b-testing
+     - a/b.testing
+     - a/b_testing
+     - a/btesting
+     - at
+
+2. CatBoost
+   Patterns (3):
+     - CATBOOST
+     - CatBoost
+     - catboost
+
+3. Computer Vision
+   Patterns (13):
+     - COMPUTER VISION
+     - CV
+     - Computer Vision
+     - Computer-Vision
+     - Computer.Vision
+     - ComputerVision
+     - Computer_Vision
+     - computer vision
+     - computer-vision
+     - computer.vision
+     - computer_vision
+     - computervision
+     - cv
+
+4. Cross Validation
+   Patterns (13):
+     - CROSS VALIDATION
+     - CV
+     - Cross Validation
+     - Cross-Validation
+     - Cross.Validation
+     - CrossValidation
+     - Cross_Validation
+     - cross validation
+     - cross-validation
+     - cross.validation
+     - cross_validation
+     - crossvalidation
+     - cv
+
+5. Data Preprocessing
+   Patterns (13):
+     - DATA PREPROCESSING
+     - DP
+     - Data Preprocessing
+     - Data-Preprocessing
+     - Data.Preprocessing
+     - DataPreprocessing
+     - Data_Preprocessing
+     - data preprocessing
+     - data-preprocessing
+     - data.preprocessing
+     - data_preprocessing
+     - datapreprocessing
+     - dp
+
+6. Deep Learning
+   Patterns (13):
+     - DEEP LEARNING
+     - DL
+     - Deep Learning
+     - Deep-Learning
+     - Deep.Learning
+     - DeepLearning
+     - Deep_Learning
+     - deep learning
+     - deep-learning
+     - deep.learning
+     - deep_learning
+     - deeplearning
+     - dl
+
+7. Ensemble Methods
+   Patterns (13):
+     - EM
+     - ENSEMBLE METHODS
+     - Ensemble Methods
+     - Ensemble-Methods
+     - Ensemble.Methods
+     - EnsembleMethods
+     - Ensemble_Methods
+     - em
+     - ensemble methods
+     - ensemble-methods
+     - ensemble.methods
+     - ensemble_methods
+     - ensemblemethods
+
+8. Feature Engineering
+   Patterns (13):
+     - FE
+     - FEATURE ENGINEERING
+     - Feature Engineering
+     - Feature-Engineering
+     - Feature.Engineering
+     - FeatureEngineering
+     - Feature_Engineering
+     - fe
+     - feature engineering
+     - feature-engineering
+     - feature.engineering
+     - feature_engineering
+     - featureengineering
+
+9. Gradient Boosting
+   Patterns (13):
+     - GB
+     - GRADIENT BOOSTING
+     - Gradient Boosting
+     - Gradient-Boosting
+     - Gradient.Boosting
+     - GradientBoosting
+     - Gradient_Boosting
+     - gb
+     - gradient boosting
+     - gradient-boosting
+     - gradient.boosting
+     - gradient_boosting
+     - gradientboosting
+
+10. Hyperparameter Tuning
+   Patterns (13):
+     - HT
+     - HYPERPARAMETER TUNING
+     - Hyperparameter Tuning
+     - Hyperparameter-Tuning
+     - Hyperparameter.Tuning
+     - HyperparameterTuning
+     - Hyperparameter_Tuning
+     - ht
+     - hyperparameter tuning
+     - hyperparameter-tuning
+     - hyperparameter.tuning
+     - hyperparameter_tuning
+     - hyperparametertuning
+
+11. LightGBM
+   Patterns (3):
+     - LIGHTGBM
+     - LightGBM
+     - lightgbm
+
+12. MLOps
+   Patterns (3):
+     - MLOPS
+     - MLOps
+     - mlops
+
+13. Machine Learning
+   Patterns (13):
+     - MACHINE LEARNING
+     - ML
+     - Machine Learning
+     - Machine-Learning
+     - Machine.Learning
+     - MachineLearning
+     - Machine_Learning
+     - machine learning
+     - machine-learning
+     - machine.learning
+     - machine_learning
+     - machinelearning
+     - ml
+
+14. Model Deployment
+   Patterns (13):
+     - MD
+     - MODEL DEPLOYMENT
+     - Model Deployment
+     - Model-Deployment
+     - Model.Deployment
+     - ModelDeployment
+     - Model_Deployment
+     - md
+     - model deployment
+     - model-deployment
+     - model.deployment
+     - model_deployment
+     - modeldeployment
+
+15. Model Evaluation
+   Patterns (13):
+     - ME
+     - MODEL EVALUATION
+     - Model Evaluation
+     - Model-Evaluation
+     - Model.Evaluation
+     - ModelEvaluation
+     - Model_Evaluation
+     - me
+     - model evaluation
+     - model-evaluation
+     - model.evaluation
+     - model_evaluation
+     - modelevaluation
+
+16. Model Monitoring
+   Patterns (13):
+     - MM
+     - MODEL MONITORING
+     - Model Monitoring
+     - Model-Monitoring
+     - Model.Monitoring
+     - ModelMonitoring
+     - Model_Monitoring
+     - mm
+     - model monitoring
+     - model-monitoring
+     - model.monitoring
+     - model_monitoring
+     - modelmonitoring
+
+17. Model Optimization
+   Patterns (13):
+     - MO
+     - MODEL OPTIMIZATION
+     - Model Optimization
+     - Model-Optimization
+     - Model.Optimization
+     - ModelOptimization
+     - Model_Optimization
+     - mo
+     - model optimization
+     - model-optimization
+     - model.optimization
+     - model_optimization
+     - modeloptimization
+
+18. Model Training
+   Patterns (13):
+     - MODEL TRAINING
+     - MT
+     - Model Training
+     - Model-Training
+     - Model.Training
+     - ModelTraining
+     - Model_Training
+     - model training
+     - model-training
+     - model.training
+     - model_training
+     - modeltraining
+     - mt
+
+19. Natural Language Processing
+   Patterns (13):
+     - NATURAL LANGUAGE PROCESSING
+     - NLP
+     - Natural Language Processing
+     - Natural-Language-Processing
+     - Natural.Language.Processing
+     - NaturalLanguageProcessing
+     - Natural_Language_Processing
+     - natural language processing
+     - natural-language-processing
+     - natural.language.processing
+     - natural_language_processing
+     - naturallanguageprocessing
+     - nlp
+
+20. Neural Networks
+   Patterns (13):
+     - NEURAL NETWORKS
+     - NN
+     - Neural Networks
+     - Neural-Networks
+     - Neural.Networks
+     - NeuralNetworks
+     - Neural_Networks
+     - neural networks
+     - neural-networks
+     - neural.networks
+     - neural_networks
+     - neuralnetworks
+     - nn
+
+21. PyTorch
+   Patterns (3):
+     - PYTORCH
+     - PyTorch
+     - pytorch
+
+22. Random Forest
+   Patterns (13):
+     - RANDOM FOREST
+     - RF
+     - Random Forest
+     - Random-Forest
+     - Random.Forest
+     - RandomForest
+     - Random_Forest
+     - random forest
+     - random-forest
+     - random.forest
+     - random_forest
+     - randomforest
+     - rf
+
+23. Scikit-learn
+   Patterns (3):
+     - SCIKIT-LEARN
+     - Scikit-learn
+     - scikit-learn
+
+24. TensorFlow
+   Patterns (3):
+     - TENSORFLOW
+     - TensorFlow
+     - tensorflow
+
+25. Transfer Learning
+   Patterns (13):
+     - TL
+     - TRANSFER LEARNING
+     - Transfer Learning
+     - Transfer-Learning
+     - Transfer.Learning
+     - TransferLearning
+     - Transfer_Learning
+     - tl
+     - transfer learning
+     - transfer-learning
+     - transfer.learning
+     - transfer_learning
+     - transferlearning
+
+26. XGBoost
+   Patterns (3):
+     - XGBOOST
+     - XGBoost
+     - xgboost
+
+================================================================================
+GENAI ENGINEER - 38 SKILLS
+================================================================================
+
+1. Agent Frameworks
+   Patterns (13):
+     - AF
+     - AGENT FRAMEWORKS
+     - Agent Frameworks
+     - Agent-Frameworks
+     - Agent.Frameworks
+     - AgentFrameworks
+     - Agent_Frameworks
+     - af
+     - agent frameworks
+     - agent-frameworks
+     - agent.frameworks
+     - agent_frameworks
+     - agentframeworks
+
+2. Anthropic Claude
+   Patterns (13):
+     - AC
+     - ANTHROPIC CLAUDE
+     - Anthropic Claude
+     - Anthropic-Claude
+     - Anthropic.Claude
+     - AnthropicClaude
+     - Anthropic_Claude
+     - ac
+     - anthropic claude
+     - anthropic-claude
+     - anthropic.claude
+     - anthropic_claude
+     - anthropicclaude
+
+3. Chain of Thought
+   Patterns (13):
+     - CHAIN OF THOUGHT
+     - COT
+     - Chain of Thought
+     - Chain-of-Thought
+     - Chain.of.Thought
+     - Chain_of_Thought
+     - ChainofThought
+     - chain of thought
+     - chain-of-thought
+     - chain.of.thought
+     - chain_of_thought
+     - chainofthought
+     - cot
+
+4. ChromaDB
+   Patterns (3):
+     - CHROMADB
+     - ChromaDB
+     - chromadb
+
+5. Context Window
+   Patterns (13):
+     - CONTEXT WINDOW
+     - CW
+     - Context Window
+     - Context-Window
+     - Context.Window
+     - ContextWindow
+     - Context_Window
+     - context window
+     - context-window
+     - context.window
+     - context_window
+     - contextwindow
+     - cw
+
+6. Embeddings
+   Patterns (3):
+     - EMBEDDINGS
+     - Embeddings
+     - embeddings
+
+7. FAISS
+   Patterns (2):
+     - FAISS
+     - faiss
+
+8. Few-Shot Learning
+   Patterns (13):
+     - FEW-SHOT LEARNING
+     - FL
+     - Few-Shot Learning
+     - Few-Shot-Learning
+     - Few-Shot.Learning
+     - Few-ShotLearning
+     - Few-Shot_Learning
+     - few-shot learning
+     - few-shot-learning
+     - few-shot.learning
+     - few-shot_learning
+     - few-shotlearning
+     - fl
+
+9. Function Calling
+   Patterns (13):
+     - FC
+     - FUNCTION CALLING
+     - Function Calling
+     - Function-Calling
+     - Function.Calling
+     - FunctionCalling
+     - Function_Calling
+     - fc
+     - function calling
+     - function-calling
+     - function.calling
+     - function_calling
+     - functioncalling
+
+10. Hugging Face
+   Patterns (13):
+     - HF
+     - HUGGING FACE
+     - Hugging Face
+     - Hugging-Face
+     - Hugging.Face
+     - HuggingFace
+     - Hugging_Face
+     - hf
+     - hugging face
+     - hugging-face
+     - hugging.face
+     - hugging_face
+     - huggingface
+
+11. Inference Optimization
+   Patterns (13):
+     - INFERENCE OPTIMIZATION
+     - IO
+     - Inference Optimization
+     - Inference-Optimization
+     - Inference.Optimization
+     - InferenceOptimization
+     - Inference_Optimization
+     - inference optimization
+     - inference-optimization
+     - inference.optimization
+     - inference_optimization
+     - inferenceoptimization
+     - io
+
+12. Instruction Tuning
+   Patterns (13):
+     - INSTRUCTION TUNING
+     - IT
+     - Instruction Tuning
+     - Instruction-Tuning
+     - Instruction.Tuning
+     - InstructionTuning
+     - Instruction_Tuning
+     - instruction tuning
+     - instruction-tuning
+     - instruction.tuning
+     - instruction_tuning
+     - instructiontuning
+     - it
+
+13. LLM Agents
+   Patterns (13):
+     - LA
+     - LLM AGENTS
+     - LLM Agents
+     - LLM-Agents
+     - LLM.Agents
+     - LLMAgents
+     - LLM_Agents
+     - la
+     - llm agents
+     - llm-agents
+     - llm.agents
+     - llm_agents
+     - llmagents
+
+14. LLM Fine-tuning
+   Patterns (13):
+     - LF
+     - LLM FINE-TUNING
+     - LLM Fine-tuning
+     - LLM-Fine-tuning
+     - LLM.Fine-tuning
+     - LLMFine-tuning
+     - LLM_Fine-tuning
+     - lf
+     - llm fine-tuning
+     - llm-fine-tuning
+     - llm.fine-tuning
+     - llm_fine-tuning
+     - llmfine-tuning
+
+15. LangChain
+   Patterns (3):
+     - LANGCHAIN
+     - LangChain
+     - langchain
+
+16. Large Language Models
+   Patterns (13):
+     - LARGE LANGUAGE MODELS
+     - LLM
+     - Large Language Models
+     - Large-Language-Models
+     - Large.Language.Models
+     - LargeLanguageModels
+     - Large_Language_Models
+     - large language models
+     - large-language-models
+     - large.language.models
+     - large_language_models
+     - largelanguagemodels
+     - llm
+
+17. LlamaIndex
+   Patterns (3):
+     - LLAMAINDEX
+     - LlamaIndex
+     - llamaindex
+
+18. LoRA
+   Patterns (3):
+     - LORA
+     - LoRA
+     - lora
+
+19. Milvus
+   Patterns (3):
+     - MILVUS
+     - Milvus
+     - milvus
+
+20. Model Compression
+   Patterns (13):
+     - MC
+     - MODEL COMPRESSION
+     - Model Compression
+     - Model-Compression
+     - Model.Compression
+     - ModelCompression
+     - Model_Compression
+     - mc
+     - model compression
+     - model-compression
+     - model.compression
+     - model_compression
+     - modelcompression
+
+21. OpenAI API
+   Patterns (13):
+     - OA
+     - OPENAI API
+     - OpenAI API
+     - OpenAI-API
+     - OpenAI.API
+     - OpenAIAPI
+     - OpenAI_API
+     - oa
+     - openai api
+     - openai-api
+     - openai.api
+     - openai_api
+     - openaiapi
+
+22. PEFT
+   Patterns (2):
+     - PEFT
+     - peft
+
+23. Pinecone
+   Patterns (3):
+     - PINECONE
+     - Pinecone
+     - pinecone
+
+24. Prompt Engineering
+   Patterns (13):
+     - PE
+     - PROMPT ENGINEERING
+     - Prompt Engineering
+     - Prompt-Engineering
+     - Prompt.Engineering
+     - PromptEngineering
+     - Prompt_Engineering
+     - pe
+     - prompt engineering
+     - prompt-engineering
+     - prompt.engineering
+     - prompt_engineering
+     - promptengineering
+
+25. QLoRA
+   Patterns (3):
+     - QLORA
+     - QLoRA
+     - qlora
+
+26. Qdrant
+   Patterns (3):
+     - QDRANT
+     - Qdrant
+     - qdrant
+
+27. Quantization
+   Patterns (3):
+     - QUANTIZATION
+     - Quantization
+     - quantization
+
+28. RAG
+   Patterns (2):
+     - RAG
+     - rag
+
+29. RLHF
+   Patterns (2):
+     - RLHF
+     - rlhf
+
+30. Retrieval Augmented Generation
+   Patterns (13):
+     - RAG
+     - RETRIEVAL AUGMENTED GENERATION
+     - Retrieval Augmented Generation
+     - Retrieval-Augmented-Generation
+     - Retrieval.Augmented.Generation
+     - RetrievalAugmentedGeneration
+     - Retrieval_Augmented_Generation
+     - rag
+     - retrieval augmented generation
+     - retrieval-augmented-generation
+     - retrieval.augmented.generation
+     - retrieval_augmented_generation
+     - retrievalaugmentedgeneration
+
+31. Semantic Search
+   Patterns (13):
+     - SEMANTIC SEARCH
+     - SS
+     - Semantic Search
+     - Semantic-Search
+     - Semantic.Search
+     - SemanticSearch
+     - Semantic_Search
+     - semantic search
+     - semantic-search
+     - semantic.search
+     - semantic_search
+     - semanticsearch
+     - ss
+
+32. Text Embeddings
+   Patterns (13):
+     - TE
+     - TEXT EMBEDDINGS
+     - Text Embeddings
+     - Text-Embeddings
+     - Text.Embeddings
+     - TextEmbeddings
+     - Text_Embeddings
+     - te
+     - text embeddings
+     - text-embeddings
+     - text.embeddings
+     - text_embeddings
+     - textembeddings
+
+33. Token Management
+   Patterns (13):
+     - TM
+     - TOKEN MANAGEMENT
+     - Token Management
+     - Token-Management
+     - Token.Management
+     - TokenManagement
+     - Token_Management
+     - tm
+     - token management
+     - token-management
+     - token.management
+     - token_management
+     - tokenmanagement
+
+34. Tool Calling
+   Patterns (13):
+     - TC
+     - TOOL CALLING
+     - Tool Calling
+     - Tool-Calling
+     - Tool.Calling
+     - ToolCalling
+     - Tool_Calling
+     - tc
+     - tool calling
+     - tool-calling
+     - tool.calling
+     - tool_calling
+     - toolcalling
+
+35. Transformers
+   Patterns (3):
+     - TRANSFORMERS
+     - Transformers
+     - transformers
+
+36. Vector Databases
+   Patterns (13):
+     - VD
+     - VECTOR DATABASES
+     - Vector Databases
+     - Vector-Databases
+     - Vector.Databases
+     - VectorDatabases
+     - Vector_Databases
+     - vd
+     - vector databases
+     - vector-databases
+     - vector.databases
+     - vector_databases
+     - vectordatabases
+
+37. Weaviate
+   Patterns (3):
+     - WEAVIATE
+     - Weaviate
+     - weaviate
+
+38. Zero-Shot Learning
+   Patterns (13):
+     - ZERO-SHOT LEARNING
+     - ZL
+     - Zero-Shot Learning
+     - Zero-Shot-Learning
+     - Zero-Shot.Learning
+     - Zero-ShotLearning
+     - Zero-Shot_Learning
+     - zero-shot learning
+     - zero-shot-learning
+     - zero-shot.learning
+     - zero-shot_learning
+     - zero-shotlearning
+     - zl
+
+================================================================================
+DATA SCIENTIST - 35 SKILLS
+================================================================================
+
+1. A/B Testing
+   Patterns (13):
+     - A/B TESTING
+     - A/B Testing
+     - A/B-Testing
+     - A/B.Testing
+     - A/BTesting
+     - A/B_Testing
+     - AT
+     - a/b testing
+     - a/b-testing
+     - a/b.testing
+     - a/b_testing
+     - a/btesting
+     - at
+
+2. Bayesian Statistics
+   Patterns (13):
+     - BAYESIAN STATISTICS
+     - BS
+     - Bayesian Statistics
+     - Bayesian-Statistics
+     - Bayesian.Statistics
+     - BayesianStatistics
+     - Bayesian_Statistics
+     - bayesian statistics
+     - bayesian-statistics
+     - bayesian.statistics
+     - bayesian_statistics
+     - bayesianstatistics
+     - bs
+
+3. Business Analytics
+   Patterns (13):
+     - BA
+     - BUSINESS ANALYTICS
+     - Business Analytics
+     - Business-Analytics
+     - Business.Analytics
+     - BusinessAnalytics
+     - Business_Analytics
+     - ba
+     - business analytics
+     - business-analytics
+     - business.analytics
+     - business_analytics
+     - businessanalytics
+
+4. Causal Inference
+   Patterns (13):
+     - CAUSAL INFERENCE
+     - CI
+     - Causal Inference
+     - Causal-Inference
+     - Causal.Inference
+     - CausalInference
+     - Causal_Inference
+     - causal inference
+     - causal-inference
+     - causal.inference
+     - causal_inference
+     - causalinference
+     - ci
+
+5. Classification
+   Patterns (3):
+     - CLASSIFICATION
+     - Classification
+     - classification
+
+6. Clustering
+   Patterns (3):
+     - CLUSTERING
+     - Clustering
+     - clustering
+
+7. Data Visualization
+   Patterns (13):
+     - DATA VISUALIZATION
+     - DV
+     - Data Visualization
+     - Data-Visualization
+     - Data.Visualization
+     - DataVisualization
+     - Data_Visualization
+     - data visualization
+     - data-visualization
+     - data.visualization
+     - data_visualization
+     - datavisualization
+     - dv
+
+8. Dimensionality Reduction
+   Patterns (13):
+     - DIMENSIONALITY REDUCTION
+     - DR
+     - Dimensionality Reduction
+     - Dimensionality-Reduction
+     - Dimensionality.Reduction
+     - DimensionalityReduction
+     - Dimensionality_Reduction
+     - dimensionality reduction
+     - dimensionality-reduction
+     - dimensionality.reduction
+     - dimensionality_reduction
+     - dimensionalityreduction
+     - dr
+
+9. Experimental Design
+   Patterns (13):
+     - ED
+     - EXPERIMENTAL DESIGN
+     - Experimental Design
+     - Experimental-Design
+     - Experimental.Design
+     - ExperimentalDesign
+     - Experimental_Design
+     - ed
+     - experimental design
+     - experimental-design
+     - experimental.design
+     - experimental_design
+     - experimentaldesign
+
+10. Feature Engineering
+   Patterns (13):
+     - FE
+     - FEATURE ENGINEERING
+     - Feature Engineering
+     - Feature-Engineering
+     - Feature.Engineering
+     - FeatureEngineering
+     - Feature_Engineering
+     - fe
+     - feature engineering
+     - feature-engineering
+     - feature.engineering
+     - feature_engineering
+     - featureengineering
+
+11. Feature Selection
+   Patterns (13):
+     - FEATURE SELECTION
+     - FS
+     - Feature Selection
+     - Feature-Selection
+     - Feature.Selection
+     - FeatureSelection
+     - Feature_Selection
+     - feature selection
+     - feature-selection
+     - feature.selection
+     - feature_selection
+     - featureselection
+     - fs
+
+12. Forecasting
+   Patterns (3):
+     - FORECASTING
+     - Forecasting
+     - forecasting
+
+13. Hypothesis Testing
+   Patterns (13):
+     - HT
+     - HYPOTHESIS TESTING
+     - Hypothesis Testing
+     - Hypothesis-Testing
+     - Hypothesis.Testing
+     - HypothesisTesting
+     - Hypothesis_Testing
+     - ht
+     - hypothesis testing
+     - hypothesis-testing
+     - hypothesis.testing
+     - hypothesis_testing
+     - hypothesistesting
+
+14. Matplotlib
+   Patterns (3):
+     - MATPLOTLIB
+     - Matplotlib
+     - matplotlib
+
+15. NumPy
+   Patterns (3):
+     - NUMPY
+     - NumPy
+     - numpy
+
+16. PCA
+   Patterns (2):
+     - PCA
+     - pca
+
+17. Pandas
+   Patterns (3):
+     - PANDAS
+     - Pandas
+     - pandas
+
+18. Plotly
+   Patterns (3):
+     - PLOTLY
+     - Plotly
+     - plotly
+
+19. Power BI
+   Patterns (13):
+     - PB
+     - POWER BI
+     - Power BI
+     - Power-BI
+     - Power.BI
+     - PowerBI
+     - Power_BI
+     - pb
+     - power bi
+     - power-bi
+     - power.bi
+     - power_bi
+     - powerbi
+
+20. Predictive Analytics
+   Patterns (13):
+     - PA
+     - PREDICTIVE ANALYTICS
+     - Predictive Analytics
+     - Predictive-Analytics
+     - Predictive.Analytics
+     - PredictiveAnalytics
+     - Predictive_Analytics
+     - pa
+     - predictive analytics
+     - predictive-analytics
+     - predictive.analytics
+     - predictive_analytics
+     - predictiveanalytics
+
+21. Prescriptive Analytics
+   Patterns (13):
+     - PA
+     - PRESCRIPTIVE ANALYTICS
+     - Prescriptive Analytics
+     - Prescriptive-Analytics
+     - Prescriptive.Analytics
+     - PrescriptiveAnalytics
+     - Prescriptive_Analytics
+     - pa
+     - prescriptive analytics
+     - prescriptive-analytics
+     - prescriptive.analytics
+     - prescriptive_analytics
+     - prescriptiveanalytics
+
+22. Probability Theory
+   Patterns (13):
+     - PROBABILITY THEORY
+     - PT
+     - Probability Theory
+     - Probability-Theory
+     - Probability.Theory
+     - ProbabilityTheory
+     - Probability_Theory
+     - probability theory
+     - probability-theory
+     - probability.theory
+     - probability_theory
+     - probabilitytheory
+     - pt
+
+23. Python
+   Patterns (3):
+     - PYTHON
+     - Python
+     - python
+
+24. R Programming
+   Patterns (13):
+     - R PROGRAMMING
+     - R Programming
+     - R-Programming
+     - R.Programming
+     - RP
+     - RProgramming
+     - R_Programming
+     - r programming
+     - r-programming
+     - r.programming
+     - r_programming
+     - rp
+     - rprogramming
+
+25. Regression Analysis
+   Patterns (13):
+     - RA
+     - REGRESSION ANALYSIS
+     - Regression Analysis
+     - Regression-Analysis
+     - Regression.Analysis
+     - RegressionAnalysis
+     - Regression_Analysis
+     - ra
+     - regression analysis
+     - regression-analysis
+     - regression.analysis
+     - regression_analysis
+     - regressionanalysis
+
+26. SQL
+   Patterns (2):
+     - SQL
+     - sql
+
+27. SciPy
+   Patterns (3):
+     - SCIPY
+     - SciPy
+     - scipy
+
+28. Seaborn
+   Patterns (3):
+     - SEABORN
+     - Seaborn
+     - seaborn
+
+29. Statistical Inference
+   Patterns (13):
+     - SI
+     - STATISTICAL INFERENCE
+     - Statistical Inference
+     - Statistical-Inference
+     - Statistical.Inference
+     - StatisticalInference
+     - Statistical_Inference
+     - si
+     - statistical inference
+     - statistical-inference
+     - statistical.inference
+     - statistical_inference
+     - statisticalinference
+
+30. Statistical Modeling
+   Patterns (13):
+     - SM
+     - STATISTICAL MODELING
+     - Statistical Modeling
+     - Statistical-Modeling
+     - Statistical.Modeling
+     - StatisticalModeling
+     - Statistical_Modeling
+     - sm
+     - statistical modeling
+     - statistical-modeling
+     - statistical.modeling
+     - statistical_modeling
+     - statisticalmodeling
+
+31. Statsmodels
+   Patterns (3):
+     - STATSMODELS
+     - Statsmodels
+     - statsmodels
+
+32. Tableau
+   Patterns (3):
+     - TABLEAU
+     - Tableau
+     - tableau
+
+33. Time Series Analysis
+   Patterns (13):
+     - TIME SERIES ANALYSIS
+     - TSA
+     - Time Series Analysis
+     - Time-Series-Analysis
+     - Time.Series.Analysis
+     - TimeSeriesAnalysis
+     - Time_Series_Analysis
+     - time series analysis
+     - time-series-analysis
+     - time.series.analysis
+     - time_series_analysis
+     - timeseriesanalysis
+     - tsa
+
+34. UMAP
+   Patterns (2):
+     - UMAP
+     - umap
+
+35. t-SNE
+   Patterns (3):
+     - T-SNE
+     - t-SNE
+     - t-sne
+
+================================================================================
+DATA ENGINEER - 40 SKILLS
+================================================================================
+
+1. AWS
+   Patterns (2):
+     - AWS
+     - aws
+
+2. Apache Airflow
+   Patterns (13):
+     - AA
+     - APACHE AIRFLOW
+     - Apache Airflow
+     - Apache-Airflow
+     - Apache.Airflow
+     - ApacheAirflow
+     - Apache_Airflow
+     - aa
+     - apache airflow
+     - apache-airflow
+     - apache.airflow
+     - apache_airflow
+     - apacheairflow
+
+3. Apache Beam
+   Patterns (13):
+     - AB
+     - APACHE BEAM
+     - Apache Beam
+     - Apache-Beam
+     - Apache.Beam
+     - ApacheBeam
+     - Apache_Beam
+     - ab
+     - apache beam
+     - apache-beam
+     - apache.beam
+     - apache_beam
+     - apachebeam
+
+4. Apache Kafka
+   Patterns (13):
+     - AK
+     - APACHE KAFKA
+     - Apache Kafka
+     - Apache-Kafka
+     - Apache.Kafka
+     - ApacheKafka
+     - Apache_Kafka
+     - ak
+     - apache kafka
+     - apache-kafka
+     - apache.kafka
+     - apache_kafka
+     - apachekafka
+
+5. Apache Spark
+   Patterns (13):
+     - APACHE SPARK
+     - AS
+     - Apache Spark
+     - Apache-Spark
+     - Apache.Spark
+     - ApacheSpark
+     - Apache_Spark
+     - apache spark
+     - apache-spark
+     - apache.spark
+     - apache_spark
+     - apachespark
+     - as
+
+6. Azure
+   Patterns (3):
+     - AZURE
+     - Azure
+     - azure
+
+7. Batch Processing
+   Patterns (13):
+     - BATCH PROCESSING
+     - BP
+     - Batch Processing
+     - Batch-Processing
+     - Batch.Processing
+     - BatchProcessing
+     - Batch_Processing
+     - batch processing
+     - batch-processing
+     - batch.processing
+     - batch_processing
+     - batchprocessing
+     - bp
+
+8. BigQuery
+   Patterns (3):
+     - BIGQUERY
+     - BigQuery
+     - bigquery
+
+9. CI/CD
+   Patterns (2):
+     - CI/CD
+     - ci/cd
+
+10. Cassandra
+   Patterns (3):
+     - CASSANDRA
+     - Cassandra
+     - cassandra
+
+11. Data Cataloging
+   Patterns (13):
+     - DATA CATALOGING
+     - DC
+     - Data Cataloging
+     - Data-Cataloging
+     - Data.Cataloging
+     - DataCataloging
+     - Data_Cataloging
+     - data cataloging
+     - data-cataloging
+     - data.cataloging
+     - data_cataloging
+     - datacataloging
+     - dc
+
+12. Data Governance
+   Patterns (13):
+     - DATA GOVERNANCE
+     - DG
+     - Data Governance
+     - Data-Governance
+     - Data.Governance
+     - DataGovernance
+     - Data_Governance
+     - data governance
+     - data-governance
+     - data.governance
+     - data_governance
+     - datagovernance
+     - dg
+
+13. Data Lakes
+   Patterns (13):
+     - DATA LAKES
+     - DL
+     - Data Lakes
+     - Data-Lakes
+     - Data.Lakes
+     - DataLakes
+     - Data_Lakes
+     - data lakes
+     - data-lakes
+     - data.lakes
+     - data_lakes
+     - datalakes
+     - dl
+
+14. Data Modeling
+   Patterns (13):
+     - DATA MODELING
+     - DM
+     - Data Modeling
+     - Data-Modeling
+     - Data.Modeling
+     - DataModeling
+     - Data_Modeling
+     - data modeling
+     - data-modeling
+     - data.modeling
+     - data_modeling
+     - datamodeling
+     - dm
+
+15. Data Orchestration
+   Patterns (13):
+     - DATA ORCHESTRATION
+     - DO
+     - Data Orchestration
+     - Data-Orchestration
+     - Data.Orchestration
+     - DataOrchestration
+     - Data_Orchestration
+     - data orchestration
+     - data-orchestration
+     - data.orchestration
+     - data_orchestration
+     - dataorchestration
+     - do
+
+16. Data Pipelines
+   Patterns (13):
+     - DATA PIPELINES
+     - DP
+     - Data Pipelines
+     - Data-Pipelines
+     - Data.Pipelines
+     - DataPipelines
+     - Data_Pipelines
+     - data pipelines
+     - data-pipelines
+     - data.pipelines
+     - data_pipelines
+     - datapipelines
+     - dp
+
+17. Data Quality
+   Patterns (13):
+     - DATA QUALITY
+     - DQ
+     - Data Quality
+     - Data-Quality
+     - Data.Quality
+     - DataQuality
+     - Data_Quality
+     - data quality
+     - data-quality
+     - data.quality
+     - data_quality
+     - dataquality
+     - dq
+
+18. Data Warehousing
+   Patterns (13):
+     - DATA WAREHOUSING
+     - DW
+     - Data Warehousing
+     - Data-Warehousing
+     - Data.Warehousing
+     - DataWarehousing
+     - Data_Warehousing
+     - data warehousing
+     - data-warehousing
+     - data.warehousing
+     - data_warehousing
+     - datawarehousing
+     - dw
+
+19. Databricks
+   Patterns (3):
+     - DATABRICKS
+     - Databricks
+     - databricks
+
+20. Docker
+   Patterns (3):
+     - DOCKER
+     - Docker
+     - docker
+
+21. ELT
+   Patterns (2):
+     - ELT
+     - elt
+
+22. ETL
+   Patterns (2):
+     - ETL
+     - etl
+
+23. Google Cloud Platform
+   Patterns (13):
+     - GCP
+     - GOOGLE CLOUD PLATFORM
+     - Google Cloud Platform
+     - Google-Cloud-Platform
+     - Google.Cloud.Platform
+     - GoogleCloudPlatform
+     - Google_Cloud_Platform
+     - gcp
+     - google cloud platform
+     - google-cloud-platform
+     - google.cloud.platform
+     - google_cloud_platform
+     - googlecloudplatform
+
+24. Infrastructure as Code
+   Patterns (13):
+     - IAC
+     - INFRASTRUCTURE AS CODE
+     - Infrastructure as Code
+     - Infrastructure-as-Code
+     - Infrastructure.as.Code
+     - Infrastructure_as_Code
+     - InfrastructureasCode
+     - iac
+     - infrastructure as code
+     - infrastructure-as-code
+     - infrastructure.as.code
+     - infrastructure_as_code
+     - infrastructureascode
+
+25. Java
+   Patterns (3):
+     - JAVA
+     - Java
+     - java
+
+26. Kubernetes
+   Patterns (3):
+     - KUBERNETES
+     - Kubernetes
+     - kubernetes
+
+27. MongoDB
+   Patterns (3):
+     - MONGODB
+     - MongoDB
+     - mongodb
+
+28. NoSQL
+   Patterns (3):
+     - NOSQL
+     - NoSQL
+     - nosql
+
+29. PostgreSQL
+   Patterns (3):
+     - POSTGRESQL
+     - PostgreSQL
+     - postgresql
+
+30. Python
+   Patterns (3):
+     - PYTHON
+     - Python
+     - python
+
+31. Real-time Data
+   Patterns (13):
+     - RD
+     - REAL-TIME DATA
+     - Real-time Data
+     - Real-time-Data
+     - Real-time.Data
+     - Real-timeData
+     - Real-time_Data
+     - rd
+     - real-time data
+     - real-time-data
+     - real-time.data
+     - real-time_data
+     - real-timedata
+
+32. Redis
+   Patterns (3):
+     - REDIS
+     - Redis
+     - redis
+
+33. Redshift
+   Patterns (3):
+     - REDSHIFT
+     - Redshift
+     - redshift
+
+34. SQL
+   Patterns (2):
+     - SQL
+     - sql
+
+35. Scala
+   Patterns (3):
+     - SCALA
+     - Scala
+     - scala
+
+36. Schema Design
+   Patterns (13):
+     - SCHEMA DESIGN
+     - SD
+     - Schema Design
+     - Schema-Design
+     - Schema.Design
+     - SchemaDesign
+     - Schema_Design
+     - schema design
+     - schema-design
+     - schema.design
+     - schema_design
+     - schemadesign
+     - sd
+
+37. Snowflake
+   Patterns (3):
+     - SNOWFLAKE
+     - Snowflake
+     - snowflake
+
+38. Stream Processing
+   Patterns (13):
+     - SP
+     - STREAM PROCESSING
+     - Stream Processing
+     - Stream-Processing
+     - Stream.Processing
+     - StreamProcessing
+     - Stream_Processing
+     - sp
+     - stream processing
+     - stream-processing
+     - stream.processing
+     - stream_processing
+     - streamprocessing
+
+39. Terraform
+   Patterns (3):
+     - TERRAFORM
+     - Terraform
+     - terraform
+
+40. dbt
+   Patterns (2):
+     - DBT
+     - dbt
+
+================================================================================
+DATA ANALYST - 32 SKILLS
+================================================================================
+
+1. Amplitude
+   Patterns (3):
+     - AMPLITUDE
+     - Amplitude
+     - amplitude
+
+2. Business Intelligence
+   Patterns (13):
+     - BI
+     - BUSINESS INTELLIGENCE
+     - Business Intelligence
+     - Business-Intelligence
+     - Business.Intelligence
+     - BusinessIntelligence
+     - Business_Intelligence
+     - bi
+     - business intelligence
+     - business-intelligence
+     - business.intelligence
+     - business_intelligence
+     - businessintelligence
+
+3. Cohort Analysis
+   Patterns (13):
+     - CA
+     - COHORT ANALYSIS
+     - Cohort Analysis
+     - Cohort-Analysis
+     - Cohort.Analysis
+     - CohortAnalysis
+     - Cohort_Analysis
+     - ca
+     - cohort analysis
+     - cohort-analysis
+     - cohort.analysis
+     - cohort_analysis
+     - cohortanalysis
+
+4. Customer Analytics
+   Patterns (13):
+     - CA
+     - CUSTOMER ANALYTICS
+     - Customer Analytics
+     - Customer-Analytics
+     - Customer.Analytics
+     - CustomerAnalytics
+     - Customer_Analytics
+     - ca
+     - customer analytics
+     - customer-analytics
+     - customer.analytics
+     - customer_analytics
+     - customeranalytics
+
+5. Dashboards
+   Patterns (3):
+     - DASHBOARDS
+     - Dashboards
+     - dashboards
+
+6. Data Analysis
+   Patterns (13):
+     - DA
+     - DATA ANALYSIS
+     - Data Analysis
+     - Data-Analysis
+     - Data.Analysis
+     - DataAnalysis
+     - Data_Analysis
+     - da
+     - data analysis
+     - data-analysis
+     - data.analysis
+     - data_analysis
+     - dataanalysis
+
+7. Data Cleaning
+   Patterns (13):
+     - DATA CLEANING
+     - DC
+     - Data Cleaning
+     - Data-Cleaning
+     - Data.Cleaning
+     - DataCleaning
+     - Data_Cleaning
+     - data cleaning
+     - data-cleaning
+     - data.cleaning
+     - data_cleaning
+     - datacleaning
+     - dc
+
+8. Data Storytelling
+   Patterns (13):
+     - DATA STORYTELLING
+     - DS
+     - Data Storytelling
+     - Data-Storytelling
+     - Data.Storytelling
+     - DataStorytelling
+     - Data_Storytelling
+     - data storytelling
+     - data-storytelling
+     - data.storytelling
+     - data_storytelling
+     - datastorytelling
+     - ds
+
+9. Data Visualization
+   Patterns (13):
+     - DATA VISUALIZATION
+     - DV
+     - Data Visualization
+     - Data-Visualization
+     - Data.Visualization
+     - DataVisualization
+     - Data_Visualization
+     - data visualization
+     - data-visualization
+     - data.visualization
+     - data_visualization
+     - datavisualization
+     - dv
+
+10. Data Wrangling
+   Patterns (13):
+     - DATA WRANGLING
+     - DW
+     - Data Wrangling
+     - Data-Wrangling
+     - Data.Wrangling
+     - DataWrangling
+     - Data_Wrangling
+     - data wrangling
+     - data-wrangling
+     - data.wrangling
+     - data_wrangling
+     - datawrangling
+     - dw
+
+11. Excel
+   Patterns (3):
+     - EXCEL
+     - Excel
+     - excel
+
+12. Financial Analysis
+   Patterns (13):
+     - FA
+     - FINANCIAL ANALYSIS
+     - Financial Analysis
+     - Financial-Analysis
+     - Financial.Analysis
+     - FinancialAnalysis
+     - Financial_Analysis
+     - fa
+     - financial analysis
+     - financial-analysis
+     - financial.analysis
+     - financial_analysis
+     - financialanalysis
+
+13. Funnel Analysis
+   Patterns (13):
+     - FA
+     - FUNNEL ANALYSIS
+     - Funnel Analysis
+     - Funnel-Analysis
+     - Funnel.Analysis
+     - FunnelAnalysis
+     - Funnel_Analysis
+     - fa
+     - funnel analysis
+     - funnel-analysis
+     - funnel.analysis
+     - funnel_analysis
+     - funnelanalysis
+
+14. Google Analytics
+   Patterns (13):
+     - GA
+     - GOOGLE ANALYTICS
+     - Google Analytics
+     - Google-Analytics
+     - Google.Analytics
+     - GoogleAnalytics
+     - Google_Analytics
+     - ga
+     - google analytics
+     - google-analytics
+     - google.analytics
+     - google_analytics
+     - googleanalytics
+
+15. KPI Tracking
+   Patterns (13):
+     - KPI TRACKING
+     - KPI Tracking
+     - KPI-Tracking
+     - KPI.Tracking
+     - KPITracking
+     - KPI_Tracking
+     - KT
+     - kpi tracking
+     - kpi-tracking
+     - kpi.tracking
+     - kpi_tracking
+     - kpitracking
+     - kt
+
+16. Looker
+   Patterns (3):
+     - LOOKER
+     - Looker
+     - looker
+
+17. Marketing Analytics
+   Patterns (13):
+     - MA
+     - MARKETING ANALYTICS
+     - Marketing Analytics
+     - Marketing-Analytics
+     - Marketing.Analytics
+     - MarketingAnalytics
+     - Marketing_Analytics
+     - ma
+     - marketing analytics
+     - marketing-analytics
+     - marketing.analytics
+     - marketing_analytics
+     - marketinganalytics
+
+18. Metrics Analysis
+   Patterns (13):
+     - MA
+     - METRICS ANALYSIS
+     - Metrics Analysis
+     - Metrics-Analysis
+     - Metrics.Analysis
+     - MetricsAnalysis
+     - Metrics_Analysis
+     - ma
+     - metrics analysis
+     - metrics-analysis
+     - metrics.analysis
+     - metrics_analysis
+     - metricsanalysis
+
+19. Mixpanel
+   Patterns (3):
+     - MIXPANEL
+     - Mixpanel
+     - mixpanel
+
+20. NumPy
+   Patterns (3):
+     - NUMPY
+     - NumPy
+     - numpy
+
+21. Pandas
+   Patterns (3):
+     - PANDAS
+     - Pandas
+     - pandas
+
+22. Power BI
+   Patterns (13):
+     - PB
+     - POWER BI
+     - Power BI
+     - Power-BI
+     - Power.BI
+     - PowerBI
+     - Power_BI
+     - pb
+     - power bi
+     - power-bi
+     - power.bi
+     - power_bi
+     - powerbi
+
+23. Presentation Skills
+   Patterns (13):
+     - PRESENTATION SKILLS
+     - PS
+     - Presentation Skills
+     - Presentation-Skills
+     - Presentation.Skills
+     - PresentationSkills
+     - Presentation_Skills
+     - presentation skills
+     - presentation-skills
+     - presentation.skills
+     - presentation_skills
+     - presentationskills
+     - ps
+
+24. Product Analytics
+   Patterns (13):
+     - PA
+     - PRODUCT ANALYTICS
+     - Product Analytics
+     - Product-Analytics
+     - Product.Analytics
+     - ProductAnalytics
+     - Product_Analytics
+     - pa
+     - product analytics
+     - product-analytics
+     - product.analytics
+     - product_analytics
+     - productanalytics
+
+25. Python
+   Patterns (3):
+     - PYTHON
+     - Python
+     - python
+
+26. Reporting
+   Patterns (3):
+     - REPORTING
+     - Reporting
+     - reporting
+
+27. SQL
+   Patterns (2):
+     - SQL
+     - sql
+
+28. Segment
+   Patterns (3):
+     - SEGMENT
+     - Segment
+     - segment
+
+29. Stakeholder Management
+   Patterns (13):
+     - SM
+     - STAKEHOLDER MANAGEMENT
+     - Stakeholder Management
+     - Stakeholder-Management
+     - Stakeholder.Management
+     - StakeholderManagement
+     - Stakeholder_Management
+     - sm
+     - stakeholder management
+     - stakeholder-management
+     - stakeholder.management
+     - stakeholder_management
+     - stakeholdermanagement
+
+30. Statistical Analysis
+   Patterns (13):
+     - SA
+     - STATISTICAL ANALYSIS
+     - Statistical Analysis
+     - Statistical-Analysis
+     - Statistical.Analysis
+     - StatisticalAnalysis
+     - Statistical_Analysis
+     - sa
+     - statistical analysis
+     - statistical-analysis
+     - statistical.analysis
+     - statistical_analysis
+     - statisticalanalysis
+
+31. Tableau
+   Patterns (3):
+     - TABLEAU
+     - Tableau
+     - tableau
+
+32. Trend Analysis
+   Patterns (13):
+     - TA
+     - TREND ANALYSIS
+     - Trend Analysis
+     - Trend-Analysis
+     - Trend.Analysis
+     - TrendAnalysis
+     - Trend_Analysis
+     - ta
+     - trend analysis
+     - trend-analysis
+     - trend.analysis
+     - trend_analysis
+     - trendanalysis
+
+================================================================================
+PYTHON DEVELOPER - 35 SKILLS
+================================================================================
+
+1. AWS
+   Patterns (2):
+     - AWS
+     - aws
+
+2. Async/Await
+   Patterns (3):
+     - ASYNC/AWAIT
+     - Async/Await
+     - async/await
+
+3. Azure
+   Patterns (3):
+     - AZURE
+     - Azure
+     - azure
+
+4. BeautifulSoup
+   Patterns (3):
+     - BEAUTIFULSOUP
+     - BeautifulSoup
+     - beautifulsoup
+
+5. CI/CD
+   Patterns (2):
+     - CI/CD
+     - ci/cd
+
+6. Celery
+   Patterns (3):
+     - CELERY
+     - Celery
+     - celery
+
+7. Django
+   Patterns (3):
+     - DJANGO
+     - Django
+     - django
+
+8. Docker
+   Patterns (3):
+     - DOCKER
+     - Docker
+     - docker
+
+9. FastAPI
+   Patterns (3):
+     - FASTAPI
+     - FastAPI
+     - fastapi
+
+10. Flask
+   Patterns (3):
+     - FLASK
+     - Flask
+     - flask
+
+11. Functional Programming
+   Patterns (13):
+     - FP
+     - FUNCTIONAL PROGRAMMING
+     - Functional Programming
+     - Functional-Programming
+     - Functional.Programming
+     - FunctionalProgramming
+     - Functional_Programming
+     - fp
+     - functional programming
+     - functional-programming
+     - functional.programming
+     - functional_programming
+     - functionalprogramming
+
+12. Git
+   Patterns (3):
+     - GIT
+     - Git
+     - git
+
+13. GitHub
+   Patterns (3):
+     - GITHUB
+     - GitHub
+     - github
+
+14. GraphQL
+   Patterns (3):
+     - GRAPHQL
+     - GraphQL
+     - graphql
+
+15. Message Queues
+   Patterns (13):
+     - MESSAGE QUEUES
+     - MQ
+     - Message Queues
+     - Message-Queues
+     - Message.Queues
+     - MessageQueues
+     - Message_Queues
+     - message queues
+     - message-queues
+     - message.queues
+     - message_queues
+     - messagequeues
+     - mq
+
+16. Microservices
+   Patterns (3):
+     - MICROSERVICES
+     - Microservices
+     - microservices
+
+17. MongoDB
+   Patterns (3):
+     - MONGODB
+     - MongoDB
+     - mongodb
+
+18. Multiprocessing
+   Patterns (3):
+     - MULTIPROCESSING
+     - Multiprocessing
+     - multiprocessing
+
+19. Multithreading
+   Patterns (3):
+     - MULTITHREADING
+     - Multithreading
+     - multithreading
+
+20. NumPy
+   Patterns (3):
+     - NUMPY
+     - NumPy
+     - numpy
+
+21. Object-Oriented Programming
+   Patterns (13):
+     - OBJECT-ORIENTED PROGRAMMING
+     - OP
+     - Object-Oriented Programming
+     - Object-Oriented-Programming
+     - Object-Oriented.Programming
+     - Object-OrientedProgramming
+     - Object-Oriented_Programming
+     - object-oriented programming
+     - object-oriented-programming
+     - object-oriented.programming
+     - object-oriented_programming
+     - object-orientedprogramming
+     - op
+
+22. Pandas
+   Patterns (3):
+     - PANDAS
+     - Pandas
+     - pandas
+
+23. PostgreSQL
+   Patterns (3):
+     - POSTGRESQL
+     - PostgreSQL
+     - postgresql
+
+24. Pydantic
+   Patterns (3):
+     - PYDANTIC
+     - Pydantic
+     - pydantic
+
+25. Pytest
+   Patterns (3):
+     - PYTEST
+     - Pytest
+     - pytest
+
+26. Python Programming
+   Patterns (13):
+     - PP
+     - PYTHON PROGRAMMING
+     - Python Programming
+     - Python-Programming
+     - Python.Programming
+     - PythonProgramming
+     - Python_Programming
+     - pp
+     - python programming
+     - python-programming
+     - python.programming
+     - python_programming
+     - pythonprogramming
+
+27. REST API
+   Patterns (12):
+     - RA
+     - REST API
+     - REST-API
+     - REST.API
+     - RESTAPI
+     - REST_API
+     - ra
+     - rest api
+     - rest-api
+     - rest.api
+     - rest_api
+     - restapi
+
+28. RabbitMQ
+   Patterns (3):
+     - RABBITMQ
+     - RabbitMQ
+     - rabbitmq
+
+29. Redis
+   Patterns (3):
+     - REDIS
+     - Redis
+     - redis
+
+30. SQLAlchemy
+   Patterns (3):
+     - SQLALCHEMY
+     - SQLAlchemy
+     - sqlalchemy
+
+31. SciPy
+   Patterns (3):
+     - SCIPY
+     - SciPy
+     - scipy
+
+32. Scrapy
+   Patterns (3):
+     - SCRAPY
+     - Scrapy
+     - scrapy
+
+33. Type Hints
+   Patterns (13):
+     - TH
+     - TYPE HINTS
+     - Type Hints
+     - Type-Hints
+     - Type.Hints
+     - TypeHints
+     - Type_Hints
+     - th
+     - type hints
+     - type-hints
+     - type.hints
+     - type_hints
+     - typehints
+
+34. Unit Testing
+   Patterns (13):
+     - UNIT TESTING
+     - UT
+     - Unit Testing
+     - Unit-Testing
+     - Unit.Testing
+     - UnitTesting
+     - Unit_Testing
+     - unit testing
+     - unit-testing
+     - unit.testing
+     - unit_testing
+     - unittesting
+     - ut
+
+35. Web Scraping
+   Patterns (13):
+     - WEB SCRAPING
+     - WS
+     - Web Scraping
+     - Web-Scraping
+     - Web.Scraping
+     - WebScraping
+     - Web_Scraping
+     - web scraping
+     - web-scraping
+     - web.scraping
+     - web_scraping
+     - webscraping
+     - ws
+
+================================================================================
+COMMON CROSS-ROLE SKILLS - 20 SKILLS
+================================================================================
+
+1. Agile Methodology
+   Patterns (13):
+     - AGILE METHODOLOGY
+     - AM
+     - Agile Methodology
+     - Agile-Methodology
+     - Agile.Methodology
+     - AgileMethodology
+     - Agile_Methodology
+     - agile methodology
+     - agile-methodology
+     - agile.methodology
+     - agile_methodology
+     - agilemethodology
+     - am
+
+2. Bash Scripting
+   Patterns (13):
+     - BASH SCRIPTING
+     - BS
+     - Bash Scripting
+     - Bash-Scripting
+     - Bash.Scripting
+     - BashScripting
+     - Bash_Scripting
+     - bash scripting
+     - bash-scripting
+     - bash.scripting
+     - bash_scripting
+     - bashscripting
+     - bs
+
+3. Cloud Platforms
+   Patterns (13):
+     - CLOUD PLATFORMS
+     - CP
+     - Cloud Platforms
+     - Cloud-Platforms
+     - Cloud.Platforms
+     - CloudPlatforms
+     - Cloud_Platforms
+     - cloud platforms
+     - cloud-platforms
+     - cloud.platforms
+     - cloud_platforms
+     - cloudplatforms
+     - cp
+
+4. Code Review
+   Patterns (13):
+     - CODE REVIEW
+     - CR
+     - Code Review
+     - Code-Review
+     - Code.Review
+     - CodeReview
+     - Code_Review
+     - code review
+     - code-review
+     - code.review
+     - code_review
+     - codereview
+     - cr
+
+5. Collaboration
+   Patterns (3):
+     - COLLABORATION
+     - Collaboration
+     - collaboration
+
+6. Communication
+   Patterns (3):
+     - COMMUNICATION
+     - Communication
+     - communication
+
+7. Critical Thinking
+   Patterns (13):
+     - CRITICAL THINKING
+     - CT
+     - Critical Thinking
+     - Critical-Thinking
+     - Critical.Thinking
+     - CriticalThinking
+     - Critical_Thinking
+     - critical thinking
+     - critical-thinking
+     - critical.thinking
+     - critical_thinking
+     - criticalthinking
+     - ct
+
+8. Docker Containers
+   Patterns (13):
+     - DC
+     - DOCKER CONTAINERS
+     - Docker Containers
+     - Docker-Containers
+     - Docker.Containers
+     - DockerContainers
+     - Docker_Containers
+     - dc
+     - docker containers
+     - docker-containers
+     - docker.containers
+     - docker_containers
+     - dockercontainers
+
+9. Documentation
+   Patterns (3):
+     - DOCUMENTATION
+     - Documentation
+     - documentation
+
+10. Git Version Control
+   Patterns (13):
+     - GIT VERSION CONTROL
+     - GVC
+     - Git Version Control
+     - Git-Version-Control
+     - Git.Version.Control
+     - GitVersionControl
+     - Git_Version_Control
+     - git version control
+     - git-version-control
+     - git.version.control
+     - git_version_control
+     - gitversioncontrol
+     - gvc
+
+11. GitHub
+   Patterns (3):
+     - GITHUB
+     - GitHub
+     - github
+
+12. GitLab
+   Patterns (3):
+     - GITLAB
+     - GitLab
+     - gitlab
+
+13. JIRA
+   Patterns (2):
+     - JIRA
+     - jira
+
+14. Jupyter Notebooks
+   Patterns (13):
+     - JN
+     - JUPYTER NOTEBOOKS
+     - Jupyter Notebooks
+     - Jupyter-Notebooks
+     - Jupyter.Notebooks
+     - JupyterNotebooks
+     - Jupyter_Notebooks
+     - jn
+     - jupyter notebooks
+     - jupyter-notebooks
+     - jupyter.notebooks
+     - jupyter_notebooks
+     - jupyternotebooks
+
+15. Kubernetes
+   Patterns (3):
+     - KUBERNETES
+     - Kubernetes
+     - kubernetes
+
+16. Linux
+   Patterns (3):
+     - LINUX
+     - Linux
+     - linux
+
+17. Problem Solving
+   Patterns (13):
+     - PROBLEM SOLVING
+     - PS
+     - Problem Solving
+     - Problem-Solving
+     - Problem.Solving
+     - ProblemSolving
+     - Problem_Solving
+     - problem solving
+     - problem-solving
+     - problem.solving
+     - problem_solving
+     - problemsolving
+     - ps
+
+18. Scrum
+   Patterns (3):
+     - SCRUM
+     - Scrum
+     - scrum
+
+19. Technical Writing
+   Patterns (13):
+     - TECHNICAL WRITING
+     - TW
+     - Technical Writing
+     - Technical-Writing
+     - Technical.Writing
+     - TechnicalWriting
+     - Technical_Writing
+     - technical writing
+     - technical-writing
+     - technical.writing
+     - technical_writing
+     - technicalwriting
+     - tw
+
+20. VS Code
+   Patterns (13):
+     - VC
+     - VS CODE
+     - VS Code
+     - VS-Code
+     - VS.Code
+     - VSCode
+     - VS_Code
+     - vc
+     - vs code
+     - vs-code
+     - vs.code
+     - vs_code
+     - vscode
+
+================================================================================
+SUMMARY
+================================================================================
+Total Job Roles Covered: 7
+Total Specialized Skills: 226
+Total Patterns Generated: 1830
+Avg Patterns per Skill: 8.10
+
+Pattern Types: Original, lowercase, UPPERCASE, Acronyms,
+               Dot-separated, Hyphen-separated, No-spaces, Underscore-separated
+
+USE CASE: Job scraping for AI/GenAI/Data roles in 2025
+================================================================================
