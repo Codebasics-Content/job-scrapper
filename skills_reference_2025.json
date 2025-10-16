@@ -242,9 +242,14 @@
       ]
     },
     {
-      "name": "C",
+      "name": "C Programming",
       "patterns": [
-        "\\bc\\b"
+        "\\bC\\s+programming\\b",
+        "\\bc\\s+programming\\b",
+        "\\bC\\s+language\\b",
+        "\\bc\\s+language\\b",
+        "\\bC/C\\+\\+\\b",
+        "\\bc/c\\+\\+\\b"
       ]
     },
     {
@@ -1300,9 +1305,16 @@
       ]
     },
     {
-      "name": "R",
+      "name": "R Programming",
       "patterns": [
-        "\\br\\b"
+        "\\bR\\s+programming\\b",
+        "\\br\\s+programming\\b",
+        "\\bR\\s+language\\b",
+        "\\br\\s+language\\b",
+        "\\bR\\s+statistical\\b",
+        "\\br\\s+statistical\\b",
+        "\\bR\\s+Studio\\b",
+        "\\br\\s+studio\\b"
       ]
     },
     {
@@ -1366,10 +1378,13 @@
       ]
     },
     {
-      "name": "RL",
+      "name": "Reinforcement Learning",
       "patterns": [
         "\\bRL\\b",
-        "\\brl\\b"
+        "\\brl\\b",
+        "\\breinforcement\\s+learning\\b",
+        "\\bReinforcement\\s+Learning\\b",
+        "\\bREINFORCEMENT\\s+LEARNING\\b"
       ]
     },
     {
