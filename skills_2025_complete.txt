@@ -1,0 +1,1204 @@
+================================================================================
+2025 HARD SKILLS AND SOFT SKILLS - COMPREHENSIVE PATTERN LIST
+Generated: 2025-10-17 02:39:19
+================================================================================
+
+================================================================================
+HARD SKILLS (TECHNICAL SKILLS) - 79 SKILLS
+================================================================================
+
+1. 5G Technology
+   Patterns (11):
+     - 5G TECHNOLOGY
+     - 5G Technology
+     - 5G-Technology
+     - 5G.Technology
+     - 5GTechnology
+     - 5T
+     - 5g technology
+     - 5g-technology
+     - 5g.technology
+     - 5gtechnology
+     - 5t
+
+2. AR/VR
+   Patterns (2):
+     - AR/VR
+     - ar/vr
+
+3. AWS
+   Patterns (2):
+     - AWS
+     - aws
+
+4. Adobe XD
+   Patterns (11):
+     - ADOBE XD
+     - AX
+     - Adobe XD
+     - Adobe-XD
+     - Adobe.XD
+     - AdobeXD
+     - adobe xd
+     - adobe-xd
+     - adobe.xd
+     - adobexd
+     - ax
+
+5. Agile Methodology
+   Patterns (11):
+     - AGILE METHODOLOGY
+     - AM
+     - Agile Methodology
+     - Agile-Methodology
+     - Agile.Methodology
+     - AgileMethodology
+     - agile methodology
+     - agile-methodology
+     - agile.methodology
+     - agilemethodology
+     - am
+
+6. Android Development
+   Patterns (11):
+     - AD
+     - ANDROID DEVELOPMENT
+     - Android Development
+     - Android-Development
+     - Android.Development
+     - AndroidDevelopment
+     - ad
+     - android development
+     - android-development
+     - android.development
+     - androiddevelopment
+
+7. Apache Kafka
+   Patterns (11):
+     - AK
+     - APACHE KAFKA
+     - Apache Kafka
+     - Apache-Kafka
+     - Apache.Kafka
+     - ApacheKafka
+     - ak
+     - apache kafka
+     - apache-kafka
+     - apache.kafka
+     - apachekafka
+
+8. Apache Spark
+   Patterns (11):
+     - APACHE SPARK
+     - AS
+     - Apache Spark
+     - Apache-Spark
+     - Apache.Spark
+     - ApacheSpark
+     - apache spark
+     - apache-spark
+     - apache.spark
+     - apachespark
+     - as
+
+9. Artificial Intelligence
+   Patterns (11):
+     - AI
+     - ARTIFICIAL INTELLIGENCE
+     - Artificial Intelligence
+     - Artificial-Intelligence
+     - Artificial.Intelligence
+     - ArtificialIntelligence
+     - ai
+     - artificial intelligence
+     - artificial-intelligence
+     - artificial.intelligence
+     - artificialintelligence
+
+10. Azure
+   Patterns (3):
+     - AZURE
+     - Azure
+     - azure
+
+11. Big Data
+   Patterns (11):
+     - BD
+     - BIG DATA
+     - Big Data
+     - Big-Data
+     - Big.Data
+     - BigData
+     - bd
+     - big data
+     - big-data
+     - big.data
+     - bigdata
+
+12. Blockchain
+   Patterns (3):
+     - BLOCKCHAIN
+     - Blockchain
+     - blockchain
+
+13. Business Intelligence
+   Patterns (11):
+     - BI
+     - BUSINESS INTELLIGENCE
+     - Business Intelligence
+     - Business-Intelligence
+     - Business.Intelligence
+     - BusinessIntelligence
+     - bi
+     - business intelligence
+     - business-intelligence
+     - business.intelligence
+     - businessintelligence
+
+14. CI/CD
+   Patterns (2):
+     - CI/CD
+     - ci/cd
+
+15. Cloud Computing
+   Patterns (11):
+     - CC
+     - CLOUD COMPUTING
+     - Cloud Computing
+     - Cloud-Computing
+     - Cloud.Computing
+     - CloudComputing
+     - cc
+     - cloud computing
+     - cloud-computing
+     - cloud.computing
+     - cloudcomputing
+
+16. Computer Vision
+   Patterns (11):
+     - COMPUTER VISION
+     - CV
+     - Computer Vision
+     - Computer-Vision
+     - Computer.Vision
+     - ComputerVision
+     - computer vision
+     - computer-vision
+     - computer.vision
+     - computervision
+     - cv
+
+17. Cybersecurity
+   Patterns (3):
+     - CYBERSECURITY
+     - Cybersecurity
+     - cybersecurity
+
+18. Data Analysis
+   Patterns (11):
+     - DA
+     - DATA ANALYSIS
+     - Data Analysis
+     - Data-Analysis
+     - Data.Analysis
+     - DataAnalysis
+     - da
+     - data analysis
+     - data-analysis
+     - data.analysis
+     - dataanalysis
+
+19. Data Engineering
+   Patterns (11):
+     - DATA ENGINEERING
+     - DE
+     - Data Engineering
+     - Data-Engineering
+     - Data.Engineering
+     - DataEngineering
+     - data engineering
+     - data-engineering
+     - data.engineering
+     - dataengineering
+     - de
+
+20. Data Science
+   Patterns (11):
+     - DATA SCIENCE
+     - DS
+     - Data Science
+     - Data-Science
+     - Data.Science
+     - DataScience
+     - data science
+     - data-science
+     - data.science
+     - datascience
+     - ds
+
+21. Data Visualization
+   Patterns (11):
+     - DATA VISUALIZATION
+     - DV
+     - Data Visualization
+     - Data-Visualization
+     - Data.Visualization
+     - DataVisualization
+     - data visualization
+     - data-visualization
+     - data.visualization
+     - datavisualization
+     - dv
+
+22. Deep Learning
+   Patterns (11):
+     - DEEP LEARNING
+     - DL
+     - Deep Learning
+     - Deep-Learning
+     - Deep.Learning
+     - DeepLearning
+     - deep learning
+     - deep-learning
+     - deep.learning
+     - deeplearning
+     - dl
+
+23. DevOps
+   Patterns (3):
+     - DEVOPS
+     - DevOps
+     - devops
+
+24. Docker
+   Patterns (3):
+     - DOCKER
+     - Docker
+     - docker
+
+25. Edge Computing
+   Patterns (11):
+     - EC
+     - EDGE COMPUTING
+     - Edge Computing
+     - Edge-Computing
+     - Edge.Computing
+     - EdgeComputing
+     - ec
+     - edge computing
+     - edge-computing
+     - edge.computing
+     - edgecomputing
+
+26. Ethical Hacking
+   Patterns (11):
+     - EH
+     - ETHICAL HACKING
+     - Ethical Hacking
+     - Ethical-Hacking
+     - Ethical.Hacking
+     - EthicalHacking
+     - eh
+     - ethical hacking
+     - ethical-hacking
+     - ethical.hacking
+     - ethicalhacking
+
+27. Figma
+   Patterns (3):
+     - FIGMA
+     - Figma
+     - figma
+
+28. Flutter
+   Patterns (3):
+     - FLUTTER
+     - Flutter
+     - flutter
+
+29. Game Development
+   Patterns (11):
+     - GAME DEVELOPMENT
+     - GD
+     - Game Development
+     - Game-Development
+     - Game.Development
+     - GameDevelopment
+     - game development
+     - game-development
+     - game.development
+     - gamedevelopment
+     - gd
+
+30. Generative AI
+   Patterns (11):
+     - GA
+     - GENERATIVE AI
+     - Generative AI
+     - Generative-AI
+     - Generative.AI
+     - GenerativeAI
+     - ga
+     - generative ai
+     - generative-ai
+     - generative.ai
+     - generativeai
+
+31. Git
+   Patterns (3):
+     - GIT
+     - Git
+     - git
+
+32. GitHub
+   Patterns (3):
+     - GITHUB
+     - GitHub
+     - github
+
+33. GitLab
+   Patterns (3):
+     - GITLAB
+     - GitLab
+     - gitlab
+
+34. Google Cloud Platform
+   Patterns (11):
+     - GCP
+     - GOOGLE CLOUD PLATFORM
+     - Google Cloud Platform
+     - Google-Cloud-Platform
+     - Google.Cloud.Platform
+     - GoogleCloudPlatform
+     - gcp
+     - google cloud platform
+     - google-cloud-platform
+     - google.cloud.platform
+     - googlecloudplatform
+
+35. GraphQL
+   Patterns (3):
+     - GRAPHQL
+     - GraphQL
+     - graphql
+
+36. Hadoop
+   Patterns (3):
+     - HADOOP
+     - Hadoop
+     - hadoop
+
+37. Information Security
+   Patterns (11):
+     - INFORMATION SECURITY
+     - IS
+     - Information Security
+     - Information-Security
+     - Information.Security
+     - InformationSecurity
+     - information security
+     - information-security
+     - information.security
+     - informationsecurity
+     - is
+
+38. IoT
+   Patterns (3):
+     - IOT
+     - IoT
+     - iot
+
+39. JIRA
+   Patterns (2):
+     - JIRA
+     - jira
+
+40. JavaScript
+   Patterns (3):
+     - JAVASCRIPT
+     - JavaScript
+     - javascript
+
+41. Kanban
+   Patterns (3):
+     - KANBAN
+     - Kanban
+     - kanban
+
+42. Kubernetes
+   Patterns (3):
+     - KUBERNETES
+     - Kubernetes
+     - kubernetes
+
+43. LLMOps
+   Patterns (3):
+     - LLMOPS
+     - LLMOps
+     - llmops
+
+44. Looker
+   Patterns (3):
+     - LOOKER
+     - Looker
+     - looker
+
+45. MLOps
+   Patterns (3):
+     - MLOPS
+     - MLOps
+     - mlops
+
+46. Machine Learning
+   Patterns (11):
+     - MACHINE LEARNING
+     - ML
+     - Machine Learning
+     - Machine-Learning
+     - Machine.Learning
+     - MachineLearning
+     - machine learning
+     - machine-learning
+     - machine.learning
+     - machinelearning
+     - ml
+
+47. Microservices
+   Patterns (3):
+     - MICROSERVICES
+     - Microservices
+     - microservices
+
+48. Mobile Development
+   Patterns (11):
+     - MD
+     - MOBILE DEVELOPMENT
+     - Mobile Development
+     - Mobile-Development
+     - Mobile.Development
+     - MobileDevelopment
+     - md
+     - mobile development
+     - mobile-development
+     - mobile.development
+     - mobiledevelopment
+
+49. MongoDB
+   Patterns (3):
+     - MONGODB
+     - MongoDB
+     - mongodb
+
+50. Natural Language Processing
+   Patterns (11):
+     - NATURAL LANGUAGE PROCESSING
+     - NLP
+     - Natural Language Processing
+     - Natural-Language-Processing
+     - Natural.Language.Processing
+     - NaturalLanguageProcessing
+     - natural language processing
+     - natural-language-processing
+     - natural.language.processing
+     - naturallanguageprocessing
+     - nlp
+
+51. Network Security
+   Patterns (11):
+     - NETWORK SECURITY
+     - NS
+     - Network Security
+     - Network-Security
+     - Network.Security
+     - NetworkSecurity
+     - network security
+     - network-security
+     - network.security
+     - networksecurity
+     - ns
+
+52. Next.js
+   Patterns (3):
+     - NEXT.JS
+     - Next.js
+     - next.js
+
+53. NoSQL
+   Patterns (3):
+     - NOSQL
+     - NoSQL
+     - nosql
+
+54. Node.js
+   Patterns (3):
+     - NODE.JS
+     - Node.js
+     - node.js
+
+55. Penetration Testing
+   Patterns (11):
+     - PENETRATION TESTING
+     - PT
+     - Penetration Testing
+     - Penetration-Testing
+     - Penetration.Testing
+     - PenetrationTesting
+     - penetration testing
+     - penetration-testing
+     - penetration.testing
+     - penetrationtesting
+     - pt
+
+56. PostgreSQL
+   Patterns (3):
+     - POSTGRESQL
+     - PostgreSQL
+     - postgresql
+
+57. Power BI
+   Patterns (11):
+     - PB
+     - POWER BI
+     - Power BI
+     - Power-BI
+     - Power.BI
+     - PowerBI
+     - pb
+     - power bi
+     - power-bi
+     - power.bi
+     - powerbi
+
+58. Project Management
+   Patterns (11):
+     - PM
+     - PROJECT MANAGEMENT
+     - Project Management
+     - Project-Management
+     - Project.Management
+     - ProjectManagement
+     - pm
+     - project management
+     - project-management
+     - project.management
+     - projectmanagement
+
+59. PyTorch
+   Patterns (3):
+     - PYTORCH
+     - PyTorch
+     - pytorch
+
+60. Python Programming
+   Patterns (11):
+     - PP
+     - PYTHON PROGRAMMING
+     - Python Programming
+     - Python-Programming
+     - Python.Programming
+     - PythonProgramming
+     - pp
+     - python programming
+     - python-programming
+     - python.programming
+     - pythonprogramming
+
+61. Quantum Computing
+   Patterns (11):
+     - QC
+     - QUANTUM COMPUTING
+     - Quantum Computing
+     - Quantum-Computing
+     - Quantum.Computing
+     - QuantumComputing
+     - qc
+     - quantum computing
+     - quantum-computing
+     - quantum.computing
+     - quantumcomputing
+
+62. REST API
+   Patterns (10):
+     - RA
+     - REST API
+     - REST-API
+     - REST.API
+     - RESTAPI
+     - ra
+     - rest api
+     - rest-api
+     - rest.api
+     - restapi
+
+63. React
+   Patterns (3):
+     - REACT
+     - React
+     - react
+
+64. React Native
+   Patterns (11):
+     - REACT NATIVE
+     - RN
+     - React Native
+     - React-Native
+     - React.Native
+     - ReactNative
+     - react native
+     - react-native
+     - react.native
+     - reactnative
+     - rn
+
+65. SQL
+   Patterns (2):
+     - SQL
+     - sql
+
+66. Scikit-learn
+   Patterns (3):
+     - SCIKIT-LEARN
+     - Scikit-learn
+     - scikit-learn
+
+67. Scrum
+   Patterns (3):
+     - SCRUM
+     - Scrum
+     - scrum
+
+68. Serverless Architecture
+   Patterns (11):
+     - SA
+     - SERVERLESS ARCHITECTURE
+     - Serverless Architecture
+     - Serverless-Architecture
+     - Serverless.Architecture
+     - ServerlessArchitecture
+     - sa
+     - serverless architecture
+     - serverless-architecture
+     - serverless.architecture
+     - serverlessarchitecture
+
+69. Smart Contracts
+   Patterns (11):
+     - SC
+     - SMART CONTRACTS
+     - Smart Contracts
+     - Smart-Contracts
+     - Smart.Contracts
+     - SmartContracts
+     - sc
+     - smart contracts
+     - smart-contracts
+     - smart.contracts
+     - smartcontracts
+
+70. Tableau
+   Patterns (3):
+     - TABLEAU
+     - Tableau
+     - tableau
+
+71. TensorFlow
+   Patterns (3):
+     - TENSORFLOW
+     - TensorFlow
+     - tensorflow
+
+72. TypeScript
+   Patterns (3):
+     - TYPESCRIPT
+     - TypeScript
+     - typescript
+
+73. UI/UX Design
+   Patterns (11):
+     - UD
+     - UI/UX DESIGN
+     - UI/UX Design
+     - UI/UX-Design
+     - UI/UX.Design
+     - UI/UXDesign
+     - ud
+     - ui/ux design
+     - ui/ux-design
+     - ui/ux.design
+     - ui/uxdesign
+
+74. Unity
+   Patterns (3):
+     - UNITY
+     - Unity
+     - unity
+
+75. Unreal Engine
+   Patterns (11):
+     - UE
+     - UNREAL ENGINE
+     - Unreal Engine
+     - Unreal-Engine
+     - Unreal.Engine
+     - UnrealEngine
+     - ue
+     - unreal engine
+     - unreal-engine
+     - unreal.engine
+     - unrealengine
+
+76. User Research
+   Patterns (11):
+     - UR
+     - USER RESEARCH
+     - User Research
+     - User-Research
+     - User.Research
+     - UserResearch
+     - ur
+     - user research
+     - user-research
+     - user.research
+     - userresearch
+
+77. Web3
+   Patterns (3):
+     - WEB3
+     - Web3
+     - web3
+
+78. Wireframing
+   Patterns (3):
+     - WIREFRAMING
+     - Wireframing
+     - wireframing
+
+79. iOS Development
+   Patterns (11):
+     - ID
+     - IOS DEVELOPMENT
+     - iOS Development
+     - iOS-Development
+     - iOS.Development
+     - iOSDevelopment
+     - id
+     - ios development
+     - ios-development
+     - ios.development
+     - iosdevelopment
+
+================================================================================
+SOFT SKILLS (INTERPERSONAL SKILLS) - 40 SKILLS
+================================================================================
+
+1. Accountability
+   Patterns (3):
+     - ACCOUNTABILITY
+     - Accountability
+     - accountability
+
+2. Active Listening
+   Patterns (11):
+     - ACTIVE LISTENING
+     - AL
+     - Active Listening
+     - Active-Listening
+     - Active.Listening
+     - ActiveListening
+     - active listening
+     - active-listening
+     - active.listening
+     - activelistening
+     - al
+
+3. Adaptability
+   Patterns (3):
+     - ADAPTABILITY
+     - Adaptability
+     - adaptability
+
+4. Attention to Detail
+   Patterns (11):
+     - ATD
+     - ATTENTION TO DETAIL
+     - Attention to Detail
+     - Attention-to-Detail
+     - Attention.to.Detail
+     - AttentiontoDetail
+     - atd
+     - attention to detail
+     - attention-to-detail
+     - attention.to.detail
+     - attentiontodetail
+
+5. Change Management
+   Patterns (11):
+     - CHANGE MANAGEMENT
+     - CM
+     - Change Management
+     - Change-Management
+     - Change.Management
+     - ChangeManagement
+     - change management
+     - change-management
+     - change.management
+     - changemanagement
+     - cm
+
+6. Coaching
+   Patterns (3):
+     - COACHING
+     - Coaching
+     - coaching
+
+7. Collaboration
+   Patterns (3):
+     - COLLABORATION
+     - Collaboration
+     - collaboration
+
+8. Communication
+   Patterns (3):
+     - COMMUNICATION
+     - Communication
+     - communication
+
+9. Conflict Resolution
+   Patterns (11):
+     - CONFLICT RESOLUTION
+     - CR
+     - Conflict Resolution
+     - Conflict-Resolution
+     - Conflict.Resolution
+     - ConflictResolution
+     - conflict resolution
+     - conflict-resolution
+     - conflict.resolution
+     - conflictresolution
+     - cr
+
+10. Creativity
+   Patterns (3):
+     - CREATIVITY
+     - Creativity
+     - creativity
+
+11. Critical Thinking
+   Patterns (11):
+     - CRITICAL THINKING
+     - CT
+     - Critical Thinking
+     - Critical-Thinking
+     - Critical.Thinking
+     - CriticalThinking
+     - critical thinking
+     - critical-thinking
+     - critical.thinking
+     - criticalthinking
+     - ct
+
+12. Cultural Awareness
+   Patterns (11):
+     - CA
+     - CULTURAL AWARENESS
+     - Cultural Awareness
+     - Cultural-Awareness
+     - Cultural.Awareness
+     - CulturalAwareness
+     - ca
+     - cultural awareness
+     - cultural-awareness
+     - cultural.awareness
+     - culturalawareness
+
+13. Customer Service
+   Patterns (11):
+     - CS
+     - CUSTOMER SERVICE
+     - Customer Service
+     - Customer-Service
+     - Customer.Service
+     - CustomerService
+     - cs
+     - customer service
+     - customer-service
+     - customer.service
+     - customerservice
+
+14. Decision Making
+   Patterns (11):
+     - DECISION MAKING
+     - DM
+     - Decision Making
+     - Decision-Making
+     - Decision.Making
+     - DecisionMaking
+     - decision making
+     - decision-making
+     - decision.making
+     - decisionmaking
+     - dm
+
+15. Diversity and Inclusion
+   Patterns (11):
+     - DAI
+     - DIVERSITY AND INCLUSION
+     - Diversity and Inclusion
+     - Diversity-and-Inclusion
+     - Diversity.and.Inclusion
+     - DiversityandInclusion
+     - dai
+     - diversity and inclusion
+     - diversity-and-inclusion
+     - diversity.and.inclusion
+     - diversityandinclusion
+
+16. Emotional Intelligence
+   Patterns (11):
+     - EI
+     - EMOTIONAL INTELLIGENCE
+     - Emotional Intelligence
+     - Emotional-Intelligence
+     - Emotional.Intelligence
+     - EmotionalIntelligence
+     - ei
+     - emotional intelligence
+     - emotional-intelligence
+     - emotional.intelligence
+     - emotionalintelligence
+
+17. Empathy
+   Patterns (3):
+     - EMPATHY
+     - Empathy
+     - empathy
+
+18. Flexibility
+   Patterns (3):
+     - FLEXIBILITY
+     - Flexibility
+     - flexibility
+
+19. Growth Mindset
+   Patterns (11):
+     - GM
+     - GROWTH MINDSET
+     - Growth Mindset
+     - Growth-Mindset
+     - Growth.Mindset
+     - GrowthMindset
+     - gm
+     - growth mindset
+     - growth-mindset
+     - growth.mindset
+     - growthmindset
+
+20. Innovation
+   Patterns (3):
+     - INNOVATION
+     - Innovation
+     - innovation
+
+21. Integrity
+   Patterns (3):
+     - INTEGRITY
+     - Integrity
+     - integrity
+
+22. Interpersonal Skills
+   Patterns (11):
+     - INTERPERSONAL SKILLS
+     - IS
+     - Interpersonal Skills
+     - Interpersonal-Skills
+     - Interpersonal.Skills
+     - InterpersonalSkills
+     - interpersonal skills
+     - interpersonal-skills
+     - interpersonal.skills
+     - interpersonalskills
+     - is
+
+23. Leadership
+   Patterns (3):
+     - LEADERSHIP
+     - Leadership
+     - leadership
+
+24. Marketing
+   Patterns (3):
+     - MARKETING
+     - Marketing
+     - marketing
+
+25. Mentoring
+   Patterns (3):
+     - MENTORING
+     - Mentoring
+     - mentoring
+
+26. Negotiation
+   Patterns (3):
+     - NEGOTIATION
+     - Negotiation
+     - negotiation
+
+27. Networking
+   Patterns (3):
+     - NETWORKING
+     - Networking
+     - networking
+
+28. Organization
+   Patterns (3):
+     - ORGANIZATION
+     - Organization
+     - organization
+
+29. Presentation Skills
+   Patterns (11):
+     - PRESENTATION SKILLS
+     - PS
+     - Presentation Skills
+     - Presentation-Skills
+     - Presentation.Skills
+     - PresentationSkills
+     - presentation skills
+     - presentation-skills
+     - presentation.skills
+     - presentationskills
+     - ps
+
+30. Problem Solving
+   Patterns (11):
+     - PROBLEM SOLVING
+     - PS
+     - Problem Solving
+     - Problem-Solving
+     - Problem.Solving
+     - ProblemSolving
+     - problem solving
+     - problem-solving
+     - problem.solving
+     - problemsolving
+     - ps
+
+31. Public Speaking
+   Patterns (11):
+     - PS
+     - PUBLIC SPEAKING
+     - Public Speaking
+     - Public-Speaking
+     - Public.Speaking
+     - PublicSpeaking
+     - ps
+     - public speaking
+     - public-speaking
+     - public.speaking
+     - publicspeaking
+
+32. Resilience
+   Patterns (3):
+     - RESILIENCE
+     - Resilience
+     - resilience
+
+33. Sales
+   Patterns (3):
+     - SALES
+     - Sales
+     - sales
+
+34. Self Motivation
+   Patterns (11):
+     - SELF MOTIVATION
+     - SM
+     - Self Motivation
+     - Self-Motivation
+     - Self.Motivation
+     - SelfMotivation
+     - self motivation
+     - self-motivation
+     - self.motivation
+     - selfmotivation
+     - sm
+
+35. Storytelling
+   Patterns (3):
+     - STORYTELLING
+     - Storytelling
+     - storytelling
+
+36. Strategic Thinking
+   Patterns (11):
+     - ST
+     - STRATEGIC THINKING
+     - Strategic Thinking
+     - Strategic-Thinking
+     - Strategic.Thinking
+     - StrategicThinking
+     - st
+     - strategic thinking
+     - strategic-thinking
+     - strategic.thinking
+     - strategicthinking
+
+37. Stress Management
+   Patterns (11):
+     - SM
+     - STRESS MANAGEMENT
+     - Stress Management
+     - Stress-Management
+     - Stress.Management
+     - StressManagement
+     - sm
+     - stress management
+     - stress-management
+     - stress.management
+     - stressmanagement
+
+38. Teamwork
+   Patterns (3):
+     - TEAMWORK
+     - Teamwork
+     - teamwork
+
+39. Time Management
+   Patterns (11):
+     - TIME MANAGEMENT
+     - TM
+     - Time Management
+     - Time-Management
+     - Time.Management
+     - TimeManagement
+     - time management
+     - time-management
+     - time.management
+     - timemanagement
+     - tm
+
+40. Work Ethic
+   Patterns (11):
+     - WE
+     - WORK ETHIC
+     - Work Ethic
+     - Work-Ethic
+     - Work.Ethic
+     - WorkEthic
+     - we
+     - work ethic
+     - work-ethic
+     - work.ethic
+     - workethic
+
+================================================================================
+SUMMARY
+================================================================================
+Total Hard Skills: 79
+Total Soft Skills: 40
+Total Skills: 119
+Total Patterns Generated: 823
+Avg Patterns per Skill: 6.92
+
+Pattern Types: Original, lowercase, UPPERCASE, Acronyms, Dot-separated, Hyphen-separated, No-spaces
+================================================================================
