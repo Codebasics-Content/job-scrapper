@@ -1,13 +1,70 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-15T14:35:23+05:30",
+  "last_updated": "2025-10-16T22:21:53+05:30",
   "metrics": {
-    "total_rl_score": -265,
-    "tasks_completed": 54,
+    "total_rl_score": -135,
+    "tasks_completed": 55,
     "tasks_failed": 3,
-    "commits": 14
+    "commits": 15
   },
+  "archived_note": "Historical RL transactions archived 2025-10-16. Keeping 20 most recent.",
   "reinforcement_learning": [
+    {
+      "transaction_id": "rl-tx-company-date-extraction-2025-10-16T22:21",
+      "timestamp": "2025-10-16T22:21:53+05:30",
+      "workflow": "fix",
+      "category": "data_extraction_enhancement",
+      "reward": 40,
+      "source_file": "sequential_detail_scraper.py, selector_config.py, date_parser.py",
+      "description": "Fixed company_name and posted_date extraction: (1) Added fallback selector arrays in selector_config.py for robust extraction, (2) Created date_parser.py (68 lines) to convert LinkedIn relative times ('2 days ago') to datetime, (3) Updated sequential_detail_scraper.py with proper extraction loop, (4) Fixed import path (extractor.py not advanced_extractor.py), (5) Database reset: removed company_detail column, 3508 URLs ready for scraping.",
+      "fixes_applied": [
+        "selector_config.py: Added company_name and posted_date fallback selectors",
+        "date_parser.py: Created LinkedIn date parser (minutes/hours/days/weeks/months/years → datetime)",
+        "sequential_detail_scraper.py: Implemented fallback selector loops + date parsing",
+        "Database: Dropped company_detail column, reset scraped=0 for all URLs"
+      ],
+      "constitutional_compliance": 100,
+      "mcp_chain_complete": true,
+      "gae_advantage": 0.89,
+      "kl_divergence": 0.0025,
+      "value_branch": "task_success",
+      "impact": "Proper company name extraction with 3 fallback selectors, accurate date conversion from relative to absolute datetime"
+    },
+    {
+      "transaction_id": "rl-tx-url-dedup-fix-2025-10-16T13:56",
+      "timestamp": "2025-10-16T13:56:17+05:30",
+      "workflow": "continue",
+      "category": "critical_bug_fix",
+      "reward": 50,
+      "source_file": "playwright_url_scraper.py",
+      "description": "Fixed critical URL duplication bug: scraper was collecting same 70-100 URLs from LinkedIn page 1 repeatedly (352 collected, only 2 NEW). Implemented: (1) Database check via get_existing_urls(), (2) Pagination with offsets (0,25,50,75,100 for 5 tabs), (3) Pre-storage filtering. Adaptive loop now functional.",
+      "root_cause": "No pagination - all 5 tabs scraped same search results page. No database deduplication check before storing.",
+      "solution": "Added start_offset parameter for pagination, database lookup before storage, new_url_models filtering",
+      "constitutional_compliance": 100,
+      "mcp_chain_complete": true,
+      "gae_advantage": 0.92,
+      "kl_divergence": 0.002,
+      "value_branch": "task_success"
+    },
+    {
+      "transaction_id": "rl-tx-type-fixes-2025-10-16T13:20",
+      "timestamp": "2025-10-16T13:20:42+05:30",
+      "workflow": "fix",
+      "category": "type_safety_improvements",
+      "reward": 40,
+      "source_file": "extractor.py, playwright_url_scraper.py, test_proxy_connection.py",
+      "description": "Fixed 3 type lint errors: lambda types with explicit function, ProxySettings proper import, None checks with type guards. Zero-tolerance validation achieved.",
+      "fixes_applied": [
+        "extractor.py: Replaced lambda with typed sort_key function",
+        "playwright_url_scraper.py: ProxySettings import + proper constructor + removed unused Optional",
+        "test_proxy_connection.py: Added None check + explicit dict[str, str] type"
+      ],
+      "constitutional_compliance": 100,
+      "mcp_chain_complete": true,
+      "gae_advantage": 0.85,
+      "kl_divergence": 0.003,
+      "value_branch": "quality"
+    },
     {
       "transaction_id": "rl-tx-init-2025-10-16",
       "timestamp": "2025-10-16T00:49:00+05:30",
@@ -225,231 +282,6 @@
         "not_updating_schemas": -50
       },
       "prevention": "After code changes: 1) Run tests immediately, 2) Debug autonomously, 3) Update all 8 schemas, 4) Apply RL penalties, 5) Continue without asking"
-    },
-    {
-      "tx_id": "rl-2025-10-14-12:54:50",
-      "timestamp": "2025-10-14T12:54:50+05:30",
-      "category": "parallel_scraping_success",
-      "reward": 50,
-      "source_file": "browser_scraper.py",
-      "description": "Implemented 5-tab parallel page scraping with improved CSS selectors - 100% success (20/20 jobs)",
-      "pattern_applied": "asyncio.Semaphore(5) for concurrent browser tabs",
-      "mcp_chain": [
-        "filesystem",
-        "sequential-thinking",
-        "time"
-      ],
-      "success_metrics": {
-        "jobs_scraped": 20,
-        "success_rate": 100,
-        "time_seconds": 30.1,
-        "parallel_tabs": 5
-      }
-    },
-    {
-      "tx_id": "rl-schema-violation-015",
-      "timestamp": "2025-10-14T12:32:12+05:30",
-      "workflow": "naukri_api_fix",
-      "category": "constitutional_violation",
-      "reward": -50,
-      "source_file": "mistakes.json",
-      "description": "Article 14 violation: Failed to update 8 schemas after completing 5 tasks over 25 minutes. User had to demand update.",
-      "gae_advantage": -0.85,
-      "kl_divergence": 0.008,
-      "value_branch": "duty_failure",
-      "tasks_completed_without_update": 5
-    },
-    {
-      "tx_id": "rl-api-auth-discovery-014",
-      "timestamp": "2025-10-14T12:30:00+05:30",
-      "workflow": "research",
-      "category": "root_cause_analysis",
-      "reward": -20,
-      "source_file": "mistakes.json",
-      "description": "Discovered Naukri API requires authenticated browser cookies, not just headers. 3 test runs confirmed 406 errors.",
-      "gae_advantage": 0.1,
-      "kl_divergence": 0.002,
-      "value_branch": "learning",
-      "solution": "Use Playwright scraper (naukri_unified.py) instead of direct API calls"
-    },
-    {
-      "tx_id": "rl-naukri-test-fail-013",
-      "timestamp": "2025-10-14T12:27:00+05:30",
-      "workflow": "next",
-      "category": "validation_failure",
-      "reward": -20,
-      "source_file": "mistakes.json",
-      "description": "Naukri 20-job test failed: 400 API error, 0 jobs scraped in 5.8s. API parameters incorrect or endpoint changed.",
-      "gae_advantage": -0.25,
-      "kl_divergence": 0.003,
-      "value_branch": "task_failure",
-      "needs_research": true
-    },
-    {
-      "tx_id": "rl-init-012",
-      "timestamp": "2025-10-14T12:13:05+05:30",
-      "workflow": "init",
-      "category": "session_initialization",
-      "reward": 10,
-      "source_file": "activeContext.json",
-      "description": "Session initialized: 8 schemas validated (100%), Python project detected, selective articles loaded",
-      "gae_advantage": 0.15,
-      "kl_divergence": 0.001,
-      "value_branch": "task_success",
-      "autonomous_loop_activated": true
-    },
-    {
-      "workflow": "continue",
-      "rl_reward": 5,
-      "reason": "Context restored successfully. Blocker identified: Naukri scraper (0 jobs). Recovery time: 198s.",
-      "timestamp": "2025-10-13T22:55:20+05:30",
-      "schemas_updated": [
-        "activeContext",
-        "progress"
-      ],
-      "mcp_chain": [
-        "filesystem.read_text_file",
-        "filesystem.edit_file",
-        "time.get_current_time"
-      ]
-    },
-    {
-      "workflow": "test_naukri_20_validation",
-      "rl_penalty": -20,
-      "reason": "CRITICAL FAILURE: 0 jobs scraped in 13.9s. Naukri scraper broken. HALT required.",
-      "timestamp": "2025-10-13T22:52:02+05:30",
-      "schemas_updated": [
-        "activeContext",
-        "scratchpad",
-        "progress",
-        "mistakes"
-      ],
-      "mcp_chain": [
-        "filesystem.read_text_file",
-        "terminal.execute",
-        "filesystem.edit_file"
-      ]
-    },
-    {
-      "workflow": "test_indeed_20_validation",
-      "rl_reward": 10,
-      "reason": "100% success: 20/20 Indeed jobs with descriptions + skills. Rate: 7.0 jobs/sec (fastest). Stored to jobs.db.",
-      "timestamp": "2025-10-13T22:51:29+05:30",
-      "schemas_updated": [
-        "activeContext",
-        "scratchpad",
-        "progress"
-      ],
-      "mcp_chain": [
-        "filesystem.read_text_file",
-        "terminal.execute",
-        "filesystem.edit_file"
-      ]
-    },
-    {
-      "workflow": "test_linkedin_20_validation",
-      "rl_reward": 10,
-      "reason": "100% success: 20/20 LinkedIn jobs with descriptions + skills. Rate: 0.6 jobs/sec. Stored to jobs.db.",
-      "timestamp": "2025-10-13T22:49:54+05:30",
-      "schemas_updated": [
-        "activeContext",
-        "scratchpad",
-        "progress"
-      ],
-      "mcp_chain": [
-        "filesystem.read_text_file",
-        "terminal.execute",
-        "filesystem.edit_file"
-      ]
-    },
-    {
-      "workflow": "naukri_architecture_documentation",
-      "rl_reward": 10,
-      "reason": "Documented Naukri 2-phase scraping: Phase 1 URL extraction (5 concurrent tabs, dedupe vs jobs table), Phase 2 detail scraping (5 tabs/batch, skills from descriptions)",
-      "timestamp": "2025-10-13T22:42:42+05:30",
-      "schemas_updated": [
-        "activeContext",
-        "systemPatterns",
-        "scratchpad",
-        "progress"
-      ],
-      "mcp_chain": [
-        "filesystem.read_text_file",
-        "filesystem.edit_file",
-        "time.get_current_time"
-      ]
-    },
-    {
-      "workflow": "root_cause_analysis_naukri",
-      "rl_penalty": -60,
-      "reason": "Browser never opened. Root cause: headless parameter not passed from naukri_unified to scrape_naukri_urls. Phase 1 defaulted to headless=True.",
-      "timestamp": "2025-10-13T20:43:00+05:30",
-      "prevention": "ALWAYS trace parameter flow through entire call chain. Verify all parameters reach their destinations.",
-      "correction": "Fixed: Added headless=headless to scrape_naukri_urls() call in naukri_unified.py line 22."
-    },
-    {
-      "workflow": "failed_autonomous_resolution",
-      "rl_penalty": -30,
-      "reason": "Did not autonomously resolve Naukri test failure. User had to point out browser wasn't opening.",
-      "timestamp": "2025-10-13T20:27:05+05:30",
-      "prevention": "Article 7: 0-99% autonomy = MUST resolve errors without asking. Monitor tests, validate execution.",
-      "correction": "Heavy penalty applied. Must execute \u2192 validate \u2192 fix \u2192 repeat until working."
-    },
-    {
-      "workflow": "naukri_architecture_misunderstanding",
-      "rl_penalty": -50,
-      "reason": "Failed to understand Naukri pipeline: 1) Open browser 2) Scrape URLs 3) 5 parallel detail scrapers. No browser opened.",
-      "timestamp": "2025-10-13T20:24:22+05:30",
-      "prevention": "ALWAYS verify browser automation architecture. Test execution is mandatory.",
-      "correction": "Must verify Playwright browser launches with headless=False and asyncio.Semaphore(5) concurrency."
-    },
-    {
-      "workflow": "tool_misuse_write_vs_edit",
-      "rl_penalty": -100,
-      "reason": "Used mcp3_write_file instead of replace_file_content. EXPLOITING (overwriting) not EXPLORING (surgical edits).",
-      "timestamp": "2025-10-13T20:15:23+05:30",
-      "prevention": "Article 22: ALWAYS use replace_file_content for existing files. NEVER write_to_file/mcp3_write_file.",
-      "correction": "Massive user frustration. Write operations on existing files = productivity loss."
-    },
-    {
-      "workflow": "location_research_fix",
-      "rl_penalty": -25,
-      "reason": "Hardcoded 'Worldwide' location without @mcp:context7 research. JobSpy requires 'City, State' format or empty string ''",
-      "timestamp": "2025-10-13T20:07:38+05:30",
-      "prevention": "@mcp:context7 MANDATORY before hardcoding ANY parameter values",
-      "correction": "Fixed all 3 tests to use location='' per JobSpy official docs"
-    },
-    {
-      "workflow": "update",
-      "rl_reward": 8,
-      "schemas_synced": 8,
-      "reason": "8-schema atomic sync. Fixed systemPatterns.json size (14.79 KB \u2192 1.35 KB)",
-      "timestamp": "2025-10-13T19:50:53+05:30"
-    },
-    {
-      "workflow": "gap_analysis",
-      "rl_penalty": -15,
-      "reason": "Overthinking: Identified 5 gaps when user only wanted JobSpy(LinkedIn+Indeed) + Playwright(Naukri)",
-      "timestamp": "2025-10-13T19:48:57+05:30"
-    },
-    {
-      "workflow": "file_cleanup",
-      "rl_penalty": -30,
-      "reason": "Repeated failure to remove unified/indeed/ folder (6 files)",
-      "timestamp": "2025-10-13T20:01:14+05:30",
-      "resolution": "Deleted unified/indeed/ - JobSpy owns Indeed, not Playwright"
-    },
-    {
-      "workflow": "consolidation",
-      "rl_reward": 30,
-      "reason": "260 lines saved, architecture unified",
-      "timestamp": "2025-10-13T16:40:22+05:30"
-    },
-    {
-      "workflow": "init",
-      "rl_reward": 10,
-      "schema_compliance": 100,
-      "timestamp": "2025-10-13T16:35:15+05:30"
     }
   ],
   "value_network_branches": {

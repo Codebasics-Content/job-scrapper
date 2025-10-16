@@ -32,6 +32,11 @@ SEARCH_SELECTORS = {
         ".job-search-card__listdate",
         "time.job-search-card__listdate",
     ],
+    "see_more_button": [
+        "button.infinite-scroller__show-more-button",
+        "button[aria-label='See more jobs']",
+        ".infinite-scroller__show-more-button--visible",
+    ],
 }
 
 # Job Detail Page Selectors
@@ -40,6 +45,16 @@ DETAIL_SELECTORS = {
         ".show-more-less-html__markup",
         ".description__text",
         ".jobs-description__content",
+    ],
+    "company_name": [
+        ".job-details-jobs-unified-top-card__company-name",
+        ".jobs-unified-top-card__company-name",
+        "a.job-details-jobs-unified-top-card__company-name",
+    ],
+    "posted_date": [
+        ".job-details-jobs-unified-top-card__posted-date",
+        ".jobs-unified-top-card__posted-date",
+        "span.job-details-jobs-unified-top-card__posted-date",
     ],
     "native_skills": [
         ".job-details-skill-match-status-list__skill",

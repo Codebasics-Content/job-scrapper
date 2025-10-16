@@ -17,7 +17,7 @@ class SchemaManager:
         self.connection = connection
     
     def create_job_urls_table(self) -> None:
-        """Table 1: Lightweight URL collection"""
+        """Table 1: Lightweight URL collection with scraped tracking"""
         with self.connection.get_connection_context() as conn:
             conn.execute("""
                 CREATE TABLE IF NOT EXISTS job_urls (
@@ -26,11 +26,18 @@ class SchemaManager:
                     input_role TEXT NOT NULL,
                     actual_role TEXT NOT NULL,
                     url TEXT NOT NULL,
+                    scraped INTEGER DEFAULT 0,
                     UNIQUE(platform, url)
                 )
             """)
+            # Migration: Add scraped column to existing tables
+            try:
+                conn.execute("ALTER TABLE job_urls ADD COLUMN scraped INTEGER DEFAULT 0")
+                logger.info("Added 'scraped' column to existing job_urls table")
+            except Exception:
+                pass  # Column already exists
             conn.commit()
-            logger.info("Created/verified job_urls table")
+            logger.info("Created/verified job_urls table with scraped tracking")
     
     def create_jobs_table(self) -> None:
         """Table 2: Full job details with foreign key"""
@@ -44,7 +51,6 @@ class SchemaManager:
                     job_description TEXT,
                     skills TEXT,
                     company_name TEXT,
-                    company_detail TEXT,
                     posted_date TEXT,
                     scraped_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY (job_id) REFERENCES job_urls(job_id)
@@ -58,10 +64,11 @@ class SchemaManager:
         with self.connection.get_connection_context() as conn:
             conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_platform_role ON job_urls(platform, input_role)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_url ON job_urls(url)")
+            conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_scraped ON job_urls(scraped)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_jobs_platform ON jobs(platform)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_jobs_url ON jobs(url)")
             conn.commit()
-            logger.info("Created all indexes")
+            logger.info("Created all indexes with scraped tracking")
     
     def initialize_schema(self) -> None:
         """Initialize two-table schema with indexes"""
