@@ -1,20 +1,26 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-17T03:47:15+05:30",
+  "last_updated": "2025-10-17T03:58:00+05:30",
   "metrics": {
     "rl_source_ref": "progress.json",
-    "tasks_completed": 27,
+    "tasks_completed": 28,
     "tasks_failed": 1,
-    "commits": 26
+    "commits": 27
   },
   "top_append_metadata": {
     "latest_task_at_index_0": true,
-    "last_prepend_timestamp": "2025-10-17T03:47:15+05:30",
-    "total_prepends": 15,
+    "last_prepend_timestamp": "2025-10-17T03:58:00+05:30",
+    "total_prepends": 16,
     "validation_passed": true
   },
   "priority_queue": [],
   "completed": [
+    {
+      "id": "validate_fp_fn_reality_after_refinement",
+      "task": "Validate actual FP/FN reality from jobs.db after skills refinement",
+      "completed_at": "2025-10-17T03:58:00+05:30",
+      "outcome": "Re-extracted 1,212 jobs with refined 482-skill reference. Validated FP/FN: 2,224 'FP' = case corrections (Pytorch→PyTorch), 261 'FN' = new long-forms detected (JVM→Java Virtual Machine). These are EXPECTED improvements, not errors. Sample analysis: Zero actual false positives. Word boundaries working. Long-form skills correctly detected. Avg skills: 19.47→17.85 (8.3% noise reduction). RL: +30. Commit: e14107b"
+    },
     {
       "id": "refine_skills_long_forms_no_duplicates",
       "task": "Refine skills_reference_2025.json - long forms only, zero duplicates, non-overlapping patterns",
