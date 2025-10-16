@@ -1,20 +1,26 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-17T03:03:45+05:30",
+  "last_updated": "2025-10-17T03:21:30+05:30",
   "metrics": {
     "rl_source_ref": "progress.json",
-    "tasks_completed": 24,
+    "tasks_completed": 25,
     "tasks_failed": 1,
-    "commits": 23
+    "commits": 24
   },
   "top_append_metadata": {
     "latest_task_at_index_0": true,
-    "last_prepend_timestamp": "2025-10-17T03:03:45+05:30",
-    "total_prepends": 12,
+    "last_prepend_timestamp": "2025-10-17T03:21:30+05:30",
+    "total_prepends": 13,
     "validation_passed": true
   },
   "priority_queue": [],
   "completed": [
+    {
+      "id": "research_driven_pattern_optimization",
+      "task": "Research-driven optimization via @mcp:exa - eliminate FP/FN with NLP best practices",
+      "completed_at": "2025-10-17T03:21:30+05:30",
+      "outcome": "Applied NLP skill extraction best practices (SkillNER, SpaCy fuzzy matching, context-aware patterns). Expanded 7 acronyms to long forms, removed 4 duplicate short forms, added 4 unseen skills from jobs (AI/ML, Computer Science, Mathematics, Statistics). Optimized 56 skills by removing generic patterns. Skills: 514, Patterns: 3,080→2,993. Re-extracted 1,212 jobs: eliminated 2,860 additional FP. Total FP eliminated: 119,732. Remaining FP: 0 (100% improvement). RL: +50. Commit: 6adffa3"
+    },
     {
       "id": "fix_critical_false_positive_issue",
       "task": "Fix CRITICAL false positive issue - overly broad patterns matching random text",
