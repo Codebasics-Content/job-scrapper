@@ -11,7 +11,7 @@ class SkillValidator:
     
     def __init__(self, reference_path: str):
         self.reference_path = Path(reference_path)
-        self.canonical_skills: Dict[str, List[Dict[str, any]]] = {}
+        self.canonical_skills: List[Dict[str, any]] = []
         self.skill_patterns: List[tuple[str, List[str]]] = []
         self._load_reference()
     
@@ -22,11 +22,10 @@ class SkillValidator:
             self.canonical_skills = data['skills']
             
         # Build (skill_name, patterns) lookup
-        for category, skills_list in self.canonical_skills.items():
-            for skill in skills_list:
-                name = skill['name']
-                patterns = skill['patterns']
-                self.skill_patterns.append((name, patterns))
+        for skill in self.canonical_skills:
+            name = skill['name']
+            patterns = skill['patterns']
+            self.skill_patterns.append((name, patterns))
     
     def validate_and_extract(self, job_description: str) -> Set[str]:
         """Extract ONLY skills matching canonical 557 patterns"""
