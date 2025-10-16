@@ -28,7 +28,7 @@ async def scrape_job_details_sequential(
     Args:
         prefetch_size: Number of jobs to keep in queue (default 5)
     """
-    skills_validator = SkillsValidator()
+    skills_validator = SkillValidator("skills_reference_2025.json")
     skill_extractor = AdvancedSkillExtractor("skills_reference_2025.json")
     proxy_url = os.getenv("PROXY_URL")
     proxy_config = None
