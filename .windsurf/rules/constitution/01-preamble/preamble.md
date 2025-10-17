@@ -1,7 +1,7 @@
 ---
 trigger: always_on
 category: preamble
-last_updated: 2025-10-13T13:05:52+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Preamble: AegisIDE Constitutional Framework
@@ -130,4 +130,5 @@ All operations require mandatory Model Context Protocol usage: `@mcp:filesystem`
 **Total Articles**: 42 across 9 Parts  
 **Character Limit**: 2000-4000 per article  
 **Format**: Definition → Powers → Implementation → Violations  
-**Last Updated**: 2025-10-13T13:05:52+05:30
+**Latest Enhancement**: 33 UX gaps fixed (user controls, MCP resilience, NLU multi-language, RL transparency)  
+**Last Updated**: 2025-10-17T16:48:34+05:30

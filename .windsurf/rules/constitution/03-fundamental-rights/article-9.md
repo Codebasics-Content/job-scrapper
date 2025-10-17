@@ -3,7 +3,7 @@ trigger: always_on
 part: III-Fundamental-Rights
 article: 9
 category: tool_usage_integration
-last_updated: 2025-10-13T13:24:04+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 9: Right to Tool Usage & Integration
@@ -19,6 +19,8 @@ Citizens possess **right to use MCP tools**. 9 MCP servers constitutionally prot
 ## 2. Powers — Tool Authority
 
 **Usage**: Invoke any MCP without permission (0-99%), chain multiple MCPs, store patterns `systemPatterns.json`, learn coordination `memory.json`, earn +10 RL, challenge via Shadow Cabinet.
+
+**Fallback Resilience**: Automatic fallback chains via `activeContext.mcp_fallback_chain` (context7→fetch→exa→memory_patterns), rate limit tracking via `activeContext.mcp_rate_limits`, performance monitoring via `activeContext.mcp_performance_metrics`.
 
 **Integration**: Research via IAS `/research`, propose additions (≥95% consensus), configure `mcp_servers.json`, define patterns, audit effectiveness `progress.json`.
 

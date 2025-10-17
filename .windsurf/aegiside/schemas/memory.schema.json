@@ -15,13 +15,15 @@
     },
     "metrics": {
       "type": "object",
-      "description": "Local pattern reuse RL ONLY - Reference progress.json for total_rl_score",
+      "description": "Local knowledge graph metrics ONLY - Reference progress.json for total_rl_score",
       "required": ["rl_source_ref"],
       "properties": {
         "rl_source_ref": {"type": "string", "const": "progress.json", "description": "SINGLE SOURCE OF TRUTH for total_rl_score"},
         "tasks_completed": {"type": "integer", "minimum": 0},
         "tasks_failed": {"type": "integer", "minimum": 0},
-        "commits": {"type": "integer", "minimum": 0}
+        "commits": {"type": "integer", "minimum": 0},
+        "entities_count": {"type": "integer", "minimum": 0, "description": "Total entities in knowledge graph"},
+        "relations_count": {"type": "integer", "minimum": 0, "description": "Total relations in knowledge graph"}
       }
     },
     "entities": {

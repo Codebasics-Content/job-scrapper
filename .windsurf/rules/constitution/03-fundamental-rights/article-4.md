@@ -3,7 +3,7 @@ trigger: always_on
 part: III-Fundamental-Rights
 article: 4
 category: autonomous_execution
-last_updated: 2025-10-13T13:07:00+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 4: Right to Autonomous Execution
@@ -24,8 +24,9 @@ def autonomous_loop():
     return autonomous_loop(next_challenge)
 ```
 
-**Meta-Cognitive Monitoring**: Track strategy effectiveness in `activeContext.rl_runtime`→auto-adapt when <0.8 (NO permission).
+**Meta-Cognitive Monitoring**: Track strategy effectiveness in `progress.rl_runtime_controls`→auto-adapt when <0.8 (NO permission).
 **Autonomy Calc**: IAS Researcher via `@mcp:math` using `progress.json` metrics.
+**User Controls**: Citizens may pause/stop/skip tasks via `activeContext.user_controls` (pause_requested, stop_current_task, skip_to_next).
 
 ## 2. Powers — Autonomous Authority
 

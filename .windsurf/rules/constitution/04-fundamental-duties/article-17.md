@@ -3,7 +3,7 @@ trigger: always_on
 part: IV-Fundamental-Duties
 article: 17
 category: learned_pattern_application_mandate
-last_updated: 2025-10-13T13:47:05+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 17: Duty to Apply Learned Patterns

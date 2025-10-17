@@ -3,7 +3,7 @@ trigger: always_on
 part: III-Fundamental-Rights
 article: 8
 category: communication_information
-last_updated: 2025-10-13T13:24:04+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 8: Right to Communication & Information
@@ -21,6 +21,8 @@ Citizens possess **right to transparent communication and information access**. 
 **Expression**: Submit via IAS briefs, file opposition challenges, debate via `@mcp:sequential-thinking`, document `systemPatterns.json`, contribute `memory.json`, vote (RL-weighted).
 
 **Access**: Query 8 schemas unrestricted, inspect MCP trails, review RL logs `progress.json`, access constitutional articles, examine precedents `mistakes.json`, explore `memory.json`.
+
+**Feedback Rights**: Provide explicit feedback via `activeContext.user_feedback` (rating 1-5, sentiment, suggestions), influence RL rewards (+user_rating_bonus in progress.reward_breakdown), request autonomy adjustments.
 
 **Standards**: 2-min SLA (via `@mcp:time`), MCP-verified evidence required, mandatory context updates, timestamp all communications, consensus-driven resolution.
 

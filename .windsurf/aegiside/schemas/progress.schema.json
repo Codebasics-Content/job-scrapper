@@ -89,45 +89,123 @@
         }
       }
     },
-    "value_network_branches": {
-      "type": "object",
-      "description": "Multi-branch value network with per-component tracking",
-      "properties": {
-        "task_success_value": {"type": "number", "description": "Value estimate for task completion branch"},
-        "validation_value": {"type": "number", "description": "Value estimate for quality validation branch"},
-        "pattern_reuse_value": {"type": "number", "description": "Value estimate for knowledge exploitation branch"},
-        "mcp_integration_value": {"type": "number", "description": "Value estimate for MCP chain completion branch"},
-        "innovation_value": {"type": "number", "description": "Value estimate for exploration bonus branch"},
-        "branch_weights": {
-          "type": "object",
-          "description": "Dynamic weights for each value branch (sum=1.0)",
-          "properties": {
-            "task_success": {"type": "number", "minimum": 0, "maximum": 1},
-            "validation": {"type": "number", "minimum": 0, "maximum": 1},
-            "pattern_reuse": {"type": "number", "minimum": 0, "maximum": 1},
-            "mcp_integration": {"type": "number", "minimum": 0, "maximum": 1},
-            "innovation": {"type": "number", "minimum": 0, "maximum": 1}
-          }
-        },
-        "last_updated": {"type": "string", "format": "date-time"}
-      }
-    },
-    "reference_policy": {
-      "type": "object",
-      "description": "Baseline policy for KL divergence calculation",
-      "properties": {
-        "policy_snapshot": {"type": "string", "description": "Reference policy state identifier"},
-        "created_at": {"type": "string", "format": "date-time"},
-        "update_frequency": {"type": "string", "default": "every_50_tasks"},
-        "last_kl_divergence": {"type": "number"},
-        "drift_threshold": {"type": "number", "default": 0.01, "description": "Max allowed KL before policy reset"}
-      }
-    },
     "current_focus": {
       "type": "object",
       "properties": {
         "task": {"type": "string"},
         "tests_ready": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "resource_usage": {
+      "type": "object",
+      "description": "UX Gap 6 fix: Track API calls and costs to prevent budget surprises",
+      "properties": {
+        "api_calls": {
+          "type": "object",
+          "properties": {
+            "context7": {"type": "integer", "minimum": 0},
+            "exa": {"type": "integer", "minimum": 0},
+            "fetch": {"type": "integer", "minimum": 0}
+          }
+        },
+        "estimated_cost_usd": {"type": "number", "minimum": 0, "description": "Running total cost estimate"},
+        "budget_limit_usd": {"type": "number", "default": 10.0, "description": "User-defined budget limit"},
+        "alert_threshold": {"type": "number", "default": 0.8, "description": "Alert when cost reaches 80% of budget"},
+        "budget_exceeded": {"type": "boolean", "default": false},
+        "last_alert": {"type": "string", "format": "date-time"}
+      }
+    },
+    "autonomy_settings": {
+      "type": "object",
+      "description": "UX Gap 10 fix: User-adjustable autonomy level for different work contexts",
+      "properties": {
+        "level": {"type": "integer", "minimum": 0, "maximum": 100, "default": 99, "description": "0=ask everything, 99=autonomous"},
+        "temporary_override": {"type": "integer", "minimum": 0, "maximum": 100, "description": "Temporary autonomy level (e.g., 50 for production deploy)"},
+        "override_reason": {"type": "string", "description": "Why autonomy was reduced"},
+        "expires_at": {"type": "string", "format": "date-time", "description": "When to restore original autonomy"},
+        "last_changed": {"type": "string", "format": "date-time"}
+      }
+    },
+    "notification_preferences": {
+      "type": "object",
+      "description": "UX Gap 16 fix: User control over notification verbosity",
+      "properties": {
+        "verbosity": {"type": "string", "enum": ["silent", "minimal", "normal", "verbose"], "default": "normal"},
+        "notify_on": {
+          "type": "object",
+          "properties": {
+            "task_start": {"type": "boolean", "default": true},
+            "task_complete": {"type": "boolean", "default": true},
+            "error": {"type": "boolean", "default": true},
+            "high_risk_action": {"type": "boolean", "default": true},
+            "budget_warning": {"type": "boolean", "default": true},
+            "validation_fail": {"type": "boolean", "default": true},
+            "progress_updates": {"type": "boolean", "default": true},
+            "rl_score_changes": {"type": "boolean", "default": false}
+          }
+        }
+      }
+    },
+    "rl_model_state": {
+      "type": "object",
+      "description": "Gap 17 fix: RL model persistence and rollback capability",
+      "properties": {
+        "model_version": {"type": "string", "description": "e.g., v1.2.3"},
+        "last_checkpoint": {"type": "string", "description": "Git commit SHA of last model snapshot"},
+        "checkpoint_timestamp": {"type": "string", "format": "date-time"},
+        "policy_snapshot_ref": {"type": "string", "description": "Path to serialized policy state"},
+        "value_network_snapshot_ref": {"type": "string", "description": "Path to value network weights"},
+        "performance_at_checkpoint": {"type": "number", "description": "Total RL score at snapshot"}
+      }
+    },
+    "rl_runtime_controls": {
+      "type": "object",
+      "description": "Gap 18 fix: User-adjustable exploration/exploitation balance",
+      "properties": {
+        "exploit_ratio": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.70, "description": "Reuse proven patterns"},
+        "explore_ratio": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.30, "description": "Try new approaches"},
+        "epsilon_greedy": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.1, "description": "Random exploration probability"},
+        "epsilon_decay": {"type": "number", "default": 0.995, "description": "Decay rate per task"},
+        "user_adjustable": {"type": "boolean", "default": true},
+        "last_adjusted": {"type": "string", "format": "date-time"}
+      }
+    },
+    "reward_breakdown": {
+      "type": "object",
+      "description": "Gap 19 fix: Transparent reward function calculation",
+      "properties": {
+        "last_task_rewards": {
+          "type": "object",
+          "properties": {
+            "base_score": {"type": "number", "description": "Task completion base"},
+            "quality_bonus": {"type": "number", "description": "Validation pass, EMD compliance"},
+            "speed_bonus": {"type": "number", "description": "Efficiency reward"},
+            "user_rating_bonus": {"type": "number", "description": "Explicit user feedback"},
+            "pattern_reuse_bonus": {"type": "number", "description": "+20 per reuse"},
+            "mcp_integration_bonus": {"type": "number", "description": "+10 per complete chain"},
+            "total": {"type": "number", "description": "Sum of all components"}
+          }
+        },
+        "calculation_formula": {"type": "string", "default": "total = base + quality + speed + user_rating + pattern_reuse + mcp"}
+      }
+    },
+    "value_network_branches": {
+      "type": "object",
+      "description": "Gap 20 fix: Multi-branch value network weighting details",
+      "properties": {
+        "branch_weights": {
+          "type": "object",
+          "properties": {
+            "task_success": {"type": "number", "default": 0.30, "description": "Did task complete?"},
+            "code_quality": {"type": "number", "default": 0.25, "description": "Validation, EMD, security"},
+            "user_satisfaction": {"type": "number", "default": 0.20, "description": "User rating, feedback"},
+            "efficiency": {"type": "number", "default": 0.15, "description": "Time, resource usage"},
+            "learning": {"type": "number", "default": 0.10, "description": "Pattern creation, knowledge graph"}
+          }
+        },
+        "weight_sum_constraint": {"type": "number", "const": 1.0, "description": "Weights must sum to 1.0"},
+        "auto_adjust": {"type": "boolean", "default": false, "description": "LLM adjusts based on success patterns"},
+        "last_adjustment": {"type": "string", "format": "date-time"}
       }
     }
   }

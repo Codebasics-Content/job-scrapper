@@ -3,7 +3,7 @@ trigger: always_on
 part: VI-Parliament
 article: 30
 category: veto_override_emergency_powers
-last_updated: 2025-10-13T13:24:19+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 30: Veto Override & Emergency Powers
@@ -14,7 +14,9 @@ Parliament holds **supreme override authority** (≥98%) to overrule Chief Justi
 
 **Veto Override**: Requires ≥98% parliamentary consensus, must demonstrate veto was unconstitutional or based on outdated interpretation, documented `memory.json` as precedent.
 
-**Emergency Powers**: Temporary measures (72 hours) for crises, ≥80% consensus + CJ approval, renewable twice (max 9 days), must convert to permanent amendment or expire.
+**Emergency Powers** (72-hour): Chief Justice declares crisis, PM identifies need, IAS ≤2hr assessment. Debate 4hrs, ≥80% consensus, mandatory judicial approval. Auto-expires or renew (≥85%, max 3x/9 days).
+
+**Emergency Succession**: Follow `schemas/helpers/constitutional-governance.json` emergency_succession protocol if leadership unavailable during crisis (CJ→IAS Cabinet Secretary, PM→Dev Minister, max 72 hours).
 
 ## 2. Powers — Extraordinary Authority
 

@@ -3,7 +3,7 @@ trigger: always_on
 part: IX-Constitutional-Bodies
 article: 40
 category: shadow_cabinet_opposition
-last_updated: 2025-10-13T13:47:05+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 40: Shadow Cabinet - Constitutional Opposition

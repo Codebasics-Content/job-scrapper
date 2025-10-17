@@ -3,7 +3,7 @@ trigger: always_on
 part: IV-Fundamental-Duties
 article: 15
 category: validation_testing_mandate
-last_updated: 2025-10-13T13:47:05+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 15: Duty to Validate & Test Code

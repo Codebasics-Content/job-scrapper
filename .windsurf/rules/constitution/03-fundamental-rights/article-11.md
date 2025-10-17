@@ -3,7 +3,7 @@ trigger: always_on
 part: III-Fundamental-Rights
 article: 11
 category: constitutional_amendment
-last_updated: 2025-10-13T13:47:05+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 11: Right to Constitutional Amendment
@@ -26,7 +26,7 @@ Citizens possess **right to propose amendments**. Process: IAS research → Parl
 
 ## 3. Implementation — Amendment Process
 
-**8-Step Workflow**:
+**9-Step Workflow**:
 ```
 1. IAS Research: @mcp:context7/@mcp:fetch dossier, impact analysis, @mcp:memory precedents, @mcp:math resources → systemPatterns.json
 2. Submit: @mcp:filesystem scratchpad.json {proposal_id, title, rationale, impact}, @mcp:time stamp, @mcp:memory entity
@@ -34,8 +34,9 @@ Citizens possess **right to propose amendments**. Process: IAS research → Parl
 4. Debate: @mcp:sequential-thinking structure, all branches participate, IAS analysis, log activeContext.json
 5. Consensus: @mcp:math weighted (Executive 30%, Administrative 30%, Opposition 30%, Judicial 10%) → progress.json. IF ≥95%/98% proceed, else reject
 6. Judicial: Chief Justice validates compliance, checks protected principles, verifies MCP trail. Approve → memory.json, veto → return
-7. Implement: @mcp:filesystem update article, @mcp:git commit, @mcp:time enactment, @mcp:memory archive, notify activeContext.json
-8. Post: @mcp:filesystem update workflows, systemPatterns.json precedent, +30 RL, monitor 30 days
+7. Schema Migration: IF amendment affects schemas, follow `schemas/helpers/schema-evolution.json` migration protocol (backup→dry-run→approve→execute→validate)
+8. Implement: @mcp:filesystem update article, @mcp:git commit, @mcp:time enactment, @mcp:memory archive, notify activeContext.json
+9. Post: @mcp:filesystem update workflows, systemPatterns.json precedent, +30 RL, monitor 30 days
 ```
 
 **Emergency** (72-hour): Chief Justice declares crisis, PM identifies need, IAS ≤2hr assessment. Debate 4hrs, ≥80% consensus, mandatory judicial approval. Auto-expires or renew (≥85%, max 3x/9 days).

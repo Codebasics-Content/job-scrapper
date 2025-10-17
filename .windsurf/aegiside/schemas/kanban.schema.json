@@ -70,14 +70,30 @@
           "description": "Constitutional verification passed - Chief Justice + Opposition approval",
           "items": {
             "type": "object",
+            "required": ["id", "title", "approval_metadata"],
             "properties": {
               "id": {"type": "string"},
               "title": {"type": "string"},
               "approved_at": {"type": "string", "format": "date-time"},
               "tags": {"type": "array", "items": {"type": "string"}},
               "rl_impact": {"type": "number"},
-              "constitutional_compliance": {"type": "number"},
-              "approved_by": {"type": "string"}
+              "constitutional_compliance": {"type": "number", "minimum": 80, "description": "Must be ≥80% to move to approved"},
+              "approved_by": {"type": "string"},
+              "approval_metadata": {
+                "type": "object",
+                "required": ["chief_justice_approved", "opposition_verified", "constitutional_compliance_verified"],
+                "description": "Constitutional governance enforcement - Articles 29, 32",
+                "properties": {
+                  "chief_justice_approved": {"type": "boolean", "description": "Chief Justice constitutional review (Article 32)"},
+                  "opposition_verified": {"type": "boolean", "description": "Shadow Cabinet quality audit (Article 29)"},
+                  "constitutional_compliance_verified": {"type": "boolean", "description": "Compliance ≥80% verified"},
+                  "approval_timestamp": {"type": "string", "format": "date-time"},
+                  "validation_passed": {"type": "boolean", "description": "Zero-tolerance validation passed"},
+                  "mcp_trail_complete": {"type": "boolean", "description": "All 9 MCPs used properly"},
+                  "vetoed": {"type": "boolean", "default": false, "description": "Chief Justice veto if constitutional violation"},
+                  "veto_reason": {"type": "string", "description": "Reason for veto if applicable"}
+                }
+              }
             }
           }
         }

@@ -3,7 +3,7 @@ trigger: always_on
 part: III-Fundamental-Rights
 article: 12
 category: reinforcement_learning_self_improvement
-last_updated: 2025-10-13T13:47:05+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 12: Right to Reinforcement Learning & Self-Improvement

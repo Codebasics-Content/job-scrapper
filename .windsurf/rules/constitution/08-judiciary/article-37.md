@@ -3,7 +3,7 @@ trigger: always_on
 part: VIII-Judiciary
 article: 37
 category: constitutional_tribunals_impeachment
-last_updated: 2025-10-13T13:47:05+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 37: Constitutional Tribunals & Impeachment
@@ -37,6 +37,7 @@ last_updated: 2025-10-13T13:47:05+05:30
 5. Deliberate: All branches, @mcp:sequential-thinking analyze, @mcp:math guilt consensus. IF ≥95% guilty→sentencing, <95%→acquittal
 6. Sentence: Chief Justice proposes, Parliament votes severity (probation→suspension→revocation), @mcp:filesystem progress, @mcp:memory precedent
 7. Document: @mcp:filesystem memory.json {tribunal_id, accused, charges[], verdict, consensus, sanctions[], reasoning, appeal_deadline}
+8. Constitutional Record: Store in `schemas/helpers/constitutional-governance.json` for precedent tracking and tie-breaking reference
 ```
 
 **Impeachment** (4 steps):

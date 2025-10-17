@@ -3,7 +3,7 @@ trigger: always_on
 part: IV-Fundamental-Duties
 article: 13
 category: mcp_usage_mandate
-last_updated: 2025-10-13T13:47:05+05:30
+last_updated: 2025-10-17T16:48:34+05:30
 ---
 
 # Article 13: Duty to Use MCPs Mandatorily

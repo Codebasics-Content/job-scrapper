@@ -86,6 +86,50 @@
           "roadmap_milestone_id": {"$ref": "#/$defs/roadmap_milestone_id"}
         }
       }
+    },
+    "undo_stack": {
+      "type": "array",
+      "description": "UX Gap 5 fix: User-friendly undo/rollback. TOP-APPEND: [0] = most recent action",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "properties": {
+          "commit_hash": {"type": "string", "description": "Git commit SHA for rollback"},
+          "description": {"type": "string", "description": "Plain English: 'Added JWT authentication'"},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "files_changed": {"type": "array", "items": {"type": "string"}},
+          "rl_impact": {"type": "number", "description": "RL score earned/lost"},
+          "reversible": {"type": "boolean", "default": true}
+        }
+      }
+    },
+    "task_queue_summary": {
+      "type": "object",
+      "description": "UX Gap 12 fix: User-friendly task queue visibility",
+      "properties": {
+        "total_tasks": {"type": "integer", "minimum": 0},
+        "current_task_progress": {"type": "integer", "minimum": 0, "maximum": 100, "description": "Percentage complete"},
+        "estimated_completion": {"type": "string", "format": "date-time"},
+        "user_can_reorder": {"type": "boolean", "default": true},
+        "display_format": {"type": "string", "enum": ["list", "emoji", "detailed"], "default": "emoji"}
+      }
+    },
+    "activity_log": {
+      "type": "array",
+      "description": "UX Gap 14 fix: User-accessible activity history. TOP-APPEND: [0] = most recent",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {"type": "string", "format": "date-time"},
+          "action": {"type": "string", "description": "Plain English: 'Researched JWT authentication'"},
+          "workflow": {"type": "string", "description": "Which workflow: /research, /next, etc."},
+          "files_affected": {"type": "array", "items": {"type": "string"}},
+          "outcome": {"type": "string", "enum": ["success", "failed", "skipped", "partial"]},
+          "rl_impact": {"type": "number"},
+          "user_visible": {"type": "boolean", "default": true}
+        }
+      }
     }
   }
 }
