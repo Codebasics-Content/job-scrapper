@@ -9,8 +9,9 @@ Automated job data collection from LinkedIn and Naukri with built-in validation 
 ## Features
 
 - **Two-Phase Architecture**: Separate URL collection and detail scraping for efficiency
-- **Triple Validation**: Field validation, skill validation (749 canonical skills), atomic database transactions
-- **Real-Time Analytics**: Interactive dashboard with skill trends and company insights
+- **Triple Validation**: Field validation, skill validation (794 canonical skills), atomic database transactions
+- **Role Normalization**: 150 standardized job role categories with pattern matching
+- **Real-Time Analytics**: Interactive dashboard with role-based skill filtering and company insights
 - **Resume Capability**: Automatic progress tracking and recovery
 - **Anti-Detection**: Human-like browsing patterns with adaptive concurrency (8 workers)
 
@@ -40,6 +41,7 @@ streamlit run streamlit_app.py
 4. Monitor validation gates (Field → Skills → Database)
 
 ### Analytics
+- Filter skills by job role (150 standardized categories)
 - View skill demand trends
 - Compare platforms
 - Export data (CSV/JSON)
@@ -51,9 +53,12 @@ streamlit run streamlit_app.py
 │   └── jobs.db                    # SQLite database
 ├── src/
 │   ├── config/
-│   │   └── skills_reference_2025.json   # 749 validated skills
+│   │   ├── skills_reference_2025.json   # 794 validated skills
+│   │   └── roles_reference_2025.json    # 150 role categories
 │   ├── analysis/
 │   │   └── skill_extraction/      # Skill validation modules
+│   ├── ui/
+│   │   └── components/analytics/   # Analytics components
 │   ├── scraper/
 │   │   └── unified/
 │   │       ├── linkedin/          # LinkedIn scrapers
@@ -69,9 +74,9 @@ streamlit run streamlit_app.py
 - **Browser Automation**: Playwright (headless Chrome)
 - **Validation**: Pydantic models with triple-gate system
 - **Database**: SQLite with atomic transactions
-- **UI**: Streamlit dashboard
+- **UI**: Streamlit modular components (EMD architecture)
 - **Concurrency**: Adaptive rate limiting (8 concurrent workers)
-- **Skills**: 749 canonical technical skills reference
+- **Skills**: 794 canonical technical skills + 150 role categories
 
 ## Validation Gates
 
@@ -89,7 +94,8 @@ streamlit run streamlit_app.py
 ## Configuration
 
 Key files:
-- `src/config/skills_reference_2025.json` - Skill validation reference
+- `src/config/skills_reference_2025.json` - Skill validation reference (794 skills)
+- `src/config/roles_reference_2025.json` - Role normalization patterns (150 categories)
 - `data/jobs.db` - Main database
 - `.env` - Environment variables (optional)
 

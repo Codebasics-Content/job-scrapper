@@ -3,18 +3,74 @@
 
 import streamlit as st
 import pandas as pd
+import re
 from typing import List, Dict, Any
 from collections import Counter
+from src.ui.components.analytics.role_normalizer import RoleNormalizer
+
+def _clean_emoji(text: str) -> str:
+    """Remove emojis and special Unicode symbols from text"""
+    emoji_pattern = re.compile(
+        "["
+        "\U0001F600-\U0001F64F"  # emoticons
+        "\U0001F300-\U0001F5FF"  # symbols & pictographs
+        "\U0001F680-\U0001F6FF"  # transport & map symbols
+        "\U0001F1E0-\U0001F1FF"  # flags
+        "\U00002702-\U000027B0"  # dingbats
+        "\U000024C2-\U0001F251"
+        "\U0001F900-\U0001F9FF"  # supplemental symbols
+        "\U00002600-\U000026FF"  # misc symbols
+        "\U00002700-\U000027BF"  # dingbats
+        "]+",
+        flags=re.UNICODE
+    )
+    return emoji_pattern.sub('', text).strip()
 
 def render_skills_analysis(all_jobs: List[Dict[str, Any]]) -> None:
-    """Render skills analysis charts and metrics"""
+    """Render skills analysis charts and metrics with job role filtering"""
     if not all_jobs:
         st.info("📭 No data available yet. Please scrape some jobs first!")
         return
     
-    # Flatten all skills from jobs
-    all_skills = []
+    # Initialize role normalizer
+    normalizer = RoleNormalizer()
+    
+    # Normalize and extract unique job roles for filter
+    normalized_roles = set()
     for job in all_jobs:
+        if job.get('actual_role'):
+            cleaned = _clean_emoji(job.get('actual_role', ''))
+            normalized = normalizer.normalize_role(cleaned)
+            normalized_roles.add(normalized)
+    
+    job_roles = sorted(normalized_roles)
+    
+    # Job role filter dropdown
+    st.markdown("### 🎯 Filter by Job Role")
+    selected_role = st.selectbox(
+        "Select Job Role",
+        options=["All Roles"] + job_roles,
+        help="Filter skills analysis by specific job role"
+    )
+    
+    # Filter jobs based on selected role (compare normalized versions)
+    if selected_role != "All Roles":
+        filtered_jobs = [
+            job for job in all_jobs 
+            if normalizer.normalize_role(_clean_emoji(job.get('actual_role', ''))) == selected_role
+        ]
+        role_display = f" for {selected_role}"
+    else:
+        filtered_jobs = all_jobs
+        role_display = " (All Roles)"
+    
+    if not filtered_jobs:
+        st.warning(f"No jobs found for role: {selected_role}")
+        return
+    
+    # Flatten all skills from filtered jobs
+    all_skills = []
+    for job in filtered_jobs:
         if job.get('skills'):
             # Parse comma-separated skills string into list
             if isinstance(job['skills'], str):
@@ -54,10 +110,10 @@ def render_skills_analysis(all_jobs: List[Dict[str, Any]]) -> None:
         st.warning("No skills data available for analysis")
         return
     
-    st.subheader("🚀 Skills Analysis - Top 50 Skills")
+    st.subheader(f"🚀 Skills Analysis - Top 50 Skills{role_display}")
     
-    # Calculate total jobs
-    total_jobs = len(all_jobs)
+    # Calculate total jobs from filtered set
+    total_jobs = len(filtered_jobs)
     
     # Top skills analysis with percentages
     skill_counts = Counter(all_skills)
