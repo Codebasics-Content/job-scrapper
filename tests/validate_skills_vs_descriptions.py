@@ -8,15 +8,15 @@ import sys
 import sqlite3
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent / 'src'))
+sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 
-from analysis.skill_extraction.skill_validator import SkillValidator
+from src.analysis.skill_extraction.skill_validator import SkillValidator
 
 def validate_skills_against_descriptions(sample_size: int = 10) -> None:
     """Validate that extracted skills genuinely appear in job descriptions"""
     
-    validator = SkillValidator('skills_reference_2025.json')
-    conn = sqlite3.connect('jobs.db')
+    validator = SkillValidator('src/config/skills_reference_2025.json')
+    conn = sqlite3.connect('data/jobs.db')
     cursor = conn.cursor()
     
     # Get random LinkedIn jobs
@@ -60,7 +60,7 @@ def validate_skills_against_descriptions(sample_size: int = 10) -> None:
             skill_found = False
             
             # Get patterns for this skill
-            for category, skills_list in validator.canonical_skills.items():
+            for skills_list in validator.canonical_skills.values():
                 for skill_obj in skills_list:
                     if skill_obj['name'] == skill:
                         # Check if any pattern matches

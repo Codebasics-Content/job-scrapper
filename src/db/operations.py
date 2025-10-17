@@ -101,7 +101,7 @@ class JobStorageOperations:
     
     def get_urls_to_scrape(self, platform: str, limit: int = 100) -> list[JobUrlModel]:
         """Get unscraped URLs as JobUrlModel objects (LinkedIn/unified scraper compatibility)"""
-        from src.models import JobUrlModel
+        from src.models.models import JobUrlModel
         with self.connection.get_connection_context() as conn:
             cursor = conn.execute("""
                 SELECT u.url, u.job_id, u.platform, u.input_role, u.actual_role FROM job_urls u

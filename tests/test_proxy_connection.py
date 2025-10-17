@@ -8,6 +8,11 @@ import os
 load_dotenv()
 
 proxy_url = os.getenv("PROXY_URL")
+
+if not proxy_url:
+    print("❌ PROXY_URL not set in .env file")
+    exit(1)
+
 print(f"Testing proxy: {proxy_url[:50]}...")
 
 # Create SSL context that doesn't verify certificates (for proxy testing)
@@ -16,11 +21,12 @@ ssl_context.check_hostname = False
 ssl_context.verify_mode = ssl.CERT_NONE
 
 # Test proxy connection
+proxy_dict: dict[str, str] = {
+    'http': proxy_url,
+    'https': proxy_url
+}
 opener = urllib.request.build_opener(
-    urllib.request.ProxyHandler({
-        'http': proxy_url,
-        'https': proxy_url
-    }),
+    urllib.request.ProxyHandler(proxy_dict),
     urllib.request.HTTPSHandler(context=ssl_context)
 )
 

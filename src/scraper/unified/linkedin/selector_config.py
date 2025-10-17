@@ -41,15 +41,20 @@ SEARCH_SELECTORS = {
 
 # Job Detail Page Selectors
 DETAIL_SELECTORS = {
+    "job_title": [
+        "h1",
+        ".top-card-layout__title",
+        "h1.t-24",
+    ],
     "description": [
         ".show-more-less-html__markup",
         ".description__text",
         ".jobs-description__content",
     ],
     "company_name": [
+        "a.topcard__org-name-link",
+        ".top-card-layout__second-subline a",
         ".job-details-jobs-unified-top-card__company-name",
-        ".jobs-unified-top-card__company-name",
-        "a.job-details-jobs-unified-top-card__company-name",
     ],
     "posted_date": [
         ".job-details-jobs-unified-top-card__posted-date",

@@ -6,7 +6,7 @@ Phase 2: Detail scraping via API (5 concurrent, deduplication)
 from __future__ import annotations
 
 from typing import List
-from src.models import JobDetailModel
+from src.models.models import JobDetailModel
 from .naukri.api_url_scraper import scrape_naukri_urls_api
 from .naukri.api_detail_scraper import scrape_naukri_details_api
 import logging

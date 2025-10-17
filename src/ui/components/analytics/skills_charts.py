@@ -54,14 +54,14 @@ def render_skills_analysis(all_jobs: List[Dict[str, Any]]) -> None:
         st.warning("No skills data available for analysis")
         return
     
-    st.subheader("🚀 Skills Analysis - Top 20 Skills")
+    st.subheader("🚀 Skills Analysis - Top 50 Skills")
     
     # Calculate total jobs
     total_jobs = len(all_jobs)
     
     # Top skills analysis with percentages
     skill_counts = Counter(all_skills)
-    top_skills = skill_counts.most_common(20)
+    top_skills = skill_counts.most_common(50)
     
     if top_skills:
         # Calculate percentages: (skill_count / total_jobs) * 100

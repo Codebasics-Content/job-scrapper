@@ -8,7 +8,6 @@ Created: 2025-10-11
 EMD Compliance: ≤80 lines
 """
 
-from typing import Any
 from .extractor import AdvancedSkillExtractor
 
 def extract_skills_batch(job_descriptions: list[str]) -> list[list[str]]:
@@ -29,9 +28,9 @@ def extract_skills_batch(job_descriptions: list[str]) -> list[list[str]]:
         return []
     
     # Initialize extractor once for entire batch
-    extractor = AdvancedSkillExtractor('skills_reference_2025.json')
+    extractor = AdvancedSkillExtractor('src/config/skills_reference_2025.json')
     
-    # Process all jobs with same extractor instance (return_confidence=False for list[str])
+    # Process all jobs with same extractor instance
     results: list[list[str]] = [
         extractor.extract(jd, return_confidence=False)  # type: ignore[misc]
         for jd in job_descriptions
@@ -39,7 +38,7 @@ def extract_skills_batch(job_descriptions: list[str]) -> list[list[str]]:
     
     return results
 
-def extract_skills_from_jobs(jobs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def extract_skills_from_jobs(jobs: list[dict[str, str]]) -> list[dict[str, str]]:
     """
     Extract skills from list of job dicts (with 'jd' or 'description' field)
     
@@ -62,7 +61,7 @@ def extract_skills_from_jobs(jobs: list[dict[str, Any]]) -> list[dict[str, Any]]
     # Batch extract skills
     skills_lists = extract_skills_batch(descriptions)
     
-    # Add skills to job dicts
+    # Add skills to job dicts  
     for job, skills in zip(jobs, skills_lists):
         job['skills'] = ','.join(skills) if skills else ''
     

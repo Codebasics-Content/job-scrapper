@@ -7,7 +7,7 @@ import asyncio
 import logging
 from typing import List
 from playwright.async_api import async_playwright
-from src.models import JobDetailModel
+from src.models.models import JobDetailModel, JobUrlModel
 from src.db.operations import JobStorageOperations
 from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
 from .selector_config import DETAIL_SELECTORS, WAIT_TIMEOUTS
@@ -18,11 +18,11 @@ logger = logging.getLogger(__name__)
 async def scrape_linkedin_details_playwright(
     platform: str,
     input_role: str,
-    limit: int = 5,  # Process ONE batch only
+    limit: int = 5,
     store_to_db: bool = True,
     headless: bool = False,
 ) -> List[JobDetailModel]:
-    """Process ONE batch (5 jobs): Scrape → Extract → Validate → Store → STOP"""
+    """Phase 2: Scrape job details via 5 CONCURRENT TABS"""
     
     db_ops = JobStorageOperations()
     url_models = db_ops.get_urls_to_scrape(platform, limit)
@@ -35,8 +35,7 @@ async def scrape_linkedin_details_playwright(
     logger.info(f"📋 Processing Batch: {len(url_models)} jobs")
     logger.info(f"{'='*70}")
     
-    extractor = AdvancedSkillExtractor('skills_reference_2025.json')
-    jobs: List[JobDetailModel] = []
+    extractor = AdvancedSkillExtractor('src/config/skills_reference_2025.json')
     
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=headless)
@@ -45,48 +44,50 @@ async def scrape_linkedin_details_playwright(
             user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         )
         
-        for idx, url_model in enumerate(url_models, 1):
-            page = None
-            try:
-                logger.info(f"\n🔍 Job {idx}/{len(url_models)}: {url_model.url}")
+        # 5 CONCURRENT TABS processing
+        semaphore = asyncio.Semaphore(5)
+        
+        async def scrape_job(idx: int, url_model: JobUrlModel) -> JobDetailModel | None:
+            async with semaphore:
                 page = await context.new_page()
-                await page.goto(url_model.url, timeout=WAIT_TIMEOUTS["navigation"], wait_until='domcontentloaded')
-                await asyncio.sleep(2)
-                
-                # Extract description
-                desc_elem = await page.query_selector(DETAIL_SELECTORS["description"][0])
-                description = await desc_elem.inner_text() if desc_elem else ""
-                logger.info(f"📝 Description: {len(description)} chars")
-                
-                # Extract and validate skills
-                skills = extractor.extract(description) if len(description.strip()) > 50 else []
-                logger.info(f"🔧 Skills extracted: {len(skills)} → {skills[:5]}...")
-                
-                job = JobDetailModel(
-                    job_id=url_model.job_id,
-                    platform=platform,
-                    actual_role=url_model.actual_role,
-                    url=url_model.url,
-                    job_description=description,
-                    skills=','.join([s for s in skills if isinstance(s, str)]),
-                    company_name="", company_detail="", posted_date=None
-                )
-                jobs.append(job)
-                logger.info(f"✅ Job {idx} validated and ready")
-                
-            except Exception as e:
-                logger.error(f"❌ Job {idx} failed: {e}")
-            finally:
-                if page:
+                try:
+                    logger.info(f"\n🔍 Job {idx}/{len(url_models)}: {url_model.url}")
+                    await page.goto(url_model.url, timeout=WAIT_TIMEOUTS["navigation"], wait_until='domcontentloaded')
+                    await asyncio.sleep(2)
+                    
+                    desc_elem = await page.query_selector(DETAIL_SELECTORS["description"][0])
+                    description = await desc_elem.inner_text() if desc_elem else ""
+                    logger.info(f"📝 Description: {len(description)} chars")
+                    
+                    skills = extractor.extract(description) if len(description.strip()) > 50 else []
+                    logger.info(f"🔧 Skills extracted: {len(skills)} → {skills[:5]}...")
+                    
+                    job = JobDetailModel(
+                        job_id=url_model.job_id, platform=platform,
+                        actual_role=url_model.actual_role, url=url_model.url,
+                        job_description=description,
+                        skills=','.join([s for s in skills if isinstance(s, str)]),
+                        company_name="", posted_date=None
+                    )
+                    logger.info(f"✅ Job {idx} validated")
+                    return job
+                except Exception as e:
+                    logger.error(f"❌ Job {idx} failed: {e}")
+                    return None
+                finally:
                     await page.close()
+        
+        # Launch 5 concurrent tabs
+        logger.info("🚀 Launching 5 concurrent tabs for detail scraping...")
+        tasks = [scrape_job(i+1, url) for i, url in enumerate(url_models)]
+        results = await asyncio.gather(*tasks)
+        jobs = [j for j in results if j is not None]
         
         await context.close()
         await browser.close()
     
-    # Store batch
     if store_to_db and jobs:
         stored = db_ops.store_details(jobs)
         logger.info(f"\n💾 Batch stored: {stored}/{len(jobs)} jobs")
     
-    logger.info(f"\n⏸️  BATCH COMPLETE - STOPPED for monitoring\n")
     return jobs

@@ -13,7 +13,7 @@ from collections import defaultdict
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 
-from analysis.skill_extraction.skill_validator import SkillValidator
+from src.analysis.skill_extraction.skill_validator import SkillValidator
 
 def load_canonical_skills(reference_path: str) -> set[str]:
     """Load all canonical skill names from reference file"""
@@ -21,7 +21,7 @@ def load_canonical_skills(reference_path: str) -> set[str]:
         data = json.load(f)
     
     skills = set()
-    for category, skills_list in data['skills'].items():
+    for skills_list in data['skills'].values():
         for skill in skills_list:
             skills.add(skill['name'])
     
@@ -30,10 +30,10 @@ def load_canonical_skills(reference_path: str) -> set[str]:
 def detect_false_positives_negatives() -> None:
     """Comprehensive false positive/negative detection"""
     
-    validator = SkillValidator('skills_reference_2025.json')
-    canonical_skills = load_canonical_skills('skills_reference_2025.json')
+    validator = SkillValidator('src/config/skills_reference_2025.json')
+    canonical_skills = load_canonical_skills('src/config/skills_reference_2025.json')
     
-    conn = sqlite3.connect('jobs.db')
+    conn = sqlite3.connect('data/jobs.db')
     cursor = conn.cursor()
     
     # Get all LinkedIn jobs
@@ -56,7 +56,7 @@ def detect_false_positives_negatives() -> None:
     print(f"Analyzing {total_jobs} LinkedIn jobs...")
     print(f"Canonical Skills Reference: {len(canonical_skills)} skills\n")
     
-    for job_id, role, description, skills_str in jobs:
+    for job_id, description, skills_str in [(j[0], j[2], j[3]) for j in jobs]:
         if not skills_str:
             continue
             
@@ -79,7 +79,7 @@ def detect_false_positives_negatives() -> None:
     print("="*80)
     
     if false_positives:
-        sorted_fps = sorted(false_positives.items(), key=lambda x: x[1], reverse=True)
+        sorted_fps = sorted(false_positives.items(), key=lambda x: int(x[1]), reverse=True)
         for skill, count in sorted_fps[:20]:  # Top 20
             print(f"  • {skill}: {count} occurrences")
         
@@ -99,7 +99,7 @@ def detect_false_positives_negatives() -> None:
             for skill in missing_list:
                 missing_counts[skill] += 1
         
-        sorted_fns = sorted(missing_counts.items(), key=lambda x: x[1], reverse=True)
+        sorted_fns = sorted(missing_counts.items(), key=lambda x: int(x[1]), reverse=True)
         print(f"\nMost Frequently Missing Skills:")
         for skill, count in sorted_fns[:20]:  # Top 20
             print(f"  • {skill}: missing in {count} job(s)")

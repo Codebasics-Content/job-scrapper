@@ -2,7 +2,7 @@
 # Processes LinkedIn jobs, validates against 557 canonical skills, updates DB
 
 import sqlite3
-from typing import Any, Dict
+from typing import Dict, Union
 from .skill_validator import SkillValidator
 
 def validate_linkedin_jobs_batch(
@@ -10,7 +10,7 @@ def validate_linkedin_jobs_batch(
     reference_path: str,
     batch_size: int = 5,
     num_batches: int = 5
-) -> Dict[str, Any]:
+) -> Dict[str, Union[int, float]]:
     """Process 5 batches of LinkedIn jobs with RL tracking"""
     
     validator = SkillValidator(reference_path)
@@ -44,7 +44,11 @@ def validate_linkedin_jobs_batch(
         for job_id, description, old_skills in jobs:
             # Validate and extract canonical skills
             accuracy = validator.calculate_accuracy(description, old_skills or '')
-            new_skills = ','.join(accuracy['canonical_skills'])
+            canonical_skills_list = accuracy['canonical_skills']
+            if isinstance(canonical_skills_list, list):
+                new_skills = ','.join(canonical_skills_list)
+            else:
+                new_skills = ''
             
             # Update database
             cursor.execute(
@@ -54,10 +58,19 @@ def validate_linkedin_jobs_batch(
             
             # Track metrics
             metrics['jobs_updated'] += 1
-            metrics['total_precision'] += accuracy['precision']
-            metrics['total_recall'] += accuracy['recall']
-            metrics['false_positives_eliminated'] += len(accuracy['false_positives'])
-            metrics['false_negatives_recovered'] += len(accuracy['false_negatives'])
+            precision = accuracy['precision']
+            recall = accuracy['recall']
+            false_pos = accuracy['false_positives']
+            false_neg = accuracy['false_negatives']
+            
+            if isinstance(precision, (int, float)):
+                metrics['total_precision'] += float(precision)
+            if isinstance(recall, (int, float)):
+                metrics['total_recall'] += float(recall)
+            if isinstance(false_pos, list):
+                metrics['false_positives_eliminated'] += len(false_pos)
+            if isinstance(false_neg, list):
+                metrics['false_negatives_recovered'] += len(false_neg)
         
         conn.commit()
         metrics['batches_processed'] += 1

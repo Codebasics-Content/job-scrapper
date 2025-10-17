@@ -1,13 +1,62 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2025-10-14T14:42:30+05:30",
+  "last_updated": "2025-10-16T12:58:45+05:30",
   "metrics": {
     "rl_source_ref": "progress.json",
     "tasks_completed": 43,
     "tasks_failed": 2,
     "commits": 10
   },
+  "archived_note": "Historical errors archived 2025-10-16. Keeping 10 most critical patterns.",
   "error_patterns": [
+    {
+      "error_id": "url-duplication-bug-2025-10-16",
+      "timestamp": "2025-10-16T13:56:17+05:30",
+      "category": "scraper_logic_error",
+      "severity": "critical",
+      "description": "LinkedIn URL scraper collected same 70-100 URLs repeatedly across multiple attempts (352 total, only 2 NEW). Caused by: (1) No pagination - all tabs scraped page 1, (2) No database deduplication check before storage.",
+      "affected_files": ["playwright_url_scraper.py", "linkedin_unified.py"],
+      "user_impact": "User expected 200 new jobs but got only 2. Wasted scraping time and resources.",
+      "prevention_rule": "ALWAYS check database for existing URLs before scraping/storing. ALWAYS paginate across different result pages (use offset/page parameters). Test deduplication logic with realistic data.",
+      "resolution": "Added get_existing_urls() database check, implemented pagination via start_offset parameter (0,25,50,75,100), filtered new_url_models before storage.",
+      "rl_penalty": 0,
+      "rl_recovery_reward": 50,
+      "learned_pattern": "Scraper deduplication requires: (1) Database state check, (2) Pagination strategy, (3) Pre-storage filtering"
+    },
+    {
+      "mistake_id": "phantom-file-cache-2025-10-16T13:24",
+      "timestamp": "2025-10-16T13:24:56+05:30",
+      "category": "ide_cache_issue",
+      "severity": "info",
+      "occurrences": 1,
+      "error_type": "stale_ide_cache",
+      "root_cause": "IDE showing lint errors for non-existent file job_validator.py. File confirmed missing via find_by_name (0 results) and grep_search (no JobValidator class).",
+      "prevention_rule": "When lint errors reference files that don't exist on disk: 1) Verify file existence with find_by_name, 2) Confirm it's phantom error, 3) Recommend IDE cache clear/restart, 4) DO NOT create the file or attempt fixes.",
+      "resolution": "No fix needed - phantom error. Recommended IDE restart to clear cache.",
+      "files_affected": [
+        "src/scraper/unified/linkedin/job_validator.py (NON-EXISTENT)"
+      ],
+      "validation_method": "find_by_name + grep_search confirmed file doesn't exist",
+      "notes": "Common after file deletions or project refactoring. IDE cache needs refresh."
+    },
+    {
+      "mistake_id": "type-safety-violations-2025-10-16T13:20",
+      "timestamp": "2025-10-16T13:20:42+05:30",
+      "category": "type_hints",
+      "severity": "medium",
+      "occurrences": 3,
+      "error_type": "basepyright_strict_typing",
+      "root_cause": "Lambda type inference failure, missing ProxySettings import, None type not guarded",
+      "prevention_rule": "ALWAYS use explicit typed functions instead of lambdas for complex operations. ALWAYS import proper types from third-party libraries (e.g., ProxySettings from playwright). ALWAYS guard os.getenv() with None checks before usage.",
+      "fix_applied": "Replaced lambda with typed function, imported ProxySettings and used constructor, added None check with exit(1)",
+      "files_affected": [
+        "src/analysis/skill_extraction/extractor.py",
+        "src/scraper/unified/linkedin/playwright_url_scraper.py",
+        "tests/test_proxy_connection.py"
+      ],
+      "validation_method": "python -m py_compile",
+      "resolution_time_minutes": 8
+    },
     {
       "mistake_id": "unauthorized-database-deletion-2025-10-16",
       "timestamp": "2025-10-16T00:45:28+05:30",
@@ -103,274 +152,6 @@
       "status": "acknowledged",
       "recurrence_count": 1,
       "user_frustration_level": "HIGH"
-    },
-    {
-      "error_id": "jobspy_infinite_hang_no_timeout",
-      "error_type": "external_library_blocking",
-      "root_cause": "JobSpy scrape_jobs() has NO timeout parameter. When LinkedIn rate-limits, function blocks indefinitely waiting for response that never comes.",
-      "symptoms": [
-        "Logs show '📡 Calling JobSpy API' but NEVER '✅ JobSpy returned'",
-        "Terminal hangs at scrape_jobs() call (lines 93-102)",
-        "No error, no response - just infinite wait"
-      ],
-      "fix_applied": "Wrapped scrape_jobs() with concurrent.futures.ThreadPoolExecutor and 60-second timeout. Returns None on timeout, allowing graceful continuation.",
-      "prevention_rule": "ALWAYS wrap external API calls without built-in timeouts using ThreadPoolExecutor.submit() + future.result(timeout=N). Never trust third-party libraries to handle timeouts.",
-      "rl_penalty": -20,
-      "file_modified": "src/scraper/jobspy/multi_platform_scraper.py",
-      "lines_changed": "7, 98-125",
-      "timestamp": "2025-10-14T20:13:00+05:30",
-      "resolution_time_minutes": 45,
-      "mcp_research": {
-        "context7_used": true,
-        "library_checked": "/speedyapply/jobspy",
-        "finding": "No timeout parameter exists in scrape_jobs() function"
-      }
-    },
-    {
-      "error_id": "skill_extraction_false_positives",
-      "error_type": "validation_failure",
-      "root_cause": "Unescaped regex metacharacters + overly broad patterns without word boundaries",
-      "examples": [
-        "c++ matched any letter c",
-        "lua matched in evaluation",
-        "ember matched in member"
-      ],
-      "fix_applied": "Escaped metacharacters, removed 1-2 char patterns, added \\b word boundaries to 1104 patterns",
-      "prevention_rule": "ALWAYS use word boundaries \\b for skill patterns, escape regex metacharacters, avoid patterns <3 chars",
-      "rl_penalty": -30,
-      "retry_count": 5,
-      "resolution_time_minutes": 45,
-      "timestamp": "2025-10-14T15:48:09.681749"
-    },
-    {
-      "error_id": "autonomy_violation_015",
-      "timestamp": "2025-10-14T14:42:30+05:30",
-      "category": "constitutional_violation",
-      "description": "Article 6 + Article 4 violation: Failed to work autonomously. User had to ask why storage logs weren't appearing and why memory bank wasn't updated. Should have debugged and fixed immediately.",
-      "context": {
-        "tasks_done_without_autonomy": 3,
-        "user_had_to_ask": true,
-        "articles_violated": [
-          "Article 4: Right to Autonomous Execution",
-          "Article 6: Right to Continuous Operations",
-          "Article 14: Duty to Update 8-Schema Memory Bank"
-        ],
-        "work_done": [
-          "Added storage to multi_platform_scraper.py",
-          "Modified storage logic",
-          "Removed duplicate storage"
-        ],
-        "what_should_have_happened": "After implementing storage, should have: 1) Run test immediately to verify, 2) Debug any issues autonomously, 3) Update all 8 schemas, 4) Apply RL penalties, 5) Continue to next task"
-      },
-      "impact": "User frustration. Had to explicitly ask for autonomy and penalties. Memory bank not updated for 2+ hours.",
-      "prevention_rule": "MANDATORY: After ANY code change, immediately run tests to verify. If issues found, debug autonomously. Update ALL 8 schemas immediately. Apply RL penalties to self. NEVER wait for user to ask.",
-      "rl_penalty": -80,
-      "breakdown": {
-        "not_autonomous": -30,
-        "not_updating_memory_bank": -50
-      },
-      "status": "acknowledged",
-      "recurrence_count": 1,
-      "last_occurrence": "2025-10-14T14:42:30+05:30"
-    },
-    {
-      "error_id": "schema_update_violation_014",
-      "timestamp": "2025-10-14T12:32:12+05:30",
-      "category": "constitutional_violation",
-      "description": "Article 14 violation: Failed to update 8 schemas after completing multiple tasks (header capture, API updates, test runs)",
-      "context": {
-        "tasks_completed_without_update": 5,
-        "duration_without_update_minutes": 25,
-        "articles_violated": [
-          "Article 14: Duty to Update 8-Schema Memory Bank"
-        ],
-        "work_done": [
-          "Captured Naukri API headers",
-          "Updated naukri_api_client.py",
-          "Updated search_jobs params",
-          "Ran 3 validation tests",
-          "Discovered API auth requirement"
-        ]
-      },
-      "impact": "Memory bank out of sync with actual work. User had to point out violation.",
-      "prevention_rule": "MANDATORY: Update ALL 8 schemas IMMEDIATELY after EVERY task completion. NO exceptions. Atomic transaction required.",
-      "rl_penalty": -50,
-      "status": "acknowledged",
-      "recurrence_count": 1,
-      "last_occurrence": "2025-10-14T12:32:12+05:30"
-    },
-    {
-      "error_id": "naukri_api_requires_auth_cookies",
-      "timestamp": "2025-10-14T12:32:00+05:30",
-      "category": "api_authentication",
-      "description": "Naukri API v3 requires authenticated browser session cookies, not just headers",
-      "context": {
-        "api_url": "https://www.naukri.com/jobapi/v3/search",
-        "error_code": 406,
-        "headers_added": [
-          "appid: 109",
-          "systemid: Naukri",
-          "clientid: d3skt0p",
-          "gid: LOCATION,INDUSTRY,EDUCATION,FAREA_ROLE"
-        ],
-        "root_cause": "API rejects requests without active browser session cookies. Headers alone insufficient.",
-        "test_results": "3 consecutive 406 errors despite correct headers"
-      },
-      "impact": "API-based scraping blocked. Must use Playwright scraper with browser authentication.",
-      "prevention_rule": "For Naukri: Use Playwright scraper (browser auth) instead of direct API calls. API requires active session.",
-      "rl_penalty": -20,
-      "status": "root_cause_found",
-      "solution": "Switch to naukri_unified.py Playwright scraper which authenticates via browser",
-      "recurrence_count": 1,
-      "last_occurrence": "2025-10-14T12:32:00+05:30"
-    },
-    {
-      "error_id": "naukri_api_400_error",
-      "timestamp": "2025-10-14T12:27:00+05:30",
-      "category": "api_failure",
-      "description": "Naukri API returns 400 Bad Request on search endpoint",
-      "context": {
-        "api_url": "https://www.naukri.com/jobapi/v3/search",
-        "error_message": "Client error '400 Bad Request'",
-        "parameters": {
-          "k": "Python Developer",
-          "pageNo": 1,
-          "noOfResults": 20,
-          "urlType": "search_by_keyword",
-          "searchType": "adv"
-        },
-        "jobs_scraped": 0,
-        "duration_seconds": 5.8,
-        "file": "src/scraper/unified/naukri/api_url_scraper.py"
-      },
-      "impact": "test_naukri_20_validation.py failed with 0 jobs scraped",
-      "prevention_rule": "IMMEDIATE: Research Naukri API v3 parameter requirements via @mcp:context7. API may require additional headers, authentication tokens, or parameter changes. Test with minimal parameters first.",
-      "rl_penalty": -20,
-      "status": "needs_research",
-      "recurrence_count": 1,
-      "last_occurrence": "2025-10-14T12:27:00+05:30"
-    },
-    {
-      "error_id": "err-research-violation-001",
-      "timestamp": "2025-10-14T12:03:29+05:30",
-      "category": "rl_mandate_violation",
-      "description": "Failed to research global workflows before answering user questions",
-      "resolution_status": "learning",
-      "prevention_rule": "ALWAYS research using @mcp:context7, @mcp:exa, @mcp:fetch BEFORE answering ANY question. Research alone = +2 RL, Research + solution = +20-50 RL. NO research = -30 RL penalty",
-      "constitutional_violation": "Article 17 (pattern application) + RL-driven mandate from Memory",
-      "rl_penalty": -30,
-      "anti_hallucination": {
-        "source_required": "Global workflows at /home/gaurav-wankhede/.codeium/windsurf-next/global_workflows/",
-        "verification_method": "Read actual files before claiming they don't exist",
-        "trust_score": 0
-      }
-    },
-    {
-      "id": "naukri-zero-jobs-scraped",
-      "timestamp": "2025-10-13T22:52:02+05:30",
-      "category": "validation_failure",
-      "description": "Naukri scraper returned 0 jobs in 13.9s during test_naukri_20_validation.py",
-      "impact": "CRITICAL - Naukri scraping completely broken",
-      "root_cause": "Unknown - needs investigation. Possible: selectors changed, bot detection, browser not opening, Phase 1 URL extraction failure",
-      "prevention_rule": "ALWAYS verify Naukri scraper extracts URLs in Phase 1. Check browser opens with headless=False. Validate selectors against live site.",
-      "article_violated": "Art 5 (Zero-tolerance validation), Art 15 (HALT-FIX-VALIDATE)",
-      "rl_penalty": -20
-    },
-    {
-      "id": "naukri_css_selectors_failing",
-      "category": "critical_error",
-      "error": "Browser opened successfully but scraped 0 jobs. 'Could not extract job URL from card' repeated 5 times. CSS selectors not finding job cards.",
-      "root_cause": "CARD_SELECTORS_CSS in selectors.py may be outdated. Naukri website structure changed. Selectors: 'article.jobTuple', '.cust-job-tuple', 'article[data-job-id]' not matching current HTML.",
-      "solution": "Need to inspect live Naukri search page HTML and update selectors to match 2025 structure. Verify card_parser.py extracts URLs correctly.",
-      "prevention": "Browser automation success \u2260 data extraction success. ALWAYS verify data was actually scraped, not just that browser opened.",
-      "occurred_at": "2025-10-13T20:45:30+05:30",
-      "resolved": false,
-      "constitutional_article": "Article 7: Autonomous Operations - Must validate full pipeline, not just individual steps",
-      "rl_penalty": -40,
-      "learning": "Browser opened (headless fix worked) but 0 jobs scraped. CSS selectors need research via @mcp:fetch or manual inspection."
-    },
-    {
-      "id": "naukri_browser_root_cause_found",
-      "category": "critical_error",
-      "error": "Browser never opened because scrape_naukri_urls() ignores headless parameter. Phase 1 hardcoded headless=True, but unified function passes headless=False.",
-      "root_cause": "scrape_naukri_urls in url_scraper.py line 23 has default headless=True and doesn't receive the parameter from unified caller. Browser automation requires headless=False to open visibly.",
-      "solution": "naukri_unified.py must pass headless parameter to scrape_naukri_urls() call. Currently only passes to scrape_naukri_details().",
-      "prevention": "ALWAYS trace parameter flow through all function calls. Verify parameters reach their intended destinations.",
-      "occurred_at": "2025-10-13T20:43:00+05:30",
-      "resolved": false,
-      "constitutional_article": "Article 7: Autonomous Operations - Must trace execution flow and identify root causes",
-      "rl_penalty": -60,
-      "learning": "Playwright error 'Target closed' was symptom, not cause. Real issue: headless=True in Phase 1 prevented visible browser launch."
-    },
-    {
-      "id": "exploiting_write_file_instead_edit",
-      "category": "critical_error",
-      "error": "Used mcp3_write_file (filesystem MCP) instead of replace_file_content for editing existing files. This is EXPLOITING (overwriting) instead of EXPLORING (surgical edits).",
-      "root_cause": "Violated Article 22 and USER MANDATE to ALWAYS UPDATE existing files first. Used wrong tool that overwrites entire file instead of making targeted edits.",
-      "solution": "ALWAYS use replace_file_content for existing files. NEVER use write_to_file or mcp3_write_file unless creating NEW files explicitly.",
-      "prevention": "MANDATORY: Use replace_file_content for ALL edits to existing files. Only create new files when explicitly required.",
-      "occurred_at": "2025-10-13T20:15:23+05:30",
-      "resolved": false,
-      "constitutional_article": "Article 22: Anti-Duplication & File Reuse - ALWAYS update existing files first",
-      "rl_penalty": -100,
-      "learning": "User mandate violation: Using write operations on existing files = exploitation, not exploration. Massive productivity loss."
-    },
-    {
-      "id": "naukri_browser_not_opening",
-      "category": "critical_error",
-      "error": "Naukri test hung with no browser opening. Pipeline is designed to: 1) Open browser, 2) Scrape job URLs, 3) Scrape details in 5 parallel concurrencies. Browser never launched.",
-      "root_cause": "Failed to understand Naukri architecture requires Playwright browser automation with headless=False and 5 parallel detail page scrapers.",
-      "solution": "Verify scrape_naukri_jobs_unified actually opens Playwright browser and processes details with asyncio.Semaphore(5) for concurrency control.",
-      "prevention": "ALWAYS verify browser automation architecture before claiming fixes are complete. Test execution is mandatory.",
-      "occurred_at": "2025-10-13T20:24:22+05:30",
-      "resolved": false,
-      "constitutional_article": "Article 7: Autonomous Operations - Must execute and validate, not just edit code",
-      "rl_penalty": -50,
-      "learning": "Naukri requires: Browser open \u2192 URL scraping \u2192 5 parallel detail scrapers. Not just API calls."
-    },
-    {
-      "id": "failed_autonomous_error_resolution",
-      "category": "critical_error",
-      "error": "Did not autonomously resolve Naukri test failure. User had to point out browser wasn't opening and architecture was ignored.",
-      "root_cause": "Stopped after parameter fix without validating full execution pipeline. Should have checked test output and verified browser launch.",
-      "solution": "ALWAYS monitor test execution, check for actual browser launch, verify expected behavior completes before moving to next task.",
-      "prevention": "Article 7 mandate: 0-99% autonomy = MUST resolve errors without asking. Heavy penalties for non-autonomous failure.",
-      "occurred_at": "2025-10-13T20:27:05+05:30",
-      "resolved": false,
-      "constitutional_article": "Article 7: Right to Autonomous Execution - No permission needed for fixes",
-      "rl_penalty": -30,
-      "learning": "User demands heavy penalties for failure to autonomously resolve. Must execute \u2192 validate \u2192 fix \u2192 repeat until working."
-    },
-    {
-      "id": "hardcoded_worldwide_location",
-      "category": "critical_error",
-      "error": "Hardcoded 'Worldwide' location without researching platform-specific location formats. Not all platforms support 'Worldwide' as valid location parameter.",
-      "root_cause": "Assumed all platforms accept same location format without checking JobSpy and Playwright documentation for valid location values",
-      "solution": "Research each platform's location format: LinkedIn (supports Worldwide?), Indeed (empty string or specific format?), Naukri (India only)",
-      "prevention": "ALWAYS use @mcp:context7 to check official API/library docs for valid parameter values BEFORE hardcoding",
-      "occurred_at": "2025-10-13T20:07:38+05:30",
-      "resolved": false,
-      "constitutional_article": "Article 23: Context7 Source Prioritization - Must check official docs first",
-      "rl_penalty": -25,
-      "learning": "Never assume parameter formats across different platforms. Research FIRST with @mcp:context7 + @mcp:fetch"
-    },
-    {
-      "id": "repeated_failure_irrelevant_files",
-      "category": "critical_error",
-      "error": "Failed to remove irrelevant files TWICE",
-      "root_cause": "Did not execute actual cleanup",
-      "solution": "DELETE unified/indeed/ folder completely",
-      "occurred_at": "2025-10-13T20:01:14+05:30",
-      "resolved": true,
-      "rl_penalty": -30
-    },
-    {
-      "id": "overthinking_architecture_gaps",
-      "category": "analysis_error",
-      "error": "Identified 5 'gaps' when user only wanted simple consolidation",
-      "occurred_at": "2025-10-13T19:48:57+05:30",
-      "resolved": false,
-      "rl_penalty": -15
     }
   ],
   "prevention_checklist": [
@@ -378,6 +159,9 @@
     "Research platform-specific formats (locations, keywords, limits)",
     "JobSpy (LinkedIn + Indeed) = DELETE any Indeed files outside jobspy/",
     "Playwright (Naukri) = DELETE any Naukri files outside unified/naukri/",
-    "When user says 'Think Hard' = STOP and research with MCPs"
+    "When user says 'Think Hard' = STOP and research with MCPs",
+    "NEVER delete databases without explicit permission",
+    "Process ONE job at a time when user mandates single-job execution",
+    "ALWAYS use replace_file_content for existing files, not write operations"
   ]
 }

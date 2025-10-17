@@ -5,9 +5,8 @@ from __future__ import annotations
 import logging
 from typing import List
 
-from src.models import JobDetailModel
-from src.analysis.skill_extraction import AdvancedSkillExtractor
-from .jobspy.multi_platform_scraper import scrape_multi_platform
+from src.models.models import JobDetailModel
+from .unified.linkedin_unified import scrape_linkedin_jobs_unified
 from .unified.naukri_unified import scrape_naukri_jobs_unified
 
 logger = logging.getLogger(__name__)
@@ -21,66 +20,41 @@ async def scrape_jobs_with_skills(
     headless: bool = False,
     store_to_db: bool = True,
 ) -> List[JobDetailModel]:
-    """2-Platform scraper with advanced deduplication
+    """2-Platform scraper with Playwright unified architecture
     
     Platforms:
-        - linkedin: JobSpy (multi-layer fuzzy deduplication)
-        - naukri: Playwright (headless=False for anti-detection)
+        - linkedin: Playwright unified (URL collection + detail scraping with skills)
+        - naukri: Playwright unified (headless=False for anti-detection)
     
     Returns:
-        List of JobDetailModel with skills extracted and deduplicated
+        List of JobDetailModel with skills extracted and stored
     """
     all_jobs: List[JobDetailModel] = []
-    extractor = AdvancedSkillExtractor('skills_reference_2025.json')
-    
-    # Separate platforms: JobSpy (LinkedIn only) vs Playwright (Naukri)
-    jobspy_platforms = [p for p in platforms if p == "linkedin"]
+    linkedin_requested = "linkedin" in platforms
     naukri_requested = "naukri" in platforms
     
-    # Scrape via JobSpy (LinkedIn only with fuzzy deduplication)
-    if jobspy_platforms:
-        logger.info(f"Scraping LinkedIn via JobSpy with multi-layer deduplication...")
-        df = scrape_multi_platform(
-            platforms=jobspy_platforms,
-            search_term=keyword,
+    # Scrape LinkedIn via unified Playwright scraper
+    if linkedin_requested:
+        logger.info("Scraping LinkedIn via unified Playwright (2-phase: URLs + Details + Skills)...")
+        linkedin_jobs = await scrape_linkedin_jobs_unified(
+            keyword=keyword,
             location=location,
-            results_wanted=limit,
-            store_to_db=store_to_db,
+            limit=limit,
+            headless=headless,
         )
-        
-        if len(df) > 0:
-            # Jobs already stored by multi_platform_scraper per batch
-            # Just collect for return
-            for _, row in df.iterrows():
-                job = JobDetailModel(
-                    job_id=f"{row.get('site', 'unknown')}_{row.get('job_url', '').split('/')[-1]}",
-                    platform=row.get('site', 'unknown'),
-                    actual_role=keyword,
-                    url=row.get('job_url', ''),
-                    job_description=str(row.get('description', '')),
-                    skills=str(row.get('skills', '')),  # Already extracted and stored
-                    company_name=row.get('company', ''),
-                    posted_date=None,
-                )
-                all_jobs.append(job)
+        logger.info(f"✅ LinkedIn: Collected {len(linkedin_jobs)} jobs with skills")
+        all_jobs.extend(linkedin_jobs)
     
-    # Scrape via Naukri Playwright (headless=False to bypass bot detection)
+    # Scrape Naukri via unified Playwright scraper
     if naukri_requested:
-        logger.info("Scraping Naukri via Playwright (headless=False, visible browser)...")
+        logger.info("Scraping Naukri via unified Playwright (headless=False, visible browser)...")
         naukri_jobs = await scrape_naukri_jobs_unified(
             keyword=keyword,
             location=location,
             limit=limit,
-            headless=False,  # Opens visible browser to bypass bot detection
+            headless=False,
         )
-        
-        # Extract skills from Naukri jobs
-        for job in naukri_jobs:
-            if hasattr(job, 'jd') and job.jd and len(job.jd.strip()) > 50:
-                # Extract skills as list[str] (default return_confidence=False)
-                skills: list[str] = extractor.extract(job.jd, return_confidence=False)  # type: ignore[assignment]
-                job.skills = ','.join(skills) if skills else ''
-        
+        logger.info(f"✅ Naukri: Collected {len(naukri_jobs)} jobs with skills")
         all_jobs.extend(naukri_jobs)
     
     logger.info(f"Total jobs scraped: {len(all_jobs)} with skills extracted")

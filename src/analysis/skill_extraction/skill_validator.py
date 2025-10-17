@@ -3,7 +3,7 @@
 
 import json
 import re
-from typing import Any, Dict, List, Set
+from typing import Dict, List, Set, Union
 from pathlib import Path
 
 class SkillValidator:
@@ -11,7 +11,7 @@ class SkillValidator:
     
     def __init__(self, reference_path: str):
         self.reference_path = Path(reference_path)
-        self.canonical_skills: List[Dict[str, Any]] = []
+        self.canonical_skills: List[Dict[str, Union[str, List[str]]]] = []
         self.skill_patterns: List[tuple[str, List[str]]] = []
         self._load_reference()
     
@@ -23,8 +23,8 @@ class SkillValidator:
             
         # Build (skill_name, patterns) lookup
         for skill in self.canonical_skills:
-            name = skill['name']
-            patterns = skill['patterns']
+            name = str(skill['name'])
+            patterns = list(skill['patterns']) if isinstance(skill['patterns'], list) else []
             self.skill_patterns.append((name, patterns))
     
     def validate_and_extract(self, job_description: str) -> Set[str]:
@@ -49,7 +49,7 @@ class SkillValidator:
     
     def calculate_accuracy(self, 
                           job_description: str, 
-                          scraped_skills: str) -> Dict[str, Any]:
+                          scraped_skills: str) -> Dict[str, Union[List[str], float]]:
         """Calculate false positive/negative rates"""
         canonical = self.validate_and_extract(job_description)
         scraped = set([s.strip() for s in scraped_skills.split(',') if s.strip()])
