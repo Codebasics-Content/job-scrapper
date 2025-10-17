@@ -78,7 +78,7 @@ class SkillAnalysisWrapper:
             'success': False
         }
     
-    def generate_skill_report(self, job_role: str, db_path: str = "jobs.db") -> str:
+    def generate_skill_report(self, job_role: str, db_path: str = "data/jobs.db") -> str:
         """Generate skill report by reading jobs from database"""
         try:
             from src.models import JobModel

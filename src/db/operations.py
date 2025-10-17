@@ -21,7 +21,7 @@ class JobStorageOperations:
     schema_manager: SchemaManager
     lock: threading.RLock
     
-    def __init__(self, db_path: str = "jobs.db") -> None:
+    def __init__(self, db_path: str = "data/jobs.db") -> None:
         self.connection = DatabaseConnection(db_path)
         self.schema_manager = SchemaManager(self.connection)
         self.lock = threading.RLock()

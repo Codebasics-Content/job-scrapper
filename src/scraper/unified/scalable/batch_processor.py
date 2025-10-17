@@ -8,7 +8,7 @@ from __future__ import annotations
 import logging
 from typing import List, AsyncGenerator
 
-from src.models import JobDetailModel
+from src.models.models import JobDetailModel
 
 logger = logging.getLogger(__name__)
 

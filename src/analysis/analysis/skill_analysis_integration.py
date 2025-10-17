@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class SkillAnalysisIntegration:
     """Integrates database retrieval with skill analysis engine."""
     
-    def __init__(self, db_path: str = "jobs.db"):
+    def __init__(self, db_path: str = "data/jobs.db"):
         self.db_path: str = db_path
         self.conn_manager: ConnectionManager = ConnectionManager(db_path)
         self.job_retrieval: JobRetrieval = JobRetrieval()

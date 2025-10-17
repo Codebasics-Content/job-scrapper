@@ -12,7 +12,7 @@ from src.ui.components import (
 )
 
 logging.basicConfig(level=logging.INFO)
-DB_PATH = "jobs.db"
+DB_PATH = "data/jobs.db"
 
 # Initialize database
 SchemaManager(DatabaseConnection(db_path=DB_PATH)).initialize_schema()
