@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Python,233,82.0%
+Machine Learning,173,60.9%
+Large Language Models,135,47.5%
+Amazon Web Services,126,44.4%
+Large Language Model,107,37.7%
+Data Science,104,36.6%
+Azure,104,36.6%
+Azure Functions,104,36.6%
+Azure Kubernetes Service,104,36.6%
+Azure Openai,104,36.6%
+Azure Storage,104,36.6%
+Communication,100,35.2%
+Retrieval Augmented Generation,95,33.5%
+PyTorch,94,33.1%
+Computer Science,82,28.9%
+Innovation,82,28.9%
+TensorFlow,81,28.5%
+LangChain,79,27.8%
+AI/ML,77,27.1%
+Continuous Integration Continuous Deployment,76,26.8%
+Continuous Integration/Continuous Deployment,76,26.8%
+Docker,74,26.1%
+Google Cloud Platform,72,25.4%
+Google Cloud Professional,72,25.4%
+Generative AI,72,25.4%
+Fine-tuning,71,25.0%
+Make,68,23.9%
+Openai,66,23.2%
+MLOps,65,22.9%
+Application Programming Interface,61,21.5%
+Collaboration,59,20.8%
+Vector Databases,58,20.4%
+Problem Solving,54,19.0%
+Prompt Engineering,53,18.7%
+Deep Learning,53,18.7%
+Hugging Face,52,18.3%
+Structured Query Language,51,18.0%
+Artificial Intelligence,51,18.0%
+Kubernetes,50,17.6%
+Natural Language Processing,48,16.9%
+FastAPI,44,15.5%
+Model Context Protocol,43,15.1%
+Cloud Platforms,39,13.7%
+Scikit-Learn,39,13.7%
+Computer Vision,38,13.4%
+LlamaIndex,33,11.6%
+Pinecone,33,11.6%
+SageMaker,33,11.6%
+Mlflow,33,11.6%
+TypeScript,32,11.3%

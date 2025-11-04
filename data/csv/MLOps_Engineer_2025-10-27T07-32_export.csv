@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Machine Learning,12,92.3%
+Python,12,92.3%
+MLOps,10,76.9%
+Continuous Integration Continuous Deployment,9,69.2%
+Continuous Integration/Continuous Deployment,9,69.2%
+Amazon Web Services,8,61.5%
+Mlflow,7,53.8%
+Data Science,7,53.8%
+Google Cloud Platform,6,46.2%
+Google Cloud Professional,6,46.2%
+Docker,6,46.2%
+Terraform,6,46.2%
+DevOps,5,38.5%
+Grafana,5,38.5%
+Kubernetes,5,38.5%
+Collaboration,5,38.5%
+Azure,4,30.8%
+Azure Functions,4,30.8%
+Azure Kubernetes Service,4,30.8%
+Azure Openai,4,30.8%
+Azure Storage,4,30.8%
+Graphics Processing Unit,4,30.8%
+Innovation,4,30.8%
+Large Language Model,4,30.8%
+Large Language Models,4,30.8%
+Make,4,30.8%
+Data Pipelines,4,30.8%
+Model Training,4,30.8%
+Infrastructure as Code,4,30.8%
+PyTorch,4,30.8%
+TensorFlow,4,30.8%
+GitHub,3,23.1%
+Github Actions,3,23.1%
+Structured Query Language,3,23.1%
+AI/ML,3,23.1%
+Extract Transform Load,3,23.1%
+Prometheus,3,23.1%
+Databricks,3,23.1%
+Argocd,2,15.4%
+Cloud Platforms,2,15.4%
+Helm,2,15.4%
+Networking,2,15.4%
+Vllm,2,15.4%
+Problem Solving,2,15.4%
+K8s,2,15.4%
+LinkedIn,2,15.4%
+SageMaker,2,15.4%
+Application Programming Interface,2,15.4%
+Ray,2,15.4%
+Rust,2,15.4%

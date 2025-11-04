@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Amazon Web Services,3,75.0%
+Deep Learning,3,75.0%
+PyTorch,3,75.0%
+Python,3,75.0%
+Computer Science,2,50.0%
+Hugging Face,2,50.0%
+Transformers,2,50.0%
+Azure,2,50.0%
+Azure Functions,2,50.0%
+Azure Kubernetes Service,2,50.0%
+Azure Openai,2,50.0%
+Azure Storage,2,50.0%
+Google Cloud Platform,2,50.0%
+Google Cloud Professional,2,50.0%
+Innovation,2,50.0%
+Kubernetes,2,50.0%
+Machine Learning,2,50.0%
+Make,2,50.0%
+Reinforcement Learning,2,50.0%
+TensorFlow,2,50.0%
+Large Language Model,1,25.0%
+Large Language Models,1,25.0%
+Linux,1,25.0%
+Model Compression,1,25.0%
+Model Deployment,1,25.0%
+Model Optimization,1,25.0%
+Multithreading,1,25.0%
+SDK,1,25.0%
+Artificial Intelligence,1,25.0%
+Cloud Platforms,1,25.0%
+Creativity,1,25.0%
+Edge Computing,1,25.0%
+FastAPI,1,25.0%
+Grafana,1,25.0%
+Model Training,1,25.0%
+Prometheus,1,25.0%
+Model Evaluation,1,25.0%
+BERT,1,25.0%
+Bentoml,1,25.0%
+Convolutional Neural Networks,1,25.0%
+Docker,1,25.0%
+Dvc,1,25.0%
+Feature Engineering,1,25.0%
+Fine-tuning,1,25.0%
+GPT,1,25.0%
+Keras,1,25.0%
+Kubeflow,1,25.0%
+MLOps,1,25.0%
+Matplotlib,1,25.0%
+Mlflow,1,25.0%
