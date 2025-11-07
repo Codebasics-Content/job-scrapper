@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Machine Learning,21,91.3%
+Python,21,91.3%
+MLOps,17,73.9%
+Docker,13,56.5%
+DevOps,12,52.2%
+Kubernetes,12,52.2%
+Google Cloud Platform,11,47.8%
+Mlflow,11,47.8%
+Terraform,11,47.8%
+Continuous Integration Continuous Deployment,9,39.1%
+Continuous Integration/Continuous Deployment,9,39.1%
+Grafana,9,39.1%
+Amazon Web Services,8,34.8%
+Azure,8,34.8%
+Azure Functions,8,34.8%
+Azure Kubernetes Service,8,34.8%
+Azure Openai,8,34.8%
+Azure Storage,8,34.8%
+Github,8,34.8%
+Github Actions,8,34.8%
+Prometheus,8,34.8%
+Data Science,8,34.8%
+Google Cloud Professional,7,30.4%
+Kubeflow,7,30.4%
+AI,7,30.4%
+CD,7,30.4%
+CI,7,30.4%
+CI/CD,7,30.4%
+PyTorch,6,26.1%
+TensorFlow,6,26.1%
+AWS,6,26.1%
+Aws Bedrock,6,26.1%
+Aws Cloud Services,6,26.1%
+Aws Codepipeline,6,26.1%
+Aws Lambda,6,26.1%
+Aws Sagemaker,6,26.1%
+Collaboration,5,21.7%
+Graphics Processing Unit,4,17.4%
+Innovation,4,17.4%
+Large Language Model,4,17.4%
+Large Language Models,4,17.4%
+Make,4,17.4%
+Vllm,4,17.4%
+Data Pipelines,4,17.4%
+Model Training,4,17.4%
+Infrastructure as Code,4,17.4%
+SageMaker,4,17.4%
+Ray,4,17.4%
+LLM,4,17.4%
+Structured Query Language,3,13.0%

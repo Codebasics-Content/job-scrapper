@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Python,588,83.3%
+Machine Learning,510,72.2%
+AI,413,58.5%
+Pytorch,272,38.5%
+Azure,272,38.5%
+Azure Functions,272,38.5%
+Azure Kubernetes Service,272,38.5%
+Azure Openai,272,38.5%
+Azure Storage,272,38.5%
+LLM,264,37.4%
+Tensorflow,255,36.1%
+Aws Lambda,216,30.6%
+Data Science,215,30.5%
+Aws Sagemaker,203,28.8%
+LangChain,202,28.6%
+Docker,198,28.0%
+Aws Bedrock,198,28.0%
+AWS,195,27.6%
+Aws Cloud Services,195,27.6%
+Aws Codepipeline,195,27.6%
+Google Cloud Platform,193,27.3%
+API,193,27.3%
+Natural Language Processing,175,24.8%
+MLOps,169,23.9%
+RAG,159,22.5%
+Openai,152,21.5%
+Deep Learning,143,20.3%
+Large Language Models,135,19.1%
+Amazon Web Services,126,17.8%
+CI/CD,122,17.3%
+Scikit-Learn,121,17.1%
+CI,120,17.0%
+Kubernetes,117,16.6%
+CD,117,16.6%
+GenAI,112,15.9%
+Large Language Model,107,15.2%
+Fastapi,107,15.2%
+Git,105,14.9%
+Computer Vision,104,14.7%
+Communication,100,14.2%
+Hugging Face,100,14.2%
+DevOps,97,13.7%
+Retrieval Augmented Generation,95,13.5%
+SQL,89,12.6%
+Edge Computing,84,11.9%
+Mlflow,84,11.9%
+Computer Science,82,11.6%
+Innovation,82,11.6%
+AI/ML,77,10.9%
+LlamaIndex,77,10.9%

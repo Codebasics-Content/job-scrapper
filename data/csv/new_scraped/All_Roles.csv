@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Python,2255,78.2%
+Machine Learning,1977,68.6%
+AI,1373,47.6%
+Data Science,975,33.8%
+Pytorch,935,32.4%
+Azure,854,29.6%
+Azure Functions,854,29.6%
+Azure Kubernetes Service,854,29.6%
+Azure Openai,854,29.6%
+Azure Storage,854,29.6%
+Tensorflow,843,29.3%
+Docker,721,25.0%
+Aws Lambda,676,23.5%
+LLM,675,23.4%
+Aws Sagemaker,670,23.2%
+Aws Bedrock,659,22.9%
+Aws Cloud Services,653,22.7%
+AWS,649,22.5%
+Aws Codepipeline,649,22.5%
+Google Cloud Platform,644,22.3%
+Deep Learning,600,20.8%
+MLOps,596,20.7%
+API,583,20.2%
+Natural Language Processing,582,20.2%
+Kubernetes,497,17.2%
+Scikit-Learn,457,15.9%
+SQL,441,15.3%
+CI/CD,431,15.0%
+Amazon Web Services,425,14.7%
+LangChain,421,14.6%
+Computer Science,413,14.3%
+Communication,406,14.1%
+CI,399,13.8%
+Computer Vision,392,13.6%
+CD,392,13.6%
+Innovation,369,12.8%
+Git,368,12.8%
+Make,355,12.3%
+Openai,345,12.0%
+Large Language Models,339,11.8%
+DevOps,338,11.7%
+RAG,326,11.3%
+GenAI,321,11.1%
+Structured Query Language,321,11.1%
+Apache Spark,310,10.8%
+Pandas,308,10.7%
+Java,302,10.5%
+Collaboration,287,10.0%
+Mlflow,274,9.5%
+Problem Solving,268,9.3%

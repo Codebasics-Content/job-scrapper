@@ -1,0 +1,29 @@
+﻿Skill,Count,Percentage
+Machine Learning,5,100.0%
+AI,4,80.0%
+AWS,4,80.0%
+Aws Bedrock,4,80.0%
+Aws Cloud Services,4,80.0%
+Aws Codepipeline,4,80.0%
+Aws Lambda,4,80.0%
+Aws Sagemaker,4,80.0%
+Azure,4,80.0%
+Azure Functions,4,80.0%
+Azure Kubernetes Service,4,80.0%
+Azure Openai,4,80.0%
+Azure Storage,4,80.0%
+AI/ML,1,20.0%
+Communication,1,20.0%
+Computer Science,1,20.0%
+Continuous Integration Continuous Deployment,1,20.0%
+Continuous Integration/Continuous Deployment,1,20.0%
+Excel,1,20.0%
+Generative AI,1,20.0%
+Infrastructure as Code,1,20.0%
+MLOps,1,20.0%
+Mentoring,1,20.0%
+Prompt Engineering,1,20.0%
+PyTorch,1,20.0%
+Python,1,20.0%
+Sales,1,20.0%
+TensorFlow,1,20.0%
