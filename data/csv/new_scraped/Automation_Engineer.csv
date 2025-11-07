@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Python,16,76.2%
+AI,15,71.4%
+API,10,47.6%
+AWS,9,42.9%
+Aws Bedrock,9,42.9%
+Aws Cloud Services,9,42.9%
+Aws Codepipeline,9,42.9%
+Aws Lambda,9,42.9%
+Aws Sagemaker,9,42.9%
+n8n,9,42.9%
+LLM,8,38.1%
+Openai,6,28.6%
+Javascript,6,28.6%
+Azure,5,23.8%
+Azure Functions,5,23.8%
+Azure Kubernetes Service,5,23.8%
+Azure Openai,5,23.8%
+Azure Storage,5,23.8%
+Playwright,5,23.8%
+Typescript,5,23.8%
+LangChain,5,23.8%
+Machine Learning,4,19.0%
+Git,4,19.0%
+Selenium,4,19.0%
+Edge Computing,4,19.0%
+GPT,4,19.0%
+SQL,4,19.0%
+Snowflake,4,19.0%
+DevOps,3,14.3%
+Github,3,14.3%
+Github Actions,3,14.3%
+OCR,3,14.3%
+Collaboration,2,9.5%
+Continuous Integration Continuous Deployment,2,9.5%
+Continuous Integration/Continuous Deployment,2,9.5%
+Flexibility,2,9.5%
+Docker,2,9.5%
+JIRA,2,9.5%
+C,2,9.5%
+CD,2,9.5%
+CI,2,9.5%
+CI/CD,2,9.5%
+Java,2,9.5%
+Neural Networks,2,9.5%
+Pytest,2,9.5%
+Chatgpt,2,9.5%
+BI,2,9.5%
+Bigquery,2,9.5%
+Golang,2,9.5%
+Graphql,2,9.5%

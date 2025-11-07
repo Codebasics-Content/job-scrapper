@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Natural Language Processing,4,80.0%
+Python,4,80.0%
+LangChain,3,60.0%
+LlamaIndex,3,60.0%
+Openai,3,60.0%
+Transformers,3,60.0%
+Classification,2,40.0%
+Deep Learning,2,40.0%
+Fine-tuning,2,40.0%
+Large Language Model,2,40.0%
+Large Language Models,2,40.0%
+Machine Learning,2,40.0%
+Pinecone,2,40.0%
+PyTorch,2,40.0%
+Retrieval Augmented Generation,2,40.0%
+Semantic Search,2,40.0%
+Weaviate,2,40.0%
+Application Programming Interface,2,40.0%
+Azure,2,40.0%
+Azure Functions,2,40.0%
+Azure Kubernetes Service,2,40.0%
+Azure Openai,2,40.0%
+Azure Storage,2,40.0%
+Copilot,2,40.0%
+DevOps,2,40.0%
+Docker,2,40.0%
+Make,2,40.0%
+Hugging Face,2,40.0%
+TensorFlow,2,40.0%
+AI,2,40.0%
+BERT,1,20.0%
+Computer Science,1,20.0%
+Jupyter,1,20.0%
+Jupyter Notebooks,1,20.0%
+Qdrant,1,20.0%
+Text-to-Speech,1,20.0%
+Vector Databases,1,20.0%
+.NET,1,20.0%
+Angular,1,20.0%
+Collaboration,1,20.0%
+Continuous Integration Continuous Deployment,1,20.0%
+Continuous Integration/Continuous Deployment,1,20.0%
+Diversity and Inclusion,1,20.0%
+Documentation,1,20.0%
+Hypertext Transfer Protocol,1,20.0%
+Representational State Transfer API,1,20.0%
+Amazon Web Services,1,20.0%
+Anthropic Claude,1,20.0%
+Chain of Thought,1,20.0%
+GenAI,1,20.0%

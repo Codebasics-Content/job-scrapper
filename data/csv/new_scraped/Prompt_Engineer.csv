@@ -1,0 +1,31 @@
+﻿Skill,Count,Percentage
+AI,3,75.0%
+UX,2,50.0%
+Hugging Face,2,50.0%
+LLM,2,50.0%
+LangChain,2,50.0%
+Openai,2,50.0%
+Pinecone,2,50.0%
+Python,2,50.0%
+RAG,2,50.0%
+Weaviate,2,50.0%
+Collaboration,1,25.0%
+Communication,1,25.0%
+Function Calling,1,25.0%
+Innovation,1,25.0%
+Leadership,1,25.0%
+LinkedIn,1,25.0%
+Make,1,25.0%
+Marketing,1,25.0%
+Organization,1,25.0%
+Problem Solving,1,25.0%
+Prompt Engineering,1,25.0%
+Retrieval Augmented Generation,1,25.0%
+Teamwork,1,25.0%
+Zapier,1,25.0%
+UI,1,25.0%
+Chroma,1,25.0%
+Natural Language Processing,1,25.0%
+API,1,25.0%
+GPT,1,25.0%
+REST,1,25.0%
