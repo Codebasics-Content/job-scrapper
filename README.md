@@ -192,7 +192,21 @@ job-scraper/
 │
 ├── data/
 │   ├── jobs.db                   # SQLite database (auto-created)
-│   └── *.json                    # Export files, reports
+│   ├── *.json                    # Export files, reports
+│   │
+│   └── Analysis_Report/          # Codebasics Bootcamp Analysis
+│       ├── Data Analyst/         # Data Analyst role analysis
+│       │   ├── *.csv             # Exported job data
+│       │   └── Visuals/          # Skill demand charts (PNG)
+│       ├── Data Engineer/        # Data Engineer role analysis
+│       │   ├── *.csv
+│       │   └── Visuals/
+│       ├── GenAI && Data Science/  # GenAI & Data Science roles
+│       │   ├── *.csv
+│       │   └── Visuals/
+│       └── archieve/             # Historical exports & notebooks
+│           ├── *.csv             # Role-specific exports
+│           └── new_scraped/      # Latest batch with data_visualizer.ipynb
 │
 ├── src/
 │   ├── config/                   # Configuration files
@@ -445,6 +459,63 @@ CREATE TABLE jobs (
 | Skill Extraction | 0.3s/job |
 | Validation Pass Rate | 85-95% |
 | Storage per Job | ~2KB |
+
+---
+
+## Codebasics Bootcamp Analysis Reports
+
+Pre-generated skill analysis reports organized by Codebasics bootcamp tracks.
+
+### Directory Structure
+
+```
+data/Analysis_Report/
+├── Data Analyst/                    # Power BI, Excel, SQL focus
+│   ├── Data_Analyst_*.csv           # Job listings with skills
+│   └── Visuals/
+│       └── Data Analyst-*.png       # Top skills demand chart
+│
+├── Data Engineer/                   # ETL, Spark, Airflow focus
+│   ├── Data_Engineer_*.csv
+│   └── Visuals/
+│       └── Data_Engineer-*.png
+│
+├── GenAI && Data Science/           # ML, Deep Learning, LLMs
+│   ├── *.csv
+│   └── Visuals/
+│
+└── archieve/                        # Historical data
+    ├── AI_Engineer_*.csv
+    ├── Data_Scientist_*.csv
+    ├── Machine_Learning_Engineering_*.csv
+    ├── MLOps_Engineer_*.csv
+    ├── NLP_Engineer_*.csv
+    └── new_scraped/
+        ├── All_Roles.csv            # Combined dataset
+        └── data_visualizer.ipynb    # Jupyter notebook for analysis
+```
+
+### Report Contents
+
+Each bootcamp folder contains:
+
+| File Type | Description |
+|-----------|-------------|
+| `*_export.csv` | Job listings with columns: job_id, platform, role, url, description, skills, company, posted_date |
+| `Visuals/*.png` | Bar charts showing top 20 skills by frequency for that role |
+
+### Using the Data Visualizer
+
+```bash
+# Open the Jupyter notebook
+jupyter notebook data/Analysis_Report/archieve/new_scraped/data_visualizer.ipynb
+```
+
+The notebook provides:
+- Skill frequency analysis across roles
+- Platform comparison (LinkedIn vs Naukri)
+- Trend visualization over time
+- Export capabilities for custom reports
 
 ---
 
