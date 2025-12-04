@@ -45,15 +45,24 @@ class BrowserlessAdapter(BaseHeadlessXClient):
         if self.client:
             await self.client.aclose()
     
-    async def render_url(self, url: str, wait_for: str = "networkidle") -> str:
+    async def render_url(
+        self,
+        url: str,
+        proxy_url: str | None = None,
+        profile: str | None = None,
+        stealth_mode: str | None = None,
+        timeout: float = 30.0
+    ) -> str:
         """Render URL using browserless /content API"""
+        # Note: proxy_url, profile, stealth_mode, timeout are accepted for API compatibility
+        # but browserless uses a simpler payload format
         response = await self.make_request_with_retry(
             "POST",
             f"{self.base_url}/content",
-            json={"url": url, "waitFor": wait_for}
+            json={"url": url, "waitFor": "networkidle"}
         )
-        
+
         if response.status_code != 200:
             raise HeadlessXError(f"Browserless API error: {response.status_code}")
-        
+
         return response.text

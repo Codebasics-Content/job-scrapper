@@ -1,0 +1,13 @@
+# Lifeguard Custom Rules
+# Replace these examples with rules specific to your project
+# Each rule should have a clear name and detailed description
+
+rules:
+  - name: "Database transactions must be properly handled"
+    description: "Ensure all database operations are wrapped in transactions with proper rollback handling. Check that commit/rollback is called in all code paths including error scenarios."
+
+  - name: "API responses must include proper error context"
+    description: "Verify that API error responses include sufficient context for debugging (request ID, timestamp, user context) without exposing sensitive information."
+
+  - name: "Async operations should have timeout handling"
+    description: "Check that long-running async operations (API calls, database queries, file operations) include appropriate timeout mechanisms to prevent hanging requests."

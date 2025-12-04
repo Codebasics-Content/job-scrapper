@@ -25,11 +25,11 @@ EMD Compliance: ≤80 lines, modular design
 """
 
 import logging
-from src.models import JobModel
+from src.models.models import JobDetailModel
 
 logger = logging.getLogger(__name__)
 
-def calculate_skill_percentages(jobs: list[JobModel], target_skills: list[str] | None = None) -> dict[str, float]:
+def calculate_skill_percentages(jobs: list[JobDetailModel], target_skills: list[str] | None = None) -> dict[str, float]:
     """Calculate skill occurrence percentages from job listings
     
     Formula: (Distinct jobs with skill / Total jobs) * 100
@@ -64,7 +64,7 @@ def calculate_skill_percentages(jobs: list[JobModel], target_skills: list[str] |
     logger.info(f"Calculated percentages for {len(percentages)} skills from {total_jobs} jobs")
     return percentages
 
-def get_top_skills(jobs: list[JobModel], top_n: int = 10) -> list[tuple[str, float]]:
+def get_top_skills(jobs: list[JobDetailModel], top_n: int = 10) -> list[tuple[str, float]]:
     """Get top N skills by occurrence percentage"""
     
     percentages = calculate_skill_percentages(jobs)
@@ -74,7 +74,7 @@ def get_top_skills(jobs: list[JobModel], top_n: int = 10) -> list[tuple[str, flo
     logger.debug(f"Retrieved top {top_n} skills from {len(jobs)} jobs")
     return top_skills
 
-def analyze_platform_skills(jobs: list[JobModel], platform: str) -> dict[str, float]:
+def analyze_platform_skills(jobs: list[JobDetailModel], platform: str) -> dict[str, float]:
     """Analyze skills for specific platform"""
     
     platform_jobs = [job for job in jobs if hasattr(job, 'platform') and job.platform == platform]

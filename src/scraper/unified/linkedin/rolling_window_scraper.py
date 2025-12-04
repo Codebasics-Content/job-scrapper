@@ -26,7 +26,11 @@ async def scrape_job_with_validation(
     """Scrape→Extract→Validate→Store (Edge case safe)"""
     page = None
     try:
-        page = await context.new_page()
+        try:
+            page = await asyncio.wait_for(context.new_page(), timeout=10.0)
+        except asyncio.TimeoutError:
+            logger.error(f"❌ [{idx+1}] Page creation timed out")
+            return None
         logger.info(f"🔍 [{idx+1}] {url_model.url}")
         
         # Navigation with timeout handling
@@ -70,7 +74,7 @@ async def scrape_job_with_validation(
             company_name="", posted_date=None
         )
         try:
-            db_ops.store_details([job])
+            await asyncio.to_thread(db_ops.store_details, [job])
             logger.info(f"✅ [{idx+1}] VALIDATED & STORED")
             return job
         except Exception as db_err:
@@ -82,7 +86,7 @@ async def scrape_job_with_validation(
     finally:
         if page:
             try:
-                await page.close()
+                await asyncio.wait_for(page.close(), timeout=5.0)
             except Exception:
                 pass  # Ignore cleanup errors
 
@@ -111,34 +115,59 @@ async def rolling_window_n_plus_5(
     logger.info(f"🚀 n+5 Rolling: {len(url_models)} jobs, window={window_size}")
     
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=headless)
-        context = await browser.new_context(
-            viewport={'width': 1920, 'height': 1080},
-            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        )
-        
-        results: List[JobDetailModel | None] = []
-        queue = asyncio.Queue()
-        
-        # Fill queue with ALL job indices
-        for i in range(len(url_models)):
-            await queue.put(i)
-        
-        async def worker():
-            """Worker: Process jobs from queue (n+5 pattern)"""
-            while not queue.empty():
-                idx = await queue.get()
-                job = await scrape_job_with_validation(
-                    idx, url_models[idx], context, extractor, db_ops, platform
-                )
-                results.append(job)
-        
-        # Launch window_size workers (n+5 auto-managed)
-        workers = [asyncio.create_task(worker()) for _ in range(window_size)]
-        await asyncio.gather(*workers)
-        
-        await context.close()
-        await browser.close()
+        # Add timeouts to browser/context creation
+        try:
+            browser = await asyncio.wait_for(
+                p.chromium.launch(headless=headless),
+                timeout=30.0
+            )
+        except asyncio.TimeoutError:
+            logger.error("❌ Browser launch timed out after 30s")
+            return []
+
+        try:
+            context = await asyncio.wait_for(
+                browser.new_context(
+                    viewport={'width': 1920, 'height': 1080},
+                    user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                ),
+                timeout=10.0
+            )
+        except asyncio.TimeoutError:
+            logger.error("❌ Context creation timed out after 10s")
+            await browser.close()
+            return []
+
+        try:
+            results: List[JobDetailModel | None] = []
+            queue: asyncio.Queue[int] = asyncio.Queue()
+
+            # Fill queue with ALL job indices
+            for i in range(len(url_models)):
+                await queue.put(i)
+
+            async def worker():
+                """Worker: Process jobs from queue (n+5 pattern)"""
+                while not queue.empty():
+                    idx = await queue.get()
+                    job = await scrape_job_with_validation(
+                        idx, url_models[idx], context, extractor, db_ops, platform
+                    )
+                    results.append(job)
+
+            # Launch window_size workers (n+5 auto-managed)
+            workers = [asyncio.create_task(worker()) for _ in range(window_size)]
+            await asyncio.gather(*workers)
+        finally:
+            # Cleanup with timeouts
+            try:
+                await asyncio.wait_for(context.close(), timeout=10.0)
+            except Exception:
+                pass
+            try:
+                await asyncio.wait_for(browser.close(), timeout=10.0)
+            except Exception:
+                pass
     
     successful = [j for j in results if j is not None]
     logger.info(f"\n✅ Complete: {len(successful)}/{len(url_models)} jobs")

@@ -56,7 +56,7 @@ def render_two_phase_panel(db_path: str) -> tuple[list[str], str, str, int, str]
     scrape_clicked = st.button(
         "🚀 Start Scraping",
         type="primary",
-        use_container_width=True,
+        width="stretch",
         help="Scrape jobs with skills from selected platforms",
         disabled=len(platforms) == 0
     )

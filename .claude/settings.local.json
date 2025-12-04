@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"venv\\Scripts\\python.exe\" -c:*)",
+      "Bash(\"venv\\Scripts\\python.exe\":*)",
+      "WebFetch(domain:codebasics.io)",
+      "Bash(\"venv\\Scripts\\python.exe\" -m src.analysis.skill_extraction.batch_reextract --dry-run --batch-size 100)",
+      "Bash(\"venv\\Scripts\\basedpyright.exe\" src/analysis/skill_extraction/batch_reextract.py)",
+      "Bash(\"venv\\Scripts\\python.exe\" -m src.analysis.skill_extraction.batch_reextract --dry-run --batch-size 500)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

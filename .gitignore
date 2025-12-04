@@ -68,3 +68,10 @@ proxy_manager_config.json
 *.tmp
 *.bak
 *.swp
+
+# Playwright browsers (stored in project to prevent cache cleanup)
+.playwright-browsers/
+
+# LinkedIn authentication
+.linkedin_cookies.json
+*_cookies.json

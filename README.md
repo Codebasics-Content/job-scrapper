@@ -20,11 +20,19 @@ Automated job data collection from LinkedIn and Naukri with built-in validation 
 ```bash
 # Install dependencies
 pip install -r requirements.txt
+
+# Install Playwright browsers
+# For WSL/Linux users (recommended):
+./setup_playwright.sh
+
+# OR manually:
 playwright install chromium
 
 # Launch dashboard
 streamlit run streamlit_app.py
 ```
+
+> **⚠️ WSL Users**: Use `./setup_playwright.sh` to prevent browser cache cleanup issues. This stores browsers in your project directory instead of `~/.cache/`.
 
 ## Usage
 
@@ -106,6 +114,8 @@ Key files:
 **High validation failures**: Platform structure may have changed, check selector configs
 
 **System stopped**: Simply restart - automatic resume from last checkpoint
+
+**Playwright browser not found (WSL)**: If you see "Executable doesn't exist at /home/.../.cache/ms-playwright/", run `./setup_playwright.sh` to install browsers in your project directory. This prevents WSL from clearing the cache.
 
 ## License
 

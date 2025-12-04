@@ -1,0 +1,16 @@
+# Job Scrapper - Development Dependencies
+# Install with: pip install -r requirements-dev.txt
+
+# Include production dependencies
+-r requirements.txt
+
+# ==============================================================================
+# Testing
+# ==============================================================================
+pytest>=7.4.0,<10.0.0
+pytest-asyncio>=0.21.0,<2.0.0
+
+# ==============================================================================
+# Type Checking & Linting
+# ==============================================================================
+basedpyright>=1.20.0,<2.0.0

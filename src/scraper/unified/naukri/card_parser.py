@@ -79,7 +79,7 @@ def extract_job_url_from_card(card: Tag) -> str | None:
             logger.debug(f"✅ Using parent data-job-id: {fallback_url}")
             return fallback_url
     
-    logger.error(f"❌ URL extraction failed. Card: {card.get('class', [])}")
+    logger.error(f"❌ URL extraction failed. Card: {card.get('class')}")
     return None
 
 

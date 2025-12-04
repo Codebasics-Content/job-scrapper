@@ -3,7 +3,9 @@
 from pathlib import Path
 
 # Path to skills reference JSON
-SKILLS_JSON_PATH = Path(__file__).parent.parent.parent.parent.parent / "skills_reference_2025.json"
+SKILLS_JSON_PATH = (
+    Path(__file__).parent.parent.parent.parent / "config" / "skills_reference_2025.json"
+)
 
 # Categories to exclude from extraction
 EXCLUDED_CATEGORIES = {
@@ -12,7 +14,7 @@ EXCLUDED_CATEGORIES = {
     "business_domains",
     "sectors",
     "domains",
-    "industries"
+    "industries",
 }
 
 # Specific non-technical skills to exclude
@@ -22,5 +24,5 @@ EXCLUDED_SKILLS = {
     "Financial Services",
     "E-commerce",
     "Manufacturing",
-    "Telecommunications"
+    "Telecommunications",
 }

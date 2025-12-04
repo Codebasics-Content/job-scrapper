@@ -1,0 +1,363 @@
+{
+  "generated": "2025-12-03T20:15:26.008Z",
+  "sample_size": 500,
+  "min_frequency": 5,
+  "total_candidates": 71,
+  "candidates": [
+    {
+      "term": "AWS",
+      "count": 207,
+      "coverage": "41.40%"
+    },
+    {
+      "term": "LLM",
+      "count": 116,
+      "coverage": "23.20%"
+    },
+    {
+      "term": "GCP",
+      "count": 101,
+      "coverage": "20.20%"
+    },
+    {
+      "term": "open",
+      "count": 87,
+      "coverage": "17.40%"
+    },
+    {
+      "term": "automation",
+      "count": 82,
+      "coverage": "16.40%"
+    },
+    {
+      "term": "NLP",
+      "count": 76,
+      "coverage": "15.20%"
+    },
+    {
+      "term": "automate",
+      "count": 58,
+      "coverage": "11.60%"
+    },
+    {
+      "term": "GenAI",
+      "count": 57,
+      "coverage": "11.40%"
+    },
+    {
+      "term": "automated",
+      "count": 45,
+      "coverage": "9.00%"
+    },
+    {
+      "term": "SageMaker",
+      "count": 44,
+      "coverage": "8.80%"
+    },
+    {
+      "term": "MCP",
+      "count": 31,
+      "coverage": "6.20%"
+    },
+    {
+      "term": "autonomous",
+      "count": 29,
+      "coverage": "5.80%"
+    },
+    {
+      "term": "ECS",
+      "count": 25,
+      "coverage": "5.00%"
+    },
+    {
+      "term": "USD",
+      "count": 24,
+      "coverage": "4.80%"
+    },
+    {
+      "term": "autonomy",
+      "count": 23,
+      "coverage": "4.60%"
+    },
+    {
+      "term": "CAD",
+      "count": 22,
+      "coverage": "4.40%"
+    },
+    {
+      "term": "Airflow",
+      "count": 20,
+      "coverage": "4.00%"
+    },
+    {
+      "term": "LatAm",
+      "count": 20,
+      "coverage": "4.00%"
+    },
+    {
+      "term": "ADK",
+      "count": 20,
+      "coverage": "4.00%"
+    },
+    {
+      "term": "PTO",
+      "count": 19,
+      "coverage": "3.80%"
+    },
+    {
+      "term": "workflow",
+      "count": 19,
+      "coverage": "3.80%"
+    },
+    {
+      "term": "Automation",
+      "count": 18,
+      "coverage": "3.60%"
+    },
+    {
+      "term": "LATAM",
+      "count": 18,
+      "coverage": "3.60%"
+    },
+    {
+      "term": "Automate",
+      "count": 16,
+      "coverage": "3.20%"
+    },
+    {
+      "term": "REST",
+      "count": 16,
+      "coverage": "3.20%"
+    },
+    {
+      "term": "automating",
+      "count": 14,
+      "coverage": "2.80%"
+    },
+    {
+      "term": "DaCodes",
+      "count": 14,
+      "coverage": "2.80%"
+    },
+    {
+      "term": "DaCoders",
+      "count": 14,
+      "coverage": "2.80%"
+    },
+    {
+      "term": "automatizado",
+      "count": 14,
+      "coverage": "2.80%"
+    },
+    {
+      "term": "CEO",
+      "count": 13,
+      "coverage": "2.60%"
+    },
+    {
+      "term": "J-18808",
+      "count": 13,
+      "coverage": "2.60%"
+    },
+    {
+      "term": "automations",
+      "count": 11,
+      "coverage": "2.20%"
+    },
+    {
+      "term": "Next",
+      "count": 11,
+      "coverage": "2.20%"
+    },
+    {
+      "term": "GTM",
+      "count": 11,
+      "coverage": "2.20%"
+    },
+    {
+      "term": "automatically",
+      "count": 11,
+      "coverage": "2.20%"
+    },
+    {
+      "term": "chatbots",
+      "count": 10,
+      "coverage": "2.00%"
+    },
+    {
+      "term": "EEO",
+      "count": 10,
+      "coverage": "2.00%"
+    },
+    {
+      "term": "chat",
+      "count": 9,
+      "coverage": "1.80%"
+    },
+    {
+      "term": "automates",
+      "count": 9,
+      "coverage": "1.80%"
+    },
+    {
+      "term": "PAY",
+      "count": 8,
+      "coverage": "1.60%"
+    },
+    {
+      "term": "EDA",
+      "count": 8,
+      "coverage": "1.60%"
+    },
+    {
+      "term": "STEM",
+      "count": 8,
+      "coverage": "1.60%"
+    },
+    {
+      "term": "stable",
+      "count": 8,
+      "coverage": "1.60%"
+    },
+    {
+      "term": "Mistral",
+      "count": 8,
+      "coverage": "1.60%"
+    },
+    {
+      "term": "GCS",
+      "count": 8,
+      "coverage": "1.60%"
+    },
+    {
+      "term": "QPIP",
+      "count": 7,
+      "coverage": "1.40%"
+    },
+    {
+      "term": "OpenCV",
+      "count": 7,
+      "coverage": "1.40%"
+    },
+    {
+      "term": "AIML",
+      "count": 7,
+      "coverage": "1.40%"
+    },
+    {
+      "term": "HTML",
+      "count": 7,
+      "coverage": "1.40%"
+    },
+    {
+      "term": "CSS",
+      "count": 7,
+      "coverage": "1.40%"
+    },
+    {
+      "term": "DeepSeed",
+      "count": 6,
+      "coverage": "1.20%"
+    },
+    {
+      "term": "ATOM",
+      "count": 6,
+      "coverage": "1.20%"
+    },
+    {
+      "term": "automotive",
+      "count": 6,
+      "coverage": "1.20%"
+    },
+    {
+      "term": "DynamoDB",
+      "count": 6,
+      "coverage": "1.20%"
+    },
+    {
+      "term": "Open",
+      "count": 6,
+      "coverage": "1.20%"
+    },
+    {
+      "term": "Automotive",
+      "count": 6,
+      "coverage": "1.20%"
+    },
+    {
+      "term": "PDF",
+      "count": 6,
+      "coverage": "1.20%"
+    },
+    {
+      "term": "ASAP",
+      "count": 6,
+      "coverage": "1.20%"
+    },
+    {
+      "term": "NET",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "MIT",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "CUDA",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "HSA",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "ARR",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "autonomously",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "FinTech",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "autoencoders",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "GPA",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "QuickSight",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "TTS",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "openness",
+      "count": 5,
+      "coverage": "1.00%"
+    },
+    {
+      "term": "SOLID",
+      "count": 5,
+      "coverage": "1.00%"
+    }
+  ]
+}

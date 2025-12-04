@@ -62,10 +62,9 @@
       "patterns": [
         "\\bMLOps Engineer\\b",
         "\\bML Ops Engineer\\b",
-        "\\bMLOps\\b",
-        "\\bML.Ops\\b",
-        "\\bML-Ops\\b",
-        "\\bMachine Learning Operations\\b",
+        "\\bML.Ops Engineer\\b",
+        "\\bML-Ops Engineer\\b",
+        "\\bMachine Learning Operations Engineer\\b",
         "\\bMLOps Developer\\b",
         "\\bML Platform Engineer\\b"
       ]
@@ -124,12 +123,13 @@
     {
       "name": "Computer Vision Engineer",
       "patterns": [
-        "\\bComputer Vision\\b",
+        "\\bComputer Vision Engineer\\b",
         "\\bCV Engineer\\b",
         "\\bVision Engineer\\b",
-        "\\bComputer.Vision\\b",
-        "\\bComputer-Vision\\b",
+        "\\bComputer.Vision Engineer\\b",
+        "\\bComputer-Vision Engineer\\b",
         "\\bComputer Vision Developer\\b",
+        "\\bComputer Vision Specialist\\b",
         "\\bImage Processing Engineer\\b"
       ]
     },
@@ -137,8 +137,7 @@
       "name": "NLP Engineer",
       "patterns": [
         "\\bNLP Engineer\\b",
-        "\\bNatural Language Processing\\b",
-        "\\bNLP\\b",
+        "\\bNatural Language Processing Engineer\\b",
         "\\bNLP.Engineer\\b",
         "\\bNLP-Engineer\\b",
         "\\bNLP Developer\\b",
@@ -150,9 +149,8 @@
       "name": "DevOps Engineer",
       "patterns": [
         "\\bDevOps Engineer\\b",
-        "\\bDevOps\\b",
-        "\\bDev.Ops\\b",
-        "\\bDev-Ops\\b",
+        "\\bDev.Ops Engineer\\b",
+        "\\bDev-Ops Engineer\\b",
         "\\bDevOps Developer\\b",
         "\\bSenior DevOps Engineer\\b",
         "\\bAWS DevOps Engineer\\b",
@@ -164,9 +162,9 @@
       "name": "Robotics Engineer",
       "patterns": [
         "\\bRobotics Engineer\\b",
-        "\\bRobotics\\b",
         "\\bRobotics.Engineer\\b",
         "\\bRobotics Developer\\b",
+        "\\bRobotics Specialist\\b",
         "\\bAutonomous Systems Engineer\\b"
       ]
     },

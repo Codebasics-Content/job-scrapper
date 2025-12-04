@@ -25,46 +25,74 @@ class PlaywrightBrowser:
         self.playwright = None
     
     async def __aenter__(self):
-        """Launch browser with visual mode and optional stealth"""
+        """Launch browser with visual mode and optional stealth - WITH TIMEOUTS"""
         self.playwright = await async_playwright().start()
-        self.browser = await self.playwright.chromium.launch(
-            headless=self.headless,
-            args=[
-                '--disable-blink-features=AutomationControlled',
-                '--disable-dev-shm-usage',
-                '--no-sandbox'
-            ]
-        )
-        self.context = await self.browser.new_context(
-            viewport={'width': 1920, 'height': 1080},
-            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        )
-        
+
+        try:
+            self.browser = await asyncio.wait_for(
+                self.playwright.chromium.launch(
+                    headless=self.headless,
+                    args=[
+                        '--disable-blink-features=AutomationControlled',
+                        '--disable-dev-shm-usage',
+                        '--no-sandbox'
+                    ]
+                ),
+                timeout=30.0  # 30s timeout for browser launch
+            )
+        except asyncio.TimeoutError:
+            logger.error("❌ Browser launch timed out after 30s")
+            await self.playwright.stop()
+            raise
+
+        try:
+            self.context = await asyncio.wait_for(
+                self.browser.new_context(
+                    viewport={'width': 1920, 'height': 1080},
+                    user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                ),
+                timeout=10.0  # 10s timeout for context
+            )
+        except asyncio.TimeoutError:
+            logger.error("❌ Context creation timed out after 10s")
+            await self.browser.close()
+            await self.playwright.stop()
+            raise
+
         # Apply stealth if requested (Cloudflare bypass)
         if self.use_stealth:
             from playwright_stealth import stealth_async
-            page = await self.context.new_page()
-            await stealth_async(page)
-            await page.close()
-        
+            try:
+                page = await asyncio.wait_for(self.context.new_page(), timeout=10.0)
+                await stealth_async(page)
+                await asyncio.wait_for(page.close(), timeout=5.0)
+            except asyncio.TimeoutError:
+                logger.warning("⚠️ Stealth setup timed out, continuing without stealth")
+
         logger.info(f"Browser launched (headless={self.headless}, stealth={self.use_stealth})")
         return self
     
     async def __aexit__(self, exc_type: type[BaseException] | None, exc_val: BaseException | None, exc_tb: TracebackType | None) -> None:
-        """Cleanup browser resources"""
+        """Cleanup browser resources WITH TIMEOUTS"""
         if self.context:
-            await self.context.close()
+            try:
+                await asyncio.wait_for(self.context.close(), timeout=10.0)
+            except Exception:
+                pass  # Ignore cleanup errors
         if self.browser:
-            await self.browser.close()
+            try:
+                await asyncio.wait_for(self.browser.close(), timeout=10.0)
+            except Exception:
+                pass
         if self.playwright:
             await self.playwright.stop()
         logger.info("Browser closed")
-    
+
     async def new_page(self) -> Page:
-        """Create new page in current context"""
+        """Create new page in current context WITH TIMEOUT"""
         if not self.context:
             raise RuntimeError("Browser context not initialized")
-        page = await self.context.new_page()
+        page = await asyncio.wait_for(self.context.new_page(), timeout=10.0)
         return page
     
     async def get_cookies(self) -> list[dict[str, str]]:
@@ -78,13 +106,23 @@ class PlaywrightBrowser:
         """Render URL with error handling and configurable timeout"""
         page = await self.new_page()
         try:
-            await page.goto(url, wait_until=wait_until, timeout=timeout_ms)
+            # Add hard timeout wrapper for entire render operation
+            await asyncio.wait_for(
+                page.goto(url, wait_until=wait_until, timeout=timeout_ms),
+                timeout=(timeout_ms / 1000) + 5.0  # Slightly longer than Playwright timeout
+            )
             await asyncio.sleep(wait_seconds)
             html = await page.content()
             logger.info(f"✅ Rendered {url}: {len(html)} chars")
             return html
+        except asyncio.TimeoutError:
+            logger.error(f"❌ Hard timeout rendering {url}")
+            return ""
         except Exception as e:
             logger.error(f"❌ Failed to render {url}: {e}")
             return ""
         finally:
-            await page.close()
+            try:
+                await asyncio.wait_for(page.close(), timeout=5.0)
+            except Exception:
+                pass  # Ignore cleanup errors

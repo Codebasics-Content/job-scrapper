@@ -50,7 +50,7 @@ async def scrape_linkedin_jobs_unified(
     keyword: str,
     location: str,
     limit: int = 100,
-    headless: bool = True,
+    headless: bool = False,  # Always visible browser to avoid rate limits
 ) -> List[JobDetailModel]:
     # Phase 1: URL collection
     urls = await scrape_linkedin_urls_playwright(...)

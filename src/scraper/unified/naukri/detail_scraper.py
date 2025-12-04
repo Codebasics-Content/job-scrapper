@@ -1,14 +1,15 @@
 # Phase 2: Naukri Detail Scraping - Only unscraped jobs
-# EMD Compliance: ≤80 lines, Optimized deduplication via LEFT JOIN
+# EMD Compliance: <=80 lines, Optimized deduplication via LEFT JOIN
 from __future__ import annotations
 
-import logging
 import asyncio
+import logging
 from datetime import datetime
 
-from src.models import JobDetailModel, JobUrlModel
-from src.scraper.services.playwright_browser import PlaywrightBrowser
 from src.db.operations import JobStorageOperations
+from src.models.models import JobDetailModel, JobUrlModel
+from src.scraper.services.playwright_browser import PlaywrightBrowser
+
 from .parser import create_job_detail_model
 
 logger = logging.getLogger(__name__)
@@ -41,52 +42,57 @@ async def scrape_naukri_details(
     logger.info(f"Found {len(unscraped)} unscraped URLs, processing...")
 
     async with PlaywrightBrowser(headless=headless) as browser:
-        concurrent_jobs = 5
+        concurrent_jobs: int = 5
 
         for batch_start in range(0, len(unscraped), concurrent_jobs):
             batch = unscraped[batch_start:batch_start + concurrent_jobs]
 
-            async def scrape_detail(job_id: str, job_url: str) -> JobDetailModel | None:
+            async def scrape_detail(
+                jid: str, jurl: str, plat: str
+            ) -> JobDetailModel | None:
                 try:
-                    detail_html = await browser.render_url(job_url, wait_seconds=3.0, timeout_ms=60000, wait_until='networkidle')
-                    job_detail = create_job_detail_model(
-                        job_url=job_url,
+                    detail_html: str = await browser.render_url(
+                        jurl, wait_seconds=3.0, timeout_ms=60000, wait_until='networkidle'
+                    )
+                    job_detail: JobDetailModel | None = create_job_detail_model(
+                        job_url=jurl,
                         html=detail_html,
                         title="",
                         company=""
                     )
 
                     if not job_detail:
-                        logger.warning(f"⚠️ Parser returned None for {job_url}")
+                        logger.warning(f"Parser returned None for {jurl}")
                         return None
 
                     detail = JobDetailModel(
-                        job_id=job_id,
-                        platform=platform,
+                        job_id=jid,
+                        platform=plat,
                         actual_role=job_detail.actual_role,
-                        url=job_url,
+                        url=jurl,
                         job_description=job_detail.job_description,
                         skills=job_detail.skills,
                         company_name=job_detail.company_name,
-                        company_detail=job_detail.company_detail,
                         posted_date=job_detail.posted_date,
                         scraped_at=datetime.now(),
                     )
                     return detail
                 except Exception as e:
-                    logger.error(f"❌ Error {job_url}: {e}")
+                    logger.error(f"Error {jurl}: {e}")
                     return None
 
-            batch_results = await asyncio.gather(*[scrape_detail(url, job_id) for url, job_id, _, _ in batch])
-            batch_details = [d for d in batch_results if d]
+            batch_results = await asyncio.gather(
+                *[scrape_detail(url, job_id, platform) for url, job_id, _, _ in batch]
+            )
+            batch_details: list[JobDetailModel] = [d for d in batch_results if d is not None]
 
             detail_models.extend(batch_details)
 
             if db_ops and batch_details:
-                stored = db_ops.store_details(batch_details)
-                logger.info(f"💾 Batch {batch_start // concurrent_jobs + 1}: {stored} details stored")
+                stored: int = await asyncio.to_thread(db_ops.store_details, batch_details)
+                logger.info(f"Batch {batch_start // concurrent_jobs + 1}: {stored} details stored")
 
             await asyncio.sleep(1.5)
-            logger.info(f"📈 Progress: {len(detail_models)}/{len(unscraped)} jobs scraped")
+            logger.info(f"Progress: {len(detail_models)}/{len(unscraped)} jobs scraped")
 
     return detail_models

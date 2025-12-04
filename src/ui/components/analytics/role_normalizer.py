@@ -10,7 +10,7 @@ class RoleNormalizer:
     
     def __init__(self, reference_file: str = "src/config/roles_reference_2025.json"):
         self.reference_file = reference_file
-        self.role_patterns: Dict[str, List[re.Pattern]] = {}
+        self.role_patterns: Dict[str, List[re.Pattern[str]]] = {}
         self._load_patterns()
     
     def _load_patterns(self) -> None:

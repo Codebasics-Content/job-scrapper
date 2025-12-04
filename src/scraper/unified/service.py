@@ -15,16 +15,15 @@ SCALABLE COMPONENTS (10K+ jobs):
 """
 from __future__ import annotations
 
-from typing import List
-
-from src.models.models import JobDetailModel
 from src.analysis.skill_extraction.extractor import AdvancedSkillExtractor
+from src.models.models import JobDetailModel
+
 from .naukri_unified import scrape_naukri_jobs_unified
 
 # Scalable components available for 10K+ job operations
 from .scalable import (
     BatchProcessor,
-    CheckpointManager, 
+    CheckpointManager,
     ProgressTracker,
     get_rate_limiter,
 )
@@ -39,30 +38,42 @@ __all__ = [
 ]
 
 
+def _extract_skills_as_list(extractor: AdvancedSkillExtractor, text: str) -> list[str]:
+    """Extract skills and ensure list[str] return type"""
+    result = extractor.extract(text, return_confidence=False)
+    # Type narrow: when return_confidence=False, returns list[str]
+    skills: list[str] = []
+    for item in result:
+        if isinstance(item, str):
+            skills.append(item)
+    return skills
+
+
 async def scrape_jobs(
     platform: str,
     *,
     keyword: str,
     location: str,
     limit: int = 50,
-) -> List[JobDetailModel]:
+) -> list[JobDetailModel]:
     """Scrape jobs and extract skills using lightweight regex patterns"""
-    p = platform.lower()
-    
+    p: str = platform.lower()
+
     # Get raw jobs without skills extraction
+    jobs: list[JobDetailModel]
     if p == "naukri":
         jobs = await scrape_naukri_jobs_unified(keyword=keyword, location=location, limit=limit)
     else:
         raise ValueError(f"Unsupported platform: {platform}. Supported: naukri only (LinkedIn via JobSpy)")
-    
+
     # Initialize skill extractor once for batch processing (performance optimization)
     extractor = AdvancedSkillExtractor('src/config/skills_reference_2025.json')
-    
+
     # Extract skills for each job using advanced 3-layer extraction
     for job in jobs:
-        if hasattr(job, 'jd') and job.jd:
-            # Extract skills as list[str] (default return_confidence=False)
-            skills: list[str] = extractor.extract(job.jd, return_confidence=False)  # type: ignore[assignment]
+        jd: str = getattr(job, 'jd', '') or ''
+        if jd:
+            skills: list[str] = _extract_skills_as_list(extractor, jd)
             job.skills = ','.join(skills) if skills else ''
-    
+
     return jobs
