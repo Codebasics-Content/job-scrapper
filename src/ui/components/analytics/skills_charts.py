@@ -59,34 +59,66 @@ def render_skills_analysis(all_jobs: list[JobData]) -> None:
     # Initialize role normalizer
     normalizer = RoleNormalizer()
 
-    # Normalize and extract unique job roles for filter
+    # Extract unique input_roles (what was searched) and normalized actual_roles
+    input_roles: set[str] = set()
     normalized_roles: set[str] = set()
     for job in all_jobs:
+        # Input role (original search term)
+        input_role: str | None = job.get('input_role')
+        if input_role:
+            input_roles.add(input_role)
+        # Actual role (normalized from LinkedIn/Naukri title)
         actual_role: str | None = job.get('actual_role')
         if actual_role:
             cleaned: str = _clean_emoji(actual_role)
             normalized: str = normalizer.normalize_role(cleaned)
             normalized_roles.add(normalized)
 
+    input_role_list: list[str] = sorted(input_roles)
     job_roles: list[str] = sorted(normalized_roles)
 
-    # Job role filter dropdown
+    # Filter controls in two columns
     st.markdown("### Filter by Job Role")
-    selected_role: str | None = st.selectbox(
-        "Select Job Role",
-        options=["All Roles"] + job_roles,
-        help="Filter skills analysis by specific job role"
-    )
+    col1, col2 = st.columns(2)
 
-    # Filter jobs based on selected role (compare normalized versions)
+    with col1:
+        filter_type: str = st.radio(
+            "Filter by",
+            options=["Search Term (Input Role)", "Job Title (Actual Role)"],
+            help="Choose to filter by what was searched OR by normalized job title",
+            horizontal=True
+        )
+
+    with col2:
+        if filter_type == "Search Term (Input Role)":
+            selected_role: str | None = st.selectbox(
+                "Select Search Term",
+                options=["All Roles"] + input_role_list,
+                help="Filter by original search term (e.g., 'Data Engineer' search)"
+            )
+        else:
+            selected_role = st.selectbox(
+                "Select Job Role",
+                options=["All Roles"] + job_roles,
+                help="Filter by normalized job title from LinkedIn/Naukri"
+            )
+
+    # Filter jobs based on selected role
     filtered_jobs: list[JobData]
     role_display: str
     if selected_role and selected_role != "All Roles":
-        filtered_jobs = [
-            job for job in all_jobs
-            if normalizer.normalize_role(_clean_emoji(job.get('actual_role') or '')) == selected_role
-        ]
-        role_display = f" for {selected_role}"
+        if filter_type == "Search Term (Input Role)":
+            filtered_jobs = [
+                job for job in all_jobs
+                if job.get('input_role') == selected_role
+            ]
+            role_display = f" for '{selected_role}' searches"
+        else:
+            filtered_jobs = [
+                job for job in all_jobs
+                if normalizer.normalize_role(_clean_emoji(job.get('actual_role') or '')) == selected_role
+            ]
+            role_display = f" for {selected_role}"
     else:
         filtered_jobs = list(all_jobs)
         role_display = " (All Roles)"

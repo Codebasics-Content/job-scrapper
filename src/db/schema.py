@@ -46,6 +46,7 @@ class SchemaManager:
                 CREATE TABLE IF NOT EXISTS jobs (
                     job_id TEXT PRIMARY KEY,
                     platform TEXT NOT NULL,
+                    input_role TEXT,
                     actual_role TEXT NOT NULL,
                     url TEXT NOT NULL UNIQUE,
                     job_description TEXT,
@@ -56,8 +57,14 @@ class SchemaManager:
                     FOREIGN KEY (job_id) REFERENCES job_urls(job_id)
                 )
             """)
+            # Migration: Add input_role column to existing tables
+            try:
+                conn.execute("ALTER TABLE jobs ADD COLUMN input_role TEXT")
+                logger.info("Added 'input_role' column to existing jobs table")
+            except Exception:
+                pass  # Column already exists
             conn.commit()
-            logger.info("Created/verified jobs table")
+            logger.info("Created/verified jobs table with input_role")
     
     def create_indexes(self) -> None:
         """Create indexes for fast querying and deduplication"""
@@ -67,8 +74,9 @@ class SchemaManager:
             conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_scraped ON job_urls(scraped)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_jobs_platform ON jobs(platform)")
             conn.execute("CREATE INDEX IF NOT EXISTS idx_jobs_url ON jobs(url)")
+            conn.execute("CREATE INDEX IF NOT EXISTS idx_jobs_input_role ON jobs(input_role)")
             conn.commit()
-            logger.info("Created all indexes with scraped tracking")
+            logger.info("Created all indexes with input_role tracking")
     
     def initialize_schema(self) -> None:
         """Initialize two-table schema with indexes"""

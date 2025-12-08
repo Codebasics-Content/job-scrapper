@@ -85,17 +85,26 @@ class JobStorageOperations:
             stored = 0
             for detail in details:
                 try:
-                    # Insert job details
+                    # Get input_role from job_urls table for this URL
+                    cursor = conn.execute(
+                        "SELECT input_role FROM job_urls WHERE url = ?",
+                        (detail.url,),
+                    )
+                    row = cursor.fetchone()
+                    input_role: str | None = row[0] if row else None
+
+                    # Insert job details with input_role
                     conn.execute(
                         """
                         INSERT OR REPLACE INTO jobs
-                        (job_id, platform, actual_role, url, job_description, skills,
-                         company_name, posted_date)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                        (job_id, platform, input_role, actual_role, url, job_description,
+                         skills, company_name, posted_date)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                         (
                             detail.job_id,
                             detail.platform,
+                            input_role,
                             detail.actual_role,
                             detail.url,
                             detail.job_description,
@@ -235,18 +244,19 @@ class JobStorageOperations:
                 logger.warning(f"Failed to update skills for {job_id}: {error}")
                 return False
 
-    def get_all_jobs(self) -> list[dict[str, str]]:
-        """Get all jobs for database stats"""
+    def get_all_jobs(self) -> list[dict[str, str | None]]:
+        """Get all jobs for database stats with input_role for filtering"""
         with self.connection.get_connection_context() as conn:
             cursor = conn.execute(
-                "SELECT job_id, platform, actual_role, skills FROM jobs"
+                "SELECT job_id, platform, input_role, actual_role, skills FROM jobs"
             )
             return [
                 {
                     "job_id": row[0],
                     "platform": row[1],
-                    "actual_role": row[2],
-                    "skills": row[3],
+                    "input_role": row[2],
+                    "actual_role": row[3],
+                    "skills": row[4],
                 }
                 for row in cursor.fetchall()
             ]

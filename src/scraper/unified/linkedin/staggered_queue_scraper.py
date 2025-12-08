@@ -236,7 +236,9 @@ class RoundRobinScraper:
         self.last_job_start_time = 0.0
         # Minimum interval between any two job starts (across all slots)
         # This prevents bursts when jobs are skipped quickly
-        self.min_interval_between_jobs = 2.0  # 2 seconds minimum between any job starts
+        # FIX: Use configured delay divided by num_slots for parallel throughput
+        # Example: 10s delay, 5 slots → 2s min interval = 5 requests per 10s
+        self.min_interval_between_jobs = max(2.0, effective_delay / self.num_slots)
 
         # Adaptive throttling - reduces delay after consecutive successes
         self.consecutive_success_count = 0
@@ -324,11 +326,11 @@ class RoundRobinScraper:
 
         # Sleep OUTSIDE the lock - other slots can now reserve their slots
         if wait_time > 0:
-            logger.debug(f"⏳ Slot {slot_id}: Waiting {wait_time:.1f}s (staggered start)")
+            logger.info(f"⏳ Slot {slot_id}: Enforcing {wait_time:.1f}s delay (min_interval={self.min_interval_between_jobs:.1f}s)")
             emit_progress("slot_waiting", {
                 "slot_id": slot_id,
                 "wait_time": round(wait_time, 1),
-                "reason": "Staggered start"
+                "reason": f"Rate limit delay ({self.min_interval_between_jobs:.1f}s interval)"
             })
             await asyncio.sleep(wait_time)
 
@@ -400,11 +402,13 @@ class RoundRobinScraper:
             await self.token_bucket.set_rate(normal_rate)
 
         # Acquire token - this will wait if no tokens available (O(1) amortized)
-        # AGGRESSIVE: 2s timeout to prevent hanging - fail fast and proceed
-        acquired = await self.token_bucket.acquire(timeout=2.0)
+        # FIX: Use delay-based timeout instead of hardcoded 2s
+        # Timeout should be at least the current_delay to allow proper rate limiting
+        bucket_timeout = max(5.0, self.current_delay * 1.5)
+        acquired = await self.token_bucket.acquire(timeout=bucket_timeout)
 
         if not acquired:
-            logger.warning("⚠️ Token bucket timeout - forcing dispatch anyway")
+            logger.warning(f"⚠️ Token bucket timeout after {bucket_timeout:.1f}s - forcing dispatch")
 
         # Add small jitter for anti-detection (±0.2s)
         jitter = random.uniform(-0.2, 0.2)
@@ -1218,11 +1222,13 @@ class RoundRobinScraper:
         logger.info("🚀 ROUND-ROBIN SCRAPER with Adaptive Rate Limiting")
         logger.info("=" * 60)
         logger.info(f"   Slots: {self.num_slots}")
-        logger.info(f"   Base delay: {self.delay_between_jobs}s (adaptive: 2.0s → 1.5s)")
+        logger.info(f"   Base delay: {self.delay_between_jobs}s")
+        logger.info(f"   Effective delay: {self.current_delay:.1f}s (scaled for {self.num_slots} slots)")
+        logger.info(f"   Min interval: {self.min_interval_between_jobs:.1f}s between ANY job starts")
         logger.info(f"   Input URLs: {initial_count}")
         logger.info("")
         logger.info("   🌐 English-only: Content-based filtering (all subdomains allowed)")
-        logger.info("   ⚡ Adaptive throttle: delay reduces after 10 successes")
+        logger.info("   ⚡ Rate limiting enforced via min_interval + token bucket")
         logger.info("=" * 60)
 
         # Build task list - all subdomains allowed, content checked after load
@@ -1573,20 +1579,42 @@ class RoundRobinScraper:
                 await job_queue.put(task)
             logger.info(f"📥 Queued {len(tasks)} jobs")
 
-            # Wait for all jobs to be processed WITH TIMEOUT
-            # Calculate timeout: jobs * avg_time_per_job / workers
-            # Cap at 5 minutes (300s) max to prevent indefinite hanging
-            max_wait_seconds = min(300, max(60, (len(tasks) * 5 / self.num_slots)))
-            try:
-                await asyncio.wait_for(job_queue.join(), timeout=max_wait_seconds)
-                logger.info("✅ All jobs processed")
-            except asyncio.TimeoutError:
-                logger.error(f"⚠️ Queue join timeout after {max_wait_seconds}s - forcing completion")
-                emit_progress("deadlock_warning", {
-                    "message": f"Queue join timeout after {max_wait_seconds}s",
-                    "processed": self.total_processed,
-                    "remaining": job_queue.qsize()
-                })
+            # Wait for all jobs to be processed WITH PROGRESS-BASED TIMEOUT
+            # Instead of fixed timeout, check if progress is being made
+            # If no progress for 120s, assume deadlock
+            last_processed = 0
+            no_progress_count = 0
+            max_no_progress = 12  # 12 checks * 10s = 120s without progress = deadlock
+            check_interval = 10.0  # Check every 10 seconds
+
+            logger.info(f"⏳ Waiting for {len(tasks)} jobs to complete (progress-based timeout)...")
+
+            while not job_queue.empty() or self.total_processed < len(tasks):
+                try:
+                    # Wait for queue to drain with short timeout
+                    await asyncio.wait_for(job_queue.join(), timeout=check_interval)
+                    logger.info("✅ All jobs processed")
+                    break
+                except asyncio.TimeoutError:
+                    # Check if progress is being made
+                    if self.total_processed > last_processed:
+                        # Progress made - reset counter
+                        no_progress_count = 0
+                        last_processed = self.total_processed
+                        remaining = len(tasks) - self.total_processed
+                        logger.debug(f"📊 Progress: {self.total_processed}/{len(tasks)} ({remaining} remaining)")
+                    else:
+                        # No progress
+                        no_progress_count += 1
+                        if no_progress_count >= max_no_progress:
+                            logger.error(f"⚠️ No progress for {no_progress_count * check_interval}s - forcing completion")
+                            emit_progress("deadlock_warning", {
+                                "message": f"No progress for {no_progress_count * check_interval}s",
+                                "processed": self.total_processed,
+                                "remaining": job_queue.qsize()
+                            })
+                            break
+                        logger.warning(f"⚠️ No progress for {no_progress_count * check_interval}s ({max_no_progress - no_progress_count} checks remaining)")
 
             # Send poison pills to stop workers
             for _ in range(self.num_slots):
