@@ -75,3 +75,11 @@ proxy_manager_config.json
 # LinkedIn authentication
 .linkedin_cookies.json
 *_cookies.json
+
+# node Modules
+node_modules/
+
+# dot folders
+.*.swp
+.*.swo
+.*~

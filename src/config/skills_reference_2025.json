@@ -422,15 +422,13 @@
       ]
     },
     {
-      "name": "Apache Hadoop",
+      "name": "Hadoop",
       "patterns": [
-        "\\bAPACHE\\ HADOOP\\b",
-        "\\bApache\\ Hadoop\\b",
-        "\\bapache\\ hadoop\\b",
-        "\\bApache\\-Hadoop\\b",
-        "\\bapache\\-hadoop\\b",
-        "\\bAPACHE\\S+HADOOP\\b",
-        "\\bApache\\s+Hadoop\\b"
+        "\\bHADOOP\\b",
+        "\\bHadoop\\b",
+        "\\bhadoop\\b",
+        "\\bApache\\s+Hadoop\\b",
+        "\\bHDFS\\b"
       ]
     },
     {
@@ -874,15 +872,15 @@
       ]
     },
     {
-      "name": "Aws Glue",
+      "name": "AWS Glue",
       "patterns": [
-        "\\bAWS\\ GLUE\\b",
-        "\\bAws\\ Glue\\b",
-        "\\baws\\ glue\\b",
-        "\\bAws\\-Glue\\b",
-        "\\baws\\-glue\\b",
-        "\\bAWS\\S+GLUE\\b",
-        "\\bAws\\s+Glue\\b"
+        "\\bAWS\\s+Glue\\b",
+        "\\bAWS\\s*Glue\\b",
+        "\\bGlue\\s+ETL\\b",
+        "\\bGlue\\s+jobs?\\b",
+        "\\bGlue\\s+crawlers?\\b",
+        "\\bGlue\\s+catalog\\b",
+        "\\bGlue\\s+Data\\s+Catalog\\b"
       ]
     },
     {
@@ -910,15 +908,19 @@
       ]
     },
     {
-      "name": "Aws Lambda",
+      "name": "AWS Lambda",
       "patterns": [
-        "\\bAWS\\ LAMBDA\\b",
-        "\\bAws\\ Lambda\\b",
-        "\\baws\\ lambda\\b",
-        "\\bAws\\-Lambda\\b",
-        "\\baws\\-lambda\\b",
-        "\\bAWS\\S+LAMBDA\\b",
-        "\\bAws\\s+Lambda\\b"
+        "\\bAWS\\s+Lambda\\b",
+        "\\bLambda\\s+functions?\\b",
+        "\\bLambda\\s+triggers?\\b",
+        "\\bserverless\\s+Lambda\\b",
+        "\\bLambda\\s+layers?\\b",
+        "\\bSageMaker,?\\s+Lambda\\b",
+        "\\bLambda,?\\s+Step\\s+Functions\\b",
+        "\\bS3,?\\s+Lambda\\b",
+        "\\bLambda,?\\s+S3\\b",
+        "\\bEC2,?\\s+Lambda\\b",
+        "\\bLambda,?\\s+API\\s+Gateway\\b"
       ]
     },
     {
@@ -1568,9 +1570,16 @@
     {
       "name": "C",
       "patterns": [
-        "\\bC\\b",
-        "\\bC\\b",
-        "\\bc\\b"
+        "\\bC\\s+programming\\b",
+        "\\bC\\s+language\\b",
+        "\\bC/C\\+\\+\\b",
+        "\\bC,\\s*C\\+\\+\\b",
+        "\\bprogramming\\s+in\\s+C\\b",
+        "\\bexperience\\s+(with|in)\\s+C\\b",
+        "\\bproficiency\\s+in\\s+C\\b",
+        "\\bknowledge\\s+of\\s+C\\b",
+        "\\bC\\s+and\\s+C\\+\\+\\b",
+        "\\bC\\s+or\\s+C\\+\\+\\b"
       ]
     },
     {
@@ -3977,9 +3986,17 @@
     {
       "name": "Go",
       "patterns": [
-        "\\bGO\\b",
-        "\\bGo\\b",
-        "\\bgo\\b"
+        "\\bGolang\\b",
+        "\\bGOLANG\\b",
+        "\\bGo\\s+programming\\b",
+        "\\bGo\\s+language\\b",
+        "\\bGo\\s*\\(Golang\\)\\b",
+        "\\bprogramming\\s+in\\s+Go\\b",
+        "\\bexperience\\s+(with|in)\\s+Go\\b",
+        "\\bproficiency\\s+in\\s+Go\\b",
+        "\\bGo,\\s*Python\\b",
+        "\\bPython,\\s*Go\\b",
+        "\\bGo/Golang\\b"
       ]
     },
     {
@@ -5115,11 +5132,14 @@
       ]
     },
     {
-      "name": "Make",
+      "name": "Make.com",
       "patterns": [
-        "\\bMAKE\\b",
-        "\\bMake\\b",
-        "\\bmake\\b"
+        "\\bMake\\.com\\b",
+        "\\bMake\\s+\\(formerly\\s+Integromat\\)\\b",
+        "\\bMake\\s+automation\\b",
+        "\\bMake\\s+scenarios\\b",
+        "\\bIntegromat\\b",
+        "\\bINTEGROMAT\\b"
       ]
     },
     {
@@ -6721,9 +6741,19 @@
     {
       "name": "R",
       "patterns": [
-        "\\bR\\b",
-        "\\bR\\b",
-        "\\br\\b"
+        "\\bR\\s+programming\\b",
+        "\\bR\\s+language\\b",
+        "\\bR\\s+Studio\\b",
+        "\\bRStudio\\b",
+        "\\bR\\s*\\(programming\\)\\b",
+        "\\bprogramming\\s+in\\s+R\\b",
+        "\\bexperience\\s+(with|in)\\s+R\\b",
+        "\\bproficiency\\s+in\\s+R\\b",
+        "\\bPython,\\s*R\\b",
+        "\\bR,\\s*Python\\b",
+        "\\bR/Python\\b",
+        "\\bPython/R\\b",
+        "\\bstatistical\\s+software.*\\bR\\b"
       ]
     },
     {
@@ -9164,30 +9194,6 @@
         "\\bZUSTAND\\b",
         "\\bZustand\\b",
         "\\bzustand\\b"
-      ]
-    },
-    {
-      "name": "Machine Learning",
-      "patterns": [
-        "\\bMACHINE\\ LEARNING\\b",
-        "\\bMachine\\ Learning\\b",
-        "\\bmachine\\ learning\\b",
-        "\\bMachine\\-Learning\\b",
-        "\\bmachine\\-learning\\b",
-        "\\bMACHINE\\S+LEARNING\\b",
-        "\\bMachine\\s+Learning\\b"
-      ]
-    },
-    {
-      "name": "Artificial Intelligence",
-      "patterns": [
-        "\\bARTIFICIAL\\ INTELLIGENCE\\b",
-        "\\bArtificial\\ Intelligence\\b",
-        "\\bartificial\\ intelligence\\b",
-        "\\bArtificial\\-Intelligence\\b",
-        "\\bartificial\\-intelligence\\b",
-        "\\bARTIFICIAL\\S+INTELLIGENCE\\b",
-        "\\bArtificial\\s+Intelligence\\b"
       ]
     },
     {

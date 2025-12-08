@@ -6,7 +6,17 @@
       "WebFetch(domain:codebasics.io)",
       "Bash(\"venv\\Scripts\\python.exe\" -m src.analysis.skill_extraction.batch_reextract --dry-run --batch-size 100)",
       "Bash(\"venv\\Scripts\\basedpyright.exe\" src/analysis/skill_extraction/batch_reextract.py)",
-      "Bash(\"venv\\Scripts\\python.exe\" -m src.analysis.skill_extraction.batch_reextract --dry-run --batch-size 500)"
+      "Bash(\"venv\\Scripts\\python.exe\" -m src.analysis.skill_extraction.batch_reextract --dry-run --batch-size 500)",
+      "WebSearch",
+      "Bash(sqlite3:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(bash scripts/validation/layer3_fp_detection.sh:*)",
+      "Bash(bash scripts/validation/layer4_fn_detection.sh:*)",
+      "Bash(\"venv/Scripts/python.exe\":*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
