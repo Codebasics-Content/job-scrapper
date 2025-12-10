@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "last_updated": "2025-10-10T12:13:00+05:30",
+  "source": "MIND-TechAI Ontology + Custom 2025 AI/ML Extensions",
+  "skills": {
+    "programming_languages": [
+      {"name": "Python", "patterns": ["python"]},
+      {"name": "JavaScript", "patterns": ["javascript", "js"]},
+      {"name": "TypeScript", "patterns": ["typescript", "ts"]},
+      {"name": "Java", "patterns": ["java"]},
+      {"name": "C++", "patterns": ["c++"]},
+      {"name": "C#", "patterns": ["c#"]},
+      {"name": "Go", "patterns": ["golang", "go"]},
+      {"name": "Rust", "patterns": ["rust"]},
+      {"name": "SQL", "patterns": ["sql", "postgresql", "mysql", "sqlite"]}
+    ],
+    "ml_ai_frameworks": [
+      {"name": "TensorFlow", "patterns": ["tensorflow", "tf"]},
+      {"name": "PyTorch", "patterns": ["pytorch"]},
+      {"name": "Scikit-learn", "patterns": ["scikit-learn", "sklearn"]},
+      {"name": "Keras", "patterns": ["keras"]},
+      {"name": "LangChain", "patterns": ["langchain"]},
+      {"name": "LLaMA", "patterns": ["llama", "llama2"]},
+      {"name": "Hugging Face", "patterns": ["hugging face", "huggingface"]}
+    ],
+    "concepts_and_paradigms": [
+      {"name": "Generative AI", "patterns": ["generative ai", "genai", "generative artificial intelligence"]},
+      {"name": "Large Language Models", "patterns": ["large language models", "llms"]},
+      {"name": "Natural Language Processing", "patterns": ["natural language processing", "nlp"]},
+      {"name": "Computer Vision", "patterns": ["computer vision", "cv"]},
+      {"name": "REST API", "patterns": ["rest api", "restful"]}
+    ]
+  }
+}

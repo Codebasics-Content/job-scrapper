@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+AI & Machine Learning,703,98.9%
+Python,592,83.3%
+Large Language Models (LLMs),443,62.3%
+Data Pipelines,376,52.9%
+Amazon Web Services (AWS),323,45.4%
+Communication,307,43.2%
+API,305,42.9%
+Computer Science,295,41.5%
+Azure,274,38.5%
+PyTorch,273,38.4%
+TensorFlow,256,36.0%
+RAG,256,36.0%
+Generative AI,251,35.3%
+Innovation,245,34.5%
+Data Science,215,30.2%
+Problem Solving,212,29.8%
+CI/CD,206,29.0%
+LangChain,202,28.4%
+Docker,199,28.0%
+Google Cloud Platform (GCP),194,27.3%
+Fine-tuning,194,27.3%
+Collaboration,192,27.0%
+AI Agents,175,24.6%
+Natural Language Processing,173,24.3%
+SOLID Principles,172,24.2%
+MLOps,170,23.9%
+SQL,161,22.6%
+Prompt Engineering,156,21.9%
+Openai,153,21.5%
+Cloud Platforms,146,20.5%
+Use Case,145,20.4%
+Vector Databases,144,20.3%
+Deep Learning,136,19.1%
+Agentic AI,130,18.3%
+Scikit-Learn,123,17.3%
+Kubernetes,120,16.9%
+Hugging Face,114,16.0%
+Documentation,110,15.5%
+Compliance Management,108,15.2%
+FastAPI,107,15.0%
+Git,105,14.8%
+DevOps,98,13.8%
+Embeddings,95,13.4%
+Agile Methodology,92,12.9%
+Metrics,91,12.8%
+Prototyping,91,12.8%
+Organization,89,12.5%
+Computer Vision,85,12.0%
+Leadership,84,11.8%
+Edge Computing,84,11.8%

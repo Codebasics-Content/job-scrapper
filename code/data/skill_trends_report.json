@@ -1,0 +1,372 @@
+{
+  "generated": "2025-12-03T20:15:26.632Z",
+  "total_jobs": 4902,
+  "unique_skills": 834,
+  "avg_skills_per_job": 19.36,
+  "rising_skills": [
+    {
+      "skill": "Power Query",
+      "total": 66,
+      "recent": 64,
+      "older": 2,
+      "change": "3100.0"
+    },
+    {
+      "skill": "Pivot Tables",
+      "total": 58,
+      "recent": 57,
+      "older": 1,
+      "change": "2800.0"
+    },
+    {
+      "skill": "VBA",
+      "total": 56,
+      "recent": 52,
+      "older": 4,
+      "change": "1200.0"
+    },
+    {
+      "skill": "Google Analytics",
+      "total": 54,
+      "recent": 50,
+      "older": 4,
+      "change": "1150.0"
+    },
+    {
+      "skill": "Data Marts",
+      "total": 27,
+      "recent": 25,
+      "older": 2,
+      "change": "1150.0"
+    },
+    {
+      "skill": "Trend Analysis",
+      "total": 24,
+      "recent": 22,
+      "older": 2,
+      "change": "1000.0"
+    },
+    {
+      "skill": "Amplitude",
+      "total": 24,
+      "recent": 22,
+      "older": 2,
+      "change": "1000.0"
+    },
+    {
+      "skill": "Alteryx",
+      "total": 31,
+      "recent": 28,
+      "older": 3,
+      "change": "833.3"
+    },
+    {
+      "skill": "DAX",
+      "total": 99,
+      "recent": 89,
+      "older": 10,
+      "change": "790.0"
+    },
+    {
+      "skill": "Looker",
+      "total": 252,
+      "recent": 223,
+      "older": 29,
+      "change": "669.0"
+    },
+    {
+      "skill": "Qlik",
+      "total": 111,
+      "recent": 98,
+      "older": 13,
+      "change": "653.8"
+    },
+    {
+      "skill": "Macros",
+      "total": 31,
+      "recent": 27,
+      "older": 4,
+      "change": "575.0"
+    },
+    {
+      "skill": "PowerPoint",
+      "total": 96,
+      "recent": 83,
+      "older": 13,
+      "change": "538.5"
+    },
+    {
+      "skill": "Azure Data Lake",
+      "total": 29,
+      "recent": 25,
+      "older": 4,
+      "change": "525.0"
+    },
+    {
+      "skill": "Google Sheets",
+      "total": 50,
+      "recent": 43,
+      "older": 7,
+      "change": "514.3"
+    },
+    {
+      "skill": "Marketing Analytics",
+      "total": 63,
+      "recent": 54,
+      "older": 9,
+      "change": "500.0"
+    },
+    {
+      "skill": "Product Analytics",
+      "total": 54,
+      "recent": 46,
+      "older": 8,
+      "change": "475.0"
+    },
+    {
+      "skill": "Metabase",
+      "total": 33,
+      "recent": 28,
+      "older": 5,
+      "change": "460.0"
+    },
+    {
+      "skill": "Business Analytics",
+      "total": 105,
+      "recent": 89,
+      "older": 16,
+      "change": "456.3"
+    },
+    {
+      "skill": "Strategic Planning",
+      "total": 39,
+      "recent": 33,
+      "older": 6,
+      "change": "450.0"
+    }
+  ],
+  "falling_skills": [
+    {
+      "skill": "Anthropic",
+      "total": 118,
+      "recent": 1,
+      "older": 117,
+      "change": "-99.1"
+    },
+    {
+      "skill": "Reinforcement Learning",
+      "total": 165,
+      "recent": 2,
+      "older": 163,
+      "change": "-98.8"
+    },
+    {
+      "skill": "Dvc",
+      "total": 87,
+      "recent": 1,
+      "older": 86,
+      "change": "-98.8"
+    },
+    {
+      "skill": "Agent Frameworks",
+      "total": 75,
+      "recent": 1,
+      "older": 74,
+      "change": "-98.6"
+    },
+    {
+      "skill": "CrewAI",
+      "total": 74,
+      "recent": 1,
+      "older": 73,
+      "change": "-98.6"
+    },
+    {
+      "skill": "Mistral AI",
+      "total": 62,
+      "recent": 1,
+      "older": 61,
+      "change": "-98.4"
+    },
+    {
+      "skill": "CNNs",
+      "total": 57,
+      "recent": 1,
+      "older": 56,
+      "change": "-98.2"
+    },
+    {
+      "skill": "GPT",
+      "total": 116,
+      "recent": 2,
+      "older": 114,
+      "change": "-98.2"
+    },
+    {
+      "skill": "FAISS",
+      "total": 101,
+      "recent": 2,
+      "older": 99,
+      "change": "-98.0"
+    },
+    {
+      "skill": "Quantization",
+      "total": 51,
+      "recent": 1,
+      "older": 50,
+      "change": "-98.0"
+    },
+    {
+      "skill": "Azure Openai",
+      "total": 52,
+      "recent": 1,
+      "older": 51,
+      "change": "-98.0"
+    },
+    {
+      "skill": "LLMOps",
+      "total": 46,
+      "recent": 1,
+      "older": 45,
+      "change": "-97.8"
+    },
+    {
+      "skill": "Jax",
+      "total": 44,
+      "recent": 1,
+      "older": 43,
+      "change": "-97.7"
+    },
+    {
+      "skill": "Fine-tuning",
+      "total": 558,
+      "recent": 13,
+      "older": 545,
+      "change": "-97.6"
+    },
+    {
+      "skill": "Aws Lambda",
+      "total": 43,
+      "recent": 1,
+      "older": 42,
+      "change": "-97.6"
+    },
+    {
+      "skill": "Qdrant",
+      "total": 42,
+      "recent": 1,
+      "older": 41,
+      "change": "-97.6"
+    },
+    {
+      "skill": "Hugging Face",
+      "total": 278,
+      "recent": 7,
+      "older": 271,
+      "change": "-97.4"
+    },
+    {
+      "skill": "Openai",
+      "total": 354,
+      "recent": 9,
+      "older": 345,
+      "change": "-97.4"
+    },
+    {
+      "skill": "Claude",
+      "total": 118,
+      "recent": 3,
+      "older": 115,
+      "change": "-97.4"
+    },
+    {
+      "skill": "Vllm",
+      "total": 40,
+      "recent": 1,
+      "older": 39,
+      "change": "-97.4"
+    }
+  ],
+  "top_skills": [
+    {
+      "skill": "AI & Machine Learning",
+      "count": 3433
+    },
+    {
+      "skill": "Python",
+      "count": 3367
+    },
+    {
+      "skill": "SQL",
+      "count": 2171
+    },
+    {
+      "skill": "Communication",
+      "count": 2108
+    },
+    {
+      "skill": "Data Pipelines",
+      "count": 1989
+    },
+    {
+      "skill": "Computer Science",
+      "count": 1722
+    },
+    {
+      "skill": "Innovation",
+      "count": 1453
+    },
+    {
+      "skill": "Data Science",
+      "count": 1439
+    },
+    {
+      "skill": "Amazon Web Services (AWS)",
+      "count": 1402
+    },
+    {
+      "skill": "Problem Solving",
+      "count": 1376
+    },
+    {
+      "skill": "Collaboration",
+      "count": 1360
+    },
+    {
+      "skill": "Large Language Models (LLMs)",
+      "count": 1234
+    },
+    {
+      "skill": "Data Analysis",
+      "count": 1221
+    },
+    {
+      "skill": "Azure",
+      "count": 1209
+    },
+    {
+      "skill": "API",
+      "count": 1136
+    },
+    {
+      "skill": "Dashboards",
+      "count": 978
+    },
+    {
+      "skill": "Reporting",
+      "count": 963
+    },
+    {
+      "skill": "PyTorch",
+      "count": 962
+    },
+    {
+      "skill": "SOLID Principles",
+      "count": 954
+    },
+    {
+      "skill": "CI/CD",
+      "count": 874
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Machine Learning,633,92.0%
+Python,597,86.8%
+PyTorch,376,54.7%
+TensorFlow,316,45.9%
+AI,263,38.2%
+Data Science,252,36.6%
+Deep Learning,242,35.2%
+MLOps,220,32.0%
+Docker,204,29.7%
+Natural Language Processing,202,29.4%
+Google Cloud Platform,188,27.3%
+Azure,186,27.0%
+Azure Functions,186,27.0%
+Azure Kubernetes Service,186,27.0%
+Azure Openai,186,27.0%
+Azure Storage,186,27.0%
+Scikit-Learn,171,24.9%
+Amazon Web Services,162,23.5%
+Aws Sagemaker,156,22.7%
+Kubernetes,155,22.5%
+Aws Bedrock,150,21.8%
+Aws Lambda,149,21.7%
+Computer Science,147,21.4%
+Aws Cloud Services,147,21.4%
+AWS,145,21.1%
+Aws Codepipeline,145,21.1%
+LLM,141,20.5%
+Computer Vision,131,19.0%
+Apache Spark,129,18.8%
+Innovation,122,17.7%
+Communication,118,17.2%
+Make,111,16.1%
+CI/CD,108,15.7%
+CI,106,15.4%
+Large Language Models,104,15.1%
+CD,104,15.1%
+Google Cloud Professional,102,14.8%
+GenAI,101,14.7%
+API,100,14.5%
+AI/ML,97,14.1%
+Pandas,95,13.8%
+Collaboration,94,13.7%
+LangChain,89,12.9%
+Continuous Integration Continuous Deployment,88,12.8%
+Continuous Integration/Continuous Deployment,88,12.8%
+DevOps,88,12.8%
+Transformers,87,12.6%
+Problem Solving,86,12.5%
+Structured Query Language,86,12.5%
+Git,86,12.5%

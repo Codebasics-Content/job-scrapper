@@ -1,0 +1,31 @@
+﻿Skill,Count,Percentage
+SQL,346,81.4%
+Python,339,79.8%
+Data Pipelines,331,77.9%
+Data Engineering,253,59.5%
+AI & Machine Learning,243,57.2%
+ETL,217,51.1%
+Amazon Web Services (AWS),194,45.6%
+Azure,187,44.0%
+Communication,165,38.8%
+Collaboration,143,33.6%
+Data Quality,138,32.5%
+Apache Airflow,133,31.3%
+Apache Spark,129,30.4%
+Computer Science,124,29.2%
+Snowflake,124,29.2%
+Databricks,121,28.5%
+Innovation,121,28.5%
+API,117,27.5%
+Google Cloud Platform (GCP),110,25.9%
+Dbt,106,24.9%
+ELT,105,24.7%
+Reporting,104,24.5%
+Problem Solving,103,24.2%
+CI/CD,102,24.0%
+Agile Methodology,101,23.8%
+Data Science,100,23.5%
+Data Modeling,99,23.3%
+Data Governance,78,18.4%
+SOLID Principles,76,17.9%
+Data Analysis,73,17.2%

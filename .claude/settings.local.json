@@ -16,7 +16,9 @@
       "Bash(bash scripts/validation/layer3_fp_detection.sh:*)",
       "Bash(bash scripts/validation/layer4_fn_detection.sh:*)",
       "Bash(\"venv/Scripts/python.exe\":*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(cat:*)",
+      "Bash(venv/Scripts/pip.exe install:*)"
     ],
     "deny": [],
     "ask": []

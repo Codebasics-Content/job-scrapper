@@ -1,0 +1,100 @@
+SKILL EXTRACTION VALIDATION REPORT
+Generated: Wed, Dec  3, 2025  2:27:07 PM
+Database: data/jobs.db
+Skills Reference: src/config/skills_reference_2025.json
+Sample Size: 200
+
+========================================
+╔══════════════════════════════════════════════════════════════════════╗
+║           LAYER 1: PATTERN VALIDATION                                ║
+║           Using patterns from skills_reference_2025.json             ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Database: data/jobs.db
+Skills Reference: src/config/skills_reference_2025.json
+Sample Size: 200 jobs
+
+Loaded 200 job descriptions
+Checking 944 skill patterns...
+
+┌────────────────────────────────────────────────────────────────┐
+│ Skill                      │ Matches    │ Coverage (%)        │
+├────────────────────────────────────────────────────────────────┤
+│ AI & Machine Learning      │        187 │             93.5% │
+│ Python                     │        169 │             84.5% │
+│ Computer Science           │        106 │             53.0% │
+│ PyTorch                    │         98 │             49.0% │
+│ Data Pipelines             │         93 │             46.5% │
+│ Large Language Models (LLM │         85 │             42.5% │
+│ Amazon Web Services (AWS)  │         83 │             41.5% │
+│ TensorFlow                 │         80 │             40.0% │
+│ Communication              │         74 │             37.0% │
+│ SQL                        │         67 │             33.5% │
+│ Data Science               │         66 │             33.0% │
+│ Innovation                 │         60 │             30.0% │
+│ Deep Learning              │         58 │             29.0% │
+│ Generative AI              │         58 │             29.0% │
+│ Mathematics                │         55 │             27.5% │
+│ Problem Solving            │         55 │             27.5% │
+│ Collaboration              │         53 │             26.5% │
+│ Statistics                 │         51 │             25.5% │
+│ Azure                      │         49 │             24.5% │
+│ API                        │         48 │             24.0% │
+│ Scikit-Learn               │         48 │             24.0% │
+│ Fine-tuning                │         46 │             23.0% │
+│ MLOps                      │         45 │             22.5% │
+│ Metrics                    │         45 │             22.5% │
+│ Docker                     │         40 │             20.0% │
+│ Google Cloud Platform (GCP │         40 │             20.0% │
+│ Leadership                 │         38 │             19.0% │
+│ SOLID Principles           │         38 │             19.0% │
+│ Natural Language Processin │         38 │             19.0% │
+│ CI/CD                      │         36 │             18.0% │
+└────────────────────────────────────────────────────────────────┘
+
+Total skills with matches: 471
+Total pattern checks: 4565
+
+✓ Layer 1 validation complete
+╔══════════════════════════════════════════════════════════════════════╗
+║           LAYER 2: FALSE POSITIVE DETECTION                          ║
+║           Using patterns from skills_reference_2025.json             ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Database: data/jobs.db
+Sample Size: 200 jobs
+
+Analyzing 200 jobs for false positives...
+
+┌────────────────────────────────────────────────────────────────┐
+│ Skill                      │ False Positives                  │
+├────────────────────────────────────────────────────────────────┤
+└────────────────────────────────────────────────────────────────┘
+
+Total False Positives: 0
+Skills with FP issues: 0
+
+✓ Layer 2 FP detection complete
+╔══════════════════════════════════════════════════════════════════════╗
+║           LAYER 3: FALSE NEGATIVE DETECTION                          ║
+║           Using patterns from skills_reference_2025.json             ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Database: data/jobs.db
+Sample Size: 200 jobs
+
+Analyzing 200 jobs for false negatives...
+
+┌────────────────────────────────────────────────────────────────────────┐
+│ Skill              │ In JD     │ Extracted │ Missed (FN) │ Recall    │
+├────────────────────────────────────────────────────────────────────────┤
+└────────────────────────────────────────────────────────────────────────┘
+
+Total False Negatives: 0
+Skills with FN issues: 0
+
+✓ Layer 3 FN detection complete
+
+========================================
+VALIDATION COMPLETE
+Completed: Wed, Dec  3, 2025  2:27:15 PM

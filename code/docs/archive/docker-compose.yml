@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # HeadlessX - Chrome rendering service
+  headlessx:
+    image: browserless/chrome:latest
+    container_name: headlessx
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - CHROME_ARGS=--proxy-server=http://brd-customer-hl_864cf5cf-zone-residential:gkl7gk6qk7s0@luminati-proxy:24001 --disable-blink-features=AutomationControlled --disable-dev-shm-usage --no-sandbox
+      - MAX_CONCURRENT_SESSIONS=10
+      - CONNECTION_TIMEOUT=60000
+      - TOKEN=test-token
+      - PROXY_SERVER=http://brd-customer-hl_864cf5cf-zone-residential:gkl7gk6qk7s0@luminati-proxy:24001
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - scraper-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # BrightData Luminati Proxy Manager
+  luminati-proxy:
+    image: luminati/luminati-proxy:latest
+    container_name: luminati-proxy
+    restart: unless-stopped
+    ports:
+      - "24000:24000"  # US residential proxy
+      - "24001:24001"  # India residential proxy
+      - "22999:22999"  # Proxy Manager UI
+    entrypoint: ["/usr/local/bin/luminati"]
+    command: ["--config", "/root/proxy_manager_config.json", "--log", "error"]
+    volumes:
+      - ./proxy_manager_config.json:/root/proxy_manager_config.json
+      - luminati-data:/root/.luminati
+    networks:
+      - scraper-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:22999/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  luminati-data:
+    driver: local
+
+networks:
+  scraper-network:
+    driver: bridge

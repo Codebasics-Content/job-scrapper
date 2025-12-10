@@ -83,3 +83,15 @@ node_modules/
 .*.swp
 .*.swo
 .*~
+
+# Claude and AI assistant files - NEVER COMMIT!
+.claude/
+.claude*
+CLAUDE.md
+.cursorrules
+.cursor/
+.aider*
+.github/copilot/
+
+# Analysis folder (downloaded CSVs and notebooks)
+Analysis/

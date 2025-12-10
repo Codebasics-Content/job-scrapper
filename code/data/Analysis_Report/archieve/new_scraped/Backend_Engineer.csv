@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Python,12,75.0%
+Docker,8,50.0%
+Machine Learning,7,43.8%
+AI,7,43.8%
+Kubernetes,6,37.5%
+Microservices,6,37.5%
+API,6,37.5%
+Aws Cloud Services,5,31.2%
+Fastapi,5,31.2%
+Google Cloud Platform,5,31.2%
+PostgreSQL,5,31.2%
+Node.Js,5,31.2%
+CD,5,31.2%
+CI,5,31.2%
+CI/CD,5,31.2%
+Azure,4,25.0%
+Azure Functions,4,25.0%
+Azure Kubernetes Service,4,25.0%
+Azure Openai,4,25.0%
+Azure Storage,4,25.0%
+Continuous Integration Continuous Deployment,4,25.0%
+Continuous Integration/Continuous Deployment,4,25.0%
+Git,4,25.0%
+Django,4,25.0%
+AWS,4,25.0%
+Aws Bedrock,4,25.0%
+Aws Codepipeline,4,25.0%
+Aws Lambda,4,25.0%
+Aws Sagemaker,4,25.0%
+Amazon Web Services,3,18.8%
+Large Language Models,3,18.8%
+MLOps,3,18.8%
+Mlflow,3,18.8%
+PyTorch,3,18.8%
+Application Programming Interface,3,18.8%
+Grpc,3,18.8%
+Java,3,18.8%
+REST,3,18.8%
+Cybersecurity,2,12.5%
+Flask,2,12.5%
+MongoDB,2,12.5%
+Data Pipelines,2,12.5%
+Elasticsearch,2,12.5%
+FAISS,2,12.5%
+Google Cloud Professional,2,12.5%
+Large Language Model,2,12.5%
+Leadership,2,12.5%
+Milvus,2,12.5%
+Openai,2,12.5%
+Pgvector,2,12.5%

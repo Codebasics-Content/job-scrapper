@@ -1,0 +1,35 @@
+{
+  "include": ["src", "tests"],
+  "extraPaths": ["."],
+  "exclude": [
+    "**/__pycache__",
+    "**/.pytest_cache",
+    "**/node_modules",
+    "**/.venv",
+    "**/venv",
+    "src/scraper/_deprecated",
+    "src/_deprecated_ui",
+    "streamlit_app.py",
+    "skills_dashboard.py"
+  ],
+  "stubPath": "stubs",
+  "typeCheckingMode": "strict",
+  "reportUnknownMemberType": "none",
+  "reportUnknownVariableType": "none",
+  "reportUnknownArgumentType": "none",
+  "reportUnnecessaryComparison": "none",
+  "reportMissingTypeStubs": "warning",
+  "pythonVersion": "3.13",
+  "pythonPlatform": "Linux",
+  "reportAttributeAccessIssue": "none",
+  "allowedUntypedLibraries": [
+    "streamlit",
+    "pandas",
+    "altair",
+    "bs4",
+    "requests",
+    "jobspy"
+  ],
+  "venvPath": ".",
+  "venv": "venv"
+}

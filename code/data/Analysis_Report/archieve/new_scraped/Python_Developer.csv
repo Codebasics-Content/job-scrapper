@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Python,59,100.0%
+Fastapi,37,62.7%
+Flask,33,55.9%
+Django,32,54.2%
+AI,26,44.1%
+CI/CD,24,40.7%
+Openai,22,37.3%
+Docker,21,35.6%
+Azure,17,28.8%
+Azure Functions,17,28.8%
+Azure Kubernetes Service,17,28.8%
+Azure Openai,17,28.8%
+Azure Storage,17,28.8%
+Machine Learning,16,27.1%
+Git,15,25.4%
+API,15,25.4%
+Gemini,15,25.4%
+Computer Science,13,22.0%
+GitHub,13,22.0%
+DevOps,12,20.3%
+Communication,12,20.3%
+Problem Solving,12,20.3%
+PyTorch,11,18.6%
+Kubernetes,11,18.6%
+Continuous Integration Continuous Deployment,11,18.6%
+Continuous Integration/Continuous Deployment,11,18.6%
+Github Actions,11,18.6%
+PostgreSQL,10,16.9%
+Collaboration,10,16.9%
+Pandas,10,16.9%
+Microservices,10,16.9%
+AWS,10,16.9%
+Aws Bedrock,10,16.9%
+Aws Cloud Services,10,16.9%
+Aws Codepipeline,10,16.9%
+Aws Lambda,10,16.9%
+Aws Sagemaker,10,16.9%
+Application Programming Interface,9,15.3%
+TensorFlow,9,15.3%
+JavaScript,9,15.3%
+Scikit-Learn,9,15.3%
+CD,9,15.3%
+CI,9,15.3%
+Jenkins,8,13.6%
+NumPy,8,13.6%
+Amazon Web Services,7,11.9%
+Innovation,7,11.9%
+Mongodb,7,11.9%
+Google Cloud Platform,7,11.9%
+Java,7,11.9%

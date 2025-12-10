@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Classification,2,66.7%
+Fine-tuning,2,66.7%
+LangChain,2,66.7%
+Large Language Model,2,66.7%
+Large Language Models,2,66.7%
+LlamaIndex,2,66.7%
+Natural Language Processing,2,66.7%
+Openai,2,66.7%
+Python,2,66.7%
+Retrieval Augmented Generation,2,66.7%
+Semantic Search,2,66.7%
+Transformers,2,66.7%
+Application Programming Interface,2,66.7%
+Copilot,2,66.7%
+Docker,2,66.7%
+Make,2,66.7%
+BERT,1,33.3%
+Computer Science,1,33.3%
+Deep Learning,1,33.3%
+Jupyter,1,33.3%
+Jupyter Notebooks,1,33.3%
+Machine Learning,1,33.3%
+Pinecone,1,33.3%
+PyTorch,1,33.3%
+Qdrant,1,33.3%
+Text-to-Speech,1,33.3%
+Vector Databases,1,33.3%
+Weaviate,1,33.3%
+.NET,1,33.3%
+Angular,1,33.3%
+Azure,1,33.3%
+Azure Functions,1,33.3%
+Azure Kubernetes Service,1,33.3%
+Azure Openai,1,33.3%
+Azure Storage,1,33.3%
+Collaboration,1,33.3%
+Continuous Integration Continuous Deployment,1,33.3%
+Continuous Integration/Continuous Deployment,1,33.3%
+DevOps,1,33.3%
+Diversity and Inclusion,1,33.3%
+Documentation,1,33.3%
+Hypertext Transfer Protocol,1,33.3%
+Representational State Transfer API,1,33.3%
+Amazon Web Services,1,33.3%
+Anthropic Claude,1,33.3%
+Chain of Thought,1,33.3%
+GenAI,1,33.3%
+Generative AI,1,33.3%
+GitHub,1,33.3%
+Github Copilot,1,33.3%
