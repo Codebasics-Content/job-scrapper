@@ -1,0 +1,51 @@
+﻿Skill,Count,Percentage
+Python,1598,68.1%
+SQL,1436,61.2%
+Communication,1049,44.7%
+Data Pipelines,1047,44.6%
+ETL,891,38.0%
+Data Engineering,857,36.5%
+Azure,741,31.6%
+Collaboration,701,29.9%
+Data Quality,651,27.8%
+Innovation,635,27.1%
+Problem Solving,628,26.8%
+CI/CD,613,26.1%
+Reporting,542,23.1%
+Documentation,507,21.6%
+Databricks,453,19.3%
+Organization,422,18.0%
+Data Modeling,420,17.9%
+ELT,412,17.6%
+Snowflake,405,17.3%
+Java,390,16.6%
+DevOps,385,16.4%
+Docker,383,16.3%
+Git,372,15.9%
+Kubernetes,357,15.2%
+Data Governance,343,14.6%
+Dbt,342,14.6%
+API,342,14.6%
+Machine Learning,340,14.5%
+Decision Making,339,14.5%
+Integrity,335,14.3%
+Big Data,327,13.9%
+Power BI,297,12.7%
+Dashboards,293,12.5%
+Data Warehousing,287,12.2%
+Cloud Platforms,276,11.8%
+Data Warehouse,275,11.7%
+Leadership,270,11.5%
+Scala,259,11.0%
+BigQuery,251,10.7%
+Data Analysis,251,10.7%
+Tableau,244,10.4%
+AI & Machine Learning,241,10.3%
+Linux,241,10.3%
+Flexibility,239,10.2%
+Terraform,238,10.1%
+PostgreSQL,236,10.1%
+NoSQL,235,10.0%
+Pyspark,232,9.9%
+S3,217,9.3%
+Proactive,208,8.9%

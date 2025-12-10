@@ -92,6 +92,3 @@ CLAUDE.md
 .cursor/
 .aider*
 .github/copilot/
-
-# Analysis folder (downloaded CSVs and notebooks)
-Analysis/
