@@ -23,6 +23,7 @@ from src.ui.components import (
     render_kpi_dashboard,
     render_link_scraper_form,
     render_skills_analysis,
+    render_validation_dashboard,
 )
 
 logging.basicConfig(level=logging.INFO)
@@ -50,8 +51,14 @@ render_compact_kpi(DB_PATH)
 st.divider()
 
 # Main Tabs - Split Scraper Logic
-tab1, tab2, tab3, tab4 = st.tabs(
-    ["📊 KPI Dashboard", "🔗 Link Scraper", "📝 Detail Scraper", "📈 Analytics"]
+tab1, tab2, tab3, tab4, tab5 = st.tabs(
+    [
+        "📊 KPI Dashboard",
+        "🔗 Link Scraper",
+        "📝 Detail Scraper",
+        "📈 Analytics",
+        "🔧 Validation",
+    ]
 )
 
 # ==================== TAB 1: KPI DASHBOARD ====================
@@ -81,6 +88,10 @@ with tab4:
     render_analytics_overview(all_jobs)
     st.divider()
     render_skills_analysis(all_jobs)
+
+# ==================== TAB 5: VALIDATION ====================
+with tab5:
+    render_validation_dashboard(DB_PATH)
 
 # Footer
 st.divider()

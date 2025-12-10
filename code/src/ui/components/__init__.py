@@ -7,6 +7,7 @@ from .analytics_dashboard import render_analytics_overview, render_skills_analys
 from .detail_scraper_form import render_detail_scraper_form
 from .kpi_dashboard import render_compact_kpi, render_kpi_dashboard
 from .link_scraper_form import render_link_scraper_form
+from .validation_dashboard import render_validation_dashboard
 
 __all__ = [
     "render_analytics_overview",
@@ -15,4 +16,5 @@ __all__ = [
     "render_detail_scraper_form",
     "render_kpi_dashboard",
     "render_compact_kpi",
+    "render_validation_dashboard",
 ]

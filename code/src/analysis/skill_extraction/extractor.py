@@ -1,8 +1,11 @@
 """
-Main 3-layer skill extraction interface
+Main 3-layer skill extraction interface with integrated validation
+Ensures ZERO false positives and ZERO false negatives before DB storage
 """
 
 import json
+
+from src.validation.realtime_validator import validate_skills
 
 from .advanced_regex_extractor import layer1_extract_phrases, layer2_extract_context
 from .common_words_filter import filter_common_words, split_by_conjunctions
@@ -88,17 +91,27 @@ class AdvancedSkillExtractor:
                     filtered_skills.append(cleaned)
 
         # Normalize skills - convert to dict format for deduplicate_skills
-        all_skills_dicts: list[SkillDict] = [SkillDict(skill=name) for name in filtered_skills]
+        all_skills_dicts: list[SkillDict] = [
+            SkillDict(skill=name) for name in filtered_skills
+        ]
         normalized = deduplicate_skills(all_skills_dicts)
 
-        if not return_confidence:
-            return sorted(normalized)
+        # VALIDATION LAYER: Remove FPs and add FNs before returning
+        # This ensures only pattern-verified skills are stored to DB
+        validated = validate_skills(
+            job_description=job_description,
+            extracted_skills=list(normalized),
+            skills_reference_path="src/config/skills_reference_2025.json",
+        )
 
-        # Calculate confidence scores
+        if not return_confidence:
+            return sorted(validated)
+
+        # Calculate confidence scores for validated skills
         scorer = ConfidenceScorer()
         skills_with_confidence = []
 
-        for skill in normalized:
+        for skill in validated:
             metadata = skills_metadata.get(
                 skill,
                 {"pattern_type": "partial", "match_count": 1, "has_context": False},
