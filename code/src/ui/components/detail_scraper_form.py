@@ -13,7 +13,6 @@ from typing import Generator, TypedDict
 
 import psutil
 import streamlit as st
-
 from src.db import JobStorageOperations
 from src.ui.components.slot_monitor import SlotMonitor
 
@@ -144,6 +143,9 @@ class ScraperResult(TypedDict):
 
 class ProgressEvent(TypedDict, total=False):
     """Progress event from scraper subprocess"""
+
+    event: str
+
     event: str
     timestamp: float
     # scraper_start event
@@ -171,8 +173,6 @@ class ProgressEvent(TypedDict, total=False):
     expired: int
     failed: int
     total_processed: int
-
-
 
 
 def stream_scraper_progress(
@@ -271,7 +271,9 @@ asyncio.run(scrape())
     st.session_state.scraper_running = True
     st.session_state.scraper_stopped = False
 
-    final_result = ScraperResult(jobs_scraped=0, expired_removed=0, failed=0, error=None)
+    final_result = ScraperResult(
+        jobs_scraped=0, expired_removed=0, failed=0, error=None
+    )
 
     try:
         # Stream stdout line by line
@@ -294,29 +296,44 @@ asyncio.run(scrape())
                     # Copy all known fields with proper defaults
                     if "timestamp" in raw_event:
                         val = raw_event["timestamp"]
-                        event["timestamp"] = float(val) if isinstance(val, (int, float)) else 0.0
+                        event["timestamp"] = (
+                            float(val) if isinstance(val, (int, float)) else 0.0
+                        )
                     if "total_jobs" in raw_event:
                         val = raw_event["total_jobs"]
-                        event["total_jobs"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["total_jobs"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     if "num_slots" in raw_event:
                         val = raw_event["num_slots"]
-                        event["num_slots"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["num_slots"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     if "slot_id" in raw_event:
                         val = raw_event["slot_id"]
-                        event["slot_id"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["slot_id"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     if "job_index" in raw_event:
                         val = raw_event["job_index"]
-                        event["job_index"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["job_index"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     if "status" in raw_event:
                         val = raw_event["status"]
                         event["status"] = str(val) if val is not None else ""
                     if "stats" in raw_event:
                         val = raw_event["stats"]
                         if isinstance(val, dict):
-                            event["stats"] = {str(k): int(v) if isinstance(v, (int, float)) else 0 for k, v in val.items()}
+                            event["stats"] = {
+                                str(k): int(v) if isinstance(v, (int, float)) else 0
+                                for k, v in val.items()
+                            }
                     if "current_delay" in raw_event:
                         val = raw_event["current_delay"]
-                        event["current_delay"] = float(val) if isinstance(val, (int, float)) else 0.0
+                        event["current_delay"] = (
+                            float(val) if isinstance(val, (int, float)) else 0.0
+                        )
                     if "delay_changed" in raw_event:
                         val = raw_event["delay_changed"]
                         event["delay_changed"] = bool(val)
@@ -328,7 +345,9 @@ asyncio.run(scrape())
                         event["title"] = str(val) if val is not None else ""
                     if "skills_count" in raw_event:
                         val = raw_event["skills_count"]
-                        event["skills_count"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["skills_count"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     if "job_id" in raw_event:
                         val = raw_event["job_id"]
                         event["job_id"] = str(val) if val is not None else ""
@@ -337,22 +356,32 @@ asyncio.run(scrape())
                         event["error"] = str(val) if val is not None else ""
                     if "wait_seconds" in raw_event:
                         val = raw_event["wait_seconds"]
-                        event["wait_seconds"] = float(val) if isinstance(val, (int, float)) else 0.0
+                        event["wait_seconds"] = (
+                            float(val) if isinstance(val, (int, float)) else 0.0
+                        )
                     if "message" in raw_event:
                         val = raw_event["message"]
                         event["message"] = str(val) if val is not None else ""
                     if "success" in raw_event:
                         val = raw_event["success"]
-                        event["success"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["success"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     if "expired" in raw_event:
                         val = raw_event["expired"]
-                        event["expired"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["expired"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     if "failed" in raw_event:
                         val = raw_event["failed"]
-                        event["failed"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["failed"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     if "total_processed" in raw_event:
                         val = raw_event["total_processed"]
-                        event["total_processed"] = int(val) if isinstance(val, (int, float)) else 0
+                        event["total_processed"] = (
+                            int(val) if isinstance(val, (int, float)) else 0
+                        )
                     yield event
                 except json.JSONDecodeError:
                     pass
@@ -366,9 +395,15 @@ asyncio.run(scrape())
                         failed_val = data.get("failed", 0)
                         error_val = data.get("error")
                         final_result = ScraperResult(
-                            jobs_scraped=int(jobs_scraped_val) if isinstance(jobs_scraped_val, (int, float)) else 0,
-                            expired_removed=int(expired_val) if isinstance(expired_val, (int, float)) else 0,
-                            failed=int(failed_val) if isinstance(failed_val, (int, float)) else 0,
+                            jobs_scraped=int(jobs_scraped_val)
+                            if isinstance(jobs_scraped_val, (int, float))
+                            else 0,
+                            expired_removed=int(expired_val)
+                            if isinstance(expired_val, (int, float))
+                            else 0,
+                            failed=int(failed_val)
+                            if isinstance(failed_val, (int, float))
+                            else 0,
                             error=str(error_val) if error_val is not None else None,
                         )
                 except json.JSONDecodeError:
@@ -399,11 +434,15 @@ def render_detail_scraper_form(db_path: str) -> None:
     _init_scraper_session_state()
 
     st.header("📝 Phase 2: Job Detail Scraper")
-    st.markdown("**Adaptive Throttling** | 2.0s → 1.5s after successes | Auto-reset on 429")
+    st.markdown(
+        "**Adaptive Throttling** | 2.0s → 1.5s after successes | Auto-reset on 429"
+    )
 
     # Check if scraper was stopped - show message
     if st.session_state.get("scraper_stopped"):
-        st.warning("⏹️ Scraper was stopped by user. Browser and all processes terminated.")
+        st.warning(
+            "⏹️ Scraper was stopped by user. Browser and all processes terminated."
+        )
         st.session_state.scraper_stopped = False  # Reset flag
 
     col1, col2 = st.columns(2)
@@ -418,22 +457,24 @@ def render_detail_scraper_form(db_path: str) -> None:
         job_role = st.selectbox(
             "Job Role",
             [
-                # Core Data Roles
+                # Data Analysis Bootcamp Roles
                 "Data Analyst",
-                "Data Engineer",
-                "Data Scientist",
-                "Business Analyst",
-                "AI Engineer",
-                # Domain Analyst Roles
                 "Financial Analyst",
-                "Marketing Analyst",
                 "Retail Analyst",
                 "Automobile Analyst",
                 "Reporting Analyst",
                 "MIS Analyst",
-                # BI Developer Roles (Optional)
+                "Marketing Analyst",
+                "Business Analyst",
+                # Data Engineering Bootcamp Roles
+                "Data Engineer",
                 "Power BI Developer",
                 "Tableau Developer",
+                # GenAI & Data Science Bootcamp Roles
+                "AI Engineer",
+                "ML Engineer",
+                "AI Architect",
+                "Data Scientist",
             ],
             index=0,
             help="Select the job role to filter URLs",
@@ -590,7 +631,9 @@ def render_detail_scraper_form(db_path: str) -> None:
             st.rerun()  # Rerun to show enabled STOP button
 
         # PHASE 2: Pending start - now actually run the scraper (STOP button is already enabled)
-        should_start_scraping = is_pending and st.session_state.get("scrape_params") is not None
+        should_start_scraping = (
+            is_pending and st.session_state.get("scrape_params") is not None
+        )
 
         if should_start_scraping:
             # Clear pending flag
@@ -622,14 +665,18 @@ def render_detail_scraper_form(db_path: str) -> None:
 
             # Initialize stats (using dict for mutable state)
             stats = {"success": 0, "expired": 0, "failed": 0, "processed": 0}
-            state = {"current_delay": params["delay_seconds"]}  # Mutable container for adaptive delay
+            state = {
+                "current_delay": params["delay_seconds"]
+            }  # Mutable container for adaptive delay
             total_jobs_count = params["batch_size"]
 
             def update_metrics():
                 success_metric.metric("✅ Success", stats["success"])
                 expired_metric.metric("🗑️ Expired", stats["expired"])
                 failed_metric.metric("❌ Failed", stats["failed"])
-                processed_metric.metric("📊 Processed", f"{stats['processed']}/{total_jobs_count}")
+                processed_metric.metric(
+                    "📊 Processed", f"{stats['processed']}/{total_jobs_count}"
+                )
                 delay_metric.metric("⚡ Delay", f"{state['current_delay']:.2f}s")
 
             update_metrics()
@@ -651,7 +698,11 @@ def render_detail_scraper_form(db_path: str) -> None:
                     event_type: str = event.get("event", "")
 
                     # Pass ALL slot-related events to the SlotMonitor
-                    if event_type.startswith("slot_") or event_type in ["job_dispatch", "job_complete", "deadlock_warning"]:
+                    if event_type.startswith("slot_") or event_type in [
+                        "job_dispatch",
+                        "job_complete",
+                        "deadlock_warning",
+                    ]:
                         # TypedDict structural mismatch with Mapping - types are verified at definition
                         slot_monitor.update_from_event(event)  # type: ignore[arg-type]
 
@@ -659,14 +710,25 @@ def render_detail_scraper_form(db_path: str) -> None:
                         total_jobs_count = event.get("total_jobs") or actual_batch
                         num_slots_val: int = event.get("num_slots") or num_slots
                         with status_container:
-                            st.info(f"Started scraping {total_jobs_count} jobs with {num_slots_val} slots")
-                            st.caption("Content-based filtering: Non-English content will be skipped automatically")
+                            st.info(
+                                f"Started scraping {total_jobs_count} jobs with {num_slots_val} slots"
+                            )
+                            st.caption(
+                                "Content-based filtering: Non-English content will be skipped automatically"
+                            )
 
                     elif event_type == "job_dispatch":
                         slot_id_val: int = event.get("slot_id") or 0
                         job_index_val: int = event.get("job_index") or 0
-                        progress: float = job_index_val / total_jobs_count if total_jobs_count > 0 else 0.0
-                        progress_bar.progress(progress, text=f"Dispatching Job {job_index_val}/{total_jobs_count} -> Slot {slot_id_val}")
+                        progress: float = (
+                            job_index_val / total_jobs_count
+                            if total_jobs_count > 0
+                            else 0.0
+                        )
+                        progress_bar.progress(
+                            progress,
+                            text=f"Dispatching Job {job_index_val}/{total_jobs_count} -> Slot {slot_id_val}",
+                        )
 
                     elif event_type == "job_complete":
                         slot_id_val = event.get("slot_id") or 0
@@ -684,8 +746,15 @@ def render_detail_scraper_form(db_path: str) -> None:
                             state["current_delay"] = current_delay_val
 
                         # Update progress
-                        progress = stats["processed"] / total_jobs_count if total_jobs_count > 0 else 0
-                        progress_bar.progress(min(progress, 1.0), text=f"Processed {stats['processed']}/{total_jobs_count}")
+                        progress = (
+                            stats["processed"] / total_jobs_count
+                            if total_jobs_count > 0
+                            else 0
+                        )
+                        progress_bar.progress(
+                            min(progress, 1.0),
+                            text=f"Processed {stats['processed']}/{total_jobs_count}",
+                        )
 
                         # Update metrics
                         update_metrics()
@@ -693,7 +762,9 @@ def render_detail_scraper_form(db_path: str) -> None:
                         # Show adaptive throttle notification
                         if event.get("delay_changed"):
                             with status_container:
-                                st.success(f"Adaptive throttle: delay reduced to {state['current_delay']:.2f}s")
+                                st.success(
+                                    f"Adaptive throttle: delay reduced to {state['current_delay']:.2f}s"
+                                )
 
                         # Show latest job info for successful jobs
                         if status_val == "success":
@@ -710,7 +781,9 @@ def render_detail_scraper_form(db_path: str) -> None:
                                 latest_job_container.info(f"Skipped: {error_msg[:40]}")
                             else:
                                 job_id_val: str = event.get("job_id") or ""
-                                latest_job_container.warning(f"Job {job_id_val[:20]}... expired/removed")
+                                latest_job_container.warning(
+                                    f"Job {job_id_val[:20]}... expired/removed"
+                                )
                         elif status_val == "error":
                             error_msg_val: str = event.get("error") or "Unknown"
                             latest_job_container.error(f"Error: {error_msg_val[:50]}")
@@ -724,25 +797,31 @@ def render_detail_scraper_form(db_path: str) -> None:
                     elif event_type == "rate_limit":
                         wait_time: float = event.get("wait_seconds") or 30.0
                         with status_container:
-                            st.warning(f"Rate limit detected - backing off for {wait_time:.0f}s")
+                            st.warning(
+                                f"Rate limit detected - backing off for {wait_time:.0f}s"
+                            )
 
                     elif event_type == "cookie_expired":
                         message_val = event.get("message") or "Cookies may be expired!"
                         with status_container:
                             st.error(f"**COOKIES EXPIRED**: {message_val}")
-                            st.warning("Please refresh your LinkedIn cookies in `linkedin_cookies.json` and restart the scraper.")
+                            st.warning(
+                                "Please refresh your LinkedIn cookies in `linkedin_cookies.json` and restart the scraper."
+                            )
 
                     elif event_type == "session_valid":
                         with status_container:
                             st.success("LinkedIn session validated successfully")
 
                     elif event_type == "scraper_finish":
-                        stats.update({
-                            "success": event.get("success") or 0,
-                            "expired": event.get("expired") or 0,
-                            "failed": event.get("failed") or 0,
-                            "processed": event.get("total_processed") or 0
-                        })
+                        stats.update(
+                            {
+                                "success": event.get("success") or 0,
+                                "expired": event.get("expired") or 0,
+                                "failed": event.get("failed") or 0,
+                                "processed": event.get("total_processed") or 0,
+                            }
+                        )
                         update_metrics()
                         progress_bar.progress(1.0, text="Complete!")
 
@@ -757,7 +836,9 @@ def render_detail_scraper_form(db_path: str) -> None:
                     if error_result:
                         st.error(f"Error: {error_result}")
                     else:
-                        jobs_scraped_result: int = final_result.get("jobs_scraped") or stats["success"]
+                        jobs_scraped_result: int = (
+                            final_result.get("jobs_scraped") or stats["success"]
+                        )
                         st.success(
                             f"**Scraping Complete!**\n\n"
                             f"- Jobs scraped: **{jobs_scraped_result}**\n"

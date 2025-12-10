@@ -12,7 +12,6 @@ from pathlib import Path
 from typing import TypedDict
 
 import streamlit as st
-
 from src.config.countries import LINKEDIN_COUNTRIES
 from src.db import JobStorageOperations
 
@@ -261,22 +260,24 @@ def render_link_scraper_form(db_path: str) -> None:
         job_role = st.selectbox(
             "Job Role",
             [
-                # Core Data Roles
+                # Data Analysis Bootcamp Roles
                 "Data Analyst",
-                "Data Engineer",
-                "Data Scientist",
-                "Business Analyst",
-                "AI Engineer",
-                # Domain Analyst Roles
                 "Financial Analyst",
-                "Marketing Analyst",
                 "Retail Analyst",
                 "Automobile Analyst",
                 "Reporting Analyst",
                 "MIS Analyst",
-                # BI Developer Roles (Optional)
+                "Marketing Analyst",
+                "Business Analyst",
+                # Data Engineering Bootcamp Roles
+                "Data Engineer",
                 "Power BI Developer",
                 "Tableau Developer",
+                # GenAI & Data Science Bootcamp Roles
+                "AI Engineer",
+                "ML Engineer",
+                "AI Architect",
+                "Data Scientist",
             ],
             index=0,
             help="Select the job role to search for",
